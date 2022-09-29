@@ -12,6 +12,7 @@
 		63487F3C28E2EA5E0033CF32 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3B28E2EA5E0033CF32 /* ViewController.swift */; };
 		63487F4128E2EA5E0033CF32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63487F4028E2EA5E0033CF32 /* Assets.xcassets */; };
 		63487F4428E2EA5E0033CF32 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63487F4228E2EA5E0033CF32 /* LaunchScreen.storyboard */; };
+		8CDA640728E5481200F123FE /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA640628E5481200F123FE /* Keyboard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		63487F4028E2EA5E0033CF32 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63487F4328E2EA5E0033CF32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63487F4528E2EA5E0033CF32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8CDA640628E5481200F123FE /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +56,63 @@
 		63487F3628E2EA5E0033CF32 /* K-Keyboard */ = {
 			isa = PBXGroup;
 			children = (
+				8CDA640228E546BD00F123FE /* Application */,
+				8CDA640128E546BB00F123FE /* Source */,
+				8CDA640028E546B200F123FE /* Resource */,
+			);
+			path = "K-Keyboard";
+			sourceTree = "<group>";
+		};
+		8CDA640028E546B200F123FE /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				63487F4028E2EA5E0033CF32 /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		8CDA640128E546BB00F123FE /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				8CDA640328E5473500F123FE /* Feature */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		8CDA640228E546BD00F123FE /* Application */ = {
+			isa = PBXGroup;
+			children = (
 				63487F3728E2EA5E0033CF32 /* AppDelegate.swift */,
 				63487F3928E2EA5E0033CF32 /* SceneDelegate.swift */,
-				63487F3B28E2EA5E0033CF32 /* ViewController.swift */,
-				63487F4028E2EA5E0033CF32 /* Assets.xcassets */,
 				63487F4228E2EA5E0033CF32 /* LaunchScreen.storyboard */,
 				63487F4528E2EA5E0033CF32 /* Info.plist */,
 			);
-			path = "K-Keyboard";
+			path = Application;
+			sourceTree = "<group>";
+		};
+		8CDA640328E5473500F123FE /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				8CDA640528E5478000F123FE /* BuyKeyboard */,
+				8CDA640428E5476500F123FE /* Keyboard */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		8CDA640428E5476500F123FE /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				8CDA640628E5481200F123FE /* Keyboard.swift */,
+			);
+			path = Keyboard;
+			sourceTree = "<group>";
+		};
+		8CDA640528E5478000F123FE /* BuyKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				63487F3B28E2EA5E0033CF32 /* ViewController.swift */,
+			);
+			path = BuyKeyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,6 +187,7 @@
 			files = (
 				63487F3C28E2EA5E0033CF32 /* ViewController.swift in Sources */,
 				63487F3828E2EA5E0033CF32 /* AppDelegate.swift in Sources */,
+				8CDA640728E5481200F123FE /* Keyboard.swift in Sources */,
 				63487F3A28E2EA5E0033CF32 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
