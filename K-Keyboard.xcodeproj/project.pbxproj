@@ -56,15 +56,71 @@
 		63487F3628E2EA5E0033CF32 /* K-Keyboard */ = {
 			isa = PBXGroup;
 			children = (
+				C124A7C728E542B500372C51 /* Common */,
+				C124A7C828E542BC00372C51 /* Feature */,
+			);
+			path = "K-Keyboard";
+			sourceTree = "<group>";
+		};
+		C124A7C428E5428A00372C51 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C124A7C528E542A100372C51 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		C124A7C628E542A700372C51 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		C124A7C728E542B500372C51 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				C124A7CA28E5433700372C51 /* Storyboard */,
+				C124A7C628E542A700372C51 /* Utils */,
+				C124A7C428E5428A00372C51 /* Model */,
+				C124A7C528E542A100372C51 /* CustomView */,
+				C124A7C928E542F800372C51 /* SupportFiles */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		C124A7C828E542BC00372C51 /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				63487F3B28E2EA5E0033CF32 /* ViewController.swift */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		C124A7C928E542F800372C51 /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
 				63487F3728E2EA5E0033CF32 /* AppDelegate.swift */,
 				63487F3928E2EA5E0033CF32 /* SceneDelegate.swift */,
-				63487F3B28E2EA5E0033CF32 /* ViewController.swift */,
-				63487F3D28E2EA5E0033CF32 /* Main.storyboard */,
 				63487F4028E2EA5E0033CF32 /* Assets.xcassets */,
 				63487F4228E2EA5E0033CF32 /* LaunchScreen.storyboard */,
 				63487F4528E2EA5E0033CF32 /* Info.plist */,
 			);
-			path = "K-Keyboard";
+			path = SupportFiles;
+			sourceTree = "<group>";
+		};
+		C124A7CA28E5433700372C51 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				63487F3D28E2EA5E0033CF32 /* Main.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,7 +344,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "K-Keyboard/Info.plist";
+				INFOPLIST_FILE = "K-Keyboard/Common/SupportFiles/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -315,7 +371,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "K-Keyboard/Info.plist";
+				INFOPLIST_FILE = "K-Keyboard/Common/SupportFiles/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
