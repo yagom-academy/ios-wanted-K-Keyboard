@@ -31,6 +31,8 @@
 		C124A7E528E59D9D00372C51 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C124A7E228E59D9D00372C51 /* NotoSansKR-Bold.otf */; };
 		D8104FDA28E5A4B7007E18D5 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8104FD828E5A4B7007E18D5 /* ItemCell.swift */; };
 		D8104FDB28E5A4B7007E18D5 /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8104FD928E5A4B7007E18D5 /* ItemCell.xib */; };
+		D8104FE028E5C76F007E18D5 /* descriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8104FDE28E5C76F007E18D5 /* descriptionCell.swift */; };
+		D8104FE128E5C76F007E18D5 /* descriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8104FDF28E5C76F007E18D5 /* descriptionCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +62,8 @@
 		C124A7E228E59D9D00372C51 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
 		D8104FD828E5A4B7007E18D5 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		D8104FD928E5A4B7007E18D5 /* ItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
+		D8104FDE28E5C76F007E18D5 /* descriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = descriptionCell.swift; sourceTree = "<group>"; };
+		D8104FDF28E5C76F007E18D5 /* descriptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = descriptionCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				C124A7C728E542B500372C51 /* Common */,
+				D8104FDD28E5C74A007E18D5 /* DescriptionCell */,
 				C124A7C828E542BC00372C51 /* Feature */,
 			);
 			path = "K-Keyboard";
@@ -225,6 +230,15 @@
 			path = CustomTableViewCell;
 			sourceTree = "<group>";
 		};
+		D8104FDD28E5C74A007E18D5 /* DescriptionCell */ = {
+			isa = PBXGroup;
+			children = (
+				D8104FDE28E5C76F007E18D5 /* descriptionCell.swift */,
+				D8104FDF28E5C76F007E18D5 /* descriptionCell.xib */,
+			);
+			path = DescriptionCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -286,6 +300,7 @@
 				C124A7E328E59D9D00372C51 /* NotoSansKR-Medium.otf in Resources */,
 				63487F4428E2EA5E0033CF32 /* LaunchScreen.storyboard in Resources */,
 				63487F4128E2EA5E0033CF32 /* Assets.xcassets in Resources */,
+				D8104FE128E5C76F007E18D5 /* descriptionCell.xib in Resources */,
 				63487F3F28E2EA5E0033CF32 /* Main.storyboard in Resources */,
 				C124A7E528E59D9D00372C51 /* NotoSansKR-Bold.otf in Resources */,
 				D8104FDB28E5A4B7007E18D5 /* ItemCell.xib in Resources */,
