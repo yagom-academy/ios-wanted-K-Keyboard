@@ -37,6 +37,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D986A5728E571150010606C /* Application Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				63487F3728E2EA5E0033CF32 /* AppDelegate.swift */,
+				63487F3928E2EA5E0033CF32 /* SceneDelegate.swift */,
+			);
+			path = "Application Delegate";
+			sourceTree = "<group>";
+		};
+		5D986A5828E5711F0010606C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				63487F4028E2EA5E0033CF32 /* Assets.xcassets */,
+				63487F4528E2EA5E0033CF32 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5D986A5928E571AF0010606C /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				63487F3B28E2EA5E0033CF32 /* ViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		5D986A5A28E577060010606C /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				63487F3D28E2EA5E0033CF32 /* Main.storyboard */,
+				63487F4228E2EA5E0033CF32 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		63487F2B28E2EA5E0033CF32 = {
 			isa = PBXGroup;
 			children = (
@@ -56,13 +91,10 @@
 		63487F3628E2EA5E0033CF32 /* K-Keyboard */ = {
 			isa = PBXGroup;
 			children = (
-				63487F3728E2EA5E0033CF32 /* AppDelegate.swift */,
-				63487F3928E2EA5E0033CF32 /* SceneDelegate.swift */,
-				63487F3B28E2EA5E0033CF32 /* ViewController.swift */,
-				63487F3D28E2EA5E0033CF32 /* Main.storyboard */,
-				63487F4028E2EA5E0033CF32 /* Assets.xcassets */,
-				63487F4228E2EA5E0033CF32 /* LaunchScreen.storyboard */,
-				63487F4528E2EA5E0033CF32 /* Info.plist */,
+				5D986A5728E571150010606C /* Application Delegate */,
+				5D986A5928E571AF0010606C /* View Controllers */,
+				5D986A5A28E577060010606C /* Storyboards */,
+				5D986A5828E5711F0010606C /* Supporting Files */,
 			);
 			path = "K-Keyboard";
 			sourceTree = "<group>";
@@ -288,12 +320,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "K-Keyboard/Info.plist";
+				INFOPLIST_FILE = "K-Keyboard/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -315,12 +348,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "K-Keyboard/Info.plist";
+				INFOPLIST_FILE = "K-Keyboard/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
