@@ -13,9 +13,9 @@
 		63487F3F28E2EA5E0033CF32 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63487F3D28E2EA5E0033CF32 /* Main.storyboard */; };
 		63487F4128E2EA5E0033CF32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63487F4028E2EA5E0033CF32 /* Assets.xcassets */; };
 		63487F4428E2EA5E0033CF32 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63487F4228E2EA5E0033CF32 /* LaunchScreen.storyboard */; };
-		C124A7DD28E58E2A00372C51 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C124A7DA28E58E2A00372C51 /* NotoSansKR-Regular.otf */; };
-		C124A7DE28E58E2A00372C51 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C124A7DB28E58E2A00372C51 /* NotoSansKR-Bold.otf */; };
-		C124A7DF28E58E2A00372C51 /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = C124A7DC28E58E2A00372C51 /* NotoSansKR-Medium.otf */; };
+		C124A7E328E59D9D00372C51 /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = C124A7E028E59D9D00372C51 /* NotoSansKR-Medium.otf */; };
+		C124A7E428E59D9D00372C51 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C124A7E128E59D9D00372C51 /* NotoSansKR-Regular.otf */; };
+		C124A7E528E59D9D00372C51 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C124A7E228E59D9D00372C51 /* NotoSansKR-Bold.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,9 +27,9 @@
 		63487F4028E2EA5E0033CF32 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63487F4328E2EA5E0033CF32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63487F4528E2EA5E0033CF32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C124A7DA28E58E2A00372C51 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansKR-Regular.otf"; path = "../../../../../../../../Downloads/Noto_Sans_KR/NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
-		C124A7DB28E58E2A00372C51 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansKR-Bold.otf"; path = "../../../../../../../../Downloads/Noto_Sans_KR/NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
-		C124A7DC28E58E2A00372C51 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansKR-Medium.otf"; path = "../../../../../../../../Downloads/Noto_Sans_KR/NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
+		C124A7E028E59D9D00372C51 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
+		C124A7E128E59D9D00372C51 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
+		C124A7E228E59D9D00372C51 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,9 +133,9 @@
 		C124A7D928E58E1300372C51 /* Font */ = {
 			isa = PBXGroup;
 			children = (
-				C124A7DB28E58E2A00372C51 /* NotoSansKR-Bold.otf */,
-				C124A7DC28E58E2A00372C51 /* NotoSansKR-Medium.otf */,
-				C124A7DA28E58E2A00372C51 /* NotoSansKR-Regular.otf */,
+				C124A7E228E59D9D00372C51 /* NotoSansKR-Bold.otf */,
+				C124A7E028E59D9D00372C51 /* NotoSansKR-Medium.otf */,
+				C124A7E128E59D9D00372C51 /* NotoSansKR-Regular.otf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -198,12 +198,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C124A7DF28E58E2A00372C51 /* NotoSansKR-Medium.otf in Resources */,
+				C124A7E328E59D9D00372C51 /* NotoSansKR-Medium.otf in Resources */,
 				63487F4428E2EA5E0033CF32 /* LaunchScreen.storyboard in Resources */,
 				63487F4128E2EA5E0033CF32 /* Assets.xcassets in Resources */,
-				C124A7DD28E58E2A00372C51 /* NotoSansKR-Regular.otf in Resources */,
 				63487F3F28E2EA5E0033CF32 /* Main.storyboard in Resources */,
-				C124A7DE28E58E2A00372C51 /* NotoSansKR-Bold.otf in Resources */,
+				C124A7E528E59D9D00372C51 /* NotoSansKR-Bold.otf in Resources */,
+				C124A7E428E59D9D00372C51 /* NotoSansKR-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
