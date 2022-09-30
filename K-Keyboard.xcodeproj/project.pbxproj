@@ -39,6 +39,8 @@
 		D8104FDB28E5A4B7007E18D5 /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8104FD928E5A4B7007E18D5 /* ItemCell.xib */; };
 		D8104FE128E5C76F007E18D5 /* NoticeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8104FDF28E5C76F007E18D5 /* NoticeCell.xib */; };
 		D86269CE28EC08AF00987119 /* NoticeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86269CD28EC08AF00987119 /* NoticeCell.swift */; };
+		C124A7D628E5718100372C51 /* Popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C124A7D528E5718100372C51 /* Popup.swift */; };
+		C124A7D828E5719000372C51 /* Popup.xib in Resources */ = {isa = PBXBuildFile; fileRef = C124A7D728E5719000372C51 /* Popup.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +78,8 @@
 		D8104FD928E5A4B7007E18D5 /* ItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
 		D8104FDF28E5C76F007E18D5 /* NoticeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoticeCell.xib; sourceTree = "<group>"; };
 		D86269CD28EC08AF00987119 /* NoticeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeCell.swift; sourceTree = "<group>"; };
+		C124A7D528E5718100372C51 /* Popup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Popup.swift; sourceTree = "<group>"; };
+		C124A7D728E5719000372C51 /* Popup.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Popup.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +187,7 @@
 			children = (
 				C10E992D28EC32A100B9B5FF /* CustomTableHeaderView */,
 				D8C6F02F28E849830057438B /* CustomTableViewCell */,
+				C124A7D428E5713800372C51 /* CustomView */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -271,6 +276,15 @@
 				C119B53128EAE52900237D02 /* ReviewCell */,
 			);
 			path = CustomTableViewCell;
+            sourceTree = "<group>";
+        };
+		C124A7D428E5713800372C51 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				C124A7D528E5718100372C51 /* Popup.swift */,
+				C124A7D728E5719000372C51 /* Popup.xib */,
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,6 +350,7 @@
 				C119B50F28E77E0100237D02 /* ReviewCell.xib in Resources */,
 				63487F4128E2EA5E0033CF32 /* Assets.xcassets in Resources */,
 				D8104FE128E5C76F007E18D5 /* NoticeCell.xib in Resources */,
+				C124A7D828E5719000372C51 /* Popup.xib in Resources */,
 				63487F3F28E2EA5E0033CF32 /* Main.storyboard in Resources */,
 				C124A7E528E59D9D00372C51 /* NotoSansKR-Bold.otf in Resources */,
 				D8104FDB28E5A4B7007E18D5 /* ItemCell.xib in Resources */,
@@ -371,6 +386,7 @@
 				C119B51A28E7D29400237D02 /* TagsData.swift in Sources */,
 				C10E992F28EC32DD00B9B5FF /* TableSectionHeaderView.swift in Sources */,
 				C119B52028E7D46700237D02 /* AdsData.swift in Sources */,
+				C124A7D628E5718100372C51 /* Popup.swift in Sources */,
 				63487F3A28E2EA5E0033CF32 /* SceneDelegate.swift in Sources */,
 				C119B51E28E7D40500237D02 /* AboutThemesData.swift in Sources */,
 			);
