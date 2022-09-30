@@ -8,6 +8,17 @@
 import UIKit
 
 class MorseKeyboardView: UIView {
+    
+    lazy var button: KeyboardButton = {
+        let btn = KeyboardButton(type: .custom)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.backgroundColor = .clear
+        return btn
+    }()
+    
+    func getTitle() -> String {
+        return self.button.titleLabel?.text ?? ""
+    }
 
     
     

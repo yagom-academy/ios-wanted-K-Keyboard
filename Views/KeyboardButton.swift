@@ -2,7 +2,26 @@
 //  KeyboardButton.swift
 //  K-Keyboard
 //
-//  Created by 1 on 2022/09/29.
-//키보드 키의 모양과 느낌을 사용자 정의하는 서브클래스입니다.
+//  Created by 1 on 2022/09/30.
+//
 
-import Foundation
+import UIKit
+
+class KeyboardButton: UIButton {
+    private var optionText:String = ""
+    func setOptionText(_ text:String?) {
+        self.optionText = text ?? ""
+    }
+    
+    func getOptionText() -> String {
+        return self.optionText
+    }
+    
+}
+    /*
+    // Only override draw() if you perform custom drawing.
+    // An empty implementation adversely affects performance during animation.
+    override func draw(_ rect: CGRect) {
+        // Drawing code
+    }
+    */

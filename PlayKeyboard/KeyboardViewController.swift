@@ -11,9 +11,63 @@ import UIKit
 class KeyboardViewController: UIInputViewController {
 
     @IBOutlet var nextKeyboardButton: UIButton!
+    var spaceButton: KeyboardButton?
+    var charLine1Buttons: [KeyboardButton]?
     
     //MorseKeyboardView개체 에 대한 참조를 보유하는 속성 입니다.
     var morseKeyboardView: MorseKeyboardView!
+    
+    var language:TextString.language = .en
+    //띄어 쓰기
+    @IBAction func spaceButton(button: UIButton) {
+        (textDocumentProxy as UIKeyInput).insertText(" ")
+    }
+    //if 문으로 하나씪 지운다? stack?pop?
+    @IBAction func backButton (button: UIButton) {
+        var stack: [Character] = []
+        let pop = stack.popLast()
+        if pop == pop {
+            (textDocumentProxy as UIKeyInput).insertText("\(String(describing: pop))")
+        } else {
+        }
+    }
+    
+    
+    
+    // 문자 입력하기
+    @IBAction func buttonPressed(button: UIButton) {
+        let string = button.titleLabel?.text
+        (textDocumentProxy as UIKeyInput).insertText("\(string!)")
+    }
+    
+    // 블로그꺼
+    let cho:[Character] = ["ㄱ","ㄲ","ㄴ","ㄷ","ㄸ","ㄹ","ㅁ","ㅂ","ㅃ","ㅅ","ㅆ","ㅇ","ㅈ","ㅉ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"]
+
+    let jung:[Character] = ["ㅏ", "ㅐ", "ㅑ", "ㅒ", "ㅓ", "ㅔ", "ㅕ", "ㅖ", "ㅗ", "ㅘ", "ㅙ", "ㅚ", "ㅛ", "ㅜ", "ㅝ",
+                            "ㅞ", "ㅟ", "ㅠ", "ㅡ", "ㅢ", "ㅣ"]
+    let jong:[Character] = [" ", "ㄱ", "ㄲ", "ㄳ", "ㄴ", "ㄵ", "ㄶ", "ㄷ", "ㄹ", "ㄺ", "ㄻ", "ㄼ", "ㄽ", "ㄾ", "ㄿ",
+                            "ㅀ", "ㅁ", "ㅂ", "ㅄ", "ㅅ", "ㅆ", "ㅇ", "ㅈ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"]
+    
+    func hangle(c1:Character,c2:Character,c3:Character) -> Character? {
+        var cho_i = 0
+        var jung_i = 0
+        var jong_i = 0
+        for i in 0 ..< cho.count {
+            if cho[i] == c1 { cho_i = i }
+        }
+        for i in 0 ..< jung.count {
+            if jung[i] == c2 { jung_i = i }
+        }
+        for i in 0 ..< jong.count {
+            if jong[i] == c3 { jong_i = i }
+        }
+        let uniValue:Int = (cho_i * 21 * 28) + (jung_i * 28) + (jong_i) + 0xAC00;
+        if let uni = Unicode.Scalar(uniValue) {
+            return Character(uni)
+        }
+        return nil
+    }
+    
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
@@ -22,12 +76,13 @@ class KeyboardViewController: UIInputViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        makeRoundCorners()
+        self.spaceButton?.setTitle("space", for: .normal)
         // 인스턴스가 MorseKeyboardView컨트롤러의 루트에 추가됩니다 inputView.
         let nib = UINib(nibName: "MorseKeyboardView", bundle: nil)
         let objects = nib.instantiate(withOwner: nil, options: nil)
-        morseKeyboardView = objects.first as! MorseKeyboardView
-//        view = objects[0] as? UIView
+        morseKeyboardView = objects.first as? MorseKeyboardView
+//        view = objects[0] as UIView
         guard let inputview = inputView else { return }
         inputview.addSubview(morseKeyboardView)
         
@@ -55,6 +110,16 @@ class KeyboardViewController: UIInputViewController {
 
     }
     
+    func makeRoundCorners() {
+        for button in self.view.subviews {
+            if button is UIButton {
+                (button as! UIButton).backgroundColor = UIColor.black
+                button.layer.cornerRadius = 3
+                button.layer.masksToBounds = true
+            }
+        }
+    }
+    
     
     override func viewWillLayoutSubviews() {
         self.nextKeyboardButton.isHidden = !self.needsInputModeSwitchKey
@@ -77,4 +142,23 @@ class KeyboardViewController: UIInputViewController {
         }
         self.nextKeyboardButton.setTitleColor(textColor, for: [])
     }
+    
+    
+    func insertCharacter(_ newCharacter: String) {
+        textDocumentProxy.insertText(newCharacter)
+    }
+    
+    func deleteCharacterBeforerCursor() {
+        
+    }
+    
+    func characterBeforeCursor() -> String? {
+        return nil
+    }
+    
+    
+    
+    
+    
 }
+
