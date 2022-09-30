@@ -8,8 +8,7 @@
 import UIKit
 
 class FirstViewController: UIViewController {
-
-    let firstCollectionView = FirstCollectionView()
+    let firstTableView = UITableView()
     let firstFooterView: UIView = {
         let view = UIView()
         view.backgroundColor = .green
@@ -21,8 +20,8 @@ class FirstViewController: UIViewController {
         super.viewDidLoad()
 
         self.view.backgroundColor = .white
-        self.firstCollectionView.collectionView.delegate = self
-        self.firstCollectionView.collectionView.dataSource = self
+        firstTableView.delegate = self
+        firstTableView.dataSource = self
 
         addViews()
         setConstraints()
@@ -31,19 +30,19 @@ class FirstViewController: UIViewController {
 
 extension FirstViewController {
     func addViews() {
-        [firstCollectionView, firstFooterView].forEach { self.view.addSubview($0) }
+        [firstTableView, firstFooterView].forEach { self.view.addSubview($0) }
     }
 
     func setConstraints() {
-        [firstCollectionView, firstFooterView].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
+        [firstTableView, firstFooterView].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
 
         firstFooterView.backgroundColor = .darkGray
 
         NSLayoutConstraint.activate([
-            firstCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            firstCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            firstCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            firstFooterView.topAnchor.constraint(equalTo: firstCollectionView.bottomAnchor),
+            firstTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            firstTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            firstTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            firstFooterView.topAnchor.constraint(equalTo: firstTableView.bottomAnchor),
             firstFooterView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             firstFooterView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             firstFooterView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
@@ -52,45 +51,56 @@ extension FirstViewController {
     }
 }
 
-extension FirstViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+extension FirstViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 5
     }
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        collectionView.register(TestCollectionViewCellOne.self, forCellWithReuseIdentifier: TestCollectionViewCellOne.identifier)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        tableView.register(TestTableViewCellOne.self, forCellReuseIdentifier: TestTableViewCellOne.identifier)
+        tableView.register(FourthSectionCell.self, forCellReuseIdentifier: FourthSectionCell.identifier)
+
         switch indexPath.section {
         case 0:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TestCollectionViewCellOne.identifier, for: indexPath) as? TestCollectionViewCellOne else {
-                return UICollectionViewCell()
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: TestTableViewCellOne.identifier, for: indexPath) as? TestTableViewCellOne else {
+                return UITableViewCell()
             }
+
             cell.backgroundColor = .gray
             return cell
         case 1:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TestCollectionViewCellOne.identifier, for: indexPath) as? TestCollectionViewCellOne else {
-                return UICollectionViewCell()
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: TestTableViewCellOne.identifier, for: indexPath) as? TestTableViewCellOne else {
+                return UITableViewCell()
             }
+
             cell.backgroundColor = .blue
             return cell
-        default:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TestCollectionViewCellOne.identifier, for: indexPath) as? TestCollectionViewCellOne else {
-                return UICollectionViewCell()
+        case 3:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: FourthSectionCell.identifier, for: indexPath) as? FourthSectionCell else {
+                return UITableViewCell()
             }
+
+            return cell
+        default:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: TestTableViewCellOne.identifier, for: indexPath) as? TestTableViewCellOne else {
+                return UITableViewCell()
+            }
+
             cell.backgroundColor = .black
             return cell
         }
     }
 }
 
-class TestCollectionViewCellOne: UICollectionViewCell {
+class TestTableViewCellOne: UITableViewCell {
     static let identifier = "testCell"
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
     required init?(coder: NSCoder) {

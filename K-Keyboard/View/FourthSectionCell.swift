@@ -8,12 +8,12 @@
 import UIKit
 
 class FourthSectionCell: UITableViewCell {
-    static let id = "section4"
+    static let identifier = "section4"
 
     let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "이 테마를 어떻게 생각하나요?"
-        label.font = UIFont.systemFont(ofSize: 16)
+        label.font = UIFont(name: Const.Font.notoBold, size: 16)
         label.textColor = .black
         return label
     }()
@@ -29,16 +29,17 @@ class FourthSectionCell: UITableViewCell {
     let vertical1: UIStackView = {
         let emoji = UILabel()
         emoji.text = "😊"
-        emoji.font = UIFont.systemFont(ofSize: 30)
+        emoji.font = UIFont(name: Const.Font.notoRegular, size: 30)
 
         let label1 = UILabel()
         label1.text = "맘에들어요"
-        label1.font = UIFont.systemFont(ofSize: 12)
+        label1.lineBreakMode = .byWordWrapping
+        label1.font = UIFont(name: Const.Font.notoRegular, size: 12)
         label1.textColor = UIColor(red: 0.569, green: 0.573, blue: 0.6, alpha: 1)
 
         let label2 = UILabel()
         label2.text = "0"
-        label2.font = UIFont.systemFont(ofSize: 10)
+        label2.font = UIFont(name: Const.Font.notoMedium, size: 10)
         label2.textColor = UIColor(red: 0.569, green: 0.573, blue: 0.6, alpha: 1)
 
         let stackView = UIStackView(arrangedSubviews: [emoji, label1, label2])
@@ -54,16 +55,17 @@ class FourthSectionCell: UITableViewCell {
     let vertical2: UIStackView = {
         let emoji = UILabel()
         emoji.text = "😍"
-        emoji.font = UIFont.systemFont(ofSize: 30)
+        emoji.font = UIFont(name: Const.Font.notoRegular, size: 30)
 
         let label1 = UILabel()
         label1.text = "심쿵했어요"
-        label1.font = UIFont.systemFont(ofSize: 12)
+        label1.lineBreakMode = .byWordWrapping
+        label1.font = UIFont(name: Const.Font.notoRegular, size: 12)
         label1.textColor = UIColor(red: 1, green: 0.255, blue: 0.49, alpha: 1)
 
         let label2 = UILabel()
-        label2.text = "0"
-        label2.font = UIFont.systemFont(ofSize: 10)
+        label2.text = "1"
+        label2.font = UIFont(name: Const.Font.notoMedium, size: 10)
         label2.textColor = UIColor(red: 1, green: 0.255, blue: 0.49, alpha: 1)
 
         let stackView = UIStackView(arrangedSubviews: [emoji, label1, label2])
@@ -79,16 +81,17 @@ class FourthSectionCell: UITableViewCell {
     let vertical3: UIStackView = {
         let emoji = UILabel()
         emoji.text = "😉"
-        emoji.font = UIFont.systemFont(ofSize: 30)
+        emoji.font = UIFont(name: Const.Font.notoRegular, size: 30)
 
         let label1 = UILabel()
         label1.text = "응원해요"
-        label1.font = UIFont.systemFont(ofSize: 12)
+        label1.lineBreakMode = .byWordWrapping
+        label1.font = UIFont(name: Const.Font.notoRegular, size: 12)
         label1.textColor = UIColor(red: 0.569, green: 0.573, blue: 0.6, alpha: 1)
 
         let label2 = UILabel()
         label2.text = "0"
-        label2.font = UIFont.systemFont(ofSize: 10)
+        label2.font = UIFont(name: Const.Font.notoMedium, size: 10)
         label2.textColor = UIColor(red: 0.569, green: 0.573, blue: 0.6, alpha: 1)
 
         let stackView = UIStackView(arrangedSubviews: [emoji, label1, label2])
@@ -104,16 +107,17 @@ class FourthSectionCell: UITableViewCell {
     let vertical4: UIStackView = {
         let emoji = UILabel()
         emoji.text = "🤣"
-        emoji.font = UIFont.systemFont(ofSize: 30)
+        emoji.font = UIFont(name: Const.Font.notoRegular, size: 30)
 
         let label1 = UILabel()
         label1.text = "갖고싶어요"
-        label1.font = UIFont.systemFont(ofSize: 12)
+        label1.lineBreakMode = .byWordWrapping
+        label1.font = UIFont(name: Const.Font.notoRegular, size: 12)
         label1.textColor = UIColor(red: 0.569, green: 0.573, blue: 0.6, alpha: 1)
 
         let label2 = UILabel()
         label2.text = "0"
-        label2.font = UIFont.systemFont(ofSize: 10)
+        label2.font = UIFont(name: Const.Font.notoMedium, size: 10)
         label2.textColor = UIColor(red: 0.569, green: 0.573, blue: 0.6, alpha: 1)
 
         let stackView = UIStackView(arrangedSubviews: [emoji, label1, label2])
@@ -130,7 +134,7 @@ class FourthSectionCell: UITableViewCell {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.spacing = 38
-        stackView.distribution = .fill
+        stackView.distribution = .fillEqually
         stackView.alignment = .center
         return stackView
     }()
