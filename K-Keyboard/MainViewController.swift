@@ -8,31 +8,24 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    let key = keyboardImageView()
     
-    
-    let imageView = UIImageView(image: UIImage(named: "Keborad"))
-    
-    let firstView: UIView = {
-            let view = UIView()
-        view.addSubview(keyboardImageView().titles)
-        view.addSubview(keyboardImageView().titles111)
-        view.addSubview(keyboardImageView().titles222)
+   
+
+    let firstView: keyboardImageView = {
+            let view = keyboardImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
-            
+        view.backgroundColor = .white
             return view
         }()
-        let secondView: UIView = {
-            let view = UIView()
+        let secondView: SecondView = {
+            let view = SecondView()
+            view.backgroundColor = .white
             view.translatesAutoresizingMaskIntoConstraints = false
-            view.backgroundColor = .green
             return view
         }()
-        let thirdView: UIView = {
-            let view = UIView()
-         
+        let thirdView: ThirdView = {
+            let view = ThirdView()
             view.translatesAutoresizingMaskIntoConstraints = false
-            view.backgroundColor = .red
             return view
         }()
     
@@ -75,7 +68,6 @@ class MainViewController: UIViewController {
     func addSubView() {
 
         self.view.addSubview(scrollView)
-        scrollView.addSubview(imageView)
         scrollView.addSubview(firstView)
         scrollView.addSubview(secondView)
         scrollView.addSubview(thirdView)
@@ -94,28 +86,28 @@ class MainViewController: UIViewController {
         scrollView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: 0),
         scrollView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: 0),
         
-        imageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor,constant: 100),
-        imageView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor,constant: 16),
-        imageView.trailingAnchor.constraint(equalTo: secondView.trailingAnchor,constant: 16),
+//        imageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor,constant: 100),
+//        imageView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor,constant: 16),
+//        imageView.trailingAnchor.constraint(equalTo: secondView.trailingAnchor,constant: 16),
 
-        firstView.topAnchor.constraint(equalTo: imageView.bottomAnchor,constant: 0),
+        firstView.topAnchor.constraint(equalTo: scrollView.topAnchor,constant: 0),
         firstView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor,constant: 0),
-        firstView.widthAnchor.constraint(equalToConstant: 400),
-        firstView.heightAnchor.constraint(equalToConstant: 100),
+        firstView.widthAnchor.constraint(equalToConstant: 375),
+        firstView.heightAnchor.constraint(equalToConstant: 540),
        
         
         
         secondView.topAnchor.constraint(equalTo: firstView.bottomAnchor,constant: 0),
-        secondView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor,constant: 0),
-        secondView.widthAnchor.constraint(equalToConstant: 400),
-        secondView.heightAnchor.constraint(equalToConstant: 100),
+        secondView.leadingAnchor.constraint(equalTo: firstView.leadingAnchor,constant: 0),
+        secondView.widthAnchor.constraint(equalToConstant: 375),
+        secondView.heightAnchor.constraint(equalToConstant: 300),
 //        secondView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor,constant: 0),
 //        secondView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor,constant: 0),
 //
         thirdView.topAnchor.constraint(equalTo: secondView.bottomAnchor,constant: 0),
         thirdView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor,constant: 0),
-        thirdView.widthAnchor.constraint(equalToConstant: 400),
-        thirdView.heightAnchor.constraint(equalToConstant: 50),
+        thirdView.widthAnchor.constraint(equalToConstant: 375),
+        thirdView.heightAnchor.constraint(equalToConstant: 300),
         
         fourView.topAnchor.constraint(equalTo: thirdView.bottomAnchor,constant: 0),
         fourView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor,constant: 0),
@@ -137,7 +129,9 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.leftBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .close, target: self, action: nil)
+        let imageView = UIImage(named: "NaniBackButton")
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem.init(image: imageView, style: .done, target: self, action: nil)
         self.view.backgroundColor = .white
         addSubView()
         setUpUIConstraints()

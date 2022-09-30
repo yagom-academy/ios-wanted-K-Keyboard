@@ -7,10 +7,10 @@
 
 import UIKit
 
-class CollectionViewCell: UICollectionViewCell {
+class SecondCollectionViewCell: UICollectionViewCell {
     
     
-    static let identifier = "CollectionViewCell"
+    static let identifier = "SecondCollectionViewCell"
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -57,9 +57,6 @@ class CollectionViewCell: UICollectionViewCell {
         label.font = .systemFont(ofSize: 15)
         return label
     }()
-    
-    
-    
     
     private func addContentView() {
         contentView.addSubview(title)
