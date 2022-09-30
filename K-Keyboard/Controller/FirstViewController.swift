@@ -21,6 +21,8 @@ class FirstViewController: UIViewController {
         super.viewDidLoad()
 
         self.view.backgroundColor = .white
+        self.firstCollectionView.collectionView.delegate = self
+        self.firstCollectionView.collectionView.dataSource = self
 
         addViews()
         setConstraints()
@@ -52,16 +54,46 @@ extension FirstViewController {
 
 extension FirstViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return 5
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1
     }
 
-
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        collectionView.register(TestCollectionViewCellOne.self, forCellWithReuseIdentifier: TestCollectionViewCellOne.identifier)
+        switch indexPath.section {
+        case 0:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TestCollectionViewCellOne.identifier, for: indexPath) as? TestCollectionViewCellOne else {
+                return UICollectionViewCell()
+            }
+            cell.backgroundColor = .gray
+            return cell
+        case 1:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TestCollectionViewCellOne.identifier, for: indexPath) as? TestCollectionViewCellOne else {
+                return UICollectionViewCell()
+            }
+            cell.backgroundColor = .blue
+            return cell
+        default:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TestCollectionViewCellOne.identifier, for: indexPath) as? TestCollectionViewCellOne else {
+                return UICollectionViewCell()
+            }
+            cell.backgroundColor = .black
+            return cell
+        }
+    }
+}
 
-        return UICollectionViewCell()
+class TestCollectionViewCellOne: UICollectionViewCell {
+    static let identifier = "testCell"
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
