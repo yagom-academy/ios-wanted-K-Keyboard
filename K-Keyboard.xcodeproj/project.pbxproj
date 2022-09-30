@@ -46,6 +46,8 @@
 		D861628928EC21A300E29E3B /* UIView+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = D861628828EC21A300E29E3B /* UIView+Extention.swift */; };
 		D861628C28ECA82F00E29E3B /* TagsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D861628B28ECA82F00E29E3B /* TagsData.swift */; };
 		D86269CE28EC08AF00987119 /* NoticeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86269CD28EC08AF00987119 /* NoticeCell.swift */; };
+		C124A7EC28E6D5E500372C51 /* BottomReplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C124A7EB28E6D5E500372C51 /* BottomReplyView.swift */; };
+		C124A7EE28E6D5F300372C51 /* BottomReplyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C124A7ED28E6D5F300372C51 /* BottomReplyView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +92,8 @@
 		D861628828EC21A300E29E3B /* UIView+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extention.swift"; sourceTree = "<group>"; };
 		D861628B28ECA82F00E29E3B /* TagsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsData.swift; sourceTree = "<group>"; };
 		D86269CD28EC08AF00987119 /* NoticeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeCell.swift; sourceTree = "<group>"; };
+		C124A7EB28E6D5E500372C51 /* BottomReplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomReplyView.swift; sourceTree = "<group>"; };
+		C124A7ED28E6D5F300372C51 /* BottomReplyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomReplyView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,6 +263,8 @@
 			children = (
 				C124A7E728E6D15B00372C51 /* BottomPerchaseView.swift */,
 				C124A7E928E6D16800372C51 /* BottomPerchaseView.xib */,
+				C124A7EB28E6D5E500372C51 /* BottomReplyView.swift */,
+				C124A7ED28E6D5F300372C51 /* BottomReplyView.xib */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -376,6 +382,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C124A7EE28E6D5F300372C51 /* BottomReplyView.xib in Resources */,
 				C124A7E328E59D9D00372C51 /* NotoSansKR-Medium.otf in Resources */,
 				63487F4428E2EA5E0033CF32 /* LaunchScreen.storyboard in Resources */,
 				C119B50F28E77E0100237D02 /* ReviewCell.xib in Resources */,
@@ -424,6 +431,7 @@
 				C119B52028E7D46700237D02 /* AdsData.swift in Sources */,
 				63487F3A28E2EA5E0033CF32 /* SceneDelegate.swift in Sources */,
 				C119B51E28E7D40500237D02 /* AboutThemesData.swift in Sources */,
+				C124A7EC28E6D5E500372C51 /* BottomReplyView.swift in Sources */,
 				C124A7E828E6D15B00372C51 /* BottomPerchaseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
