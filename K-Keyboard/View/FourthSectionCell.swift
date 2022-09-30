@@ -7,7 +7,7 @@
 
 import UIKit
 
-class Section4Cell: UICollectionViewCell {
+class FourthSectionCell: UITableViewCell {
     static let id = "section4"
 
     let titleLabel: UILabel = {
@@ -135,16 +135,8 @@ class Section4Cell: UICollectionViewCell {
         return stackView
     }()
 
-    // TableView Cell init
-//    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-//        super.init(style: style, reuseIdentifier: reuseIdentifier)
-//
-//        addViews()
-//        setConstraints()
-//    }
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         addViews()
         setConstraints()
@@ -156,7 +148,7 @@ class Section4Cell: UICollectionViewCell {
     }
 }
 
-extension Section4Cell {
+extension FourthSectionCell {
     func addViews() {
         [vertical1, vertical2, vertical3, vertical4].forEach { horizontal.addArrangedSubview($0) }
         [titleLabel, horizontal, adImage].forEach { contentView.addSubview($0) }
@@ -179,35 +171,4 @@ extension Section4Cell {
             adImage.heightAnchor.constraint(equalToConstant: 87)
         ])
     }
-
-//    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
-//        let size = contentView.systemLayoutSizeFitting(layoutAttributes.size)
-//
-//        var frame = layoutAttributes.frame
-//        frame.size.width = ceil(size.width)
-//        frame.size.height = ceil(size.height)
-//
-//        layoutAttributes.frame = frame
-//        return layoutAttributes
-//    }
-
-//    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
-//            let targetSize = CGSize(width: layoutAttributes.frame.width, height: 0)
-//            layoutAttributes.frame.size = contentView.systemLayoutSizeFitting(targetSize, withHorizontalFittingPriority: .required, verticalFittingPriority: .fittingSizeLevel)
-//            return layoutAttributes
-//        }
-
-//    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
-//
-//            setNeedsLayout()
-//            layoutIfNeeded()
-//
-//            let size = contentView.systemLayoutSizeFitting(layoutAttributes.size)
-//
-//            var frame = layoutAttributes.frame
-//            frame.size.height = ceil(size.height)
-//            layoutAttributes.frame = frame
-//
-//            return layoutAttributes
-//        }
 }
