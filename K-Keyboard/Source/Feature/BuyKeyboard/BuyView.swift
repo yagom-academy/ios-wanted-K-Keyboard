@@ -278,7 +278,7 @@ class BuyView: UIView {
         
         
         
-        //bottom 추가 해줘야 스크롤 내려감
+        //bottom 추가 해줘야 스크롤 내려감 
 
     }
     
