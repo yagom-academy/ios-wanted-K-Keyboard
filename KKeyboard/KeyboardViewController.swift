@@ -7,7 +7,7 @@
 
 import UIKit
 
-class KeyboardViewController: UIInputViewController {
+class KeyboardViewController: UIInputViewController, UITextDocumentProxyDelegate {
 
     @IBOutlet var nextKeyboardButton: UIButton!
     
@@ -21,6 +21,7 @@ class KeyboardViewController: UIInputViewController {
         super.viewDidLoad()
 
         let keyboardView = KeyboardView()
+        keyboardView.delegate = self
         guard let inputView = inputView else { return }
         inputView.addSubview(keyboardView)
         inputView.allowsSelfSizing = true
@@ -36,6 +37,11 @@ class KeyboardViewController: UIInputViewController {
             keyboardView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             keyboardView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+    
+    func insertText(_ text: String) {
+        let proxy = self.textDocumentProxy as UITextDocumentProxy
+        proxy.insertText(text)
     }
 
 }

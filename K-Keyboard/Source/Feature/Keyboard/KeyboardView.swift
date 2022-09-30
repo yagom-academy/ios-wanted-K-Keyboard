@@ -7,7 +7,14 @@
 
 import UIKit
 
+protocol UITextDocumentProxyDelegate: AnyObject {
+    func insertText(_ text: String)
+}
+
+
 public class KeyboardView: UIView {
+    var delegate: UITextDocumentProxyDelegate?
+    
     // 첫째 줄
     let qButton = KeyButton(keyType: .korean, keyValue: "ㅂ")
     let wButton = KeyButton(keyType: .korean, keyValue: "ㅈ")
@@ -102,6 +109,11 @@ public class KeyboardView: UIView {
         backgroundColor = .systemGray4
         setViewHierarchy()
         setConstraints()
+        registerButtonTarget()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func setViewHierarchy() {
@@ -163,11 +175,15 @@ public class KeyboardView: UIView {
         ])
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func registerButtonTarget() {
+        [qButton, wButton, eButton, rButton, tButton, yButton, uButton, iButton, oButton, pButton, aButton, sButton, dButton, fButton, gButton, hButton, jButton, kButton, lButton, zButton, xButton, cButton, vButton, bButton, nButton, mButton].forEach {
+            $0.addTarget(self, action: #selector(buttonTapAction), for: .touchUpInside)
+        }
     }
     
-
+    @objc func buttonTapAction(_ sender: KeyButton) {
+        delegate?.insertText(sender.keyValue)
+    }
 }
 
 extension UIStackView {
