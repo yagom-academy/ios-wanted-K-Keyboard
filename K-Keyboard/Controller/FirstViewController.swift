@@ -8,6 +8,15 @@
 import UIKit
 
 class FirstViewController: UIViewController {
+    let backButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .white
+        button.setImage(UIImage(named: "IcToolbarBack"), for: .normal)
+        button.contentHorizontalAlignment = .fill
+        button.contentVerticalAlignment = .fill
+        return button
+    }()
+    
     let firstTableView = UITableView()
     let firstFooterView: UIView = {
         let view = UIView()
@@ -30,16 +39,20 @@ class FirstViewController: UIViewController {
 
 extension FirstViewController {
     func addViews() {
-        [firstTableView, firstFooterView].forEach { self.view.addSubview($0) }
+        [backButton, firstTableView, firstFooterView].forEach { self.view.addSubview($0) }
     }
 
     func setConstraints() {
-        [firstTableView, firstFooterView].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
+        [backButton, firstTableView, firstFooterView].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
 
         firstFooterView.backgroundColor = .darkGray
 
         NSLayoutConstraint.activate([
-            firstTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            backButton.widthAnchor.constraint(equalToConstant: 24),
+            backButton.heightAnchor.constraint(equalToConstant: 24),
+            backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60),
+            backButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            firstTableView.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 16),
             firstTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             firstTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             firstFooterView.topAnchor.constraint(equalTo: firstTableView.bottomAnchor),
@@ -62,15 +75,15 @@ extension FirstViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         tableView.register(TestTableViewCellOne.self, forCellReuseIdentifier: TestTableViewCellOne.identifier)
+        tableView.register(FirstSectionCell.self, forCellReuseIdentifier: FirstSectionCell.identifier)
         tableView.register(FourthSectionCell.self, forCellReuseIdentifier: FourthSectionCell.identifier)
 
         switch indexPath.section {
         case 0:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: TestTableViewCellOne.identifier, for: indexPath) as? TestTableViewCellOne else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: FirstSectionCell.identifier, for: indexPath) as? FirstSectionCell else {
                 return UITableViewCell()
             }
 
-            cell.backgroundColor = .gray
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: TestTableViewCellOne.identifier, for: indexPath) as? TestTableViewCellOne else {
