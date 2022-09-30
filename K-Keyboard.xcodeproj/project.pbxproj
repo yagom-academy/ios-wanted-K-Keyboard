@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4019E21A28E5DD42007DD322 /* FirstCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4019E21928E5DD42007DD322 /* FirstCollectionView.swift */; };
+		4019E21C28E5EB34007DD322 /* FourthSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4019E21B28E5EB34007DD322 /* FourthSectionCell.swift */; };
 		63487F3828E2EA5E0033CF32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3728E2EA5E0033CF32 /* AppDelegate.swift */; };
 		63487F3A28E2EA5E0033CF32 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3928E2EA5E0033CF32 /* SceneDelegate.swift */; };
 		63487F3C28E2EA5E0033CF32 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3B28E2EA5E0033CF32 /* FirstViewController.swift */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		4019E21928E5DD42007DD322 /* FirstCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstCollectionView.swift; sourceTree = "<group>"; };
+		4019E21B28E5EB34007DD322 /* FourthSectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthSectionCell.swift; sourceTree = "<group>"; };
 		63487F3428E2EA5E0033CF32 /* K-Keyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "K-Keyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		63487F3728E2EA5E0033CF32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63487F3928E2EA5E0033CF32 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -50,6 +52,7 @@
 			children = (
 				63487F4228E2EA5E0033CF32 /* LaunchScreen.storyboard */,
 				4019E21928E5DD42007DD322 /* FirstCollectionView.swift */,
+				4019E21B28E5EB34007DD322 /* FourthSectionCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 				63487F3828E2EA5E0033CF32 /* AppDelegate.swift in Sources */,
 				63487F3A28E2EA5E0033CF32 /* SceneDelegate.swift in Sources */,
 				4019E21A28E5DD42007DD322 /* FirstCollectionView.swift in Sources */,
+				4019E21C28E5EB34007DD322 /* FourthSectionCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
