@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -98,12 +98,12 @@
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
 					63487F3328E2EA5E0033CF32 = {
-						CreatedOnToolsVersion = 14.0;
+						CreatedOnToolsVersion = 13.0;
 					};
 				};
 			};
 			buildConfigurationList = 63487F2F28E2EA5E0033CF32 /* Build configuration list for PBXProject "K-Keyboard" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
