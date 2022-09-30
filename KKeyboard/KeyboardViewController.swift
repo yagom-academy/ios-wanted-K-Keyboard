@@ -43,5 +43,10 @@ class KeyboardViewController: UIInputViewController, UITextDocumentProxyDelegate
         let proxy = self.textDocumentProxy as UITextDocumentProxy
         proxy.insertText(text)
     }
+    
+    func deleteBackward() {
+        let proxy = self.textDocumentProxy as UITextDocumentProxy
+        proxy.deleteBackward()
+    }
 
 }

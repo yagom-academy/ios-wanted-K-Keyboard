@@ -9,11 +9,35 @@ import UIKit
 
 protocol UITextDocumentProxyDelegate: AnyObject {
     func insertText(_ text: String)
+    func deleteBackward()
 }
 
 
 public class KeyboardView: UIView {
     var delegate: UITextDocumentProxyDelegate?
+    let shiftKeyBoardValues: [String] = ["ㅃ", "ㅉ", "ㄸ", "ㄲ", "ㅆ", "ㅛ", "ㅕ", "ㅑ", "ㅒ", "ㅖ"]
+    let firstKeyBoardValues: [String] = ["ㅂ", "ㅈ", "ㄷ", "ㄱ", "ㅅ", "ㅛ", "ㅕ", "ㅑ", "ㅐ", "ㅔ"]
+    let secondKeyBoardValues: [String] = ["ㅁ", "ㄴ", "ㅇ", "ㄹ", "ㅎ", "ㅗ", "ㅓ", "ㅏ", "ㅣ"]
+    let thirdKeyBoardValues: [String] = ["⇧", "ㅋ", "ㅌ", "ㅊ", "ㅍ", "ㅠ", "ㅜ", "ㅡ", "⌫"]
+    let fourthKeyBoardValues: [String] = ["123", "스페이스", "↩︎"]
+    
+    var isShiftKeyClicked: Bool = false {
+        didSet {
+            let buttons = [qButton, wButton, eButton, rButton, tButton, yButton, uButton, iButton, oButton, pButton]
+
+            if isShiftKeyClicked {
+                for i in 0..<buttons.count {
+                    buttons[i].setTitle(shiftKeyBoardValues[i], for: .normal)
+                    buttons[i].keyValue = shiftKeyBoardValues[i]
+                }
+            } else {
+                for i in 0..<buttons.count {
+                    buttons[i].setTitle(firstKeyBoardValues[i], for: .normal)
+                    buttons[i].keyValue = firstKeyBoardValues[i]
+                }
+            }
+        }
+    }
     
     // 첫째 줄
     let qButton = KeyButton(keyType: .korean, keyValue: "ㅂ")
@@ -98,12 +122,6 @@ public class KeyboardView: UIView {
         return stackView
     }()
     
-    let firstKeyBoardValues: [String] = ["ㅂ", "ㅈ", "ㄷ", "ㄱ", "ㅅ", "ㅛ", "ㅕ", "ㅑ", "ㅐ", "ㅔ"]
-    let secondKeyBoardValues: [String] = ["ㅁ", "ㄴ", "ㅇ", "ㄹ", "ㅎ", "ㅗ", "ㅓ", "ㅏ", "ㅣ"]
-    let thirdKeyBoardValues: [String] = ["⇧", "ㅋ", "ㅌ", "ㅊ", "ㅍ", "ㅠ", "ㅜ", "ㅡ", "⌫"]
-    let fourthKeyBoardValues: [String] = ["123", "스페이스", "↩︎"]
-
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .systemGray4
@@ -177,12 +195,27 @@ public class KeyboardView: UIView {
     
     func registerButtonTarget() {
         [qButton, wButton, eButton, rButton, tButton, yButton, uButton, iButton, oButton, pButton, aButton, sButton, dButton, fButton, gButton, hButton, jButton, kButton, lButton, zButton, xButton, cButton, vButton, bButton, nButton, mButton].forEach {
-            $0.addTarget(self, action: #selector(buttonTapAction), for: .touchUpInside)
+            $0.addTarget(self, action: #selector(koreanKeyButtonTapAction), for: .touchUpInside)
+        }
+        
+        backButton.addTarget(self, action: #selector(backKeyButtonTapAction), for: .touchUpInside)
+        shiftButton.addTarget(self, action: #selector(shiftKeyButtonTapAction), for: .touchUpInside)
+    }
+    
+    @objc func koreanKeyButtonTapAction(_ sender: KeyButton) {
+        delegate?.insertText(sender.keyValue)
+        if shiftKeyBoardValues.contains(sender.keyValue) && !["ㅛ", "ㅕ", "ㅑ"].contains(sender.keyValue) {
+            shiftKeyButtonTapAction(shiftButton)
         }
     }
     
-    @objc func buttonTapAction(_ sender: KeyButton) {
-        delegate?.insertText(sender.keyValue)
+    @objc func backKeyButtonTapAction() {
+        delegate?.deleteBackward()
+    }
+    
+    @objc func shiftKeyButtonTapAction(_ sender: KeyButton) {
+        isShiftKeyClicked = !isShiftKeyClicked
+        sender.isSelected = !sender.isSelected
     }
 }
 
