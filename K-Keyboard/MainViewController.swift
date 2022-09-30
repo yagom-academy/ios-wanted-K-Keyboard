@@ -8,69 +8,172 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    var heights: [Int] = [60, 200, 150, 30, 80, 170, 200]
-    var colors: [UIColor] = [.systemRed, .systemIndigo, .systemBlue, .systemTeal, .systemYellow, .cyan, .brown]
+    let key = keyboardImageView()
     
-    private var collectionView: UICollectionView = {
-      let layout = UICollectionViewFlowLayout()
-        layout.minimumInteritemSpacing = 5
-        layout.minimumLineSpacing = 5
-        layout.scrollDirection = .horizontal
-        layout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-//
-        return cv
+    
+    let imageView = UIImageView(image: UIImage(named: "Keborad"))
+    
+    let firstView: UIView = {
+            let view = UIView()
+        view.addSubview(keyboardImageView().titles)
+        view.addSubview(keyboardImageView().titles111)
+        view.addSubview(keyboardImageView().titles222)
+        view.translatesAutoresizingMaskIntoConstraints = false
+            
+            return view
+        }()
+        let secondView: UIView = {
+            let view = UIView()
+            view.translatesAutoresizingMaskIntoConstraints = false
+            view.backgroundColor = .green
+            return view
+        }()
+        let thirdView: UIView = {
+            let view = UIView()
+         
+            view.translatesAutoresizingMaskIntoConstraints = false
+            view.backgroundColor = .red
+            return view
+        }()
+    
+    let fourView: UILabel = {
+        let view = UILabel()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .yellow
+        return view
     }()
+    let fifveView: UILabel = {
+        let view = UILabel()
+        view.text = "다섯번째뷰화면"
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .brown
+        return view
+    }()
+    
+    let labelOne: UILabel = {
+      let label = UILabel()
+      label.text = "첫번째 뷰화면"
+      label.backgroundColor = .red
+      label.translatesAutoresizingMaskIntoConstraints = false
+      return label
+    }()
+
+    let labelTwo: UILabel = {
+      let label = UILabel()
+      label.text = "마지막 뷰화면"
+      label.backgroundColor = .red
+      label.translatesAutoresizingMaskIntoConstraints = false
+      return label
+    }()
+
+    let scrollView: UIScrollView = {
+      let scrollView = UIScrollView()
+//      scrollView.backgroundColor = .lightGray
+      scrollView.translatesAutoresizingMaskIntoConstraints = false
+      return scrollView
+    }()
+    func addSubView() {
+
+        self.view.addSubview(scrollView)
+        scrollView.addSubview(imageView)
+        scrollView.addSubview(firstView)
+        scrollView.addSubview(secondView)
+        scrollView.addSubview(thirdView)
+        scrollView.addSubview(fourView)
+        scrollView.addSubview(fifveView)
+//        scrollView.addSubview(labelOne)
+//        scrollView.addSubview(labelTwo)
+    }
+
+    
+    private func setUpUIConstraints() {
+      NSLayoutConstraint.activate([
+        
+        scrollView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: 0),
+        scrollView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 0),
+        scrollView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: 0),
+        scrollView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: 0),
+        
+        imageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor,constant: 100),
+        imageView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor,constant: 16),
+        imageView.trailingAnchor.constraint(equalTo: secondView.trailingAnchor,constant: 16),
+
+        firstView.topAnchor.constraint(equalTo: imageView.bottomAnchor,constant: 0),
+        firstView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor,constant: 0),
+        firstView.widthAnchor.constraint(equalToConstant: 400),
+        firstView.heightAnchor.constraint(equalToConstant: 100),
+       
+        
+        
+        secondView.topAnchor.constraint(equalTo: firstView.bottomAnchor,constant: 0),
+        secondView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor,constant: 0),
+        secondView.widthAnchor.constraint(equalToConstant: 400),
+        secondView.heightAnchor.constraint(equalToConstant: 100),
+//        secondView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor,constant: 0),
+//        secondView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor,constant: 0),
+//
+        thirdView.topAnchor.constraint(equalTo: secondView.bottomAnchor,constant: 0),
+        thirdView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor,constant: 0),
+        thirdView.widthAnchor.constraint(equalToConstant: 400),
+        thirdView.heightAnchor.constraint(equalToConstant: 50),
+        
+        fourView.topAnchor.constraint(equalTo: thirdView.bottomAnchor,constant: 0),
+        fourView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor,constant: 0),
+        fourView.widthAnchor.constraint(equalToConstant: 400),
+        fourView.heightAnchor.constraint(equalToConstant: 400),
+        
+        fifveView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 0),
+        fifveView.topAnchor.constraint(equalTo: fourView.topAnchor, constant: 0),
+        fifveView.widthAnchor.constraint(equalToConstant: 400),
+        fifveView.heightAnchor.constraint(equalToConstant: 400),
+        fifveView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor,constant: 0)
+
+//        labelTwo.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 40),
+//        labelTwo.topAnchor.constraint(equalTo: fifveView.bottomAnchor, constant: 50),
+//        labelTwo.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -40)
+      ])
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(collectionView)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        var constant: [NSLayoutConstraint] = []
-        defer {  NSLayoutConstraint.activate(constant)
-        }
-        constant += [
-            collectionView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 0),
-            collectionView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 0),
-            collectionView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
-            collectionView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: 0)]
-
-        setupView()
+        navigationItem.leftBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .close, target: self, action: nil)
         self.view.backgroundColor = .white
-        title = "목록"
-    }
-    private func setupView() {
-        collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: CollectionViewCell.identifier)
-        collectionView.delegate = self
-        collectionView.dataSource = self
-    }
-}
-
-extension MainViewController: UICollectionViewDataSource{
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 4
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as? CollectionViewCell else {return CollectionViewCell()}
+        addSubView()
+        setUpUIConstraints()
         
-        cell.title.text = "\(heights[indexPath.row])"
-        cell.backgroundColor = colors[indexPath.row]
-       
-        cell.second.text = "2"
-        return cell
-    }
-  
-    
-    
+        
+//        firstView.widthAnchor.constraint(equalToConstant: 500).isActive = true
+//        firstView.heightAnchor.constraint(equalToConstant: 500).isActive = true
+//        firstView.translatesAutoresizingMaskIntoConstraints = false
+//        firstView.leftAnchor.constraint(equalTo: scrollView.leftAnchor).isActive = true
+//        firstView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+//
+//        secondView.widthAnchor.constraint(equalToConstant: 500).isActive = true
+//        secondView.heightAnchor.constraint(equalToConstant: 500).isActive = true
+//        secondView.leftAnchor.constraint(equalTo: scrollView.leftAnchor).isActive = true
+//        secondView.topAnchor.constraint(equalTo: firstView.bottomAnchor).isActive = true
+//
+        
+
+        
+
+//        oneView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 200).isActive = true
+//        oneView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 500).isActive = true
+
+//        firstView.leadingAnchor.constraint(equalTo: oneView.leadingAnchor).isActive = true
+//        firstView.topAnchor.constraint(equalTo: oneView.bottomAnchor).isActive = true
+//
+//
+//          labelOne.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 100).isActive = true
+//          labelOne.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 40).isActive = true
+
+//        fifveView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 40).isActive = true
+//        fifveView.topAnchor.constraint(equalTo: imageView.topAnchor, constant: 1000).isActive = true
+//        fifveView.bottomAnchor.constraint(equalTo: labelTwo.topAnchor, constant: 0).isActive = true
+//
+//        labelTwo.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 40).isActive = true
+//        labelTwo.topAnchor.constraint(equalTo: imageView.topAnchor, constant: 2000).isActive = true
+//        labelTwo.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -40).isActive = true
+        }
 }
-extension MainViewController: UICollectionViewDelegate {
-    
-}
-
-
-

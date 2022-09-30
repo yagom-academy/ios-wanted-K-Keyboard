@@ -52,7 +52,7 @@ class CollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    lazy var measureDate: UILabel = {
+    lazy var Date: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 15)
         return label
@@ -64,6 +64,6 @@ class CollectionViewCell: UICollectionViewCell {
     private func addContentView() {
         contentView.addSubview(title)
         contentView.addSubview(second)
-        contentView.addSubview(measureDate)
+        contentView.addSubview(Date)
     }
 }
