@@ -56,10 +56,10 @@ class SecondView: UIView, UICollectionViewDelegate {
             titles.topAnchor.constraint(equalTo: self.topAnchor,constant: 16),
             titles.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: 0),
             
-            collectionView.topAnchor.constraint(equalTo: self.titles.bottomAnchor, constant: 20),
-            collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
+            collectionView.topAnchor.constraint(equalTo: titles.bottomAnchor, constant: 20),
+            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0),
-            collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0),
+            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
         ])
     }
     private func setupView() {
@@ -86,9 +86,6 @@ extension SecondView: UICollectionViewDataSource{
         cell.second.text = "2"
         return cell
     }
-    
-    
-    
 }
 
 

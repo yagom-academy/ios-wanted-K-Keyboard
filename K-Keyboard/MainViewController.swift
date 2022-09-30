@@ -29,17 +29,15 @@ class MainViewController: UIViewController {
             return view
         }()
     
-    let fourView: UILabel = {
-        let view = UILabel()
+    let fourView: FourView = {
+        let view = FourView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .yellow
         return view
     }()
-    let fifveView: UILabel = {
-        let view = UILabel()
-        view.text = "다섯번째뷰화면"
+    let fifveView: FifveView = {
+        let view = FifveView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .brown
         return view
     }()
     
@@ -61,7 +59,6 @@ class MainViewController: UIViewController {
 
     let scrollView: UIScrollView = {
       let scrollView = UIScrollView()
-//      scrollView.backgroundColor = .lightGray
       scrollView.translatesAutoresizingMaskIntoConstraints = false
       return scrollView
     }()
@@ -85,89 +82,43 @@ class MainViewController: UIViewController {
         scrollView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 0),
         scrollView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: 0),
         scrollView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: 0),
+            
         
-//        imageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor,constant: 100),
-//        imageView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor,constant: 16),
-//        imageView.trailingAnchor.constraint(equalTo: secondView.trailingAnchor,constant: 16),
-
         firstView.topAnchor.constraint(equalTo: scrollView.topAnchor,constant: 0),
-        firstView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor,constant: 0),
-        firstView.widthAnchor.constraint(equalToConstant: 375),
-        firstView.heightAnchor.constraint(equalToConstant: 540),
-       
-        
+        firstView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor,constant: 16),
+        firstView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor,constant: 16),
+//        firstView.bottomAnchor.constraint(equalTo: secondView.topAnchor),
         
         secondView.topAnchor.constraint(equalTo: firstView.bottomAnchor,constant: 0),
-        secondView.leadingAnchor.constraint(equalTo: firstView.leadingAnchor,constant: 0),
-        secondView.widthAnchor.constraint(equalToConstant: 375),
-        secondView.heightAnchor.constraint(equalToConstant: 300),
-//        secondView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor,constant: 0),
-//        secondView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor,constant: 0),
-//
-        thirdView.topAnchor.constraint(equalTo: secondView.bottomAnchor,constant: 0),
-        thirdView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor,constant: 0),
-        thirdView.widthAnchor.constraint(equalToConstant: 375),
-        thirdView.heightAnchor.constraint(equalToConstant: 300),
+        secondView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor,constant: 16),
+        secondView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor,constant: 16),
+    
         
-        fourView.topAnchor.constraint(equalTo: thirdView.bottomAnchor,constant: 0),
-        fourView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor,constant: 0),
-        fourView.widthAnchor.constraint(equalToConstant: 400),
-        fourView.heightAnchor.constraint(equalToConstant: 400),
+        thirdView.topAnchor.constraint(equalTo: secondView.bottomAnchor),
+        thirdView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor,constant: 16),
+        thirdView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor,constant: 16),
         
-        fifveView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 0),
-        fifveView.topAnchor.constraint(equalTo: fourView.topAnchor, constant: 0),
-        fifveView.widthAnchor.constraint(equalToConstant: 400),
-        fifveView.heightAnchor.constraint(equalToConstant: 400),
-        fifveView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor,constant: 0)
+       
+        fourView.topAnchor.constraint(equalTo: thirdView.bottomAnchor),
+        fourView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor,constant: 16),
+        fourView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor,constant: 16),
 
-//        labelTwo.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 40),
-//        labelTwo.topAnchor.constraint(equalTo: fifveView.bottomAnchor, constant: 50),
-//        labelTwo.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -40)
+
+        fifveView.topAnchor.constraint(equalTo: fourView.bottomAnchor),
+        fifveView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor,constant: 16),
+        fifveView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor,constant: 16),
+        fifveView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor,constant: 16),
+
       ])
     }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         let imageView = UIImage(named: "NaniBackButton")
         
         navigationItem.leftBarButtonItem = UIBarButtonItem.init(image: imageView, style: .done, target: self, action: nil)
+        navigationItem.leftBarButtonItem?.tintColor = .black
         self.view.backgroundColor = .white
         addSubView()
         setUpUIConstraints()
-        
-        
-//        firstView.widthAnchor.constraint(equalToConstant: 500).isActive = true
-//        firstView.heightAnchor.constraint(equalToConstant: 500).isActive = true
-//        firstView.translatesAutoresizingMaskIntoConstraints = false
-//        firstView.leftAnchor.constraint(equalTo: scrollView.leftAnchor).isActive = true
-//        firstView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-//
-//        secondView.widthAnchor.constraint(equalToConstant: 500).isActive = true
-//        secondView.heightAnchor.constraint(equalToConstant: 500).isActive = true
-//        secondView.leftAnchor.constraint(equalTo: scrollView.leftAnchor).isActive = true
-//        secondView.topAnchor.constraint(equalTo: firstView.bottomAnchor).isActive = true
-//
-        
-
-        
-
-//        oneView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 200).isActive = true
-//        oneView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 500).isActive = true
-
-//        firstView.leadingAnchor.constraint(equalTo: oneView.leadingAnchor).isActive = true
-//        firstView.topAnchor.constraint(equalTo: oneView.bottomAnchor).isActive = true
-//
-//
-//          labelOne.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 100).isActive = true
-//          labelOne.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 40).isActive = true
-
-//        fifveView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 40).isActive = true
-//        fifveView.topAnchor.constraint(equalTo: imageView.topAnchor, constant: 1000).isActive = true
-//        fifveView.bottomAnchor.constraint(equalTo: labelTwo.topAnchor, constant: 0).isActive = true
-//
-//        labelTwo.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 40).isActive = true
-//        labelTwo.topAnchor.constraint(equalTo: imageView.topAnchor, constant: 2000).isActive = true
-//        labelTwo.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -40).isActive = true
         }
 }

@@ -97,24 +97,25 @@ class keyboardImageView: UIView {
     func constraintCustomView() {
         NSLayoutConstraint.activate([
             
-            imageView.topAnchor.constraint(equalTo: self.topAnchor,constant: 100),
-            imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: 16),
-            imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor,constant: 16),
+            imageView.topAnchor.constraint(equalTo: self.topAnchor),
+            imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             
             
-//            titles.widthAnchor.constraint(equalToConstant: 80),
-//            titles.heightAnchor.constraint(equalToConstant: 25),
             titles.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
+            titles.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
             titles.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 24),
 
             
             titles111.topAnchor.constraint(equalTo: titles.bottomAnchor,constant: 4),
-            titles111.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
+            titles111.leadingAnchor.constraint(equalTo: titles.leadingAnchor),
+            titles111.trailingAnchor.constraint(equalTo: titles.trailingAnchor),
             titles111.heightAnchor.constraint(equalToConstant: 20),
             
             
             titles222.topAnchor.constraint(equalTo: titles111.bottomAnchor,constant: 16),
-            titles222.leadingAnchor.constraint(equalTo:imageView.leadingAnchor),
+            titles222.leadingAnchor.constraint(equalTo:titles111.leadingAnchor),
+            titles222.trailingAnchor.constraint(equalTo: titles111.trailingAnchor),
             titles222.heightAnchor.constraint(equalToConstant: 28),
             
             titles333.topAnchor.constraint(equalTo: titles222.bottomAnchor,constant: 40),

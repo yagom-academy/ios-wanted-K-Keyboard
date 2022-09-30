@@ -26,7 +26,7 @@ class ThirdView: UIView, UICollectionViewDelegate {
         let collectionView = UICollectionViewFlowLayout()
 //        collectionView.translatesAutoresizingMaskIntoConstraints = false
 //        let layout = UICollectionViewFlowLayout()
-        collectionView.minimumInteritemSpacing = 200
+        collectionView.minimumInteritemSpacing = 10
         collectionView.minimumLineSpacing = 10
         collectionView.scrollDirection = .horizontal
         collectionView.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)

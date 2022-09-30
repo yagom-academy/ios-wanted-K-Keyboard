@@ -19,6 +19,8 @@
 		D30E931D28E69F73009AB544 /* ThirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E931C28E69F73009AB544 /* ThirdView.swift */; };
 		D3A2C2CC28E6EE000093A633 /* ThirdCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A2C2CB28E6EE000093A633 /* ThirdCollectionViewCell.swift */; };
 		D3A4761628E56CDA003CA79A /* SecondCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A4761528E56CDA003CA79A /* SecondCollectionViewCell.swift */; };
+		D3D272B728E70D9C00BC6392 /* FourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D272B628E70D9C00BC6392 /* FourView.swift */; };
+		D3D272B928E70E0000BC6392 /* FifveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D272B828E70E0000BC6392 /* FifveView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		D30E931C28E69F73009AB544 /* ThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdView.swift; sourceTree = "<group>"; };
 		D3A2C2CB28E6EE000093A633 /* ThirdCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdCollectionViewCell.swift; sourceTree = "<group>"; };
 		D3A4761528E56CDA003CA79A /* SecondCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCollectionViewCell.swift; sourceTree = "<group>"; };
+		D3D272B628E70D9C00BC6392 /* FourView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourView.swift; sourceTree = "<group>"; };
+		D3D272B828E70E0000BC6392 /* FifveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FifveView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +118,8 @@
 				D3A4761928E5A5E1003CA79A /* FirstView */,
 				D30E931A28E69F30009AB544 /* SecondView */,
 				D30E931B28E69F38009AB544 /* ThirdView */,
+				D3A2C2CD28E708360093A633 /* FourView */,
+				D3A2C2CE28E708470093A633 /* FifveView */,
 				63487F3B28E2EA5E0033CF32 /* MainViewController.swift */,
 				63487F3728E2EA5E0033CF32 /* AppDelegate.swift */,
 				63487F3928E2EA5E0033CF32 /* SceneDelegate.swift */,
@@ -140,6 +146,22 @@
 				D3A2C2CB28E6EE000093A633 /* ThirdCollectionViewCell.swift */,
 			);
 			path = ThirdView;
+			sourceTree = "<group>";
+		};
+		D3A2C2CD28E708360093A633 /* FourView */ = {
+			isa = PBXGroup;
+			children = (
+				D3D272B628E70D9C00BC6392 /* FourView.swift */,
+			);
+			path = FourView;
+			sourceTree = "<group>";
+		};
+		D3A2C2CE28E708470093A633 /* FifveView */ = {
+			isa = PBXGroup;
+			children = (
+				D3D272B828E70E0000BC6392 /* FifveView.swift */,
+			);
+			path = FifveView;
 			sourceTree = "<group>";
 		};
 		D3A4761928E5A5E1003CA79A /* FirstView */ = {
@@ -258,6 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3D272B728E70D9C00BC6392 /* FourView.swift in Sources */,
 				D3A2C2CC28E6EE000093A633 /* ThirdCollectionViewCell.swift in Sources */,
 				D30E931D28E69F73009AB544 /* ThirdView.swift in Sources */,
 				D30E931928E69F19009AB544 /* SecondView.swift in Sources */,
@@ -266,6 +289,7 @@
 				D3A4761628E56CDA003CA79A /* SecondCollectionViewCell.swift in Sources */,
 				D30E931728E5B27B009AB544 /* keyboardImageView.swift in Sources */,
 				63487F3A28E2EA5E0033CF32 /* SceneDelegate.swift in Sources */,
+				D3D272B928E70E0000BC6392 /* FifveView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
