@@ -24,12 +24,22 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="yh5-wN-gWN"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cwh-Qm-lWz" customClass="BottomPerchaseView" customModule="K_Keyboard" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="746" width="390" height="64"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="SDb-Uz-mHn"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="cwh-Qm-lWz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="6UC-qu-YO8"/>
                             <constraint firstItem="r1k-mp-Zf7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="9gf-Fe-RrP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="r1k-mp-Zf7" secondAttribute="bottom" id="Awa-tM-Eyi"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cwh-Qm-lWz" secondAttribute="trailing" id="Gyn-Xq-z3R"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="cwh-Qm-lWz" secondAttribute="bottom" id="KCP-Jd-PdJ"/>
                             <constraint firstItem="r1k-mp-Zf7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="djy-uK-QWy"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="r1k-mp-Zf7" secondAttribute="trailing" id="qs1-n6-Pgf"/>
                         </constraints>
