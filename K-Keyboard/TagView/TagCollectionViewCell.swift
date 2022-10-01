@@ -7,10 +7,10 @@
 
 import UIKit
 
-class SecondCollectionViewCell: UICollectionViewCell {
+class TagCollectionViewCell: UICollectionViewCell {
     
     
-    static let identifier = "SecondCollectionViewCell"
+    static let identifier = "TagCollectionViewCell"
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,10 +29,10 @@ class SecondCollectionViewCell: UICollectionViewCell {
         title.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         title.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         
-        second.topAnchor.constraint(equalTo: self.title.bottomAnchor).isActive = true
-        second.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        second.leadingAnchor.constraint(equalTo: self.title.trailingAnchor).isActive = true
-        second.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+//        second.topAnchor.constraint(equalTo: self.title.bottomAnchor).isActive = true
+//        second.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+//        second.leadingAnchor.constraint(equalTo: self.title.trailingAnchor).isActive = true
+//        second.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
     }
     
     

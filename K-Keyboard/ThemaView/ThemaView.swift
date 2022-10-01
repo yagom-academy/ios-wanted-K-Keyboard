@@ -7,13 +7,13 @@
 
 import UIKit
 
-class FourView: UIView {
+class ThemaView: UIView {
 
     let buy : UILabel = {
         let buy = UILabel()
         buy.frame = CGRect(x: 0, y: 0, width: 63, height: 24)
         buy.translatesAutoresizingMaskIntoConstraints = false
-        buy.textAlignment = .center
+//        buy.textAlignment = .center
         buy.text = "구매 리뷰"
         buy.textColor = .black
         return buy
@@ -27,7 +27,7 @@ class FourView: UIView {
         self.commonInit()
     }
     private func commonInit(){
-        self.backgroundColor = .red
+        self.backgroundColor = .brown
         self.addSubview(buy)
         constraintCustomView()
     }
@@ -40,3 +40,7 @@ class FourView: UIView {
         ])
     }
 }
+
+
+
+
