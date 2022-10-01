@@ -7,8 +7,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
 
+    @IBOutlet weak var tagListStackView: UIStackView!
+    @IBOutlet weak var keywordColletionView: UICollectionView!
+    @IBOutlet weak var themeStackView: UIStackView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
