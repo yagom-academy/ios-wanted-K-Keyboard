@@ -17,6 +17,13 @@
 		466DA37D28E74226005E77DD /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466DA37C28E74226005E77DD /* KeyboardViewController.swift */; };
 		466DA37F28E74AED005E77DD /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466DA37E28E74AED005E77DD /* UIColor+Extension.swift */; };
 		466DA38028E74AF6005E77DD /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466DA37E28E74AED005E77DD /* UIColor+Extension.swift */; };
+		466DA38228E7CF5A005E77DD /* Syllable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466DA38128E7CF5A005E77DD /* Syllable.swift */; };
+		466DA3A828E7D700005E77DD /* UnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466DA3A728E7D700005E77DD /* UnitTests.swift */; };
+		466DA3AF28E7D707005E77DD /* SyllableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466DA3AE28E7D707005E77DD /* SyllableTests.swift */; };
+		466DA3B028E7D7F7005E77DD /* Syllable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466DA38128E7CF5A005E77DD /* Syllable.swift */; };
+		466DA3B128E7D80A005E77DD /* Phoneme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466DA37128E73E02005E77DD /* Phoneme.swift */; };
+		467002C328E963D4000B721E /* KeyboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466DA37828E74161005E77DD /* KeyboardViewModel.swift */; };
+		467002C528E963E4000B721E /* KeyboardModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467002C428E963E4000B721E /* KeyboardModelTests.swift */; };
 		63487F3828E2EA5E0033CF32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3728E2EA5E0033CF32 /* AppDelegate.swift */; };
 		63487F3A28E2EA5E0033CF32 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3928E2EA5E0033CF32 /* SceneDelegate.swift */; };
 		63487F3C28E2EA5E0033CF32 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3B28E2EA5E0033CF32 /* MainViewController.swift */; };
@@ -32,6 +39,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 466DA35B28E5A22B005E77DD;
 			remoteInfo = KeyboardExtension;
+		};
+		466DA3A928E7D700005E77DD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63487F2C28E2EA5E0033CF32 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 63487F3328E2EA5E0033CF32;
+			remoteInfo = "K-Keyboard";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -59,6 +73,11 @@
 		466DA37828E74161005E77DD /* KeyboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewModel.swift; sourceTree = "<group>"; };
 		466DA37C28E74226005E77DD /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		466DA37E28E74AED005E77DD /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		466DA38128E7CF5A005E77DD /* Syllable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Syllable.swift; sourceTree = "<group>"; };
+		466DA3A528E7D700005E77DD /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		466DA3A728E7D700005E77DD /* UnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTests.swift; sourceTree = "<group>"; };
+		466DA3AE28E7D707005E77DD /* SyllableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyllableTests.swift; sourceTree = "<group>"; };
+		467002C428E963E4000B721E /* KeyboardModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardModelTests.swift; sourceTree = "<group>"; };
 		63487F3428E2EA5E0033CF32 /* K-Keyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "K-Keyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		63487F3728E2EA5E0033CF32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63487F3928E2EA5E0033CF32 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +90,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		466DA35928E5A22B005E77DD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		466DA3A228E7D700005E77DD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -111,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				466DA37128E73E02005E77DD /* Phoneme.swift */,
+				466DA38128E7CF5A005E77DD /* Syllable.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -141,12 +168,23 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		466DA3A628E7D700005E77DD /* UnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				466DA3A728E7D700005E77DD /* UnitTests.swift */,
+				466DA3AE28E7D707005E77DD /* SyllableTests.swift */,
+				467002C428E963E4000B721E /* KeyboardModelTests.swift */,
+			);
+			path = UnitTests;
+			sourceTree = "<group>";
+		};
 		63487F2B28E2EA5E0033CF32 = {
 			isa = PBXGroup;
 			children = (
 				63487F3628E2EA5E0033CF32 /* K-Keyboard */,
 				466DA35D28E5A22B005E77DD /* KeyboardExtension */,
 				466DA37328E740B9005E77DD /* Common */,
+				466DA3A628E7D700005E77DD /* UnitTests */,
 				63487F3528E2EA5E0033CF32 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -156,6 +194,7 @@
 			children = (
 				63487F3428E2EA5E0033CF32 /* K-Keyboard.app */,
 				466DA35C28E5A22B005E77DD /* KeyboardExtension.appex */,
+				466DA3A528E7D700005E77DD /* UnitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -194,6 +233,24 @@
 			productReference = 466DA35C28E5A22B005E77DD /* KeyboardExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		466DA3A428E7D700005E77DD /* UnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 466DA3AB28E7D700005E77DD /* Build configuration list for PBXNativeTarget "UnitTests" */;
+			buildPhases = (
+				466DA3A128E7D700005E77DD /* Sources */,
+				466DA3A228E7D700005E77DD /* Frameworks */,
+				466DA3A328E7D700005E77DD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				466DA3AA28E7D700005E77DD /* PBXTargetDependency */,
+			);
+			name = UnitTests;
+			productName = UnitTests;
+			productReference = 466DA3A528E7D700005E77DD /* UnitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		63487F3328E2EA5E0033CF32 /* K-Keyboard */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 63487F4828E2EA5E0033CF32 /* Build configuration list for PBXNativeTarget "K-Keyboard" */;
@@ -226,6 +283,10 @@
 					466DA35B28E5A22B005E77DD = {
 						CreatedOnToolsVersion = 14.0.1;
 					};
+					466DA3A428E7D700005E77DD = {
+						CreatedOnToolsVersion = 14.0.1;
+						TestTargetID = 63487F3328E2EA5E0033CF32;
+					};
 					63487F3328E2EA5E0033CF32 = {
 						CreatedOnToolsVersion = 14.0;
 					};
@@ -246,12 +307,20 @@
 			targets = (
 				63487F3328E2EA5E0033CF32 /* K-Keyboard */,
 				466DA35B28E5A22B005E77DD /* KeyboardExtension */,
+				466DA3A428E7D700005E77DD /* UnitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		466DA35A28E5A22B005E77DD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		466DA3A328E7D700005E77DD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -275,12 +344,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				466DA37F28E74AED005E77DD /* UIColor+Extension.swift in Sources */,
+				466DA38228E7CF5A005E77DD /* Syllable.swift in Sources */,
 				466DA37228E73E02005E77DD /* Phoneme.swift in Sources */,
 				466DA36E28E73DC4005E77DD /* PhonemeViewModel.swift in Sources */,
 				466DA37628E740E4005E77DD /* UIFont+Extensions.swift in Sources */,
 				466DA37D28E74226005E77DD /* KeyboardViewController.swift in Sources */,
 				466DA36B28E73D23005E77DD /* PhonemeView.swift in Sources */,
 				466DA37928E74161005E77DD /* KeyboardViewModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		466DA3A128E7D700005E77DD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				466DA3B128E7D80A005E77DD /* Phoneme.swift in Sources */,
+				467002C328E963D4000B721E /* KeyboardViewModel.swift in Sources */,
+				466DA3A828E7D700005E77DD /* UnitTests.swift in Sources */,
+				466DA3AF28E7D707005E77DD /* SyllableTests.swift in Sources */,
+				467002C528E963E4000B721E /* KeyboardModelTests.swift in Sources */,
+				466DA3B028E7D7F7005E77DD /* Syllable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +387,11 @@
 			isa = PBXTargetDependency;
 			target = 466DA35B28E5A22B005E77DD /* KeyboardExtension */;
 			targetProxy = 466DA36128E5A22B005E77DD /* PBXContainerItemProxy */;
+		};
+		466DA3AA28E7D700005E77DD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 63487F3328E2EA5E0033CF32 /* K-Keyboard */;
+			targetProxy = 466DA3A928E7D700005E77DD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -366,6 +454,42 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		466DA3AC28E7D700005E77DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.codecamper.UnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/K-Keyboard.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/K-Keyboard";
+			};
+			name = Debug;
+		};
+		466DA3AD28E7D700005E77DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.codecamper.UnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/K-Keyboard.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/K-Keyboard";
 			};
 			name = Release;
 		};
@@ -547,6 +671,15 @@
 			buildConfigurations = (
 				466DA36528E5A22B005E77DD /* Debug */,
 				466DA36628E5A22B005E77DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		466DA3AB28E7D700005E77DD /* Build configuration list for PBXNativeTarget "UnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				466DA3AC28E7D700005E77DD /* Debug */,
+				466DA3AD28E7D700005E77DD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
