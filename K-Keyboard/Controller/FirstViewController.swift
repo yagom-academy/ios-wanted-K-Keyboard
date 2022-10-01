@@ -31,7 +31,9 @@ class FirstViewController: UIViewController {
         self.view.backgroundColor = .white
         firstTableView.delegate = self
         firstTableView.dataSource = self
-
+        firstTableView.estimatedRowHeight = UITableView.automaticDimension
+        firstTableView.rowHeight = UITableView.automaticDimension
+        
         addViews()
         setConstraints()
     }
