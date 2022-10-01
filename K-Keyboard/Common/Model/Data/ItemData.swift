@@ -23,17 +23,17 @@ struct ItemData {
     /// 공지
     let notice: NoticeData?
     /// 태그
-    let tags: [TagData]?
+    let tags: TagsData?
     /// 이런 키워드에 반응해요
-    let previews: [PreviewData]?
+    let previews: PreviewsData?
     /// 이 테마를 어떻게 생각하나요?
-    let aboutThemes: [AboutThemeData]
+    let aboutThemes: AboutThemesData
     /// 광고
-    let ads: [AdsData]?
+    let ads: AdsData?
     /// 구매 리뷰
-    let reviews: [ReviewData]?
+    let reviews: ReviewsData?
     
-    init(title: String, creator: String, numberOfBuyer: Int? = .zero, cost: Int, isPurchased: Bool = false, notice: NoticeData?, tags: [TagData]?, previews: [PreviewData]?, aboutThemes: [AboutThemeData], ads: [AdsData]?, reviews: [ReviewData]?) {
+    init(title: String, creator: String, numberOfBuyer: Int? = .zero, cost: Int, isPurchased: Bool = false, notice: NoticeData?, tags: TagsData?, previews: PreviewsData?, aboutThemes: AboutThemesData, ads: AdsData?, reviews: ReviewsData?) {
         self.title = title
         self.creator = creator
         self.numberOfBuyer = numberOfBuyer
