@@ -7,8 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		466DA35F28E5A22B005E77DD /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466DA35E28E5A22B005E77DD /* KeyboardViewController.swift */; };
 		466DA36328E5A22B005E77DD /* KeyboardExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 466DA35C28E5A22B005E77DD /* KeyboardExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		466DA36B28E73D23005E77DD /* PhonemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466DA36A28E73D23005E77DD /* PhonemeView.swift */; };
+		466DA36E28E73DC4005E77DD /* PhonemeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466DA36D28E73DC4005E77DD /* PhonemeViewModel.swift */; };
+		466DA37228E73E02005E77DD /* Phoneme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466DA37128E73E02005E77DD /* Phoneme.swift */; };
+		466DA37628E740E4005E77DD /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466DA37528E740E4005E77DD /* UIFont+Extensions.swift */; };
+		466DA37728E740E6005E77DD /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466DA37528E740E4005E77DD /* UIFont+Extensions.swift */; };
+		466DA37928E74161005E77DD /* KeyboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466DA37828E74161005E77DD /* KeyboardViewModel.swift */; };
+		466DA37D28E74226005E77DD /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466DA37C28E74226005E77DD /* KeyboardViewController.swift */; };
+		466DA37F28E74AED005E77DD /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466DA37E28E74AED005E77DD /* UIColor+Extension.swift */; };
+		466DA38028E74AF6005E77DD /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466DA37E28E74AED005E77DD /* UIColor+Extension.swift */; };
 		63487F3828E2EA5E0033CF32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3728E2EA5E0033CF32 /* AppDelegate.swift */; };
 		63487F3A28E2EA5E0033CF32 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3928E2EA5E0033CF32 /* SceneDelegate.swift */; };
 		63487F3C28E2EA5E0033CF32 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3B28E2EA5E0033CF32 /* MainViewController.swift */; };
@@ -43,8 +51,14 @@
 
 /* Begin PBXFileReference section */
 		466DA35C28E5A22B005E77DD /* KeyboardExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = KeyboardExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		466DA35E28E5A22B005E77DD /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		466DA36028E5A22B005E77DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		466DA36A28E73D23005E77DD /* PhonemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhonemeView.swift; sourceTree = "<group>"; };
+		466DA36D28E73DC4005E77DD /* PhonemeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhonemeViewModel.swift; sourceTree = "<group>"; };
+		466DA37128E73E02005E77DD /* Phoneme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Phoneme.swift; sourceTree = "<group>"; };
+		466DA37528E740E4005E77DD /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
+		466DA37828E74161005E77DD /* KeyboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewModel.swift; sourceTree = "<group>"; };
+		466DA37C28E74226005E77DD /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		466DA37E28E74AED005E77DD /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		63487F3428E2EA5E0033CF32 /* K-Keyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "K-Keyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		63487F3728E2EA5E0033CF32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63487F3928E2EA5E0033CF32 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,10 +90,55 @@
 		466DA35D28E5A22B005E77DD /* KeyboardExtension */ = {
 			isa = PBXGroup;
 			children = (
-				466DA35E28E5A22B005E77DD /* KeyboardViewController.swift */,
+				466DA37028E73DEE005E77DD /* Views */,
+				466DA36F28E73DEA005E77DD /* Models */,
+				466DA36C28E73DB9005E77DD /* ViewModels */,
 				466DA36028E5A22B005E77DD /* Info.plist */,
 			);
 			path = KeyboardExtension;
+			sourceTree = "<group>";
+		};
+		466DA36C28E73DB9005E77DD /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				466DA36D28E73DC4005E77DD /* PhonemeViewModel.swift */,
+				466DA37828E74161005E77DD /* KeyboardViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		466DA36F28E73DEA005E77DD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				466DA37128E73E02005E77DD /* Phoneme.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		466DA37028E73DEE005E77DD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				466DA36A28E73D23005E77DD /* PhonemeView.swift */,
+				466DA37C28E74226005E77DD /* KeyboardViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		466DA37328E740B9005E77DD /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				466DA37428E740D9005E77DD /* Extensions */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		466DA37428E740D9005E77DD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				466DA37528E740E4005E77DD /* UIFont+Extensions.swift */,
+				466DA37E28E74AED005E77DD /* UIColor+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		63487F2B28E2EA5E0033CF32 = {
@@ -87,6 +146,7 @@
 			children = (
 				63487F3628E2EA5E0033CF32 /* K-Keyboard */,
 				466DA35D28E5A22B005E77DD /* KeyboardExtension */,
+				466DA37328E740B9005E77DD /* Common */,
 				63487F3528E2EA5E0033CF32 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -214,7 +274,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				466DA35F28E5A22B005E77DD /* KeyboardViewController.swift in Sources */,
+				466DA37F28E74AED005E77DD /* UIColor+Extension.swift in Sources */,
+				466DA37228E73E02005E77DD /* Phoneme.swift in Sources */,
+				466DA36E28E73DC4005E77DD /* PhonemeViewModel.swift in Sources */,
+				466DA37628E740E4005E77DD /* UIFont+Extensions.swift in Sources */,
+				466DA37D28E74226005E77DD /* KeyboardViewController.swift in Sources */,
+				466DA36B28E73D23005E77DD /* PhonemeView.swift in Sources */,
+				466DA37928E74161005E77DD /* KeyboardViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +291,8 @@
 				63487F3C28E2EA5E0033CF32 /* MainViewController.swift in Sources */,
 				63487F3828E2EA5E0033CF32 /* AppDelegate.swift in Sources */,
 				D3A4761628E56CDA003CA79A /* CollectionViewCell.swift in Sources */,
+				466DA38028E74AF6005E77DD /* UIColor+Extension.swift in Sources */,
+				466DA37728E740E6005E77DD /* UIFont+Extensions.swift in Sources */,
 				63487F3A28E2EA5E0033CF32 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -256,6 +324,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = U9B2QVCTVS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KeyboardExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = KeyboardExtension;
@@ -280,6 +349,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = U9B2QVCTVS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KeyboardExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = KeyboardExtension;
@@ -349,7 +419,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -403,7 +473,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -421,6 +491,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = U9B2QVCTVS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "K-Keyboard/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -448,6 +519,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = U9B2QVCTVS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "K-Keyboard/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
