@@ -20,6 +20,8 @@
 		63487F3F28E2EA5E0033CF32 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63487F3D28E2EA5E0033CF32 /* Main.storyboard */; };
 		63487F4128E2EA5E0033CF32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63487F4028E2EA5E0033CF32 /* Assets.xcassets */; };
 		63487F4428E2EA5E0033CF32 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63487F4228E2EA5E0033CF32 /* LaunchScreen.storyboard */; };
+		F8B0EA3928E93B3D00C76C86 /* HangulCombinater.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B0EA3828E93B3D00C76C86 /* HangulCombinater.swift */; };
+		F8E0DB9928E94119007FB787 /* HangulCombinater.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B0EA3828E93B3D00C76C86 /* HangulCombinater.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,7 @@
 		63487F4028E2EA5E0033CF32 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63487F4328E2EA5E0033CF32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63487F4528E2EA5E0033CF32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F8B0EA3828E93B3D00C76C86 /* HangulCombinater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangulCombinater.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +90,7 @@
 				0B784F7828E70C60007BA390 /* KeyboardCharacter.swift */,
 				0B784F6528E6BDB4007BA390 /* Info.plist */,
 				0B784F7628E70877007BA390 /* CustomKeyboardButton.swift */,
+				F8B0EA3828E93B3D00C76C86 /* HangulCombinater.swift */,
 			);
 			path = "custom-keyboard";
 			sourceTree = "<group>";
@@ -230,6 +234,7 @@
 			files = (
 				0B784F6428E6BDB4007BA390 /* KeyboardViewController.swift in Sources */,
 				0B784F7928E70C60007BA390 /* KeyboardCharacter.swift in Sources */,
+				F8B0EA3928E93B3D00C76C86 /* HangulCombinater.swift in Sources */,
 				0B784F7728E70877007BA390 /* CustomKeyboardButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -240,6 +245,7 @@
 			files = (
 				0B784F7A28E71310007BA390 /* KeyboardCharacter.swift in Sources */,
 				0B784F7E28E7131F007BA390 /* KeyboardViewController.swift in Sources */,
+				F8E0DB9928E94119007FB787 /* HangulCombinater.swift in Sources */,
 				63487F3C28E2EA5E0033CF32 /* ViewController.swift in Sources */,
 				0B784F7B28E71312007BA390 /* CustomKeyboardButton.swift in Sources */,
 				63487F3828E2EA5E0033CF32 /* AppDelegate.swift in Sources */,

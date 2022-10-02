@@ -19,6 +19,12 @@ class KeyboardViewController: UIInputViewController {
     var middleLineButtons: [KeyboardButton]! //"ㅁ,ㄴ,ㅇ,ㄹ,ㅎ,ㅗ,ㅓ,ㅏ,ㅣ
     var lastLineButtons: [KeyboardButton]! //"ㅋ,ㅌ,ㅊ,ㅍ,ㅠ,ㅜ,ㅡ
     
+    /// 직전 입력 텍스트가 담길 변수
+    var preChar = " "
+    /// backward시 자음, 모음 분해가능 여부
+    var isSeparable: Bool = true
+    let hangulCombinater = HangulCombinater.shared
+    
     var isShifted = false {
         didSet{
             self.changedShift()
@@ -64,7 +70,7 @@ class KeyboardViewController: UIInputViewController {
     }
     
     override func viewWillLayoutSubviews() {
-        //        self.nextKeyboardButton.isHidden = !self.needsInputModeSwitchKey
+        // self.nextKeyboardButton.isHidden = !self.needsInputModeSwitchKey
         super.viewWillLayoutSubviews()
     }
     
@@ -172,28 +178,69 @@ class KeyboardViewController: UIInputViewController {
     }
     
     @objc func keyboardButtonClicked(_ sender: CustomButton) {
-        
-        if let character = sender.titleLabel?.text {
+        isSeparable = true
+        if var curChar = sender.titleLabel?.text {
             UIDevice.current.playInputClick()
-            self.textDocumentProxy.insertText(character)
+            
+            defer {
+                self.textDocumentProxy.insertText(curChar)
+                preChar = curChar
+                isShifted = isShifted ? false : true
+            }
+            
+            if preChar.isEmpty { return }
+            
+            // 이전 텍스트와 상관없이 출력 및 결합
+            if hangulCombinater.replaceJamo(preChar, curChar).count == 1 {
+                curChar = hangulCombinater.replaceJamo(preChar, curChar)[0]
+                if hangulCombinater.getUnicode(curChar) != 0 {
+                    textDocumentProxy.deleteBackward()
+                }
+            }
+            // 이전 텍스트와 연관된 수정 및 추가
+            // ex) 간ㅏ -> 가나
+            else {
+                textDocumentProxy.deleteBackward()
+                let replaced = hangulCombinater.replaceJamo(preChar, curChar)
+                curChar = replaced[0]
+                preChar = replaced[1]
+                textDocumentProxy.insertText(preChar)
+            }
         }
-        isShifted = isShifted ? false : true
     }
-    
+
     @objc func touchUpSpaceKey() {
+        preChar = " "
+        isSeparable = false
         self.textDocumentProxy.insertText(" ")
         UIDevice.current.playInputClick()
         isShifted = isShifted ? false : true
     }
     
     @objc func touchUpReturnKey() {
+        preChar = "\n"
         self.textDocumentProxy.insertText("\n")
         UIDevice.current.playInputClick()
         isShifted = isShifted ? false : true
     }
     
     @objc func touchUpDeleteKey() {
-        self.textDocumentProxy.deleteBackward()
+        if isSeparable {
+            guard let lastInput = textDocumentProxy.documentContextBeforeInput?.last else {
+                return
+            }
+            
+            if String(lastInput) == "" { isSeparable = false }
+            
+            guard let combined = hangulCombinater.separateJamo(String(lastInput)) else {
+                self.textDocumentProxy.deleteBackward()
+                return
+            }
+            self.textDocumentProxy.deleteBackward()
+            self.textDocumentProxy.insertText(combined)
+        } else {
+            self.textDocumentProxy.deleteBackward()
+        }
         UIDevice.current.playInputClick()
         isShifted = isShifted ? false : true
     }
