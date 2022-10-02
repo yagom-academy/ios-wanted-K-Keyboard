@@ -205,7 +205,6 @@ class KeyboardViewController: UIInputViewController {
     
     func changedShift(){
         if isShifted {
-            self.topLineButton = self.makeButtons(keyboardLine: .zxcvbn)
             for key in self.topLineButton {
                 let character = key.getTitle()
                 switch character {
