@@ -27,11 +27,119 @@ class KeyboardViewController: UIInputViewController {
     var topLineButton: [CustomButton]! //"ㅂ,ㅈ,ㄷ,ㄱ,ㅅ,ㅛ,ㅕ,ㅑ,ㅐ,ㅔ
     var middleLineButtons: [CustomButton]! //"ㅁ,ㄴ,ㅇ,ㄹ,ㅎ,ㅗ,ㅓ,ㅏ,ㅣ
     var lastLineButtons: [CustomButton]! //"ㅋ,ㅌ,ㅊ,ㅍ,ㅠ,ㅜ,ㅡ
+    //조립용
+    var hangul: [Hangle] = []
     
     var isShifted = false {
         didSet{
             self.changedShift()
         }
+    }
+    
+    func insertText(_ text: String) {
+        
+        let assembler = AssembleHangul.shared
+        let sung = assembler.whatIsSung(char: Character(text))
+        
+        if hangul.count == 0 {
+            let newText = Hangle(cho: Character(text), jung: " ", jong: " ")
+            hangul.append(newText)
+            self.textDocumentProxy.insertText(text)
+            
+            
+        } else {
+            let beforeText = hangul.last
+            var newText: Hangle
+            
+            if beforeText?.jung == " " {
+                
+                switch sung {
+                    
+                case .jung:
+                    newText = Hangle(cho: hangul.last?.cho ?? " ", jung: Character(text), jong: " ")
+                    hangul.append(newText)
+                    let inputText = assembler.hangle(c1: newText.cho, c2: newText.jung, c3: newText.jong)
+                    self.textDocumentProxy.deleteBackward()
+                    self.textDocumentProxy.insertText(String(inputText!))
+                case .cho:
+                    newText = Hangle(cho: Character(text), jung: " ", jong: " ")
+                    hangul.append(newText)
+                    let inputText = assembler.hangle(c1: newText.cho, c2: newText.jung, c3: newText.jong)
+                    self.textDocumentProxy.deleteBackward()
+                    self.textDocumentProxy.insertText(String(inputText!))
+                case .jong:
+                    newText = Hangle(cho: " ", jung: " ", jong: Character(text))
+                    hangul.append(newText)
+                    let inputText = assembler.hangle(c1: newText.cho, c2: newText.jung, c3: newText.jong)
+                    self.textDocumentProxy.deleteBackward()
+                    self.textDocumentProxy.insertText(String(inputText!))
+                }
+                
+            } else if beforeText?.jong == " " {
+                
+                switch sung {
+                    
+                case .jung:
+                    let result = String(beforeText!.jung) + text
+                    print(result)
+                    if AssembleHangul.shared.twiceJung[result] != nil {
+                        print("11")
+                        newText = Hangle(cho: hangul.last?.cho ?? " ", jung: AssembleHangul.shared.twiceJung[result]!, jong: " ")
+                        print(AssembleHangul.shared.twiceJung[result])
+                        
+                    } else {
+                        newText = Hangle(cho: " ", jung: Character(text), jong: " ")
+                    }
+                    hangul.append(newText)
+                    print(newText.cho)
+                    let inputText = assembler.hangle(c1: newText.cho, c2: newText.jung, c3: newText.jong)
+                    print(inputText)
+                    self.textDocumentProxy.deleteBackward()
+                    self.textDocumentProxy.insertText(String(inputText!))
+                case .jong:
+                    newText = Hangle(cho: hangul.last?.cho ?? " ", jung: hangul.last?.jung ?? " ", jong: Character(text))
+                    hangul.append(newText)
+                    let inputText = assembler.hangle(c1: newText.cho, c2: newText.jung, c3: newText.jong)
+                    self.textDocumentProxy.deleteBackward()
+                    self.textDocumentProxy.insertText(String(inputText!))
+                case .cho:
+                    newText = Hangle(cho: Character(text), jung: " ", jong: " ")
+                    hangul.append(newText)
+                    let inputText = assembler.hangle(c1: newText.cho, c2: newText.jung, c3: newText.jong)
+                    self.textDocumentProxy.deleteBackward()
+                    self.textDocumentProxy.insertText(String(inputText!))
+                }
+            } else {
+                let result = String(beforeText!.jong) + text
+                if AssembleHangul.shared.twiceJong[result] != nil {
+                    
+                    newText = Hangle(cho: hangul.last?.cho ?? " ", jung: hangul.last?.jung ?? " ", jong: AssembleHangul.shared.twiceJong[result]!)
+                    hangul.append(newText)
+                    let inputText = assembler.hangle(c1: newText.cho, c2: newText.jung, c3: newText.jong)
+                    self.textDocumentProxy.deleteBackward()
+                    self.textDocumentProxy.insertText(String(inputText!))
+                    
+                } else {
+                    let newText = Hangle(cho: Character(text), jung: " ", jong: " ")
+                    hangul.append(newText)
+                    self.textDocumentProxy.insertText(text)
+                }
+            }
+            
+        }
+        
+        
+        //        if assembler.jong.contains(hangul) || ( hangul == Character("") ) {
+        //            self.textDocumentProxy.insertText(text)
+        //        }
+        //        if assembler.cho.contains(hangul) {
+        //            let result = assembler.hangle(c1: hangul, c2: Character(text), c3: " ")
+        //            self.textDocumentProxy.insertText(String(result ?? " "))
+        //
+        //        } else if assembler.jung.contains(hangul){
+        //            let result = assembler.hangle(c1: hangul, c2: Character(text), c3: " ")
+        //            self.textDocumentProxy.insertText(text)
+        //        }
     }
     
     func setup() {
@@ -70,6 +178,7 @@ class KeyboardViewController: UIInputViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        
     }
     
     override func viewWillLayoutSubviews() {
@@ -201,7 +310,9 @@ class KeyboardViewController: UIInputViewController {
             isShifted = isShifted ? false : true
         case .normal:
             if let character = sender.titleLabel?.text {
-                self.textDocumentProxy.insertText(character)
+                print("insert")
+                insertText(character)
+                //self.textDocumentProxy.insertText(character)
             }
             isShifted = false
         }

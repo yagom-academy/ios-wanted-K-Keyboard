@@ -14,6 +14,8 @@
 		0B784F7A28E71310007BA390 /* KeyboardCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B784F7828E70C60007BA390 /* KeyboardCharacter.swift */; };
 		0B784F7B28E71312007BA390 /* CustomKeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B784F7628E70877007BA390 /* CustomKeyboardButton.swift */; };
 		0B784F7E28E7131F007BA390 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B784F6328E6BDB4007BA390 /* KeyboardViewController.swift */; };
+		0BF58BF528E938AC002F070C /* AssembleHangul.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF58BF428E938AC002F070C /* AssembleHangul.swift */; };
+		0BF58BF628E93B4A002F070C /* AssembleHangul.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF58BF428E938AC002F070C /* AssembleHangul.swift */; };
 		63487F3828E2EA5E0033CF32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3728E2EA5E0033CF32 /* AppDelegate.swift */; };
 		63487F3A28E2EA5E0033CF32 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3928E2EA5E0033CF32 /* SceneDelegate.swift */; };
 		63487F3C28E2EA5E0033CF32 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3B28E2EA5E0033CF32 /* ViewController.swift */; };
@@ -52,6 +54,7 @@
 		0B784F6528E6BDB4007BA390 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0B784F7628E70877007BA390 /* CustomKeyboardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomKeyboardButton.swift; sourceTree = "<group>"; };
 		0B784F7828E70C60007BA390 /* KeyboardCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardCharacter.swift; sourceTree = "<group>"; };
+		0BF58BF428E938AC002F070C /* AssembleHangul.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssembleHangul.swift; sourceTree = "<group>"; };
 		63487F3428E2EA5E0033CF32 /* K-Keyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "K-Keyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		63487F3728E2EA5E0033CF32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63487F3928E2EA5E0033CF32 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				0B784F6328E6BDB4007BA390 /* KeyboardViewController.swift */,
+				0BF58BF428E938AC002F070C /* AssembleHangul.swift */,
 				0B784F7828E70C60007BA390 /* KeyboardCharacter.swift */,
 				0B784F6528E6BDB4007BA390 /* Info.plist */,
 				0B784F7628E70877007BA390 /* CustomKeyboardButton.swift */,
@@ -230,6 +234,7 @@
 			files = (
 				0B784F6428E6BDB4007BA390 /* KeyboardViewController.swift in Sources */,
 				0B784F7928E70C60007BA390 /* KeyboardCharacter.swift in Sources */,
+				0BF58BF528E938AC002F070C /* AssembleHangul.swift in Sources */,
 				0B784F7728E70877007BA390 /* CustomKeyboardButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -238,6 +243,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BF58BF628E93B4A002F070C /* AssembleHangul.swift in Sources */,
 				0B784F7A28E71310007BA390 /* KeyboardCharacter.swift in Sources */,
 				0B784F7E28E7131F007BA390 /* KeyboardViewController.swift in Sources */,
 				63487F3C28E2EA5E0033CF32 /* ViewController.swift in Sources */,
