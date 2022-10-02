@@ -8,7 +8,7 @@
 import UIKit
 
 protocol UITextDocumentProxyDelegate: AnyObject {
-    func insertText(_ text: String)
+    func insertText(_ button: KeyButton)
     func deleteBackward()
 }
 
@@ -40,37 +40,37 @@ public class KeyboardView: UIView {
     }
     
     // 첫째 줄
-    let qButton = KeyButton(keyType: .korean, keyValue: "ㅂ")
-    let wButton = KeyButton(keyType: .korean, keyValue: "ㅈ")
-    let eButton = KeyButton(keyType: .korean, keyValue: "ㄷ")
-    let rButton = KeyButton(keyType: .korean, keyValue: "ㄱ")
-    let tButton = KeyButton(keyType: .korean, keyValue: "ㅅ")
-    let yButton = KeyButton(keyType: .korean, keyValue: "ㅛ")
-    let uButton = KeyButton(keyType: .korean, keyValue: "ㅕ")
-    let iButton = KeyButton(keyType: .korean, keyValue: "ㅑ")
-    let oButton = KeyButton(keyType: .korean, keyValue: "ㅐ")
-    let pButton = KeyButton(keyType: .korean, keyValue: "ㅔ")
+    let qButton = KeyButton(keyType: .consonant, keyValue: "ㅂ")
+    let wButton = KeyButton(keyType: .consonant, keyValue: "ㅈ")
+    let eButton = KeyButton(keyType: .consonant, keyValue: "ㄷ")
+    let rButton = KeyButton(keyType: .consonant, keyValue: "ㄱ")
+    let tButton = KeyButton(keyType: .consonant, keyValue: "ㅅ")
+    let yButton = KeyButton(keyType: .vowel, keyValue: "ㅛ")
+    let uButton = KeyButton(keyType: .vowel, keyValue: "ㅕ")
+    let iButton = KeyButton(keyType: .vowel, keyValue: "ㅑ")
+    let oButton = KeyButton(keyType: .vowel, keyValue: "ㅐ")
+    let pButton = KeyButton(keyType: .vowel, keyValue: "ㅔ")
     
     // 둘째 줄
-    let aButton = KeyButton(keyType: .korean, keyValue: "ㅁ")
-    let sButton = KeyButton(keyType: .korean, keyValue: "ㄴ")
-    let dButton = KeyButton(keyType: .korean, keyValue: "ㅇ")
-    let fButton = KeyButton(keyType: .korean, keyValue: "ㄹ")
-    let gButton = KeyButton(keyType: .korean, keyValue: "ㅎ")
-    let hButton = KeyButton(keyType: .korean, keyValue: "ㅗ")
-    let jButton = KeyButton(keyType: .korean, keyValue: "ㅓ")
-    let kButton = KeyButton(keyType: .korean, keyValue: "ㅏ")
-    let lButton = KeyButton(keyType: .korean, keyValue: "ㅣ")
+    let aButton = KeyButton(keyType: .consonant, keyValue: "ㅁ")
+    let sButton = KeyButton(keyType: .consonant, keyValue: "ㄴ")
+    let dButton = KeyButton(keyType: .consonant, keyValue: "ㅇ")
+    let fButton = KeyButton(keyType: .consonant, keyValue: "ㄹ")
+    let gButton = KeyButton(keyType: .consonant, keyValue: "ㅎ")
+    let hButton = KeyButton(keyType: .vowel, keyValue: "ㅗ")
+    let jButton = KeyButton(keyType: .vowel, keyValue: "ㅓ")
+    let kButton = KeyButton(keyType: .vowel, keyValue: "ㅏ")
+    let lButton = KeyButton(keyType: .vowel, keyValue: "ㅣ")
     
     // 셋째 줄
     let shiftButton = KeyButton(keyType: .shift, keyValue: "⇧")
-    let zButton = KeyButton(keyType: .korean, keyValue: "ㅋ")
-    let xButton = KeyButton(keyType: .korean, keyValue: "ㅌ")
-    let cButton = KeyButton(keyType: .korean, keyValue: "ㅊ")
-    let vButton = KeyButton(keyType: .korean, keyValue: "ㅍ")
-    let bButton = KeyButton(keyType: .korean, keyValue: "ㅠ")
-    let nButton = KeyButton(keyType: .korean, keyValue: "ㅜ")
-    let mButton = KeyButton(keyType: .korean, keyValue: "ㅡ")
+    let zButton = KeyButton(keyType: .consonant, keyValue: "ㅋ")
+    let xButton = KeyButton(keyType: .consonant, keyValue: "ㅌ")
+    let cButton = KeyButton(keyType: .consonant, keyValue: "ㅊ")
+    let vButton = KeyButton(keyType: .consonant, keyValue: "ㅍ")
+    let bButton = KeyButton(keyType: .vowel, keyValue: "ㅠ")
+    let nButton = KeyButton(keyType: .vowel, keyValue: "ㅜ")
+    let mButton = KeyButton(keyType: .vowel, keyValue: "ㅡ")
     let backButton = KeyButton(keyType: .back, keyValue: "⌫")
     
     // 넷째 줄
@@ -203,7 +203,7 @@ public class KeyboardView: UIView {
     }
     
     @objc func koreanKeyButtonTapAction(_ sender: KeyButton) {
-        delegate?.insertText(sender.keyValue)
+        delegate?.insertText(sender)
         if shiftKeyBoardValues.contains(sender.keyValue) && !["ㅛ", "ㅕ", "ㅑ"].contains(sender.keyValue) {
             shiftKeyButtonTapAction(shiftButton)
         }

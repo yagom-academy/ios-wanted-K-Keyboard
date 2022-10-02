@@ -8,7 +8,8 @@
 import UIKit
 
 enum KeyType {
-    case korean
+    case consonant
+    case vowel
     case shift
     case back
     case number
@@ -28,7 +29,7 @@ class KeyButton: UIButton {
         setupView(keyValue)
         
         switch keyType {
-        case .korean:
+        case .consonant, .vowel:
             widthAnchor.constraint(equalToConstant: 30).isActive = true
             backgroundColor = .white
         case .shift:

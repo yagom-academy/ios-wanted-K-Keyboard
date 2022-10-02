@@ -10,6 +10,7 @@ import UIKit
 class KeyboardViewController: UIInputViewController, UITextDocumentProxyDelegate {
 
     @IBOutlet var nextKeyboardButton: UIButton!
+    var keyBoardState: KeyboardState = .start
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
@@ -39,8 +40,12 @@ class KeyboardViewController: UIInputViewController, UITextDocumentProxyDelegate
         ])
     }
     
-    func insertText(_ text: String) {
+    func insertText(_ button: KeyButton) {
         let proxy = self.textDocumentProxy as UITextDocumentProxy
+        let (state, text) = KoreanAutomata.shared.insertLogic(state: keyBoardState,
+                                                     text: button.keyValue,
+                                                     keyType: button.keyType)
+        keyBoardState = state
         proxy.insertText(text)
     }
     
