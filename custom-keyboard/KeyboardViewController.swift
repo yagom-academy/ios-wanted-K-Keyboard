@@ -177,25 +177,25 @@ class KeyboardViewController: UIInputViewController {
             UIDevice.current.playInputClick()
             self.textDocumentProxy.insertText(character)
         }
-        isShifted = isShifted ? false : true
+        isShifted = false
     }
     
     @objc func touchUpSpaceKey() {
         self.textDocumentProxy.insertText(" ")
         UIDevice.current.playInputClick()
-        isShifted = isShifted ? false : true
+        isShifted = false
     }
     
     @objc func touchUpReturnKey() {
         self.textDocumentProxy.insertText("\n")
         UIDevice.current.playInputClick()
-        isShifted = isShifted ? false : true
+        isShifted = false
     }
     
     @objc func touchUpDeleteKey() {
         self.textDocumentProxy.deleteBackward()
         UIDevice.current.playInputClick()
-        isShifted = isShifted ? false : true
+        isShifted = false
     }
     
     @objc func touchUpShiftKey() {
