@@ -9,24 +9,41 @@ import UIKit
 
 class CustomButton: UIButton {
     
+    var buttonTextColor = UIColor.white
+    var buttonBackgroundColor = UIColor.systemGray
+    var buttonHighlightBackgroundColor = UIColor.systemGray2
+    var buttonHighlightTextColor = UIColor.blue
+    
+    override open var isHighlighted: Bool {
+        didSet {
+            tintColor = isHighlighted ? buttonHighlightTextColor : buttonTextColor
+            backgroundColor = isHighlighted ? buttonHighlightBackgroundColor : buttonBackgroundColor
+        }
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupView()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupView()
+    }
+    
+    func setupView() {
+        translatesAutoresizingMaskIntoConstraints = false
+        backgroundColor = buttonBackgroundColor
+        tintColor = buttonTextColor
+        setTitleColor(buttonTextColor, for: .normal)
+        setTitleColor(buttonHighlightTextColor, for: .highlighted)
+        adjustsImageWhenHighlighted = false
+    }
 }
 
 class KeyboardButton: UIView {
-    //var defaultBackgroundColor: UIColor = .white
-    //var highlightBackgroundColor: UIColor = .lightGray
     
-    var buttonTextColor = UIColor.white
-    var buttonBackgroundColor = UIColor.systemGray5
-    var buttonHighlightColor = UIColor.systemGray2
-    
-    lazy var button: CustomButton = {
-        let btn = CustomButton()
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.backgroundColor = buttonBackgroundColor
-        btn.setTitleColor(buttonTextColor, for: .normal)
-        btn.tintColor = buttonTextColor
-        return btn
-    }()
+    lazy var button = CustomButton()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -54,8 +71,6 @@ class KeyboardButton: UIView {
         layer.masksToBounds = true
 
         addSubview(button)
-        button.setTitleColor(buttonTextColor, for: .normal)
-        button.tintColor = buttonTextColor
         setupLayout()
     }
     
