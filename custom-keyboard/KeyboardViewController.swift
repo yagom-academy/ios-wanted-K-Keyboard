@@ -152,7 +152,7 @@ class KeyboardViewController: UIInputViewController {
             funcLineStackView.topAnchor.constraint(equalTo: lastLineStackView.bottomAnchor, constant: 6),
             funcLineStackView.leadingAnchor.constraint(equalTo: safeGuide.leadingAnchor, constant: 4),
             funcLineStackView.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: -4),
-            //funcLineStackView.bottomAnchor.constraint(equalTo: safeGuide.bottomAnchor)
+            funcLineStackView.bottomAnchor.constraint(equalTo: safeGuide.bottomAnchor)
         ])
     }
     
