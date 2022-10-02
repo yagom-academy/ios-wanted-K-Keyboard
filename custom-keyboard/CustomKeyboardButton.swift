@@ -13,6 +13,7 @@ class CustomButton: UIButton {
     var buttonBackgroundColor = UIColor.systemGray
     var buttonHighlightBackgroundColor = UIColor.systemGray2
     var buttonHighlightTextColor = UIColor.blue
+    var keyType: KeyType
     
     override open var isHighlighted: Bool {
         didSet {
@@ -21,14 +22,14 @@ class CustomButton: UIButton {
         }
     }
     
-    override init(frame: CGRect) {
+    init(frame: CGRect, keyType: KeyType = .normal) {
+        self.keyType = keyType
         super.init(frame: frame)
         setupView()
     }
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setupView()
+        fatalError("init(coder:) has not been implemented")
     }
     
     func setupView() {

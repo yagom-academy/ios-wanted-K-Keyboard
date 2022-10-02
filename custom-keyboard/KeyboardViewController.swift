@@ -7,12 +7,13 @@
 
 import UIKit
 
-enum keyType {
+enum KeyType {
     
     case delete
     case enter
     case space
     case shift
+    case normal
 }
 
 class KeyboardViewController: UIInputViewController {
@@ -20,7 +21,7 @@ class KeyboardViewController: UIInputViewController {
     var nextKeyboardButton: CustomButton!
     var spaceButton: CustomButton!
     var shiftButton: CustomButton!
-    var returnButton: CustomButton!
+    var enterButton: CustomButton!
     var deleteButton: CustomButton!
     var numberLineButtons: [CustomButton]!
     var topLineButton: [CustomButton]! //"ㅂ,ㅈ,ㄷ,ㄱ,ㅅ,ㅛ,ㅕ,ㅑ,ㅐ,ㅔ
@@ -41,25 +42,24 @@ class KeyboardViewController: UIInputViewController {
         self.lastLineButtons = self.makeButtons(keyboardLine: .zxcvbn)
         
         self.nextKeyboardButton = CustomButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        self.spaceButton = CustomButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        self.shiftButton = CustomButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        self.returnButton = CustomButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        self.deleteButton = CustomButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        self.spaceButton = CustomButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40), keyType: .space)
+        self.shiftButton = CustomButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40), keyType: .shift)
+        self.enterButton = CustomButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40), keyType: .enter)
+        self.deleteButton = CustomButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40), keyType: .delete)
         self.setButtonsLayout()
         
         self.shiftButton.setTitle("⇧", for: .normal)
-        //self.deleteButton.setTitle(text: "", for: .normal)
         self.deleteButton.setTitle("", for: .normal)
         self.spaceButton.setTitle("space", for: .normal)
-        self.returnButton.setTitle("enter", for: .normal)
+        self.enterButton.setTitle("enter", for: .normal)
         self.nextKeyboardButton.setImage(UIImage(systemName: "globe"), for: .normal)
         self.deleteButton.setImage(UIImage(systemName: "delete.backward"), for: .normal)
         
         self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
-        self.shiftButton.addTarget(self, action: #selector(touchUpShiftKey), for: .touchUpInside)
-        self.deleteButton.addTarget(self, action: #selector(touchUpDeleteKey), for: .touchUpInside)
-        self.spaceButton.addTarget(self, action: #selector(touchUpSpaceKey), for: .touchUpInside)
-        self.returnButton.addTarget(self, action: #selector(touchUpReturnKey), for: .touchUpInside)
+        self.shiftButton.addTarget(self, action: #selector(keyboardButtonClicked), for: .touchUpInside)
+        self.deleteButton.addTarget(self, action: #selector(keyboardButtonClicked), for: .touchUpInside)
+        self.spaceButton.addTarget(self, action: #selector(keyboardButtonClicked), for: .touchUpInside)
+        self.enterButton.addTarget(self, action: #selector(keyboardButtonClicked), for: .touchUpInside)
     }
     
     override func updateViewConstraints() {
@@ -106,7 +106,7 @@ class KeyboardViewController: UIInputViewController {
         lastLineStackView.spacing = 16
         lastLineStackView.translatesAutoresizingMaskIntoConstraints = false
         
-        let funcLineStackView = UIStackView(arrangedSubviews: [nextKeyboardButton, spaceButton, returnButton])
+        let funcLineStackView = UIStackView(arrangedSubviews: [nextKeyboardButton, spaceButton, enterButton])
         funcLineStackView.alignment = .fill
         funcLineStackView.axis = .horizontal
         funcLineStackView.distribution = .fill
@@ -147,7 +147,7 @@ class KeyboardViewController: UIInputViewController {
             
             nextKeyboardButton.widthAnchor.constraint(equalToConstant: 40),
             nextKeyboardButton.heightAnchor.constraint(equalToConstant: 40),
-            returnButton.widthAnchor.constraint(equalToConstant: 92),
+            enterButton.widthAnchor.constraint(equalToConstant: 92),
             
             funcLineStackView.topAnchor.constraint(equalTo: lastLineStackView.bottomAnchor, constant: 4),
             funcLineStackView.leadingAnchor.constraint(equalTo: safeGuide.leadingAnchor, constant: 4),
@@ -182,38 +182,30 @@ class KeyboardViewController: UIInputViewController {
     
     @objc func keyboardButtonClicked(_ sender: CustomButton) {
         
-        if let character = sender.titleLabel?.text {
-            UIDevice.current.playInputClick()
-            self.textDocumentProxy.insertText(character)
-        }
-        isShifted = false
-    }
-    
-    @objc func KeyboardFunctionButtonClicked(_ sender: CustomButton) {
+        //키보드 터치음
+        UIDevice.current.playInputClick()
         
-    }
-    
-    @objc func touchUpSpaceKey() {
-        self.textDocumentProxy.insertText(" ")
-        UIDevice.current.playInputClick()
-        isShifted = false
-    }
-    
-    @objc func touchUpReturnKey() {
-        self.textDocumentProxy.insertText("\n")
-        UIDevice.current.playInputClick()
-        isShifted = false
-    }
-    
-    @objc func touchUpDeleteKey() {
-        self.textDocumentProxy.deleteBackward()
-        UIDevice.current.playInputClick()
-        isShifted = false
-    }
-    
-    @objc func touchUpShiftKey() {
-        UIDevice.current.playInputClick()
-        isShifted = isShifted ? false : true
+        // 키보드 키 타입에 따라 동작
+        switch sender.keyType {
+            
+        case .delete:
+            self.textDocumentProxy.deleteBackward()
+            isShifted = false
+        case .enter:
+            self.textDocumentProxy.insertText("\n")
+            isShifted = false
+        case .space:
+            self.textDocumentProxy.insertText(" ")
+            isShifted = false
+        case .shift:
+            isShifted = isShifted ? false : true
+        case .normal:
+            if let character = sender.titleLabel?.text {
+                UIDevice.current.playInputClick()
+                self.textDocumentProxy.insertText(character)
+            }
+            isShifted = false
+        }
     }
     
     func changedShift(){
