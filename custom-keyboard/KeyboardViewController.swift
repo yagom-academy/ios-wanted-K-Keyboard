@@ -7,17 +7,25 @@
 
 import UIKit
 
+enum keyType {
+    
+    case delete
+    case enter
+    case space
+    case shift
+}
+
 class KeyboardViewController: UIInputViewController {
     
-    var nextKeyboardButton: KeyboardButton!
-    var spaceButton: KeyboardButton!
-    var shiftButton: KeyboardButton!
-    var returnButton: KeyboardButton!
-    var deleteButton: KeyboardButton!
-    var numberLineButtons: [KeyboardButton]!
-    var topLineButton: [KeyboardButton]! //"ㅂ,ㅈ,ㄷ,ㄱ,ㅅ,ㅛ,ㅕ,ㅑ,ㅐ,ㅔ
-    var middleLineButtons: [KeyboardButton]! //"ㅁ,ㄴ,ㅇ,ㄹ,ㅎ,ㅗ,ㅓ,ㅏ,ㅣ
-    var lastLineButtons: [KeyboardButton]! //"ㅋ,ㅌ,ㅊ,ㅍ,ㅠ,ㅜ,ㅡ
+    var nextKeyboardButton: CustomButton!
+    var spaceButton: CustomButton!
+    var shiftButton: CustomButton!
+    var returnButton: CustomButton!
+    var deleteButton: CustomButton!
+    var numberLineButtons: [CustomButton]!
+    var topLineButton: [CustomButton]! //"ㅂ,ㅈ,ㄷ,ㄱ,ㅅ,ㅛ,ㅕ,ㅑ,ㅐ,ㅔ
+    var middleLineButtons: [CustomButton]! //"ㅁ,ㄴ,ㅇ,ㄹ,ㅎ,ㅗ,ㅓ,ㅏ,ㅣ
+    var lastLineButtons: [CustomButton]! //"ㅋ,ㅌ,ㅊ,ㅍ,ㅠ,ㅜ,ㅡ
     
     var isShifted = false {
         didSet{
@@ -32,25 +40,26 @@ class KeyboardViewController: UIInputViewController {
         self.middleLineButtons = self.makeButtons(keyboardLine: .asdfgh)
         self.lastLineButtons = self.makeButtons(keyboardLine: .zxcvbn)
         
-        self.nextKeyboardButton = KeyboardButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        self.spaceButton = KeyboardButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        self.shiftButton = KeyboardButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        self.returnButton = KeyboardButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        self.deleteButton = KeyboardButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        self.nextKeyboardButton = CustomButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        self.spaceButton = CustomButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        self.shiftButton = CustomButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        self.returnButton = CustomButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        self.deleteButton = CustomButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         self.setButtonsLayout()
         
-        self.shiftButton.setTitle(text: "⇧", for: .normal)
-        self.deleteButton.setTitle(text: "", for: .normal)
-        self.spaceButton.setTitle(text: "space", for: .normal)
-        self.returnButton.setTitle(text: "enter", for: .normal)
-        self.nextKeyboardButton.button.setImage(UIImage(systemName: "globe"), for: .normal)
-        self.deleteButton.button.setImage(UIImage(systemName: "delete.backward"), for: .normal)
+        self.shiftButton.setTitle("⇧", for: .normal)
+        //self.deleteButton.setTitle(text: "", for: .normal)
+        self.deleteButton.setTitle("", for: .normal)
+        self.spaceButton.setTitle("space", for: .normal)
+        self.returnButton.setTitle("enter", for: .normal)
+        self.nextKeyboardButton.setImage(UIImage(systemName: "globe"), for: .normal)
+        self.deleteButton.setImage(UIImage(systemName: "delete.backward"), for: .normal)
         
-        self.nextKeyboardButton.button.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
-        self.shiftButton.button.addTarget(self, action: #selector(touchUpShiftKey), for: .touchUpInside)
-        self.deleteButton.button.addTarget(self, action: #selector(touchUpDeleteKey), for: .touchUpInside)
-        self.spaceButton.button.addTarget(self, action: #selector(touchUpSpaceKey), for: .touchUpInside)
-        self.returnButton.button.addTarget(self, action: #selector(touchUpReturnKey), for: .touchUpInside)
+        self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
+        self.shiftButton.addTarget(self, action: #selector(touchUpShiftKey), for: .touchUpInside)
+        self.deleteButton.addTarget(self, action: #selector(touchUpDeleteKey), for: .touchUpInside)
+        self.spaceButton.addTarget(self, action: #selector(touchUpSpaceKey), for: .touchUpInside)
+        self.returnButton.addTarget(self, action: #selector(touchUpReturnKey), for: .touchUpInside)
     }
     
     override func updateViewConstraints() {
@@ -147,7 +156,7 @@ class KeyboardViewController: UIInputViewController {
         ])
     }
     
-    func makeStackView(buttons:[KeyboardButton]) -> UIStackView {
+    func makeStackView(buttons:[CustomButton]) -> UIStackView {
         let stack = UIStackView(arrangedSubviews: buttons)
         stack.alignment = .fill
         stack.distribution = .fillEqually
@@ -157,15 +166,15 @@ class KeyboardViewController: UIInputViewController {
         return stack
     }
     
-    func makeButtons(keyboardLine: KeyboardLine) -> [KeyboardButton] {
+    func makeButtons(keyboardLine: KeyboardLine) -> [CustomButton] {
         
-        var buttons = [KeyboardButton]()
+        var buttons = [CustomButton]()
         
         let list = KeyboardCharacter.getLineText(keyboardLine: keyboardLine)
         for character in list  {
-            let button = KeyboardButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-            button.setTitle(text: character, for: .normal)
-            button.button.addTarget(self, action: #selector(keyboardButtonClicked(_:)), for: .touchUpInside)
+            let button = CustomButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+            button.setTitle(character, for: .normal)
+            button.addTarget(self, action: #selector(keyboardButtonClicked(_:)), for: .touchUpInside)
             buttons.append(button)
         }
         return buttons
@@ -178,6 +187,10 @@ class KeyboardViewController: UIInputViewController {
             self.textDocumentProxy.insertText(character)
         }
         isShifted = false
+    }
+    
+    @objc func KeyboardFunctionButtonClicked(_ sender: CustomButton) {
+        
     }
     
     @objc func touchUpSpaceKey() {
@@ -206,43 +219,43 @@ class KeyboardViewController: UIInputViewController {
     func changedShift(){
         if isShifted {
             for key in self.topLineButton {
-                let character = key.getTitle()
+                let character = key.titleLabel?.text
                 switch character {
                 case "ㅂ":
-                    key.button.setTitle("ㅃ", for: .normal)
+                    key.setTitle("ㅃ", for: .normal)
                 case "ㅈ":
-                    key.button.setTitle("ㅉ", for: .normal)
+                    key.setTitle("ㅉ", for: .normal)
                 case "ㄷ":
-                    key.button.setTitle("ㄸ", for: .normal)
+                    key.setTitle("ㄸ", for: .normal)
                 case "ㄱ":
-                    key.button.setTitle("ㄲ", for: .normal)
+                    key.setTitle("ㄲ", for: .normal)
                 case "ㅅ":
-                    key.button.setTitle("ㅆ", for: .normal)
+                    key.setTitle("ㅆ", for: .normal)
                 case "ㅐ":
-                    key.button.setTitle("ㅒ", for: .normal)
+                    key.setTitle("ㅒ", for: .normal)
                 case "ㅔ":
-                    key.button.setTitle("ㅖ", for: .normal)
+                    key.setTitle("ㅖ", for: .normal)
                 default: break
                 }
             }
         } else {
             for key in self.topLineButton {
-                let character = key.getTitle()
+                let character = key.titleLabel?.text
                 switch character {
                 case "ㅃ":
-                    key.button.setTitle("ㅂ", for: .normal)
+                    key.setTitle("ㅂ", for: .normal)
                 case "ㅉ":
-                    key.button.setTitle("ㅈ", for: .normal)
+                    key.setTitle("ㅈ", for: .normal)
                 case "ㄸ":
-                    key.button.setTitle("ㄷ", for: .normal)
+                    key.setTitle("ㄷ", for: .normal)
                 case "ㄲ":
-                    key.button.setTitle("ㄱ", for: .normal)
+                    key.setTitle("ㄱ", for: .normal)
                 case "ㅆ":
-                    key.button.setTitle("ㅅ", for: .normal)
+                    key.setTitle("ㅅ", for: .normal)
                 case "ㅒ":
-                    key.button.setTitle("ㅐ", for: .normal)
+                    key.setTitle("ㅐ", for: .normal)
                 case "ㅖ":
-                    key.button.setTitle("ㅔ", for: .normal)
+                    key.setTitle("ㅔ", for: .normal)
                 default: break
                 }
             }
