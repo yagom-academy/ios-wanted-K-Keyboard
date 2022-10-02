@@ -19,7 +19,7 @@ struct ReviewData {
     /// 리뷰 id
     let id: Int
     /// 리뷰어 이미지
-    let Image: String
+    let image: String
     /// 크리에이터 여부
     let isCreator: Bool?
     /// 리뷰어 이름
@@ -29,9 +29,9 @@ struct ReviewData {
     /// 작성 시간
     let time: Date
     
-    init(id: Int, Image: String, isCreator: Bool? = false, name: String, review: String, time: Date) {
+    init(id: Int, image: String, isCreator: Bool? = false, name: String, review: String, time: Date) {
         self.id = id
-        self.Image = Image
+        self.image = image
         self.isCreator = isCreator
         self.name = name
         self.review = review

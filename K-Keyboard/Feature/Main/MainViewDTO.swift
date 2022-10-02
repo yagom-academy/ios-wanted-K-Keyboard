@@ -9,7 +9,7 @@ import Foundation
 
 struct MainViewDTO {
     
-    let dataSource: [(section: SectionItem, items: [RowItem])]
+    var dataSource: [(section: SectionItem, items: [RowItem])]
     
     enum SectionItem: Equatable {
         case item
@@ -43,12 +43,12 @@ struct MainViewDTO {
     }
     
     enum RowItem: Equatable {
-        case item
-        case notice
+        case item(ItemData)
+        case notice(NoticeData)
         case tags([TagData])
         case previews([PreviewData])
         case aboutThemes([AboutThemeData])
-        case ads
+        case ads(AdsData)
         case reviews([ReviewData])
         
         static func == (lhs: RowItem, rhs: RowItem) -> Bool {
