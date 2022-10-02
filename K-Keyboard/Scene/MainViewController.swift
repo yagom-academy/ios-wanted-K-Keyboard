@@ -13,12 +13,12 @@ final class MainViewController: UIViewController {
     @IBOutlet private weak var keywordColletionView: UICollectionView!
     @IBOutlet private weak var themeStackView: UIStackView!
     
-    private var tagList = ["이벤트", "캐릭터", "새", "동물", "앙증맞은" ,"동글동글"]
+    private var tagList = ["이벤트", "캐릭터", "새", "동물", "앙ㅇㄴㅇㄴㄴㅇ증맞은" ,"동글동글", "마루", "귀여웡", "배고파","동글동글", "마루", "귀여웡", "배고파"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tagListCollectionView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         self.tagListCollectionView.dataSource = self
+        self.tagListCollectionView.collectionViewLayout = generateLayout()
     }
 
    
@@ -31,17 +31,23 @@ extension MainViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TagCell", for: indexPath) as? TagCell else { return UICollectionViewCell() }
-        cell.titleLabel.text = tagList[indexPath.item]
+        cell.configure(title: tagList[indexPath.item])
         return cell
-    }
-    
-    
+    }    
 }
 
-extension MainViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let label = UILabel()
-        label.text = "dsfsd"
-        return CGSize(width: label.frame.size.width + 10,  height: label.frame.size.width + 10)
+extension MainViewController {
+    func generateLayout() -> UICollectionViewLayout {
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .estimated(60),
+            heightDimension: .absolute(28)
+        )
+        let tagItem = NSCollectionLayoutItem(layoutSize: itemSize)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.35))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [tagItem])
+        group.interItemSpacing = .fixed(8)
+        let section = NSCollectionLayoutSection(group: group)
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        return layout
     }
 }
