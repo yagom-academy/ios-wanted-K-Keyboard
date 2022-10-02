@@ -13,9 +13,16 @@ struct Keyword {
 }
 
 final class KeywordCell: UICollectionViewCell {
+    
+    
+    @IBOutlet weak var backView: UIView!
     @IBOutlet private weak var keywordImageView: UIImageView!
     @IBOutlet private weak var keywordTitle: UILabel!
-
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.setViewShadow(backView: backView)
+    }
     
     func configure(_ keyword: Keyword) {
         self.keywordImageView.image = UIImage(named: keyword.imageName)

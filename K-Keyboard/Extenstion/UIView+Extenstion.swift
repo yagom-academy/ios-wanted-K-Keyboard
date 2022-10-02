@@ -38,4 +38,15 @@ extension UIView {
             return UIColor(cgColor: color)
         }
     }
+
+    func setViewShadow(backView: UIView) {
+        backView.layer.masksToBounds = false
+        backView.layer.cornerRadius = 10
+        
+        layer.masksToBounds = false
+        layer.shadowColor = UIColor.gray.cgColor
+        layer.shadowOpacity = 0.2
+        layer.shadowOffset = CGSize(width: 0.3, height: 0.3)
+        layer.shadowRadius = 5
+    }
 }

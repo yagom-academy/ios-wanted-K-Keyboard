@@ -48,8 +48,6 @@ extension MainViewController: UICollectionViewDataSource {
         }
         else {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "KeywordCell", for: indexPath) as? KeywordCell else { fatalError("Could not create new cell") }
-            print(keywordList.count)
-            print(keywordList[indexPath.row])
             cell.configure(keywordList[indexPath.row])
             return cell
         }
