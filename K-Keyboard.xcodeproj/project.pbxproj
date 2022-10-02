@@ -25,6 +25,8 @@
 		D30E931728E5B27B009AB544 /* KeyboardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E931628E5B27B009AB544 /* KeyboardImageView.swift */; };
 		D30E931928E69F19009AB544 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E931828E69F19009AB544 /* TagView.swift */; };
 		D30E931D28E69F73009AB544 /* KeyWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E931C28E69F73009AB544 /* KeyWordView.swift */; };
+		D325D90628E9290700DFD0A1 /* ThemaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D325D90528E9290700DFD0A1 /* ThemaCollectionViewCell.swift */; };
+		D325D90828E95D7600DFD0A1 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D325D90728E95D7600DFD0A1 /* ButtonView.swift */; };
 		D3A2C2CC28E6EE000093A633 /* KeyWordViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A2C2CB28E6EE000093A633 /* KeyWordViewCell.swift */; };
 		D3A4761628E56CDA003CA79A /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A4761528E56CDA003CA79A /* TagCollectionViewCell.swift */; };
 		D3D272B728E70D9C00BC6392 /* ThemaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D272B628E70D9C00BC6392 /* ThemaView.swift */; };
@@ -77,6 +79,8 @@
 		D30E931628E5B27B009AB544 /* KeyboardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardImageView.swift; sourceTree = "<group>"; };
 		D30E931828E69F19009AB544 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		D30E931C28E69F73009AB544 /* KeyWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyWordView.swift; sourceTree = "<group>"; };
+		D325D90528E9290700DFD0A1 /* ThemaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemaCollectionViewCell.swift; sourceTree = "<group>"; };
+		D325D90728E95D7600DFD0A1 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		D3A2C2CB28E6EE000093A633 /* KeyWordViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyWordViewCell.swift; sourceTree = "<group>"; };
 		D3A4761528E56CDA003CA79A /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
 		D3D272B628E70D9C00BC6392 /* ThemaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemaView.swift; sourceTree = "<group>"; };
@@ -217,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				D3D272B628E70D9C00BC6392 /* ThemaView.swift */,
+				D325D90528E9290700DFD0A1 /* ThemaCollectionViewCell.swift */,
 			);
 			path = ThemaView;
 			sourceTree = "<group>";
@@ -234,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				D30E931628E5B27B009AB544 /* KeyboardImageView.swift */,
+				D325D90728E95D7600DFD0A1 /* ButtonView.swift */,
 			);
 			path = KeyboardImageView;
 			sourceTree = "<group>";
@@ -361,6 +367,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3D272C028E8200D00BC6392 /* PurchaseReviewTableViewCell.swift in Sources */,
+				D325D90628E9290700DFD0A1 /* ThemaCollectionViewCell.swift in Sources */,
+				D325D90828E95D7600DFD0A1 /* ButtonView.swift in Sources */,
 				D3D272B728E70D9C00BC6392 /* ThemaView.swift in Sources */,
 				D3A2C2CC28E6EE000093A633 /* KeyWordViewCell.swift in Sources */,
 				D3D272BB28E8010B00BC6392 /* model.swift in Sources */,

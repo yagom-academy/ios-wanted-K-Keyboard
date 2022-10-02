@@ -9,76 +9,71 @@ import UIKit
 import SwiftUI
 
 class KeyboardImageView: UIView {
-    let imageView = UIImageView(image: UIImage(named: "Keborad"))
-    
+    let imageView : UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "Keborad"))
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
     let nameLable : UILabel = {
         let title = UILabel()
         
-    title.translatesAutoresizingMaskIntoConstraints = false
-    title.textAlignment = .left
-    title.text = "앙무"
-        title.font = UIFont(name: "Bold", size: 20)
-    title.textColor = .black
+        title.translatesAutoresizingMaskIntoConstraints = false
+        title.textAlignment = .left
+        title.text = "앙무"
+        title.font = .appleSDGothicNeo(weight: .regular, size: 20)
+        title.textColor = .black
         return title
-}()
+    }()
     let copinLabel : UILabel = {
         let title = UILabel()
-//        titles111.frame = CGRect(x: 0, y: 0, width: 26, height: 20)
+        //        titles111.frame = CGRect(x: 0, y: 0, width: 26, height: 20)
         title.translatesAutoresizingMaskIntoConstraints = false
         title.textAlignment = .left
         title.text = "코핀"
         title.font = UIFont(name: "Bold", size: 14)
-        title.textColor = .systemGray2
+        title.textColor = UIColor(hex: "#919299", alpha: 1)
         return title
-}()
+    }()
     let participationLabel : UILabel = {
         let title = UILabel()
-//        titles222.frame = CGRect(x: 0, y: 0, width: 111, height: 20)
         title.translatesAutoresizingMaskIntoConstraints = false
         title.textAlignment = .left
         title.text = "78명이참여했어요!"
         title.font = UIFont(name: "Bold", size: 14)
-        title.textColor = .systemGray2
+        title.textColor = .systemGray
         //특정문자 색상 바꿈
-        func changText() {
-            guard let text = title.text else {return}
-            let attributeString = NSMutableAttributedString(string: text)
-            attributeString.addAttribute(.foregroundColor, value: UIColor.red, range: (text as NSString).range(of: "78"))
+        let attributeString = NSMutableAttributedString(string:  title.text ?? "")
+        attributeString.addAttribute(.foregroundColor, value: UIColor.red, range: ( title.text! as NSString).range(of: "78"))
             title.attributedText = attributeString
-        }
-        changText()
+        
         return title
-}()
+    }()
     
     let explanationLabel : UILabel = {
         let title = UILabel()
-//        titles333.frame = CGRect(x: 0, y: 0, width: 343, height: 24)
         title.translatesAutoresizingMaskIntoConstraints = false
         title.textAlignment = .left
         title.text = "🎉플레이키보드 첫 이벤트 테마를 공개합니다.🎉"
         title.font = UIFont(name: "Bold", size: 14)
         title.textColor = .black
         return title
-}()
+    }()
     let informationLabel : UILabel = {
         let title = UILabel()
-    
-//        titles444.frame = CGRect(x: 0, y: 0, width: 343, height: 96)
         title.translatesAutoresizingMaskIntoConstraints = false
         title.textAlignment = .left
         title.numberOfLines = 4
-        title.text = "밀당해피니스 유튜브 채널을 방문하면 \"태마명\" 이벤트 테마를 무료로 받을 수 있다구요? \n지금 바로 \'참여하기\' 버튼을 눌러새로워진 밀당해피니스 유튜브 채널을 확인해보세요!"
+        title.text = "밀당해피니스 유튜브 채널을 방문하면 \"태마명\" 이벤트 테마를 무료로 받을 수 있다구요? \n지금 바로 \'참여하기\' 버튼을 눌러 새로워진 밀당해피니스 유튜브 채널을 확인해보세요!"
         title.font = UIFont(name: "Regular", size: 14)
         title.textColor = .black
         return title
-}()
+    }()
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.commonInit()
     }
-    required init?(coder aDecoder : NSCoder) {
-        super.init(coder: aDecoder)
-        self.commonInit()
+    required init?(coder NSCoder : NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     private func commonInit(){
         self.backgroundColor = .white
@@ -88,7 +83,6 @@ class KeyboardImageView: UIView {
         self.addSubview(imageView)
         self.addSubview(explanationLabel)
         self.addSubview(informationLabel)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         constraintCustomView()
     }
     func constraintCustomView() {
@@ -102,7 +96,7 @@ class KeyboardImageView: UIView {
             nameLable.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
             nameLable.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
             nameLable.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 24),
-
+            
             
             copinLabel.topAnchor.constraint(equalTo: nameLable.bottomAnchor,constant: 4),
             copinLabel.leadingAnchor.constraint(equalTo: nameLable.leadingAnchor),

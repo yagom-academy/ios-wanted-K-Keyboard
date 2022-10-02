@@ -9,11 +9,11 @@ import UIKit
 import SwiftUI
 
 class TagView: UIView, UICollectionViewDelegate {
-    var heights: [Int] = [60, 200, 150, 30, 80, 170, 200]
+    var heights: [String] = ["이벤트", "캐릭터","새","동물","앙증맞은","동글동글"]
     var colors: [UIColor] = [.systemRed, .systemIndigo, .systemBlue, .systemTeal, .systemYellow, .cyan, .brown]
     let titles : UILabel = {
         let title = UILabel()
-//        title.frame = CGRect(x: 0, y: 0, width: 37, height: 28)
+        //        title.frame = CGRect(x: 0, y: 0, width: 37, height: 28)
         title.translatesAutoresizingMaskIntoConstraints = false
         title.textAlignment = .center
         title.text = "태그"
@@ -23,7 +23,7 @@ class TagView: UIView, UICollectionViewDelegate {
     }()
     let collectionView : UICollectionView = {
         let collectionView = UICollectionViewFlowLayout()
-//        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        //        collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.minimumInteritemSpacing = 5
         collectionView.minimumLineSpacing = 5
         collectionView.scrollDirection = .vertical
@@ -60,7 +60,7 @@ class TagView: UIView, UICollectionViewDelegate {
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
-
+            
         ])
     }
     private func setupView() {
@@ -76,7 +76,7 @@ extension TagView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        return heights.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -84,63 +84,62 @@ extension TagView: UICollectionViewDataSource {
         cell.title.text = "\(heights[indexPath.row])"
         cell.backgroundColor = colors[indexPath.row]
         
-        cell.second.text = "\(heights[indexPath.row])"
         return cell
     }
 }
 //
 extension TagView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//            let width = collectionView.frame.width
-//            let height = collectionView.frame.height
-//        print(width,height)
-//            let itemsPerRow: CGFloat = 2
-//            let widthPadding = sectionInsets.left * (itemsPerRow + 1)
-//            let itemsPerColumn: CGFloat = 3
-//            let heightPadding = sectionInsets.top * (itemsPerColumn + 1)
-//            let cellWidth = (width - widthPadding) / itemsPerRow
-//            let cellHeight = (height - heightPadding) / itemsPerColumn
-//print(cellWidth,cellHeight)
-//            return CGSize(width: cellWidth, height: cellHeight)
+        //            let width = collectionView.frame.width
+        //            let height = collectionView.frame.height
+        //        print(width,height)
+        //            let itemsPerRow: CGFloat = 2
+        //            let widthPadding = sectionInsets.left * (itemsPerRow + 1)
+        //            let itemsPerColumn: CGFloat = 3
+        //            let heightPadding = sectionInsets.top * (itemsPerColumn + 1)
+        //            let cellWidth = (width - widthPadding) / itemsPerRow
+        //            let cellHeight = (height - heightPadding) / itemsPerColumn
+        //print(cellWidth,cellHeight)
+        //            return CGSize(width: cellWidth, height: cellHeight)
         
-            //343.0 165.66666666666666  콜렉션뷰 가로 높이
-//        156.5 41.888888888888886   셀 가로 높이
+        //343.0 165.66666666666666  콜렉션뷰 가로 높이
+        //        156.5 41.888888888888886   셀 가로 높이
         return CGSize(width: 62, height: 50)
-//        return CGSize(width: Int.random(in: 50...100) , height: 100)
+        //        return CGSize(width: Int.random(in: 50...100) , height: 100)
     }
 }
 
 
 #if canImport(SwiftUI) && DEBUG
-    struct PereviewViewController<View: UIView> : UIViewRepresentable {
-        
-        let view: View
-        
-        init(_ builder: @escaping () -> View) {
-            view = builder()
-        }
-        
-        func makeUIView(context: Context) -> some UIView {
-            view
-        }
-        
-        func updateUIView(_ uiView: UIViewType, context: Context) {
-            
-        }
+struct PereviewViewController<View: UIView> : UIViewRepresentable {
+    
+    let view: View
+    
+    init(_ builder: @escaping () -> View) {
+        view = builder()
+    }
+    
+    func makeUIView(context: Context) -> some UIView {
+        view
+    }
+    
+    func updateUIView(_ uiView: UIViewType, context: Context) {
         
     }
     
+}
+
 #endif
-    
+
 #if canImport(SwiftUI) && DEBUG
-    struct SecondViewPreviewProvider: PreviewProvider {
-        static var previews: some View {
-            PereviewViewController {
-                let view = TagView()
-                return view
-            }.previewLayout(.fixed(width: 600, height: 600))
-        }
+struct SecondViewPreviewProvider: PreviewProvider {
+    static var previews: some View {
+        PereviewViewController {
+            let view = TagView()
+            return view
+        }.previewLayout(.fixed(width: 600, height: 600))
     }
-    
+}
+
 #endif
-    
+

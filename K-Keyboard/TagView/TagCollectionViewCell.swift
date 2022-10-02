@@ -17,29 +17,29 @@ class TagCollectionViewCell: UICollectionViewCell {
         self.cellSetting()
     }
     required init?(coder: NSCoder) {
-         fatalError()
+        fatalError()
     }
     func cellSetting(){
         self.backgroundColor = .green
         self.addSubview(title)
         self.addSubview(second)
-      
+        
         title.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         title.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         title.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         title.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         
-//        second.topAnchor.constraint(equalTo: self.title.bottomAnchor).isActive = true
-//        second.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-//        second.leadingAnchor.constraint(equalTo: self.title.trailingAnchor).isActive = true
-//        second.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        //        second.topAnchor.constraint(equalTo: self.title.bottomAnchor).isActive = true
+        //        second.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        //        second.leadingAnchor.constraint(equalTo: self.title.trailingAnchor).isActive = true
+        //        second.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
     }
     
     
     lazy var title: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-    
+        
         label.font = .systemFont(ofSize: 17)
         return label
     }()
