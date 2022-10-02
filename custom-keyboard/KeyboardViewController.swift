@@ -201,7 +201,6 @@ class KeyboardViewController: UIInputViewController {
             isShifted = isShifted ? false : true
         case .normal:
             if let character = sender.titleLabel?.text {
-                UIDevice.current.playInputClick()
                 self.textDocumentProxy.insertText(character)
             }
             isShifted = false
