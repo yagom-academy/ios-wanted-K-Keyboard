@@ -121,17 +121,17 @@ class KeyboardViewController: UIInputViewController {
         
         let safeGuide = self.view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            numberLineStackView.topAnchor.constraint(equalTo: safeGuide.topAnchor),
+            numberLineStackView.topAnchor.constraint(equalTo: safeGuide.topAnchor, constant: 6),
             numberLineStackView.leadingAnchor.constraint(equalTo: safeGuide.leadingAnchor, constant: 4),
             numberLineStackView.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: -4),
             numberLineStackView.heightAnchor.constraint(equalToConstant: 40),
             
-            topLineButton.topAnchor.constraint(equalTo: numberLineStackView.bottomAnchor, constant: 4),
+            topLineButton.topAnchor.constraint(equalTo: numberLineStackView.bottomAnchor, constant: 6),
             topLineButton.leadingAnchor.constraint(equalTo: safeGuide.leadingAnchor,constant: 4),
             topLineButton.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: -4),
             topLineButton.heightAnchor.constraint(equalToConstant: 40),
             
-            middleLineButton.topAnchor.constraint(equalTo: topLineButton.bottomAnchor, constant: 4),
+            middleLineButton.topAnchor.constraint(equalTo: topLineButton.bottomAnchor, constant: 6),
             middleLineButton.leadingAnchor.constraint(equalTo: safeGuide.leadingAnchor,constant: 24),
             middleLineButton.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: -24),
             middleLineButton.heightAnchor.constraint(equalToConstant: 40),
@@ -139,7 +139,7 @@ class KeyboardViewController: UIInputViewController {
             shiftButton.widthAnchor.constraint(equalToConstant: 45),
             deleteButton.widthAnchor.constraint(equalToConstant: 45),
             
-            lastLineStackView.topAnchor.constraint(equalTo: middleLineButton.bottomAnchor, constant: 4),
+            lastLineStackView.topAnchor.constraint(equalTo: middleLineButton.bottomAnchor, constant: 6),
             lastLineStackView.leadingAnchor.constraint(equalTo: safeGuide.leadingAnchor,constant: 4),
             lastLineStackView.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: -4),
             lastLineStackView.heightAnchor.constraint(equalToConstant: 40),
@@ -149,7 +149,7 @@ class KeyboardViewController: UIInputViewController {
             nextKeyboardButton.heightAnchor.constraint(equalToConstant: 40),
             enterButton.widthAnchor.constraint(equalToConstant: 92),
             
-            funcLineStackView.topAnchor.constraint(equalTo: lastLineStackView.bottomAnchor, constant: 4),
+            funcLineStackView.topAnchor.constraint(equalTo: lastLineStackView.bottomAnchor, constant: 6),
             funcLineStackView.leadingAnchor.constraint(equalTo: safeGuide.leadingAnchor, constant: 4),
             funcLineStackView.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: -4),
             //funcLineStackView.bottomAnchor.constraint(equalTo: safeGuide.bottomAnchor)
