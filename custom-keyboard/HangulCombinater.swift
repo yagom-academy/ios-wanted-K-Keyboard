@@ -108,7 +108,8 @@ class HangulCombinater {
             else {
                 if isJungsung(curChar) {
                     if Array(jamo[2]).count == 2 {
-                        return [getCombinedJamo(Array(arrayLiteral: jamo[2])[1], curChar), getCombinedJamo(jamo[0], jamo[1])]
+                        let jong = Array(jamo[2])
+                        return [getCombinedJamo(String(jong[1]), curChar), getCombinedJamo(jamo[0], jamo[1], String(jong[0]))]
                     }
                     else {
                         return [getCombinedJamo(jamo[2], curChar), getCombinedJamo(jamo[0], jamo[1])]
