@@ -71,7 +71,7 @@ extension FirstViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 3
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -89,6 +89,7 @@ extension FirstViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.register(FirstSectionCell.self, forCellReuseIdentifier: FirstSectionCell.identifier)
         tableView.register(SecondSectionCell.self, forCellReuseIdentifier: SecondSectionCell.identifier)
         tableView.register(FourthSectionCell.self, forCellReuseIdentifier: FourthSectionCell.identifier)
+        tableView.register(FifthSectionCell.self, forCellReuseIdentifier: FifthSectionCell.identifier)
 
         switch indexPath.section {
         case 0:
@@ -112,6 +113,12 @@ extension FirstViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         case 3:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: FourthSectionCell.identifier, for: indexPath) as? FourthSectionCell else {
+                return UITableViewCell()
+            }
+
+            return cell
+        case 4:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: FifthSectionCell.identifier, for: indexPath) as? FifthSectionCell else {
                 return UITableViewCell()
             }
 
