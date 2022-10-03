@@ -21,6 +21,8 @@
 		3668F91B28E9C1960093E04D /* SecondFloor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3668F91A28E9C1960093E04D /* SecondFloor.swift */; };
 		3668F91D28E9C1A60093E04D /* FirstFloor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3668F91C28E9C1A60093E04D /* FirstFloor.swift */; };
 		3668F91F28E9C1BA0093E04D /* Floor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3668F91E28E9C1BA0093E04D /* Floor.swift */; };
+		36EE19EA28EB1B7A00F14A02 /* KeyboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EE19E928EB1B7A00F14A02 /* KeyboardModel.swift */; };
+		36EE19EB28EB1EF400F14A02 /* Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C242B7D28E804BF00DA6CBE /* Presentable.swift */; };
 		4C242B7E28E804BF00DA6CBE /* Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C242B7D28E804BF00DA6CBE /* Presentable.swift */; };
 		4C242B8028E804E700DA6CBE /* Styleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C242B7F28E804E700DA6CBE /* Styleable.swift */; };
 		4C242B8228E8050100DA6CBE /* FirstViewStyling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C242B8128E8050100DA6CBE /* FirstViewStyling.swift */; };
@@ -92,6 +94,7 @@
 		3668F91A28E9C1960093E04D /* SecondFloor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondFloor.swift; sourceTree = "<group>"; };
 		3668F91C28E9C1A60093E04D /* FirstFloor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstFloor.swift; sourceTree = "<group>"; };
 		3668F91E28E9C1BA0093E04D /* Floor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Floor.swift; sourceTree = "<group>"; };
+		36EE19E928EB1B7A00F14A02 /* KeyboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardModel.swift; sourceTree = "<group>"; };
 		4C242B7D28E804BF00DA6CBE /* Presentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presentable.swift; sourceTree = "<group>"; };
 		4C242B7F28E804E700DA6CBE /* Styleable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styleable.swift; sourceTree = "<group>"; };
 		4C242B8128E8050100DA6CBE /* FirstViewStyling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewStyling.swift; sourceTree = "<group>"; };
@@ -147,6 +150,7 @@
 		3668F8FE28E9BFFB0093E04D /* CustomKeyboard */ = {
 			isa = PBXGroup;
 			children = (
+				36EE19E828EB1B6500F14A02 /* Models */,
 				3668F91128E9C11B0093E04D /* Views */,
 				3668F90E28E9C09F0093E04D /* Constants */,
 				3668F90928E9C0560093E04D /* Extension */,
@@ -160,7 +164,6 @@
 			children = (
 				3668F90A28E9C06A0093E04D /* UIView+Extension.swift */,
 				3668F90C28E9C08A0093E04D /* NSLayoutConstraint+Extension.swift */,
-				33A8839328EADED400FE9216 /* Hangle.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -186,6 +189,15 @@
 				3668F91E28E9C1BA0093E04D /* Floor.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		36EE19E828EB1B6500F14A02 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				36EE19E928EB1B7A00F14A02 /* KeyboardModel.swift */,
+				33A8839328EADED400FE9216 /* Hangle.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		4C242B7C28E804B300DA6CBE /* ViewDraw */ = {
@@ -435,6 +447,7 @@
 			files = (
 				3668F91928E9C1840093E04D /* ThirdFloor.swift in Sources */,
 				3668F91728E9C1710093E04D /* FourthFloor.swift in Sources */,
+				36EE19EA28EB1B7A00F14A02 /* KeyboardModel.swift in Sources */,
 				33A8839428EADED400FE9216 /* Hangle.swift in Sources */,
 				3668F91528E9C15C0093E04D /* KeyboardButton.swift in Sources */,
 				3668F90D28E9C08A0093E04D /* NSLayoutConstraint+Extension.swift in Sources */,
@@ -445,6 +458,7 @@
 				3668F91D28E9C1A60093E04D /* FirstFloor.swift in Sources */,
 				3668F91B28E9C1960093E04D /* SecondFloor.swift in Sources */,
 				3668F91028E9C0B10093E04D /* Constants.swift in Sources */,
+				36EE19EB28EB1EF400F14A02 /* Presentable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
