@@ -39,8 +39,18 @@ class CustomButton: UIButton {
         setTitleColor(buttonTextColor, for: .normal)
         setTitleColor(buttonHighlightTextColor, for: .highlighted)
         adjustsImageWhenHighlighted = false
+        titleLabel?.adjustsFontSizeToFitWidth = true
         layer.cornerRadius = 10.0
         layer.masksToBounds = true
+    }
+    func addMenu(keyTitle: [String], handler: @escaping (UIAction) -> () ) {
+        
+        var menuElement: [UIMenuElement] = []
+        for title in keyTitle {
+            menuElement.append(UIAction(title: title, handler: handler))
+        }
+        
+        menu = UIMenu(title: "단축키", image: nil, identifier: nil, children: menuElement)
     }
 }
 extension UIInputView: UIInputViewAudioFeedback {

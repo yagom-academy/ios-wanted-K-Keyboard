@@ -14,9 +14,13 @@ enum KeyType {
     case space
     case shift
     case normal
+    case shortcut
+    
 }
 
 class KeyboardViewController: UIInputViewController {
+    
+    // TEST FLAG
     
     var nextKeyboardButton: CustomButton!
     var spaceButton: CustomButton!
@@ -27,6 +31,8 @@ class KeyboardViewController: UIInputViewController {
     var topLineButton: [CustomButton]! //"ㅂ,ㅈ,ㄷ,ㄱ,ㅅ,ㅛ,ㅕ,ㅑ,ㅐ,ㅔ
     var middleLineButtons: [CustomButton]! //"ㅁ,ㄴ,ㅇ,ㄹ,ㅎ,ㅗ,ㅓ,ㅏ,ㅣ
     var lastLineButtons: [CustomButton]! //"ㅋ,ㅌ,ㅊ,ㅍ,ㅠ,ㅜ,ㅡ
+    var shortCutButton: CustomButton! // 단축키
+    var shortCutList: [String] = ["ㅋㅋㅋㅋ","테스트","휘양","안녕하세요"] // 단축어가 담길 변수
     
     /// 직전 입력 텍스트가 담길 변수
     var preChar = " "
@@ -52,12 +58,14 @@ class KeyboardViewController: UIInputViewController {
         self.shiftButton = CustomButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40), keyType: .shift)
         self.enterButton = CustomButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40), keyType: .enter)
         self.deleteButton = CustomButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40), keyType: .delete)
+        self.shortCutButton = CustomButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40), keyType: .shortcut)
         self.setButtonsLayout()
         
         self.shiftButton.setTitle("⇧", for: .normal)
         self.deleteButton.setTitle("", for: .normal)
         self.spaceButton.setTitle("space", for: .normal)
         self.enterButton.setTitle("enter", for: .normal)
+        self.shortCutButton.setTitle(shortCutList[0], for: .normal)
         self.nextKeyboardButton.setImage(UIImage(systemName: "globe"), for: .normal)
         self.deleteButton.setImage(UIImage(systemName: "delete.backward"), for: .normal)
         
@@ -66,6 +74,11 @@ class KeyboardViewController: UIInputViewController {
         self.deleteButton.addTarget(self, action: #selector(keyboardButtonClicked), for: .touchUpInside)
         self.spaceButton.addTarget(self, action: #selector(keyboardButtonClicked), for: .touchUpInside)
         self.enterButton.addTarget(self, action: #selector(keyboardButtonClicked), for: .touchUpInside)
+        self.shortCutButton.addTarget(self, action: #selector(keyboardButtonClicked), for: .touchUpInside)
+        self.shortCutButton.addMenu(keyTitle: shortCutList) { menu in
+            
+            self.shortCutButton.setTitle(menu.title, for: .normal)
+        }
     }
     
     override func updateViewConstraints() {
@@ -113,7 +126,7 @@ class KeyboardViewController: UIInputViewController {
         lastLineStackView.spacing = 16
         lastLineStackView.translatesAutoresizingMaskIntoConstraints = false
         
-        let funcLineStackView = UIStackView(arrangedSubviews: [nextKeyboardButton, spaceButton, enterButton])
+        let funcLineStackView = UIStackView(arrangedSubviews: [nextKeyboardButton, shortCutButton, spaceButton, enterButton])
         funcLineStackView.alignment = .fill
         funcLineStackView.axis = .horizontal
         funcLineStackView.distribution = .fill
@@ -155,6 +168,7 @@ class KeyboardViewController: UIInputViewController {
             nextKeyboardButton.widthAnchor.constraint(equalToConstant: 40),
             nextKeyboardButton.heightAnchor.constraint(equalToConstant: 40),
             enterButton.widthAnchor.constraint(equalToConstant: 92),
+            shortCutButton.widthAnchor.constraint(equalToConstant: 44),
             
             funcLineStackView.topAnchor.constraint(equalTo: lastLineStackView.bottomAnchor, constant: 6),
             funcLineStackView.leadingAnchor.constraint(equalTo: safeGuide.leadingAnchor, constant: 4),
@@ -253,6 +267,12 @@ class KeyboardViewController: UIInputViewController {
                     textDocumentProxy.insertText(preChar)
                 }
             }
+        case .shortcut:
+            preChar = " "
+            isSeparable = false
+            guard let text = sender.titleLabel?.text else { return }
+            self.textDocumentProxy.insertText(text)
+            isShifted = false
         }
     }
     
