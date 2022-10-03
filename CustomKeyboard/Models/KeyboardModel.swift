@@ -8,45 +8,47 @@
 // TODO: Model에 UIKit이 임포트 되어야 하는 상황 자체는 좋지 않음
 //다른 구조, 패턴으로 수정 필요
 import Foundation
-import UIKit
 
 class KeyboardModel {
     //input
+    var characterBeforeCursorClosure: () -> (Character?) = { return nil }
     
     //output
     
-    //properties
-    var textDocumentProxy: UITextDocumentProxy
+    var insertText: (String) -> () = { value in }
+    var deleteBackward: () -> () = {  }
     
-    init(textDocumentProxy: UITextDocumentProxy) {
-        self.textDocumentProxy = textDocumentProxy
+    //properties
+    
+    init() {
+
     }
     
-    func decompose(char: Character) -> (Character, Character, Character) {
+    private func decompose(char: Character) -> (Character, Character, Character) {
         return Hangle.decompose(char: char)
     }
     
-    func isVowel(_ input: Character) -> Bool {
+    private func isVowel(_ input: Character) -> Bool {
         return Hangle.isVowel(input)
     }
     
-    func isDoubleFinalConsonant(_ input: Character) -> Bool {
+    private func isDoubleFinalConsonant(_ input: Character) -> Bool {
         return Hangle.isDoubleFinalConsonant(input)
     }
     
-    func decomposeDoubleFinalConsonant(_ input: Character) -> (Character, Character) {
+    private func decomposeDoubleFinalConsonant(_ input: Character) -> (Character, Character) {
         return Hangle.decomposeDoubleFinalConsonant(input)
     }
     
-    func compose(c1: Character, c2: Character, c3: Character) -> Character {
+    private func compose(c1: Character, c2: Character, c3: Character) -> Character {
         return Hangle.compose(c1: c1, c2: c2, c3: c3)
     }
     
-    func exceptionForJungSung(jung: Character, input: Character) -> Character? {
+    private func exceptionForJungSung(jung: Character, input: Character) -> Character? {
         return Hangle.exceptionForJungSung(jung: jung, input: input)
     }
     
-    func exceptionForJongSung(jong: Character, input: Character) -> Character? {
+    private func exceptionForJongSung(jong: Character, input: Character) -> Character? {
         return Hangle.exceptionForJongSung(jong: jong, input: input)
     }
     
@@ -55,14 +57,14 @@ class KeyboardModel {
 extension KeyboardModel : KeyboardViewDelegate{
     
     func insertSpace(){
-        textDocumentProxy.insertText(" ")
+        insertText(" ")
     }
     
     func insertCharacter(_ newCharacter: String) {
         //characterBeforeCursor호출하여 전 글자를 가져온다
         guard let last = characterBeforeCursor(), last != " " else {
             //전 글자가 없다면 그냥 입력
-            textDocumentProxy.insertText(newCharacter)
+            insertText(newCharacter)
             return
         }
         //전 글자가 있다면 합성할 수 있는지 없는지 검사(같은 프로토콜인지 아닌지 검사)
@@ -75,42 +77,42 @@ extension KeyboardModel : KeyboardViewDelegate{
                 if isDoubleFinalConsonant(jong){ // 1.1 종성이 겹받침일 때
                     let oldJong = decomposeDoubleFinalConsonant(jong).0
                     let newJong = decomposeDoubleFinalConsonant(jong).1
-                    textDocumentProxy.deleteBackward()
-                    textDocumentProxy.insertText(String(compose(c1: cho, c2: jung, c3: oldJong)))
-                    textDocumentProxy.insertText(String(compose(c1: newJong, c2: char, c3: " ")))
+                    deleteBackward()
+                    insertText(String(compose(c1: cho, c2: jung, c3: oldJong)))
+                    insertText(String(compose(c1: newJong, c2: char, c3: " ")))
                 }else{ //1.2 종성이 겹받침이 아닐 때
-                    textDocumentProxy.deleteBackward()
-                    textDocumentProxy.insertText(String(compose(c1: cho, c2: jung, c3: " ")))
-                    textDocumentProxy.insertText(String(compose(c1: jong, c2: char, c3: " ")))
+                    deleteBackward()
+                    insertText(String(compose(c1: cho, c2: jung, c3: " ")))
+                    insertText(String(compose(c1: jong, c2: char, c3: " ")))
                 }
             }else if jung != " "{//2.종성은 없고 중성이 있을 때
                 if let newJung = exceptionForJungSung(jung: jung, input: char){//2.1 중성이 이중모음되는 것이 가능할 때
-                    textDocumentProxy.deleteBackward()
-                    textDocumentProxy.insertText(String(compose(c1: cho, c2: newJung, c3: " ")))
+                    deleteBackward()
+                    insertText(String(compose(c1: cho, c2: newJung, c3: " ")))
                 }else{//2.2 중성이 이중모음되는 것이 불가능할 때
-                    textDocumentProxy.insertText(String(compose(c1: char, c2: " ", c3: " ")))
+                    insertText(String(compose(c1: char, c2: " ", c3: " ")))
                 }
             }else{//3.초성만 있을 때
-                textDocumentProxy.deleteBackward()
-                textDocumentProxy.insertText(String(compose(c1: cho, c2: char, c3: " ")))
+                deleteBackward()
+                insertText(String(compose(c1: cho, c2: char, c3: " ")))
             }
         }else{ //newCharacter가 자음
             if jong != " "{//1.종성이 있을 때
                 if isDoubleFinalConsonant(jong){ // 1.1 종성이 겹받침일 때
-                    textDocumentProxy.insertText(String(compose(c1: char, c2: " ", c3: " ")))
+                    insertText(String(compose(c1: char, c2: " ", c3: " ")))
                 }else{ //1.2 종성이 겹받침이 아닐 때
                     if let doubleConsonant = exceptionForJongSung(jong: jong, input: char){//1.2.1 새로 입력되는 글자가 겹받침이 가능할 때
-                        textDocumentProxy.deleteBackward()
-                        textDocumentProxy.insertText(String(compose(c1: cho, c2: jung, c3: doubleConsonant)))
+                        deleteBackward()
+                        insertText(String(compose(c1: cho, c2: jung, c3: doubleConsonant)))
                     }else{//1.2.2 새로 입력되는 글자가 겹받침이 불가능할 때
-                        textDocumentProxy.insertText(String(compose(c1: char, c2: " ", c3: " ")))
+                        insertText(String(compose(c1: char, c2: " ", c3: " ")))
                     }
                 }
             }else if jung != " "{//2.종성은 없고 중성이 있을 때
-                    textDocumentProxy.deleteBackward()
-                    textDocumentProxy.insertText(String(compose(c1: cho, c2: jung, c3: char)))
+                    deleteBackward()
+                    insertText(String(compose(c1: cho, c2: jung, c3: char)))
             }else{//3.초성만 있을 때
-                textDocumentProxy.insertText(String(compose(c1: char, c2:" ",c3:" ")))
+                insertText(String(compose(c1: char, c2:" ",c3:" ")))
             }
         }
     }
@@ -118,7 +120,7 @@ extension KeyboardModel : KeyboardViewDelegate{
     func deleteCharacterBeforeCursor() {
         //characterBeforeCursor호출하여 지울 글자를 가져온다
         guard let last = characterBeforeCursor(), last != " " else {
-            textDocumentProxy.deleteBackward()
+            deleteBackward()
             return
         }
         //가져온 글자를 분석한다
@@ -128,24 +130,23 @@ extension KeyboardModel : KeyboardViewDelegate{
         if jong != " "{
             if isDoubleFinalConsonant(jong){//1-1.겹받침
                 let newJong = decomposeDoubleFinalConsonant(jong).0
-                textDocumentProxy.deleteBackward()
-                textDocumentProxy.insertText(String(compose(c1: cho, c2: jung, c3: newJong)))
+                deleteBackward()
+                insertText(String(compose(c1: cho, c2: jung, c3: newJong)))
             }else{//1-2.일반받침
-                textDocumentProxy.deleteBackward()
-                textDocumentProxy.insertText(String(compose(c1: cho, c2: jung, c3: " ")))
+                deleteBackward()
+                insertText(String(compose(c1: cho, c2: jung, c3: " ")))
             }
         }else if jung != " "{//2.중성까지 있는 상황
-            textDocumentProxy.deleteBackward()
-            textDocumentProxy.insertText(String(compose(c1: cho, c2: " ", c3: " ")))
+            deleteBackward()
+            insertText(String(compose(c1: cho, c2: " ", c3: " ")))
         }else{//3.초성만 있는 상황 && 공백인 상황
-            textDocumentProxy.deleteBackward()
+            deleteBackward()
         }
     }
     
     func characterBeforeCursor() -> Character? {
-        guard let character = textDocumentProxy.documentContextBeforeInput?.last else {
-          return nil
-        }
-        return character
+        let value = characterBeforeCursorClosure()
+        print("character check : \(value)")
+        return value
     }
 }

@@ -22,7 +22,7 @@ class KeyboardViewController: UIInputViewController {
     
     @IBOutlet var nextKeyboardButton: UIButton!
     
-    lazy var model: KeyboardModel = KeyboardModel(textDocumentProxy: self.textDocumentProxy)
+    var model: KeyboardModel = KeyboardModel()
     
     lazy var backView : KeyboardView = {
         let view = KeyboardView(frame: .zero)
@@ -57,7 +57,7 @@ class KeyboardViewController: UIInputViewController {
         
         // TODO: 얘는 어떻게 쓰는 건지 확인을 해봐야...
         var textColor: UIColor
-        if model.textDocumentProxy.keyboardAppearance == UIKeyboardAppearance.dark {
+        if self.textDocumentProxy.keyboardAppearance == UIKeyboardAppearance.dark {
             textColor = UIColor.white
         } else {
             textColor = UIColor.black
@@ -70,6 +70,7 @@ class KeyboardViewController: UIInputViewController {
 //LoadView를 넣으니 앱이 죽음...익스텐션은 다른가 좀 확인 필요...
 extension KeyboardViewController: Presentable {
     func initViewHierarchy() {
+        // TODO: inputView에 넣어야 할거 같은데 왜 self.view에 넣었지...
         self.view.addSubviews(backView)
         NSLayoutConstraint.activate([
             backView.topAnchor.constraint(equalTo: self.view.topAnchor),
@@ -85,11 +86,33 @@ extension KeyboardViewController: Presentable {
     }
     
     func bind() {
+        
+        // TODO: handleInputModeList 이 메소드는 뭐지...키보드익스텐션 구현 위해서 기본적으로 어딘가에서 불러야 하는 건가...
+        //전체검색 해도 안나오는데...
         backView.firstFloor.btnNext.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
         backView.firstFloor.delegate = self.model
         backView.secondFloor.delegate = self.model
         backView.thridFloor.delegate = self.model
         backView.forthFloor.delegate = self.model
+        
+        model.insertText = { [weak self] string in
+            guard let self = self else { return }
+            self.textDocumentProxy.insertText(string)
+        }
+        
+        model.deleteBackward = { [weak self] in
+            guard let self = self else { return }
+            self.textDocumentProxy.deleteBackward()
+        }
+        
+        model.characterBeforeCursorClosure = { [weak self] in
+            guard let self = self else { return nil }
+            guard let character = self.textDocumentProxy.documentContextBeforeInput?.last else {
+              return nil
+            }
+
+            return character
+        }
     }
 }
 
