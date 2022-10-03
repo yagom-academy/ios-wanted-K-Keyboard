@@ -15,27 +15,30 @@ class MainViewController: UIViewController {
         
         initUI()
         dataBinding()
-    }
 
+    }
+    
     func initUI() {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "emptyCell")
         
-//        let ItemCellNib = UINib(nibName: ItemCell.self, bundle: Bundle(for: self.classForCoder))
-//        tableView.register(ItemCellNib, forCellReuseIdentifier: ItemCell.identifier)
+        let ItemCellNib = UINib(nibName: "ItemCell", bundle: Bundle(for: self.classForCoder))
+        tableView.register(ItemCellNib, forCellReuseIdentifier: "ItemCell")
     }
-
+    
     func dataBinding() {
-
+        
     }
+    
 }
 
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return .zero
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "emptyCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as? ItemCell else { return UITableViewCell() }
         return cell
     }
+    
 }
