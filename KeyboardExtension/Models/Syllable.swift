@@ -7,49 +7,59 @@
 
 import Foundation
 
-struct Syllable {
+struct Syllable: Equatable {
     var firstConsonant: Consonant?
-    var middelVowel: Vowel?
+    var middleVowel: Vowel?
     var lastConsonant: Consonant?
+    var spacer: Spacer?
     
     var unicode: UnicodeScalar? {
         if let firstConsonantNumber = firstConsonant?.firstConsonantNumber,
-           let middelVowel {
-            let digit = 44032 + firstConsonantNumber * 21 * 28 + middelVowel.middelVowelNumber * 28 + (lastConsonant?.lastConsonantNumber ?? 0)
+           let middleVowel {
+            let digit = 44032 + firstConsonantNumber * 21 * 28 + middleVowel.middelVowelNumber * 28 + (lastConsonant?.lastConsonantNumber ?? 0)
             return UnicodeScalar(digit)
         } else if let firstConsonant = firstConsonant {
             return firstConsonant.rawValue.unicodeScalars.first
-        } else if let middelVowel {
-            return middelVowel.rawValue.unicodeScalars.first
+        } else if let middleVowel {
+            return middleVowel.rawValue.unicodeScalars.first
         } else {
             return nil
         }
     }
     
-    func recivable(_ phoneme: Phoneme) -> Bool {
-        if firstConsonant == nil {
+    mutating func receive(_ phoneme: Phoneme) -> Bool {
+        if spacer != nil {
+            return false
+        } else if lastConsonant != nil {
             if let phoneme = phoneme as? Consonant,
-               phoneme.firstConsonantNumber != nil {
+               let mergedConsonant = Consonant.mergeConsonant(preceding: lastConsonant!, trailing: phoneme) {
+                lastConsonant = mergedConsonant
                 return true
             } else {
                 return false
             }
-        } else if middelVowel == nil {
-            if phoneme is Vowel {
-                return true
-            } else {
-                return false
-            }
-        } else if lastConsonant == nil {
+        } else if middleVowel != nil {
             if let phoneme = phoneme as? Consonant,
                phoneme.lastConsonantNumber != nil {
+                lastConsonant = phoneme
+                return true
+            } else {
+                return false
+            }
+        } else if firstConsonant != nil {
+            if let phoneme = phoneme as? Vowel {
+                middleVowel = phoneme
                 return true
             } else {
                 return false
             }
         } else {
             if let phoneme = phoneme as? Consonant,
-               Consonant.mergeConsonant(preceding: lastConsonant!, trailing: phoneme) != nil {
+               phoneme.firstConsonantNumber != nil {
+                firstConsonant = phoneme
+                return true
+            } else if let phoneme = phoneme as? Vowel {
+                middleVowel = phoneme
                 return true
             } else {
                 return false

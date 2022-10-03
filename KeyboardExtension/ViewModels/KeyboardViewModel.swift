@@ -11,9 +11,10 @@ import UIKit
 
 class KeyboardViewModel {
     // MARK: Input
+    var addPhoneme: ((Phoneme) -> ())?
     
     // MARK: Output
-    var inputPhonemesSource: (([Phoneme]) -> ())?
+    var syllablesSource: (([Syllable]) -> ())?
     
     // MARK: Properties
     let phonemes: [[Phoneme]] = [
@@ -24,27 +25,29 @@ class KeyboardViewModel {
     
     var inputPhonemes = [Phoneme]() {
         didSet {
-            inputPhonemesSource?(mergeVowels(inputPhonemes))
+            syllablesSource?(mergeSyllables(mergeVowels(inputPhonemes)))
         }
     }
     
     // MARK: Life Cycle
     init() {
         bind()
-        debugPrint(mergeVowels([Consonant.ㅇ, Vowel.ㅜ, Vowel.ㅓ, Consonant.ㅅ, Vowel.ㅕ, Vowel.ㅓ, Vowel.ㅡ, Vowel.ㅣ]))
     }
     
     
     // MARK: Binding
     func bind() {
-        
+        addPhoneme = { [weak self] phoneme in
+            guard let self else { return }
+            self.inputPhonemes.append(phoneme)
+        }
     }
     
     private func mergeVowels(_ phonemes: [Phoneme]) -> [Phoneme] {
         var result = [Phoneme]()
         var buffer: Vowel? = nil
         phonemes.forEach{ phoneme in
-            if let phoneme = phoneme as? Consonant {
+            if phoneme is Consonant || phoneme is Spacer {
                 if buffer != nil {
                     result.append(buffer!)
                     result.append(phoneme)
@@ -66,15 +69,44 @@ class KeyboardViewModel {
                 }
             }
         }
+        
+        if let buffer {
+            result.append(buffer)
+        }
         return result
     }
     
     private func mergeSyllables(_ phonemes: [Phoneme]) -> [Syllable] {
         var syllables = [Syllable]()
         phonemes.forEach { phoneme in
-            if syllables.isEmpty {
-                let syllable = Syllable()
-                
+            if let phoneme = phoneme as? Consonant {
+                if syllables.isEmpty || !syllables[syllables.count - 1].receive(phoneme) {
+                    let syllable = Syllable(firstConsonant: phoneme)
+                    syllables.append(syllable)
+                }
+            } else if let phoneme = phoneme as? Vowel {
+                if syllables.isEmpty {
+                    let syllable = Syllable(middleVowel: phoneme)
+                    syllables.append(syllable)
+                } else if !syllables[syllables.count - 1].receive(phoneme) {
+                    if let lastConsonant = syllables[syllables.count - 1].lastConsonant {
+                        if let decomposedConsonants = lastConsonant.decomposeConsonant() {
+                            syllables[syllables.count - 1].lastConsonant = decomposedConsonants.0
+                            let syllable = Syllable(firstConsonant: decomposedConsonants.1, middleVowel: phoneme)
+                            syllables.append(syllable)
+                        } else {
+                            syllables[syllables.count - 1].lastConsonant = nil
+                            let syllable = Syllable(firstConsonant: lastConsonant, middleVowel: phoneme)
+                            syllables.append(syllable)
+                        }
+                    } else {
+                        let syllable = Syllable(middleVowel: phoneme)
+                        syllables.append(syllable)
+                    }
+                }
+            } else if let spacer = phoneme as? Spacer {
+                let syllable = Syllable(spacer: spacer)
+                syllables.append(syllable)
             }
         }
         return syllables

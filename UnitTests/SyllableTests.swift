@@ -19,7 +19,7 @@ final class SyllableTests: XCTestCase {
 
     func test_Syllable_unicode_꽰() throws {
         // given
-        let syllable = Syllable(firstConsonant: .ㄲ, middelVowel: .ㅙ, lastConsonant: .ㄹㅅ)
+        let syllable = Syllable(firstConsonant: .ㄲ, middleVowel: .ㅙ, lastConsonant: .ㄹㅅ)
 
         // when
         let unicode = syllable.unicode
@@ -31,7 +31,7 @@ final class SyllableTests: XCTestCase {
     
     func test_Syllable_unicode_ㅡ() throws {
         // given
-        let syllable = Syllable(middelVowel: .ㅡ)
+        let syllable = Syllable(middleVowel: .ㅡ)
         
         // when
         let unicode = syllable.unicode

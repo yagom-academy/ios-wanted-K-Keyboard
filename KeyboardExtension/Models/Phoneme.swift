@@ -75,6 +75,23 @@ enum Consonant: String, Phoneme {
         }
     }
     
+    func decomposeConsonant() -> (Consonant, Consonant)? {
+        switch self {
+        case .ㄱㅅ: return (.ㄱ, .ㅅ)
+        case .ㄴㅈ: return (.ㄴ, .ㅈ)
+        case .ㄴㅎ: return (.ㄴ, .ㅎ)
+        case .ㄹㄱ: return (.ㄹ, .ㄱ)
+        case .ㄹㅁ: return (.ㄹ, .ㅁ)
+        case .ㄹㅂ: return (.ㄹ, .ㅂ)
+        case .ㄹㅅ: return (.ㄹ, .ㅅ)
+        case .ㄹㅌ: return (.ㄹ, .ㅌ)
+        case .ㄹㅍ: return (.ㄹ, .ㅍ)
+        case .ㄹㅎ: return (.ㄹ, .ㅎ)
+        case .ㅂㅅ: return (.ㅂ, .ㅅ)
+        default: return nil
+        }
+    }
+    
     var firstConsonantNumber: Int? {
         switch self {
         case .ㄱ: return 0
@@ -202,4 +219,8 @@ enum Vowel: String, Phoneme {
         case .ㅣ: return 20
         }
     }
+}
+
+enum Spacer: String, Phoneme {
+    case space
 }
