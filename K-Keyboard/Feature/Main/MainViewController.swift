@@ -18,13 +18,14 @@ class MainViewController: UIViewController {
         
         initUI()
         dataBinding()
-    }
 
+    }
+    
     func initUI() {
-//        let ItemCellNib = UINib(nibName: ItemCell.self, bundle: Bundle(for: self.classForCoder))
-//        tableView.register(ItemCellNib, forCellReuseIdentifier: ItemCell.identifier)
+        let ItemCellNib = UINib(nibName: "ItemCell", bundle: Bundle(for: self.classForCoder))
+        tableView.register(ItemCellNib, forCellReuseIdentifier: "ItemCell")
     }
-
+    
     func dataBinding() {
         repository.fetchMainView() { dto in
             self.dto = dto
@@ -33,6 +34,7 @@ class MainViewController: UIViewController {
             }
         }
     }
+    
 }
 
 extension MainViewController: UITableViewDataSource {
@@ -88,4 +90,5 @@ extension MainViewController: UITableViewDataSource {
 //        }
         return UITableViewCell()
     }
+    
 }

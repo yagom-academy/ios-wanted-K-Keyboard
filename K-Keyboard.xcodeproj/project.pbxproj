@@ -29,6 +29,8 @@
 		C124A7E328E59D9D00372C51 /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = C124A7E028E59D9D00372C51 /* NotoSansKR-Medium.otf */; };
 		C124A7E428E59D9D00372C51 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C124A7E128E59D9D00372C51 /* NotoSansKR-Regular.otf */; };
 		C124A7E528E59D9D00372C51 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C124A7E228E59D9D00372C51 /* NotoSansKR-Bold.otf */; };
+		D8104FDA28E5A4B7007E18D5 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8104FD828E5A4B7007E18D5 /* ItemCell.swift */; };
+		D8104FDB28E5A4B7007E18D5 /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8104FD928E5A4B7007E18D5 /* ItemCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +58,8 @@
 		C124A7E028E59D9D00372C51 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
 		C124A7E128E59D9D00372C51 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
 		C124A7E228E59D9D00372C51 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
+		D8104FD828E5A4B7007E18D5 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		D8104FD928E5A4B7007E18D5 /* ItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +145,7 @@
 		C124A7C528E542A100372C51 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				D8C6F02F28E849830057438B /* CustomTableViewCell */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -201,6 +206,23 @@
 				C124A7E128E59D9D00372C51 /* NotoSansKR-Regular.otf */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		D8104FD728E5A472007E18D5 /* ItemCell */ = {
+			isa = PBXGroup;
+			children = (
+				D8104FD828E5A4B7007E18D5 /* ItemCell.swift */,
+				D8104FD928E5A4B7007E18D5 /* ItemCell.xib */,
+			);
+			path = ItemCell;
+			sourceTree = "<group>";
+		};
+		D8C6F02F28E849830057438B /* CustomTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				D8104FD728E5A472007E18D5 /* ItemCell */,
+			);
+			path = CustomTableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,6 +288,7 @@
 				63487F4128E2EA5E0033CF32 /* Assets.xcassets in Resources */,
 				63487F3F28E2EA5E0033CF32 /* Main.storyboard in Resources */,
 				C124A7E528E59D9D00372C51 /* NotoSansKR-Bold.otf in Resources */,
+				D8104FDB28E5A4B7007E18D5 /* ItemCell.xib in Resources */,
 				C124A7E428E59D9D00372C51 /* NotoSansKR-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8104FDA28E5A4B7007E18D5 /* ItemCell.swift in Sources */,
 				C119B52C28E81CD600237D02 /* SampleMainData.swift in Sources */,
 				C119B52E28E82A6300237D02 /* MainViewRepository.swift in Sources */,
 				C119B52928E7DD4300237D02 /* SectionListType.swift in Sources */,
