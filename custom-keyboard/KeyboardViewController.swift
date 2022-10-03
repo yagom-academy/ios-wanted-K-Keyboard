@@ -18,6 +18,12 @@ enum KeyType {
     
 }
 
+public func customPrint(_ str: String) {
+#if DEBUG
+    print(str)
+#endif
+}
+
 class KeyboardViewController: UIInputViewController {
     
     // TEST FLAG
@@ -213,7 +219,7 @@ class KeyboardViewController: UIInputViewController {
             if isSeparable {
                 guard let lastInput = textDocumentProxy.documentContextBeforeInput?.last else {
                     if !preChar.isEmpty { preChar.removeLast() }
-                    print("prev 1. = \(preChar)")
+                    customPrint("prev 1. = \(preChar)")
                     return
                 }
                 
@@ -221,20 +227,19 @@ class KeyboardViewController: UIInputViewController {
                 
                 guard let combined = hangulCombinater.separateJamo(String(lastInput)) else {
                     if !preChar.isEmpty { preChar.removeLast() }
-                    print("prev 2. = \(preChar)")
+                    customPrint("prev 2. = \(preChar)")
                     self.textDocumentProxy.deleteBackward()
                     return
                 }
-                print(combined)
+                customPrint(combined)
                 if !preChar.isEmpty { preChar.removeLast() }
                 preChar.append(combined)
-                //preChar.insert(combined, at: preChar.endIndex - 1)
-                print("prev 3. = \(preChar)")
+                customPrint("prev 2. = \(preChar)")
                 self.textDocumentProxy.deleteBackward()
                 self.textDocumentProxy.insertText(combined)
             } else {
                 if !preChar.isEmpty { preChar.removeLast() }
-                print("prev 4. = \(preChar)")
+                customPrint("prev 4. = \(preChar)")
                 self.textDocumentProxy.deleteBackward()
             }
             isShifted = false
@@ -251,11 +256,11 @@ class KeyboardViewController: UIInputViewController {
         case .normal:
             isSeparable = true
             if var curChar = sender.titleLabel?.text {
-            
+                
                 defer {
                     self.textDocumentProxy.insertText(curChar)
                     preChar.append(curChar)
-                    print("1. \(preChar)")
+                    customPrint("1. \(preChar)")
                     isShifted = false
                 }
                 
@@ -268,7 +273,7 @@ class KeyboardViewController: UIInputViewController {
                         if !preChar.isEmpty { preChar.removeLast() }
                         textDocumentProxy.deleteBackward()
                     }
-                    print("2. \(preChar)")
+                    customPrint("2. \(preChar)")
                 }
                 // 이전 텍스트와 연관된 수정 및 추가
                 // ex) 간ㅏ -> 가나
@@ -276,11 +281,11 @@ class KeyboardViewController: UIInputViewController {
                     textDocumentProxy.deleteBackward()
                     let replaced = hangulCombinater.replaceJamo(preChar.last!, curChar)
                     curChar = replaced[0]
-                    print("charChar: \(replaced[0])")
-                    print("preChar: \(replaced[1])")
+                    customPrint("charChar: \(replaced[0])")
+                    customPrint("preChar: \(replaced[1])")
                     if !preChar.isEmpty { preChar.removeLast() }
                     preChar.append(replaced[1])
-                    print("3. \(preChar)")
+                    customPrint("3. \(preChar)")
                     textDocumentProxy.insertText(preChar.last!)
                 }
             }
