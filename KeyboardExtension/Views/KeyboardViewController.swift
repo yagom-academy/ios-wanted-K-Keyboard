@@ -51,6 +51,7 @@ class KeyboardViewController: UIInputViewController {
         setupViews()
         buildViewHierarchy()
         self.view.setNeedsUpdateConstraints()
+        bind()
     }
     
     required init?(coder: NSCoder) {
@@ -91,6 +92,7 @@ class KeyboardViewController: UIInputViewController {
             for phoneme in lines {
                 let viewModel = PhonemeViewModel(phoneme)
                 let view = PhonemeView(viewModel: viewModel)
+                bind(phonemeViewModel: viewModel)
                 horizontalStackViews[index].addArrangedSubview(view)
             }
         }
@@ -138,7 +140,20 @@ class KeyboardViewController: UIInputViewController {
     
     // MARK: Binding
     func bind() {
-        
+        viewModel.syllablesSource = { [weak self] syllables in
+            guard let self else { return }
+            var nextText = ""
+            syllables.compactMap { $0.unicode }.forEach { nextText += String($0) }
+            self.textDocumentProxy.clearAll()
+            self.textDocumentProxy.insertText(nextText)
+        }
+    }
+    
+    func bind(phonemeViewModel viewModel: PhonemeViewModel) {
+        viewModel.propagateTap = { [weak self] phoneme in
+            guard let self else { return }
+            self.viewModel.addPhoneme?(phoneme)
+        }
     }
     
     // MARK: Text Input

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		466768AD28EAE94A00C4A82F /* UITextDocumentProxy+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466768AC28EAE94A00C4A82F /* UITextDocumentProxy+Extension.swift */; };
 		466DA36328E5A22B005E77DD /* KeyboardExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 466DA35C28E5A22B005E77DD /* KeyboardExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		466DA36B28E73D23005E77DD /* PhonemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466DA36A28E73D23005E77DD /* PhonemeView.swift */; };
 		466DA36E28E73DC4005E77DD /* PhonemeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466DA36D28E73DC4005E77DD /* PhonemeViewModel.swift */; };
@@ -64,6 +65,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		466768AC28EAE94A00C4A82F /* UITextDocumentProxy+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextDocumentProxy+Extension.swift"; sourceTree = "<group>"; };
 		466DA35C28E5A22B005E77DD /* KeyboardExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = KeyboardExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		466DA36028E5A22B005E77DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		466DA36A28E73D23005E77DD /* PhonemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhonemeView.swift; sourceTree = "<group>"; };
@@ -113,12 +115,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		466768AB28EAE93D00C4A82F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				466768AC28EAE94A00C4A82F /* UITextDocumentProxy+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		466DA35D28E5A22B005E77DD /* KeyboardExtension */ = {
 			isa = PBXGroup;
 			children = (
 				466DA37028E73DEE005E77DD /* Views */,
 				466DA36F28E73DEA005E77DD /* Models */,
 				466DA36C28E73DB9005E77DD /* ViewModels */,
+				466768AB28EAE93D00C4A82F /* Extensions */,
 				466DA36028E5A22B005E77DD /* Info.plist */,
 			);
 			path = KeyboardExtension;
@@ -347,6 +358,7 @@
 				466DA38228E7CF5A005E77DD /* Syllable.swift in Sources */,
 				466DA37228E73E02005E77DD /* Phoneme.swift in Sources */,
 				466DA36E28E73DC4005E77DD /* PhonemeViewModel.swift in Sources */,
+				466768AD28EAE94A00C4A82F /* UITextDocumentProxy+Extension.swift in Sources */,
 				466DA37628E740E4005E77DD /* UIFont+Extensions.swift in Sources */,
 				466DA37D28E74226005E77DD /* KeyboardViewController.swift in Sources */,
 				466DA36B28E73D23005E77DD /* PhonemeView.swift in Sources */,

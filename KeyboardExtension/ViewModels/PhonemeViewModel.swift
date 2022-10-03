@@ -11,9 +11,11 @@ import UIKit
 
 class PhonemeViewModel {
     // MARK: Input
+    var didTap: (() -> ())?
     
     // MARK: Output
     var phonemeSource: ((Phoneme) -> ())?
+    var propagateTap: ((Phoneme) -> ())?
     
     // MARK: Properties
     var phoneme: Phoneme {
@@ -31,6 +33,9 @@ class PhonemeViewModel {
     
     // MARK: Binding
     func bind() {
-        
+        didTap = { [weak self] in
+            guard let self else { return }
+            self.propagateTap?(self.phoneme)
+        }
     }
 }

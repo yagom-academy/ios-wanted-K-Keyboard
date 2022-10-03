@@ -54,6 +54,7 @@ class PhonemeView: UIView {
         self.layer.shadowOpacity = 0.4
         self.layer.cornerRadius = 5
         self.phonemeLabel.text = viewModel.phoneme.rawValue
+        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTap)))
     }
     
     
@@ -84,5 +85,10 @@ class PhonemeView: UIView {
             guard let self else { return }
             self.phonemeLabel.text = phoneme.rawValue
         }
+    }
+    
+    // MARK: Action
+    @objc func didTap() {
+        viewModel.didTap?()
     }
 }
