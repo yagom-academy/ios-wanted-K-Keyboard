@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33A8839428EADED400FE9216 /* Hangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A8839328EADED400FE9216 /* Hangle.swift */; };
+		33A8839528EADFB800FE9216 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63487F4028E2EA5E0033CF32 /* Assets.xcassets */; };
 		3668F90028E9BFFB0093E04D /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3668F8FF28E9BFFB0093E04D /* KeyboardViewController.swift */; };
 		3668F90428E9BFFB0093E04D /* CustomKeyboard.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3668F8FD28E9BFFB0093E04D /* CustomKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3668F90B28E9C06A0093E04D /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3668F90A28E9C06A0093E04D /* UIView+Extension.swift */; };
@@ -76,6 +78,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		33A8839328EADED400FE9216 /* Hangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hangle.swift; sourceTree = "<group>"; };
 		3668F8FD28E9BFFB0093E04D /* CustomKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CustomKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		3668F8FF28E9BFFB0093E04D /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		3668F90128E9BFFB0093E04D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -157,6 +160,7 @@
 			children = (
 				3668F90A28E9C06A0093E04D /* UIView+Extension.swift */,
 				3668F90C28E9C08A0093E04D /* NSLayoutConstraint+Extension.swift */,
+				33A8839328EADED400FE9216 /* Hangle.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -409,6 +413,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33A8839528EADFB800FE9216 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,6 +435,7 @@
 			files = (
 				3668F91928E9C1840093E04D /* ThirdFloor.swift in Sources */,
 				3668F91728E9C1710093E04D /* FourthFloor.swift in Sources */,
+				33A8839428EADED400FE9216 /* Hangle.swift in Sources */,
 				3668F91528E9C15C0093E04D /* KeyboardButton.swift in Sources */,
 				3668F90D28E9C08A0093E04D /* NSLayoutConstraint+Extension.swift in Sources */,
 				3668F90B28E9C06A0093E04D /* UIView+Extension.swift in Sources */,
