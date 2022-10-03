@@ -62,6 +62,9 @@ extension FirstViewController {
             firstFooterView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             firstFooterView.heightAnchor.constraint(equalToConstant: 64)
         ])
+
+        firstTableView.register(FifthSectionHeaderView.self, forHeaderFooterViewReuseIdentifier: FifthSectionHeaderView.identifier)
+
     }
 }
 
@@ -71,7 +74,7 @@ extension FirstViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 1
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -130,6 +133,19 @@ extension FirstViewController: UITableViewDelegate, UITableViewDataSource {
 
             cell.backgroundColor = .black
             return cell
+        }
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        switch section {
+        case 4:
+            guard let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: FifthSectionHeaderView.identifier) as? FifthSectionHeaderView else {
+                return UIView()
+            }
+
+            return cell
+        default:
+            return UIView()
         }
     }
 }

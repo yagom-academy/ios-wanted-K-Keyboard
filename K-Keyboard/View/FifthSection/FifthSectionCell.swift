@@ -34,20 +34,17 @@ class FifthSectionCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont(name: Const.Font.notoRegular, size: 12)
         label.textColor = UIColor(red: 0.569, green: 0.573, blue: 0.6, alpha: 1)
-        label.numberOfLines = 0
-        label.sizeToFit()
 
         return label
     }()
 
-    let reportButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("신고", for: .normal)
-        button.setTitleColor(UIColor(red: 0.569, green: 0.573, blue: 0.6, alpha: 1)
-                             , for: .normal)
-        button.titleLabel?.font = UIFont(name: Const.Font.notoBold, size: 12)
+    let reportLabel: UILabel = {
+        let label = UILabel()
+        label.text = "신고"
+        label.font = UIFont(name: Const.Font.notoBold, size: 12)
+        label.textColor = UIColor(red: 0.569, green: 0.573, blue: 0.6, alpha: 1)
 
-        return button
+        return label
     }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -74,15 +71,11 @@ class FifthSectionCell: UITableViewCell {
 
 extension FifthSectionCell {
     func addViews() {
-        [profile, creatorLabel, commentView, timeLabel, reportButton].forEach { contentView.addSubview($0) }
+        [profile, creatorLabel, commentView, timeLabel, reportLabel].forEach { contentView.addSubview($0) }
     }
 
     func setConstraints() {
-        [profile, creatorLabel, commentView, timeLabel, reportButton].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
-
-        // FIXME: - 간격 조정하기
-        let timeBottom = timeLabel.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor)
-        timeBottom.priority = UILayoutPriority(999)
+        [profile, creatorLabel, commentView, timeLabel, reportLabel].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
 
         NSLayoutConstraint.activate([
             profile.topAnchor.constraint(equalTo: contentView.topAnchor),
@@ -96,13 +89,11 @@ extension FifthSectionCell {
             commentView.topAnchor.constraint(equalTo: contentView.topAnchor),
             commentView.leadingAnchor.constraint(equalTo: profile.trailingAnchor, constant: 16),
             commentView.widthAnchor.constraint(lessThanOrEqualToConstant: contentView.frame.width - 108),
+            commentView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -40),
             timeLabel.topAnchor.constraint(equalTo: commentView.bottomAnchor, constant: 6),
             timeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 98),
-//            timeLabel.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor),
-            timeBottom,
-            reportButton.topAnchor.constraint(equalTo: commentView.bottomAnchor, constant: 6),
-            reportButton.leadingAnchor.constraint(equalTo: timeLabel.trailingAnchor, constant: 12),
-            reportButton.centerYAnchor.constraint(equalTo: timeLabel.centerYAnchor)
+            reportLabel.topAnchor.constraint(equalTo: commentView.bottomAnchor, constant: 6),
+            reportLabel.leadingAnchor.constraint(equalTo: timeLabel.trailingAnchor, constant: 12),
         ])
     }
 }
