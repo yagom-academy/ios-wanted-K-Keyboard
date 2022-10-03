@@ -10,13 +10,15 @@ import UIKit
 class TagCollectionView: UICollectionView {
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         let collectionViewFlowLayout: UICollectionViewFlowLayout = {
-            let layout = UICollectionViewFlowLayout()
-            layout.scrollDirection = .horizontal
-            layout.minimumLineSpacing = 8.0
-            layout.minimumInteritemSpacing = 0
+            let layout = LeftAlignedCollectionViewFlowLayout()
+            layout.minimumLineSpacing = 8
+            layout.minimumInteritemSpacing = 4.12
+            layout.sectionInset = UIEdgeInsets(top: 5, left: 2, bottom: 5, right: 2)
             return layout
         }()
+        
         super.init(frame: .zero, collectionViewLayout: collectionViewFlowLayout)
+        self.isScrollEnabled = false
     }
     
     @available(*, unavailable)
@@ -25,3 +27,22 @@ class TagCollectionView: UICollectionView {
     }
 }
 
+class LeftAlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        let attributes = super.layoutAttributesForElements(in: rect)
+        
+        var leftMargin = sectionInset.left
+        var maxY: CGFloat = -1.0
+        attributes?.forEach { layoutAttribute in
+            if layoutAttribute.representedElementCategory == .cell {
+                if layoutAttribute.frame.origin.y >= maxY {
+                    leftMargin = sectionInset.left
+                }
+                layoutAttribute.frame.origin.x = leftMargin
+                leftMargin += layoutAttribute.frame.width + minimumInteritemSpacing
+                maxY = max(layoutAttribute.frame.maxY, maxY)
+            }
+        }
+        return attributes
+    }
+}

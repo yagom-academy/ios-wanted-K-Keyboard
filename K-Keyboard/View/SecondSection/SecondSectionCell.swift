@@ -10,7 +10,17 @@ import UIKit
 class SecondSectionCell: UITableViewCell {
 
     static let identifier = "section2"
-    var items: [String] = ["이벤트", "캐릭터", "새", "동물", "앙증맞은", "동글"]
+    var items: [String] = ["이벤트", "캐릭터", "새", "동물", "앙증맞은", "동글동글"]
+    
+    let tagLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = UIColor(red: 0.259, green: 0.267, blue: 0.298, alpha: 1)
+        label.font = UIFont(name: "NotoSansKR-Bold", size: 16)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineHeightMultiple = 1.01
+        label.attributedText = NSMutableAttributedString(string: "태그", attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        return label
+    }()
     
     lazy var tagCollectionView: UICollectionView = TagCollectionView()
     
@@ -19,9 +29,8 @@ class SecondSectionCell: UITableViewCell {
         addViews()
         setConstraints()
         
+        self.tagCollectionView.delegate = self
         self.tagCollectionView.dataSource = self
-        
-        self.contentView.addSubview(self.tagCollectionView)
     }
     
     override func prepareForReuse() {
@@ -36,19 +45,22 @@ class SecondSectionCell: UITableViewCell {
 
 extension SecondSectionCell {
     func addViews() {
-        [tagCollectionView].forEach {
+        [tagLabel, tagCollectionView].forEach {
             contentView.addSubview($0)
         }
     }
+    
     func setConstraints() {
-        [tagCollectionView].forEach {
+        [tagLabel, tagCollectionView].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
         NSLayoutConstraint.activate([
-            tagCollectionView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-            tagCollectionView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-            tagCollectionView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            tagLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16),
+            tagLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
+            tagCollectionView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16),
+            tagCollectionView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16),
+            tagCollectionView.topAnchor.constraint(equalTo: tagLabel.bottomAnchor, constant: 16),
             tagCollectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
@@ -77,13 +89,14 @@ extension SecondSectionCell: UICollectionViewDelegateFlowLayout {
             let label = UILabel()
             label.font = UIFont(name: "NotoSansKR-Medium", size: 14)
             label.text = self.items[indexPath.row]
+            label.sizeToFit()
             return label
         }()
-        
+
         let size = label.frame.size
-        let widthMargin = 10.3
-        let heightMargin = 4.0
-        
+        let widthMargin: CGFloat = 10.3
+        let heightMargin: CGFloat = 4.0
+
         return CGSize(width: size.width + (2 * widthMargin), height: size.height + (2 * heightMargin))
     }
 }

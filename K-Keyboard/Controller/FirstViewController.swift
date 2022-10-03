@@ -31,8 +31,7 @@ class FirstViewController: UIViewController {
         self.view.backgroundColor = .white
         firstTableView.delegate = self
         firstTableView.dataSource = self
-        firstTableView.estimatedRowHeight = UITableView.automaticDimension
-        firstTableView.rowHeight = UITableView.automaticDimension
+        firstTableView.separatorStyle = .none
         
         addViews()
         setConstraints()
@@ -73,6 +72,16 @@ extension FirstViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.section {
+        case 1:
+            // MARK: Tag 수에 따라서 높이 계산해서 따로 설정해줘야 함
+            return CGFloat(100)
+        default:
+            return UITableView.automaticDimension
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
