@@ -78,7 +78,7 @@ extension FirstViewController: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.section {
         case 1:
             // MARK: Tag 수에 따라서 높이 계산해서 따로 설정해줘야 함
-            return CGFloat(100)
+            return CGFloat(144)
         default:
             return UITableView.automaticDimension
         }

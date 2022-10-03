@@ -13,7 +13,6 @@ class TagCollectionView: UICollectionView {
             let layout = LeftAlignedCollectionViewFlowLayout()
             layout.minimumLineSpacing = 8
             layout.minimumInteritemSpacing = 4.12
-            layout.sectionInset = UIEdgeInsets(top: 5, left: 2, bottom: 5, right: 2)
             return layout
         }()
         
