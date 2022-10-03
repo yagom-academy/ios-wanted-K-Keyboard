@@ -62,6 +62,9 @@ extension FirstViewController {
             firstFooterView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             firstFooterView.heightAnchor.constraint(equalToConstant: 64)
         ])
+
+        firstTableView.register(FifthSectionHeaderView.self, forHeaderFooterViewReuseIdentifier: FifthSectionHeaderView.identifier)
+
     }
 }
 
@@ -89,6 +92,7 @@ extension FirstViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.register(FirstSectionCell.self, forCellReuseIdentifier: FirstSectionCell.identifier)
         tableView.register(SecondSectionCell.self, forCellReuseIdentifier: SecondSectionCell.identifier)
         tableView.register(FourthSectionCell.self, forCellReuseIdentifier: FourthSectionCell.identifier)
+        tableView.register(FifthSectionCell.self, forCellReuseIdentifier: FifthSectionCell.identifier)
 
         switch indexPath.section {
         case 0:
@@ -116,6 +120,12 @@ extension FirstViewController: UITableViewDelegate, UITableViewDataSource {
             }
 
             return cell
+        case 4:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: FifthSectionCell.identifier, for: indexPath) as? FifthSectionCell else {
+                return UITableViewCell()
+            }
+
+            return cell
         default:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: TestTableViewCellOne.identifier, for: indexPath) as? TestTableViewCellOne else {
                 return UITableViewCell()
@@ -123,6 +133,19 @@ extension FirstViewController: UITableViewDelegate, UITableViewDataSource {
 
             cell.backgroundColor = .black
             return cell
+        }
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        switch section {
+        case 4:
+            guard let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: FifthSectionHeaderView.identifier) as? FifthSectionHeaderView else {
+                return UIView()
+            }
+
+            return cell
+        default:
+            return UIView()
         }
     }
 }
