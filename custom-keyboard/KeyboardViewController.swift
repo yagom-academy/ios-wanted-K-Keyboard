@@ -212,6 +212,7 @@ class KeyboardViewController: UIInputViewController {
             } else {
                 self.textDocumentProxy.deleteBackward()
             }
+            preChar = ""
             isShifted = false
         case .enter:
             self.textDocumentProxy.insertText("\n")
