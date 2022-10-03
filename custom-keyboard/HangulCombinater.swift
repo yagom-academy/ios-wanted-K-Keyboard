@@ -91,7 +91,7 @@ class HangulCombinater {
             // MARK: 종성 있음.
             if jamo.last! == " " {
                 // 자음은 종성에 결합, 모음은 모음끼리 결합.
-                if isChosung(curChar) {
+                if isJongsung(curChar) {
                     return [getCombinedJamo(jamo[0], jamo[1], curChar)]
                 }
                 else {
@@ -149,6 +149,10 @@ class HangulCombinater {
     
     func isJungsung(_ char: String) -> Bool {
         return (charList[.jung]!.firstIndex(where: { $0 == char }) != nil)
+    }
+    
+    func isJongsung(_ char: String) -> Bool {
+        return (charList[.jong]!.firstIndex(where: { $0 == char }) != nil)
     }
     
     func getCombinedJamo(_ cho: String, _ jung: String, _ jong: String = " ") -> String {
