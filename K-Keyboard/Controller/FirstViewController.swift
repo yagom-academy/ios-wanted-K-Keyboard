@@ -31,8 +31,7 @@ class FirstViewController: UIViewController {
         self.view.backgroundColor = .white
         firstTableView.delegate = self
         firstTableView.dataSource = self
-        firstTableView.estimatedRowHeight = UITableView.automaticDimension
-        firstTableView.rowHeight = UITableView.automaticDimension
+        firstTableView.separatorStyle = .none
         
         addViews()
         setConstraints()
@@ -74,10 +73,21 @@ extension FirstViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.section {
+        case 1:
+            // MARK: Tag 수에 따라서 높이 계산해서 따로 설정해줘야 함
+            return CGFloat(144)
+        default:
+            return UITableView.automaticDimension
+        }
+    }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         tableView.register(TestTableViewCellOne.self, forCellReuseIdentifier: TestTableViewCellOne.identifier)
         tableView.register(FirstSectionCell.self, forCellReuseIdentifier: FirstSectionCell.identifier)
+        tableView.register(SecondSectionCell.self, forCellReuseIdentifier: SecondSectionCell.identifier)
         tableView.register(FourthSectionCell.self, forCellReuseIdentifier: FourthSectionCell.identifier)
 
         switch indexPath.section {
@@ -88,6 +98,12 @@ extension FirstViewController: UITableViewDelegate, UITableViewDataSource {
 
             return cell
         case 1:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: SecondSectionCell.identifier, for: indexPath) as? SecondSectionCell else {
+                return UITableViewCell()
+            }
+            
+            return cell
+        case 2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: TestTableViewCellOne.identifier, for: indexPath) as? TestTableViewCellOne else {
                 return UITableViewCell()
             }
