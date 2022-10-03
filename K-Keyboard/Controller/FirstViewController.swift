@@ -18,11 +18,57 @@ class FirstViewController: UIViewController {
     }()
     
     let firstTableView = UITableView()
+
     let firstFooterView: UIView = {
         let view = UIView()
-        view.backgroundColor = .green
+        view.backgroundColor = .white
 
         return view
+    }()
+
+    let gemImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "gem")
+
+        return imageView
+    }()
+
+    let gemPrice: UILabel = {
+        let label = UILabel()
+        label.text = "5"
+        label.font = UIFont(name: Const.Font.notoBold, size: 16)
+        label.textColor = UIColor(red: 0.49, green: 0.788, blue: 0.988, alpha: 1)
+
+        return label
+    }()
+
+    let gemCount: UILabel = {
+        let label = UILabel()
+        label.text = "0젬 보유 중"
+        label.font = UIFont(name: Const.Font.notoMedium, size: 12)
+        label.textColor = UIColor(red: 1, green: 0.255, blue: 0.49, alpha: 1)
+
+        let text = label.text!
+        let attributeStr = NSMutableAttributedString(string: text)
+
+        attributeStr.addAttribute(.foregroundColor,
+                                  value: UIColor(red: 0.667, green: 0.671, blue: 0.702, alpha: 1),
+                                  range: (text as NSString).range(of: "보유 중"))
+
+        label.attributedText = attributeStr
+
+        return label
+    }()
+
+    let buyButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("구매하기", for: .normal)
+        button.titleLabel?.font = UIFont(name: Const.Font.notoBold, size: 14)
+        button.setTitleColor(.white, for: .normal)
+        button.setBackgroundImage(UIImage(named: "pinkButton"), for: .normal)
+        button.titleLabel?.baselineAdjustment = .alignCenters
+
+        return button
     }()
 
     override func viewDidLoad() {
@@ -40,13 +86,14 @@ class FirstViewController: UIViewController {
 
 extension FirstViewController {
     func addViews() {
+        [gemImage, gemPrice, gemCount, buyButton].forEach { firstFooterView.addSubview($0) }
         [backButton, firstTableView, firstFooterView].forEach { self.view.addSubview($0) }
+        buyButton.addTarget(self, action: #selector(buyButtonPressed), for: .touchUpInside)
     }
 
     func setConstraints() {
+        [gemImage, gemPrice, gemCount, buyButton].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
         [backButton, firstTableView, firstFooterView].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
-
-        firstFooterView.backgroundColor = .darkGray
 
         NSLayoutConstraint.activate([
             backButton.widthAnchor.constraint(equalToConstant: 24),
@@ -60,11 +107,27 @@ extension FirstViewController {
             firstFooterView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             firstFooterView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             firstFooterView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            firstFooterView.heightAnchor.constraint(equalToConstant: 64)
+            firstFooterView.heightAnchor.constraint(equalToConstant: 64),
+
+            gemPrice.topAnchor.constraint(equalTo: firstFooterView.topAnchor, constant: 11),
+            gemPrice.leadingAnchor.constraint(equalTo: firstFooterView.leadingAnchor, constant: 36),
+            gemPrice.bottomAnchor.constraint(equalTo: firstFooterView.bottomAnchor, constant: -29),
+            gemImage.centerYAnchor.constraint(equalTo: gemPrice.centerYAnchor),
+            gemImage.trailingAnchor.constraint(equalTo: gemPrice.leadingAnchor, constant: -6.33),
+            gemCount.leadingAnchor.constraint(equalTo: firstFooterView.leadingAnchor, constant: 16),
+            gemCount.topAnchor.constraint(equalTo: gemPrice.bottomAnchor),
+            gemCount.bottomAnchor.constraint(equalTo: firstFooterView.bottomAnchor, constant: -11),
+            buyButton.topAnchor.constraint(equalTo: firstFooterView.topAnchor, constant: 12),
+            buyButton.trailingAnchor.constraint(equalTo: firstFooterView.trailingAnchor, constant: -16),
+            buyButton.bottomAnchor.constraint(equalTo: firstFooterView.bottomAnchor, constant: -12),
+            buyButton.widthAnchor.constraint(equalToConstant: 144)
         ])
 
         firstTableView.register(FifthSectionHeaderView.self, forHeaderFooterViewReuseIdentifier: FifthSectionHeaderView.identifier)
+    }
 
+    @objc func buyButtonPressed(_ sender: UIButton) {
+        print("button pressed")
     }
 }
 
@@ -161,3 +224,34 @@ class TestTableViewCellOne: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+#if canImport(SwiftUI) && DEBUG
+import SwiftUI
+extension UIViewController {
+    struct ViewControllerPreview: UIViewControllerRepresentable {
+        let viewController: UIViewController
+
+        func makeUIViewController(context: Context) -> UIViewController {
+            return viewController
+        }
+
+        func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+
+        }
+    }
+
+    func showPreview() -> some View {
+        ViewControllerPreview(viewController: self)
+    }
+}
+#endif
+
+#if canImport(SwiftUI) && DEBUG
+struct FirstVC_Preview: PreviewProvider {
+    static var previews: some View {
+        FirstViewController().showPreview()
+    }
+}
+#endif
+
+
