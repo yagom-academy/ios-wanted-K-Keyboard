@@ -26,20 +26,9 @@ public func customPrint(_ str: String) {
 
 class KeyboardViewController: UIInputViewController {
     
-    // TEST FLAG
-    
-    var nextKeyboardButton: CustomButton!
-    var spaceButton: CustomButton!
-    var shiftButton: CustomButton!
-    var enterButton: CustomButton!
-    var deleteButton: CustomButton!
-    var numberLineButtons: [CustomButton]!
-    var topLineButton: [CustomButton]! //"ㅂ,ㅈ,ㄷ,ㄱ,ㅅ,ㅛ,ㅕ,ㅑ,ㅐ,ㅔ
-    var middleLineButtons: [CustomButton]! //"ㅁ,ㄴ,ㅇ,ㄹ,ㅎ,ㅗ,ㅓ,ㅏ,ㅣ
-    var lastLineButtons: [CustomButton]! //"ㅋ,ㅌ,ㅊ,ㅍ,ㅠ,ㅜ,ㅡ
-    var shortCutButton: CustomButton! // 단축키
-    var shortCutList: [String] = ["ㅋㅋㅋㅋ","테스트","휘양","안녕하세요"] // 단축어가 담길 변수
-    
+    let mainView = UIView()
+    let favoriteSentenceView = UIView()
+    let keyboardView = KeyboardView()
     /// 직전 입력 텍스트가 담길 변수
     var preChar: [String] = []
     /// backward시 자음, 모음 분해가능 여부
@@ -52,39 +41,89 @@ class KeyboardViewController: UIInputViewController {
         }
     }
     
+    
     func setup() {
         
-        self.numberLineButtons = self.makeButtons(keyboardLine: .number)
-        self.topLineButton = self.makeButtons(keyboardLine: .qwerty)
-        self.middleLineButtons = self.makeButtons(keyboardLine: .asdfgh)
-        self.lastLineButtons = self.makeButtons(keyboardLine: .zxcvbn)
+        //test view
+        favoriteSentenceView.backgroundColor = .cyan
         
-        self.nextKeyboardButton = CustomButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        self.spaceButton = CustomButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40), keyType: .space)
-        self.shiftButton = CustomButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40), keyType: .shift)
-        self.enterButton = CustomButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40), keyType: .enter)
-        self.deleteButton = CustomButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40), keyType: .delete)
-        self.shortCutButton = CustomButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40), keyType: .shortcut)
-        self.setButtonsLayout()
-        
-        self.shiftButton.setTitle("⇧", for: .normal)
-        self.deleteButton.setTitle("", for: .normal)
-        self.spaceButton.setTitle("space", for: .normal)
-        self.enterButton.setTitle("enter", for: .normal)
-        self.shortCutButton.setTitle(shortCutList[0], for: .normal)
-        self.nextKeyboardButton.setImage(UIImage(systemName: "globe"), for: .normal)
-        self.deleteButton.setImage(UIImage(systemName: "delete.backward"), for: .normal)
-        
-        self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
-        self.shiftButton.addTarget(self, action: #selector(keyboardButtonClicked), for: .touchUpInside)
-        self.deleteButton.addTarget(self, action: #selector(keyboardButtonClicked), for: .touchUpInside)
-        self.spaceButton.addTarget(self, action: #selector(keyboardButtonClicked), for: .touchUpInside)
-        self.enterButton.addTarget(self, action: #selector(keyboardButtonClicked), for: .touchUpInside)
-        self.shortCutButton.addTarget(self, action: #selector(keyboardButtonClicked), for: .touchUpInside)
-        self.shortCutButton.addMenu(keyTitle: shortCutList) { menu in
-            
-            self.shortCutButton.setTitle(menu.title, for: .normal)
+        //버튼에 action handler 추가
+        [keyboardView.numberLineButtons, keyboardView.topLineButton, keyboardView.middleLineButtons, keyboardView.lastLineButtons].forEach {
+            addButtonHandler($0)
         }
+        [keyboardView.shiftButton, keyboardView.deleteButton,keyboardView.spaceButton, keyboardView.enterButton, keyboardView.shortCutButton].forEach {
+            $0.addTarget(self, action: #selector(keyboardButtonClicked(_:)), for: .touchUpInside)
+        }
+        keyboardView.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
+
+    }
+    
+    func setupConstraints() {
+        
+        //툴바메뉴에 들어갈 버튼
+        var buttons: [UIButton] = []
+        for i in 0...5 {
+            let button = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 20))
+            switch i {
+            case 0:
+                button.backgroundColor = .red
+                button.tag = i
+                button.addTarget(self, action: #selector(toolBarButtonClicked), for: .touchUpInside)
+            case 1:
+                button.backgroundColor = .green
+                button.tag = i
+                button.addTarget(self, action: #selector(toolBarButtonClicked), for: .touchUpInside)
+            case 2: button.backgroundColor = .blue
+            case 3: button.backgroundColor = .yellow
+            case 4: button.backgroundColor = .brown
+            case 5: button.backgroundColor = .cyan
+            default:
+                button.backgroundColor = .black
+            }
+            buttons.append(button)
+        }
+        let stack = UIStackView(arrangedSubviews: buttons)
+        stack.alignment = .fill
+        stack.distribution = .fillEqually
+        stack.spacing = 4
+        stack.axis = .horizontal
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(stack)
+        
+        //test
+        self.view.addSubview(favoriteSentenceView)
+        favoriteSentenceView.isHidden = true
+        self.view.addSubview(keyboardView)
+        NSLayoutConstraint.activate([
+            
+            stack.topAnchor.constraint(equalTo: view.topAnchor),
+            stack.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            stack.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            stack.heightAnchor.constraint(equalToConstant: 20),
+            //test
+            favoriteSentenceView.topAnchor.constraint(equalTo: stack.bottomAnchor),
+            favoriteSentenceView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            favoriteSentenceView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            favoriteSentenceView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            keyboardView.topAnchor.constraint(equalTo: stack.bottomAnchor),
+            keyboardView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            keyboardView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            keyboardView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        favoriteSentenceView.translatesAutoresizingMaskIntoConstraints = false
+        keyboardView.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    func addButtonHandler(_ buttons: [CustomButton]) {
+        
+        for button in buttons {
+            button.addTarget(self, action: #selector(keyboardButtonClicked(_:)), for: .touchUpInside)
+        }
+    }
+    
+    override func loadView() {
+        self.view = mainView
     }
     
     override func updateViewConstraints() {
@@ -95,6 +134,8 @@ class KeyboardViewController: UIInputViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        setupConstraints()
+        self.view.backgroundColor = .systemGray4
         
     }
     
@@ -116,96 +157,25 @@ class KeyboardViewController: UIInputViewController {
         } else {
             textColor = UIColor.black
         }
-        self.nextKeyboardButton.setTitleColor(textColor, for: [])
+        keyboardView.nextKeyboardButton.setTitleColor(textColor, for: [])
     }
     
-    func setButtonsLayout() {
-        let numberLineStackView = makeStackView(buttons: numberLineButtons)
-        let topLineButton = makeStackView(buttons: topLineButton)
-        let middleLineButton = makeStackView(buttons: middleLineButtons)
-        let lastLineButton = makeStackView(buttons: lastLineButtons)
+    @objc func toolBarButtonClicked(_ sender: UIButton){
         
-        let lastLineStackView = UIStackView(arrangedSubviews: [shiftButton, lastLineButton, deleteButton])
-        lastLineStackView.alignment = .fill
-        lastLineStackView.axis = .horizontal
-        lastLineStackView.distribution = .fill
-        lastLineStackView.spacing = 16
-        lastLineStackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        let funcLineStackView = UIStackView(arrangedSubviews: [nextKeyboardButton, shortCutButton, spaceButton, enterButton])
-        funcLineStackView.alignment = .fill
-        funcLineStackView.axis = .horizontal
-        funcLineStackView.distribution = .fill
-        funcLineStackView.spacing = 4
-        funcLineStackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.view.addSubview(numberLineStackView)
-        self.view.addSubview(topLineButton)
-        self.view.addSubview(middleLineButton)
-        self.view.addSubview(lastLineStackView)
-        self.view.addSubview(funcLineStackView)
-        
-        let safeGuide = self.view.safeAreaLayoutGuide
-        NSLayoutConstraint.activate([
-            numberLineStackView.topAnchor.constraint(equalTo: safeGuide.topAnchor, constant: 6),
-            numberLineStackView.leadingAnchor.constraint(equalTo: safeGuide.leadingAnchor, constant: 4),
-            numberLineStackView.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: -4),
-            numberLineStackView.heightAnchor.constraint(equalToConstant: 40),
-            
-            topLineButton.topAnchor.constraint(equalTo: numberLineStackView.bottomAnchor, constant: 6),
-            topLineButton.leadingAnchor.constraint(equalTo: safeGuide.leadingAnchor,constant: 4),
-            topLineButton.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: -4),
-            topLineButton.heightAnchor.constraint(equalToConstant: 40),
-            
-            middleLineButton.topAnchor.constraint(equalTo: topLineButton.bottomAnchor, constant: 6),
-            middleLineButton.leadingAnchor.constraint(equalTo: safeGuide.leadingAnchor,constant: 24),
-            middleLineButton.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: -24),
-            middleLineButton.heightAnchor.constraint(equalToConstant: 40),
-            
-            shiftButton.widthAnchor.constraint(equalToConstant: 45),
-            deleteButton.widthAnchor.constraint(equalToConstant: 45),
-            
-            lastLineStackView.topAnchor.constraint(equalTo: middleLineButton.bottomAnchor, constant: 6),
-            lastLineStackView.leadingAnchor.constraint(equalTo: safeGuide.leadingAnchor,constant: 4),
-            lastLineStackView.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: -4),
-            lastLineStackView.heightAnchor.constraint(equalToConstant: 40),
-            
-            
-            nextKeyboardButton.widthAnchor.constraint(equalToConstant: 40),
-            nextKeyboardButton.heightAnchor.constraint(equalToConstant: 40),
-            enterButton.widthAnchor.constraint(equalToConstant: 92),
-            shortCutButton.widthAnchor.constraint(equalToConstant: 44),
-            
-            funcLineStackView.topAnchor.constraint(equalTo: lastLineStackView.bottomAnchor, constant: 6),
-            funcLineStackView.leadingAnchor.constraint(equalTo: safeGuide.leadingAnchor, constant: 4),
-            funcLineStackView.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor, constant: -4),
-            funcLineStackView.bottomAnchor.constraint(equalTo: safeGuide.bottomAnchor)
-        ])
-    }
-    
-    func makeStackView(buttons:[CustomButton]) -> UIStackView {
-        let stack = UIStackView(arrangedSubviews: buttons)
-        stack.alignment = .fill
-        stack.distribution = .fillEqually
-        stack.spacing = 4
-        stack.axis = .horizontal
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
-    }
-    
-    func makeButtons(keyboardLine: KeyboardLine) -> [CustomButton] {
-        
-        var buttons = [CustomButton]()
-        
-        let list = KeyboardCharacter.getLineText(keyboardLine: keyboardLine)
-        for character in list  {
-            let button = CustomButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-            button.setTitle(character, for: .normal)
-            button.addTarget(self, action: #selector(keyboardButtonClicked(_:)), for: .touchUpInside)
-            buttons.append(button)
+        switch sender.tag {
+        case 0:
+            keyboardView.isHidden = false
+            favoriteSentenceView.isHidden = true
+        case 1:
+            keyboardView.isHidden = true
+            favoriteSentenceView.isHidden = false
+        default:
+            keyboardView.isHidden = false
+            favoriteSentenceView.isHidden = false
         }
-        return buttons
+        //self.view.updateConstraints()
     }
+    
     
     @objc func keyboardButtonClicked(_ sender: CustomButton) {
         
@@ -300,7 +270,7 @@ class KeyboardViewController: UIInputViewController {
     
     func changedShift(){
         if isShifted {
-            for key in self.topLineButton {
+            for key in keyboardView.topLineButton {
                 let character = key.titleLabel?.text
                 switch character {
                 case "ㅂ":
@@ -321,7 +291,7 @@ class KeyboardViewController: UIInputViewController {
                 }
             }
         } else {
-            for key in self.topLineButton {
+            for key in keyboardView.topLineButton {
                 let character = key.titleLabel?.text
                 switch character {
                 case "ㅃ":

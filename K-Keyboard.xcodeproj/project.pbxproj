@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B0A896128EB6FC40098034D /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0A896028EB6FC40098034D /* KeyboardView.swift */; };
+		0B0A896428EB72090098034D /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0A896028EB6FC40098034D /* KeyboardView.swift */; };
 		0B784F6428E6BDB4007BA390 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B784F6328E6BDB4007BA390 /* KeyboardViewController.swift */; };
 		0B784F6828E6BDB4007BA390 /* custom-keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0B784F6128E6BDB4007BA390 /* custom-keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0B784F7728E70877007BA390 /* CustomKeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B784F7628E70877007BA390 /* CustomKeyboardButton.swift */; };
@@ -49,6 +51,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0B0A896028EB6FC40098034D /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		0B784F6128E6BDB4007BA390 /* custom-keyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "custom-keyboard.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B784F6328E6BDB4007BA390 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		0B784F6528E6BDB4007BA390 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -87,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				0B784F6328E6BDB4007BA390 /* KeyboardViewController.swift */,
+				0B0A896028EB6FC40098034D /* KeyboardView.swift */,
 				0B784F7828E70C60007BA390 /* KeyboardCharacter.swift */,
 				0B784F6528E6BDB4007BA390 /* Info.plist */,
 				0B784F7628E70877007BA390 /* CustomKeyboardButton.swift */,
@@ -235,6 +239,7 @@
 				0B784F6428E6BDB4007BA390 /* KeyboardViewController.swift in Sources */,
 				0B784F7928E70C60007BA390 /* KeyboardCharacter.swift in Sources */,
 				F8B0EA3928E93B3D00C76C86 /* HangulCombinater.swift in Sources */,
+				0B0A896128EB6FC40098034D /* KeyboardView.swift in Sources */,
 				0B784F7728E70877007BA390 /* CustomKeyboardButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -244,6 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B784F7A28E71310007BA390 /* KeyboardCharacter.swift in Sources */,
+				0B0A896428EB72090098034D /* KeyboardView.swift in Sources */,
 				0B784F7E28E7131F007BA390 /* KeyboardViewController.swift in Sources */,
 				F8E0DB9928E94119007FB787 /* HangulCombinater.swift in Sources */,
 				63487F3C28E2EA5E0033CF32 /* ViewController.swift in Sources */,
