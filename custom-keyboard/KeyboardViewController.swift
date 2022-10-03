@@ -35,7 +35,7 @@ class KeyboardViewController: UIInputViewController {
     var shortCutList: [String] = ["ㅋㅋㅋㅋ","테스트","휘양","안녕하세요"] // 단축어가 담길 변수
     
     /// 직전 입력 텍스트가 담길 변수
-    var preChar = " "
+    var preChar: [String] = []
     /// backward시 자음, 모음 분해가능 여부
     var isSeparable: Bool = true
     let hangulCombinater = HangulCombinater.shared
@@ -212,27 +212,37 @@ class KeyboardViewController: UIInputViewController {
         case .delete:
             if isSeparable {
                 guard let lastInput = textDocumentProxy.documentContextBeforeInput?.last else {
+                    if !preChar.isEmpty { preChar.removeLast() }
+                    print("prev 1. = \(preChar)")
                     return
                 }
                 
                 if String(lastInput) == "" { isSeparable = false }
                 
                 guard let combined = hangulCombinater.separateJamo(String(lastInput)) else {
+                    if !preChar.isEmpty { preChar.removeLast() }
+                    print("prev 2. = \(preChar)")
                     self.textDocumentProxy.deleteBackward()
                     return
                 }
+                print(combined)
+                if !preChar.isEmpty { preChar.removeLast() }
+                preChar.append(combined)
+                //preChar.insert(combined, at: preChar.endIndex - 1)
+                print("prev 3. = \(preChar)")
                 self.textDocumentProxy.deleteBackward()
                 self.textDocumentProxy.insertText(combined)
             } else {
+                if !preChar.isEmpty { preChar.removeLast() }
+                print("prev 4. = \(preChar)")
                 self.textDocumentProxy.deleteBackward()
             }
-            preChar = ""
             isShifted = false
         case .enter:
             self.textDocumentProxy.insertText("\n")
             isShifted = false
         case .space:
-            preChar = " "
+            preChar.append(" ")
             isSeparable = false
             self.textDocumentProxy.insertText(" ")
             isShifted = false
@@ -244,31 +254,38 @@ class KeyboardViewController: UIInputViewController {
             
                 defer {
                     self.textDocumentProxy.insertText(curChar)
-                    preChar = curChar
+                    preChar.append(curChar)
+                    print("1. \(preChar)")
                     isShifted = false
                 }
                 
                 if preChar.isEmpty { return }
                 
                 // 이전 텍스트와 상관없이 출력 및 결합
-                if hangulCombinater.replaceJamo(preChar, curChar).count == 1 {
-                    curChar = hangulCombinater.replaceJamo(preChar, curChar)[0]
+                if hangulCombinater.replaceJamo(preChar.last!, curChar).count == 1 {
+                    curChar = hangulCombinater.replaceJamo(preChar.last!, curChar)[0]
                     if hangulCombinater.getUnicode(curChar) != 0 {
+                        if !preChar.isEmpty { preChar.removeLast() }
                         textDocumentProxy.deleteBackward()
                     }
+                    print("2. \(preChar)")
                 }
                 // 이전 텍스트와 연관된 수정 및 추가
                 // ex) 간ㅏ -> 가나
                 else {
                     textDocumentProxy.deleteBackward()
-                    let replaced = hangulCombinater.replaceJamo(preChar, curChar)
+                    let replaced = hangulCombinater.replaceJamo(preChar.last!, curChar)
                     curChar = replaced[0]
-                    preChar = replaced[1]
-                    textDocumentProxy.insertText(preChar)
+                    print("charChar: \(replaced[0])")
+                    print("preChar: \(replaced[1])")
+                    if !preChar.isEmpty { preChar.removeLast() }
+                    preChar.append(replaced[1])
+                    print("3. \(preChar)")
+                    textDocumentProxy.insertText(preChar.last!)
                 }
             }
         case .shortcut:
-            preChar = " "
+            preChar.append(" ")
             isSeparable = false
             guard let text = sender.titleLabel?.text else { return }
             self.textDocumentProxy.insertText(text)

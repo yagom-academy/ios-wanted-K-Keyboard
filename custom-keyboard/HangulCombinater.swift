@@ -174,9 +174,20 @@ class HangulCombinater {
         
         unicode = ((choIndex * Int(CYCLE_CHO)) + (jungIndex * Int(CYCLE_JUNG)) + jongIndex) + Int(HANGUL_START_INDEX)
         
-        if jongIndex != 0 {
-            unicode -= jongIndex
+        //겹받침일 경우 종성을 나누고 두번째 종성을 지운다 ex) ㄹㅂ -> ㄹ
+        //겹받침이 아니라면 newJongIndex의 값은 0 이므로 jongIndex 값만 빠지고, 종성이 사라진다
+        let newIndex = separateJungSungJongSung(jamo[1],jamo[2])
+        
+        
+        if jongIndex != 0 {        //받침이 존재 할때
+            unicode -= jongIndex    //기존 받침을 모두 지우고
+            unicode += newIndex[1]     //겹받침 이라면 첫번째 종성을 새로 다시 더한다
+            
+        } else if newIndex[0] != 0 {        //받침이 존재하지 않고 결합된 모음 ex) ㅚ ㅙ ㅟ... 이라면
+            unicode -= jungIndex * Int(CYCLE_JUNG)    //기존 중성을 모두 지우고
+            unicode += newIndex[0] * Int(CYCLE_JUNG)     // 첫번째 중성을 새로 다시 더한다
         }
+        
         else {
             if jamo.last == " " {
                 return jamo.first!
@@ -185,4 +196,32 @@ class HangulCombinater {
         
         return Unicode.Scalar(unicode)?.escaped(asASCII: false)
     }
+    
+    func separateJungSungJongSung(_ jungSung: String, _ jongSung: String) -> [Int] {
+        
+        var jungIndex: Int = 0
+        var jongIndex: Int = 0
+        var jungArray: [Character] = []
+        var jongArray: [Character] = []
+        
+        for index in jungSung.indices {
+            jungArray.append(jungSung[index])
+        }
+        
+        for index in jongSung.indices {
+            jongArray.append(jongSung[index])
+        }
+        
+        if jungArray.count > 1 {
+            jungIndex = getJamoIndex(.jung, String(jungArray[0]))!
+        }
+        
+        if jongArray.count > 1 {
+            jongIndex = getJamoIndex(.jong, String(jongArray[0]))!
+        }
+        
+        return [jungIndex, jongIndex]
+        
+    }
+    
 }
