@@ -28,6 +28,18 @@ class KeyboardViewController: UIInputViewController {
     //if 문으로 하나씪 지운다? stack?pop?
     @IBAction func backButton (button: UIButton) {
         deleteCharacterBeforeCursor()
+        if !lastCharacters.isEmpty {
+            lastCharacters.removeLast()
+            if lastCharacters.count == 1 {
+                textDocumentProxy.insertText(lastCharacters[0])
+            } else if lastCharacters.count == 2 {
+                if let johab = hangul(c1: lastCharacters[0], c2: lastCharacters[1], c3: " ") {
+                    textDocumentProxy.insertText(johab)
+                }
+            }
+        } else {
+            lastCharacters = []
+        }
     }
     // 문자 입력하기
     @IBAction func buttonPressed(button: UIButton) {
@@ -158,11 +170,25 @@ class KeyboardViewController: UIInputViewController {
         if let lastCharacter = lastCharacters.last {
             if 자음.contains(lastCharacter) && 모음.contains(newCharacter) {
                 // 자음 + 모음이 합친다.
-                if let johab = hangul(c1: lastCharacter, c2: newCharacter, c3: " ") {
-                    deleteCharacterBeforeCursor() // 지우는거
-                    lastCharacters.append(newCharacter) //빈배열에 합친다
-                    textDocumentProxy.insertText(johab)
-                    return            // 가나다라 마다바사 이렇게 자+모음
+                if lastCharacters.count > 1 {
+                    if let johab = hangul(c1: lastCharacter, c2: newCharacter, c3: " ") {
+                        deleteCharacterBeforeCursor() // 지우는거
+                        if let johab2 = hangul(c1: lastCharacters[0], c2: lastCharacters[1], c3: " ") {
+                            textDocumentProxy.insertText(johab2)
+                        }
+                        lastCharacters = []
+                        lastCharacters.append(lastCharacter)
+                        lastCharacters.append(newCharacter) //빈배열에 합친다
+                        textDocumentProxy.insertText(johab)
+                        return            // 가나다라 마다바사 이렇게 자+모음
+                    }
+                } else {
+                    if let johab = hangul(c1: lastCharacter, c2: newCharacter, c3: " ") {
+                        deleteCharacterBeforeCursor() // 지우는거
+                        lastCharacters.append(newCharacter) //빈배열에 합친다
+                        textDocumentProxy.insertText(johab)
+                        return            // 가나다라 마다바사 이렇게 자+모음
+                    }
                 }
             }
             else if let firstCharacter = lastCharacters.first, 자음.contains(firstCharacter),
@@ -173,16 +199,116 @@ class KeyboardViewController: UIInputViewController {
                     textDocumentProxy.insertText(johab)
                     return
                 }
-            }         /// 자음은 넘어가는데 모음일때 자음 없이 못넘어감
-            else if let firstCharacter = lastCharacters.last, 모음.contains(firstCharacter),
-                    모음.contains(newCharacter) && 자음.contains(newCharacter) {
-                    if let johab = hangul(c1: firstCharacter, c2: newCharacter, c3: " ") {
-                        deleteCharacterBeforeCursor()
-                        lastCharacters.append(newCharacter)
-                        textDocumentProxy.insertText(johab)
-                        return
+            } else if 모음.contains(lastCharacter) && 모음.contains(newCharacter) {
+                if lastCharacter == "ㅗ" {
+                    if newCharacter == "ㅏ" {
+                        if let firstCharacter = lastCharacters.first {
+                            if firstCharacter == lastCharacter {
+                                deleteCharacterBeforeCursor()
+                                lastCharacters.append("ㅘ")
+                                textDocumentProxy.insertText("ㅘ")
+                            } else if let johab = hangul(c1: firstCharacter, c2: "ㅘ", c3: " ") {
+                                deleteCharacterBeforeCursor()   // 여기가  받침을 받아주는거
+                                lastCharacters.append("ㅘ")
+                                textDocumentProxy.insertText(johab)
+                                return
+                            }
+                        }
+                    } else if newCharacter == "ㅐ" {
+                        if let firstCharacter = lastCharacters.first {
+                            if firstCharacter == lastCharacter {
+                                deleteCharacterBeforeCursor()
+                                lastCharacters.append("ㅙ")
+                                textDocumentProxy.insertText("ㅙ")
+                            } else if let johab = hangul(c1: firstCharacter, c2: "ㅙ", c3: " ") {
+                                deleteCharacterBeforeCursor()   // 여기가  받침을 받아주는거
+                                lastCharacters.append("ㅙ")
+                                textDocumentProxy.insertText(johab)
+                                return
+                            }
+                        }
+                    } else if newCharacter == "ㅣ" {
+                        if let firstCharacter = lastCharacters.first {
+                            if firstCharacter == lastCharacter {
+                                deleteCharacterBeforeCursor()
+                                lastCharacters.append("ㅚ")
+                                textDocumentProxy.insertText("ㅚ")
+                            } else if let johab = hangul(c1: firstCharacter, c2: "ㅚ", c3: " ") {
+                                deleteCharacterBeforeCursor()   // 여기가  받침을 받아주는거
+                                lastCharacters.append("ㅚ")
+                                textDocumentProxy.insertText(johab)
+                                return
+                            }
+                        }
+                    }
+                } else if lastCharacter == "ㅜ" {
+                    if newCharacter == "ㅓ" {
+                        if let firstCharacter = lastCharacters.first {
+                            if firstCharacter == lastCharacter {
+                                deleteCharacterBeforeCursor()
+                                lastCharacters.append("ㅝ")
+                                textDocumentProxy.insertText("ㅝ")
+                            } else if let johab = hangul(c1: firstCharacter, c2: "ㅝ", c3: " ") {
+                                deleteCharacterBeforeCursor()   // 여기가  받침을 받아주는거
+                                lastCharacters.append("ㅝ")
+                                textDocumentProxy.insertText(johab)
+                                return
+                            }
+                        }
+                    } else if newCharacter == "ㅔ" {
+                        if let firstCharacter = lastCharacters.first {
+                            if firstCharacter == lastCharacter {
+                                deleteCharacterBeforeCursor()
+                                lastCharacters.append("ㅞ")
+                                textDocumentProxy.insertText("ㅞ")
+                            } else if let johab = hangul(c1: firstCharacter, c2: "ㅞ", c3: " ") {
+                                deleteCharacterBeforeCursor()   // 여기가  받침을 받아주는거
+                                lastCharacters.append("ㅞ")
+                                textDocumentProxy.insertText(johab)
+                                return
+                            }
+                        }
+                    } else if newCharacter == "ㅣ" {
+                        if let firstCharacter = lastCharacters.first {
+                            if firstCharacter == lastCharacter {
+                                deleteCharacterBeforeCursor()
+                                lastCharacters.append("ㅟ")
+                                textDocumentProxy.insertText("ㅟ")
+                            } else if let johab = hangul(c1: firstCharacter, c2: "ㅟ", c3: " ") {
+                                deleteCharacterBeforeCursor()   // 여기가  받침을 받아주는거
+                                lastCharacters.append("ㅟ")
+                                textDocumentProxy.insertText(johab)
+                                return
+                            }
+                        }
+                    }
+                } else if lastCharacter == "ㅡ" {
+                    if newCharacter == "ㅣ" {
+                        if let firstCharacter = lastCharacters.first {
+                            if firstCharacter == lastCharacter {
+                                deleteCharacterBeforeCursor()
+                                lastCharacters.append("ㅢ")
+                                textDocumentProxy.insertText("ㅢ")
+                            } else if let johab = hangul(c1: firstCharacter, c2: "ㅢ", c3: " ") {
+                                deleteCharacterBeforeCursor()   // 여기가  받침을 받아주는거
+                                lastCharacters.append("ㅢ")
+                                textDocumentProxy.insertText(johab)
+                                return
+                            }
+                        }
                     }
                 }
+            }
+            
+            /// 자음은 넘어가는데 모음일때 자음 없이 못넘어감
+//            else if 자음.contains(lastCharacter) && 모음.contains(newCharacter) {
+//                    if let johab = hangul(c1: lastCharacter, c2: newCharacter, c3: " ") {
+//                        deleteCharacterBeforeCursor()
+//                        lastCharacters.append(newCharacter)
+//                        textDocumentProxy.insertText(johab)
+//                        return
+//                    }
+//                }
 //            else if let firstCharacter = lastCharacters.first, 자음.contains(firstCharacter) {
 //                if  받침.contains(lastCharacter) == 자음.contains(firstCharacter), 자음.contains(newCharacter), 모음.contains(newCharacter) {
 //                    if let johab = hangul(c1: lastCharacter, c2: firstCharacter, c3: newCharacter, c4: " ") {
