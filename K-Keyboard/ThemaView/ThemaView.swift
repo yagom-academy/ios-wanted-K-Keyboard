@@ -18,15 +18,15 @@ class ThemaView: UIView {
         return buy
     }()
     let immoge: [String] = ["☺️","😍","😉","🤣"]
-    var b1 : [String] = ["마음에들어요", "심쿵했어요", "응원해요","갖고싶어요"]
+    var b1 : [String] = ["맘에들어요", "심쿵했어요", "응원해요","갖고싶어요"]
     var c1 : [String] = ["0","1","0","0"]
     
     let collectionView : UICollectionView = {
         let collectionView = UICollectionViewFlowLayout()
         //        collectionView.translatesAutoresizingMaskIntoConstraints = false
         //        let layout = UICollectionViewFlowLayout()
-        collectionView.minimumInteritemSpacing = 10
-        collectionView.minimumLineSpacing = 10
+        collectionView.minimumInteritemSpacing = 3
+        collectionView.minimumLineSpacing = 3
         collectionView.scrollDirection = .vertical
         collectionView.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         let cv = UICollectionView(frame: .zero, collectionViewLayout: collectionView)
@@ -36,10 +36,10 @@ class ThemaView: UIView {
     
     private func setupView() {
         collectionView.register(ThemaCollectionViewCell.self, forCellWithReuseIdentifier: ThemaCollectionViewCell.identifier)
-        //        collectionView.delegate = self
+        collectionView.delegate = self
         
         //컬렉션뷰 크기
-        collectionView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        collectionView.heightAnchor.constraint(equalToConstant: 80).isActive = true
         collectionView.dataSource = self
     }
     
@@ -47,9 +47,8 @@ class ThemaView: UIView {
         super.init(frame: frame)
         self.commonInit()
     }
-    required init?(coder aDecoder : NSCoder) {
-        super.init(coder: aDecoder)
-        self.commonInit()
+    required init?(coder NSCoder : NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     private func commonInit(){
         self.addSubview(buy)
@@ -66,16 +65,16 @@ class ThemaView: UIView {
             buy.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             //            buy.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             
-            collectionView.topAnchor.constraint(equalTo: buy.bottomAnchor),
+            collectionView.topAnchor.constraint(equalTo: buy.bottomAnchor,constant: 24),
             collectionView.leadingAnchor.constraint(equalTo: buy.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: buy.trailingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
             
             
         ])
     }
 }
-extension ThemaView: UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+extension ThemaView: UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 4
     }
@@ -89,7 +88,7 @@ extension ThemaView: UICollectionViewDataSource,UICollectionViewDelegateFlowLayo
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 200 , height: 200)
+        return CGSize(width: 80 , height: 70)
     }
     
 }

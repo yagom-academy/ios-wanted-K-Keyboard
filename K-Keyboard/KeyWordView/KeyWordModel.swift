@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct Model {
+struct KeyWordModel {
     let title: String
     let image: UIImage?
     

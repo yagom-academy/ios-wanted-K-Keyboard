@@ -9,16 +9,17 @@ import UIKit
 import SwiftUI
 
 class KeyWordView: UIView {
-    let dataArry : [String] = []
-    let im: [UIImage?] = [UIImage(named: "01"),UIImage(named: "02"),UIImage(named: "03")]
-    var heights: [String] = ["신나💃", "기대💗", "놀이💗"]
+    let dataArry : [KeyWordModel] = [
+        .init(title: "신나💃", image: UIImage(named: "01")),
+        .init(title: "기대💗", image: UIImage(named: "02")),
+        .init(title: "놀이💗", image: UIImage(named: "03"))
+    ]
     
     
     var colors: [UIColor] = [.systemRed, .systemIndigo, .systemBlue, .systemTeal, .systemYellow, .cyan, .brown]
     let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     let titles : UILabel = {
         let title = UILabel()
-        //        title.frame = CGRect(x: 0, y: 0, width: 37, height: 28)
         title.translatesAutoresizingMaskIntoConstraints = false
         title.textAlignment = .center
         title.text = "이런 키워드에 반응해요"
@@ -28,10 +29,8 @@ class KeyWordView: UIView {
     }()
     let collectionView : UICollectionView = {
         let collectionView = UICollectionViewFlowLayout()
-        //        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        //        let layout = UICollectionViewFlowLayout()
-        collectionView.minimumInteritemSpacing = 10
-        collectionView.minimumLineSpacing = 10
+        collectionView.minimumInteritemSpacing = 1
+        collectionView.minimumLineSpacing = 16
         collectionView.scrollDirection = .horizontal
         collectionView.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         let cv = UICollectionView(frame: .zero, collectionViewLayout: collectionView)
@@ -43,57 +42,46 @@ class KeyWordView: UIView {
         super.init(frame: frame)
         self.commonInit()
     }
-    required init?(coder aDecoder : NSCoder) {
-        super.init(coder: aDecoder)
-        self.commonInit()
+    required init?(coder NSCoder : NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     private func commonInit(){
         self.backgroundColor = .white
         self.addSubview(titles)
         self.addSubview(collectionView)
-        //        collectionView.backgroundColor = .gray
         constraintCustomView()
         setupView()
     }
     
     func constraintCustomView() {
         NSLayoutConstraint.activate([
-            titles.topAnchor.constraint(equalTo: topAnchor,constant: 16),
+            titles.topAnchor.constraint(equalTo: topAnchor,constant: 0),
             titles.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 0),
             
-            
-            collectionView.topAnchor.constraint(equalTo: titles.bottomAnchor, constant: 0),
+            collectionView.topAnchor.constraint(equalTo: titles.bottomAnchor, constant: 16),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
-            
         ])
     }
     private func setupView() {
         collectionView.register(KeyWordViewCell.self, forCellWithReuseIdentifier: KeyWordViewCell.identifier)
-        collectionView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        collectionView.heightAnchor.constraint(equalToConstant: 178).isActive = true
         collectionView.delegate = self
         collectionView.dataSource = self
     }
 }
 extension KeyWordView: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-        //
-    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
-        
+        return dataArry.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "KeyWordViewCell", for: indexPath) as? KeyWordViewCell else {return KeyWordViewCell()}
         
-        cell.title.text = "\(heights[indexPath.row])"
-        //        cell.backgroundColor = colors[indexPath.row]
-        cell.imageView.image = im[indexPath.row]
+        cell.model = dataArry[indexPath.row]
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -113,13 +101,9 @@ extension KeyWordView: UICollectionViewDataSource, UICollectionViewDelegateFlowL
         //343.0 165.66666666666666  콜렉션뷰 가로 높이
         //        156.5 41.888888888888886   셀 가로 높이
         //          return CGSize(width: 10 * Int.random(in: 5...10) , height: 10 * Int.random(in: 5...10))
-        return CGSize(width: 150 , height: 162)
+        return CGSize(width: 129 , height: 170)
     }
 }
-
-//extension ThirdView: UICollectionViewDelegate {
-//
-//}
 
 #if canImport(SwiftUI) && DEBUG
 struct PeereviewViewController<View: UIView> : UIViewRepresentable {

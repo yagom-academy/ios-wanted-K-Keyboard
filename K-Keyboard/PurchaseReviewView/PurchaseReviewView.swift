@@ -7,72 +7,79 @@
 
 import UIKit
 class PurchaseReviewView: UIView {
+    let dataArry: [PurchasReviewModel] = [
+        .init(uesrImage: UIImage(named: "uesr"), idLabel: "크리에이터명\n구매해주셔서 감사합니다💖", infoLabel: "구매해주셔서 감사합니다💖", timeLabel: "1일",declaration: ""),
+        .init(uesrImage: UIImage(named: "uesr"), idLabel: "o달빔o", infoLabel: "아진짜 귀여워요 !!!!!", timeLabel: "1초",declaration: "신고"),
+        .init(uesrImage: UIImage(named: "uesr"), idLabel: "o달빔o", infoLabel: "아진짜 귀여워요 !!!!!", timeLabel: "1분", declaration: "신고"),
+        .init(uesrImage: UIImage(named: "uesr"), idLabel: "o달빔o", infoLabel: "아진짜 귀여워요 !!!!!", timeLabel: "2분", declaration: "신고")
+    ]
     let imageView = UIImageView(image: UIImage(named: "7"))
-    let ims = UIImage(named: "uesr")
-    //    let uesrimage = UIImageView(image: UIImage(named: "uesr"))
-    let idstring :  [String] = ["크리에이터명","o달빔o","o달빔o","o달빔o"]
-    let timeLabel : [String] = ["1일","1초","1분","2분"]
-    
     let tableView : UITableView = {
         let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
         return table
     }()
-    
     let buy : UILabel = {
         let buy = UILabel()
-        //            buy.frame = CGRect(x: 0, y: 0, width: 500  , height: 500)
         buy.translatesAutoresizingMaskIntoConstraints = false
-        //            buy.textAlignment = .center
         buy.text = "구매 리뷰"
         buy.textColor = .black
         return buy
     }()
     let buycount : UILabel = {
         let buycount = UILabel()
-        //            buy.frame = CGRect(x: 0, y: 0, width: 500  , height: 500)
         buycount.translatesAutoresizingMaskIntoConstraints = false
-        //            buy.textAlignment = .center
         buycount.text = "10"
-        buycount.textColor = .black
+        buycount.font = .appleSDGothicNeo(weight: .bold, size: 16)
+        buycount.textColor = UIColor(hex: "#FF417D",alpha: 1)
         return buycount
     }()
     let 구매리뷰 : UILabel = {
         let buy = UILabel()
-        //            buy.frame = CGRect(x: 0, y: 0, width: 500  , height: 500)
         buy.translatesAutoresizingMaskIntoConstraints = false
-        //            buy.textAlignment = .center
+        buy.font = .appleSDGothicNeo(weight: .regular, size: 14)
+        buy.textColor = UIColor(hex: "#50535C",alpha: 1)
         buy.text = "테마를 구매해야 리뷰를 남길 수 있어요."
         buy.textColor = .black
         return buy
     }()
+    let mark : UIImageView = {
+        let diamond = UIImageView(image: UIImage(named: "mark"))
+        diamond.translatesAutoresizingMaskIntoConstraints = false
+        return diamond
+    }()
+    let under : UIImageView = {
+        let diamond = UIImageView(image: UIImage(named: "under"))
+        diamond.translatesAutoresizingMaskIntoConstraints = false
+        return diamond
+    }()
     
     let collectionView : UICollectionView = {
         let collectionView = UICollectionViewFlowLayout()
-        collectionView.minimumInteritemSpacing = 30
-        collectionView.minimumLineSpacing = 30
-        collectionView.scrollDirection = .horizontal
-        collectionView.sectionInset = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+        collectionView.minimumInteritemSpacing = 5
+        collectionView.minimumLineSpacing = 5
+        collectionView.scrollDirection = .vertical
+        collectionView.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         let cv = UICollectionView(frame: .zero, collectionViewLayout: collectionView)
         cv.translatesAutoresizingMaskIntoConstraints = false
+//        cv.backgroundColor = .blue
         return cv
     }()
     
     private func setupView() {
         collectionView.register(PurchaseReviewTableViewCell.self, forCellWithReuseIdentifier: PurchaseReviewTableViewCell.identifier)
-        //        collectionView.delegate = self
         //컬렉션뷰 크기
-        collectionView.heightAnchor.constraint(equalToConstant: 400).isActive = true
+        collectionView.heightAnchor.constraint(equalToConstant: 300).isActive = true
         collectionView.dataSource = self
+        collectionView.delegate = self
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.commonInit()
     }
-    required init?(coder aDecoder : NSCoder) {
-        super.init(coder: aDecoder)
-        self.commonInit()
+    required init?(coder NSCoder : NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     private func commonInit(){
         //        self.backgroundColor = .red
@@ -82,6 +89,8 @@ class PurchaseReviewView: UIView {
         self.addSubview(buycount)
         self.addSubview(구매리뷰)
         self.addSubview(collectionView)
+        self.addSubview(mark)
+        self.addSubview(under)
         constraintCustomView()
         setupView()
     }
@@ -100,36 +109,37 @@ class PurchaseReviewView: UIView {
             buycount.trailingAnchor.constraint(equalTo: trailingAnchor),
             //            buycount.leadingAnchor.constraint(equalTo: buy.trailingAnchor,constant: 10),
             //            buycount.trailingAnchor.constraint(equalTo: self.trailingAnchor,constant: 100),
+            
             구매리뷰.topAnchor.constraint(equalTo: buy.bottomAnchor,constant: 10),
-            구매리뷰.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: 40),
-            구매리뷰.trailingAnchor.constraint(equalTo: trailingAnchor),
+            구매리뷰.leadingAnchor.constraint(equalTo: mark.trailingAnchor,constant: 11),
             //            구매리뷰.bottomAnchor.constraint(equalTo: bottomAnchor),
             
-            collectionView.topAnchor.constraint(equalTo: 구매리뷰.bottomAnchor,constant: 30),
-            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            mark.topAnchor.constraint(equalTo: buy.bottomAnchor,constant: 10),
+            mark.leadingAnchor.constraint(equalTo: buy.leadingAnchor),
+            
+            under.topAnchor.constraint(equalTo: mark.topAnchor),
+            under.leadingAnchor.constraint(equalTo: 구매리뷰.trailingAnchor,constant: 79),
+            
+            collectionView.topAnchor.constraint(equalTo: 구매리뷰.bottomAnchor,constant: 10),
+            collectionView.leadingAnchor.constraint(equalTo: buy.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            
-            
-            
-            
+    
         ])
     }
 }
 extension PurchaseReviewView: UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return idstring.count
+        return dataArry.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PurchaseReviewTableViewCell", for: indexPath) as? PurchaseReviewTableViewCell else {return PurchaseReviewTableViewCell()}
-        cell.uesrimage.image = ims
-        cell.idLabel.text = idstring[indexPath.row]
-        cell.timeLabel.text = timeLabel[indexPath.row]
+        cell.model = dataArry[indexPath.row]
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 400 , height: 300)
+        return CGSize(width: 400 , height: 73)
     }
     
 }
