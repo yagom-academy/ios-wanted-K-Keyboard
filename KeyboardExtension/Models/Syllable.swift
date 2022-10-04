@@ -39,7 +39,8 @@ struct Syllable: Equatable {
                 return false
             }
         } else if middleVowel != nil {
-            if let phoneme = phoneme as? Consonant,
+            if firstConsonant != nil,
+               let phoneme = phoneme as? Consonant,
                phoneme.lastConsonantNumber != nil {
                 lastConsonant = phoneme
                 return true
