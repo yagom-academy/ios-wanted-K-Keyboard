@@ -18,6 +18,10 @@ struct ReviewModel {
     let content: String
 }
 
+protocol ReviewProtocol: AnyObject {
+    func reportButtonDidTap()
+}
+
 final class ReviewCell: UICollectionViewCell {
     
     @IBOutlet private weak var profileImageView: UIImageView!
@@ -25,6 +29,13 @@ final class ReviewCell: UICollectionViewCell {
     @IBOutlet private weak var contentLabel: UILabel!
     @IBOutlet private weak var reportButton: UIButton!
     @IBOutlet private weak var createrBadge: UIView!
+    
+    weak var delegate: ReviewProtocol?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.reportButton.addTarget(self, action: #selector(reportButtonDidTap(_:)), for: .touchUpInside)
+    }
     
     func configure(_ review: ReviewModel) {
         switch review.userType {
@@ -38,6 +49,10 @@ final class ReviewCell: UICollectionViewCell {
         self.profileImageView.image = UIImage(systemName: "person.circle.fill")
         self.nicknameLabel.text = review.nickname
         self.contentLabel.text = review.content
+    }
+    
+    @objc func reportButtonDidTap(_ sender: UIButton) {
+        delegate?.reportButtonDidTap()
     }
     
 }

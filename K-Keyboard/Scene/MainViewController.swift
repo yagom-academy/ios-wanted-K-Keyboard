@@ -91,6 +91,7 @@ extension MainViewController: UICollectionViewDataSource {
         else if collectionView == reviewCollectionView {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReviewCell", for: indexPath) as? ReviewCell else { fatalError("Could not create new cell") }
             cell.configure(reviewList[indexPath.row])
+            cell.delegate = self
             return cell
         }
         return UICollectionViewCell()
@@ -102,6 +103,15 @@ extension MainViewController: UICollectionViewDelegate {
         guard let cell = collectionView.cellForItem(at: indexPath) as? ThemeCell else { return }
         cell.count += 1
         self.themeList[indexPath.row].count += 1
+    }
+}
+
+extension MainViewController: ReviewProtocol {
+    func reportButtonDidTap() {
+        let alertVC = UIAlertController(title: nil, message: "신고되었습니다.", preferredStyle: .alert)
+        let confirm = UIAlertAction(title: "확인", style: .default)
+        alertVC.addAction(confirm)
+        self.present(alertVC, animated: true)
     }
 }
 
