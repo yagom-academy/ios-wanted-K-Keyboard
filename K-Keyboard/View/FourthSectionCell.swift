@@ -20,7 +20,7 @@ class FourthSectionCell: UITableViewCell {
 
     let adImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "photo")
+        imageView.image = UIImage(named: "snsImage")
         imageView.contentMode = .scaleToFill
         imageView.backgroundColor = .gray
         return imageView
@@ -141,6 +141,7 @@ class FourthSectionCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.selectionStyle = .none
 
         addViews()
         setConstraints()

@@ -50,17 +50,11 @@ class FifthSectionCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        commentView.frame = CGRect(x: 0, y: 0, width: contentView.bounds.width, height: contentView.bounds.height)
-        commentView.configure(nickNameStr: "크리에이터명", commentStr: "구매해\n주셔서 감사ㄱㅅㄱㅅㄱㅅㄱㅅㄱ")
-        timeLabel.text = "1일"
-
+        self.selectionStyle = .none
         self.backgroundColor = nil
 
         addViews()
         setConstraints()
-
-//        creatorLabel.isHidden = true
-//        reportButton.isHidden = true
     }
 
     @available(*, unavailable)
@@ -95,6 +89,16 @@ extension FifthSectionCell {
             reportLabel.topAnchor.constraint(equalTo: commentView.bottomAnchor, constant: 6),
             reportLabel.leadingAnchor.constraint(equalTo: timeLabel.trailingAnchor, constant: 12),
         ])
+    }
+
+    func setUserType(isCreator: Bool) {
+        if isCreator {
+            reportLabel.isHidden = true
+            creatorLabel.isHidden = false
+        } else {
+            reportLabel.isHidden = false
+            creatorLabel.isHidden = true
+        }
     }
 }
 
