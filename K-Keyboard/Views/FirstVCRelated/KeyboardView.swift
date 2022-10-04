@@ -56,16 +56,26 @@ extension KeyboardView: Presentable {
             keyboardImgView.topAnchor.constraint(equalTo: self.topAnchor, constant: 19.46),
             keyboardImgView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             keyboardImgView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
-            keyboardImgView.heightAnchor.constraint(equalTo: keyboardImgView.widthAnchor, multiplier: 1/aspectR),
-            
-            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            keyboardImgView.heightAnchor.constraint(equalTo: keyboardImgView.widthAnchor, multiplier: 0.769),
+        ]
+        
+        constraint += [
             titleLabel.topAnchor.constraint(equalTo: keyboardImgView.bottomAnchor, constant: 24),
-            
+            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            titleLabel.heightAnchor.constraint(equalToConstant: 28)
+        ]
+        
+        constraint += [
             subTitle.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4),
             subTitle.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            
+            subTitle.heightAnchor.constraint(equalToConstant: 20)
+        ]
+        
+        constraint += [
             numberOfPeople.topAnchor.constraint(equalTo: subTitle.bottomAnchor, constant: 16),
-            numberOfPeople.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16)
+            numberOfPeople.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            numberOfPeople.heightAnchor.constraint(equalToConstant: 20),
+            numberOfPeople.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ]
     }
     

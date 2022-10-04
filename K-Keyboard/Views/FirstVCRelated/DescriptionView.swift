@@ -43,6 +43,10 @@ extension DescriptionView: Presentable {
             header.topAnchor.constraint(equalTo: self.topAnchor),
             header.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             header.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            header.heightAnchor.constraint(equalToConstant: 24)
+        ]
+        
+        constraint += [
             body.topAnchor.constraint(equalTo: header.bottomAnchor,constant: 8),
             body.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             body.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),

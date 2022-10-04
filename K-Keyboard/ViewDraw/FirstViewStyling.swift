@@ -88,11 +88,11 @@ extension FirstViewStyling {
             let img = UIImage(named: "keyboardImage")
             $0.image = img
             $0.contentMode = .scaleAspectFit
-//            let layer0 = CALayer()
-//            layer0.transform = CATransform3DMakeAffineTransform(CGAffineTransform(a: 1, b: 0, c: 0, d: 1, tx: 0, ty: 0))
-//            layer0.bounds = $0.bounds
-//            layer0.position = $0.center
-//            $0.layer.addSublayer(layer0)
+            let layer0 = CALayer()
+            layer0.transform = CATransform3DMakeAffineTransform(CGAffineTransform(a: 1, b: 0, c: 0, d: 1, tx: 0, ty: 0))
+            layer0.bounds = $0.bounds
+            layer0.position = $0.center
+            $0.layer.addSublayer(layer0)
         }
     }
     
