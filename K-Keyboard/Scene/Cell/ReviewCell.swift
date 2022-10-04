@@ -18,7 +18,7 @@ struct ReviewModel {
     let content: String
 }
 
-protocol ReviewProtocol: AnyObject {
+protocol ReviewCellProtocol: AnyObject {
     func reportButtonDidTap()
 }
 
@@ -30,7 +30,7 @@ final class ReviewCell: UICollectionViewCell {
     @IBOutlet private weak var reportButton: UIButton!
     @IBOutlet private weak var createrBadge: UIView!
     
-    weak var delegate: ReviewProtocol?
+    weak var delegate: ReviewCellProtocol?
     
     override func awakeFromNib() {
         super.awakeFromNib()

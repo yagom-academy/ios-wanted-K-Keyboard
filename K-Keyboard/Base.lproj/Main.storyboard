@@ -444,6 +444,19 @@
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wmI-cI-qKO">
+                                                <rect key="frame" x="379" y="1357.5" width="20" height="15"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="20" id="7r7-GO-Uhn"/>
+                                                    <constraint firstAttribute="height" constant="15" id="fec-uB-uPj"/>
+                                                </constraints>
+                                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="chevron.down" catalog="system"/>
+                                                <connections>
+                                                    <action selector="reviewFoldButtonDidTap:" destination="FHx-8H-kOZ" eventType="touchUpInside" id="wTM-5C-KsG"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -458,7 +471,6 @@
                                             <constraint firstItem="fnr-AR-wu4" firstAttribute="top" secondItem="JEu-YP-31Y" secondAttribute="bottom" constant="16" id="8nY-XP-pJB"/>
                                             <constraint firstItem="0C9-Ib-mUW" firstAttribute="top" secondItem="qdk-o8-fcc" secondAttribute="bottom" constant="7" id="9hO-Vm-KUV"/>
                                             <constraint firstAttribute="trailing" secondItem="ets-il-Qq3" secondAttribute="trailing" constant="16" id="Ayh-mN-Wnm"/>
-                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="X2P-35-e26" secondAttribute="trailing" constant="20" symbolic="YES" id="EyL-fj-EzG"/>
                                             <constraint firstItem="gXE-mV-Lgv" firstAttribute="top" secondItem="KrQ-zc-mDq" secondAttribute="bottom" constant="16" id="FHc-4p-cp6"/>
                                             <constraint firstAttribute="trailing" secondItem="dm0-mS-haC" secondAttribute="trailing" constant="16" id="GDs-hq-Y7J"/>
                                             <constraint firstItem="c5B-W3-U8N" firstAttribute="leading" secondItem="b9g-Ll-u7W" secondAttribute="leading" constant="16" id="Gpi-JQ-0vy"/>
@@ -476,12 +488,14 @@
                                             <constraint firstItem="TXO-i5-LTv" firstAttribute="top" secondItem="BNP-z8-zTJ" secondAttribute="bottom" constant="48" id="Rt4-jf-9Ki"/>
                                             <constraint firstItem="SyS-9r-RfG" firstAttribute="leading" secondItem="b9g-Ll-u7W" secondAttribute="leading" constant="16" id="Svz-45-gWI"/>
                                             <constraint firstItem="Tg2-Ty-vNc" firstAttribute="leading" secondItem="qdk-o8-fcc" secondAttribute="leading" id="TpD-0e-Q9U"/>
+                                            <constraint firstItem="wmI-cI-qKO" firstAttribute="centerY" secondItem="X2P-35-e26" secondAttribute="centerY" id="VOC-wO-weu"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="KrQ-zc-mDq" secondAttribute="trailing" constant="20" symbolic="YES" id="XGe-GX-pJr"/>
                                             <constraint firstItem="SyS-9r-RfG" firstAttribute="top" secondItem="TXO-i5-LTv" secondAttribute="bottom" constant="18" id="XOY-rs-o9N"/>
                                             <constraint firstAttribute="trailing" secondItem="BNP-z8-zTJ" secondAttribute="trailing" id="Xt6-E8-7z4"/>
                                             <constraint firstAttribute="trailing" secondItem="8u1-0V-xAu" secondAttribute="trailing" constant="16" id="ZNk-q7-IKd"/>
                                             <constraint firstItem="ets-il-Qq3" firstAttribute="leading" secondItem="b9g-Ll-u7W" secondAttribute="leading" constant="16" id="aas-JY-kPQ"/>
                                             <constraint firstItem="JEu-YP-31Y" firstAttribute="top" secondItem="b9g-Ll-u7W" secondAttribute="top" constant="28" id="c2r-sQ-9LI"/>
+                                            <constraint firstItem="wmI-cI-qKO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="X2P-35-e26" secondAttribute="trailing" constant="8" symbolic="YES" id="c7T-pZ-m0g"/>
                                             <constraint firstItem="BNP-z8-zTJ" firstAttribute="top" secondItem="Fm6-MW-70u" secondAttribute="bottom" constant="10" id="cW6-BI-PtB"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qdk-o8-fcc" secondAttribute="trailing" constant="20" symbolic="YES" id="d4g-Iq-4OP"/>
                                             <constraint firstAttribute="bottom" secondItem="8u1-0V-xAu" secondAttribute="bottom" constant="10" id="dam-YL-QNV"/>
@@ -497,6 +511,7 @@
                                             <constraint firstItem="dm0-mS-haC" firstAttribute="leading" secondItem="b9g-Ll-u7W" secondAttribute="leading" constant="16" id="u4s-Im-Ms1"/>
                                             <constraint firstItem="8u1-0V-xAu" firstAttribute="leading" secondItem="b9g-Ll-u7W" secondAttribute="leading" constant="16" id="u6D-oJ-du0"/>
                                             <constraint firstAttribute="trailing" secondItem="weP-Cf-BAl" secondAttribute="trailing" constant="60" id="vlo-h2-ycn"/>
+                                            <constraint firstAttribute="trailing" secondItem="wmI-cI-qKO" secondAttribute="trailing" constant="16" id="wjG-av-yij"/>
                                             <constraint firstItem="qdk-o8-fcc" firstAttribute="leading" secondItem="fnr-AR-wu4" secondAttribute="leading" id="wkc-hx-CRt"/>
                                             <constraint firstItem="gyx-yY-wbf" firstAttribute="leading" secondItem="TXO-i5-LTv" secondAttribute="trailing" constant="8" id="wn3-D6-nrH"/>
                                             <constraint firstItem="0C9-Ib-mUW" firstAttribute="leading" secondItem="qdk-o8-fcc" secondAttribute="leading" id="xzN-Yk-WJL"/>
@@ -528,6 +543,7 @@
                     <connections>
                         <outlet property="keywordColletionView" destination="gXE-mV-Lgv" id="OTL-is-sch"/>
                         <outlet property="reviewCollectionView" destination="8u1-0V-xAu" id="DoM-ws-GbI"/>
+                        <outlet property="reviewFoldButton" destination="wmI-cI-qKO" id="SvV-Td-Rbb"/>
                         <outlet property="tagListCollectionView" destination="weP-Cf-BAl" id="BrD-d3-e3Z"/>
                         <outlet property="themeCollectionView" destination="Fm6-MW-70u" id="FOd-mx-jAY"/>
                     </connections>
@@ -538,6 +554,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.down" catalog="system" width="128" height="72"/>
         <image name="exclamationmark.circle" catalog="system" width="128" height="121"/>
         <image name="ic_all_back" width="9" height="8.5"/>
         <image name="molang" width="187.5" height="43.5"/>

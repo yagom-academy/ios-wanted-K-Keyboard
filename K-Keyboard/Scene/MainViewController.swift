@@ -14,7 +14,10 @@ final class MainViewController: UIViewController {
     @IBOutlet private weak var keywordColletionView: UICollectionView!
     @IBOutlet private weak var themeCollectionView: UICollectionView!
     @IBOutlet private weak var reviewCollectionView: UICollectionView!
-        
+    @IBOutlet private weak var reviewFoldButton: UIButton!
+    
+    
+    private var reviewCollectionViewIsHidden: Bool = false
     private var tagList = ["이벤트", "캐릭터", "새", "동물", "앙ㅇㄴㅇㄴㄴㅇ증맞은" ,"동글동글", "마루", "귀여웡", "배고파","동글동글", "마루", "귀여웡", "배고파"]
     private var keywordList = [
         KeywordModel(title: "신나 🎉", imageName: "keyword_fun"),
@@ -51,6 +54,14 @@ final class MainViewController: UIViewController {
         //review
         self.reviewCollectionView.dataSource = self
     }
+    
+    @IBAction func reviewFoldButtonDidTap(_ sender: UIButton) {
+        reviewCollectionViewIsHidden.toggle()
+        self.reviewCollectionView.isHidden = self.reviewCollectionViewIsHidden
+        let imageName = self.reviewCollectionViewIsHidden ? UIImage(systemName: "chevron.up") : UIImage(systemName: "chevron.down")
+        self.reviewFoldButton.setImage(imageName, for: .normal)
+    }
+    
     
    
 }
@@ -106,7 +117,7 @@ extension MainViewController: UICollectionViewDelegate {
     }
 }
 
-extension MainViewController: ReviewProtocol {
+extension MainViewController: ReviewCellProtocol {
     func reportButtonDidTap() {
         let alertVC = UIAlertController(title: nil, message: "신고되었습니다.", preferredStyle: .alert)
         let confirm = UIAlertAction(title: "확인", style: .default)
