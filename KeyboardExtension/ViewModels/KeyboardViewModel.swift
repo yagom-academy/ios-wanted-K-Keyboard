@@ -14,9 +14,10 @@ class KeyboardViewModel {
     var addPhoneme: ((Phoneme) -> ())?
     var toggleShift: (() -> ())?
     var removePhoneme: (() -> ())?
+    var textContextDidChange: ((String) -> ())?
     
     // MARK: Output
-    var syllablesSource: (([Syllable]) -> ())?
+    var textSource: ((String, [Syllable]) -> ())?
     var phonemesSource: (([[Phoneme]]) -> ())?
     var shiftActivatedSource: ((Bool) -> ())?
     
@@ -34,7 +35,7 @@ class KeyboardViewModel {
     
     var inputPhonemes = [Phoneme]() {
         didSet {
-            syllablesSource?(mergeSyllables(mergeVowels(inputPhonemes)))
+            textSource?(self.prefixText, mergeSyllables(mergeVowels(inputPhonemes)))
         }
     }
     
@@ -42,6 +43,12 @@ class KeyboardViewModel {
         didSet {
             mutatePhonemes(shiftActivated: shiftActivated)
             shiftActivatedSource?(shiftActivated)
+        }
+    }
+    
+    var prefixText: String = "" {
+        didSet {
+            textSource?(self.prefixText, mergeSyllables(mergeVowels(inputPhonemes)))
         }
     }
     
@@ -68,8 +75,17 @@ class KeyboardViewModel {
             guard let self else { return }
             if !self.inputPhonemes.isEmpty {
                 self.inputPhonemes.removeLast()
+            } else if !self.prefixText.isEmpty {
+                self.prefixText.removeLast()
             }
             self.shiftActivated = false
+        }
+        
+        textContextDidChange = { [weak self] prefix in
+            guard let self else { return }
+            self.prefixText = prefix
+            self.shiftActivated = false
+            self.inputPhonemes = []
         }
     }
     

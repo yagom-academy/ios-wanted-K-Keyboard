@@ -178,9 +178,9 @@ class KeyboardViewController: UIInputViewController {
     
     // MARK: Binding
     func bind() {
-        viewModel.syllablesSource = { [weak self] syllables in
+        viewModel.textSource = { [weak self] prefixText, syllables in
             guard let self else { return }
-            var nextText = ""
+            var nextText = prefixText
             syllables.compactMap { $0.unicode }.forEach { nextText += String($0) }
             self.textDocumentProxy.clearAll()
             self.textDocumentProxy.insertText(nextText)
@@ -241,6 +241,7 @@ class KeyboardViewController: UIInputViewController {
             textColor = UIColor.black
         }
         self.nextKeyboardButton.setTitleColor(textColor, for: [])
+        viewModel.textContextDidChange?(textDocumentProxy.documentContextBeforeInput ?? "")
     }
     
     // MARK: Utils
