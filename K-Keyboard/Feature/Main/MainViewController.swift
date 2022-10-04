@@ -18,7 +18,6 @@ class MainViewController: UIViewController {
         
         initUI()
         dataBinding()
-        
     }
     
     func initUI() {
@@ -26,13 +25,17 @@ class MainViewController: UIViewController {
         tableView.allowsSelection = false
         tableView.showsVerticalScrollIndicator = false
         
-        let ItemCellNib = UINib(nibName: ItemCell.identifier, bundle: Bundle(for: self.classForCoder))
-        tableView.register(ItemCellNib, forCellReuseIdentifier: ItemCell.identifier)
+        let tableSectionHeaderViewNib = UINib(nibName: TableSectionHeaderView.identifier, bundle: Bundle(for: self.classForCoder))
+        tableView.register(tableSectionHeaderViewNib, forCellReuseIdentifier: TableSectionHeaderView.identifier)
         
-        let NoticeCellNib = UINib(nibName: NoticeCell.identifier, bundle: Bundle(for: self.classForCoder))
-        tableView.register(NoticeCellNib, forCellReuseIdentifier: NoticeCell.identifier)
+        let itemCellNib = UINib(nibName: ItemCell.identifier, bundle: Bundle(for: self.classForCoder))
+        tableView.register(itemCellNib, forCellReuseIdentifier: ItemCell.identifier)
         
+        let noticeCellNib = UINib(nibName: NoticeCell.identifier, bundle: Bundle(for: self.classForCoder))
+        tableView.register(noticeCellNib, forCellReuseIdentifier: NoticeCell.identifier)
         
+        let reviewCellNib = UINib(nibName: ReviewCell.identifier, bundle: Bundle(for: self.classForCoder))
+        tableView.register(reviewCellNib, forCellReuseIdentifier: ReviewCell.identifier)
     }
     
     func dataBinding() {
@@ -75,47 +78,43 @@ extension MainViewController: UITableViewDataSource {
                 cell.set(data: noticeData)
             }
             return cell
+        case .reviews:
+            let cell = tableView.dequeueReusableCell(withIdentifier: ReviewCell.identifier, for: indexPath)
+            if let cell = cell as? ReviewCell,
+               case .reviews(let reviewsData) = row {
+                cell.set(data: reviewsData)
+            }
+            return cell
         default:
             return UITableViewCell()
         }
-        //
-        //        case .notice:
-        //            let cell = tableView.dequeueReusableCell(withIdentifier: NoticeCell.identifier, for: indexPath)
-        //            return cell
-        //
-        //        case .tags:
-        //            let cell = tableView.dequeueReusableCell(withIdentifier: TagCell.identifier, for: indexPath)
-        //            if let cell = cell as? TagCell,
-        //               case .tags(let tag) = row {
-        //                cell.set(data: )
-        //            }
-        //            return cell
-        //
-        //        case .previews:
-        //            let cell = tableView.dequeueReusableCell(withIdentifier: PreviewCell.identifier, for: indexPath)
-        //            return cell
-        //
-        //        case .aboutThemes:
-        //            let cell = tableView.dequeueReusableCell(withIdentifier: AboutThemeCell.identifier, for: indexPath)
-        //            return cell
-        //
-        //        case .ads:
-        //            let cell = tableView.dequeueReusableCell(withIdentifier: AdsCell.identifier, for: indexPath)
-        //            return cell
-        //
-        //        case .reviews:
-        //            let cell = tableView.dequeueReusableCell(withIdentifier: ReviewCell.identifier, for: indexPath)
-        //            return cell
-        //        }
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        guard let dataSource = dto?.dataSource[section] else { return nil }
+//        let section = dataSource.section
+//
+//        switch section {
+//        case .reviews:
+//            return "\(SectionListType.review.rawValue)"
+//        default:
+//            return nil
+//        }
+//    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let dataSource = dto?.dataSource[section] else { return nil }
         let section = dataSource.section
         
         switch section {
+        case .reviews:
+            let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: TableSectionHeaderView.identifier)
+            if let view = view as? TableSectionHeaderView {
+                view.set(sectionName: SectionListType.review.rawValue, rowCount: dataSource.items.count)
+            }
+            return view
         default:
-            return nil
+            return UIView()
         }
     }
     
@@ -143,7 +142,7 @@ extension MainViewController: UITableViewDelegate {
         case .item:
             let height = ((width - 32) / 343 * 264) + 115
             return height
-        case .notice:
+        case .notice, .reviews:
             return UITableView.automaticDimension
         default:
             return .zero
@@ -155,6 +154,8 @@ extension MainViewController: UITableViewDelegate {
         let section = dataSource.section
         
         switch section {
+        case .reviews:
+            return UITableView.automaticDimension
         default:
             return .zero
         }
@@ -167,6 +168,8 @@ extension MainViewController: UITableViewDelegate {
         switch section {
         case .item:
             return 40
+        case .notice:
+            return 48
         default:
             return .zero
         }

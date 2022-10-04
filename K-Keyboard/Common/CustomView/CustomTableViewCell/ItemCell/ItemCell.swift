@@ -10,10 +10,10 @@ import UIKit
 class ItemCell: UITableViewCell {
     static var identifier: String { String(describing: self) }
     
-    @IBOutlet var itemImageView: UIImageView!
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var creatorLabel: UILabel!
-    @IBOutlet var buyerLabel: UILabel!
+    @IBOutlet weak var itemImageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var creatorLabel: UILabel!
+    @IBOutlet weak var buyerLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

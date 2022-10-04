@@ -10,8 +10,8 @@ import UIKit
 class NoticeCell: UITableViewCell {
     static var identifier: String { String(describing: self) }
 
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var contentLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var contentLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
