@@ -29,8 +29,8 @@ class MainViewController: UIViewController {
         let ItemCellNib = UINib(nibName: ItemCell.identifier, bundle: Bundle(for: self.classForCoder))
         tableView.register(ItemCellNib, forCellReuseIdentifier: ItemCell.identifier)
         
-        let DescriptionCellNib = UINib(nibName: DescriptionCell.identifier, bundle: Bundle(for: self.classForCoder))
-        tableView.register(DescriptionCellNib, forCellReuseIdentifier: DescriptionCell.identifier)
+        let NoticeCellNib = UINib(nibName: NoticeCell.identifier, bundle: Bundle(for: self.classForCoder))
+        tableView.register(NoticeCellNib, forCellReuseIdentifier: NoticeCell.identifier)
         
         
     }
@@ -69,8 +69,8 @@ extension MainViewController: UITableViewDataSource {
             }
             return cell
         case .notice:
-            let cell = tableView.dequeueReusableCell(withIdentifier: DescriptionCell.identifier, for: indexPath)
-            if let cell = cell as? DescriptionCell,
+            let cell = tableView.dequeueReusableCell(withIdentifier: NoticeCell.identifier, for: indexPath)
+            if let cell = cell as? NoticeCell,
                case .notice(let noticeData) = row {
                 cell.set(data: noticeData)
             }
@@ -108,6 +108,28 @@ extension MainViewController: UITableViewDataSource {
         //            return cell
         //        }
     }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard let dataSource = dto?.dataSource[section] else { return nil }
+        let section = dataSource.section
+        
+        switch section {
+        default:
+            return nil
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        guard let dataSource = dto?.dataSource[section] else { return nil }
+        let section = dataSource.section
+        
+        switch section {
+        case .item:
+            return UIView()
+        default:
+            return nil
+        }
+    }
 }
 
 extension MainViewController: UITableViewDelegate {
@@ -123,6 +145,28 @@ extension MainViewController: UITableViewDelegate {
             return height
         case .notice:
             return UITableView.automaticDimension
+        default:
+            return .zero
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        guard let dataSource = dto?.dataSource[section] else { return .zero }
+        let section = dataSource.section
+        
+        switch section {
+        default:
+            return .zero
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        guard let dataSource = dto?.dataSource[section] else { return .zero }
+        let section = dataSource.section
+        
+        switch section {
+        case .item:
+            return 40
         default:
             return .zero
         }

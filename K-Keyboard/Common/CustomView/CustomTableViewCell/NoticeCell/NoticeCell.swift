@@ -1,5 +1,5 @@
 //
-//  DescriptionCell.swift
+//  NoticeCell.swift
 //  K-Keyboard
 //
 //  Created by 박호현 on 2022/10/04.
@@ -7,11 +7,11 @@
 
 import UIKit
 
-class DescriptionCell: UITableViewCell {
+class NoticeCell: UITableViewCell {
     static var identifier: String { String(describing: self) }
 
     @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var textLabel2: UILabel!
+    @IBOutlet var contentLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,12 +26,12 @@ class DescriptionCell: UITableViewCell {
 
     func set(data: NoticeData) {
         self.titleLabel.text = data.title
-        self.textLabel2.text = data.text
+        self.contentLabel.text = data.text
     }
     
     override func prepareForReuse() {
         self.titleLabel.text = ""
-        self.textLabel2.text = ""
+        self.contentLabel.text = ""
     }
     
 }
