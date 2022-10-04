@@ -49,4 +49,8 @@ extension UIView {
         layer.shadowOffset = CGSize(width: 0.3, height: 0.3)
         layer.shadowRadius = 5
     }
+    
+    func addSubViews(_ views: UIView...) {
+        views.forEach(self.addSubview(_:))
+    }
 }

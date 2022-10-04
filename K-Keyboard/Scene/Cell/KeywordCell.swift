@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct Keyword {
+struct KeywordModel {
     let title: String
     let imageName: String
 }
@@ -24,7 +24,7 @@ final class KeywordCell: UICollectionViewCell {
         self.setViewShadow(backView: backView)
     }
     
-    func configure(_ keyword: Keyword) {
+    func configure(_ keyword: KeywordModel) {
         self.keywordImageView.image = UIImage(named: keyword.imageName)
         self.keywordTitle.text = keyword.title
     }
