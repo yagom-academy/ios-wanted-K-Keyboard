@@ -11,7 +11,7 @@ final class MainViewController: UIViewController {
 
     @IBOutlet private weak var tagListCollectionView: UICollectionView!
     @IBOutlet private weak var keywordColletionView: UICollectionView!
-    @IBOutlet private weak var themeStackView: UIStackView!
+    @IBOutlet private weak var themeCollectionView: UICollectionView!
     
     private var tagList = ["이벤트", "캐릭터", "새", "동물", "앙ㅇㄴㅇㄴㄴㅇ증맞은" ,"동글동글", "마루", "귀여웡", "배고파","동글동글", "마루", "귀여웡", "배고파"]
     private var keywordList = [
@@ -33,19 +33,10 @@ final class MainViewController: UIViewController {
         self.tagListCollectionView.dataSource = self
         self.tagListCollectionView.collectionViewLayout = generateTagListLayout()
         self.keywordColletionView.dataSource = self
-        self.setupThemeStackView()
+        self.themeCollectionView.dataSource = self
+        self.themeCollectionView.collectionViewLayout = generateThemeListLayout()
     }
     
-    private func setupThemeStackView() {
-        themeList.forEach {
-            let view = ThemeView()
-            view.data = $0
-            
-            themeStackView.addArrangedSubview(view)
-
-        }
-    }
-
    
 }
 
@@ -53,9 +44,14 @@ extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == tagListCollectionView {
             return tagList.count
-        } else {
+        }
+        else if collectionView == keywordColletionView  {
             return keywordList.count
         }
+        else if collectionView == themeCollectionView {
+            return themeList.count
+        }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -64,11 +60,17 @@ extension MainViewController: UICollectionViewDataSource {
             cell.configure(title: tagList[indexPath.row])
             return cell
         }
-        else {
+        else if collectionView == keywordColletionView {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "KeywordCell", for: indexPath) as? KeywordCell else { fatalError("Could not create new cell") }
             cell.configure(keywordList[indexPath.row])
             return cell
         }
+        else if collectionView == themeCollectionView {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ThemeCell", for: indexPath) as? ThemeCell else { fatalError("Could not create new cell") }
+            cell.configure(themeList[indexPath.row])
+            return cell
+        }
+        return UICollectionViewCell()
     }
 }
 
@@ -86,5 +88,17 @@ extension MainViewController {
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }
+    
+    func generateThemeListLayout() -> UICollectionViewLayout {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .absolute(75), heightDimension: .absolute(110))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        group.interItemSpacing = .fixed(10)
+        let section = NSCollectionLayoutSection(group: group)
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        return layout
+    }
 
 }
+
