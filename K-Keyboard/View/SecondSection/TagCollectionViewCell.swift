@@ -10,8 +10,6 @@ import UIKit
 class TagCollectionViewCell: UICollectionViewCell {
     static let identifier = "tagCell"
     
-    var items: [String]?
-
     let tagLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "NotoSansKR-Medium", size: 14)

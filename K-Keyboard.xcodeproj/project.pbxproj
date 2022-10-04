@@ -26,9 +26,13 @@
 		63487F4128E2EA5E0033CF32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63487F4028E2EA5E0033CF32 /* Assets.xcassets */; };
 		63487F4428E2EA5E0033CF32 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63487F4228E2EA5E0033CF32 /* LaunchScreen.storyboard */; };
 		6426E6AA28E730EC00159D4A /* FirstSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6426E6A928E730EC00159D4A /* FirstSectionCell.swift */; };
+		6463E98A28EC87B000FA66F1 /* CardCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6463E98928EC87B000FA66F1 /* CardCollectionView.swift */; };
+		6463E98C28EC89E600FA66F1 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6463E98B28EC89E600FA66F1 /* CardCollectionViewCell.swift */; };
 		64D6427528E938C000E475A5 /* SecondSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D6427428E938C000E475A5 /* SecondSectionCell.swift */; };
 		64D6427828E97A1B00E475A5 /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D6427728E97A1B00E475A5 /* TagCollectionViewCell.swift */; };
 		64D6427A28E981BE00E475A5 /* TagCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D6427928E981BE00E475A5 /* TagCollectionView.swift */; };
+		64D6427D28EAD43A00E475A5 /* ThirdSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D6427C28EAD43A00E475A5 /* ThirdSectionCell.swift */; };
+		64D6427F28EAD4F600E475A5 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D6427E28EAD4F600E475A5 /* CardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,9 +57,13 @@
 		63487F4328E2EA5E0033CF32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63487F4528E2EA5E0033CF32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6426E6A928E730EC00159D4A /* FirstSectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSectionCell.swift; sourceTree = "<group>"; };
+		6463E98928EC87B000FA66F1 /* CardCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionView.swift; sourceTree = "<group>"; };
+		6463E98B28EC89E600FA66F1 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		64D6427428E938C000E475A5 /* SecondSectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondSectionCell.swift; sourceTree = "<group>"; };
 		64D6427728E97A1B00E475A5 /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
 		64D6427928E981BE00E475A5 /* TagCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionView.swift; sourceTree = "<group>"; };
+		64D6427C28EAD43A00E475A5 /* ThirdSectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdSectionCell.swift; sourceTree = "<group>"; };
+		64D6427E28EAD4F600E475A5 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +92,7 @@
 				63487F4228E2EA5E0033CF32 /* LaunchScreen.storyboard */,
 				6426E6A928E730EC00159D4A /* FirstSectionCell.swift */,
 				64D6427628E9562000E475A5 /* SecondSection */,
+				64D6427B28EAD41000E475A5 /* ThirdSection */,
 				4019E21B28E5EB34007DD322 /* FourthSectionCell.swift */,
 				40D68ED428EB376100A2AED1 /* FifthSection */,
 				40294A1228EBECA300B01F0A /* PopupView */,
@@ -179,6 +188,17 @@
 			path = SecondSection;
 			sourceTree = "<group>";
 		};
+		64D6427B28EAD41000E475A5 /* ThirdSection */ = {
+			isa = PBXGroup;
+			children = (
+				64D6427C28EAD43A00E475A5 /* ThirdSectionCell.swift */,
+				6463E98928EC87B000FA66F1 /* CardCollectionView.swift */,
+				6463E98B28EC89E600FA66F1 /* CardCollectionViewCell.swift */,
+				64D6427E28EAD4F600E475A5 /* CardView.swift */,
+			);
+			path = ThirdSection;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -253,11 +273,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				63487F3C28E2EA5E0033CF32 /* FirstViewController.swift in Sources */,
+				6463E98A28EC87B000FA66F1 /* CardCollectionView.swift in Sources */,
 				64D6427828E97A1B00E475A5 /* TagCollectionViewCell.swift in Sources */,
 				64D6427528E938C000E475A5 /* SecondSectionCell.swift in Sources */,
+				64D6427D28EAD43A00E475A5 /* ThirdSectionCell.swift in Sources */,
 				63487F3828E2EA5E0033CF32 /* AppDelegate.swift in Sources */,
 				40D68ED128EAAEBF00A2AED1 /* CommentView.swift in Sources */,
 				6426E6AA28E730EC00159D4A /* FirstSectionCell.swift in Sources */,
+				6463E98C28EC89E600FA66F1 /* CardCollectionViewCell.swift in Sources */,
 				64D6427A28E981BE00E475A5 /* TagCollectionView.swift in Sources */,
 				40294A1428EBECC800B01F0A /* PopupView.swift in Sources */,
 				40294A1828EC004400B01F0A /* PopupViewDelegate.swift in Sources */,
@@ -266,6 +289,7 @@
 				4019E21C28E5EB34007DD322 /* FourthSectionCell.swift in Sources */,
 				40D68ED328EB375900A2AED1 /* FifthSectionHeaderView.swift in Sources */,
 				40D68ECF28EAA78400A2AED1 /* FifthSectionCell.swift in Sources */,
+				64D6427F28EAD4F600E475A5 /* CardView.swift in Sources */,
 				40478C3F28E6E67F00C96673 /* Const.swift in Sources */,
 				40294A1A28EC007000B01F0A /* PopupViewControllerDelegate.swift in Sources */,
 				40294A1128EBE1BD00B01F0A /* PopupViewController.swift in Sources */,

@@ -33,10 +33,6 @@ class SecondSectionCell: UITableViewCell {
         self.tagCollectionView.dataSource = self
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-    }
-
     @available(*, unavailable)
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
