@@ -62,11 +62,60 @@ extension FirstViewStyling {
             }
         }
     }
-    
-    var labelStyling : (UILabel) -> () {
+ 
+    var labelStyling : (UILabel,String) -> () {
         {
-            $0.textColor = .black
-            $0.textAlignment = .center
+            $0.textColor = UIColor(red: 0.569, green: 0.573, blue: 0.6, alpha: 1)
+            $0.font = UIFont(name: "NotoSansKR-Medium", size: 14)
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineHeightMultiple = 0.99
+            $0.attributedText = NSMutableAttributedString(string: $1, attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
         }
     }
+    
+    var titleLabelStyling : (UILabel,String) -> () {
+        {
+            $0.textColor = UIColor(red: 0.259, green: 0.267, blue: 0.298, alpha: 1)
+            $0.font = UIFont(name: "NotoSansCJKKR-Bold", size: 20)
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineHeightMultiple = 0.95
+            $0.attributedText = NSMutableAttributedString(string: $1, attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        }
+    }
+    
+    var keyboardImageStyling : (UIImageView) -> () {
+        {
+            let img = UIImage(named: "keyboardImage")
+            $0.image = img
+            $0.contentMode = .scaleAspectFit
+            let layer0 = CALayer()
+            layer0.transform = CATransform3DMakeAffineTransform(CGAffineTransform(a: 1, b: 0, c: 0, d: 1, tx: 0, ty: 0))
+            layer0.bounds = $0.bounds
+            layer0.position = $0.center
+            $0.layer.addSublayer(layer0)
+        }
+    }
+    
+    var headerLabelStyling : (UILabel,String) -> () {
+        {
+            $0.textColor = UIColor(red: 0.259, green: 0.267, blue: 0.298, alpha: 1)
+            $0.font = UIFont(name: "NotoSansCJKKR-Bold", size: 14)
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineHeightMultiple = 1.16
+            $0.attributedText = NSMutableAttributedString(string: $1, attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        }
+    }
+    
+    var bodyLabelStyling  : (UILabel,String) -> () {
+        {
+            $0.textColor = UIColor(red: 0.294, green: 0.306, blue: 0.341, alpha: 1)
+            $0.font = UIFont(name: "NotoSansKR-Regular", size: 14)
+            $0.numberOfLines = 0
+            $0.lineBreakMode = .byWordWrapping
+            var paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineHeightMultiple = 1.18
+            $0.attributedText = NSMutableAttributedString(string: $1, attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        }
+    }
+
 }

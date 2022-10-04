@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3364545B28EC4C1C00976868 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3364545A28EC4C1C00976868 /* KeyboardView.swift */; };
+		3364545D28EC59D900976868 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3364545C28EC59D900976868 /* DescriptionView.swift */; };
 		3368968B28EC0CF500C034FA /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3368968A28EC0CF500C034FA /* FirstView.swift */; };
 		33A8839428EADED400FE9216 /* Hangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A8839328EADED400FE9216 /* Hangle.swift */; };
 		33A8839528EADFB800FE9216 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63487F4028E2EA5E0033CF32 /* Assets.xcassets */; };
@@ -81,6 +83,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3364545A28EC4C1C00976868 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
+		3364545C28EC59D900976868 /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
 		3368968A28EC0CF500C034FA /* FirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstView.swift; sourceTree = "<group>"; };
 		33A8839328EADED400FE9216 /* Hangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hangle.swift; sourceTree = "<group>"; };
 		3668F8FD28E9BFFB0093E04D /* CustomKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CustomKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -261,6 +265,8 @@
 				63487F3B28E2EA5E0033CF32 /* FirstViewController.swift */,
 				4C242BB528E80E5800DA6CBE /* TestButtonView.swift */,
 				3368968A28EC0CF500C034FA /* FirstView.swift */,
+				3364545A28EC4C1C00976868 /* KeyboardView.swift */,
+				3364545C28EC59D900976868 /* DescriptionView.swift */,
 			);
 			path = FirstVCRelated;
 			sourceTree = "<group>";
@@ -472,6 +478,7 @@
 				4C242B8028E804E700DA6CBE /* Styleable.swift in Sources */,
 				4C242B8428E8051800DA6CBE /* SecondViewStyling.swift in Sources */,
 				4C242B8728E8055200DA6CBE /* SceneCategory.swift in Sources */,
+				3364545B28EC4C1C00976868 /* KeyboardView.swift in Sources */,
 				4C242B8D28E8059D00DA6CBE /* FirstViewControllerRoutable.swift in Sources */,
 				63487F3C28E2EA5E0033CF32 /* FirstViewController.swift in Sources */,
 				4C242B9628E8060200DA6CBE /* BasicNavigationController.swift in Sources */,
@@ -480,6 +487,7 @@
 				4C242B7E28E804BF00DA6CBE /* Presentable.swift in Sources */,
 				4C242B9128E805C100DA6CBE /* SceneContext.swift in Sources */,
 				4C242BA328E8070600DA6CBE /* SecondViewController.swift in Sources */,
+				3364545D28EC59D900976868 /* DescriptionView.swift in Sources */,
 				63487F3828E2EA5E0033CF32 /* AppDelegate.swift in Sources */,
 				4C242B9F28E806B100DA6CBE /* Date+Extensions.swift in Sources */,
 				4C242B8228E8050100DA6CBE /* FirstViewStyling.swift in Sources */,

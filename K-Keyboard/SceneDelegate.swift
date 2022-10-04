@@ -4,7 +4,6 @@
 //
 //  Created by kjs on 2022/09/27.
 //
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate, SceneDelegateRoutable {
