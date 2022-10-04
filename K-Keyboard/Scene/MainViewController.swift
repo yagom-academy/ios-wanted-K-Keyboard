@@ -7,18 +7,24 @@
 
 import UIKit
 
+protocol ThemeProtocol: AnyObject {
+    func cellDidTap()
+}
+
 final class MainViewController: UIViewController {
 
     @IBOutlet private weak var tagListCollectionView: UICollectionView!
     @IBOutlet private weak var keywordColletionView: UICollectionView!
     @IBOutlet private weak var themeCollectionView: UICollectionView!
     
+    weak var delegate: ThemeProtocol?
+    
     private var tagList = ["이벤트", "캐릭터", "새", "동물", "앙ㅇㄴㅇㄴㄴㅇ증맞은" ,"동글동글", "마루", "귀여웡", "배고파","동글동글", "마루", "귀여웡", "배고파"]
     private var keywordList = [
-        Keyword(title: "신나 🎉", imageName: "keyword_fun"),
-        Keyword(title: "기대 ✨", imageName: "keyword_expect"),
-        Keyword(title: "기대 ✨", imageName: "keyword_expect"),
-        Keyword(title: "기대 ✨", imageName: "keyword_expect")
+        KeywordModel(title: "신나 🎉", imageName: "keyword_fun"),
+        KeywordModel(title: "기대 ✨", imageName: "keyword_expect"),
+        KeywordModel(title: "기대 ✨", imageName: "keyword_expect"),
+        KeywordModel(title: "기대 ✨", imageName: "keyword_expect")
     ]
     
     private var themeList = [
@@ -30,10 +36,14 @@ final class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //tag
         self.tagListCollectionView.dataSource = self
         self.tagListCollectionView.collectionViewLayout = generateTagListLayout()
+        //keyword
         self.keywordColletionView.dataSource = self
+        //theme
         self.themeCollectionView.dataSource = self
+        self.themeCollectionView.delegate = self
         self.themeCollectionView.collectionViewLayout = generateThemeListLayout()
     }
     
@@ -74,6 +84,14 @@ extension MainViewController: UICollectionViewDataSource {
     }
 }
 
+extension MainViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ThemeCell else { return }
+        cell.count += 1
+        self.themeList[indexPath.row].count += 1
+    }
+}
+
 extension MainViewController {
     func generateTagListLayout() -> UICollectionViewLayout {
         let itemSize = NSCollectionLayoutSize(
@@ -94,7 +112,7 @@ extension MainViewController {
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        group.interItemSpacing = .fixed(10)
+        group.interItemSpacing = .fixed(12)
         let section = NSCollectionLayoutSection(group: group)
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout

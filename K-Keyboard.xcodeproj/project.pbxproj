@@ -137,8 +137,8 @@
 			isa = PBXGroup;
 			children = (
 				6C17090828E891F2008CBFE2 /* TagCell.swift */,
-				6C1D679B28EC019400301DE0 /* ThemeCell.swift */,
 				6CCC820A28E9B3D900296222 /* KeywordCell.swift */,
+				6C1D679B28EC019400301DE0 /* ThemeCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
