@@ -28,6 +28,18 @@ class KoreanAutomata {
                                                       "ㄴ" : ["ㅈ", "ㅎ", "ㄵ", "ㄶ"],
                                                       "ㄹ" : ["ㄱ", "ㅁ", "ㅂ", "ㅅ", "ㅌ", "ㅍ", "ㅎ", "ㄺ", "ㄻ", "ㄼ", "ㄽ", "ㄾ", "ㄿ","ㅀ"],
                                                       "ㅂ" : ["ㅅ", "ㅄ"]]
+    let doubleFinalConsonantReverses: [String : [String]] = [
+                                                        "ㄳ" : ["ㄱ", "ㅅ"],
+                                                        "ㄵ" : ["ㄴ", "ㅈ"],
+                                                        "ㄶ" : ["ㄴ", "ㅎ"],
+                                                        "ㄺ" : ["ㄹ", "ㄱ"],
+                                                        "ㄻ" : ["ㄹ", "ㅁ"],
+                                                        "ㄼ" : ["ㄹ", "ㅂ"],
+                                                        "ㄽ" : ["ㄹ", "ㅅ"],
+                                                        "ㄾ" : ["ㄹ", "ㅌ"],
+                                                        "ㄿ" : ["ㄹ", "ㅍ"],
+                                                        "ㅀ" : ["ㄹ", "ㅎ"],
+                                                        "ㅄ" : ["ㅂ", "ㅅ"]]
     var lastWord = ""
     var totalWords: [String] = []
     
@@ -35,6 +47,7 @@ class KoreanAutomata {
         
         if keyType == .space {
             lastWord = " "
+            totalWords.append(" ")
             return (.start, lastWord, false)
         }
         
@@ -50,7 +63,7 @@ class KoreanAutomata {
         case .firstConsonantOnly:
             if keyType == .vowel {
                 let value = combinationToComplete(chosung: lastWord, jungsung: text, jongsung: nil)
-                lastWord = value ?? ""
+                lastWord = value
                 totalWords.append(text)
                 return (.consonantPlusVowel, lastWord, true)
             } else {
@@ -144,24 +157,91 @@ class KoreanAutomata {
                             return (.vowelOnly, lastWord, false)
                         }
                 } else {
-                    lastWord = text
-                    totalWords.append(text)
-                    return (.vowelOnly, lastWord, false)
+                    print("unicode transformation error")
                 }
             } else {
-                print("unicode transformation error")
+                lastWord = text
+                totalWords.append(text)
+                return (.vowelOnly, lastWord, false)
             }
         }
         case .finalConsonant:
-            return (.start, text, false)
+            if keyType == .consonant {
+                var (choUni, jungUni, jongUni) = completeToCombination(word: lastWord)
+                var lastFinalConsonant = finalConsonants[jongUni]
+                if doubleFinalConsonants.keys.contains(lastFinalConsonant) {
+                    if let isContain = doubleFinalConsonants[lastFinalConsonant]?.contains(text) {
+                        if isContain {
+                            switch lastFinalConsonant {
+                            case "ㄱ", "ㅂ":
+                                lastFinalConsonant = (doubleFinalConsonants[lastFinalConsonant]?.last)!
+                            case "ㄹ":
+                                let index = doubleFinalConsonants[lastFinalConsonant]?.firstIndex(of: text)
+                                lastFinalConsonant = (doubleFinalConsonants[lastFinalConsonant]?[index! + 7])!
+                            case "ㄴ":
+                                let index = doubleFinalConsonants[lastFinalConsonant]?.firstIndex(of: text)
+                                lastFinalConsonant = (doubleFinalConsonants[lastFinalConsonant]?[index! + 2])!
+                            default:
+                                lastFinalConsonant = ""
+                            }
+                            totalWords.append(text)
+
+                            for i in 0 ..< finalConsonants.count {
+                                if finalConsonants[i] == lastFinalConsonant { jongUni = i }
+                            }
+                            
+                            let uniValue:Int = (choUni * 21 * 28) + (jungUni * 28) + jongUni + 0xAC00;
+                            if let uni = Unicode.Scalar(uniValue) {
+                                lastWord = String(Character(uni))
+                                return (.finalConsonant, lastWord, true)
+                            }
+                        } else {
+                            totalWords.append(text)
+                            lastWord = text
+                            return (.firstConsonantOnly, lastWord, false)
+                        }
+                    } else {
+                        print("unicode transformation error")
+                    }
+                } else {
+                    lastWord = text
+                    totalWords.append(text)
+                    return (.firstConsonantOnly, lastWord, false)
+                }
+            } else {
+                var (choUni, jungUni, jongUni) = completeToCombination(word: lastWord)
+                let finalConsonant = finalConsonants[jongUni]
+                if doubleFinalConsonantReverses.keys.contains(finalConsonant) {
+                    let firstFinalConsonant = doubleFinalConsonantReverses[finalConsonant]?.first
+                    let lastFinalConsonant = (doubleFinalConsonantReverses[finalConsonant]?.last)!
+                    
+                    for i in 0 ..< finalConsonants.count {
+                        if finalConsonants[i] == firstFinalConsonant { jongUni = i }
+                    }
+                    
+                    let uniValue:Int = (choUni * 21 * 28) + (jungUni * 28) + jongUni + 0xAC00
+                    guard let uni = Unicode.Scalar(uniValue) else { return (.start, lastWord, false) }
+                    let previousValue = String(Character(uni))
+                    let newValue = combinationToComplete(chosung: lastFinalConsonant, jungsung: text, jongsung: nil)
+                    lastWord = newValue
+                    totalWords.append(text)
+                    return (.consonantPlusVowel, previousValue + newValue, true)
+                    
+                } else {
+                    let uniValue:Int = (choUni * 21 * 28) + (jungUni * 28) + 0xAC00;
+                    guard let uni = Unicode.Scalar(uniValue) else { return (.start, lastWord, false) }
+                    let previousValue = String(Character(uni))
+                    let newValue = combinationToComplete(chosung: finalConsonant, jungsung: text, jongsung: nil)
+                    lastWord = newValue
+                    totalWords.append(text)
+                    return (.consonantPlusVowel, previousValue + newValue, true)
+                }
+            }
         }
-        
-        
-        
         return (.start, text, false)
     }
     
-    func combinationToComplete(chosung: String, jungsung: String, jongsung:String?) -> String? {
+    func combinationToComplete(chosung: String, jungsung: String, jongsung:String?) -> String {
         var chosungIndex = 0
         var jungsungIndex = 0
         var jongsungIndex = 0
@@ -183,7 +263,7 @@ class KoreanAutomata {
             return String(Character(uni))
         }
         
-        return nil
+        return ""
     }
     
     func completeToCombination(word: String) -> (Int, Int, Int) {
