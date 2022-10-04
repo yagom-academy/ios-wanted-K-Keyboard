@@ -11,7 +11,7 @@ protocol KeyboardViewDelegate : AnyObject {
   func insertCharacter(_ newCharacter: String)
   func deleteCharacterBeforeCursor()
   func characterBeforeCursor() -> Character?
-    func insertSpace()
+  func insertSpace()
 }
 
 class KeyboardViewController: UIInputViewController {
