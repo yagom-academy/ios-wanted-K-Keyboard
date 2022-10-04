@@ -10,12 +10,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KeyboardViewController" customModule="K_Keyboard" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MorseKeyboardView" customModule="K_Keyboard" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="KeyboardView" customModule="K_Keyboard" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="390" height="220"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IhY-P9-huU">
-                    <rect key="frame" x="341" y="121" width="44" height="38"/>
+                    <rect key="frame" x="341" y="117" width="44" height="38"/>
                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" title="Button"/>
@@ -69,6 +69,7 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="La0-tn-wey">
                             <rect key="frame" x="0.0" y="0.0" width="39" height="50"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="ㅂ">
                                 <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
@@ -79,6 +80,7 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BBb-PA-h0d">
                             <rect key="frame" x="39" y="0.0" width="39" height="50"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="ㅈ">
                                 <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
@@ -89,6 +91,7 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JGz-aW-TBX">
                             <rect key="frame" x="78" y="0.0" width="39" height="50"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="ㄷ">
                                 <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
@@ -99,6 +102,7 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tGb-Vl-vNb">
                             <rect key="frame" x="117" y="0.0" width="39" height="50"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="ㄱ">
                                 <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
@@ -109,6 +113,7 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wxj-S9-RIM">
                             <rect key="frame" x="156" y="0.0" width="39" height="50"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="ㅅ">
                                 <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
@@ -119,6 +124,7 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHU-vJ-w4G">
                             <rect key="frame" x="195" y="0.0" width="39" height="50"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="ㅛ">
                                 <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
@@ -129,6 +135,7 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nZj-PT-Bg4">
                             <rect key="frame" x="234" y="0.0" width="39" height="50"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="ㅕ">
                                 <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
@@ -139,6 +146,7 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Emy-qZ-sOV">
                             <rect key="frame" x="273" y="0.0" width="39" height="50"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="ㅑ">
                                 <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
@@ -149,6 +157,7 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gI0-fK-PRh">
                             <rect key="frame" x="312" y="0.0" width="39" height="50"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="ㅐ">
                                 <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
@@ -159,6 +168,7 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AMg-oS-B4M">
                             <rect key="frame" x="351" y="0.0" width="39" height="50"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="ㅔ">
                                 <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
@@ -173,10 +183,10 @@
                     </constraints>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="i9t-78-E8w">
-                    <rect key="frame" x="19" y="58" width="352" height="50"/>
+                    <rect key="frame" x="20" y="58" width="351" height="50"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w1W-Ss-6Dz">
-                            <rect key="frame" x="0.0" y="0.0" width="38.333333333333336" height="50"/>
+                            <rect key="frame" x="0.0" y="0.0" width="38" height="50"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="ㅁ">
                                 <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
@@ -186,7 +196,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDk-qW-Wqh">
-                            <rect key="frame" x="39.333333333333336" y="0.0" width="38.000000000000007" height="50"/>
+                            <rect key="frame" x="39" y="0.0" width="38.333333333333343" height="50"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="ㄴ">
                                 <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
@@ -196,7 +206,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7V1-3h-KZn">
-                            <rect key="frame" x="78.333333333333329" y="0.0" width="38.333333333333329" height="50"/>
+                            <rect key="frame" x="78.333333333333329" y="0.0" width="38" height="50"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="ㅇ">
                                 <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
@@ -206,7 +216,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MzF-2C-Mdz">
-                            <rect key="frame" x="117.66666666666664" y="0.0" width="38.333333333333329" height="50"/>
+                            <rect key="frame" x="117.33333333333334" y="0.0" width="38" height="50"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="ㄹ">
                                 <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
@@ -216,7 +226,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yZX-D5-rng">
-                            <rect key="frame" x="157" y="0.0" width="38" height="50"/>
+                            <rect key="frame" x="156.33333333333334" y="0.0" width="38.333333333333343" height="50"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="ㅎ">
                                 <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
@@ -226,7 +236,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="15v-x7-RGR">
-                            <rect key="frame" x="196" y="0.0" width="38.333333333333343" height="50"/>
+                            <rect key="frame" x="195.66666666666666" y="0.0" width="38" height="50"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="ㅗ">
                                 <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
@@ -236,7 +246,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4vh-Rp-z43">
-                            <rect key="frame" x="235.33333333333334" y="0.0" width="38.333333333333343" height="50"/>
+                            <rect key="frame" x="234.66666666666666" y="0.0" width="37.999999999999972" height="50"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="ㅓ">
                                 <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
@@ -246,7 +256,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Cy-jP-nWL">
-                            <rect key="frame" x="274.66666666666669" y="0.0" width="38" height="50"/>
+                            <rect key="frame" x="273.66666666666669" y="0.0" width="38.333333333333314" height="50"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="ㅏ">
                                 <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
@@ -256,7 +266,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f8l-aI-xPS">
-                            <rect key="frame" x="313.66666666666669" y="0.0" width="38.333333333333314" height="50"/>
+                            <rect key="frame" x="313" y="0.0" width="38" height="50"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="ㅣ">
                                 <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
@@ -266,6 +276,7 @@
                             </connections>
                         </button>
                     </subviews>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="ORz-Vr-wSY"/>
                     </constraints>
@@ -344,12 +355,13 @@
                             </connections>
                         </button>
                     </subviews>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="dzv-zg-5eb"/>
                     </constraints>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7EA-G2-KcK">
-                    <rect key="frame" x="5" y="121" width="43.333333333333336" height="38"/>
+                    <rect key="frame" x="5" y="117" width="43.333333333333336" height="38"/>
                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" title="Button"/>
@@ -362,18 +374,18 @@
             <color key="backgroundColor" systemColor="separatorColor"/>
             <constraints>
                 <constraint firstItem="TBx-gI-8av" firstAttribute="top" secondItem="i9t-78-E8w" secondAttribute="bottom" constant="7" id="14e-2U-CkC"/>
-                <constraint firstItem="IhY-P9-huU" firstAttribute="centerY" secondItem="7EA-G2-KcK" secondAttribute="centerY" id="5ae-N6-JNt"/>
-                <constraint firstItem="i9t-78-E8w" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="19" id="64c-BD-0aG"/>
+                <constraint firstItem="i9t-78-E8w" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="64c-BD-0aG"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="iUo-4M-5P5" secondAttribute="bottom" constant="10" id="670-8F-m2c"/>
                 <constraint firstItem="GRb-Ad-PYP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="79g-8g-2U5"/>
                 <constraint firstItem="m23-4T-ad9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="AGR-39-7bZ"/>
                 <constraint firstAttribute="trailing" secondItem="GRb-Ad-PYP" secondAttribute="trailing" id="CSQ-5j-YmF"/>
+                <constraint firstItem="q2m-qo-D4G" firstAttribute="top" secondItem="IhY-P9-huU" secondAttribute="bottom" constant="5" id="G3v-4Q-1rQ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="i9t-78-E8w" secondAttribute="trailing" constant="19" id="N5P-2i-d3U"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="q2m-qo-D4G" secondAttribute="trailing" constant="5" id="XEV-tr-HF2"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="q2m-qo-D4G" secondAttribute="bottom" constant="10" id="XnX-Va-aHo"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="TBx-gI-8av" secondAttribute="trailing" constant="58" id="ZyZ-GG-7WN"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="IhY-P9-huU" secondAttribute="trailing" constant="5" id="hBf-aW-tdN"/>
-                <constraint firstItem="TBx-gI-8av" firstAttribute="centerY" secondItem="7EA-G2-KcK" secondAttribute="centerY" id="oSV-tV-Qas"/>
+                <constraint firstItem="m23-4T-ad9" firstAttribute="top" secondItem="7EA-G2-KcK" secondAttribute="bottom" constant="5" id="i7Y-dA-Xgl"/>
                 <constraint firstItem="i9t-78-E8w" firstAttribute="top" secondItem="GRb-Ad-PYP" secondAttribute="bottom" constant="8" id="pTv-Cc-RDS"/>
                 <constraint firstItem="iUo-4M-5P5" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="pd6-Lj-kaY"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="m23-4T-ad9" secondAttribute="bottom" constant="10" id="q3B-kv-v0a"/>

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MorseKeyboardView: UIView {
+class KeyboardView: UIView {
     
     
     lazy var button: KeyboardButton = {

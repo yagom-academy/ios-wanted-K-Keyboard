@@ -11,27 +11,19 @@ import UIKit
 class KeyboardViewController: UIInputViewController {
     var spaceButton: KeyboardButton?
     var deleteButton: KeyboardButton?
-    var charLine1Buttons: [KeyboardButton]?
-//    var longPressDeleteButtonTimer: Timer?
+    
     //MorseKeyboardView개체 에 대한 참조를 보유하는 속성 입니다.
-    var morseKeyboardView: MorseKeyboardView!
-    
-//    var language:TextString.language = .en
-    
+    var morseKeyboardView: KeyboardView!
     var lastCharacters: [String] = []
-    var isPushedShift = false {
-        didSet{
-            self.changedShiftValue()
-        }
-    }
     
-    let cho: [String] = ["ㄱ","ㄲ","ㄴ","ㄷ","ㄸ","ㄹ","ㅁ","ㅂ","ㅃ","ㅅ","ㅆ","ㅇ","ㅈ","ㅉ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"]
-    let jung: [String] = ["ㅏ", "ㅐ", "ㅑ", "ㅒ", "ㅓ", "ㅔ", "ㅕ", "ㅖ", "ㅗ", "ㅘ", "ㅙ", "ㅚ", "ㅛ", "ㅜ", "ㅝ","ㅞ", "ㅟ", "ㅠ", "ㅡ", "ㅢ", "ㅣ"]
-    let jong: [String] = [" ", "ㄱ", "ㄲ", "ㄳ", "ㄴ", "ㄵ", "ㄶ", "ㄷ", "ㄹ", "ㄺ", "ㄻ", "ㄼ", "ㄽ", "ㄾ", "ㄿ","ㅀ", "ㅁ", "ㅂ", "ㅄ", "ㅅ", "ㅆ", "ㅇ", "ㅈ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"]
+    //    var lastCharacters1: [String] = []
+    
+    
+    
     
     //띄어 쓰기
     @IBAction func spaceButton(button: UIButton) {
-        insertCharacter(" ")
+        insertCharacter(" ", " ")
     }
     //if 문으로 하나씪 지운다? stack?pop?
     @IBAction func backButton (button: UIButton) {
@@ -40,11 +32,15 @@ class KeyboardViewController: UIInputViewController {
     // 문자 입력하기
     @IBAction func buttonPressed(button: UIButton) {
         let string = button.titleLabel?.text
-        insertCharacter("\(string!)")
+        insertCharacter("\(string!)", "\(string!)")
+        
     }
     
+    let cho: [String] = ["ㄱ","ㄲ","ㄴ","ㄷ","ㄸ","ㄹ","ㅁ","ㅂ","ㅃ","ㅅ","ㅆ","ㅇ","ㅈ","ㅉ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"]
+    let jung: [String] = ["ㅏ", "ㅐ", "ㅑ", "ㅒ", "ㅓ", "ㅔ", "ㅕ", "ㅖ", "ㅗ", "ㅘ", "ㅙ", "ㅚ", "ㅛ", "ㅜ", "ㅝ","ㅞ", "ㅟ", "ㅠ", "ㅡ", "ㅢ", "ㅣ"]
+    let jong: [String] = [" ", "ㄱ", "ㄲ", "ㄳ", "ㄴ", "ㄵ", "ㄶ", "ㄷ", "ㄹ", "ㄺ", "ㄻ", "ㄼ", "ㄽ", "ㄾ", "ㄿ","ㅀ", "ㅁ", "ㅂ", "ㅄ", "ㅅ", "ㅆ", "ㅇ", "ㅈ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"]
     
-    func hangul(c1:String,c2:String,c3:String) -> String? {
+    func hangul(c1:String,c2:String,c3:String,c4:String) -> String? {
         var cho_i = 0
         var jung_i = 0
         var jong_i = 0
@@ -53,6 +49,8 @@ class KeyboardViewController: UIInputViewController {
                 cho_i = i
             }
         }
+        guard c2 != " " else { return c1 }
+        
         for i in 0 ..< jung.count {
             if jung[i] == c2 {
                 jung_i = i
@@ -82,12 +80,13 @@ class KeyboardViewController: UIInputViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         makeRoundCorners()
-     
+        //        morseKeyboardView.setNextKeyboardVisible(needsInputModeSwitchKey)
+        
         
         // 인스턴스가 MorseKeyboardView컨트롤러의 루트에 추가됩니다 inputView.
         let nib = UINib(nibName: "MorseKeyboardView", bundle: nil)
         let objects = nib.instantiate(withOwner: nil, options: nil)
-        morseKeyboardView = objects.first as? MorseKeyboardView
+        morseKeyboardView = objects.first as? KeyboardView
         //        view = objects[0] as UIView
         guard let inputview = inputView else { return }
         inputview.addSubview(morseKeyboardView)
@@ -100,19 +99,19 @@ class KeyboardViewController: UIInputViewController {
                                      morseKeyboardView.bottomAnchor.constraint(equalTo: inputview.bottomAnchor)
                                     ])
         
-//        // Perform custom UI setup here
-//        self.nextKeyboardButton = UIButton(type: .system)
-//
-//        self.nextKeyboardButton.setTitle(NSLocalizedString("Next Keyboard", comment: "Title for 'Next Keyboard' button"), for: [])
-//        self.nextKeyboardButton.sizeToFit()
-//        self.nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = false
-//
-//        self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
-//
-//        self.view.addSubview(self.nextKeyboardButton)
-//
-//        self.nextKeyboardButton.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-//        self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        //        // Perform custom UI setup here
+        //        self.nextKeyboardButton = UIButton(type: .system)
+        //
+        //        self.nextKeyboardButton.setTitle(NSLocalizedString("Next Keyboard", comment: "Title for 'Next Keyboard' button"), for: [])
+        //        self.nextKeyboardButton.sizeToFit()
+        //        self.nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = false
+        //
+        //        self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
+        //
+        //        self.view.addSubview(self.nextKeyboardButton)
+        //
+        //        self.nextKeyboardButton.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+        //        self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         
     }
     
@@ -128,7 +127,7 @@ class KeyboardViewController: UIInputViewController {
     
     
     override func viewWillLayoutSubviews() {
-//        self.nextKeyboardButton.isHidden = !self.needsInputModeSwitchKey
+        //        self.nextKeyboardButton.isHidden = !self.needsInputModeSwitchKey
         super.viewWillLayoutSubviews()
     }
     
@@ -146,29 +145,41 @@ class KeyboardViewController: UIInputViewController {
         } else {
             textColor = UIColor.black
         }
-//        self.nextKeyboardButton.setTitleColor(textColor, for: [])
+        //        self.nextKeyboardButton.setTitleColor(textColor, for: [])
     }
     
     
-    
-    
-    func insertCharacter(_ newCharacter: String) {
-        let 모음: [String] = ["ㄱ","ㄲ","ㄴ","ㄷ","ㄸ","ㄹ","ㅁ","ㅂ","ㅃ","ㅅ","ㅆ","ㅇ","ㅈ","ㅉ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"]
-        let 자음: [String] = ["ㅏ", "ㅐ", "ㅑ", "ㅒ", "ㅓ", "ㅔ", "ㅕ", "ㅖ", "ㅗ", "ㅘ", "ㅙ", "ㅚ", "ㅛ", "ㅜ", "ㅝ","ㅞ", "ㅟ", "ㅠ", "ㅡ", "ㅢ", "ㅣ"]
+    func insertCharacter(_ newCharacter: String, _ newCharacter1: String) {
+        let 자음: [String] = ["ㄱ","ㄲ","ㄴ","ㄷ","ㄸ","ㄹ","ㅁ","ㅂ","ㅃ","ㅅ","ㅆ","ㅇ","ㅈ","ㅉ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"]
+        let 모음: [String] = ["ㅏ", "ㅐ", "ㅑ", "ㅒ", "ㅓ", "ㅔ", "ㅕ", "ㅖ", "ㅗ", "ㅘ", "ㅙ", "ㅚ", "ㅛ", "ㅜ", "ㅝ","ㅞ", "ㅟ", "ㅠ", "ㅡ", "ㅢ", "ㅣ"]
+        //        let 받침: [String] = ["ㄱ", "ㄲ", "ㄳ", "ㄴ", "ㄵ", "ㄶ", "ㄷ", "ㄹ", "ㄺ", "ㄻ", "ㄼ", "ㄽ", "ㄾ", "ㄿ","ㅀ", "ㅁ", "ㅂ", "ㅄ", "ㅅ", "ㅆ", "ㅇ", "ㅈ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"]
         defer {
             print("함수끝났을대 배열: \(lastCharacters)")
         }
         print("이전배열: \(lastCharacters)")
+        
         if let lastCharacter = lastCharacters.last {
-            if 모음.contains(lastCharacter) && 자음.contains(newCharacter) {
-                if let johab = hangul(c1: lastCharacter, c2: newCharacter, c3: " ") {
-                    deleteCharacterBeforeCursor()
+            if 자음.contains(lastCharacter) && 모음.contains(newCharacter) {
+                // 자음 + 모음이 합친다.
+                if let johab = hangul(c1: lastCharacter, c2: newCharacter, c3: " ", c4: " ") {
+                    deleteCharacterBeforeCursor() // 지우는거
+                    lastCharacters.append(newCharacter) //빈배열에 합친다
+                    textDocumentProxy.insertText(johab)
+                    return            // 가나다라 마다바사 이렇게 자+모음
+                }
+            }
+            else if let firstCharacter = lastCharacters.first, 자음.contains(firstCharacter),
+                    모음.contains(lastCharacter) && 자음.contains(newCharacter){   //처음에 모음이 있다면 자음+모음이 여야한다
+                if let johab = hangul(c1: firstCharacter, c2: lastCharacter, c3: newCharacter, c4: firstCharacter) {
+                    deleteCharacterBeforeCursor()                          // 여기가  받침을 받아주는거
                     lastCharacters.append(newCharacter)
                     textDocumentProxy.insertText(johab)
                     return
                 }
-            } else if let firstCharacter = lastCharacters.first, 모음.contains(firstCharacter), 자음.contains(lastCharacter) && 모음.contains(newCharacter) {
-                if let johab = hangul(c1: firstCharacter, c2: lastCharacter, c3: newCharacter) {
+            }
+            else if 자음.contains(newCharacter),
+                자음.contains(lastCharacter) && 모음.contains(newCharacter) {
+                if let johab = hangul(c1: lastCharacter, c2: newCharacter, c3: " ", c4: " ") {
                     deleteCharacterBeforeCursor()
                     lastCharacters.append(newCharacter)
                     textDocumentProxy.insertText(johab)
@@ -182,33 +193,42 @@ class KeyboardViewController: UIInputViewController {
     }
     
     
-    func changedShiftValue(){
-        
-    }
-    @objc func touchUpDeleteKey() {
-        self.deleteCharacterBeforeCursor()
-        if isPushedShift { isPushedShift = false }
-    }
     @objc func deleteCharacterBeforeCursor() {
         self.textDocumentProxy.deleteBackward()
         UIDevice.current.playInputClick()
     }
     
-//    @objc func longTouchDeleteGesture(_ sender:UIGestureRecognizer) {
-//        if sender.state == .began {
-//            self.longPressDeleteButtonTimer =
-//                Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.deleteCharacterBeforeCursor), userInfo: nil, repeats: true)
-//        } else if sender.state == .ended || sender.state == .cancelled {
-//            self.longPressDeleteButtonTimer?.invalidate()
-//            self.longPressDeleteButtonTimer = nil
-//        }
-//    }
     
     func characterBeforeCursor() -> String? {
         return nil
     }
     
-    
+    //실험 테스트
+    //    func getInitialConsonant(text: String) -> String? {
+    //        guard let firstChar = text.unicodeScalars.first?.value, 0xAC00...0xD7A3 ~= firstChar else { return nil }
+    //
+    //        let value = ((firstChar - 0xAC00) / 28 ) / 21
+    //
+    //        return String(format:"%C", value + 0x1100)
+    //    }
+    //
+    //    func getMiddleConsonant(text: String) -> String? {
+    //        guard let firstChar = text.unicodeScalars.first?.value, 0xAC00...0xD7A3 ~= firstChar else { return nil }
+    //
+    //        let value = ((firstChar - 0xAC00) / 28) % 21
+    //
+    //        return String(format:"%C", value + 0x1161)
+    //    }
+    //
+    //    func getFinalConsonant(text: String) -> String? {
+    //        guard let firstChar = text.unicodeScalars.first?.value, 0xAC00...0xD7A3 ~= firstChar else { return nil }
+    //
+    //        let value = (firstChar - 0xAC00) % 28
+    //
+    //        guard value > 0 else { return nil }
+    //
+    //        return String(format:"%C", value + 0x11a6 + 1)
+    //    }
     
     
 }
