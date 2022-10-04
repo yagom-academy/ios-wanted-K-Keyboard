@@ -18,7 +18,7 @@ class MainViewController: UIViewController {
         
         initUI()
         dataBinding()
-
+        
     }
     
     func initUI() {
@@ -28,6 +28,9 @@ class MainViewController: UIViewController {
         
         let ItemCellNib = UINib(nibName: ItemCell.identifier, bundle: Bundle(for: self.classForCoder))
         tableView.register(ItemCellNib, forCellReuseIdentifier: ItemCell.identifier)
+        
+        let DescriptionCellNib = UINib(nibName: DescriptionCell.identifier, bundle: Bundle(for: self.classForCoder))
+        tableView.register(DescriptionCellNib, forCellReuseIdentifier: DescriptionCell.identifier)
         
         
     }
@@ -65,40 +68,46 @@ extension MainViewController: UITableViewDataSource {
                 cell.set(data: itemData)
             }
             return cell
+        case .notice:
+            let cell = tableView.dequeueReusableCell(withIdentifier: DescriptionCell.identifier, for: indexPath)
+            if let cell = cell as? DescriptionCell,
+               case .notice(let noticeData) = row {
+                cell.set(data: noticeData)
+            }
+            return cell
         default:
             return UITableViewCell()
         }
-//
-//        case .notice:
-//            let cell = tableView.dequeueReusableCell(withIdentifier: NoticeCell.identifier, for: indexPath)
-//            return cell
-//
-//        case .tags:
-//            let cell = tableView.dequeueReusableCell(withIdentifier: TagCell.identifier, for: indexPath)
-//            if let cell = cell as? TagCell,
-//               case .tags(let tag) = row {
-//                cell.set(data: )
-//            }
-//            return cell
-//
-//        case .previews:
-//            let cell = tableView.dequeueReusableCell(withIdentifier: PreviewCell.identifier, for: indexPath)
-//            return cell
-//
-//        case .aboutThemes:
-//            let cell = tableView.dequeueReusableCell(withIdentifier: AboutThemeCell.identifier, for: indexPath)
-//            return cell
-//
-//        case .ads:
-//            let cell = tableView.dequeueReusableCell(withIdentifier: AdsCell.identifier, for: indexPath)
-//            return cell
-//
-//        case .reviews:
-//            let cell = tableView.dequeueReusableCell(withIdentifier: ReviewCell.identifier, for: indexPath)
-//            return cell
-//        }
+        //
+        //        case .notice:
+        //            let cell = tableView.dequeueReusableCell(withIdentifier: NoticeCell.identifier, for: indexPath)
+        //            return cell
+        //
+        //        case .tags:
+        //            let cell = tableView.dequeueReusableCell(withIdentifier: TagCell.identifier, for: indexPath)
+        //            if let cell = cell as? TagCell,
+        //               case .tags(let tag) = row {
+        //                cell.set(data: )
+        //            }
+        //            return cell
+        //
+        //        case .previews:
+        //            let cell = tableView.dequeueReusableCell(withIdentifier: PreviewCell.identifier, for: indexPath)
+        //            return cell
+        //
+        //        case .aboutThemes:
+        //            let cell = tableView.dequeueReusableCell(withIdentifier: AboutThemeCell.identifier, for: indexPath)
+        //            return cell
+        //
+        //        case .ads:
+        //            let cell = tableView.dequeueReusableCell(withIdentifier: AdsCell.identifier, for: indexPath)
+        //            return cell
+        //
+        //        case .reviews:
+        //            let cell = tableView.dequeueReusableCell(withIdentifier: ReviewCell.identifier, for: indexPath)
+        //            return cell
+        //        }
     }
-    
 }
 
 extension MainViewController: UITableViewDelegate {
@@ -112,6 +121,8 @@ extension MainViewController: UITableViewDelegate {
         case .item:
             let height = ((width - 32) / 343 * 264) + 115
             return height
+        case .notice:
+            return UITableView.automaticDimension
         default:
             return .zero
         }
