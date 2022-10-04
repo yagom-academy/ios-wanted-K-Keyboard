@@ -166,7 +166,6 @@ extension PopupView {
     }
 
     @objc func buyButtonPressed(_ sender: UIButton) {
-        print("충전하고 바로 사용하기")
         self.delegate?.buyAndUseButtonPressed()
     }
 }

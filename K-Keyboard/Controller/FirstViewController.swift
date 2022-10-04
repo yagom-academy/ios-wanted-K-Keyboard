@@ -8,6 +8,13 @@
 import UIKit
 
 class FirstViewController: UIViewController {
+    var comments = [
+        CommentModel(isCreator: true, userName: "크리에이터", comment: "구매해주셔서 감사합니다", time: "1일"),
+        CommentModel(isCreator: false, userName: "o달빔o", comment: "아 진짜 귀여워요!!!!", time: "5시간"),
+        CommentModel(isCreator: false, userName: "Channy", comment: "잘 쓰겠습니다", time: "30분"),
+        CommentModel(isCreator: false, userName: "Beeem", comment: "굳", time: "30초")
+    ]
+
     let backButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .white
@@ -71,6 +78,24 @@ class FirstViewController: UIViewController {
         return button
     }()
 
+    let inputBar: UITextField = {
+        let bar = UITextField()
+        bar.placeholder = "내용을 입력해주세요"
+
+        return bar
+    }()
+
+    let saveButton: UIButton = {
+        let button = UIButton()
+        button.setBackgroundImage(UIImage(named: "pinkButton"), for: .normal)
+        button.contentMode = .scaleAspectFit
+        button.setTitle("등록", for: .normal)
+        button.titleLabel?.font = UIFont(name: Const.Font.notoBold, size: 14)
+        button.titleLabel?.baselineAdjustment = .alignCenters
+
+        return button
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -78,21 +103,26 @@ class FirstViewController: UIViewController {
         firstTableView.delegate = self
         firstTableView.dataSource = self
         firstTableView.separatorStyle = .none
-        
+        inputBar.delegate = self
+
         addViews()
         setConstraints()
+        setActions()
     }
 }
 
 extension FirstViewController {
     func addViews() {
-        [gemImage, gemPrice, gemCount, buyButton].forEach { firstFooterView.addSubview($0) }
+        [gemImage, gemPrice, gemCount, buyButton, inputBar, saveButton].forEach { firstFooterView.addSubview($0) }
         [backButton, firstTableView, firstFooterView].forEach { self.view.addSubview($0) }
     }
 
     func setConstraints() {
-        [gemImage, gemPrice, gemCount, buyButton].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
+        [gemImage, gemPrice, gemCount, buyButton, inputBar, saveButton].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
         [backButton, firstTableView, firstFooterView].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
+
+        inputBar.isHidden = true
+        saveButton.isHidden = true
 
         NSLayoutConstraint.activate([
             backButton.widthAnchor.constraint(equalToConstant: 24),
@@ -125,24 +155,86 @@ extension FirstViewController {
         firstTableView.register(FifthSectionHeaderView.self, forHeaderFooterViewReuseIdentifier: FifthSectionHeaderView.identifier)
     }
 
+    func updateConstraints() {
+        [gemImage, gemCount, gemPrice, buyButton].forEach { $0.isHidden = true }
+        [inputBar, saveButton].forEach { $0.isHidden = false }
+
+        NSLayoutConstraint.activate([
+            inputBar.topAnchor.constraint(equalTo: firstFooterView.topAnchor),
+            inputBar.leadingAnchor.constraint(equalTo: firstFooterView.leadingAnchor, constant: 20),
+            inputBar.bottomAnchor.constraint(equalTo: firstFooterView.bottomAnchor),
+            saveButton.leadingAnchor.constraint(equalTo: inputBar.trailingAnchor, constant: 10),
+            saveButton.trailingAnchor.constraint(equalTo: firstFooterView.trailingAnchor, constant: -20),
+            saveButton.centerYAnchor.constraint(equalTo: inputBar.centerYAnchor),
+            saveButton.widthAnchor.constraint(equalToConstant: 48),
+            saveButton.heightAnchor.constraint(equalToConstant: 48)
+        ])
+    }
+
     func setActions() {
         buyButton.addTarget(self, action: #selector(buyButtonPressed), for: .touchUpInside)
+        saveButton.addTarget(self, action: #selector(saveButtonPressed), for: .touchUpInside)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(FirstViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(FirstViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+
+    func addComment(comment: String) {
+        comments.append(CommentModel(isCreator: false,
+                                     userName: "Unknown",
+                                     comment: comment,
+                                    time: "1초"))
+
+        firstTableView.reloadData()
     }
 
     @objc func buyButtonPressed(_ sender: UIButton) {
         let nextVC = PopupViewController()
         nextVC.modalPresentationStyle = .overCurrentContext
+        nextVC.delegate = self
         self.present(nextVC, animated: true)
+    }
+
+    @objc func saveButtonPressed(_ sender: UIButton) {
+        if inputBar.text != "" {
+            addComment(comment: inputBar.text!)
+        }
+        inputBar.endEditing(true)
+    }
+
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+            return
+        }
+
+        self.view.frame.origin.y = 0 - keyboardSize.height
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        self.view.frame.origin.y = 0
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
 
+// MARK: - TableView Delegate & DataSource
 extension FirstViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 5
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        switch section {
+        case 4:
+            return comments.count
+        default:
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -193,6 +285,11 @@ extension FirstViewController: UITableViewDelegate, UITableViewDataSource {
                 return UITableViewCell()
             }
 
+            cell.commentView.configure(nickNameStr: comments[indexPath.row].userName,
+                                       commentStr: comments[indexPath.row].comment)
+            cell.setUserType(isCreator: comments[indexPath.row].isCreator)
+            cell.timeLabel.text = comments[indexPath.row].time
+
             return cell
         default:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: TestTableViewCellOne.identifier, for: indexPath) as? TestTableViewCellOne else {
@@ -211,10 +308,34 @@ extension FirstViewController: UITableViewDelegate, UITableViewDataSource {
                 return UIView()
             }
 
+            cell.reviewCount.text = String(comments.count)
+
             return cell
         default:
             return UIView()
         }
+    }
+}
+
+// MARK: - PopupViewController Delegate
+extension FirstViewController: PopupViewControllerDelegate {
+    func activateTextField() {
+        updateConstraints()
+    }
+}
+
+// MARK: - UITextField Delegate
+extension FirstViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField.text != "" {
+            addComment(comment: inputBar.text!)
+        }
+        textField.endEditing(true)
+        return true
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.text = ""
     }
 }
 

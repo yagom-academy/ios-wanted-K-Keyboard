@@ -10,6 +10,7 @@ import UIKit
 class PopupViewController: UIViewController {
 
     let popupView = PopupView()
+    var delegate: PopupViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +45,7 @@ extension PopupViewController {
 
 extension PopupViewController: PopupViewDelegate {
     func buyAndUseButtonPressed() {
+        self.delegate?.activateTextField()
         self.dismiss(animated: true)
     }
 }
