@@ -15,7 +15,7 @@ final class MainViewController: UIViewController {
     @IBOutlet private weak var themeCollectionView: UICollectionView!
     @IBOutlet private weak var reviewCollectionView: UICollectionView!
     @IBOutlet private weak var reviewFoldButton: UIButton!
-    
+    @IBOutlet private weak var bottomView: BottomView!
     
     private var reviewCollectionViewIsHidden: Bool = false
     private var tagList = ["이벤트", "캐릭터", "새", "동물", "앙ㅇㄴㅇㄴㄴㅇ증맞은" ,"동글동글", "마루", "귀여웡", "배고파","동글동글", "마루", "귀여웡", "배고파"]
@@ -25,14 +25,12 @@ final class MainViewController: UIViewController {
         KeywordModel(title: "기대 ✨", imageName: "keyword_expect"),
         KeywordModel(title: "기대 ✨", imageName: "keyword_expect")
     ]
-    
     private var themeList = [
         ThemeModel(emoji: "😄", title: "맘에들어요", count: 0),
         ThemeModel(emoji: "😍", title: "심쿵했어요", count: 0),
         ThemeModel(emoji: "😉", title: "응원해요", count: 0),
         ThemeModel(emoji: "😂", title: "갖고싶어요", count: 0)
     ]
-    
     private var reviewList = [
         ReviewModel(userType: .creater, nickname: "julia", content: "dfsdsffsd"),
         ReviewModel(userType: .user, nickname: "유저", content: "111"),
@@ -53,6 +51,8 @@ final class MainViewController: UIViewController {
         self.themeCollectionView.collectionViewLayout = generateThemeListLayout()
         //review
         self.reviewCollectionView.dataSource = self
+        //button
+        self.bottomView.delegate = self
     }
     
     @IBAction func reviewFoldButtonDidTap(_ sender: UIButton) {
@@ -61,9 +61,7 @@ final class MainViewController: UIViewController {
         let imageName = self.reviewCollectionViewIsHidden ? UIImage(systemName: "chevron.up") : UIImage(systemName: "chevron.down")
         self.reviewFoldButton.setImage(imageName, for: .normal)
     }
-    
-    
-   
+
 }
 // MARK: - Datasource
 extension MainViewController: UICollectionViewDataSource {
@@ -123,6 +121,25 @@ extension MainViewController: ReviewCellProtocol {
         let confirm = UIAlertAction(title: "확인", style: .default)
         alertVC.addAction(confirm)
         self.present(alertVC, animated: true)
+    }
+}
+
+extension MainViewController: BottomViewDelegate {
+    func buyJamButtonDidTap() {
+        guard let popUpVC = self.storyboard?.instantiateViewController(withIdentifier: "PopUpViewController") as? PopUpViewController else { return }
+        popUpVC.modalPresentationStyle = .fullScreen
+        popUpVC.delegate = self
+        self.present(popUpVC, animated: true)
+    }
+}
+
+extension MainViewController: PopUpViewControllerDelegate {
+    func rechargeAndUseButtonDidTap() {
+        //바텀뷰의 입력창으로 바껴야함
+        bottomView.jamStateStackView.isHidden = true
+        bottomView.buyJamButton.isHidden = true
+        bottomView.reviewTextField.isHidden = false
+        bottomView.reviewInputButton.isHidden = false
     }
 }
 

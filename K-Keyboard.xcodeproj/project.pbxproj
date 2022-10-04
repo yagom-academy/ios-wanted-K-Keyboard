@@ -18,6 +18,9 @@
 		6C1D679A28EBF0D500301DE0 /* UIStackView+Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1D679928EBF0D500301DE0 /* UIStackView+Extenstion.swift */; };
 		6C1D679C28EC019400301DE0 /* ThemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1D679B28EC019400301DE0 /* ThemeCell.swift */; };
 		6C1D679E28EC382200301DE0 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1D679D28EC382200301DE0 /* ReviewCell.swift */; };
+		6C1D67A228EC72B400301DE0 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1D67A128EC72B400301DE0 /* PopUpViewController.swift */; };
+		6C1D67A428EC7B0300301DE0 /* BottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C1D67A328EC7B0300301DE0 /* BottomView.xib */; };
+		6C1D67A728EC7E6E00301DE0 /* BottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1D67A628EC7E6E00301DE0 /* BottomView.swift */; };
 		6C695DD628E5B79300614896 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C695DD528E5B79300614896 /* KeyboardViewController.swift */; };
 		6C695DDA28E5B79300614896 /* PlayKeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6C695DD328E5B79300614896 /* PlayKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6CCC820B28E9B3D900296222 /* KeywordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCC820A28E9B3D900296222 /* KeywordCell.swift */; };
@@ -61,6 +64,9 @@
 		6C1D679928EBF0D500301DE0 /* UIStackView+Extenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extenstion.swift"; sourceTree = "<group>"; };
 		6C1D679B28EC019400301DE0 /* ThemeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCell.swift; sourceTree = "<group>"; };
 		6C1D679D28EC382200301DE0 /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
+		6C1D67A128EC72B400301DE0 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		6C1D67A328EC7B0300301DE0 /* BottomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomView.xib; sourceTree = "<group>"; };
+		6C1D67A628EC7E6E00301DE0 /* BottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomView.swift; sourceTree = "<group>"; };
 		6C695DD328E5B79300614896 /* PlayKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PlayKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C695DD528E5B79300614896 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		6C695DD728E5B79300614896 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -129,7 +135,9 @@
 		6C17090D28E89EF8008CBFE2 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				6C1D67A528EC7E5900301DE0 /* BottomView */,
 				63487F3B28E2EA5E0033CF32 /* MainViewController.swift */,
+				6C1D67A128EC72B400301DE0 /* PopUpViewController.swift */,
 				6C17090F28E89F1E008CBFE2 /* Cell */,
 			);
 			path = Scene;
@@ -144,6 +152,15 @@
 				6C1D679D28EC382200301DE0 /* ReviewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		6C1D67A528EC7E5900301DE0 /* BottomView */ = {
+			isa = PBXGroup;
+			children = (
+				6C1D67A328EC7B0300301DE0 /* BottomView.xib */,
+				6C1D67A628EC7E6E00301DE0 /* BottomView.swift */,
+			);
+			path = BottomView;
 			sourceTree = "<group>";
 		};
 		6C695DD428E5B79300614896 /* PlayKeyboard */ = {
@@ -245,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63487F4428E2EA5E0033CF32 /* LaunchScreen.storyboard in Resources */,
+				6C1D67A428EC7B0300301DE0 /* BottomView.xib in Resources */,
 				63487F4128E2EA5E0033CF32 /* Assets.xcassets in Resources */,
 				63487F3F28E2EA5E0033CF32 /* Main.storyboard in Resources */,
 			);
@@ -268,7 +286,9 @@
 				6C1D679A28EBF0D500301DE0 /* UIStackView+Extenstion.swift in Sources */,
 				6CCC820B28E9B3D900296222 /* KeywordCell.swift in Sources */,
 				63487F3C28E2EA5E0033CF32 /* MainViewController.swift in Sources */,
+				6C1D67A728EC7E6E00301DE0 /* BottomView.swift in Sources */,
 				6C1D679E28EC382200301DE0 /* ReviewCell.swift in Sources */,
+				6C1D67A228EC72B400301DE0 /* PopUpViewController.swift in Sources */,
 				6C1D679C28EC019400301DE0 /* ThemeCell.swift in Sources */,
 				6C17090928E891F2008CBFE2 /* TagCell.swift in Sources */,
 				63487F3828E2EA5E0033CF32 /* AppDelegate.swift in Sources */,
