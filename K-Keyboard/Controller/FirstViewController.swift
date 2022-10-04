@@ -91,6 +91,7 @@ extension FirstViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.register(TestTableViewCellOne.self, forCellReuseIdentifier: TestTableViewCellOne.identifier)
         tableView.register(FirstSectionCell.self, forCellReuseIdentifier: FirstSectionCell.identifier)
         tableView.register(SecondSectionCell.self, forCellReuseIdentifier: SecondSectionCell.identifier)
+        tableView.register(ThirdSectionCell.self, forCellReuseIdentifier: ThirdSectionCell.identifier)
         tableView.register(FourthSectionCell.self, forCellReuseIdentifier: FourthSectionCell.identifier)
         tableView.register(FifthSectionCell.self, forCellReuseIdentifier: FifthSectionCell.identifier)
 
@@ -108,11 +109,10 @@ extension FirstViewController: UITableViewDelegate, UITableViewDataSource {
             
             return cell
         case 2:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: TestTableViewCellOne.identifier, for: indexPath) as? TestTableViewCellOne else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: ThirdSectionCell.identifier, for: indexPath) as? ThirdSectionCell else {
                 return UITableViewCell()
             }
 
-            cell.backgroundColor = .blue
             return cell
         case 3:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: FourthSectionCell.identifier, for: indexPath) as? FourthSectionCell else {
