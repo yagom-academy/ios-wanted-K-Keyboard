@@ -15,15 +15,32 @@ class KeyboardViewController: UIInputViewController {
         let button = UIButton(type: .system)
         button.setTitle(NSLocalizedString("Next Keyboard", comment: "Title for 'Next Keyboard' button"), for: [])
         button.sizeToFit()
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
+    }()
+    
+    lazy var phonemeViews: [[PhonemeView]] = {
+        var result = [[PhonemeView]]()
+        for (index, lines) in viewModel.phonemes.enumerated() {
+            var phonemeLine = [PhonemeView]()
+            for phoneme in lines {
+                let viewModel = PhonemeViewModel(phoneme)
+                let view = PhonemeView(viewModel: viewModel)
+                view.translatesAutoresizingMaskIntoConstraints = false
+                phonemeLine.append(view)
+            }
+            result.append(phonemeLine)
+        }
+        return result
     }()
     
     lazy var parentStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.alignment = .center
-        stackView.distribution = .fillEqually
+        stackView.distribution = .fill
         stackView.spacing = 12
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
@@ -31,8 +48,9 @@ class KeyboardViewController: UIInputViewController {
         let stackViews = [UIStackView(), UIStackView(), UIStackView()]
         stackViews.forEach { stackView in
             stackView.axis = .horizontal
-            stackView.distribution = .fillEqually
+            stackView.distribution = .fill
             stackView.spacing = 6
+            stackView.translatesAutoresizingMaskIntoConstraints = false
         }
         return stackViews
     }()
@@ -88,20 +106,15 @@ class KeyboardViewController: UIInputViewController {
         self.view.addSubview(nextKeyboardButton)
         self.view.addSubview(parentStackView)
         horizontalStackViews.forEach { parentStackView.addArrangedSubview($0) }
-        for (index, lines) in viewModel.phonemes.enumerated() {
-            for phoneme in lines {
-                let viewModel = PhonemeViewModel(phoneme)
-                let view = PhonemeView(viewModel: viewModel)
-                bind(phonemeViewModel: viewModel)
-                horizontalStackViews[index].addArrangedSubview(view)
+        for (line, views) in phonemeViews.enumerated() {
+            for view in views {
+                horizontalStackViews[line].addArrangedSubview(view)
             }
         }
     }
     
     // MARK: Layout Views
     func setupConstraints() {
-        nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = false
-        parentStackView.translatesAutoresizingMaskIntoConstraints = false
         
         var constraints = [NSLayoutConstraint]()
         
@@ -118,23 +131,20 @@ class KeyboardViewController: UIInputViewController {
             parentStackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
         ]
         
-        constraints += [
-            horizontalStackViews[0].leadingAnchor.constraint(equalTo: parentStackView.leadingAnchor, constant: 3),
-            horizontalStackViews[0].trailingAnchor.constraint(equalTo: parentStackView.trailingAnchor, constant: -3),
-            horizontalStackViews[0].heightAnchor.constraint(equalToConstant: 42),
-        ]
+        horizontalStackViews.forEach {
+            constraints += [
+                $0.heightAnchor.constraint(equalToConstant: 42),
+            ]
+        }
         
-        constraints += [
-            horizontalStackViews[1].leadingAnchor.constraint(equalTo: parentStackView.leadingAnchor, constant: 22),
-            horizontalStackViews[1].trailingAnchor.constraint(equalTo: parentStackView.trailingAnchor, constant: -22),
-            horizontalStackViews[1].heightAnchor.constraint(equalToConstant: 42),
-        ]
-        
-        constraints += [
-            horizontalStackViews[2].leadingAnchor.constraint(equalTo: parentStackView.leadingAnchor, constant: 61),
-            horizontalStackViews[2].leadingAnchor.constraint(equalTo: parentStackView.trailingAnchor, constant: -61),
-            horizontalStackViews[2].heightAnchor.constraint(equalToConstant: 42),
-        ]
+        for (line, views) in phonemeViews.enumerated() {
+            let width = calculateWidth(line)
+            for view in views {
+                constraints += [
+                    view.widthAnchor.constraint(equalToConstant: width)
+                ]
+            }
+        }
     }
     
     
@@ -146,6 +156,12 @@ class KeyboardViewController: UIInputViewController {
             syllables.compactMap { $0.unicode }.forEach { nextText += String($0) }
             self.textDocumentProxy.clearAll()
             self.textDocumentProxy.insertText(nextText)
+        }
+        
+        phonemeViews.forEach { views in
+            views.forEach {
+                bind(phonemeViewModel: $0.viewModel)
+            }
         }
     }
     
@@ -175,9 +191,31 @@ class KeyboardViewController: UIInputViewController {
     }
     
     // MARK: Utils
-    private func calculateWidth() -> CGFloat {
-        let horizontalInset: CGFloat = 3 * 2
-        let interSpacings: CGFloat = 6 * 9
-        return UIScreen.main.bounds.width - horizontalInset - interSpacings
+    private func calculateWidth(_ line: Int) -> CGFloat {
+        let horizontalInset: CGFloat = getHorizontalInset(line)
+        let interSpacings: CGFloat = getInterSpacings(line)
+        return (UIScreen.main.bounds.width - horizontalInset - interSpacings) / getNumberOfPhonemeViews(line)
+    }
+    
+    private func getHorizontalInset(_ line: Int) -> CGFloat {
+        switch line {
+        case 0: return 3 * 2
+        case 1: return 22 * 2
+        case 2: return 61 * 2
+        default: return 0
+        }
+    }
+    
+    private func getInterSpacings(_ line: Int) -> CGFloat {
+        return 6 * (getNumberOfPhonemeViews(line) - 1)
+    }
+    
+    private func getNumberOfPhonemeViews(_ line: Int) -> CGFloat {
+        switch line {
+        case 0: return 10
+        case 1: return 9
+        case 2: return 7
+        default: return 0
+        }
     }
 }
