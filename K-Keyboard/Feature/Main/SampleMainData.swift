@@ -61,7 +61,7 @@ struct SampleMainData {
             ]
         )
         
-        let itemData = ItemData(title: "앙무", creator: "코핀", cost: 78, notice: noticeData, tags: tagsData, previews: previewsData, aboutThemes: aboutThemesData, ads: adsData, reviews: reviewsData)
+        let itemData = ItemData(image: "img_item", title: "앙무", creator: "코핀", numberOfBuyer: 78, cost: 5, notice: noticeData, tags: tagsData, previews: previewsData, aboutThemes: aboutThemesData, ads: adsData, reviews: reviewsData)
         
         self.itemData = itemData
     }

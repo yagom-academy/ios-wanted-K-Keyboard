@@ -22,8 +22,14 @@ class MainViewController: UIViewController {
     }
     
     func initUI() {
-        let ItemCellNib = UINib(nibName: "ItemCell", bundle: Bundle(for: self.classForCoder))
-        tableView.register(ItemCellNib, forCellReuseIdentifier: "ItemCell")
+        tableView.separatorStyle = .none
+        tableView.allowsSelection = false
+        tableView.showsVerticalScrollIndicator = false
+        
+        let ItemCellNib = UINib(nibName: ItemCell.identifier, bundle: Bundle(for: self.classForCoder))
+        tableView.register(ItemCellNib, forCellReuseIdentifier: ItemCell.identifier)
+        
+        
     }
     
     func dataBinding() {
@@ -47,18 +53,21 @@ extension MainViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let section = dto?.dataSource[indexPath.section].section else {
+        guard let dataSource = dto?.dataSource[indexPath.section] else { return UITableViewCell() }
+        let section = dataSource.section
+        let row = dataSource.items[indexPath.row]
+        
+        switch section {
+        case .item:
+            let cell = tableView.dequeueReusableCell(withIdentifier: ItemCell.identifier, for: indexPath)
+            if let cell = cell as? ItemCell,
+               case .item(let itemData) = row {
+                cell.set(data: itemData)
+            }
+            return cell
+        default:
             return UITableViewCell()
         }
-        
-        guard let row = dto?.dataSource[indexPath.section].items[indexPath.row] else {
-            return UITableViewCell()
-        }
-        
-//        switch section {
-//        case .item:
-//            let cell = tableView.dequeueReusableCell(withIdentifier: ItemCell.identifier, for: indexPath)
-//            return cell
 //
 //        case .notice:
 //            let cell = tableView.dequeueReusableCell(withIdentifier: NoticeCell.identifier, for: indexPath)
@@ -88,7 +97,23 @@ extension MainViewController: UITableViewDataSource {
 //            let cell = tableView.dequeueReusableCell(withIdentifier: ReviewCell.identifier, for: indexPath)
 //            return cell
 //        }
-        return UITableViewCell()
     }
     
+}
+
+extension MainViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard let dataSource = dto?.dataSource[indexPath.section] else { return .zero }
+        let section = dataSource.section
+        
+        let width = UIScreen.main.bounds.width
+        
+        switch section {
+        case .item:
+            let height = ((width - 32) / 343 * 264) + 115
+            return height
+        default:
+            return .zero
+        }
+    }
 }
