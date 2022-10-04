@@ -7,28 +7,53 @@
 
 import UIKit
 
-class KeyboardView : UIView, Presentable, FirstViewStyling{
+class KeyboardView : UIView, FirstViewStyling{
+    
+    let keyboardImgView = UIImageView()
+    let titleLabel = UILabel()
+    let subTitle = UILabel()
+    let numberOfPeople = UILabel()
+    
+    init() {
+        super.init(frame: .zero)
+        initViewHierarchy()
+        configureView()
+        bind()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+}
+
+extension KeyboardView: Presentable {
     func initViewHierarchy() {
         self.addSubview(keyboardImgView)
-        keyboardImgView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(titleLabel)
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(subTitle)
-        subTitle.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(numberOfPeople)
+        
+        keyboardImgView.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        subTitle.translatesAutoresizingMaskIntoConstraints = false
         numberOfPeople.translatesAutoresizingMaskIntoConstraints = false
         
         var constraint: [NSLayoutConstraint] = []
         defer { NSLayoutConstraint.activate(constraint) }
 
         //이미지뷰의 남는 부분 제거
+        // TODO: 아래 분기 아예 안 타는데?
         var aspectR : CGFloat = 1.0
         if let image = keyboardImgView.image{
             aspectR = image.size.width / image.size.height
+            print("if let check aspect r : \(aspectR)")
         }
         
+        print("check aspect r : \(aspectR)")
+        
         constraint += [
-            keyboardImgView.topAnchor.constraint(equalTo: self.topAnchor, constant: 100),
+            keyboardImgView.topAnchor.constraint(equalTo: self.topAnchor, constant: 19.46),
             keyboardImgView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             keyboardImgView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
             keyboardImgView.heightAnchor.constraint(equalTo: keyboardImgView.widthAnchor, multiplier: 1/aspectR),
@@ -45,6 +70,7 @@ class KeyboardView : UIView, Presentable, FirstViewStyling{
     }
     
     func configureView() {
+        self.backgroundColor = .red
         keyboardImgView.addStyles(style: keyboardImageStyling)
         titleLabel.addLableStyle(style: titleLabelStyling, txt: "앙무")
         subTitle.addLableStyle(style: labelStyling, txt: "코핀")
@@ -55,24 +81,4 @@ class KeyboardView : UIView, Presentable, FirstViewStyling{
     func bind() {
         
     }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        configureView()
-        initViewHierarchy()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    
-    let keyboardImgView = UIImageView()
-    
-    let titleLabel = UILabel()
-    
-    let subTitle = UILabel()
-
-    let numberOfPeople = UILabel()
-    
 }

@@ -11,9 +11,9 @@ class FirstViewController: UIViewController, FirstViewControllerRoutable {
 
     var model: FirstModel
     
-    var firstView = FirstView()
-    
-    lazy var testButtonView: TestButtonView = TestButtonView(viewModel: self.model.testButtonViewModel)
+    var scrollView = UIScrollView()
+    lazy var keyboardView = KeyboardView()
+    lazy var descriptionView = DescriptionView()
     
     init(viewModel: FirstModel) {
         self.model = viewModel
@@ -40,18 +40,39 @@ extension FirstViewController: Presentable {
         self.view = UIView()
         self.view.backgroundColor = .white
         
-        self.view.addSubview(firstView)
+        self.view.addSubview(scrollView)
+        scrollView.addSubview(keyboardView)
+        scrollView.addSubview(descriptionView)
+     
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
         
-        firstView.translatesAutoresizingMaskIntoConstraints = false
-                
+        keyboardView.translatesAutoresizingMaskIntoConstraints = false
+        descriptionView.translatesAutoresizingMaskIntoConstraints = false
+        
         var constraint: [NSLayoutConstraint] = []
         defer { NSLayoutConstraint.activate(constraint) }
         
         constraint += [
-            firstView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-            firstView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
-            firstView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
-            firstView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
+            scrollView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
+        ]
+        
+        constraint += [
+            keyboardView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            keyboardView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            keyboardView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            keyboardView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            keyboardView.heightAnchor.constraint(equalToConstant: 516)
+        ]
+        
+        constraint += [
+            descriptionView.topAnchor.constraint(equalTo: keyboardView.bottomAnchor),
+            descriptionView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            descriptionView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            descriptionView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            descriptionView.heightAnchor.constraint(equalToConstant: 128)
         ]
         
         
@@ -59,7 +80,7 @@ extension FirstViewController: Presentable {
     }
     
     func configureView() {
-        
+        scrollView.backgroundColor = .blue
     }
     
     func bind() {
