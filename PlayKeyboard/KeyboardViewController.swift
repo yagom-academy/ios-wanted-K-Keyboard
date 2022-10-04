@@ -23,7 +23,7 @@ class KeyboardViewController: UIInputViewController {
     
     //띄어 쓰기
     @IBAction func spaceButton(button: UIButton) {
-        insertCharacter(" ", " ")
+        insertCharacter(" ")
     }
     //if 문으로 하나씪 지운다? stack?pop?
     @IBAction func backButton (button: UIButton) {
@@ -32,15 +32,14 @@ class KeyboardViewController: UIInputViewController {
     // 문자 입력하기
     @IBAction func buttonPressed(button: UIButton) {
         let string = button.titleLabel?.text
-        insertCharacter("\(string!)", "\(string!)")
-        
+        insertCharacter("\(string!)")
     }
     
     let cho: [String] = ["ㄱ","ㄲ","ㄴ","ㄷ","ㄸ","ㄹ","ㅁ","ㅂ","ㅃ","ㅅ","ㅆ","ㅇ","ㅈ","ㅉ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"]
     let jung: [String] = ["ㅏ", "ㅐ", "ㅑ", "ㅒ", "ㅓ", "ㅔ", "ㅕ", "ㅖ", "ㅗ", "ㅘ", "ㅙ", "ㅚ", "ㅛ", "ㅜ", "ㅝ","ㅞ", "ㅟ", "ㅠ", "ㅡ", "ㅢ", "ㅣ"]
     let jong: [String] = [" ", "ㄱ", "ㄲ", "ㄳ", "ㄴ", "ㄵ", "ㄶ", "ㄷ", "ㄹ", "ㄺ", "ㄻ", "ㄼ", "ㄽ", "ㄾ", "ㄿ","ㅀ", "ㅁ", "ㅂ", "ㅄ", "ㅅ", "ㅆ", "ㅇ", "ㅈ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"]
     
-    func hangul(c1:String,c2:String,c3:String,c4:String) -> String? {
+    func hangul(c1:String,c2:String,c3:String) -> String? {
         var cho_i = 0
         var jung_i = 0
         var jong_i = 0
@@ -130,14 +129,12 @@ class KeyboardViewController: UIInputViewController {
         //        self.nextKeyboardButton.isHidden = !self.needsInputModeSwitchKey
         super.viewWillLayoutSubviews()
     }
-    
     override func textWillChange(_ textInput: UITextInput?) {
         // The app is about to change the document's contents. Perform any preparation here.
     }
-    
     override func textDidChange(_ textInput: UITextInput?) {
         // The app has just changed the document's contents, the document context has been updated.
-        
+
         var textColor: UIColor
         let proxy = self.textDocumentProxy
         if proxy.keyboardAppearance == UIKeyboardAppearance.dark {
@@ -149,10 +146,10 @@ class KeyboardViewController: UIInputViewController {
     }
     
     
-    func insertCharacter(_ newCharacter: String, _ newCharacter1: String) {
+    func insertCharacter(_ newCharacter: String) {
         let 자음: [String] = ["ㄱ","ㄲ","ㄴ","ㄷ","ㄸ","ㄹ","ㅁ","ㅂ","ㅃ","ㅅ","ㅆ","ㅇ","ㅈ","ㅉ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"]
         let 모음: [String] = ["ㅏ", "ㅐ", "ㅑ", "ㅒ", "ㅓ", "ㅔ", "ㅕ", "ㅖ", "ㅗ", "ㅘ", "ㅙ", "ㅚ", "ㅛ", "ㅜ", "ㅝ","ㅞ", "ㅟ", "ㅠ", "ㅡ", "ㅢ", "ㅣ"]
-        //        let 받침: [String] = ["ㄱ", "ㄲ", "ㄳ", "ㄴ", "ㄵ", "ㄶ", "ㄷ", "ㄹ", "ㄺ", "ㄻ", "ㄼ", "ㄽ", "ㄾ", "ㄿ","ㅀ", "ㅁ", "ㅂ", "ㅄ", "ㅅ", "ㅆ", "ㅇ", "ㅈ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"]
+        let 받침: [String] = ["ㄱ", "ㄲ", "ㄳ", "ㄴ", "ㄵ", "ㄶ", "ㄷ", "ㄹ", "ㄺ", "ㄻ", "ㄼ", "ㄽ", "ㄾ", "ㄿ","ㅀ", "ㅁ", "ㅂ", "ㅄ", "ㅅ", "ㅆ", "ㅇ", "ㅈ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"]
         defer {
             print("함수끝났을대 배열: \(lastCharacters)")
         }
@@ -161,7 +158,7 @@ class KeyboardViewController: UIInputViewController {
         if let lastCharacter = lastCharacters.last {
             if 자음.contains(lastCharacter) && 모음.contains(newCharacter) {
                 // 자음 + 모음이 합친다.
-                if let johab = hangul(c1: lastCharacter, c2: newCharacter, c3: " ", c4: " ") {
+                if let johab = hangul(c1: lastCharacter, c2: newCharacter, c3: " ") {
                     deleteCharacterBeforeCursor() // 지우는거
                     lastCharacters.append(newCharacter) //빈배열에 합친다
                     textDocumentProxy.insertText(johab)
@@ -169,29 +166,38 @@ class KeyboardViewController: UIInputViewController {
                 }
             }
             else if let firstCharacter = lastCharacters.first, 자음.contains(firstCharacter),
-                    모음.contains(lastCharacter) && 자음.contains(newCharacter){   //처음에 모음이 있다면 자음+모음이 여야한다
-                if let johab = hangul(c1: firstCharacter, c2: lastCharacter, c3: newCharacter, c4: firstCharacter) {
-                    deleteCharacterBeforeCursor()                          // 여기가  받침을 받아주는거
+                    모음.contains(lastCharacter) && 자음.contains(newCharacter)   {   //처음에 모음이 있다면 자음+모음이 여야한다
+                if let johab = hangul(c1: firstCharacter, c2: lastCharacter, c3: newCharacter) {
+                    deleteCharacterBeforeCursor()   // 여기가  받침을 받아주는거
                     lastCharacters.append(newCharacter)
                     textDocumentProxy.insertText(johab)
                     return
                 }
-            }
-            else if 자음.contains(newCharacter),
-                자음.contains(lastCharacter) && 모음.contains(newCharacter) {
-                if let johab = hangul(c1: lastCharacter, c2: newCharacter, c3: " ", c4: " ") {
-                    deleteCharacterBeforeCursor()
-                    lastCharacters.append(newCharacter)
-                    textDocumentProxy.insertText(johab)
-                    return
+            }         /// 자음은 넘어가는데 모음일때 자음 없이 못넘어감
+            else if let firstCharacter = lastCharacters.last, 모음.contains(firstCharacter),
+                    모음.contains(newCharacter) && 자음.contains(newCharacter) {
+                    if let johab = hangul(c1: firstCharacter, c2: newCharacter, c3: " ") {
+                        deleteCharacterBeforeCursor()
+                        lastCharacters.append(newCharacter)
+                        textDocumentProxy.insertText(johab)
+                        return
+                    }
                 }
-            }
+//            else if let firstCharacter = lastCharacters.first, 자음.contains(firstCharacter) {
+//                if  받침.contains(lastCharacter) == 자음.contains(firstCharacter), 자음.contains(newCharacter), 모음.contains(newCharacter) {
+//                    if let johab = hangul(c1: lastCharacter, c2: firstCharacter, c3: newCharacter, c4: " ") {
+//                        deleteCharacterBeforeCursor()
+//                        lastCharacters.append(newCharacter)
+//                        textDocumentProxy.insertText(johab)
+//                        return
+//                    }
+//                }
+//            }
         }
         lastCharacters = []
         lastCharacters.append(newCharacter)
         textDocumentProxy.insertText(newCharacter)
     }
-    
     
     @objc func deleteCharacterBeforeCursor() {
         self.textDocumentProxy.deleteBackward()
@@ -202,33 +208,6 @@ class KeyboardViewController: UIInputViewController {
     func characterBeforeCursor() -> String? {
         return nil
     }
-    
-    //실험 테스트
-    //    func getInitialConsonant(text: String) -> String? {
-    //        guard let firstChar = text.unicodeScalars.first?.value, 0xAC00...0xD7A3 ~= firstChar else { return nil }
-    //
-    //        let value = ((firstChar - 0xAC00) / 28 ) / 21
-    //
-    //        return String(format:"%C", value + 0x1100)
-    //    }
-    //
-    //    func getMiddleConsonant(text: String) -> String? {
-    //        guard let firstChar = text.unicodeScalars.first?.value, 0xAC00...0xD7A3 ~= firstChar else { return nil }
-    //
-    //        let value = ((firstChar - 0xAC00) / 28) % 21
-    //
-    //        return String(format:"%C", value + 0x1161)
-    //    }
-    //
-    //    func getFinalConsonant(text: String) -> String? {
-    //        guard let firstChar = text.unicodeScalars.first?.value, 0xAC00...0xD7A3 ~= firstChar else { return nil }
-    //
-    //        let value = (firstChar - 0xAC00) % 28
-    //
-    //        guard value > 0 else { return nil }
-    //
-    //        return String(format:"%C", value + 0x11a6 + 1)
-    //    }
     
     
 }
