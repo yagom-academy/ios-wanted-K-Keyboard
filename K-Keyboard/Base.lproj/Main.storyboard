@@ -214,7 +214,16 @@
                                                 </constraints>
                                             </tableView>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KiA-Br-xVV">
-                                                <rect key="frame" x="16" y="1058.5" width="382" height="100"/>
+                                                <rect key="frame" x="16" y="1058.5" width="0.0" height="100"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B2R-Hy-oSm">
+                                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="100"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" id="VvZ-Rx-yZm"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="zTG-gD-uXC"/>
                                                 </constraints>
@@ -307,7 +316,6 @@
                                             <constraint firstItem="ets-il-Qq3" firstAttribute="leading" secondItem="b9g-Ll-u7W" secondAttribute="leading" constant="16" id="aas-JY-kPQ"/>
                                             <constraint firstItem="JEu-YP-31Y" firstAttribute="top" secondItem="b9g-Ll-u7W" secondAttribute="top" constant="28" id="c2r-sQ-9LI"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qdk-o8-fcc" secondAttribute="trailing" constant="20" symbolic="YES" id="d4g-Iq-4OP"/>
-                                            <constraint firstAttribute="trailing" secondItem="KiA-Br-xVV" secondAttribute="trailing" constant="16" id="dXy-7A-V5A"/>
                                             <constraint firstAttribute="bottom" secondItem="RZ7-3d-05g" secondAttribute="bottom" constant="20" id="gfR-dI-51R"/>
                                             <constraint firstItem="RZ7-3d-05g" firstAttribute="leading" secondItem="b9g-Ll-u7W" secondAttribute="leading" constant="20" id="gyE-ZO-vSj"/>
                                             <constraint firstItem="TXO-i5-LTv" firstAttribute="leading" secondItem="b9g-Ll-u7W" secondAttribute="leading" constant="16" id="hdW-S2-zxo"/>

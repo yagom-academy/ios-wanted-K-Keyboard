@@ -21,11 +21,29 @@ final class MainViewController: UIViewController {
         Keyword(title: "기대 ✨", imageName: "keyword_expect")
     ]
     
+    private var themeList = [
+        ThemeModel(emoji: "😄", title: "맘에들어요", count: 0),
+        ThemeModel(emoji: "😍", title: "심쿵했어요", count: 0),
+        ThemeModel(emoji: "😉", title: "응원해요", count: 0),
+        ThemeModel(emoji: "😂", title: "갖고싶어요", count: 0)
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tagListCollectionView.dataSource = self
         self.tagListCollectionView.collectionViewLayout = generateTagListLayout()
         self.keywordColletionView.dataSource = self
+        self.setupThemeStackView()
+    }
+    
+    private func setupThemeStackView() {
+        themeList.forEach {
+            let view = ThemeView()
+            view.data = $0
+            
+            themeStackView.addArrangedSubview(view)
+
+        }
     }
 
    
