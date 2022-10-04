@@ -88,7 +88,6 @@ extension FirstViewController {
     func addViews() {
         [gemImage, gemPrice, gemCount, buyButton].forEach { firstFooterView.addSubview($0) }
         [backButton, firstTableView, firstFooterView].forEach { self.view.addSubview($0) }
-        buyButton.addTarget(self, action: #selector(buyButtonPressed), for: .touchUpInside)
     }
 
     func setConstraints() {
@@ -126,8 +125,14 @@ extension FirstViewController {
         firstTableView.register(FifthSectionHeaderView.self, forHeaderFooterViewReuseIdentifier: FifthSectionHeaderView.identifier)
     }
 
+    func setActions() {
+        buyButton.addTarget(self, action: #selector(buyButtonPressed), for: .touchUpInside)
+    }
+
     @objc func buyButtonPressed(_ sender: UIButton) {
-        print("button pressed")
+        let nextVC = PopupViewController()
+        nextVC.modalPresentationStyle = .overCurrentContext
+        self.present(nextVC, animated: true)
     }
 }
 
@@ -253,5 +258,3 @@ struct FirstVC_Preview: PreviewProvider {
     }
 }
 #endif
-
-
