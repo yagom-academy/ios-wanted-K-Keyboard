@@ -7,18 +7,17 @@
 
 import UIKit
 
-protocol ThemeProtocol: AnyObject {
-    func cellDidTap()
-}
 
 final class MainViewController: UIViewController {
 
     @IBOutlet private weak var tagListCollectionView: UICollectionView!
     @IBOutlet private weak var keywordColletionView: UICollectionView!
     @IBOutlet private weak var themeCollectionView: UICollectionView!
+    @IBOutlet private weak var reviewCollectionView: UICollectionView!
+    @IBOutlet private weak var reviewFoldButton: UIButton!
     
-    weak var delegate: ThemeProtocol?
     
+    private var reviewCollectionViewIsHidden: Bool = false
     private var tagList = ["이벤트", "캐릭터", "새", "동물", "앙ㅇㄴㅇㄴㄴㅇ증맞은" ,"동글동글", "마루", "귀여웡", "배고파","동글동글", "마루", "귀여웡", "배고파"]
     private var keywordList = [
         KeywordModel(title: "신나 🎉", imageName: "keyword_fun"),
@@ -34,6 +33,13 @@ final class MainViewController: UIViewController {
         ThemeModel(emoji: "😂", title: "갖고싶어요", count: 0)
     ]
     
+    private var reviewList = [
+        ReviewModel(userType: .creater, nickname: "julia", content: "dfsdsffsd"),
+        ReviewModel(userType: .user, nickname: "유저", content: "111"),
+        ReviewModel(userType: .user, nickname: "유저", content: "dfsds22ffsd"),
+        ReviewModel(userType: .user, nickname: "유저", content: "3333")
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //tag
@@ -45,11 +51,21 @@ final class MainViewController: UIViewController {
         self.themeCollectionView.dataSource = self
         self.themeCollectionView.delegate = self
         self.themeCollectionView.collectionViewLayout = generateThemeListLayout()
+        //review
+        self.reviewCollectionView.dataSource = self
     }
+    
+    @IBAction func reviewFoldButtonDidTap(_ sender: UIButton) {
+        reviewCollectionViewIsHidden.toggle()
+        self.reviewCollectionView.isHidden = self.reviewCollectionViewIsHidden
+        let imageName = self.reviewCollectionViewIsHidden ? UIImage(systemName: "chevron.up") : UIImage(systemName: "chevron.down")
+        self.reviewFoldButton.setImage(imageName, for: .normal)
+    }
+    
     
    
 }
-
+// MARK: - Datasource
 extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == tagListCollectionView {
@@ -60,6 +76,9 @@ extension MainViewController: UICollectionViewDataSource {
         }
         else if collectionView == themeCollectionView {
             return themeList.count
+        }
+        else if collectionView == reviewCollectionView {
+            return reviewList.count
         }
         return 0
     }
@@ -80,10 +99,16 @@ extension MainViewController: UICollectionViewDataSource {
             cell.configure(themeList[indexPath.row])
             return cell
         }
+        else if collectionView == reviewCollectionView {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReviewCell", for: indexPath) as? ReviewCell else { fatalError("Could not create new cell") }
+            cell.configure(reviewList[indexPath.row])
+            cell.delegate = self
+            return cell
+        }
         return UICollectionViewCell()
     }
 }
-
+// MARK: - Delegate
 extension MainViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? ThemeCell else { return }
@@ -92,6 +117,16 @@ extension MainViewController: UICollectionViewDelegate {
     }
 }
 
+extension MainViewController: ReviewCellProtocol {
+    func reportButtonDidTap() {
+        let alertVC = UIAlertController(title: nil, message: "신고되었습니다.", preferredStyle: .alert)
+        let confirm = UIAlertAction(title: "확인", style: .default)
+        alertVC.addAction(confirm)
+        self.present(alertVC, animated: true)
+    }
+}
+
+// MARK: - ColletionLayout
 extension MainViewController {
     func generateTagListLayout() -> UICollectionViewLayout {
         let itemSize = NSCollectionLayoutSize(
