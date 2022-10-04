@@ -11,6 +11,8 @@ class FirstViewController: UIViewController, FirstViewControllerRoutable {
 
     var model: FirstModel
     
+    var firstView = FirstView()
+    
     lazy var testButtonView: TestButtonView = TestButtonView(viewModel: self.model.testButtonViewModel)
     
     init(viewModel: FirstModel) {
@@ -37,21 +39,21 @@ class FirstViewController: UIViewController, FirstViewControllerRoutable {
 extension FirstViewController: Presentable {
     func initViewHierarchy() {
         self.view = UIView()
-        self.view.backgroundColor = .red
+        self.view.backgroundColor = .white
         
-        self.view.addSubview(testButtonView)
+        self.view.addSubview(firstView)
         
-        testButtonView.translatesAutoresizingMaskIntoConstraints = false
-        
+        firstView.translatesAutoresizingMaskIntoConstraints = false
+                
         var constraint: [NSLayoutConstraint] = []
         defer { NSLayoutConstraint.activate(constraint) }
         
         constraint += [
-            testButtonView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-            testButtonView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
-            testButtonView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
-            testButtonView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
-        ]
+            firstView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            firstView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
+            firstView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
+            firstView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
+                ]
     }
     
     func configureView() {

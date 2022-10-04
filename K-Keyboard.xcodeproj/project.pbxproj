@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3368968B28EC0CF500C034FA /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3368968A28EC0CF500C034FA /* FirstView.swift */; };
 		33A8839428EADED400FE9216 /* Hangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A8839328EADED400FE9216 /* Hangle.swift */; };
 		33A8839528EADFB800FE9216 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63487F4028E2EA5E0033CF32 /* Assets.xcassets */; };
 		3668F90028E9BFFB0093E04D /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3668F8FF28E9BFFB0093E04D /* KeyboardViewController.swift */; };
@@ -80,6 +81,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3368968A28EC0CF500C034FA /* FirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstView.swift; sourceTree = "<group>"; };
 		33A8839328EADED400FE9216 /* Hangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hangle.swift; sourceTree = "<group>"; };
 		3668F8FD28E9BFFB0093E04D /* CustomKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CustomKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		3668F8FF28E9BFFB0093E04D /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 			children = (
 				63487F3B28E2EA5E0033CF32 /* FirstViewController.swift */,
 				4C242BB528E80E5800DA6CBE /* TestButtonView.swift */,
+				3368968A28EC0CF500C034FA /* FirstView.swift */,
 			);
 			path = FirstVCRelated;
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 				4C242BB628E80E5800DA6CBE /* TestButtonView.swift in Sources */,
 				4C242B9B28E8068E00DA6CBE /* UIColor+Extensions.swift in Sources */,
 				4C242B9D28E806A100DA6CBE /* UIFont+Extensions.swift in Sources */,
+				3368968B28EC0CF500C034FA /* FirstView.swift in Sources */,
 				63487F3A28E2EA5E0033CF32 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -60,7 +60,13 @@ extension FirstViewStyling {
                 $0.setTitle("테스트", for: .normal)
                 $0.setTitleColor(.orange, for: .normal)
             }
-            
+        }
+    }
+    
+    var labelStyling : (UILabel) -> () {
+        {
+            $0.textColor = .black
+            $0.textAlignment = .center
         }
     }
 }
