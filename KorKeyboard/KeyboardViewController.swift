@@ -23,6 +23,7 @@ class KeyboardViewController: UIInputViewController {
 
         addViews()
         setConstraints()
+        keyboardView.delegate = self
 
         // Perform custom UI setup here
 //        self.nextKeyboardButton = UIButton(type: .system)
@@ -81,5 +82,15 @@ extension KeyboardViewController {
             keyboardView.trailingAnchor.constraint(equalTo: inputView.trailingAnchor),
             keyboardView.bottomAnchor.constraint(equalTo: inputView.bottomAnchor)
         ])
+    }
+}
+
+extension KeyboardViewController: KorKeyboardViewDelegate {
+    func insertCharacter(_ input: String) {
+        textDocumentProxy.insertText(input)
+    }
+
+    func deleteCharacterBeforeCursor() {
+        textDocumentProxy.deleteBackward()
     }
 }
