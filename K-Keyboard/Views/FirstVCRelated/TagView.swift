@@ -10,8 +10,7 @@ import UIKit
 class TagView: UIView, FirstViewStyling {
 
     
-    var collecitonViewFlowLayout = UICollectionViewFlowLayout()
-    lazy var collectionView: UICollectionView = UICollectionView(frame: self.frame, collectionViewLayout: collecitonViewFlowLayout)
+    lazy var collectionView: UICollectionView = UICollectionView(frame: self.frame, collectionViewLayout: createTagLayout())
     private let reuseIdentifier = "TagCell"
     
     var titleLabel: UILabel = UILabel()
@@ -28,6 +27,29 @@ class TagView: UIView, FirstViewStyling {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func createTagLayout() -> UICollectionViewLayout {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(60), heightDimension: .absolute(55))
+        
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(55))
+        
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        
+        group.interItemSpacing = .fixed(8)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 12
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16)
+        
+        let config = UICollectionViewCompositionalLayoutConfiguration()
+        config.scrollDirection = .vertical
+        
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        layout.configuration = config
+        
+        return layout
+    }
     
     
 }
@@ -50,9 +72,9 @@ extension TagView: Presentable {
         ]
         
         constraint += [
-            collectionView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
-            collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ]
         
