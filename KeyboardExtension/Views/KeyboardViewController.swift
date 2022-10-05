@@ -202,7 +202,8 @@ class KeyboardViewController: UIInputViewController {
             guard let self else { return }
             var nextText = prefixText
             syllables.compactMap { $0.unicode }.forEach { nextText += String($0) }
-            if let context = self.textDocumentProxy.documentContextBeforeInput,
+            if self.textDocumentProxy.selectedText == nil,
+               let context = self.textDocumentProxy.documentContextBeforeInput,
                context.count > 2 {
                 let maskedLength = min(nextText.count, context.count) - 1
                 self.textDocumentProxy.removeLast(context.count - maskedLength)
@@ -241,7 +242,7 @@ class KeyboardViewController: UIInputViewController {
         returnView.viewModel.didTap = { [ weak self] in
             guard let self else { return }
             self.textDocumentProxy.insertText("\n")
-            self.viewModel.textContextDidChange?(self.textDocumentProxy.documentContextBeforeInput ?? "")
+            self.viewModel.addNewLine?(self.textDocumentProxy.documentContextBeforeInput ?? "")
         }
         
         phonemeViews.forEach { views in

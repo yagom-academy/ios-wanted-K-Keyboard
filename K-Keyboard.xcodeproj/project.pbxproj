@@ -272,9 +272,9 @@
 		B05F4C9928ED01F000562C38 /* KeyboardExtension */ = {
 			isa = PBXGroup;
 			children = (
-				B05F4C9A28ED01F000562C38 /* ViewModels */,
-				B05F4CA128ED01F000562C38 /* Models */,
 				B05F4CA428ED01F000562C38 /* Extensions */,
+				B05F4CA128ED01F000562C38 /* Models */,
+				B05F4C9A28ED01F000562C38 /* ViewModels */,
 				B05F4CA628ED01F000562C38 /* Views */,
 				B05F4CAE28ED01F000562C38 /* Info.plist */,
 			);
@@ -284,9 +284,9 @@
 		B05F4C9A28ED01F000562C38 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				B05F4C9B28ED01F000562C38 /* SpecialKeys */,
 				B05F4C9F28ED01F000562C38 /* KeyboardViewModel.swift */,
 				B05F4CA028ED01F000562C38 /* PhonemeViewModel.swift */,
+				B05F4C9B28ED01F000562C38 /* SpecialKeys */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -294,9 +294,9 @@
 		B05F4C9B28ED01F000562C38 /* SpecialKeys */ = {
 			isa = PBXGroup;
 			children = (
+				B05F4C9E28ED01F000562C38 /* DeleteViewModel.swift */,
 				B05F4C9C28ED01F000562C38 /* ReturnViewModel.swift */,
 				B05F4C9D28ED01F000562C38 /* ShiftViewModel.swift */,
-				B05F4C9E28ED01F000562C38 /* DeleteViewModel.swift */,
 			);
 			path = SpecialKeys;
 			sourceTree = "<group>";
@@ -321,9 +321,9 @@
 		B05F4CA628ED01F000562C38 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B05F4CA728ED01F000562C38 /* SpecialKeys */,
 				B05F4CAC28ED01F000562C38 /* KeyboardViewController.swift */,
 				B05F4CAD28ED01F000562C38 /* PhonemeView.swift */,
+				B05F4CA728ED01F000562C38 /* SpecialKeys */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -331,10 +331,10 @@
 		B05F4CA728ED01F000562C38 /* SpecialKeys */ = {
 			isa = PBXGroup;
 			children = (
-				B05F4CA828ED01F000562C38 /* ShiftView.swift */,
 				B05F4CA928ED01F000562C38 /* ChangeTypeView.swift */,
 				B05F4CAA28ED01F000562C38 /* DeleteView.swift */,
 				B05F4CAB28ED01F000562C38 /* ReturnView.swift */,
+				B05F4CA828ED01F000562C38 /* ShiftView.swift */,
 			);
 			path = SpecialKeys;
 			sourceTree = "<group>";
@@ -650,6 +650,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = U9B2QVCTVS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KeyboardExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = KeyboardExtension;
@@ -674,6 +675,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = U9B2QVCTVS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KeyboardExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = KeyboardExtension;
@@ -851,6 +853,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = U9B2QVCTVS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "K-Keyboard/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -878,7 +881,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = U9B2QVCTVS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "K-Keyboard/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

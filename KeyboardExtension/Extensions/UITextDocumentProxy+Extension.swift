@@ -10,6 +10,9 @@ import UIKit
 
 extension UITextDocumentProxy {
     func clearAll() {
+        if self.selectedText != nil {
+            self.deleteBackward()
+        }
         if let word = self.documentContextBeforeInput {
             for _ in 0..<word.count {
                 self.deleteBackward()
@@ -22,7 +25,9 @@ extension UITextDocumentProxy {
             let context = self.documentContextBeforeInput,
             context.count > k
         else { return }
-        
+        if self.selectedText != nil {
+            self.deleteBackward()
+        }
         for _ in 0..<k {
             self.deleteBackward()
         }

@@ -34,11 +34,7 @@ class KeyboardViewModel {
         }
     }
     
-    var inputPhonemes = [Phoneme]() {
-        didSet {
-            textSource?(self.prefixText, mergeSyllables(mergeVowels(inputPhonemes)))
-        }
-    }
+    var inputPhonemes = [Phoneme]()
     
     var shiftActivated: Bool = false {
         didSet {
@@ -47,11 +43,7 @@ class KeyboardViewModel {
         }
     }
     
-    var prefixText: String = "" {
-        didSet {
-            textSource?(self.prefixText, mergeSyllables(mergeVowels(inputPhonemes)))
-        }
-    }
+    var prefixText: String = ""
     
     // MARK: Life Cycle
     init() {
@@ -65,6 +57,7 @@ class KeyboardViewModel {
             guard let self else { return }
             self.inputPhonemes.append(phoneme)
             self.shiftActivated = false
+            self.textSource?(self.prefixText, self.mergeSyllables(self.mergeVowels(self.inputPhonemes)))
         }
         
         toggleShift = { [weak self] in
@@ -80,6 +73,13 @@ class KeyboardViewModel {
                 self.prefixText.removeLast()
             }
             self.shiftActivated = false
+            self.textSource?(self.prefixText, self.mergeSyllables(self.mergeVowels(self.inputPhonemes)))
+        }
+        
+        addNewLine = { [weak self] prefixText in
+            guard let self else { return }
+            self.textContextDidChange?(prefixText)
+            self.textSource?(self.prefixText, self.mergeSyllables(self.mergeVowels(self.inputPhonemes)))
         }
         
         textContextDidChange = { [weak self] prefixText in
