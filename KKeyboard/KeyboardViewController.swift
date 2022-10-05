@@ -54,7 +54,7 @@ class KeyboardViewController: UIInputViewController, UITextDocumentProxyDelegate
     
     func deleteBackward() {
         let proxy = self.textDocumentProxy as UITextDocumentProxy
-        let (state, text) = KoreanAutomata.shared.deleteLogic()
+        let (state, text) = KoreanAutomata.shared.deleteLogic(state: keyBoardState)
         keyBoardState = state
         proxy.deleteBackward()
         proxy.insertText(text)

@@ -288,17 +288,17 @@ class KoreanAutomata {
         return (.start, text, false)
     }
     
-    func deleteLogic() -> (KeyboardState, String) {
+    func deleteLogic(state: KeyboardState) -> (KeyboardState, String) {
         
         if latestStatus.isEmpty || totalWords.isEmpty {
             lastWord = ""
             return (.start, "")
         }
         
-        let keyboardState = latestStatus.removeLast()
         let deletedWord = totalWords.removeLast()
+        latestStatus.removeLast()
         
-        switch keyboardState {
+        switch state {
         case .start:
             if !latestStatus.isEmpty && deletedWord == " " {
                 lastWord = totalWords.last!
@@ -311,8 +311,7 @@ class KoreanAutomata {
             if doubleConsonantReverses.keys.contains(deletedWord) {
                 lastWord = doubleConsonantReverses[deletedWord]!
                 totalWords.append(lastWord)
-                latestStatus.append(keyboardState)
-                return (keyboardState, lastWord)
+                return (latestStatus.last!, lastWord)
             } else {
                 if latestStatus.isEmpty || totalWords.isEmpty {
                     lastWord = ""
@@ -326,8 +325,7 @@ class KoreanAutomata {
             if doubleVowelReverses.keys.contains(deletedWord) {
                 lastWord = (doubleVowelReverses[deletedWord]?.first)!
                 totalWords.append(lastWord)
-                latestStatus.append(keyboardState)
-                return (keyboardState, lastWord)
+                return (latestStatus.last!, lastWord)
             } else {
                 if latestStatus.isEmpty || totalWords.isEmpty {
                     lastWord = ""
@@ -353,21 +351,37 @@ class KoreanAutomata {
                 guard let uni = Unicode.Scalar(uniValue) else { return (.start, "") }
                 lastWord = String(uni)
                 totalWords.append(lastWord)
-                return (keyboardState, lastWord)
+                return (latestStatus.last!, lastWord)
             } else {
                 lastWord = lastFirstConsonant
                 totalWords.append(lastFirstConsonant)
                 return (latestStatus.last!, lastWord)
             }
         case .finalConsonant:
-            print(lastWord)
-        }
-        
-        
-        
-        
-        return (.start, "")
-    }
+            var (choUni, jungUni, jongUni) = completeToCombination(word: deletedWord)
+            var lastFinalConsonant = finalConsonants[jongUni]
+
+            if doubleFinalConsonantReverses.keys.contains(lastFinalConsonant) {
+                lastFinalConsonant = (doubleFinalConsonantReverses[lastFinalConsonant]?.first)!
+                
+                for i in 0 ..< vowels.count {
+                    if finalConsonants[i] == lastFinalConsonant { jongUni = i }
+                }
+                
+                let uniValue:Int = (choUni * 21 * 28) + (jungUni * 28) + jongUni + 0xAC00
+                guard let uni = Unicode.Scalar(uniValue) else { return (.start, "") }
+                lastWord = String(uni)
+                totalWords.append(lastWord)
+                return (latestStatus.last!, lastWord)
+            } else {
+                let uniValue:Int = (choUni * 21 * 28) + (jungUni * 28) + 0xAC00
+                guard let uni = Unicode.Scalar(uniValue) else { return (.start, "") }
+                lastWord = String(uni)
+                totalWords.append(lastWord)
+                return (latestStatus.last!, lastWord)
+            }
+        }        
+}
     
     func combinationToComplete(chosung: String, jungsung: String, jongsung:String?) -> String {
         var chosungIndex = 0
