@@ -32,4 +32,10 @@ extension Styleable {
         style(self)
         return self
     }
-}//asdasdasdasdas
+    
+    @discardableResult  //반환된 결과 안쓴다
+    func addLableStyle(style: (Self,String) -> (), txt:String) -> Self {
+        style(self, txt)
+        return self
+    }
+}
