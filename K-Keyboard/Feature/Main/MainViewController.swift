@@ -32,7 +32,8 @@ class MainViewController: UIViewController {
         let NoticeCellNib = UINib(nibName: NoticeCell.identifier, bundle: Bundle(for: self.classForCoder))
         tableView.register(NoticeCellNib, forCellReuseIdentifier: NoticeCell.identifier)
         
-        
+        let TagCellNib = UINib(nibName: TagCell.identifier, bundle: Bundle(for: self.classForCoder))
+        tableView.register(TagCellNib, forCellReuseIdentifier: TagCell.identifier)
     }
     
     func dataBinding() {
@@ -75,6 +76,13 @@ extension MainViewController: UITableViewDataSource {
                 cell.set(data: noticeData)
             }
             return cell
+        case .tags:
+            let cell = tableView.dequeueReusableCell(withIdentifier: TagCell.identifier, for: indexPath)
+            if let cell = cell as? TagCell,
+               case .tags(let tagsData) = row {
+                cell.set(data: tagsData)
+            }
+     return cell
         default:
             return UITableViewCell()
         }
@@ -145,6 +153,8 @@ extension MainViewController: UITableViewDelegate {
             return height
         case .notice:
             return UITableView.automaticDimension
+        case .tags:
+            return 200
         default:
             return .zero
         }
@@ -172,3 +182,35 @@ extension MainViewController: UITableViewDelegate {
         }
     }
 }
+
+
+
+
+//}
+//
+//func registerXib() {
+//    tableView.delegate = self
+//    tableView.dataSource = self
+//    let nibName = UINib(nibName: "TagCell", bundle: nil)
+//    tableView.register(nibName, forCellReuseIdentifier: "TagCell")
+//}
+//}
+//
+//extension ViewController: UITableViewDelegate {
+//
+//}
+//
+//extension ViewController: UITableViewDataSource {
+//func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//    2
+//}
+//
+//func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//    guard let cell = tableView.dequeueReusableCell(withIdentifier: "TagCell", for: indexPath) as? TagCell else { return UITableViewCell() }
+//    return cell
+//}
+//
+//func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//    return 200
+//}
+//}
