@@ -1,15 +1,15 @@
 //
-//  TagCell.swift
+//  KeywordCell.swift
 //  K-Keyboard
 //
-//  Created by pablo.jee on 2022/10/05.
+//  Created by pablo.jee on 2022/10/06.
 //
 
 import UIKit
 
-final class TagCell: UICollectionViewCell, FirstViewStyling {
+class KeywordCell: UICollectionViewCell {
     
-    var cellView: TagCellView = TagCellView()
+    var cellView = KeywordCellView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,12 +22,14 @@ final class TagCell: UICollectionViewCell, FirstViewStyling {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureCell(tagName: String) {
-        cellView.tagNameLabel.text = tagName
+    func configureCell(data: (imageName: String, desc: String)) {
+        cellView.imageView.image = UIImage(named: data.imageName)
+        cellView.descLabel.text = data.desc
     }
+    
 }
 
-extension TagCell: Presentable {
+extension KeywordCell: Presentable {
     func initViewHierarchy() {
         self.contentView.addSubview(cellView)
         cellView.translatesAutoresizingMaskIntoConstraints = false
@@ -36,16 +38,14 @@ extension TagCell: Presentable {
         defer { NSLayoutConstraint.activate(constraint) }
         
         constraint += [
-            cellView.topAnchor.constraint(equalTo: self.contentView.topAnchor),
-            cellView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
-            cellView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
-            cellView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor)
+            cellView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            cellView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            cellView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            cellView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ]
-        
     }
     
     func configureView() {
-        cellView.addStyles(style: tagCellViewStyle)
     }
     
     func bind() {

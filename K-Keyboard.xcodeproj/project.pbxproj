@@ -11,6 +11,9 @@
 		3364545D28EC59D900976868 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3364545C28EC59D900976868 /* DescriptionView.swift */; };
 		33A8839428EADED400FE9216 /* Hangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A8839328EADED400FE9216 /* Hangle.swift */; };
 		33A8839528EADFB800FE9216 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63487F4028E2EA5E0033CF32 /* Assets.xcassets */; };
+		363247BF28EDF09500D68C3F /* KeywordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363247BE28EDF09500D68C3F /* KeywordCell.swift */; };
+		363247C128EDF0CC00D68C3F /* KeywordCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363247C028EDF0CC00D68C3F /* KeywordCellView.swift */; };
+		363247C328EDF96B00D68C3F /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363247C228EDF96B00D68C3F /* DynamicHeightCollectionView.swift */; };
 		3668F90028E9BFFB0093E04D /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3668F8FF28E9BFFB0093E04D /* KeyboardViewController.swift */; };
 		3668F90428E9BFFB0093E04D /* CustomKeyboard.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3668F8FD28E9BFFB0093E04D /* CustomKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3668F90B28E9C06A0093E04D /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3668F90A28E9C06A0093E04D /* UIView+Extension.swift */; };
@@ -95,6 +98,9 @@
 		3364545A28EC4C1C00976868 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		3364545C28EC59D900976868 /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
 		33A8839328EADED400FE9216 /* Hangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hangle.swift; sourceTree = "<group>"; };
+		363247BE28EDF09500D68C3F /* KeywordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordCell.swift; sourceTree = "<group>"; };
+		363247C028EDF0CC00D68C3F /* KeywordCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordCellView.swift; sourceTree = "<group>"; };
+		363247C228EDF96B00D68C3F /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
 		3668F8FD28E9BFFB0093E04D /* CustomKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CustomKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		3668F8FF28E9BFFB0093E04D /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		3668F90128E9BFFB0093E04D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -228,6 +234,8 @@
 			children = (
 				36CFF52028ED679900E7E9D6 /* TagCell.swift */,
 				36CFF52228ED681800E7E9D6 /* TagCellView.swift */,
+				363247BE28EDF09500D68C3F /* KeywordCell.swift */,
+				363247C028EDF0CC00D68C3F /* KeywordCellView.swift */,
 			);
 			path = FirstVCRelated;
 			sourceTree = "<group>";
@@ -310,6 +318,7 @@
 				36CFF52C28ED7BCA00E7E9D6 /* PurchaseReviewListView.swift */,
 				36CFF52E28ED7BF100E7E9D6 /* PurchaseButtonView.swift */,
 				36CFF53028ED7C2E00E7E9D6 /* CommentInputView.swift */,
+				363247C228EDF96B00D68C3F /* DynamicHeightCollectionView.swift */,
 			);
 			path = FirstVCRelated;
 			sourceTree = "<group>";
@@ -542,11 +551,14 @@
 				4C242B8928E8056E00DA6CBE /* Routable.swift in Sources */,
 				4C242BB828E80FC400DA6CBE /* TestButtonViewModel.swift in Sources */,
 				4C242BAA28E807DB00DA6CBE /* API.swift in Sources */,
+				363247C328EDF96B00D68C3F /* DynamicHeightCollectionView.swift in Sources */,
 				36CFF52728ED7AF700E7E9D6 /* KeywordView.swift in Sources */,
 				4C242BB428E808F700DA6CBE /* SecondModel.swift in Sources */,
 				36CFF52928ED7B4C00E7E9D6 /* ThemeOpinionView.swift in Sources */,
 				4C242BA628E8076B00DA6CBE /* Repository.swift in Sources */,
 				4C242B8F28E805B100DA6CBE /* SecondViewControllerRoutable.swift in Sources */,
+				363247BF28EDF09500D68C3F /* KeywordCell.swift in Sources */,
+				363247C128EDF0CC00D68C3F /* KeywordCellView.swift in Sources */,
 				4C242B9828E8063300DA6CBE /* AlertFactory.swift in Sources */,
 				36CFF51328EC811600E7E9D6 /* UILabel+Extension.swift in Sources */,
 				36CFF52D28ED7BCA00E7E9D6 /* PurchaseReviewListView.swift in Sources */,
