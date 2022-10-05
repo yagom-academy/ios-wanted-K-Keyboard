@@ -27,3 +27,11 @@ struct Item: Hashable {
             return lhs.identifier == rhs.identifier
     }
 }
+
+struct Owner: Hashable {
+    let nickName: String
+    var themeName: String
+    var themeNickName: String
+    var themeImagePath: String
+    var numberOfConsumer: Int = 0
+}
