@@ -11,14 +11,26 @@ import UIKit
 class KeyboardViewController: UIInputViewController {
     var spaceButton: KeyboardButton?
     var deleteButton: KeyboardButton?
-    
+    var boolvalue: Bool = true
+    var buttoncount = 0
+  
     //MorseKeyboardView개체 에 대한 참조를 보유하는 속성 입니다.
     var morseKeyboardView: KeyboardView!
     var lastCharacters: [String] = []
     
-    //    var lastCharacters1: [String] = []
+    @IBAction func upButton(_ sender: Any) {
+        buttoncount += 1
+        
+        if buttoncount % 2 != 0 {
+
+        } else {
+
+        }
+        print(buttoncount)
+        
+    }
     
-    
+   
     
     
     //띄어 쓰기
@@ -91,6 +103,7 @@ class KeyboardViewController: UIInputViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         makeRoundCorners()
+
         //        morseKeyboardView.setNextKeyboardVisible(needsInputModeSwitchKey)
         
         
@@ -320,7 +333,7 @@ class KeyboardViewController: UIInputViewController {
                     }
                 }
             }
-            if 자음.contains(lastCharacter) && 받침.contains(newCharacter) {
+            else if 자음.contains(lastCharacter) && 받침.contains(newCharacter) {
                 if lastCharacter == "ㄴ" {
                     if newCharacter == "ㅈ" {
                         if let firstCharacter = lastCharacters.first {
@@ -330,7 +343,7 @@ class KeyboardViewController: UIInputViewController {
                                 lastCharacters.append("ㄵ")
                                 textDocumentProxy.insertText("ㄵ")
                                 return
-                            } else if let johab = hangul(c1: firstCharacter, c2: "ㄵ", c3: " ") {
+                            } else if let johab = hangul(c1: firstCharacter, c2: "ㄵ", c3: "ㄵ") {
                                 deleteCharacterBeforeCursor()
                                 lastCharacters.removeLast()
                                 lastCharacters.append("ㄵ")
@@ -351,7 +364,6 @@ class KeyboardViewController: UIInputViewController {
         self.textDocumentProxy.deleteBackward()
         UIDevice.current.playInputClick()
     }
-    
     
     func characterBeforeCursor() -> String? {
         return nil
