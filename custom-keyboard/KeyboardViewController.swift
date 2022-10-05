@@ -236,7 +236,6 @@ class KeyboardViewController: UIInputViewController {
                 
                 if preChar.isEmpty { return }
                 
-                // 이전 텍스트와 상관없이 출력 및 결합
                 if hangulCombinater.replaceJamo(preChar.last!, curChar).count == 1 {
                     curChar = hangulCombinater.replaceJamo(preChar.last!, curChar)[0]
                     if hangulCombinater.getUnicode(curChar) != 0 {
@@ -245,8 +244,6 @@ class KeyboardViewController: UIInputViewController {
                     }
                     customPrint("2. \(preChar)")
                 }
-                // 이전 텍스트와 연관된 수정 및 추가
-                // ex) 간ㅏ -> 가나
                 else {
                     textDocumentProxy.deleteBackward()
                     let replaced = hangulCombinater.replaceJamo(preChar.last!, curChar)
