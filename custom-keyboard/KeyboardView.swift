@@ -19,7 +19,7 @@ class KeyboardView: UIView {
     var middleLineButtons: [CustomButton]! //"ㅁ,ㄴ,ㅇ,ㄹ,ㅎ,ㅗ,ㅓ,ㅏ,ㅣ
     var lastLineButtons: [CustomButton]! //"ㅋ,ㅌ,ㅊ,ㅍ,ㅠ,ㅜ,ㅡ
     var shortCutButton: CustomButton! // 단축키
-    var shortCutList: [String] = ["ㅋㅋㅋㅋ","테스트","휘양","안녕하세요"] // 단축어가 담길 변수
+    var shortCutList: [String] = ["안녕하세요~","감사합니다!","지금 가능 중이야!","휘양", "크롱"] // 단축어가 담길 변수
 
     override init(frame: CGRect) {
         super.init(frame: frame)
