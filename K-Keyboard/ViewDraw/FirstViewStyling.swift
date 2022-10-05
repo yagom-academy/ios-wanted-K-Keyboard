@@ -154,5 +154,66 @@ extension FirstViewStyling {
             $0.attributedText = NSMutableAttributedString(string: "이벤트", attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
         }
     }
+    
+    var titleLabelStyle: (UILabel) -> () {
+        {
+            $0.textColor = UIColor(red: 0.259, green: 0.267, blue: 0.298, alpha: 1)
+            $0.font = UIFont(name: "NotoSansCJKKR-Bold", size: 16)
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineHeightMultiple = 1.01
 
+            // Line height: 24 pt
+            // (identical to box height)
+
+            $0.attributedText = NSMutableAttributedString(string: "", attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        }
+    }
+    
+    var emojiLabelStyle: (UILabel) -> () {
+        {
+            $0.textColor = UIColor(red: 0.569, green: 0.573, blue: 0.6, alpha: 1)
+            $0.font = UIFont(name: "NotoSansKR-Regular", size: 30)
+            $0.textAlignment = .center
+        }
+    }
+    
+    var emojiParagraphStyle: (UILabel) -> () {
+        {
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineHeightMultiple = 0.55
+            $0.attributedText = NSMutableAttributedString(string: "0", attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        }
+    }
+    
+    var descLabelStyle: (UILabel) -> () {
+        {
+            $0.textColor = UIColor(red: 0.569, green: 0.573, blue: 0.6, alpha: 1)
+            $0.font = UIFont(name: "NotoSansKR-Regular", size: 12)
+            $0.textAlignment = .center
+        }
+    }
+    
+    var descLabelParagraphStyle: (UILabel) -> () {
+        {
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineHeightMultiple = 1.04
+            $0.attributedText = NSMutableAttributedString(string: "맘에들어요", attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        }
+    }
+    
+    var countLabelStyle: (UILabel) -> () {
+        {
+            $0.textColor = UIColor(red: 0.569, green: 0.573, blue: 0.6, alpha: 1)
+            $0.font = UIFont(name: "NotoSansKR-Regular", size: 10)
+            $0.textAlignment = .center
+        }
+    }
+    
+    var countLabelParagraphStyle: (UILabel) -> () {
+        {
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineHeightMultiple = 0.97
+            $0.attributedText = NSMutableAttributedString(string: "0", attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        }
+    }
 }

@@ -114,8 +114,7 @@ extension FirstViewController: Presentable {
             themeOpinionView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             themeOpinionView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             themeOpinionView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            // TODO: fix temp value
-            themeOpinionView.heightAnchor.constraint(equalToConstant: 180)
+            themeOpinionView.heightAnchor.constraint(greaterThanOrEqualToConstant: 0)
         ]
         
         constraint += [
