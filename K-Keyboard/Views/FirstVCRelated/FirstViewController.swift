@@ -15,6 +15,12 @@ class FirstViewController: UIViewController, FirstViewControllerRoutable {
     lazy var keyboardView = KeyboardView()
     lazy var descriptionView = DescriptionView()
     lazy var tagView = TagView()
+    lazy var keywordView = KeywordView()
+    lazy var themeOpinionView = ThemeOpinionView()
+    lazy var bannerView = BannerView()
+    lazy var purchaseReviewListView = PurchaseReviewView()
+    lazy var purchaseButtonView = PurchaseButtonView()
+    lazy var commentInputView = CommentInputView()
     
     init(viewModel: FirstModel) {
         self.model = viewModel
@@ -45,12 +51,19 @@ extension FirstViewController: Presentable {
         scrollView.addSubview(keyboardView)
         scrollView.addSubview(descriptionView)
         scrollView.addSubview(tagView)
+        
+        scrollView.addSubview(keywordView)
+        scrollView.addSubview(themeOpinionView)
+        scrollView.addSubview(bannerView)
+        scrollView.addSubview(purchaseReviewListView)
+        scrollView.addSubview(purchaseButtonView)
+        scrollView.addSubview(commentInputView)
      
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         
-        keyboardView.translatesAutoresizingMaskIntoConstraints = false
-        descriptionView.translatesAutoresizingMaskIntoConstraints = false
-        tagView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.subviews.forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
         
         var constraint: [NSLayoutConstraint] = []
         defer { NSLayoutConstraint.activate(constraint) }
@@ -84,9 +97,68 @@ extension FirstViewController: Presentable {
             tagView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             tagView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             // TODO: fix temp value
-            tagView.heightAnchor.constraint(equalToConstant: 300),
-            tagView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
+            tagView.heightAnchor.constraint(equalToConstant: 300)
         ]
+        
+        constraint += [
+            keywordView.topAnchor.constraint(equalTo: tagView.bottomAnchor),
+            keywordView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            keywordView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            keywordView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            // TODO: fix temp value
+            keywordView.heightAnchor.constraint(equalToConstant: 200)
+        ]
+        
+        constraint += [
+            themeOpinionView.topAnchor.constraint(equalTo: keywordView.bottomAnchor),
+            themeOpinionView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            themeOpinionView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            themeOpinionView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            // TODO: fix temp value
+            themeOpinionView.heightAnchor.constraint(equalToConstant: 180)
+        ]
+        
+        constraint += [
+            bannerView.topAnchor.constraint(equalTo: themeOpinionView.bottomAnchor),
+            bannerView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            bannerView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            bannerView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            // TODO: fix temp value
+            bannerView.heightAnchor.constraint(equalToConstant: 120)
+        ]
+        
+        constraint += [
+            purchaseReviewListView.topAnchor.constraint(equalTo: bannerView.bottomAnchor),
+            purchaseReviewListView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            purchaseReviewListView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            purchaseReviewListView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            // TODO: fix temp value
+            purchaseReviewListView.heightAnchor.constraint(equalToConstant: 120)
+        ]
+        
+        constraint += [
+            purchaseButtonView.topAnchor.constraint(equalTo: purchaseReviewListView.bottomAnchor),
+            purchaseButtonView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            purchaseButtonView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            purchaseButtonView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            // TODO: fix temp value
+            purchaseButtonView.heightAnchor.constraint(equalToConstant: 80),
+            purchaseButtonView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
+        ]
+        
+        constraint += [
+            commentInputView.topAnchor.constraint(equalTo: purchaseReviewListView.bottomAnchor),
+            commentInputView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            commentInputView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            commentInputView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            // TODO: fix temp value
+            commentInputView.heightAnchor.constraint(equalToConstant: 80),
+            commentInputView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
+        ]
+        
+        // TODO: fix temp value
+        commentInputView.isHidden = true
+        
     }
     
     func configureView() {

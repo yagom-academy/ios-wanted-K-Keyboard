@@ -27,6 +27,12 @@
 		36CFF51F28ED643300E7E9D6 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CFF51E28ED643300E7E9D6 /* TagView.swift */; };
 		36CFF52128ED679900E7E9D6 /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CFF52028ED679900E7E9D6 /* TagCell.swift */; };
 		36CFF52328ED681800E7E9D6 /* TagCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CFF52228ED681800E7E9D6 /* TagCellView.swift */; };
+		36CFF52728ED7AF700E7E9D6 /* KeywordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CFF52628ED7AF700E7E9D6 /* KeywordView.swift */; };
+		36CFF52928ED7B4C00E7E9D6 /* ThemeOpinionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CFF52828ED7B4C00E7E9D6 /* ThemeOpinionView.swift */; };
+		36CFF52B28ED7B7500E7E9D6 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CFF52A28ED7B7400E7E9D6 /* BannerView.swift */; };
+		36CFF52D28ED7BCA00E7E9D6 /* PurchaseReviewListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CFF52C28ED7BCA00E7E9D6 /* PurchaseReviewListView.swift */; };
+		36CFF52F28ED7BF100E7E9D6 /* PurchaseButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CFF52E28ED7BF100E7E9D6 /* PurchaseButtonView.swift */; };
+		36CFF53128ED7C2E00E7E9D6 /* CommentInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CFF53028ED7C2E00E7E9D6 /* CommentInputView.swift */; };
 		36EE19EA28EB1B7A00F14A02 /* KeyboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EE19E928EB1B7A00F14A02 /* KeyboardModel.swift */; };
 		36EE19EB28EB1EF400F14A02 /* Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C242B7D28E804BF00DA6CBE /* Presentable.swift */; };
 		4C242B7E28E804BF00DA6CBE /* Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C242B7D28E804BF00DA6CBE /* Presentable.swift */; };
@@ -106,6 +112,12 @@
 		36CFF51E28ED643300E7E9D6 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		36CFF52028ED679900E7E9D6 /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
 		36CFF52228ED681800E7E9D6 /* TagCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCellView.swift; sourceTree = "<group>"; };
+		36CFF52628ED7AF700E7E9D6 /* KeywordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordView.swift; sourceTree = "<group>"; };
+		36CFF52828ED7B4C00E7E9D6 /* ThemeOpinionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeOpinionView.swift; sourceTree = "<group>"; };
+		36CFF52A28ED7B7400E7E9D6 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
+		36CFF52C28ED7BCA00E7E9D6 /* PurchaseReviewListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseReviewListView.swift; sourceTree = "<group>"; };
+		36CFF52E28ED7BF100E7E9D6 /* PurchaseButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseButtonView.swift; sourceTree = "<group>"; };
+		36CFF53028ED7C2E00E7E9D6 /* CommentInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentInputView.swift; sourceTree = "<group>"; };
 		36EE19E928EB1B7A00F14A02 /* KeyboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardModel.swift; sourceTree = "<group>"; };
 		4C242B7D28E804BF00DA6CBE /* Presentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presentable.swift; sourceTree = "<group>"; };
 		4C242B7F28E804E700DA6CBE /* Styleable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styleable.swift; sourceTree = "<group>"; };
@@ -203,6 +215,23 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		36CFF52428ED7ACF00E7E9D6 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				36CFF52528ED7AD600E7E9D6 /* FirstVCRelated */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		36CFF52528ED7AD600E7E9D6 /* FirstVCRelated */ = {
+			isa = PBXGroup;
+			children = (
+				36CFF52028ED679900E7E9D6 /* TagCell.swift */,
+				36CFF52228ED681800E7E9D6 /* TagCellView.swift */,
+			);
+			path = FirstVCRelated;
+			sourceTree = "<group>";
+		};
 		36EE19E828EB1B6500F14A02 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -260,6 +289,7 @@
 		4C242BA028E806CE00DA6CBE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				36CFF52428ED7ACF00E7E9D6 /* Cells */,
 				4C242BA128E806D500DA6CBE /* FirstVCRelated */,
 				4C242BAD28E808AC00DA6CBE /* SecondVCRelated */,
 			);
@@ -274,8 +304,12 @@
 				3364545A28EC4C1C00976868 /* KeyboardView.swift */,
 				3364545C28EC59D900976868 /* DescriptionView.swift */,
 				36CFF51E28ED643300E7E9D6 /* TagView.swift */,
-				36CFF52028ED679900E7E9D6 /* TagCell.swift */,
-				36CFF52228ED681800E7E9D6 /* TagCellView.swift */,
+				36CFF52628ED7AF700E7E9D6 /* KeywordView.swift */,
+				36CFF52828ED7B4C00E7E9D6 /* ThemeOpinionView.swift */,
+				36CFF52A28ED7B7400E7E9D6 /* BannerView.swift */,
+				36CFF52C28ED7BCA00E7E9D6 /* PurchaseReviewListView.swift */,
+				36CFF52E28ED7BF100E7E9D6 /* PurchaseButtonView.swift */,
+				36CFF53028ED7C2E00E7E9D6 /* CommentInputView.swift */,
 			);
 			path = FirstVCRelated;
 			sourceTree = "<group>";
@@ -486,10 +520,13 @@
 			files = (
 				4C242B8028E804E700DA6CBE /* Styleable.swift in Sources */,
 				4C242B8428E8051800DA6CBE /* SecondViewStyling.swift in Sources */,
+				36CFF52B28ED7B7500E7E9D6 /* BannerView.swift in Sources */,
 				4C242B8728E8055200DA6CBE /* SceneCategory.swift in Sources */,
 				3364545B28EC4C1C00976868 /* KeyboardView.swift in Sources */,
 				4C242B8D28E8059D00DA6CBE /* FirstViewControllerRoutable.swift in Sources */,
 				63487F3C28E2EA5E0033CF32 /* FirstViewController.swift in Sources */,
+				36CFF53128ED7C2E00E7E9D6 /* CommentInputView.swift in Sources */,
+				36CFF52F28ED7BF100E7E9D6 /* PurchaseButtonView.swift in Sources */,
 				4C242B9628E8060200DA6CBE /* BasicNavigationController.swift in Sources */,
 				4C242BAC28E8086A00DA6CBE /* MainThreadActor.swift in Sources */,
 				4C242BA828E807C400DA6CBE /* HTTPClient.swift in Sources */,
@@ -505,11 +542,14 @@
 				4C242B8928E8056E00DA6CBE /* Routable.swift in Sources */,
 				4C242BB828E80FC400DA6CBE /* TestButtonViewModel.swift in Sources */,
 				4C242BAA28E807DB00DA6CBE /* API.swift in Sources */,
+				36CFF52728ED7AF700E7E9D6 /* KeywordView.swift in Sources */,
 				4C242BB428E808F700DA6CBE /* SecondModel.swift in Sources */,
+				36CFF52928ED7B4C00E7E9D6 /* ThemeOpinionView.swift in Sources */,
 				4C242BA628E8076B00DA6CBE /* Repository.swift in Sources */,
 				4C242B8F28E805B100DA6CBE /* SecondViewControllerRoutable.swift in Sources */,
 				4C242B9828E8063300DA6CBE /* AlertFactory.swift in Sources */,
 				36CFF51328EC811600E7E9D6 /* UILabel+Extension.swift in Sources */,
+				36CFF52D28ED7BCA00E7E9D6 /* PurchaseReviewListView.swift in Sources */,
 				4C242B9328E805D300DA6CBE /* SceneAction.swift in Sources */,
 				36CFF52328ED681800E7E9D6 /* TagCellView.swift in Sources */,
 				4C242BB028E808CE00DA6CBE /* FirstModel.swift in Sources */,

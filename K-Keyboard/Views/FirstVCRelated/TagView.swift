@@ -27,8 +27,9 @@ class TagView: UIView, FirstViewStyling {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // TODO: 레이아웃 수정하여 디자인에 맞게 나오도록
     private func createTagLayout() -> UICollectionViewLayout {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(60), heightDimension: .absolute(55))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(60), heightDimension: .absolute(28))
         
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
@@ -36,14 +37,14 @@ class TagView: UIView, FirstViewStyling {
         
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         
-        group.interItemSpacing = .fixed(8)
+        group.interItemSpacing = .fixed(4.12)
         
         let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = 12
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16)
+        section.interGroupSpacing = 8
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
         
         let config = UICollectionViewCompositionalLayoutConfiguration()
-        config.scrollDirection = .vertical
+        config.scrollDirection = .horizontal
         
         let layout = UICollectionViewCompositionalLayout(section: section)
         layout.configuration = config
