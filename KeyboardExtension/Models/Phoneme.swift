@@ -222,5 +222,9 @@ enum Vowel: String, Phoneme {
 }
 
 enum Spacer: String, Phoneme {
-    case space
+    case space = "스페이스"
+    
+    var unicodeScalar: UnicodeScalar {
+        return " ".unicodeScalars.first!
+    }
 }

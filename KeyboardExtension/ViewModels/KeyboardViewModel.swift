@@ -12,20 +12,36 @@ import UIKit
 class KeyboardViewModel {
     // MARK: Input
     var addPhoneme: ((Phoneme) -> ())?
+    var toggleShift: (() -> ())?
+    var removePhoneme: (() -> ())?
     
     // MARK: Output
     var syllablesSource: (([Syllable]) -> ())?
+    var phonemesSource: (([[Phoneme]]) -> ())?
+    var shiftActivatedSource: ((Bool) -> ())?
     
     // MARK: Properties
-    let phonemes: [[Phoneme]] = [
+    var phonemes: [[Phoneme]] = [
         [Consonant.ㅂ, Consonant.ㅈ, Consonant.ㄷ, Consonant.ㄱ, Consonant.ㅅ, Vowel.ㅛ, Vowel.ㅕ, Vowel.ㅑ, Vowel.ㅐ, Vowel.ㅔ],
         [Consonant.ㅁ, Consonant.ㄴ, Consonant.ㅇ, Consonant.ㄹ, Consonant.ㅎ, Vowel.ㅗ, Vowel.ㅓ, Vowel.ㅏ, Vowel.ㅣ],
-        [Consonant.ㅋ, Consonant.ㅌ, Consonant.ㅊ, Consonant.ㅍ, Vowel.ㅠ, Vowel.ㅜ, Vowel.ㅡ]
-    ]
+        [Consonant.ㅋ, Consonant.ㅌ, Consonant.ㅊ, Consonant.ㅍ, Vowel.ㅠ, Vowel.ㅜ, Vowel.ㅡ],
+        [Spacer.space]
+    ] {
+        didSet {
+            phonemesSource?(phonemes)
+        }
+    }
     
     var inputPhonemes = [Phoneme]() {
         didSet {
             syllablesSource?(mergeSyllables(mergeVowels(inputPhonemes)))
+        }
+    }
+    
+    var shiftActivated: Bool = false {
+        didSet {
+            mutatePhonemes(shiftActivated: shiftActivated)
+            shiftActivatedSource?(shiftActivated)
         }
     }
     
@@ -40,6 +56,20 @@ class KeyboardViewModel {
         addPhoneme = { [weak self] phoneme in
             guard let self else { return }
             self.inputPhonemes.append(phoneme)
+            self.shiftActivated = false
+        }
+        
+        toggleShift = { [weak self] in
+            guard let self else { return }
+            self.shiftActivated.toggle()
+        }
+        
+        removePhoneme = { [weak self] in
+            guard let self else { return }
+            if !self.inputPhonemes.isEmpty {
+                self.inputPhonemes.removeLast()
+            }
+            self.shiftActivated = false
         }
     }
     
@@ -66,6 +96,14 @@ class KeyboardViewModel {
                     }
                 } else {
                     buffer = phoneme
+                }
+            } else if phoneme is Spacer {
+                if buffer != nil {
+                    result.append(buffer!)
+                    result.append(phoneme)
+                    buffer = nil
+                } else {
+                    result.append(phoneme)
                 }
             }
         }
@@ -110,5 +148,15 @@ class KeyboardViewModel {
             }
         }
         return syllables
+    }
+    
+    private func mutatePhonemes(shiftActivated activated: Bool) {
+        phonemes[0][0] = activated ? Consonant.ㅃ : Consonant.ㅂ
+        phonemes[0][1] = activated ? Consonant.ㅉ : Consonant.ㅈ
+        phonemes[0][2] = activated ? Consonant.ㄸ : Consonant.ㄷ
+        phonemes[0][3] = activated ? Consonant.ㄲ : Consonant.ㄱ
+        phonemes[0][4] = activated ? Consonant.ㅆ : Consonant.ㅅ
+        phonemes[0][8] = activated ? Vowel.ㅒ : Vowel.ㅐ
+        phonemes[0][9] = activated ? Vowel.ㅖ : Vowel.ㅔ
     }
 }

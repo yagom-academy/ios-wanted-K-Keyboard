@@ -34,6 +34,20 @@ class KeyboardViewController: UIInputViewController {
         return result
     }()
     
+    lazy var shiftView: ShiftView = {
+        let viewModel = ShiftViewModel()
+        let view = ShiftView(viewModel: viewModel)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    lazy var deleteView: DeleteView = {
+        let viewModel = DeleteViewModel()
+        let view = DeleteView(viewModel: viewModel)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     lazy var parentStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -45,12 +59,14 @@ class KeyboardViewController: UIInputViewController {
     }()
     
     lazy var horizontalStackViews: [UIStackView] = {
-        let stackViews = [UIStackView(), UIStackView(), UIStackView()]
-        stackViews.forEach { stackView in
+        var stackViews = [UIStackView]()
+        for i in 0..<4 {
+            let stackView = UIStackView()
             stackView.axis = .horizontal
             stackView.distribution = .fill
             stackView.spacing = 6
             stackView.translatesAutoresizingMaskIntoConstraints = false
+            stackViews.append(stackView)
         }
         return stackViews
     }()
@@ -111,6 +127,10 @@ class KeyboardViewController: UIInputViewController {
                 horizontalStackViews[line].addArrangedSubview(view)
             }
         }
+        horizontalStackViews[2].insertArrangedSubview(shiftView, at: 0)
+        horizontalStackViews[2].insertArrangedSubview(deleteView, at: horizontalStackViews[2].subviews.count)
+        horizontalStackViews[2].setCustomSpacing(14, after: shiftView)
+        horizontalStackViews[2].setCustomSpacing(14, before: deleteView)
     }
     
     // MARK: Layout Views
@@ -137,6 +157,14 @@ class KeyboardViewController: UIInputViewController {
             ]
         }
         
+        constraints += [
+            shiftView.widthAnchor.constraint(equalToConstant: 44),
+        ]
+        
+        constraints += [
+            deleteView.widthAnchor.constraint(equalToConstant: 44),
+        ]
+        
         for (line, views) in phonemeViews.enumerated() {
             let width = calculateWidth(line)
             for view in views {
@@ -156,6 +184,31 @@ class KeyboardViewController: UIInputViewController {
             syllables.compactMap { $0.unicode }.forEach { nextText += String($0) }
             self.textDocumentProxy.clearAll()
             self.textDocumentProxy.insertText(nextText)
+        }
+        
+        viewModel.phonemesSource = { [weak self] phonemes in
+            guard let self else { return }
+            for (row, views) in self.phonemeViews.enumerated() {
+                for (column, view) in views.enumerated() {
+                    let phoneme = phonemes[row][column]
+                    view.viewModel.receivePhoneme?(phoneme)
+                }
+            }
+        }
+        
+        viewModel.shiftActivatedSource = { [weak self] activated in
+            guard let self else { return }
+            self.shiftView.viewModel.receiveActivated?(activated)
+        }
+        
+        shiftView.viewModel.didTap = { [weak self] in
+            guard let self else { return }
+            self.viewModel.toggleShift?()
+        }
+        
+        deleteView.viewModel.didTap = { [weak self] in
+            guard let self else { return }
+            self.viewModel.removePhoneme?()
         }
         
         phonemeViews.forEach { views in
@@ -202,6 +255,7 @@ class KeyboardViewController: UIInputViewController {
         case 0: return 3 * 2
         case 1: return 22 * 2
         case 2: return 61 * 2
+        case 3: return 100 * 2
         default: return 0
         }
     }
@@ -215,6 +269,7 @@ class KeyboardViewController: UIInputViewController {
         case 0: return 10
         case 1: return 9
         case 2: return 7
+        case 3: return 1
         default: return 0
         }
     }
