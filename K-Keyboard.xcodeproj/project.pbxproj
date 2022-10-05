@@ -24,6 +24,9 @@
 		3668F91D28E9C1A60093E04D /* FirstFloor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3668F91C28E9C1A60093E04D /* FirstFloor.swift */; };
 		3668F91F28E9C1BA0093E04D /* Floor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3668F91E28E9C1BA0093E04D /* Floor.swift */; };
 		36CFF51328EC811600E7E9D6 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CFF51228EC811600E7E9D6 /* UILabel+Extension.swift */; };
+		36CFF51F28ED643300E7E9D6 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CFF51E28ED643300E7E9D6 /* TagView.swift */; };
+		36CFF52128ED679900E7E9D6 /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CFF52028ED679900E7E9D6 /* TagCell.swift */; };
+		36CFF52328ED681800E7E9D6 /* TagCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CFF52228ED681800E7E9D6 /* TagCellView.swift */; };
 		36EE19EA28EB1B7A00F14A02 /* KeyboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EE19E928EB1B7A00F14A02 /* KeyboardModel.swift */; };
 		36EE19EB28EB1EF400F14A02 /* Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C242B7D28E804BF00DA6CBE /* Presentable.swift */; };
 		4C242B7E28E804BF00DA6CBE /* Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C242B7D28E804BF00DA6CBE /* Presentable.swift */; };
@@ -100,6 +103,9 @@
 		3668F91C28E9C1A60093E04D /* FirstFloor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstFloor.swift; sourceTree = "<group>"; };
 		3668F91E28E9C1BA0093E04D /* Floor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Floor.swift; sourceTree = "<group>"; };
 		36CFF51228EC811600E7E9D6 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		36CFF51E28ED643300E7E9D6 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
+		36CFF52028ED679900E7E9D6 /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
+		36CFF52228ED681800E7E9D6 /* TagCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCellView.swift; sourceTree = "<group>"; };
 		36EE19E928EB1B7A00F14A02 /* KeyboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardModel.swift; sourceTree = "<group>"; };
 		4C242B7D28E804BF00DA6CBE /* Presentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presentable.swift; sourceTree = "<group>"; };
 		4C242B7F28E804E700DA6CBE /* Styleable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styleable.swift; sourceTree = "<group>"; };
@@ -267,6 +273,9 @@
 				4C242BB528E80E5800DA6CBE /* TestButtonView.swift */,
 				3364545A28EC4C1C00976868 /* KeyboardView.swift */,
 				3364545C28EC59D900976868 /* DescriptionView.swift */,
+				36CFF51E28ED643300E7E9D6 /* TagView.swift */,
+				36CFF52028ED679900E7E9D6 /* TagCell.swift */,
+				36CFF52228ED681800E7E9D6 /* TagCellView.swift */,
 			);
 			path = FirstVCRelated;
 			sourceTree = "<group>";
@@ -486,6 +495,7 @@
 				4C242BA828E807C400DA6CBE /* HTTPClient.swift in Sources */,
 				4C242B7E28E804BF00DA6CBE /* Presentable.swift in Sources */,
 				4C242B9128E805C100DA6CBE /* SceneContext.swift in Sources */,
+				36CFF52128ED679900E7E9D6 /* TagCell.swift in Sources */,
 				4C242BA328E8070600DA6CBE /* SecondViewController.swift in Sources */,
 				3364545D28EC59D900976868 /* DescriptionView.swift in Sources */,
 				63487F3828E2EA5E0033CF32 /* AppDelegate.swift in Sources */,
@@ -501,11 +511,13 @@
 				4C242B9828E8063300DA6CBE /* AlertFactory.swift in Sources */,
 				36CFF51328EC811600E7E9D6 /* UILabel+Extension.swift in Sources */,
 				4C242B9328E805D300DA6CBE /* SceneAction.swift in Sources */,
+				36CFF52328ED681800E7E9D6 /* TagCellView.swift in Sources */,
 				4C242BB028E808CE00DA6CBE /* FirstModel.swift in Sources */,
 				4C242BB628E80E5800DA6CBE /* TestButtonView.swift in Sources */,
 				4C242B9B28E8068E00DA6CBE /* UIColor+Extensions.swift in Sources */,
 				4C242B9D28E806A100DA6CBE /* UIFont+Extensions.swift in Sources */,
 				63487F3A28E2EA5E0033CF32 /* SceneDelegate.swift in Sources */,
+				36CFF51F28ED643300E7E9D6 /* TagView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

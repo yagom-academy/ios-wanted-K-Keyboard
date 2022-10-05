@@ -117,5 +117,42 @@ extension FirstViewStyling {
             $0.attributedText = NSMutableAttributedString(string: $1, attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
         }
     }
+    
+    var tagCellViewStyle: (UIView) -> () {
+        {
+            $0.layer.backgroundColor = UIColor(red: 0.922, green: 0.929, blue: 0.961, alpha: 1).cgColor
+            $0.layer.cornerRadius = 18
+        }
+    }
+    
+    var tagTitleStyle: (UILabel) -> () {
+        {
+            $0.backgroundColor = .white
+
+            $0.textColor = UIColor(red: 0.259, green: 0.267, blue: 0.298, alpha: 1)
+            $0.font = UIFont(name: "NotoSansCJKKR-Bold", size: 16)
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineHeightMultiple = 1.01
+
+            // Line height: 24 pt
+            // (identical to box height)
+
+            $0.attributedText = NSMutableAttributedString(string: "태그", attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        }
+    }
+    
+    var tagNameStyle: (UILabel) -> () {
+        {
+            $0.textColor = UIColor(red: 0.294, green: 0.306, blue: 0.341, alpha: 1)
+            $0.font = UIFont(name: "NotoSansKR-Medium", size: 14)
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineHeightMultiple = 0.99
+
+            // Line height: 20 pt
+            // (identical to box height)
+
+            $0.attributedText = NSMutableAttributedString(string: "이벤트", attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        }
+    }
 
 }
