@@ -9,6 +9,7 @@ import UIKit
 
 protocol BottomViewDelegate: AnyObject {
     func buyJamButtonDidTap()
+    func senderReviewText(_ review: String)
 }
 
 class BottomView: UIView {
@@ -48,4 +49,10 @@ class BottomView: UIView {
         delegate?.buyJamButtonDidTap()
     }
     
+    @IBAction func reviewInputDidTap(_ sender: UIButton) {
+        guard let text = self.reviewTextField.text else { return }
+        self.reviewTextField.text = ""
+        delegate?.senderReviewText(text)
+    }
 }
+

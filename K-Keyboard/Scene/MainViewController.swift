@@ -10,12 +10,15 @@ import UIKit
 
 final class MainViewController: UIViewController {
 
+    @IBOutlet private weak var mainScrollView: UIScrollView!
     @IBOutlet private weak var tagListCollectionView: UICollectionView!
     @IBOutlet private weak var keywordColletionView: UICollectionView!
     @IBOutlet private weak var themeCollectionView: UICollectionView!
     @IBOutlet private weak var reviewCollectionView: UICollectionView!
     @IBOutlet private weak var reviewFoldButton: UIButton!
     @IBOutlet private weak var bottomView: BottomView!
+    @IBOutlet private weak var bottomViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var scrollViewBottomConstraint: NSLayoutConstraint!
     
     private var reviewCollectionViewIsHidden: Bool = false
     private var tagList = ["이벤트", "캐릭터", "새", "동물", "앙ㅇㄴㅇㄴㄴㅇ증맞은" ,"동글동글", "마루", "귀여웡", "배고파","동글동글", "마루", "귀여웡", "배고파"]
@@ -35,7 +38,7 @@ final class MainViewController: UIViewController {
         ReviewModel(userType: .creater, nickname: "julia", content: "dfsdsffsd"),
         ReviewModel(userType: .user, nickname: "유저", content: "111"),
         ReviewModel(userType: .user, nickname: "유저", content: "dfsds22ffsd"),
-        ReviewModel(userType: .user, nickname: "유저", content: "3333")
+        ReviewModel(userType: .user, nickname: "유저", content: "3333"),
     ]
     
     override func viewDidLoad() {
@@ -51,8 +54,23 @@ final class MainViewController: UIViewController {
         self.themeCollectionView.collectionViewLayout = generateThemeListLayout()
         //review
         self.reviewCollectionView.dataSource = self
-        //button
+        //buttom
         self.bottomView.delegate = self
+        keyboardSetting()
+        scrollViewFold()
+    }
+    
+    private func scrollViewFold() {
+        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MyTapMethod(sender:)))
+        singleTapGestureRecognizer.numberOfTapsRequired = 1
+        singleTapGestureRecognizer.isEnabled = true
+        singleTapGestureRecognizer.cancelsTouchesInView = false
+        mainScrollView.addGestureRecognizer(singleTapGestureRecognizer)
+    }
+    @objc func MyTapMethod(sender: UITapGestureRecognizer) {
+        self.bottomViewBottomConstraint.constant = CGFloat(30)
+        self.scrollViewBottomConstraint.constant = CGFloat(0)
+        self.view.endEditing(true)
     }
     
     @IBAction func reviewFoldButtonDidTap(_ sender: UIButton) {
@@ -131,6 +149,12 @@ extension MainViewController: BottomViewDelegate {
         popUpVC.delegate = self
         self.present(popUpVC, animated: true)
     }
+    
+    func senderReviewText(_ review: String) {
+        let model = ReviewModel(userType: .user, nickname: "유저", content: review)
+        reviewList.append(model)
+        reviewCollectionView.reloadData()
+    }
 }
 
 extension MainViewController: PopUpViewControllerDelegate {
@@ -168,6 +192,22 @@ extension MainViewController {
         let section = NSCollectionLayoutSection(group: group)
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
+    }
+
+}
+
+extension MainViewController {
+    func keyboardSetting() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ sender: Notification) {
+        if let keyboardSize = (sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.bottomViewBottomConstraint.constant = keyboardSize.height
+                self.view.layoutIfNeeded()
+            })
+        }
     }
 
 }
