@@ -146,7 +146,7 @@ class KeyboardViewController: UIInputViewController {
     }
     override func textDidChange(_ textInput: UITextInput?) {
         // The app has just changed the document's contents, the document context has been updated.
-
+        
         var textColor: UIColor
         let proxy = self.textDocumentProxy
         if proxy.keyboardAppearance == UIKeyboardAppearance.dark {
@@ -172,15 +172,15 @@ class KeyboardViewController: UIInputViewController {
                 // 자음 + 모음이 합친다.
                 if lastCharacters.count > 1 {
                     if let johab = hangul(c1: lastCharacter, c2: newCharacter, c3: " ") {
-                        deleteCharacterBeforeCursor() // 지우는거
+                        deleteCharacterBeforeCursor()
                         if let johab2 = hangul(c1: lastCharacters[0], c2: lastCharacters[1], c3: " ") {
                             textDocumentProxy.insertText(johab2)
                         }
                         lastCharacters = []
                         lastCharacters.append(lastCharacter)
-                        lastCharacters.append(newCharacter) //빈배열에 합친다
+                        lastCharacters.append(newCharacter)
                         textDocumentProxy.insertText(johab)
-                        return            // 가나다라 마다바사 이렇게 자+모음
+                        return
                     }
                 } else {
                     if let johab = hangul(c1: lastCharacter, c2: newCharacter, c3: " ") {
@@ -192,7 +192,7 @@ class KeyboardViewController: UIInputViewController {
                 }
             }
             else if let firstCharacter = lastCharacters.first, 자음.contains(firstCharacter),
-                    모음.contains(lastCharacter) && 자음.contains(newCharacter)   {   //처음에 모음이 있다면 자음+모음이 여야한다
+                    모음.contains(lastCharacter) && 받침.contains(newCharacter)   {   //처음에 모음이 있다면 자음+모음이 여야한다
                 if let johab = hangul(c1: firstCharacter, c2: lastCharacter, c3: newCharacter) {
                     deleteCharacterBeforeCursor()   // 여기가  받침을 받아주는거
                     lastCharacters.append(newCharacter)
@@ -255,7 +255,7 @@ class KeyboardViewController: UIInputViewController {
                         if let firstCharacter = lastCharacters.first {
                             if firstCharacter == lastCharacter {
                                 deleteCharacterBeforeCursor()
-                                lastCharacters.removeLast()
+                                lastCharacters.removeLast() //ㅗ ㅏ  ㅏ를 합쳐주지못했었다
                                 lastCharacters.append("ㅝ")
                                 textDocumentProxy.insertText("ㅝ")
                                 return
@@ -313,6 +313,27 @@ class KeyboardViewController: UIInputViewController {
                                 deleteCharacterBeforeCursor()
                                 lastCharacters.removeLast()
                                 lastCharacters.append("ㅢ")
+                                textDocumentProxy.insertText(johab)
+                                return
+                            }
+                        }
+                    }
+                }
+            }
+            if 자음.contains(lastCharacter) && 받침.contains(newCharacter) {
+                if lastCharacter == "ㄴ" {
+                    if newCharacter == "ㅈ" {
+                        if let firstCharacter = lastCharacters.first {
+                            if firstCharacter == lastCharacter {
+                                deleteCharacterBeforeCursor()
+                                lastCharacters.removeLast()
+                                lastCharacters.append("ㄵ")
+                                textDocumentProxy.insertText("ㄵ")
+                                return
+                            } else if let johab = hangul(c1: firstCharacter, c2: "ㄵ", c3: " ") {
+                                deleteCharacterBeforeCursor()
+                                lastCharacters.removeLast()
+                                lastCharacters.append("ㄵ")
                                 textDocumentProxy.insertText(johab)
                                 return
                             }
