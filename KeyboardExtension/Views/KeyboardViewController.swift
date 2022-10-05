@@ -48,6 +48,15 @@ class KeyboardViewController: UIInputViewController {
         return view
     }()
     
+    lazy var changeTypeView: ChangeTypeView = ChangeTypeView()
+    
+    lazy var returnView: ReturnView = {
+        let viewModel = ReturnViewModel()
+        let view = ReturnView(viewModel: viewModel)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     lazy var parentStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -128,9 +137,12 @@ class KeyboardViewController: UIInputViewController {
             }
         }
         horizontalStackViews[2].insertArrangedSubview(shiftView, at: 0)
-        horizontalStackViews[2].insertArrangedSubview(deleteView, at: horizontalStackViews[2].subviews.count)
+        horizontalStackViews[2].insertArrangedSubview(deleteView, at: horizontalStackViews[2].arrangedSubviews.count)
         horizontalStackViews[2].setCustomSpacing(14, after: shiftView)
         horizontalStackViews[2].setCustomSpacing(14, before: deleteView)
+        
+        horizontalStackViews[3].insertArrangedSubview(changeTypeView, at: 0)
+        horizontalStackViews[3].insertArrangedSubview(returnView, at: horizontalStackViews[3].arrangedSubviews.count)
     }
     
     // MARK: Layout Views
@@ -165,6 +177,14 @@ class KeyboardViewController: UIInputViewController {
             deleteView.widthAnchor.constraint(equalToConstant: 44),
         ]
         
+        constraints += [
+            changeTypeView.widthAnchor.constraint(equalToConstant: 91),
+        ]
+        
+        constraints += [
+            returnView.widthAnchor.constraint(equalToConstant: 91),
+        ]
+        
         for (line, views) in phonemeViews.enumerated() {
             let width = calculateWidth(line)
             for view in views {
@@ -182,8 +202,15 @@ class KeyboardViewController: UIInputViewController {
             guard let self else { return }
             var nextText = prefixText
             syllables.compactMap { $0.unicode }.forEach { nextText += String($0) }
-            self.textDocumentProxy.clearAll()
-            self.textDocumentProxy.insertText(nextText)
+            if let context = self.textDocumentProxy.documentContextBeforeInput,
+               context.count > 2 {
+                let maskedLength = min(nextText.count, context.count) - 1
+                self.textDocumentProxy.removeLast(context.count - maskedLength)
+                self.textDocumentProxy.insertText(String(nextText.suffix(nextText.count-maskedLength)))
+            } else {
+                self.textDocumentProxy.clearAll()
+                self.textDocumentProxy.insertText(nextText)
+            }
         }
         
         viewModel.phonemesSource = { [weak self] phonemes in
@@ -209,6 +236,12 @@ class KeyboardViewController: UIInputViewController {
         deleteView.viewModel.didTap = { [weak self] in
             guard let self else { return }
             self.viewModel.removePhoneme?()
+        }
+        
+        returnView.viewModel.didTap = { [ weak self] in
+            guard let self else { return }
+            self.textDocumentProxy.insertText("\n")
+            self.viewModel.textContextDidChange?(self.textDocumentProxy.documentContextBeforeInput ?? "")
         }
         
         phonemeViews.forEach { views in

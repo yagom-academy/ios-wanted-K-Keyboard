@@ -1,5 +1,5 @@
 //
-//  DeleteView.swift
+//  ChangeTypeView.swift
 //  KeyboardExtension
 //
 //  Created by CodeCamper on 2022/10/04.
@@ -8,30 +8,26 @@
 import Foundation
 import UIKit
 // MARK: - View
-class DeleteView: UIView {
+class ChangeTypeView: UIView {
     // MARK: View Components
-    lazy var deleteImage: UIImageView = {
-        let imageView = UIImageView(image: UIImage(systemName: "delete.left"))
+    var imageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(systemName: "textformat.123"))
         imageView.tintColor = .black
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
     // MARK: Associated Types
-    typealias ViewModel = DeleteViewModel
     
     // MARK: Properties
     var didSetupConstraints = false
-    var viewModel: ViewModel
     
     // MARK: Life Cycle
-    init(viewModel: ViewModel) {
-        self.viewModel = viewModel
+    init() {
         super.init(frame: .zero)
         setupViews()
         buildViewHierarchy()
         self.setNeedsUpdateConstraints()
-        bind()
     }
     
     required init?(coder: NSCoder) {
@@ -54,13 +50,12 @@ class DeleteView: UIView {
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOpacity = 0.4
         self.layer.cornerRadius = 5
-        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTap)))
     }
     
     
     // MARK: Build View Hierarchy
     func buildViewHierarchy() {
-        self.addSubview(deleteImage)
+        self.addSubview(imageView)
     }
     
     
@@ -71,23 +66,8 @@ class DeleteView: UIView {
         defer { NSLayoutConstraint.activate(constraints) }
         
         constraints += [
-            deleteImage.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            deleteImage.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            imageView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
         ]
-    }
-    
-    
-    // MARK: Binding
-    func bind() {
-        // Action
-        
-        // State
-        
-        // View
-    }
-    
-    // MARK: Action
-    @objc func didTap() {
-        viewModel.didTap?()
     }
 }

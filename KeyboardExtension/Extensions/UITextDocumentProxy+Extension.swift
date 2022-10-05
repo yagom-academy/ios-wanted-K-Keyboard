@@ -16,4 +16,15 @@ extension UITextDocumentProxy {
             }
         }
     }
+    
+    func removeLast(_ k: Int) {
+        guard
+            let context = self.documentContextBeforeInput,
+            context.count > k
+        else { return }
+        
+        for _ in 0..<k {
+            self.deleteBackward()
+        }
+    }
 }

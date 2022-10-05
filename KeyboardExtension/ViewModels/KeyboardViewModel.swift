@@ -14,6 +14,7 @@ class KeyboardViewModel {
     var addPhoneme: ((Phoneme) -> ())?
     var toggleShift: (() -> ())?
     var removePhoneme: (() -> ())?
+    var addNewLine: ((String) -> ())?
     var textContextDidChange: ((String) -> ())?
     
     // MARK: Output
@@ -81,9 +82,9 @@ class KeyboardViewModel {
             self.shiftActivated = false
         }
         
-        textContextDidChange = { [weak self] prefix in
+        textContextDidChange = { [weak self] prefixText in
             guard let self else { return }
-            self.prefixText = prefix
+            self.prefixText = prefixText
             self.shiftActivated = false
             self.inputPhonemes = []
         }
