@@ -11,8 +11,10 @@ import UIKit
 
 class ToolBarViewModel {
     // MARK: Input
+    var tapButton: ((Int) -> ())?
     
     // MARK: Output
+    var selectedSource: ((Int?) -> ())?
     
     // MARK: Properties
     let toolBarImages: [UIImage?] = [
@@ -24,6 +26,12 @@ class ToolBarViewModel {
         UIImage(named: "ic_toolbar_emoji"),
     ]
     
+    var selected: Int? {
+        didSet {
+            selectedSource?(selected)
+        }
+    }
+    
     // MARK: Life Cycle
     init() {
         bind()
@@ -32,6 +40,13 @@ class ToolBarViewModel {
     
     // MARK: Binding
     func bind() {
-
+        tapButton = { [weak self] index in
+            guard let self else { return }
+            if self.selected == index {
+                self.selected = nil
+            } else {
+                self.selected = index
+            }
+        }
     }
 }

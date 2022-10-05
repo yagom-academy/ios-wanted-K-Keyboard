@@ -30,6 +30,13 @@ class ToolBarView: UIView {
         return views
     }()
     
+    lazy var dividerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(hex: "#A8B0BB")
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     // MARK: Associated Types
     typealias ViewModel = ToolBarViewModel
     
@@ -44,6 +51,7 @@ class ToolBarView: UIView {
         setupViews()
         buildViewHierarchy()
         self.setNeedsUpdateConstraints()
+        bind()
     }
     
     required init?(coder: NSCoder) {
@@ -67,6 +75,7 @@ class ToolBarView: UIView {
     // MARK: Build View Hierarchy
     func buildViewHierarchy() {
         self.addSubview(stackView)
+        self.addSubview(dividerView)
         buttonViews.forEach { stackView.addArrangedSubview($0) }
     }
     
@@ -84,11 +93,34 @@ class ToolBarView: UIView {
             stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             stackView.heightAnchor.constraint(equalToConstant: 28),
         ]
+        
+        constraints += [
+            dividerView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            dividerView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            dividerView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            dividerView.heightAnchor.constraint(equalToConstant: 1),
+        ]
     }
     
     
     // MARK: Binding
     func bind() {
+        buttonViews.enumerated().forEach { index, view in
+            view.viewModel.propagateTap = { [weak self] in
+                guard let self else { return }
+                self.viewModel.tapButton?(index)
+            }
+        }
         
+        viewModel.selectedSource = { [weak self] selected in
+            guard let self else { return }
+            self.buttonViews.enumerated().forEach { index, view in
+                if index == selected {
+                    view.viewModel.receiveSelected?(true)
+                } else {
+                    view.viewModel.receiveSelected?(false)
+                }
+            }
+        }
     }
 }
