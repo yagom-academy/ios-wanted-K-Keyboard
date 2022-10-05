@@ -124,7 +124,7 @@ extension FirstViewController: Presentable {
             bannerView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             bannerView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             // TODO: fix temp value
-            bannerView.heightAnchor.constraint(equalToConstant: 120)
+            bannerView.heightAnchor.constraint(greaterThanOrEqualToConstant: 0)
         ]
         
         constraint += [
