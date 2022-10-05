@@ -21,12 +21,8 @@ class MainViewController: UIViewController {
     }
     
     func initUI() {
-        tableView.separatorStyle = .none
-        tableView.allowsSelection = false
-        tableView.showsVerticalScrollIndicator = false
-        
         let tableSectionHeaderViewNib = UINib(nibName: TableSectionHeaderView.identifier, bundle: Bundle(for: self.classForCoder))
-        tableView.register(tableSectionHeaderViewNib, forCellReuseIdentifier: TableSectionHeaderView.identifier)
+        tableView.register(tableSectionHeaderViewNib, forHeaderFooterViewReuseIdentifier: TableSectionHeaderView.identifier)
         
         let itemCellNib = UINib(nibName: ItemCell.identifier, bundle: Bundle(for: self.classForCoder))
         tableView.register(itemCellNib, forCellReuseIdentifier: ItemCell.identifier)
@@ -90,27 +86,17 @@ extension MainViewController: UITableViewDataSource {
         }
     }
     
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        guard let dataSource = dto?.dataSource[section] else { return nil }
-//        let section = dataSource.section
-//
-//        switch section {
-//        case .reviews:
-//            return "\(SectionListType.review.rawValue)"
-//        default:
-//            return nil
-//        }
-//    }
-    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let dataSource = dto?.dataSource[section] else { return nil }
         let section = dataSource.section
+        let row = dataSource.items.first
         
         switch section {
         case .reviews:
             let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: TableSectionHeaderView.identifier)
-            if let view = view as? TableSectionHeaderView {
-                view.set(sectionName: SectionListType.review.rawValue, rowCount: dataSource.items.count)
+            if let view = view as? TableSectionHeaderView,
+               case .reviews(let reviewsData) = row {
+                view.set(sectionName: SectionListType.review.rawValue, rowCount: reviewsData.count)
             }
             return view
         default:
@@ -142,8 +128,10 @@ extension MainViewController: UITableViewDelegate {
         case .item:
             let height = ((width - 32) / 343 * 264) + 115
             return height
-        case .notice, .reviews:
+        case .notice:
             return UITableView.automaticDimension
+        case .reviews:
+            return 1000
         default:
             return .zero
         }
@@ -155,7 +143,7 @@ extension MainViewController: UITableViewDelegate {
         
         switch section {
         case .reviews:
-            return UITableView.automaticDimension
+            return 40
         default:
             return .zero
         }

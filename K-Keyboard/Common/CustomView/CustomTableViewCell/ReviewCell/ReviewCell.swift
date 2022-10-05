@@ -32,6 +32,13 @@ class ReviewCell: UITableViewCell {
     
     func set(data: [ReviewData]) {
         self.data = data
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
     }
     
 }
@@ -43,8 +50,9 @@ extension ReviewCell: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ReviewItemCell.identifier, for: indexPath)
-        if let cell = cell as? ReviewItemCell {
-            cell.set()
+        if let cell = cell as? ReviewItemCell,
+           let data = self.data {
+            cell.set(data: data[indexPath.row])
         }
         return cell
     }

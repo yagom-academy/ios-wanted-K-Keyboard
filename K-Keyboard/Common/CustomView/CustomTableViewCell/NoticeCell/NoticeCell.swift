@@ -30,6 +30,8 @@ class NoticeCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
+        super.prepareForReuse()
+        
         self.titleLabel.text = ""
         self.contentLabel.text = ""
     }

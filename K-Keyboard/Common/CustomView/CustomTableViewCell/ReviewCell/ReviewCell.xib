@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -47,11 +46,10 @@
                             <constraint firstAttribute="height" constant="24" id="xeq-8I-MxF"/>
                         </constraints>
                     </stackView>
-                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qIJ-Mn-vzk">
+                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qIJ-Mn-vzk">
                         <rect key="frame" x="20" y="24" width="335" height="231"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <connections>
-                            <outlet property="dataSource" destination="-1" id="M3t-mw-tAu"/>
+                            <outlet property="dataSource" destination="KGk-i7-Jjw" id="wJL-qC-1dE"/>
                         </connections>
                     </tableView>
                 </subviews>
@@ -78,8 +76,5 @@
         <namedColor name="all_dark_gray">
             <color red="0.31372549019607843" green="0.32549019607843138" blue="0.36078431372549019" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

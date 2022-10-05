@@ -42,6 +42,8 @@ class ItemCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
+        super.prepareForReuse()
+        
         self.itemImageView.image = nil
         self.titleLabel.text = ""
         self.creatorLabel.text = ""

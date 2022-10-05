@@ -14,15 +14,13 @@ class TableSectionHeaderView: UITableViewHeaderFooterView {
     @IBOutlet weak var sectionNameLabel: UILabel!
     @IBOutlet weak var rowCountLabel: UILabel!
     
-    init() {
-        super.init(reuseIdentifier: TableSectionHeaderView.identifier)
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        //prepareForReuse()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func set(sectionName: String, rowCount: Int? = .zero) {
+    func set(sectionName: String, rowCount: Int?) {
         self.sectionNameLabel.text = sectionName
         
         if let rowCount = rowCount {
