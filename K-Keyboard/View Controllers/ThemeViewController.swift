@@ -27,7 +27,32 @@ final class ThemeViewController: UIViewController {
     }
     
     private func configureDataSource() {
+        let eventCellRegistration = eventCellRegistration()
+        let tagCellRegistration = tagCellRegistration()
+        let reactionCellRegistration = reactionCellRegistration()
+        let opinionCellRegistration = opinionCellRegistration()
+        let bannerCellRegistration = bannerCellRegistration()
+        let reviewCellRegistration = reviewCellRegistration()
         
+        dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, identifier) -> UICollectionViewCell? in
+            
+            switch indexPath.section {
+            case Section.event.rawValue:
+                return collectionView.dequeueConfiguredReusableCell(using: eventCellRegistration, for: indexPath, item: identifier)
+            case Section.tag.rawValue:
+                return collectionView.dequeueConfiguredReusableCell(using: tagCellRegistration, for: indexPath, item: identifier)
+            case Section.reaction.rawValue:
+                return collectionView.dequeueConfiguredReusableCell(using: reactionCellRegistration, for: indexPath, item: identifier)
+            case Section.opinion.rawValue:
+                return collectionView.dequeueConfiguredReusableCell(using: opinionCellRegistration, for: indexPath, item: identifier)
+            case Section.banner.rawValue:
+                return collectionView.dequeueConfiguredReusableCell(using: bannerCellRegistration, for: indexPath, item: identifier)
+            case Section.review.rawValue:
+                return collectionView.dequeueConfiguredReusableCell(using: reviewCellRegistration, for: indexPath, item: identifier)
+            default:
+                return UICollectionViewCell()
+            }
+        })
     }
     
     private func configureSnapshot() {
@@ -35,3 +60,44 @@ final class ThemeViewController: UIViewController {
     }
 }
 
+/// - CellRegistration
+extension ThemeViewController {
+    private func eventCellRegistration() -> UICollectionView.CellRegistration<EventCell, Item> {
+        return UICollectionView.CellRegistration { (cell, indexPath, event) in
+            cell.contentLabel.text = event.content
+        }
+    }
+    
+    private func tagCellRegistration() -> UICollectionView.CellRegistration<TagCell, Item> {
+        return UICollectionView.CellRegistration { (cell, indexPath, tag) in
+            cell.tagButton.setTitle(tag.keyword, for: .normal)
+        }
+    }
+    
+    private func reactionCellRegistration() -> UICollectionView.CellRegistration<ReactionCell, Item> {
+        return UICollectionView.CellRegistration { (cell, indexPath, reaction) in
+            cell.imageView.image = UIImage(named: reaction.imagePath ?? "Please check -- imagePath")
+            cell.keywordLabel.text = reaction.keyword
+        }
+    }
+    
+    private func opinionCellRegistration() -> UICollectionView.CellRegistration<OpinionCell, Item> {
+        return UICollectionView.CellRegistration { (cell, indexPath, opinion) in
+            cell.imageLabel.text = opinion.emoji
+            cell.keywordLabel.text = opinion.keyword
+            cell.countLabel.text = String(opinion.count ?? 0)
+        }
+    }
+    
+    private func bannerCellRegistration() -> UICollectionView.CellRegistration<BannerCell, Item> {
+        return UICollectionView.CellRegistration { cell, indexPath, banner in
+            cell.bannerView.image = UIImage(named: banner.imagePath ?? "Please check -- imagePath")
+        }
+    }
+    
+    private func reviewCellRegistration() -> UICollectionView.CellRegistration<ReviewCell, Item> {
+        return UICollectionView.CellRegistration { cell, indexPath, review in
+            cell.updateUI(review)
+        }
+    }
+}
