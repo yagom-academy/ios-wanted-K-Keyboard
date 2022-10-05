@@ -56,7 +56,7 @@ extension DescriptionView: Presentable {
     
     func configureView() {
         
-        self.backgroundColor = .yellow
+        self.backgroundColor = .white
         
         header.addLableStyle(style: headerLabelStyling, txt: "🎉플레이키보드 첫 이벤트 테마를 공개합니다.🎉")
         body.addLableStyle(style: bodyLabelStyling, txt: "밀당해피니스 유튜브 채널을 방문하면 “테마명” 이벤트 테마를 무료로 받을 수 있다구요?\n지금 바로 ‘참여하기' 버튼을 눌러 새로워진 밀당해피니스 유튜브 채널을 확인해보세요!")

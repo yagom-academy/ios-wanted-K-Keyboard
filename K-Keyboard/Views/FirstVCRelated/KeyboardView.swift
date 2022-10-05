@@ -80,7 +80,7 @@ extension KeyboardView: Presentable {
     }
     
     func configureView() {
-        self.backgroundColor = .red
+        self.backgroundColor = .white
         keyboardImgView.addStyles(style: keyboardImageStyling)
         titleLabel.addLableStyle(style: titleLabelStyling, txt: "앙무")
         subTitle.addLableStyle(style: labelStyling, txt: "코핀")

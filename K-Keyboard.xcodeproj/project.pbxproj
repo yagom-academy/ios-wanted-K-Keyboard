@@ -14,6 +14,8 @@
 		363247BF28EDF09500D68C3F /* KeywordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363247BE28EDF09500D68C3F /* KeywordCell.swift */; };
 		363247C128EDF0CC00D68C3F /* KeywordCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363247C028EDF0CC00D68C3F /* KeywordCellView.swift */; };
 		363247C328EDF96B00D68C3F /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363247C228EDF96B00D68C3F /* DynamicHeightCollectionView.swift */; };
+		363247C528EE0A2600D68C3F /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363247C428EE0A2600D68C3F /* ReviewCell.swift */; };
+		363247C728EE0A4A00D68C3F /* ReviewCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363247C628EE0A4A00D68C3F /* ReviewCellView.swift */; };
 		3668F90028E9BFFB0093E04D /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3668F8FF28E9BFFB0093E04D /* KeyboardViewController.swift */; };
 		3668F90428E9BFFB0093E04D /* CustomKeyboard.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3668F8FD28E9BFFB0093E04D /* CustomKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3668F90B28E9C06A0093E04D /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3668F90A28E9C06A0093E04D /* UIView+Extension.swift */; };
@@ -101,6 +103,8 @@
 		363247BE28EDF09500D68C3F /* KeywordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordCell.swift; sourceTree = "<group>"; };
 		363247C028EDF0CC00D68C3F /* KeywordCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordCellView.swift; sourceTree = "<group>"; };
 		363247C228EDF96B00D68C3F /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
+		363247C428EE0A2600D68C3F /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
+		363247C628EE0A4A00D68C3F /* ReviewCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCellView.swift; sourceTree = "<group>"; };
 		3668F8FD28E9BFFB0093E04D /* CustomKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CustomKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		3668F8FF28E9BFFB0093E04D /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		3668F90128E9BFFB0093E04D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -236,6 +240,8 @@
 				36CFF52228ED681800E7E9D6 /* TagCellView.swift */,
 				363247BE28EDF09500D68C3F /* KeywordCell.swift */,
 				363247C028EDF0CC00D68C3F /* KeywordCellView.swift */,
+				363247C428EE0A2600D68C3F /* ReviewCell.swift */,
+				363247C628EE0A4A00D68C3F /* ReviewCellView.swift */,
 			);
 			path = FirstVCRelated;
 			sourceTree = "<group>";
@@ -548,6 +554,7 @@
 				4C242B9F28E806B100DA6CBE /* Date+Extensions.swift in Sources */,
 				4C242B8228E8050100DA6CBE /* FirstViewStyling.swift in Sources */,
 				4C242B8B28E8058B00DA6CBE /* SceneDelegateRoutable.swift in Sources */,
+				363247C528EE0A2600D68C3F /* ReviewCell.swift in Sources */,
 				4C242B8928E8056E00DA6CBE /* Routable.swift in Sources */,
 				4C242BB828E80FC400DA6CBE /* TestButtonViewModel.swift in Sources */,
 				4C242BAA28E807DB00DA6CBE /* API.swift in Sources */,
@@ -569,6 +576,7 @@
 				4C242B9B28E8068E00DA6CBE /* UIColor+Extensions.swift in Sources */,
 				4C242B9D28E806A100DA6CBE /* UIFont+Extensions.swift in Sources */,
 				63487F3A28E2EA5E0033CF32 /* SceneDelegate.swift in Sources */,
+				363247C728EE0A4A00D68C3F /* ReviewCellView.swift in Sources */,
 				36CFF51F28ED643300E7E9D6 /* TagView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

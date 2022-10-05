@@ -56,7 +56,7 @@ class KeywordView: UIView {
 
 extension KeywordView: Presentable {
     func initViewHierarchy() {
-        self.backgroundColor = .green
+        self.backgroundColor = .white
         
         self.addSubview(titleLabel)
         self.addSubview(collectionView)
