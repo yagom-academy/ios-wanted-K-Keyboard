@@ -24,7 +24,7 @@ class CommentInputView: UIView {
 
 extension CommentInputView: Presentable {
     func initViewHierarchy() {
-        self.backgroundColor = .magenta
+        self.backgroundColor = .white
     }
     
     func configureView() {

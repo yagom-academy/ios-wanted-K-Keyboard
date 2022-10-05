@@ -72,7 +72,7 @@ extension FirstViewController: Presentable {
             scrollView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
             scrollView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
+            scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ]
         
         constraint += [
@@ -131,7 +131,7 @@ extension FirstViewController: Presentable {
             purchaseReviewListView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             purchaseReviewListView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             // TODO: fix temp value
-            purchaseReviewListView.heightAnchor.constraint(equalToConstant: 120)
+            purchaseReviewListView.heightAnchor.constraint(equalToConstant: 380)
         ]
         
         constraint += [
@@ -160,7 +160,7 @@ extension FirstViewController: Presentable {
     }
     
     func configureView() {
-        scrollView.backgroundColor = .blue
+        scrollView.backgroundColor = .white
     }
     
     func bind() {

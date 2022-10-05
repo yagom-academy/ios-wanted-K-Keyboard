@@ -24,7 +24,7 @@ class PurchaseButtonView: UIView {
 
 extension PurchaseButtonView: Presentable {
     func initViewHierarchy() {
-        self.backgroundColor = .darkGray
+        self.backgroundColor = .white
     }
     
     func configureView() {
