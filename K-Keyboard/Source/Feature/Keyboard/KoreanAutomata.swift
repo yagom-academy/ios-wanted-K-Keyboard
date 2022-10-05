@@ -88,7 +88,7 @@ class KoreanAutomata {
                 latestStatus.append(.consonantPlusVowel)
                 return (.consonantPlusVowel, lastWord, true)
             } else {
-                if doubleConsonants.keys.contains(lastWord) && totalWords.last == text {
+                if doubleConsonants.keys.contains(lastWord) && lastWord == text {
                     lastWord = doubleConsonants[text] ?? ""
                     totalWords.removeLast()
                     totalWords.append(lastWord)
@@ -153,7 +153,7 @@ class KoreanAutomata {
                 } else {
                     let uniValue:Int = (choUni * 21 * 28) + (jungUni * 28) + (jongUni) + 0xAC00;
                     if let uni = Unicode.Scalar(uniValue) {
-                        lastWord = String(Character(uni))
+                        lastWord = String(uni)
                         totalWords.removeLast()
                         totalWords.append(lastWord)
                         latestStatus.append(.finalConsonant)
@@ -163,7 +163,7 @@ class KoreanAutomata {
             } else {
                 var (choUni, jungUni, _) = completeToCombination(word: lastWord)
                 
-                var lastVowel = totalWords.last!
+                var lastVowel = vowels[jungUni]
                 if doubleVowels.keys.contains(lastVowel) {
                     if let isContain = doubleVowels[lastVowel]?.contains(text) {
                         if isContain {
@@ -180,7 +180,7 @@ class KoreanAutomata {
                             
                             let uniValue:Int = (choUni * 21 * 28) + (jungUni * 28) + 0xAC00;
                             if let uni = Unicode.Scalar(uniValue) {
-                                lastWord = String(Character(uni))
+                                lastWord = String(uni)
                                 totalWords.removeLast()
                                 totalWords.append(lastWord)
                                 latestStatus.append(.consonantPlusVowel)
@@ -228,7 +228,7 @@ class KoreanAutomata {
                             
                             let uniValue:Int = (choUni * 21 * 28) + (jungUni * 28) + jongUni + 0xAC00;
                             if let uni = Unicode.Scalar(uniValue) {
-                                lastWord = String(Character(uni))
+                                lastWord = String(uni)
                                 latestStatus.append(.finalConsonant)
                                 totalWords.removeLast()
                                 totalWords.append(lastWord)
@@ -262,7 +262,7 @@ class KoreanAutomata {
                     
                     let uniValue:Int = (choUni * 21 * 28) + (jungUni * 28) + jongUni + 0xAC00
                     guard let uni = Unicode.Scalar(uniValue) else { return (.start, lastWord, false) }
-                    let previousValue = String(Character(uni))
+                    let previousValue = String(uni)
                     let newValue = combinationToComplete(chosung: lastFinalConsonant, jungsung: text, jongsung: nil)
                     lastWord = newValue
                     totalWords.removeLast()
@@ -274,7 +274,7 @@ class KoreanAutomata {
                 } else {
                     let uniValue:Int = (choUni * 21 * 28) + (jungUni * 28) + 0xAC00;
                     guard let uni = Unicode.Scalar(uniValue) else { return (.start, lastWord, false) }
-                    let previousValue = String(Character(uni))
+                    let previousValue = String(uni)
                     let newValue = combinationToComplete(chosung: finalConsonant, jungsung: text, jongsung: nil)
                     lastWord = newValue
                     totalWords.removeLast()
@@ -311,8 +311,8 @@ class KoreanAutomata {
             if doubleConsonantReverses.keys.contains(deletedWord) {
                 lastWord = doubleConsonantReverses[deletedWord]!
                 totalWords.append(lastWord)
-                latestStatus.append(.firstConsonantOnly)
-                return (.firstConsonantOnly, lastWord)
+                latestStatus.append(keyboardState)
+                return (keyboardState, lastWord)
             } else {
                 if latestStatus.isEmpty || totalWords.isEmpty {
                     lastWord = ""
@@ -323,9 +323,42 @@ class KoreanAutomata {
                 }
             }
         case .vowelOnly:
-            print(lastWord)
+            if doubleVowelReverses.keys.contains(deletedWord) {
+                lastWord = (doubleVowelReverses[deletedWord]?.first)!
+                totalWords.append(lastWord)
+                latestStatus.append(keyboardState)
+                return (keyboardState, lastWord)
+            } else {
+                if latestStatus.isEmpty || totalWords.isEmpty {
+                    lastWord = ""
+                    return (.start, "")
+                } else {
+                    lastWord = totalWords.last!
+                    return (latestStatus.last!, "")
+                }
+            }
         case .consonantPlusVowel:
-            print(lastWord)
+            var (choUni, jungUni, _) = completeToCombination(word: deletedWord)
+            var lastVowel = vowels[jungUni]
+            let lastFirstConsonant = firstConsonants[choUni]
+            
+            if doubleVowelReverses.keys.contains(lastVowel) {
+                lastVowel = (doubleVowelReverses[lastVowel]?.first)!
+                
+                for i in 0 ..< vowels.count {
+                    if vowels[i] == lastVowel { jungUni = i }
+                }
+                
+                let uniValue:Int = (choUni * 21 * 28) + (jungUni * 28) + 0xAC00
+                guard let uni = Unicode.Scalar(uniValue) else { return (.start, "") }
+                lastWord = String(uni)
+                totalWords.append(lastWord)
+                return (keyboardState, lastWord)
+            } else {
+                lastWord = lastFirstConsonant
+                totalWords.append(lastFirstConsonant)
+                return (latestStatus.last!, lastWord)
+            }
         case .finalConsonant:
             print(lastWord)
         }
@@ -355,7 +388,7 @@ class KoreanAutomata {
         
         let uniValue:Int = (chosungIndex * 21 * 28) + (jungsungIndex * 28) + (jongsungIndex) + 0xAC00;
         if let uni = Unicode.Scalar(uniValue) {
-            return String(Character(uni))
+            return String(uni)
         }
         
         return ""
