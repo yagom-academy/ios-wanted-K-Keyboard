@@ -97,7 +97,7 @@ extension FirstViewController: Presentable {
             tagView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             tagView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             // TODO: fix temp value
-            tagView.heightAnchor.constraint(equalToConstant: 300)
+            tagView.heightAnchor.constraint(greaterThanOrEqualToConstant: 0)
         ]
         
         constraint += [
@@ -106,7 +106,7 @@ extension FirstViewController: Presentable {
             keywordView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             keywordView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             // TODO: fix temp value
-            keywordView.heightAnchor.constraint(equalToConstant: 200)
+            keywordView.heightAnchor.constraint(greaterThanOrEqualToConstant: 0)
         ]
         
         constraint += [
@@ -122,7 +122,6 @@ extension FirstViewController: Presentable {
             bannerView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             bannerView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             bannerView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            // TODO: fix temp value
             bannerView.heightAnchor.constraint(greaterThanOrEqualToConstant: 0)
         ]
         

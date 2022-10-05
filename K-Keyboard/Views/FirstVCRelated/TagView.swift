@@ -15,6 +15,7 @@ class TagView: UIView, FirstViewStyling {
     
     var titleLabel: UILabel = UILabel()
     
+    var tempArray: [String] = ["이벤트", "캐릭터", "새", "동물", "앙증맞은", "동글동글"]
     
     init() {
         super.init(frame: .zero)
@@ -22,7 +23,7 @@ class TagView: UIView, FirstViewStyling {
         configureView()
         bind()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -33,7 +34,7 @@ class TagView: UIView, FirstViewStyling {
         
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(55))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(30))
         
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         
@@ -44,7 +45,7 @@ class TagView: UIView, FirstViewStyling {
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
         
         let config = UICollectionViewCompositionalLayoutConfiguration()
-        config.scrollDirection = .horizontal
+        config.scrollDirection = .vertical
         
         let layout = UICollectionViewCompositionalLayout(section: section)
         layout.configuration = config
@@ -74,8 +75,9 @@ extension TagView: Presentable {
         
         constraint += [
             collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            collectionView.heightAnchor.constraint(equalToConstant: 70),
             collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ]
         
@@ -83,6 +85,7 @@ extension TagView: Presentable {
     
     func configureView() {
         titleLabel.addStyles(style: tagTitleStyle)
+        collectionView.isScrollEnabled = true
     }
     
     func bind() {
@@ -108,13 +111,13 @@ extension TagView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 50
+        return tempArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? TagCell else { fatalError() }
         
-        cell.configureCell()
+        cell.configureCell(tagName: tempArray[indexPath.item])
         
         return cell
     }
