@@ -19,6 +19,13 @@ class KeyboardViewController: UIInputViewController {
         return button
     }()
     
+    lazy var toolBarView: ToolBarView = {
+        let viewModel = ToolBarViewModel()
+        let view = ToolBarView(viewModel: viewModel)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     lazy var keyboardView: KeyboardView = {
         let viewModel = KeyboardViewModel()
         let view = KeyboardView(viewModel: viewModel)
@@ -75,6 +82,7 @@ class KeyboardViewController: UIInputViewController {
     // MARK: Build View Hierarchy
     func buildViewHierarchy() {
         self.view.addSubview(nextKeyboardButton)
+        self.view.addSubview(toolBarView)
         self.view.addSubview(keyboardView)
     }
     
@@ -94,7 +102,13 @@ class KeyboardViewController: UIInputViewController {
         ]
         
         constraints += [
-            keyboardView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            toolBarView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            toolBarView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
+            toolBarView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
+        ]
+        
+        constraints += [
+            keyboardView.topAnchor.constraint(equalTo: toolBarView.bottomAnchor),
             keyboardView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
             keyboardView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
             keyboardView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
