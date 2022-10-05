@@ -16,13 +16,28 @@ class KoreanAutomata {
     static let shared = KoreanAutomata()
     
     let firstConsonants: [String] = ["ㄱ","ㄲ","ㄴ","ㄷ","ㄸ","ㄹ","ㅁ","ㅂ","ㅃ","ㅅ","ㅆ","ㅇ","ㅈ","ㅉ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"]
-    let doubleConsonants: [String: String] = ["ㄱ" : "ㄲ", "ㄷ": "ㄸ", "ㅂ": "ㅃ", "ㅅ": "ㅆ", "ㅈ": "ㅉ"]
-    
+    let doubleConsonants: [String: String] = ["ㄱ" : "ㄲ",
+                                              "ㄷ": "ㄸ",
+                                              "ㅂ": "ㅃ",
+                                              "ㅅ": "ㅆ",
+                                              "ㅈ": "ㅉ"]
+    let doubleConsonantReverses: [String: String] = ["ㄲ" : "ㄱ",
+                                                     "ㄸ": "ㄷ",
+                                                     "ㅃ": "ㅂ",
+                                                     "ㅆ": "ㅅ",
+                                                     "ㅉ": "ㅈ"]
     let vowels: [String] = ["ㅏ", "ㅐ", "ㅑ", "ㅒ", "ㅓ", "ㅔ", "ㅕ", "ㅖ", "ㅗ", "ㅘ", "ㅙ", "ㅚ", "ㅛ", "ㅜ", "ㅝ",
                                "ㅞ", "ㅟ", "ㅠ", "ㅡ", "ㅢ", "ㅣ"]
     let doubleVowels: [String : [String]] = ["ㅗ": ["ㅏ", "ㅐ", "ㅣ", "ㅘ", "ㅙ", "ㅚ"],
                                              "ㅜ": ["ㅓ", "ㅔ", "ㅣ", "ㅝ", "ㅞ", "ㅟ"],
                                              "ㅡ": ["ㅣ", "ㅢ"]]
+    let doubleVowelReverses: [String : [String]] = ["ㅘ" : ["ㅗ", "ㅏ"],
+                                                    "ㅙ" : ["ㅗ", "ㅐ"],
+                                                    "ㅚ" : ["ㅗ", "ㅣ"],
+                                                    "ㅝ" : ["ㅜ", "ㅓ"],
+                                                    "ㅞ" : ["ㅜ", "ㅔ"],
+                                                    "ㅟ" : ["ㅜ", "ㅣ"],
+                                                    "ㅢ" : ["ㅡ", "ㅣ"]]
     let finalConsonants: [String] = [" ", "ㄱ", "ㄲ", "ㄳ", "ㄴ", "ㄵ", "ㄶ", "ㄷ", "ㄹ", "ㄺ", "ㄻ", "ㄼ", "ㄽ", "ㄾ", "ㄿ","ㅀ", "ㅁ", "ㅂ", "ㅄ", "ㅅ", "ㅆ", "ㅇ", "ㅈ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"]
     let doubleFinalConsonants: [String : [String]] = ["ㄱ" : ["ㅅ", "ㄳ"],
                                                       "ㄴ" : ["ㅈ", "ㅎ", "ㄵ", "ㄶ"],
@@ -42,12 +57,14 @@ class KoreanAutomata {
                                                         "ㅄ" : ["ㅂ", "ㅅ"]]
     var lastWord = ""
     var totalWords: [String] = []
+    var latestStatus: [KeyboardState] = []
     
     func insertLogic(state: KeyboardState, text: String, keyType: KeyType) -> (KeyboardState, String, Bool) {
         
         if keyType == .space {
             lastWord = " "
             totalWords.append(" ")
+            latestStatus.append(.start)
             return (.start, lastWord, false)
         }
         
@@ -56,24 +73,31 @@ class KoreanAutomata {
             lastWord = text
             totalWords.append(text)
             if keyType == .vowel {
+                latestStatus.append(.vowelOnly)
                 return (.vowelOnly, lastWord, false)
             } else {
+                latestStatus.append(.firstConsonantOnly)
                 return (.firstConsonantOnly, lastWord, false)
             }
         case .firstConsonantOnly:
             if keyType == .vowel {
                 let value = combinationToComplete(chosung: lastWord, jungsung: text, jongsung: nil)
                 lastWord = value
-                totalWords.append(text)
+                totalWords.removeLast()
+                totalWords.append(value)
+                latestStatus.append(.consonantPlusVowel)
                 return (.consonantPlusVowel, lastWord, true)
             } else {
                 if doubleConsonants.keys.contains(lastWord) && totalWords.last == text {
                     lastWord = doubleConsonants[text] ?? ""
-                    totalWords.append(text)
+                    totalWords.removeLast()
+                    totalWords.append(lastWord)
+                    latestStatus.append(.firstConsonantOnly)
                     return (.firstConsonantOnly, lastWord, true)
                 } else {
                     lastWord = text
                     totalWords.append(text)
+                    latestStatus.append(.firstConsonantOnly)
                     return (.firstConsonantOnly, lastWord, false)
                 }
             }
@@ -88,11 +112,14 @@ class KoreanAutomata {
                                 let index = doubleVowels[lastWord]?.firstIndex(of: text)
                                 lastWord = (doubleVowels[lastWord]?[index! + 3])!
                             }
-                            totalWords.append(text)
+                            totalWords.removeLast()
+                            totalWords.append(lastWord)
+                            latestStatus.append(.vowelOnly)
                             return (.vowelOnly, lastWord, true)
                         } else {
                             lastWord = text
                             totalWords.append(text)
+                            latestStatus.append(.vowelOnly)
                             return (.vowelOnly, lastWord, false)
                         }
                     } else {
@@ -101,11 +128,13 @@ class KoreanAutomata {
                 } else {
                     lastWord = text
                     totalWords.append(text)
+                    latestStatus.append(.vowelOnly)
                     return (.vowelOnly, lastWord, false)
                 }
             } else {
                 lastWord = text
                 totalWords.append(text)
+                latestStatus.append(.firstConsonantOnly)
                 return (.firstConsonantOnly, lastWord, false)
             }
         case .consonantPlusVowel:
@@ -119,11 +148,15 @@ class KoreanAutomata {
                 if jongUni == 0 {
                     lastWord = text
                     totalWords.append(text)
+                    latestStatus.append(.firstConsonantOnly)
                     return (.firstConsonantOnly, lastWord, false)
                 } else {
                     let uniValue:Int = (choUni * 21 * 28) + (jungUni * 28) + (jongUni) + 0xAC00;
                     if let uni = Unicode.Scalar(uniValue) {
                         lastWord = String(Character(uni))
+                        totalWords.removeLast()
+                        totalWords.append(lastWord)
+                        latestStatus.append(.finalConsonant)
                         return (.finalConsonant, lastWord, true)
                     }
                 }
@@ -140,7 +173,6 @@ class KoreanAutomata {
                                 let index = doubleVowels[lastVowel]?.firstIndex(of: text)
                                 lastVowel = (doubleVowels[lastVowel]?[index! + 3])!
                             }
-                            totalWords.append(text)
 
                             for i in 0 ..< vowels.count {
                                 if vowels[i] == lastVowel { jungUni = i }
@@ -149,11 +181,15 @@ class KoreanAutomata {
                             let uniValue:Int = (choUni * 21 * 28) + (jungUni * 28) + 0xAC00;
                             if let uni = Unicode.Scalar(uniValue) {
                                 lastWord = String(Character(uni))
+                                totalWords.removeLast()
+                                totalWords.append(lastWord)
+                                latestStatus.append(.consonantPlusVowel)
                                 return (.consonantPlusVowel, lastWord, true)
                             }
                         } else {
                             lastWord = text
                             totalWords.append(text)
+                            latestStatus.append(.vowelOnly)
                             return (.vowelOnly, lastWord, false)
                         }
                 } else {
@@ -162,6 +198,7 @@ class KoreanAutomata {
             } else {
                 lastWord = text
                 totalWords.append(text)
+                latestStatus.append(.vowelOnly)
                 return (.vowelOnly, lastWord, false)
             }
         }
@@ -184,7 +221,6 @@ class KoreanAutomata {
                             default:
                                 lastFinalConsonant = ""
                             }
-                            totalWords.append(text)
 
                             for i in 0 ..< finalConsonants.count {
                                 if finalConsonants[i] == lastFinalConsonant { jongUni = i }
@@ -193,11 +229,15 @@ class KoreanAutomata {
                             let uniValue:Int = (choUni * 21 * 28) + (jungUni * 28) + jongUni + 0xAC00;
                             if let uni = Unicode.Scalar(uniValue) {
                                 lastWord = String(Character(uni))
+                                latestStatus.append(.finalConsonant)
+                                totalWords.removeLast()
+                                totalWords.append(lastWord)
                                 return (.finalConsonant, lastWord, true)
                             }
                         } else {
                             totalWords.append(text)
                             lastWord = text
+                            latestStatus.append(.firstConsonantOnly)
                             return (.firstConsonantOnly, lastWord, false)
                         }
                     } else {
@@ -206,6 +246,7 @@ class KoreanAutomata {
                 } else {
                     lastWord = text
                     totalWords.append(text)
+                    latestStatus.append(.firstConsonantOnly)
                     return (.firstConsonantOnly, lastWord, false)
                 }
             } else {
@@ -224,7 +265,10 @@ class KoreanAutomata {
                     let previousValue = String(Character(uni))
                     let newValue = combinationToComplete(chosung: lastFinalConsonant, jungsung: text, jongsung: nil)
                     lastWord = newValue
-                    totalWords.append(text)
+                    totalWords.removeLast()
+                    totalWords.append(previousValue)
+                    totalWords.append(newValue)
+                    latestStatus.append(.consonantPlusVowel)
                     return (.consonantPlusVowel, previousValue + newValue, true)
                     
                 } else {
@@ -233,12 +277,63 @@ class KoreanAutomata {
                     let previousValue = String(Character(uni))
                     let newValue = combinationToComplete(chosung: finalConsonant, jungsung: text, jongsung: nil)
                     lastWord = newValue
-                    totalWords.append(text)
+                    totalWords.removeLast()
+                    totalWords.append(previousValue)
+                    totalWords.append(newValue)
+                    latestStatus.append(.consonantPlusVowel)
                     return (.consonantPlusVowel, previousValue + newValue, true)
                 }
             }
         }
         return (.start, text, false)
+    }
+    
+    func deleteLogic() -> (KeyboardState, String) {
+        
+        if latestStatus.isEmpty || totalWords.isEmpty {
+            lastWord = ""
+            return (.start, "")
+        }
+        
+        let keyboardState = latestStatus.removeLast()
+        let deletedWord = totalWords.removeLast()
+        
+        switch keyboardState {
+        case .start:
+            if !latestStatus.isEmpty && deletedWord == " " {
+                lastWord = totalWords.last!
+                return (latestStatus.last!, "")
+            } else {
+                lastWord = ""
+                return (.start, "")
+            }
+        case .firstConsonantOnly:
+            if doubleConsonantReverses.keys.contains(deletedWord) {
+                lastWord = doubleConsonantReverses[deletedWord]!
+                totalWords.append(lastWord)
+                latestStatus.append(.firstConsonantOnly)
+                return (.firstConsonantOnly, lastWord)
+            } else {
+                if latestStatus.isEmpty || totalWords.isEmpty {
+                    lastWord = ""
+                    return (.start, "")
+                } else {
+                    lastWord = totalWords.last!
+                    return (latestStatus.last!, "")
+                }
+            }
+        case .vowelOnly:
+            print(lastWord)
+        case .consonantPlusVowel:
+            print(lastWord)
+        case .finalConsonant:
+            print(lastWord)
+        }
+        
+        
+        
+        
+        return (.start, "")
     }
     
     func combinationToComplete(chosung: String, jungsung: String, jongsung:String?) -> String {

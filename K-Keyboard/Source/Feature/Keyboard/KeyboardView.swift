@@ -194,7 +194,7 @@ public class KeyboardView: UIView {
     }
     
     func registerButtonTarget() {
-        [qButton, wButton, eButton, rButton, tButton, yButton, uButton, iButton, oButton, pButton, aButton, sButton, dButton, fButton, gButton, hButton, jButton, kButton, lButton, zButton, xButton, cButton, vButton, bButton, nButton, mButton].forEach {
+        [qButton, wButton, eButton, rButton, tButton, yButton, uButton, iButton, oButton, pButton, aButton, sButton, dButton, fButton, gButton, hButton, jButton, kButton, lButton, zButton, xButton, cButton, vButton, bButton, nButton, mButton, spaceButton].forEach {
             $0.addTarget(self, action: #selector(koreanKeyButtonTapAction), for: .touchUpInside)
         }
         
