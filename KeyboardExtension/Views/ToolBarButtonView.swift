@@ -48,6 +48,7 @@ class ToolBarButtonView: UIView {
     // MARK: Setup Views
     func setupViews() {
         imageView.image = viewModel.image
+        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTap)))
     }
     
     
@@ -74,6 +75,14 @@ class ToolBarButtonView: UIView {
     
     // MARK: Binding
     func bind() {
-        
+        viewModel.selectedSource = { [weak self] selected in
+            guard let self else { return }
+            self.backgroundColor = selected ? .gray : UIColor(hex: "#D0D3DA")
+        }
+    }
+    
+    // MARK: Action
+    @objc func didTap() {
+        viewModel.didTap?()
     }
 }
