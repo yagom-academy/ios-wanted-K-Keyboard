@@ -10,7 +10,7 @@ import UIKit
 
 extension UIColor {
     convenience init(hex: String, alpha: CGFloat = 1) {
-        var hex = Array(hex)
+        let hex = Array(hex)
         let red = hexToCGFloat(from: hex[1..<3])
         let green = hexToCGFloat(from: hex[3..<5])
         let blue = hexToCGFloat(from: hex[5..<7])
