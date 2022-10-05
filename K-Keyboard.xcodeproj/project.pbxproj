@@ -57,6 +57,8 @@
 		B05F4CC928ED01F000562C38 /* PhonemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05F4CAD28ED01F000562C38 /* PhonemeView.swift */; };
 		B05F4CCA28ED01F000562C38 /* PhonemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05F4CAD28ED01F000562C38 /* PhonemeView.swift */; };
 		B05F4CCC28ED01F000562C38 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B05F4CAE28ED01F000562C38 /* Info.plist */; };
+		B0B24E9128ED1742001ABBEA /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B24E9028ED1742001ABBEA /* KeyboardView.swift */; };
+		B0B24E9328ED1912001ABBEA /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B24E9228ED1912001ABBEA /* MainViewModel.swift */; };
 		D30E931728E5B27B009AB544 /* KeyboardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E931628E5B27B009AB544 /* KeyboardImageView.swift */; };
 		D30E931928E69F19009AB544 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E931828E69F19009AB544 /* TagView.swift */; };
 		D30E931D28E69F73009AB544 /* KeyWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E931C28E69F73009AB544 /* KeyWordView.swift */; };
@@ -143,6 +145,8 @@
 		B05F4CAC28ED01F000562C38 /* KeyboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		B05F4CAD28ED01F000562C38 /* PhonemeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhonemeView.swift; sourceTree = "<group>"; };
 		B05F4CAE28ED01F000562C38 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B0B24E9028ED1742001ABBEA /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
+		B0B24E9228ED1912001ABBEA /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		D30E931628E5B27B009AB544 /* KeyboardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardImageView.swift; sourceTree = "<group>"; };
 		D30E931828E69F19009AB544 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		D30E931C28E69F73009AB544 /* KeyWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyWordView.swift; sourceTree = "<group>"; };
@@ -285,6 +289,7 @@
 			isa = PBXGroup;
 			children = (
 				B05F4C9F28ED01F000562C38 /* KeyboardViewModel.swift */,
+				B0B24E9228ED1912001ABBEA /* MainViewModel.swift */,
 				B05F4CA028ED01F000562C38 /* PhonemeViewModel.swift */,
 				B05F4C9B28ED01F000562C38 /* SpecialKeys */,
 			);
@@ -322,6 +327,7 @@
 			isa = PBXGroup;
 			children = (
 				B05F4CAC28ED01F000562C38 /* KeyboardViewController.swift */,
+				B0B24E9028ED1742001ABBEA /* KeyboardView.swift */,
 				B05F4CAD28ED01F000562C38 /* PhonemeView.swift */,
 				B05F4CA728ED01F000562C38 /* SpecialKeys */,
 			);
@@ -544,6 +550,7 @@
 				B05F4CB128ED01F000562C38 /* ShiftViewModel.swift in Sources */,
 				B05F4CC128ED01F000562C38 /* ChangeTypeView.swift in Sources */,
 				B05F4CC928ED01F000562C38 /* PhonemeView.swift in Sources */,
+				B0B24E9128ED1742001ABBEA /* KeyboardView.swift in Sources */,
 				B05F4CC528ED01F000562C38 /* ReturnView.swift in Sources */,
 				B05F4CB728ED01F000562C38 /* PhonemeViewModel.swift in Sources */,
 				B05F4CB328ED01F000562C38 /* DeleteViewModel.swift in Sources */,
@@ -553,6 +560,7 @@
 				B05F4CBD28ED01F000562C38 /* UITextDocumentProxy+Extension.swift in Sources */,
 				B05F4CC328ED01F000562C38 /* DeleteView.swift in Sources */,
 				B05AA9EA28ED019800EB2CF3 /* UIStackView+Extension.swift in Sources */,
+				B0B24E9328ED1912001ABBEA /* MainViewModel.swift in Sources */,
 				B05AA9E428ED019800EB2CF3 /* UIColor+Extension.swift in Sources */,
 				B05F4CBB28ED01F000562C38 /* Syllable.swift in Sources */,
 				B05F4CB528ED01F000562C38 /* KeyboardViewModel.swift in Sources */,
