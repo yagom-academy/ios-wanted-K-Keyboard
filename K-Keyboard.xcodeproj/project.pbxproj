@@ -59,6 +59,11 @@
 		B05F4CCC28ED01F000562C38 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B05F4CAE28ED01F000562C38 /* Info.plist */; };
 		B0B24E9128ED1742001ABBEA /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B24E9028ED1742001ABBEA /* KeyboardView.swift */; };
 		B0B24E9328ED1912001ABBEA /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B24E9228ED1912001ABBEA /* MainViewModel.swift */; };
+		B0B24E9528ED55AC001ABBEA /* ToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B24E9428ED55AC001ABBEA /* ToolBarView.swift */; };
+		B0B24E9728ED55C5001ABBEA /* ToolBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B24E9628ED55C5001ABBEA /* ToolBarViewModel.swift */; };
+		B0B24E9928ED56B1001ABBEA /* ToolBarButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B24E9828ED56B1001ABBEA /* ToolBarButtonView.swift */; };
+		B0B24E9D28ED58FD001ABBEA /* ToolBarButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B24E9C28ED58FD001ABBEA /* ToolBarButtonViewModel.swift */; };
+		B0B24E9F28ED5B0F001ABBEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0B24E9E28ED5B0F001ABBEA /* Assets.xcassets */; };
 		D30E931728E5B27B009AB544 /* KeyboardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E931628E5B27B009AB544 /* KeyboardImageView.swift */; };
 		D30E931928E69F19009AB544 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E931828E69F19009AB544 /* TagView.swift */; };
 		D30E931D28E69F73009AB544 /* KeyWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E931C28E69F73009AB544 /* KeyWordView.swift */; };
@@ -147,6 +152,11 @@
 		B05F4CAE28ED01F000562C38 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0B24E9028ED1742001ABBEA /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		B0B24E9228ED1912001ABBEA /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		B0B24E9428ED55AC001ABBEA /* ToolBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarView.swift; sourceTree = "<group>"; };
+		B0B24E9628ED55C5001ABBEA /* ToolBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarViewModel.swift; sourceTree = "<group>"; };
+		B0B24E9828ED56B1001ABBEA /* ToolBarButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarButtonView.swift; sourceTree = "<group>"; };
+		B0B24E9C28ED58FD001ABBEA /* ToolBarButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarButtonViewModel.swift; sourceTree = "<group>"; };
+		B0B24E9E28ED5B0F001ABBEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D30E931628E5B27B009AB544 /* KeyboardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardImageView.swift; sourceTree = "<group>"; };
 		D30E931828E69F19009AB544 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		D30E931C28E69F73009AB544 /* KeyWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyWordView.swift; sourceTree = "<group>"; };
@@ -281,6 +291,7 @@
 				B05F4C9A28ED01F000562C38 /* ViewModels */,
 				B05F4CA628ED01F000562C38 /* Views */,
 				B05F4CAE28ED01F000562C38 /* Info.plist */,
+				B0B24E9E28ED5B0F001ABBEA /* Assets.xcassets */,
 			);
 			path = KeyboardExtension;
 			sourceTree = "<group>";
@@ -291,6 +302,8 @@
 				B05F4C9F28ED01F000562C38 /* KeyboardViewModel.swift */,
 				B0B24E9228ED1912001ABBEA /* MainViewModel.swift */,
 				B05F4CA028ED01F000562C38 /* PhonemeViewModel.swift */,
+				B0B24E9628ED55C5001ABBEA /* ToolBarViewModel.swift */,
+				B0B24E9C28ED58FD001ABBEA /* ToolBarButtonViewModel.swift */,
 				B05F4C9B28ED01F000562C38 /* SpecialKeys */,
 			);
 			path = ViewModels;
@@ -329,6 +342,8 @@
 				B05F4CAC28ED01F000562C38 /* KeyboardViewController.swift */,
 				B0B24E9028ED1742001ABBEA /* KeyboardView.swift */,
 				B05F4CAD28ED01F000562C38 /* PhonemeView.swift */,
+				B0B24E9428ED55AC001ABBEA /* ToolBarView.swift */,
+				B0B24E9828ED56B1001ABBEA /* ToolBarButtonView.swift */,
 				B05F4CA728ED01F000562C38 /* SpecialKeys */,
 			);
 			path = Views;
@@ -520,6 +535,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0B24E9F28ED5B0F001ABBEA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -548,11 +564,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				B05F4CB128ED01F000562C38 /* ShiftViewModel.swift in Sources */,
+				B0B24E9728ED55C5001ABBEA /* ToolBarViewModel.swift in Sources */,
+				B0B24E9928ED56B1001ABBEA /* ToolBarButtonView.swift in Sources */,
 				B05F4CC128ED01F000562C38 /* ChangeTypeView.swift in Sources */,
+				B0B24E9528ED55AC001ABBEA /* ToolBarView.swift in Sources */,
 				B05F4CC928ED01F000562C38 /* PhonemeView.swift in Sources */,
 				B0B24E9128ED1742001ABBEA /* KeyboardView.swift in Sources */,
 				B05F4CC528ED01F000562C38 /* ReturnView.swift in Sources */,
 				B05F4CB728ED01F000562C38 /* PhonemeViewModel.swift in Sources */,
+				B0B24E9D28ED58FD001ABBEA /* ToolBarButtonViewModel.swift in Sources */,
 				B05F4CB328ED01F000562C38 /* DeleteViewModel.swift in Sources */,
 				B05F4CB928ED01F000562C38 /* Phoneme.swift in Sources */,
 				B05F4CAF28ED01F000562C38 /* ReturnViewModel.swift in Sources */,
