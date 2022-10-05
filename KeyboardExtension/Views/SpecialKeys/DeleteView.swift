@@ -17,6 +17,18 @@ class DeleteView: UIView {
         return imageView
     }()
     
+    lazy var backgroundView: UIView = {
+        let view = UIView()
+        view.backgroundColor =  UIColor(hex: "#A8B0BB")
+        view.layer.shadowOffset = CGSize(width: 0, height: 1)
+        view.layer.shadowRadius = 1
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.4
+        view.layer.cornerRadius = 5
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     // MARK: Associated Types
     typealias ViewModel = DeleteViewModel
     
@@ -48,19 +60,14 @@ class DeleteView: UIView {
     
     // MARK: Setup Views
     func setupViews() {
-        self.backgroundColor = UIColor(hex: "#A8B0BB")
-        self.layer.shadowOffset = CGSize(width: 0, height: 1)
-        self.layer.shadowRadius = 1
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 0.4
-        self.layer.cornerRadius = 5
         self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTap)))
     }
     
     
     // MARK: Build View Hierarchy
     func buildViewHierarchy() {
-        self.addSubview(deleteImage)
+        self.addSubview(backgroundView)
+        backgroundView.addSubview(deleteImage)
     }
     
     
@@ -71,8 +78,15 @@ class DeleteView: UIView {
         defer { NSLayoutConstraint.activate(constraints) }
         
         constraints += [
-            deleteImage.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            deleteImage.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            backgroundView.topAnchor.constraint(equalTo: self.topAnchor, constant: 6),
+            backgroundView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 11),
+            backgroundView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -3),
+            backgroundView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -6),
+        ]
+        
+        constraints += [
+            deleteImage.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor),
+            deleteImage.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor),
         ]
     }
     

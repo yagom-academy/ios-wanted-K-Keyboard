@@ -17,6 +17,18 @@ class ShiftView: UIView {
         return imageView
     }()
     
+    lazy var backgroundView: UIView = {
+        let view = UIView()
+        view.backgroundColor =  UIColor(hex: "#A8B0BB")
+        view.layer.shadowOffset = CGSize(width: 0, height: 1)
+        view.layer.shadowRadius = 1
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.4
+        view.layer.cornerRadius = 5
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     // MARK: Associated Types
     typealias ViewModel = ShiftViewModel
     
@@ -48,19 +60,14 @@ class ShiftView: UIView {
     
     // MARK: Setup Views
     func setupViews() {
-        self.backgroundColor = UIColor(hex: "#A8B0BB")
-        self.layer.shadowOffset = CGSize(width: 0, height: 1)
-        self.layer.shadowRadius = 1
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 0.4
-        self.layer.cornerRadius = 5
         self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTap)))
     }
     
     
     // MARK: Build View Hierarchy
     func buildViewHierarchy() {
-        self.addSubview(shiftImage)
+        self.addSubview(backgroundView)
+        backgroundView.addSubview(shiftImage)
     }
     
     
@@ -71,8 +78,15 @@ class ShiftView: UIView {
         defer { NSLayoutConstraint.activate(constraints) }
         
         constraints += [
-            shiftImage.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            shiftImage.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            backgroundView.topAnchor.constraint(equalTo: self.topAnchor, constant: 6),
+            backgroundView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 3),
+            backgroundView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -11),
+            backgroundView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -6),
+        ]
+        
+        constraints += [
+            shiftImage.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor),
+            shiftImage.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor),
         ]
     }
     
@@ -82,10 +96,10 @@ class ShiftView: UIView {
         viewModel.activatedSource = { [weak self] activated in
             guard let self else { return }
             if activated {
-                self.backgroundColor = UIColor.white
+                self.backgroundView.backgroundColor = UIColor.white
                 self.shiftImage.image = UIImage(systemName: "shift.fill")
             } else {
-                self.backgroundColor = UIColor(hex: "#A8B0BB")
+                self.backgroundView.backgroundColor = UIColor(hex: "#A8B0BB")
                 self.shiftImage.image = UIImage(systemName: "shift")
             }
         }

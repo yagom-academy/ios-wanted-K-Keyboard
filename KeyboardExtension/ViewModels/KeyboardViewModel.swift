@@ -14,11 +14,11 @@ class KeyboardViewModel {
     var addPhoneme: ((Phoneme) -> ())?
     var toggleShift: (() -> ())?
     var removePhoneme: (() -> ())?
-    var addNewLine: ((String) -> ())?
+    var addNewLine: (() -> ())?
     var textContextDidChange: ((String) -> ())?
     
     // MARK: Output
-    var textSource: ((String, [Syllable]) -> ())?
+    var propagateText: ((String) -> ())?
     var phonemesSource: (([[Phoneme]]) -> ())?
     var shiftActivatedSource: ((Bool) -> ())?
     
@@ -57,7 +57,9 @@ class KeyboardViewModel {
             guard let self else { return }
             self.inputPhonemes.append(phoneme)
             self.shiftActivated = false
-            self.textSource?(self.prefixText, self.mergeSyllables(self.mergeVowels(self.inputPhonemes)))
+            let syllables = self.mergeSyllables(self.mergeVowels(self.inputPhonemes))
+            let text = self.convertToString(self.prefixText, syllables: syllables)
+            self.propagateText?(text)
         }
         
         toggleShift = { [weak self] in
@@ -73,13 +75,19 @@ class KeyboardViewModel {
                 self.prefixText.removeLast()
             }
             self.shiftActivated = false
-            self.textSource?(self.prefixText, self.mergeSyllables(self.mergeVowels(self.inputPhonemes)))
+            let syllables = self.mergeSyllables(self.mergeVowels(self.inputPhonemes))
+            let text = self.convertToString(self.prefixText, syllables: syllables)
+            self.propagateText?(text)
         }
         
-        addNewLine = { [weak self] prefixText in
+        addNewLine = { [weak self] in
             guard let self else { return }
-            self.textContextDidChange?(prefixText)
-            self.textSource?(self.prefixText, self.mergeSyllables(self.mergeVowels(self.inputPhonemes)))
+            let syllables = self.mergeSyllables(self.mergeVowels(self.inputPhonemes))
+            let text = self.convertToString(self.prefixText, syllables: syllables)
+            self.prefixText = text + "\n"
+            self.shiftActivated = false
+            self.inputPhonemes = []
+            self.propagateText?(self.prefixText)
         }
         
         textContextDidChange = { [weak self] prefixText in
@@ -165,6 +173,12 @@ class KeyboardViewModel {
             }
         }
         return syllables
+    }
+    
+    private func convertToString(_ prefixText: String, syllables: [Syllable]) -> String {
+        var text = prefixText
+        syllables.compactMap { $0.unicode }.forEach { text += String($0) }
+        return text
     }
     
     private func mutatePhonemes(shiftActivated activated: Bool) {
