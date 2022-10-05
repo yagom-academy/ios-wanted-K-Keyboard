@@ -30,6 +30,7 @@ final class EventCell: UICollectionViewCell {
 extension EventCell {
     func configure() {
         contentView.addSubview(contentLabel)
+        
         NSLayoutConstraint.activate([
             contentLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             contentLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),

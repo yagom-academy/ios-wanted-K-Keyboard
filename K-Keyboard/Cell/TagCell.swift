@@ -34,6 +34,7 @@ final class TagCell: UICollectionViewCell {
 extension TagCell {
     func configure() {
         contentView.addSubview(tagButton)
+        
         NSLayoutConstraint.activate([
             tagButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             tagButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
