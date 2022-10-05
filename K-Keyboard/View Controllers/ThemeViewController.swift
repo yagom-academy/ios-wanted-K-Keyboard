@@ -56,7 +56,26 @@ final class ThemeViewController: UIViewController {
     }
     
     private func configureSnapshot() {
+        let eventItems = MockDataController.generateItems().filter { $0.itemType == .event }
+        let tagItems = MockDataController.generateItems().filter { $0.itemType == .tag }
+        let reactionItems = MockDataController.generateItems().filter({ $0.itemType == .reaction })
+        let opinionItems = MockDataController.generateItems().filter({ $0.itemType == .opinion })
+        let bannerItems = MockDataController.generateItems().filter({ $0.itemType == .banner })
+        let reviewItems = MockDataController.generateItems().filter({ $0.itemType == .review })
+
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
+        Section.allCases.forEach { section in
+            snapshot.appendSections([section])
+        }
+
+        snapshot.appendItems(eventItems, toSection: .event)
+        snapshot.appendItems(tagItems, toSection: .tag)
+        snapshot.appendItems(reactionItems, toSection: .reaction)
+        snapshot.appendItems(opinionItems, toSection: .opinion)
+        snapshot.appendItems(bannerItems, toSection: .banner)
+        snapshot.appendItems(reviewItems, toSection: .review)
         
+        dataSource.apply(snapshot, animatingDifferences: true)
     }
 }
 
