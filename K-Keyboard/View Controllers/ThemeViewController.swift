@@ -33,6 +33,9 @@ final class ThemeViewController: UIViewController {
         let opinionCellRegistration = opinionCellRegistration()
         let bannerCellRegistration = bannerCellRegistration()
         let reviewCellRegistration = reviewCellRegistration()
+        let sectionHeaderViewRegistration = sectionHeaderViewRegistration()
+        let headerViewRegistration = headerViewRegistration()
+        let footerViewRegistration = footerViewRegistration()
         
         dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, identifier) -> UICollectionViewCell? in
             
@@ -53,6 +56,21 @@ final class ThemeViewController: UIViewController {
                 return UICollectionViewCell()
             }
         })
+        
+        dataSource.supplementaryViewProvider = { (view, kind, index) in
+            switch kind {
+            case SectionHeaderView.elementKind:
+                return self.collectionView.dequeueConfiguredReusableSupplementary(using: sectionHeaderViewRegistration,
+                                                                                  for: index)
+            case HeaderView.elementKind:
+                return self.collectionView.dequeueConfiguredReusableSupplementary(using: headerViewRegistration,
+                                                                                   for: index)
+            case FooterView.elementKind:
+                return self.collectionView.dequeueConfiguredReusableSupplementary(using: footerViewRegistration, for: index)
+            default: break
+            }
+            return nil
+        }
     }
     
     private func configureSnapshot() {
@@ -117,6 +135,35 @@ extension ThemeViewController {
     private func reviewCellRegistration() -> UICollectionView.CellRegistration<ReviewCell, Item> {
         return UICollectionView.CellRegistration { cell, indexPath, review in
             cell.updateUI(review)
+        }
+    }
+    
+    private func sectionHeaderViewRegistration() -> UICollectionView.SupplementaryRegistration<SectionHeaderView> {
+        return UICollectionView.SupplementaryRegistration<SectionHeaderView>(elementKind: SectionHeaderView.elementKind,
+                                                                             handler: { supplementaryView, elementKind, indexPath in
+            if let reviewSection = Section(rawValue: Section.review.rawValue) {
+                if indexPath.section == reviewSection.rawValue {
+                    let snapshot = self.dataSource.snapshot()
+                    let numberOfReviews = snapshot.numberOfItems(inSection: .review)
+                    supplementaryView.updateUI(Section.review.title, numberOfReviews-1)
+                }
+            }
+            supplementaryView.updateUI(Section(rawValue: indexPath.section)?.title ?? "Please check review-title", nil)
+        })
+    }
+    
+    private func headerViewRegistration() -> UICollectionView.SupplementaryRegistration<HeaderView> {
+        return UICollectionView.SupplementaryRegistration(elementKind: HeaderView.elementKind) { supplementaryView, elementKind, indexPath in
+            var owner = Owner(nickName: "크리에이터명", themeName: "앙무", themeNickName: "코핀", themeImagePath: "theme.png")
+            owner.numberOfConsumer = 78
+            supplementaryView.updateUI(owner: owner)
+        }
+    }
+    
+    private func footerViewRegistration() -> UICollectionView.SupplementaryRegistration<FooterView> {
+        return UICollectionView.SupplementaryRegistration(elementKind: FooterView.elementKind) { supplementaryView, elementKind, indexPath in
+            // TODO: - update할꺼 아직 없음
+            supplementaryView.updateUI()
         }
     }
 }

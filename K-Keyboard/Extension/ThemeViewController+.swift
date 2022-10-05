@@ -10,6 +10,10 @@ import UIKit
 extension ThemeViewController {
     func createLayout() -> UICollectionViewCompositionalLayout {
         let layout = UICollectionViewCompositionalLayout { sectionIndex, layout in
+            
+            let sectionHeader = SupplymentaryItem.sectionHeader.info
+            let header = SupplymentaryItem.header.info
+            let footer = SupplymentaryItem.footer.info
     
             let spacing = CGFloat(16)
             let sectionSpacing = NSDirectionalEdgeInsets(top: spacing, leading: spacing, bottom: spacing, trailing: spacing)
@@ -22,6 +26,7 @@ extension ThemeViewController {
                 let section = NSCollectionLayoutSection(group: group)
                 section.interGroupSpacing = spacing
                 section.contentInsets = sectionSpacing
+                section.boundarySupplementaryItems = [sectionHeader, header]
                 return section
             case Section.tag.rawValue:
                 let item = NSCollectionLayoutItem(layoutSize: Section.tag.itemSize)
@@ -30,6 +35,7 @@ extension ThemeViewController {
                 let section = NSCollectionLayoutSection(group: group)
                 section.interGroupSpacing = spacing
                 section.contentInsets = sectionSpacing
+                section.boundarySupplementaryItems = [sectionHeader]
                 return section
             case Section.reaction.rawValue:
                 let item = NSCollectionLayoutItem(layoutSize: Section.reaction.itemSize)
@@ -38,12 +44,14 @@ extension ThemeViewController {
                 section.interGroupSpacing = spacing
                 section.contentInsets = sectionSpacing
                 section.orthogonalScrollingBehavior = .continuous
+                section.boundarySupplementaryItems = [sectionHeader]
                 return section
             case Section.opinion.rawValue:
                 let item = NSCollectionLayoutItem(layoutSize: Section.opinion.itemSize)
                 let group = NSCollectionLayoutGroup.horizontal(layoutSize: Section.opinion.groupSize, subitems: [item])
                 let section = NSCollectionLayoutSection(group: group)
                 section.contentInsets = sectionSpacing
+                section.boundarySupplementaryItems = [sectionHeader]
                 return section
             case Section.banner.rawValue:
                 let item = NSCollectionLayoutItem(layoutSize: Section.banner.itemSize)
@@ -57,6 +65,7 @@ extension ThemeViewController {
                 let section = NSCollectionLayoutSection(group: group)
                 section.interGroupSpacing = spacing
                 section.contentInsets = sectionSpacing
+                section.boundarySupplementaryItems = [sectionHeader, footer]
                 return section
             }
         }
