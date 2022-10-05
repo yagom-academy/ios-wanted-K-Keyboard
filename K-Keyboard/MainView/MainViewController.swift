@@ -9,13 +9,11 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    let buttonViewView: ButtonViewView = {
-        let view = ButtonViewView()
+    let buttonViewView: PopView = {
+        let view = PopView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
-    
     let sdView = UIView()
     
     let firstView: KeyboardImageView = {
@@ -33,7 +31,6 @@ class MainViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
     let fourView: ThemaView = {
         let view = ThemaView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -57,21 +54,15 @@ class MainViewController: UIViewController {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
-    func qiw() {
+    func popButton() {
         print("구매하기버튼눌려짐")
-        let showAlert = UIAlertController(title: "", message: "", preferredStyle: .alert)
-        let imageView = UIImageView(frame: CGRect(x: 80, y: 50, width: 100, height: 100))
-        imageView.image = UIImage(named: "01")
-        showAlert.view.addSubview(buttonViewView)
-        //        showAlert.view.addSubview(imageView)
-        let height = NSLayoutConstraint(item: showAlert.view!, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 320)
-        let width = NSLayoutConstraint(item: showAlert.view!, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 250)
-        showAlert.view.addConstraint(height)
-        showAlert.view.addConstraint(width)
-        //        showAlert.addAction(UIAlertAction(title: "충전하고 바로 사용하기", style: .default, handler: { action in
-        //            print("충전하고 바로 사용하기")
-        //        }))
-        self.present(showAlert, animated: true, completion: nil)
+        let vc = PurchaseAlertViewController()
+        vc.modalPresentationStyle = .overFullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        present(vc, animated: true)
+    }
+    func adcoll() {
+        fifveView.dataArry.append(.init(uesrImage: UIImage(named: "1"), idLabel: "ID", infoLabel: buttonView.textFiedView.text ?? "" , timeLabel: "몇초", declaration: " "))
     }
     
     func addSubView() {
@@ -131,13 +122,35 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let imageView = UIImage(named: "NaniBackButton")
-        
         navigationItem.leftBarButtonItem = UIBarButtonItem.init(image: imageView, style: .done, target: self, action: nil)
         navigationItem.leftBarButtonItem?.tintColor = .black
         self.view.backgroundColor = .white
         addSubView()
         setUpUIConstraints()
-        //                qiw()
+        buttonView.buttonDelegate = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(abc), name: .purchaseButtonClick, object: nil)
+    }
+    
+    @objc func abc() {
+        print("awefawiofjoeiwajfioewajfoewajfoiaewijfoewajfoiew")
+
+        buttonView.diamondcount.isHidden = true
+        buttonView.buyButton.isHidden = true
+        buttonView.diamond.isHidden = true
+        buttonView.jamLabel.isHidden = true
+        buttonView.textFiedView.isHidden = false
+        buttonView.textFiedViewButton.isHidden = false
         
     }
 }
+extension MainViewController: ButtonViewDelegate {
+    func showAlert() {
+        popButton()
+       
+    }
+    func showAlert1() {
+        adcoll()
+    }
+}
+ 

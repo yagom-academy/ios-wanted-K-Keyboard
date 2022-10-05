@@ -85,6 +85,11 @@ extension ThemaView: UICollectionViewDataSource,UICollectionViewDelegateFlowLayo
         cell.feel.text = b1[indexPath.row]
         cell.count.text = c1[indexPath.row]
         
+        if b1[indexPath.row] == "심쿵했어요" && c1[indexPath.row] == "1" {
+            cell.feel.textColor = UIColor(hex: "#FF417D",alpha: 1)
+            cell.count.textColor = UIColor(hex: "#FF417D",alpha: 1)
+        }
+            
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

@@ -57,20 +57,12 @@ class KeyWordViewCell: UICollectionViewCell {
             imageView.topAnchor.constraint(equalTo: self.topAnchor,constant: 10.51),
             imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: 12),
             imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor,constant: -12),
-            //            imageView.heightAnchor.constraint(equalToConstant: 105),
-            //            imageView.widthAnchor.constraint(equalToConstant: 105),
-            //            imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor,constant: -20),
+
             
             title.topAnchor.constraint(equalTo: imageView.bottomAnchor,constant: 15.87),
-            title.leadingAnchor.constraint(equalTo: imageView.leadingAnchor,constant: 30),
-            title.trailingAnchor.constraint(equalTo: imageView.trailingAnchor,constant: 44),
+            title.centerXAnchor.constraint(equalTo: centerXAnchor),
             title.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -9.56),
             
-            
-            //            title.topAnchor.constraint(equalTo: imageView.bottomAnchor,constant: 15.87),
-            //            title.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: 45),
-            //            title.trailingAnchor.constraint(equalTo: self.trailingAnchor,constant: 44),
-            //            title.bottomAnchor.constraint(equalTo: self.bottomAnchor,constant: -9),
         ])
     }
     

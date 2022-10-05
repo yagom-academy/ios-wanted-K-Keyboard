@@ -24,10 +24,6 @@ class ThemaCollectionViewCell: UICollectionViewCell {
         feel.font = .appleSDGothicNeo(weight: .regular, size: 12)
         feel.numberOfLines = 0
         feel.textColor = UIColor(hex: "#919299",alpha: 1)
-//        let attributeString = NSMutableAttributedString(string:  feel.text ?? "")
-//        attributeString.addAttribute(.foregroundColor, value: UIColor(hex: "#FF417D", alpha: 1), range: ( feel.text! as NSString).range(of: "심쿵했어요"))
-//        feel.attributedText = attributeString
-        
         return feel
     }()
     lazy var count: UILabel = {
@@ -35,12 +31,17 @@ class ThemaCollectionViewCell: UICollectionViewCell {
         count.translatesAutoresizingMaskIntoConstraints = false
         count.font = .appleSDGothicNeo(weight: .regular, size: 10)
         count.textColor = UIColor(hex: "#919299", alpha: 1)
-//        let attributeString = NSMutableAttributedString(string:  count.text ?? "")
-//        attributeString.addAttribute(.foregroundColor, value: UIColor(hex: "#FF417D", alpha: 1), range: ( count.text! as NSString).range(of: "1"))
-//        count.attributedText = attributeString
         return count
     }()
-    
+    var selected1: Bool = false {
+        didSet {
+            if selected1 {
+                feel.textColor = .red
+            } else {
+                feel.textColor = .black
+            }
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)

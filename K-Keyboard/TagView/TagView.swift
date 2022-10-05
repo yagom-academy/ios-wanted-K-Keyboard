@@ -102,8 +102,6 @@ extension TagView: UICollectionViewDelegateFlowLayout {
         //343.0 165.66666666666666  콜렉션뷰 가로 높이
         //        156.5 41.888888888888886   셀 가로 높이
         return CGSize(width: heights[indexPath.row].size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14)]).width + 25, height: 28)
-        //        return CGSize(width: 62, height: 50)
-        //        return CGSize(width: Int.random(in: 50...100) , height: 100)
     }
 }
 

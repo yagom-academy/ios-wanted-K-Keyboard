@@ -7,12 +7,20 @@
 
 import UIKit
 class PurchaseReviewView: UIView {
-    let dataArry: [PurchasReviewModel] = [
-        .init(uesrImage: UIImage(named: "uesr"), idLabel: "크리에이터명\n구매해주셔서 감사합니다💖", infoLabel: "구매해주셔서 감사합니다💖", timeLabel: "1일",declaration: ""),
+   lazy var dataArry: [PurchasReviewModel] = [
+        .init(uesrImage: UIImage(named: "uesr"), idLabel: "크리에이터명", infoLabel: "구매해주셔서 감사합니다💖", timeLabel: "1일",declaration: ""),
         .init(uesrImage: UIImage(named: "uesr"), idLabel: "o달빔o", infoLabel: "아진짜 귀여워요 !!!!!", timeLabel: "1초",declaration: "신고"),
         .init(uesrImage: UIImage(named: "uesr"), idLabel: "o달빔o", infoLabel: "아진짜 귀여워요 !!!!!", timeLabel: "1분", declaration: "신고"),
         .init(uesrImage: UIImage(named: "uesr"), idLabel: "o달빔o", infoLabel: "아진짜 귀여워요 !!!!!", timeLabel: "2분", declaration: "신고")
-    ]
+    ] {
+        didSet {
+            
+        buycount.text = "\(dataArry.count)"
+            collectionView.reloadData()
+    }
+        
+    }
+    
     let imageView = UIImageView(image: UIImage(named: "7"))
     let tableView : UITableView = {
         let table = UITableView()
@@ -26,10 +34,10 @@ class PurchaseReviewView: UIView {
         buy.textColor = .black
         return buy
     }()
-    let buycount : UILabel = {
+    var buycount : UILabel = {
         let buycount = UILabel()
         buycount.translatesAutoresizingMaskIntoConstraints = false
-        buycount.text = "10"
+        buycount.text = "0"
         buycount.font = .appleSDGothicNeo(weight: .bold, size: 16)
         buycount.textColor = UIColor(hex: "#FF417D",alpha: 1)
         return buycount
@@ -72,6 +80,7 @@ class PurchaseReviewView: UIView {
         collectionView.heightAnchor.constraint(equalToConstant: 300).isActive = true
         collectionView.dataSource = self
         collectionView.delegate = self
+        buycount.text = "\(dataArry.count)"
     }
     
     override init(frame: CGRect) {
@@ -139,7 +148,9 @@ extension PurchaseReviewView: UICollectionViewDataSource,UICollectionViewDelegat
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 400 , height: 73)
+        
+//        return CGSize(width: dataArry[indexPath.row].size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14)]).width + 25, height: 28)
+        return CGSize(width: 400 , height: 78)
     }
     
 }

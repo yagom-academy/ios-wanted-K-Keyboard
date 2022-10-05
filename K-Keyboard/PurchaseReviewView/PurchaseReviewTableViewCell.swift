@@ -22,6 +22,18 @@ class PurchaseReviewTableViewCell: UICollectionViewCell {
     
     static let identifier = "PurchaseReviewTableViewCell"
     
+    lazy var messageView : UIView = {
+        let message = UIView()
+        message.backgroundColor = UIColor(hex: "#F2F3F7", alpha: 1)
+        message.layer.cornerRadius = 15
+        message.layer.shadowColor = UIColor.black.cgColor
+        message.layer.shadowRadius = 1
+        message.layer.shadowOffset = .zero
+        message.layer.shadowOpacity = 0.6
+        message.translatesAutoresizingMaskIntoConstraints = false
+        return message
+    }()
+    
     lazy var uesrImage : UIImageView = {
         let uesrImage = UIImageView()
         uesrImage.translatesAutoresizingMaskIntoConstraints = false
@@ -33,13 +45,6 @@ class PurchaseReviewTableViewCell: UICollectionViewCell {
         idLabel.translatesAutoresizingMaskIntoConstraints = false
         idLabel.font = .appleSDGothicNeo(weight: .medium, size: 12)
         idLabel.numberOfLines = 0
-        
-        idLabel.backgroundColor = .red
-        idLabel.layer.cornerRadius = 15
-        idLabel.layer.shadowColor = UIColor.black.cgColor
-        idLabel.layer.shadowRadius = 1
-        idLabel.layer.shadowOffset = .zero
-        idLabel.layer.shadowOpacity = 0.6
         idLabel.textColor = UIColor(hex: "#42444C")
         return idLabel
     }()
@@ -75,28 +80,36 @@ class PurchaseReviewTableViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     func cellSetting() {
-                self.backgroundColor = .gray
+//                self.backgroundColor = .gray
         addContentView()
         constraintCustomView()
     }
     func constraintCustomView() {
+        messageView.addSubview(idLabel)
+        messageView.addSubview(infoLabel)
         NSLayoutConstraint.activate([
             uesrImage.topAnchor.constraint(equalTo: topAnchor,constant: 13),
             uesrImage.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 22),
             uesrImage.bottomAnchor.constraint(equalTo: bottomAnchor),
-//            uesrimage.heightAnchor.constraint(equalToConstant: 48),
+            uesrImage.heightAnchor.constraint(equalToConstant: 48),
             uesrImage.widthAnchor.constraint(equalToConstant: 48),
             
-            idLabel.topAnchor.constraint(equalTo: uesrImage.topAnchor),
-            idLabel.leadingAnchor.constraint(equalTo: uesrImage.trailingAnchor,constant: 15),
-            idLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            messageView.topAnchor.constraint(equalTo: uesrImage.topAnchor),
+            messageView.leadingAnchor.constraint(equalTo: uesrImage.trailingAnchor,constant: 16),
+            messageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            messageView.heightAnchor.constraint(equalToConstant: 54),
             
-            infoLabel.topAnchor.constraint(equalTo: idLabel.bottomAnchor),
+            idLabel.topAnchor.constraint(equalTo: messageView.topAnchor,constant: 6),
+            idLabel.leadingAnchor.constraint(equalTo: messageView.leadingAnchor,constant: 12),
+            idLabel.trailingAnchor.constraint(greaterThanOrEqualTo: messageView.trailingAnchor, constant: 12),
+//            idLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            
+            infoLabel.topAnchor.constraint(equalTo: idLabel.bottomAnchor,constant: 3),
             infoLabel.leadingAnchor.constraint(equalTo: idLabel.leadingAnchor),
             infoLabel.trailingAnchor.constraint(equalTo: idLabel.trailingAnchor),
             
-            timeLabel.topAnchor.constraint(equalTo: infoLabel.bottomAnchor,constant: 4),
-            timeLabel.leadingAnchor.constraint(equalTo: infoLabel.leadingAnchor),
+            timeLabel.topAnchor.constraint(equalTo: messageView.bottomAnchor,constant: 4),
+            timeLabel.leadingAnchor.constraint(equalTo: messageView.leadingAnchor),
 //            timeLabel.trailingAnchor.constraint(equalTo: infoLabel.trailingAnchor),
             timeLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
             
@@ -114,6 +127,8 @@ class PurchaseReviewTableViewCell: UICollectionViewCell {
         addSubview(infoLabel)
         addSubview(timeLabel)
         addSubview(descriotionLabel)
+        addSubview(messageView)
+        
     }
     
 }

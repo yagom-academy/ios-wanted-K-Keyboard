@@ -67,7 +67,7 @@ class KeyWordView: UIView {
     }
     private func setupView() {
         collectionView.register(KeyWordViewCell.self, forCellWithReuseIdentifier: KeyWordViewCell.identifier)
-        collectionView.heightAnchor.constraint(equalToConstant: 178).isActive = true
+        collectionView.heightAnchor.constraint(equalToConstant: 170).isActive = true
         collectionView.delegate = self
         collectionView.dataSource = self
     }
@@ -101,7 +101,7 @@ extension KeyWordView: UICollectionViewDataSource, UICollectionViewDelegateFlowL
         //343.0 165.66666666666666  콜렉션뷰 가로 높이
         //        156.5 41.888888888888886   셀 가로 높이
         //          return CGSize(width: 10 * Int.random(in: 5...10) , height: 10 * Int.random(in: 5...10))
-        return CGSize(width: 129 , height: 170)
+        return CGSize(width: 129 , height: 162)
     }
 }
 

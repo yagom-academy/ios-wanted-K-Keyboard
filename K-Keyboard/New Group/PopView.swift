@@ -7,19 +7,26 @@
 
 import UIKit
 
-class ButtonViewView: UIView {
-    let buyButton : UIButton = {
+extension NSNotification.Name {
+    static let purchaseButtonClick = Notification.Name("purchaseButtonClick")
+}
+
+class PopView: UIView {
+    @Published var purchaseAndUseButtonSelected: Bool = false
+    lazy var buyButton : UIButton = {
         let buyButton = UIButton()
         buyButton.setTitle("충전하고 바로 사용하기", for: .normal)
         buyButton.setTitleColor(.white, for: .normal)
         buyButton.backgroundColor = UIColor(hex: "#FF417D", alpha: 1)
         buyButton.translatesAutoresizingMaskIntoConstraints = false
         buyButton.layer.cornerRadius = 15
-//        buyButton.addTarget(ButtonViewView.self, action: #selector(imageAlert), for: .touchDown)
+        buyButton.addTarget(self, action: #selector(imageAlert), for: .touchDown)
         return buyButton
     }()
-    @objc func imageAlert(_ sender: Any){
-        print("구매하기버튼눌려짐")
+    @objc func imageAlert(){
+        NotificationCenter.default.post(name: .purchaseButtonClick, object: nil)
+
+        purchaseAndUseButtonSelected = true
     }
 
     lazy var title: UILabel = {
@@ -83,7 +90,6 @@ class ButtonViewView: UIView {
         return diamondcount
     }()
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.commonInit()
@@ -102,6 +108,7 @@ class ButtonViewView: UIView {
         self.addSubview(diamond)
         self.addSubview(diamondcount)
         self.addSubview(buyButton)
+        self.backgroundColor = .white
         constraintCustomView()
     }
     
@@ -109,11 +116,9 @@ class ButtonViewView: UIView {
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: topAnchor, constant: 50),
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50),
-            imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
+            imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50),
             imageView.heightAnchor.constraint(equalToConstant: 100),
-//            imageView.widthAnchor.constraint(equalToConstant: 100),
-            
-            
+                        
             title.topAnchor.constraint(equalTo: imageView.bottomAnchor,constant: 2),
             title.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 65),
             title.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -122,7 +127,7 @@ class ButtonViewView: UIView {
             numberLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20),
             
             left.topAnchor.constraint(equalTo:  title.bottomAnchor,constant: 10),
-            left.leadingAnchor.constraint(equalTo: numberLabel.trailingAnchor,constant: 50),
+            left.leadingAnchor.constraint(equalTo: numberLabel.trailingAnchor,constant: 10),
             
             diamond.topAnchor.constraint(equalTo: left.topAnchor),
             diamond.leadingAnchor.constraint(equalTo: left.trailingAnchor,constant: 25),
@@ -131,7 +136,7 @@ class ButtonViewView: UIView {
             diamondcount.leadingAnchor.constraint(equalTo: diamond.trailingAnchor,constant: 2),
             
             right.topAnchor.constraint(equalTo: left.topAnchor),
-            right.trailingAnchor.constraint(equalTo: trailingAnchor),
+            right.leadingAnchor.constraint(equalTo: diamondcount.trailingAnchor,constant: 16),
             
             amountLabel.topAnchor.constraint(equalTo: numberLabel.bottomAnchor,constant: 5),
             amountLabel.leadingAnchor.constraint(equalTo: numberLabel.leadingAnchor),
@@ -143,18 +148,8 @@ class ButtonViewView: UIView {
             
             buyButton.topAnchor.constraint(equalTo: amountLabel.bottomAnchor,constant: 20),
             buyButton.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 46),
-            buyButton.trailingAnchor.constraint(equalTo: trailingAnchor,constant: 0),
-            buyButton.bottomAnchor.constraint(equalTo: bottomAnchor,constant: 16)
-            
+            buyButton.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -45),
+            buyButton.bottomAnchor.constraint(equalTo: bottomAnchor,constant: -16)
         ])
     }
-    
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
 }
