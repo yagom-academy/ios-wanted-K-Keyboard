@@ -79,7 +79,7 @@ final class MainViewController: UIViewController {
         let imageName = self.reviewCollectionViewIsHidden ? UIImage(systemName: "chevron.up") : UIImage(systemName: "chevron.down")
         self.reviewFoldButton.setImage(imageName, for: .normal)
     }
-
+    
 }
 // MARK: - Datasource
 extension MainViewController: UICollectionViewDataSource {
@@ -145,15 +145,21 @@ extension MainViewController: ReviewCellProtocol {
 extension MainViewController: BottomViewDelegate {
     func buyJamButtonDidTap() {
         guard let popUpVC = self.storyboard?.instantiateViewController(withIdentifier: "PopUpViewController") as? PopUpViewController else { return }
-        popUpVC.modalPresentationStyle = .fullScreen
+        popUpVC.modalPresentationStyle = .overCurrentContext
         popUpVC.delegate = self
         self.present(popUpVC, animated: true)
     }
     
     func senderReviewText(_ review: String) {
-        let model = ReviewModel(userType: .user, nickname: "유저", content: review)
-        reviewList.append(model)
-        reviewCollectionView.reloadData()
+        if !review.isEmpty {
+            let model = ReviewModel(userType: .user, nickname: "유저", content: review)
+            reviewCollectionView.performBatchUpdates {
+                reviewList.append(model)
+            }
+            reviewCollectionView.reloadData()
+            let indexPathItem = IndexPath(item: self.reviewList.count - 1, section: 0)
+            self.reviewCollectionView.scrollToItem(at: indexPathItem, at: .bottom, animated: true)
+        }
     }
 }
 

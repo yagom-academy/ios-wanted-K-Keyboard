@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Image references" minToolsVersion="12.0"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -613,75 +612,79 @@
                                             <action selector="rechargeAndUseButtonDidTap:" destination="bTB-Kl-cjz" eventType="touchUpInside" id="DDz-ge-CkL"/>
                                         </connections>
                                     </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="3R9-9T-epA">
-                                        <rect key="frame" x="66.5" y="200" width="52.5" height="54"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="wKk-Zn-ax8">
+                                        <rect key="frame" x="65.5" y="192.5" width="203.5" height="61.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="젬 수량" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aab-pW-MWF">
-                                                <rect key="frame" x="0.0" y="0.0" width="40.5" height="17"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="결제 금액" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="byG-AZ-ZCX">
-                                                <rect key="frame" x="0.0" y="37" width="52.5" height="17"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="bWk-t1-Lqr">
-                                        <rect key="frame" x="183" y="195.5" width="111" height="63"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="K7T-gR-sYR">
-                                                <rect key="frame" x="0.0" y="0.0" width="111" height="31"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="3R9-9T-epA">
+                                                <rect key="frame" x="0.0" y="0.0" width="52.5" height="61.5"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="McE-hD-JHW">
-                                                        <rect key="frame" x="0.0" y="0.0" width="36" height="31"/>
-                                                        <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title=" ">
-                                                            <imageReference key="image" image="chevron.backward" catalog="system" symbolScale="small"/>
-                                                        </buttonConfiguration>
-                                                    </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="💎5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fww-RO-Isf">
-                                                        <rect key="frame" x="41" y="0.0" width="29" height="31"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="젬 수량" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aab-pW-MWF">
+                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="24.5"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4M-aD-TB7">
-                                                        <rect key="frame" x="75" y="0.0" width="36" height="31"/>
-                                                        <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title=" ">
-                                                            <imageReference key="image" image="chevron.right" catalog="system" symbolScale="small"/>
-                                                        </buttonConfiguration>
-                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="결제 금액" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="byG-AZ-ZCX">
+                                                        <rect key="frame" x="0.0" y="44.5" width="52.5" height="17"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                             </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="￦ 1,100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bu0-s8-47J">
-                                                <rect key="frame" x="30" y="46" width="51.5" height="17"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="bWk-t1-Lqr">
+                                                <rect key="frame" x="92.5" y="0.0" width="111" height="61.5"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="K7T-gR-sYR">
+                                                        <rect key="frame" x="0.0" y="0.0" width="111" height="31"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="McE-hD-JHW">
+                                                                <rect key="frame" x="0.0" y="0.0" width="36" height="31"/>
+                                                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain" title=" ">
+                                                                    <imageReference key="image" image="chevron.backward" catalog="system" symbolScale="small"/>
+                                                                </buttonConfiguration>
+                                                            </button>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="💎5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fww-RO-Isf">
+                                                                <rect key="frame" x="41" y="0.0" width="29" height="31"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4M-aD-TB7">
+                                                                <rect key="frame" x="75" y="0.0" width="36" height="31"/>
+                                                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain" title=" ">
+                                                                    <imageReference key="image" image="chevron.right" catalog="system" symbolScale="small"/>
+                                                                </buttonConfiguration>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="￦ 1,100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bu0-s8-47J">
+                                                        <rect key="frame" x="29.5" y="46" width="51.5" height="15.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <color key="textColor" systemColor="systemPinkColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="wBG-tG-GZv" firstAttribute="centerX" secondItem="q0J-c7-uVs" secondAttribute="centerX" id="09u-Bu-Z23"/>
-                                    <constraint firstAttribute="trailing" secondItem="bWk-t1-Lqr" secondAttribute="trailing" constant="40" id="3zC-Gf-BQz"/>
+                                    <constraint firstItem="wBG-tG-GZv" firstAttribute="top" secondItem="wKk-Zn-ax8" secondAttribute="bottom" constant="20" id="5No-92-HfY"/>
                                     <constraint firstItem="15A-dg-ogE" firstAttribute="top" secondItem="Akq-x3-RaB" secondAttribute="bottom" constant="8" id="8iW-3o-yGf"/>
-                                    <constraint firstItem="wBG-tG-GZv" firstAttribute="top" secondItem="3R9-9T-epA" secondAttribute="bottom" constant="20" id="AHa-BN-iIU"/>
                                     <constraint firstItem="15A-dg-ogE" firstAttribute="centerX" secondItem="q0J-c7-uVs" secondAttribute="centerX" id="DIB-4l-XK9"/>
                                     <constraint firstAttribute="height" constant="330" id="H3t-Md-ce4"/>
+                                    <constraint firstItem="wKk-Zn-ax8" firstAttribute="centerX" secondItem="q0J-c7-uVs" secondAttribute="centerX" id="Iry-EZ-Zjl"/>
                                     <constraint firstItem="Akq-x3-RaB" firstAttribute="centerX" secondItem="q0J-c7-uVs" secondAttribute="centerX" id="J7n-8M-E0r"/>
+                                    <constraint firstItem="wKk-Zn-ax8" firstAttribute="top" secondItem="15A-dg-ogE" secondAttribute="bottom" constant="22" id="M5e-g0-plL"/>
                                     <constraint firstItem="Akq-x3-RaB" firstAttribute="top" secondItem="q0J-c7-uVs" secondAttribute="top" constant="24" id="M6Z-qz-KdB"/>
-                                    <constraint firstItem="bWk-t1-Lqr" firstAttribute="centerY" secondItem="3R9-9T-epA" secondAttribute="centerY" id="gwy-bw-EyW"/>
                                     <constraint firstAttribute="bottom" secondItem="wBG-tG-GZv" secondAttribute="bottom" constant="16" id="iit-pd-Xyg"/>
-                                    <constraint firstItem="bWk-t1-Lqr" firstAttribute="leading" secondItem="3R9-9T-epA" secondAttribute="trailing" constant="64" id="sny-6c-Bg5"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -691,7 +694,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Edb-HG-YP7"/>
-                        <color key="backgroundColor" name="backgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="q0J-c7-uVs" firstAttribute="centerX" secondItem="1Jw-bg-ZOn" secondAttribute="centerX" id="FlX-cH-2Mz"/>
                             <constraint firstItem="Edb-HG-YP7" firstAttribute="trailing" secondItem="q0J-c7-uVs" secondAttribute="trailing" constant="40" id="M4n-wI-VaL"/>
@@ -700,6 +703,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="DU0-uT-HBB"/>
+                    <connections>
+                        <outlet property="PopUpView" destination="q0J-c7-uVs" id="jUt-o5-e7c"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ue9-i8-coe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -715,9 +721,6 @@
         <image name="keyword_fun" width="52.5" height="53"/>
         <image name="molang" width="187.5" height="43.5"/>
         <image name="thumbnail" width="171.5" height="132"/>
-        <namedColor name="backgroundColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
