@@ -31,4 +31,24 @@ enum Section: Int, CaseIterable {
             return "구매리뷰"
         }
     }
+    
+    var itemSize: NSCollectionLayoutSize {
+        switch self {
+        case .tag:
+            return NSCollectionLayoutSize(widthDimension: .estimated(50), heightDimension: .estimated(50))
+        case .opinion:
+            return NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.25), heightDimension: .estimated(50))
+        default:
+            return NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50))
+        }
+    }
+    
+    var groupSize: NSCollectionLayoutSize {
+        switch self {
+        case .reaction:
+            return NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.35), heightDimension: .estimated(50))
+        default:
+            return NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50))
+        }
+    }
 }

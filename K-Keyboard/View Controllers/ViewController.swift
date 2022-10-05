@@ -11,9 +11,10 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        let collectionViewController = ThemeViewController()
+        show(collectionViewController, sender: nil)
+        navigationItem.backButtonDisplayMode = .minimal
     }
-
 
 }
 
