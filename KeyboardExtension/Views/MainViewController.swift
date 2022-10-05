@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 // MARK: - View Controller
-class KeyboardViewController: UIInputViewController {
+class MainViewController: UIInputViewController {
     // MARK: View Components
     lazy var nextKeyboardButton: UIButton = {
         let button = UIButton(type: .system)

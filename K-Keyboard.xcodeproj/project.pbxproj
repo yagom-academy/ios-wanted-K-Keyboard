@@ -52,8 +52,8 @@
 		B05F4CC428ED01F000562C38 /* DeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05F4CAA28ED01F000562C38 /* DeleteView.swift */; };
 		B05F4CC528ED01F000562C38 /* ReturnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05F4CAB28ED01F000562C38 /* ReturnView.swift */; };
 		B05F4CC628ED01F000562C38 /* ReturnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05F4CAB28ED01F000562C38 /* ReturnView.swift */; };
-		B05F4CC728ED01F000562C38 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05F4CAC28ED01F000562C38 /* KeyboardViewController.swift */; };
-		B05F4CC828ED01F000562C38 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05F4CAC28ED01F000562C38 /* KeyboardViewController.swift */; };
+		B05F4CC728ED01F000562C38 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05F4CAC28ED01F000562C38 /* MainViewController.swift */; };
+		B05F4CC828ED01F000562C38 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05F4CAC28ED01F000562C38 /* MainViewController.swift */; };
 		B05F4CC928ED01F000562C38 /* PhonemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05F4CAD28ED01F000562C38 /* PhonemeView.swift */; };
 		B05F4CCA28ED01F000562C38 /* PhonemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05F4CAD28ED01F000562C38 /* PhonemeView.swift */; };
 		B05F4CCC28ED01F000562C38 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B05F4CAE28ED01F000562C38 /* Info.plist */; };
@@ -147,7 +147,7 @@
 		B05F4CA928ED01F000562C38 /* ChangeTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeTypeView.swift; sourceTree = "<group>"; };
 		B05F4CAA28ED01F000562C38 /* DeleteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteView.swift; sourceTree = "<group>"; };
 		B05F4CAB28ED01F000562C38 /* ReturnView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReturnView.swift; sourceTree = "<group>"; };
-		B05F4CAC28ED01F000562C38 /* KeyboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		B05F4CAC28ED01F000562C38 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		B05F4CAD28ED01F000562C38 /* PhonemeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhonemeView.swift; sourceTree = "<group>"; };
 		B05F4CAE28ED01F000562C38 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0B24E9028ED1742001ABBEA /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
@@ -299,12 +299,9 @@
 		B05F4C9A28ED01F000562C38 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				B05F4C9F28ED01F000562C38 /* KeyboardViewModel.swift */,
 				B0B24E9228ED1912001ABBEA /* MainViewModel.swift */,
-				B05F4CA028ED01F000562C38 /* PhonemeViewModel.swift */,
-				B0B24E9628ED55C5001ABBEA /* ToolBarViewModel.swift */,
-				B0B24E9C28ED58FD001ABBEA /* ToolBarButtonViewModel.swift */,
-				B05F4C9B28ED01F000562C38 /* SpecialKeys */,
+				B0672FFD28EE4B72002B6E66 /* Keyboard */,
+				B0672FFE28EE4B7D002B6E66 /* ToolBar */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -339,12 +336,9 @@
 		B05F4CA628ED01F000562C38 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B05F4CAC28ED01F000562C38 /* KeyboardViewController.swift */,
-				B0B24E9028ED1742001ABBEA /* KeyboardView.swift */,
-				B05F4CAD28ED01F000562C38 /* PhonemeView.swift */,
-				B0B24E9428ED55AC001ABBEA /* ToolBarView.swift */,
-				B0B24E9828ED56B1001ABBEA /* ToolBarButtonView.swift */,
-				B05F4CA728ED01F000562C38 /* SpecialKeys */,
+				B05F4CAC28ED01F000562C38 /* MainViewController.swift */,
+				B0672FFC28EE4B54002B6E66 /* Keyboard */,
+				B0672FFB28EE4B4A002B6E66 /* ToolBar */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -358,6 +352,44 @@
 				B05F4CA828ED01F000562C38 /* ShiftView.swift */,
 			);
 			path = SpecialKeys;
+			sourceTree = "<group>";
+		};
+		B0672FFB28EE4B4A002B6E66 /* ToolBar */ = {
+			isa = PBXGroup;
+			children = (
+				B0B24E9828ED56B1001ABBEA /* ToolBarButtonView.swift */,
+				B0B24E9428ED55AC001ABBEA /* ToolBarView.swift */,
+			);
+			path = ToolBar;
+			sourceTree = "<group>";
+		};
+		B0672FFC28EE4B54002B6E66 /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				B0B24E9028ED1742001ABBEA /* KeyboardView.swift */,
+				B05F4CAD28ED01F000562C38 /* PhonemeView.swift */,
+				B05F4CA728ED01F000562C38 /* SpecialKeys */,
+			);
+			path = Keyboard;
+			sourceTree = "<group>";
+		};
+		B0672FFD28EE4B72002B6E66 /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				B05F4C9F28ED01F000562C38 /* KeyboardViewModel.swift */,
+				B05F4CA028ED01F000562C38 /* PhonemeViewModel.swift */,
+				B05F4C9B28ED01F000562C38 /* SpecialKeys */,
+			);
+			path = Keyboard;
+			sourceTree = "<group>";
+		};
+		B0672FFE28EE4B7D002B6E66 /* ToolBar */ = {
+			isa = PBXGroup;
+			children = (
+				B0B24E9C28ED58FD001ABBEA /* ToolBarButtonViewModel.swift */,
+				B0B24E9628ED55C5001ABBEA /* ToolBarViewModel.swift */,
+			);
+			path = ToolBar;
 			sourceTree = "<group>";
 		};
 		D30E931A28E69F30009AB544 /* TagView */ = {
@@ -576,7 +608,7 @@
 				B05F4CB328ED01F000562C38 /* DeleteViewModel.swift in Sources */,
 				B05F4CB928ED01F000562C38 /* Phoneme.swift in Sources */,
 				B05F4CAF28ED01F000562C38 /* ReturnViewModel.swift in Sources */,
-				B05F4CC728ED01F000562C38 /* KeyboardViewController.swift in Sources */,
+				B05F4CC728ED01F000562C38 /* MainViewController.swift in Sources */,
 				B05F4CBD28ED01F000562C38 /* UITextDocumentProxy+Extension.swift in Sources */,
 				B05F4CC328ED01F000562C38 /* DeleteView.swift in Sources */,
 				B05AA9EA28ED019800EB2CF3 /* UIStackView+Extension.swift in Sources */,
@@ -607,7 +639,7 @@
 				B05F4CB828ED01F000562C38 /* PhonemeViewModel.swift in Sources */,
 				B05AA9E828ED019800EB2CF3 /* UIFont+Extensions.swift in Sources */,
 				B05F4CB228ED01F000562C38 /* ShiftViewModel.swift in Sources */,
-				B05F4CC828ED01F000562C38 /* KeyboardViewController.swift in Sources */,
+				B05F4CC828ED01F000562C38 /* MainViewController.swift in Sources */,
 				B05F4CC028ED01F000562C38 /* ShiftView.swift in Sources */,
 				B05F4CB428ED01F000562C38 /* DeleteViewModel.swift in Sources */,
 				B05F4CB628ED01F000562C38 /* KeyboardViewModel.swift in Sources */,
