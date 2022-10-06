@@ -35,7 +35,7 @@ class DescriptionCell: UITableViewCell, ViewRepresent {
     let preViewLabel: UILabel = {
         let view = UILabel()
         view.text = "앙무"
-        view.font = UIFont(name: "NotoSansKR-Bold", size: 20)
+        view.font = .NotoSanKR(weight: .Bold, size: 20)
         return view
     }()
     
@@ -63,6 +63,7 @@ class DescriptionCell: UITableViewCell, ViewRepresent {
     let descriptionLabel: UILabel = {
         let view = UILabel()
         view.text = "밀당해피니스 유튜브 채널을 방문하면 “테마명” 이벤트 테마를 무료로 받을 수 있다구요?\n지금 바로 ‘참여하기' 버튼을 눌러 새로워진 밀당해피니스 유튜브 채널을 확인해보세요!"
+        view.numberOfLines = 0
         view.font = .NotoSanKR(weight: .Regular, size: 14)
         return view
     }()
@@ -80,7 +81,7 @@ class DescriptionCell: UITableViewCell, ViewRepresent {
     }
     
     func setupView() {
-        [preViewLabel].forEach {
+        [preView, preViewLabel, nameLabel, howManyLabel, descriptionTitleLabel, descriptionLabel].forEach {
             addSubview($0)
             //, nameLabel, howManyLabel, descriptionTitleLabel, descriptionLabel
         }
@@ -88,28 +89,41 @@ class DescriptionCell: UITableViewCell, ViewRepresent {
     
     func setupConstraints() {
         
-        let safeGuide = self.safeAreaLayoutGuide
-        preViewLabel.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             
-//            preView.topAnchor.constraint(equalTo: safeGuide.topAnchor),
-//            preView.leadingAnchor.constraint(equalTo: safeGuide.leadingAnchor),
-//            preView.trailingAnchor.constraint(equalTo: safeGuide.trailingAnchor),
-//            preView.heightAnchor.constraint(equalToConstant: preView.image!.size.height),
-//
-//            preViewLabel.topAnchor.constraint(equalTo: preView.topAnchor, constant: 388),
-//            preViewLabel.leadingAnchor.constraint(equalTo: preView.leadingAnchor),
-//            preViewLabel.trailingAnchor.constraint(equalTo: preView.trailingAnchor),
-//            preViewLabel.bottomAnchor.constraint(equalTo: safeGuide.bottomAnchor)
+            preView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            preView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            preView.trailingAnchor.constraint(equalTo: trailingAnchor),
+
+            preViewLabel.topAnchor.constraint(equalTo: preView.bottomAnchor, constant: 24),
+            preViewLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            preViewLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             
-            preViewLabel.topAnchor.constraint(equalTo: topAnchor),
-            preViewLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            preViewLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            preViewLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
+            nameLabel.topAnchor.constraint(equalTo: preViewLabel.bottomAnchor, constant: 4),
+            nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            
+            howManyLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 16),
+            howManyLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            howManyLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            
+            descriptionTitleLabel.topAnchor.constraint(equalTo: howManyLabel.bottomAnchor, constant: 40),
+            descriptionTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            descriptionTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            
+            descriptionLabel.topAnchor.constraint(equalTo: descriptionTitleLabel.bottomAnchor, constant: 8),
+            descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            descriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -48)
+            
             
         ])
-       // preView.translatesAutoresizingMaskIntoConstraints = false
+        preView.translatesAutoresizingMaskIntoConstraints = false
+        preViewLabel.translatesAutoresizingMaskIntoConstraints = false
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        howManyLabel.translatesAutoresizingMaskIntoConstraints = false
+        descriptionTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
     }
     
 }
