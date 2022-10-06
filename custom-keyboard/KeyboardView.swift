@@ -7,7 +7,7 @@
 
 import UIKit
 
-class KeyboardView: UIView {
+class KeyboardView: UIView, ViewRepresent {
     
     var nextKeyboardButton: CustomButton!
     var spaceButton: CustomButton!
