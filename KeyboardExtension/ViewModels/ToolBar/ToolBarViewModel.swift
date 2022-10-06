@@ -15,6 +15,7 @@ class ToolBarViewModel {
     
     // MARK: Output
     var selectedSource: ((Int?) -> ())?
+    var propagateSelected: ((Int?) -> ())?
     
     // MARK: Properties
     let toolBarImages: [UIImage?] = [
@@ -29,6 +30,7 @@ class ToolBarViewModel {
     var selected: Int? {
         didSet {
             selectedSource?(selected)
+            propagateSelected?(selected)
         }
     }
     

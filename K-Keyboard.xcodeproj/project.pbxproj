@@ -57,6 +57,15 @@
 		B05F4CC928ED01F000562C38 /* PhonemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05F4CAD28ED01F000562C38 /* PhonemeView.swift */; };
 		B05F4CCA28ED01F000562C38 /* PhonemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05F4CAD28ED01F000562C38 /* PhonemeView.swift */; };
 		B05F4CCC28ED01F000562C38 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B05F4CAE28ED01F000562C38 /* Info.plist */; };
+		B067300228EE4C26002B6E66 /* FrequentlyUsedWordsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B067300128EE4C26002B6E66 /* FrequentlyUsedWordsViewModel.swift */; };
+		B067300428EE4C31002B6E66 /* FrequentlyUsedWordsMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B067300328EE4C31002B6E66 /* FrequentlyUsedWordsMainView.swift */; };
+		B067300628EE4C90002B6E66 /* FrequentlyUsedWordsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B067300528EE4C90002B6E66 /* FrequentlyUsedWordsListViewModel.swift */; };
+		B067300828EE4C98002B6E66 /* FrequentlyUsedWordsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B067300728EE4C98002B6E66 /* FrequentlyUsedWordsListView.swift */; };
+		B067300A28EE4CBA002B6E66 /* FrequentlyUsedWordsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B067300928EE4CBA002B6E66 /* FrequentlyUsedWordsHeaderView.swift */; };
+		B067300C28EE4DB9002B6E66 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B067300B28EE4DB9002B6E66 /* NSObject+Extension.swift */; };
+		B067300F28EE4E16002B6E66 /* FrequentlyUsedWordsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B067300D28EE4E16002B6E66 /* FrequentlyUsedWordsListCell.swift */; };
+		B067301428EE503E002B6E66 /* FrequentlyUsedWordsListCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B067301328EE503E002B6E66 /* FrequentlyUsedWordsListCellModel.swift */; };
+		B067301928EE57A2002B6E66 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B067300B28EE4DB9002B6E66 /* NSObject+Extension.swift */; };
 		B0B24E9128ED1742001ABBEA /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B24E9028ED1742001ABBEA /* KeyboardView.swift */; };
 		B0B24E9328ED1912001ABBEA /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B24E9228ED1912001ABBEA /* MainViewModel.swift */; };
 		B0B24E9528ED55AC001ABBEA /* ToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B24E9428ED55AC001ABBEA /* ToolBarView.swift */; };
@@ -150,6 +159,14 @@
 		B05F4CAC28ED01F000562C38 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		B05F4CAD28ED01F000562C38 /* PhonemeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhonemeView.swift; sourceTree = "<group>"; };
 		B05F4CAE28ED01F000562C38 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B067300128EE4C26002B6E66 /* FrequentlyUsedWordsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequentlyUsedWordsViewModel.swift; sourceTree = "<group>"; };
+		B067300328EE4C31002B6E66 /* FrequentlyUsedWordsMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequentlyUsedWordsMainView.swift; sourceTree = "<group>"; };
+		B067300528EE4C90002B6E66 /* FrequentlyUsedWordsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequentlyUsedWordsListViewModel.swift; sourceTree = "<group>"; };
+		B067300728EE4C98002B6E66 /* FrequentlyUsedWordsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequentlyUsedWordsListView.swift; sourceTree = "<group>"; };
+		B067300928EE4CBA002B6E66 /* FrequentlyUsedWordsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequentlyUsedWordsHeaderView.swift; sourceTree = "<group>"; };
+		B067300B28EE4DB9002B6E66 /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
+		B067300D28EE4E16002B6E66 /* FrequentlyUsedWordsListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequentlyUsedWordsListCell.swift; sourceTree = "<group>"; };
+		B067301328EE503E002B6E66 /* FrequentlyUsedWordsListCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequentlyUsedWordsListCellModel.swift; sourceTree = "<group>"; };
 		B0B24E9028ED1742001ABBEA /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		B0B24E9228ED1912001ABBEA /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		B0B24E9428ED55AC001ABBEA /* ToolBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarView.swift; sourceTree = "<group>"; };
@@ -276,6 +293,7 @@
 		B05AA9DF28ED019800EB2CF3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B067300B28EE4DB9002B6E66 /* NSObject+Extension.swift */,
 				B05AA9E028ED019800EB2CF3 /* UIColor+Extension.swift */,
 				B05AA9E128ED019800EB2CF3 /* UIFont+Extensions.swift */,
 				B05AA9E228ED019800EB2CF3 /* UIStackView+Extension.swift */,
@@ -300,6 +318,7 @@
 			isa = PBXGroup;
 			children = (
 				B0B24E9228ED1912001ABBEA /* MainViewModel.swift */,
+				B067300028EE4C15002B6E66 /* FrequentlyUsedWords */,
 				B0672FFD28EE4B72002B6E66 /* Keyboard */,
 				B0672FFE28EE4B7D002B6E66 /* ToolBar */,
 			);
@@ -337,6 +356,7 @@
 			isa = PBXGroup;
 			children = (
 				B05F4CAC28ED01F000562C38 /* MainViewController.swift */,
+				B0672FFF28EE4BFE002B6E66 /* FrequentlyUsedWords */,
 				B0672FFC28EE4B54002B6E66 /* Keyboard */,
 				B0672FFB28EE4B4A002B6E66 /* ToolBar */,
 			);
@@ -390,6 +410,43 @@
 				B0B24E9628ED55C5001ABBEA /* ToolBarViewModel.swift */,
 			);
 			path = ToolBar;
+			sourceTree = "<group>";
+		};
+		B0672FFF28EE4BFE002B6E66 /* FrequentlyUsedWords */ = {
+			isa = PBXGroup;
+			children = (
+				B067300328EE4C31002B6E66 /* FrequentlyUsedWordsMainView.swift */,
+				B067301128EE4E20002B6E66 /* FrequentlyUsedWordsList */,
+			);
+			path = FrequentlyUsedWords;
+			sourceTree = "<group>";
+		};
+		B067300028EE4C15002B6E66 /* FrequentlyUsedWords */ = {
+			isa = PBXGroup;
+			children = (
+				B067300128EE4C26002B6E66 /* FrequentlyUsedWordsViewModel.swift */,
+				B067301828EE5557002B6E66 /* FrequentlyUsedWordsList */,
+			);
+			path = FrequentlyUsedWords;
+			sourceTree = "<group>";
+		};
+		B067301128EE4E20002B6E66 /* FrequentlyUsedWordsList */ = {
+			isa = PBXGroup;
+			children = (
+				B067300728EE4C98002B6E66 /* FrequentlyUsedWordsListView.swift */,
+				B067300928EE4CBA002B6E66 /* FrequentlyUsedWordsHeaderView.swift */,
+				B067300D28EE4E16002B6E66 /* FrequentlyUsedWordsListCell.swift */,
+			);
+			path = FrequentlyUsedWordsList;
+			sourceTree = "<group>";
+		};
+		B067301828EE5557002B6E66 /* FrequentlyUsedWordsList */ = {
+			isa = PBXGroup;
+			children = (
+				B067300528EE4C90002B6E66 /* FrequentlyUsedWordsListViewModel.swift */,
+				B067301328EE503E002B6E66 /* FrequentlyUsedWordsListCellModel.swift */,
+			);
+			path = FrequentlyUsedWordsList;
 			sourceTree = "<group>";
 		};
 		D30E931A28E69F30009AB544 /* TagView */ = {
@@ -595,6 +652,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B067300C28EE4DB9002B6E66 /* NSObject+Extension.swift in Sources */,
 				B05F4CB128ED01F000562C38 /* ShiftViewModel.swift in Sources */,
 				B0B24E9728ED55C5001ABBEA /* ToolBarViewModel.swift in Sources */,
 				B0B24E9928ED56B1001ABBEA /* ToolBarButtonView.swift in Sources */,
@@ -603,7 +661,13 @@
 				B05F4CC928ED01F000562C38 /* PhonemeView.swift in Sources */,
 				B0B24E9128ED1742001ABBEA /* KeyboardView.swift in Sources */,
 				B05F4CC528ED01F000562C38 /* ReturnView.swift in Sources */,
+				B067300F28EE4E16002B6E66 /* FrequentlyUsedWordsListCell.swift in Sources */,
+				B067300428EE4C31002B6E66 /* FrequentlyUsedWordsMainView.swift in Sources */,
+				B067300A28EE4CBA002B6E66 /* FrequentlyUsedWordsHeaderView.swift in Sources */,
+				B067300228EE4C26002B6E66 /* FrequentlyUsedWordsViewModel.swift in Sources */,
+				B067300628EE4C90002B6E66 /* FrequentlyUsedWordsListViewModel.swift in Sources */,
 				B05F4CB728ED01F000562C38 /* PhonemeViewModel.swift in Sources */,
+				B067300828EE4C98002B6E66 /* FrequentlyUsedWordsListView.swift in Sources */,
 				B0B24E9D28ED58FD001ABBEA /* ToolBarButtonViewModel.swift in Sources */,
 				B05F4CB328ED01F000562C38 /* DeleteViewModel.swift in Sources */,
 				B05F4CB928ED01F000562C38 /* Phoneme.swift in Sources */,
@@ -613,6 +677,7 @@
 				B05F4CC328ED01F000562C38 /* DeleteView.swift in Sources */,
 				B05AA9EA28ED019800EB2CF3 /* UIStackView+Extension.swift in Sources */,
 				B0B24E9328ED1912001ABBEA /* MainViewModel.swift in Sources */,
+				B067301428EE503E002B6E66 /* FrequentlyUsedWordsListCellModel.swift in Sources */,
 				B05AA9E428ED019800EB2CF3 /* UIColor+Extension.swift in Sources */,
 				B05F4CBB28ED01F000562C38 /* Syllable.swift in Sources */,
 				B05F4CB528ED01F000562C38 /* KeyboardViewModel.swift in Sources */,
@@ -636,6 +701,7 @@
 				467002C328E963D4000B721E /* KeyboardViewModel.swift in Sources */,
 				B05F4CC228ED01F000562C38 /* ChangeTypeView.swift in Sources */,
 				466DA3A828E7D700005E77DD /* UnitTests.swift in Sources */,
+				B067301928EE57A2002B6E66 /* NSObject+Extension.swift in Sources */,
 				B05F4CB828ED01F000562C38 /* PhonemeViewModel.swift in Sources */,
 				B05AA9E828ED019800EB2CF3 /* UIFont+Extensions.swift in Sources */,
 				B05F4CB228ED01F000562C38 /* ShiftViewModel.swift in Sources */,

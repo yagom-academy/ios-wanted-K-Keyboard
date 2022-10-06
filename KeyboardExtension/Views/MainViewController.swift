@@ -33,6 +33,13 @@ class MainViewController: UIInputViewController {
         return view
     }()
     
+    lazy var frequentlyUsedWordsView: FrequentlyUsedWordsMainView = {
+        let viewModel = FrequentlyUsedWordsMainViewModel()
+        let view = FrequentlyUsedWordsMainView(viewModel: viewModel)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     // MARK: Associated Types
     typealias ViewModel = MainViewModel
     
@@ -77,6 +84,9 @@ class MainViewController: UIInputViewController {
     func setupViews() {
         self.view.backgroundColor = UIColor(hex: "#D0D3DA")
         self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
+        
+        keyboardView.isHidden = false
+        frequentlyUsedWordsView.isHidden = true
     }
     
     // MARK: Build View Hierarchy
@@ -84,6 +94,7 @@ class MainViewController: UIInputViewController {
         self.view.addSubview(nextKeyboardButton)
         self.view.addSubview(toolBarView)
         self.view.addSubview(keyboardView)
+        self.view.addSubview(frequentlyUsedWordsView)
     }
     
     // MARK: Layout Views
@@ -113,12 +124,47 @@ class MainViewController: UIInputViewController {
             keyboardView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
             keyboardView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
         ]
+        
+        constraints += [
+            frequentlyUsedWordsView.topAnchor.constraint(equalTo: toolBarView.bottomAnchor),
+            frequentlyUsedWordsView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
+            frequentlyUsedWordsView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
+            frequentlyUsedWordsView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+        ]
     }
     
     
     // MARK: Binding
     func bind() {
         keyboardView.viewModel.propagateText = { [weak self] nextText in
+            guard let self else { return }
+            self.viewModel.receiveText?(nextText)
+        }
+        
+        toolBarView.viewModel.propagateSelected = { [weak self] selected in
+            guard let self else { return }
+            self.viewModel.receiveSelected?(selected)
+        }
+        
+        frequentlyUsedWordsView.viewModel.propagateSelectedWord = { [weak self] word in
+            guard let self else { return }
+            let text = self.viewModel.text + word
+            self.viewModel.receiveText?(text)
+            self.keyboardView.viewModel.textContextDidChange?(text)
+        }
+        
+        viewModel.selectedSource = { [weak self] selected in
+            guard let self else { return }
+            if selected == 2 {
+                self.keyboardView.isHidden = true
+                self.frequentlyUsedWordsView.isHidden = false
+            } else {
+                self.keyboardView.isHidden = false
+                self.frequentlyUsedWordsView.isHidden = true
+            }
+        }
+        
+        viewModel.textSource = { [weak self] nextText in
             guard let self else { return }
             if self.textDocumentProxy.selectedText == nil,
                let context = self.textDocumentProxy.documentContextBeforeInput,
