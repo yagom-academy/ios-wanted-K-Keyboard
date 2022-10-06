@@ -10,9 +10,6 @@
 		466DA36328E5A22B005E77DD /* KeyboardExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 466DA35C28E5A22B005E77DD /* KeyboardExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		466DA3A828E7D700005E77DD /* UnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466DA3A728E7D700005E77DD /* UnitTests.swift */; };
 		466DA3AF28E7D707005E77DD /* SyllableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466DA3AE28E7D707005E77DD /* SyllableTests.swift */; };
-		466DA3B028E7D7F7005E77DD /* Syllable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466DA38128E7CF5A005E77DD /* Syllable.swift */; };
-		466DA3B128E7D80A005E77DD /* Phoneme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466DA37128E73E02005E77DD /* Phoneme.swift */; };
-		467002C328E963D4000B721E /* KeyboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466DA37828E74161005E77DD /* KeyboardViewModel.swift */; };
 		467002C528E963E4000B721E /* KeyboardModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467002C428E963E4000B721E /* KeyboardModelTests.swift */; };
 		63487F3828E2EA5E0033CF32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3728E2EA5E0033CF32 /* AppDelegate.swift */; };
 		63487F3A28E2EA5E0033CF32 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3928E2EA5E0033CF32 /* SceneDelegate.swift */; };
@@ -29,11 +26,8 @@
 		B05AA9EA28ED019800EB2CF3 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05AA9E228ED019800EB2CF3 /* UIStackView+Extension.swift */; };
 		B05AA9EB28ED019800EB2CF3 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05AA9E228ED019800EB2CF3 /* UIStackView+Extension.swift */; };
 		B05F4CAF28ED01F000562C38 /* ReturnViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05F4C9C28ED01F000562C38 /* ReturnViewModel.swift */; };
-		B05F4CB028ED01F000562C38 /* ReturnViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05F4C9C28ED01F000562C38 /* ReturnViewModel.swift */; };
 		B05F4CB128ED01F000562C38 /* ShiftViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05F4C9D28ED01F000562C38 /* ShiftViewModel.swift */; };
-		B05F4CB228ED01F000562C38 /* ShiftViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05F4C9D28ED01F000562C38 /* ShiftViewModel.swift */; };
 		B05F4CB328ED01F000562C38 /* DeleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05F4C9E28ED01F000562C38 /* DeleteViewModel.swift */; };
-		B05F4CB428ED01F000562C38 /* DeleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05F4C9E28ED01F000562C38 /* DeleteViewModel.swift */; };
 		B05F4CB528ED01F000562C38 /* KeyboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05F4C9F28ED01F000562C38 /* KeyboardViewModel.swift */; };
 		B05F4CB628ED01F000562C38 /* KeyboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05F4C9F28ED01F000562C38 /* KeyboardViewModel.swift */; };
 		B05F4CB728ED01F000562C38 /* PhonemeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05F4CA028ED01F000562C38 /* PhonemeViewModel.swift */; };
@@ -56,7 +50,6 @@
 		B05F4CC828ED01F000562C38 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05F4CAC28ED01F000562C38 /* MainViewController.swift */; };
 		B05F4CC928ED01F000562C38 /* PhonemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05F4CAD28ED01F000562C38 /* PhonemeView.swift */; };
 		B05F4CCA28ED01F000562C38 /* PhonemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05F4CAD28ED01F000562C38 /* PhonemeView.swift */; };
-		B05F4CCC28ED01F000562C38 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B05F4CAE28ED01F000562C38 /* Info.plist */; };
 		B067300228EE4C26002B6E66 /* FrequentlyUsedWordsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B067300128EE4C26002B6E66 /* FrequentlyUsedWordsViewModel.swift */; };
 		B067300428EE4C31002B6E66 /* FrequentlyUsedWordsMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B067300328EE4C31002B6E66 /* FrequentlyUsedWordsMainView.swift */; };
 		B067300628EE4C90002B6E66 /* FrequentlyUsedWordsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B067300528EE4C90002B6E66 /* FrequentlyUsedWordsListViewModel.swift */; };
@@ -66,6 +59,26 @@
 		B067300F28EE4E16002B6E66 /* FrequentlyUsedWordsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B067300D28EE4E16002B6E66 /* FrequentlyUsedWordsListCell.swift */; };
 		B067301428EE503E002B6E66 /* FrequentlyUsedWordsListCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B067301328EE503E002B6E66 /* FrequentlyUsedWordsListCellModel.swift */; };
 		B067301928EE57A2002B6E66 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B067300B28EE4DB9002B6E66 /* NSObject+Extension.swift */; };
+		B067301B28EE6DCE002B6E66 /* SpaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B067301A28EE6DCE002B6E66 /* SpaceViewModel.swift */; };
+		B067301D28EE6DE2002B6E66 /* SpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B067301C28EE6DE2002B6E66 /* SpaceView.swift */; };
+		B067301F28EE739A002B6E66 /* ToolBarButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B24E9828ED56B1001ABBEA /* ToolBarButtonView.swift */; };
+		B067302028EE739C002B6E66 /* ToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B24E9428ED55AC001ABBEA /* ToolBarView.swift */; };
+		B067302128EE739F002B6E66 /* FrequentlyUsedWordsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B067300728EE4C98002B6E66 /* FrequentlyUsedWordsListView.swift */; };
+		B067302228EE73A1002B6E66 /* FrequentlyUsedWordsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B067300928EE4CBA002B6E66 /* FrequentlyUsedWordsHeaderView.swift */; };
+		B067302328EE73A4002B6E66 /* FrequentlyUsedWordsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B067300D28EE4E16002B6E66 /* FrequentlyUsedWordsListCell.swift */; };
+		B067302428EE73A6002B6E66 /* FrequentlyUsedWordsMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B067300328EE4C31002B6E66 /* FrequentlyUsedWordsMainView.swift */; };
+		B067302528EE73AC002B6E66 /* ToolBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B24E9628ED55C5001ABBEA /* ToolBarViewModel.swift */; };
+		B067302628EE73AE002B6E66 /* ToolBarButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B24E9C28ED58FD001ABBEA /* ToolBarButtonViewModel.swift */; };
+		B067302828EE73B3002B6E66 /* DeleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05F4C9E28ED01F000562C38 /* DeleteViewModel.swift */; };
+		B067302928EE73B3002B6E66 /* SpaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B067301A28EE6DCE002B6E66 /* SpaceViewModel.swift */; };
+		B067302A28EE73B3002B6E66 /* ShiftViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05F4C9D28ED01F000562C38 /* ShiftViewModel.swift */; };
+		B067302B28EE73B3002B6E66 /* ReturnViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05F4C9C28ED01F000562C38 /* ReturnViewModel.swift */; };
+		B067302C28EE73B8002B6E66 /* FrequentlyUsedWordsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B067300528EE4C90002B6E66 /* FrequentlyUsedWordsListViewModel.swift */; };
+		B067302D28EE73B8002B6E66 /* FrequentlyUsedWordsListCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B067301328EE503E002B6E66 /* FrequentlyUsedWordsListCellModel.swift */; };
+		B067302E28EE73BC002B6E66 /* FrequentlyUsedWordsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B067300128EE4C26002B6E66 /* FrequentlyUsedWordsViewModel.swift */; };
+		B067302F28EE73BE002B6E66 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B24E9228ED1912001ABBEA /* MainViewModel.swift */; };
+		B067303028EE73D6002B6E66 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B24E9028ED1742001ABBEA /* KeyboardView.swift */; };
+		B067303128EE7401002B6E66 /* SpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B067301C28EE6DE2002B6E66 /* SpaceView.swift */; };
 		B0B24E9128ED1742001ABBEA /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B24E9028ED1742001ABBEA /* KeyboardView.swift */; };
 		B0B24E9328ED1912001ABBEA /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B24E9228ED1912001ABBEA /* MainViewModel.swift */; };
 		B0B24E9528ED55AC001ABBEA /* ToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B24E9428ED55AC001ABBEA /* ToolBarView.swift */; };
@@ -167,6 +180,8 @@
 		B067300B28EE4DB9002B6E66 /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
 		B067300D28EE4E16002B6E66 /* FrequentlyUsedWordsListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequentlyUsedWordsListCell.swift; sourceTree = "<group>"; };
 		B067301328EE503E002B6E66 /* FrequentlyUsedWordsListCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequentlyUsedWordsListCellModel.swift; sourceTree = "<group>"; };
+		B067301A28EE6DCE002B6E66 /* SpaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceViewModel.swift; sourceTree = "<group>"; };
+		B067301C28EE6DE2002B6E66 /* SpaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceView.swift; sourceTree = "<group>"; };
 		B0B24E9028ED1742001ABBEA /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		B0B24E9228ED1912001ABBEA /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		B0B24E9428ED55AC001ABBEA /* ToolBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarView.swift; sourceTree = "<group>"; };
@@ -331,6 +346,7 @@
 				B05F4C9E28ED01F000562C38 /* DeleteViewModel.swift */,
 				B05F4C9C28ED01F000562C38 /* ReturnViewModel.swift */,
 				B05F4C9D28ED01F000562C38 /* ShiftViewModel.swift */,
+				B067301A28EE6DCE002B6E66 /* SpaceViewModel.swift */,
 			);
 			path = SpecialKeys;
 			sourceTree = "<group>";
@@ -370,6 +386,7 @@
 				B05F4CAA28ED01F000562C38 /* DeleteView.swift */,
 				B05F4CAB28ED01F000562C38 /* ReturnView.swift */,
 				B05F4CA828ED01F000562C38 /* ShiftView.swift */,
+				B067301C28EE6DE2002B6E66 /* SpaceView.swift */,
 			);
 			path = SpecialKeys;
 			sourceTree = "<group>";
@@ -632,7 +649,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B05F4CCC28ED01F000562C38 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -654,6 +670,7 @@
 			files = (
 				B067300C28EE4DB9002B6E66 /* NSObject+Extension.swift in Sources */,
 				B05F4CB128ED01F000562C38 /* ShiftViewModel.swift in Sources */,
+				B067301D28EE6DE2002B6E66 /* SpaceView.swift in Sources */,
 				B0B24E9728ED55C5001ABBEA /* ToolBarViewModel.swift in Sources */,
 				B0B24E9928ED56B1001ABBEA /* ToolBarButtonView.swift in Sources */,
 				B05F4CC128ED01F000562C38 /* ChangeTypeView.swift in Sources */,
@@ -683,6 +700,7 @@
 				B05F4CB528ED01F000562C38 /* KeyboardViewModel.swift in Sources */,
 				B05AA9E728ED019800EB2CF3 /* UIFont+Extensions.swift in Sources */,
 				B05F4CBF28ED01F000562C38 /* ShiftView.swift in Sources */,
+				B067301B28EE6DCE002B6E66 /* SpaceViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -690,30 +708,42 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B067302B28EE73B3002B6E66 /* ReturnViewModel.swift in Sources */,
 				B05F4CBA28ED01F000562C38 /* Phoneme.swift in Sources */,
 				B05F4CBC28ED01F000562C38 /* Syllable.swift in Sources */,
+				B067302428EE73A6002B6E66 /* FrequentlyUsedWordsMainView.swift in Sources */,
+				B067301F28EE739A002B6E66 /* ToolBarButtonView.swift in Sources */,
+				B067303128EE7401002B6E66 /* SpaceView.swift in Sources */,
+				B067302828EE73B3002B6E66 /* DeleteViewModel.swift in Sources */,
 				B05F4CC628ED01F000562C38 /* ReturnView.swift in Sources */,
-				B05F4CB028ED01F000562C38 /* ReturnViewModel.swift in Sources */,
+				B067302328EE73A4002B6E66 /* FrequentlyUsedWordsListCell.swift in Sources */,
+				B067302A28EE73B3002B6E66 /* ShiftViewModel.swift in Sources */,
 				B05F4CCA28ED01F000562C38 /* PhonemeView.swift in Sources */,
-				466DA3B128E7D80A005E77DD /* Phoneme.swift in Sources */,
+				B067302528EE73AC002B6E66 /* ToolBarViewModel.swift in Sources */,
+				B067302128EE739F002B6E66 /* FrequentlyUsedWordsListView.swift in Sources */,
 				B05AA9E528ED019800EB2CF3 /* UIColor+Extension.swift in Sources */,
+				B067302228EE73A1002B6E66 /* FrequentlyUsedWordsHeaderView.swift in Sources */,
+				B067302628EE73AE002B6E66 /* ToolBarButtonViewModel.swift in Sources */,
 				B05F4CBE28ED01F000562C38 /* UITextDocumentProxy+Extension.swift in Sources */,
-				467002C328E963D4000B721E /* KeyboardViewModel.swift in Sources */,
 				B05F4CC228ED01F000562C38 /* ChangeTypeView.swift in Sources */,
+				B067302E28EE73BC002B6E66 /* FrequentlyUsedWordsViewModel.swift in Sources */,
+				B067302928EE73B3002B6E66 /* SpaceViewModel.swift in Sources */,
 				466DA3A828E7D700005E77DD /* UnitTests.swift in Sources */,
 				B067301928EE57A2002B6E66 /* NSObject+Extension.swift in Sources */,
 				B05F4CB828ED01F000562C38 /* PhonemeViewModel.swift in Sources */,
 				B05AA9E828ED019800EB2CF3 /* UIFont+Extensions.swift in Sources */,
-				B05F4CB228ED01F000562C38 /* ShiftViewModel.swift in Sources */,
+				B067303028EE73D6002B6E66 /* KeyboardView.swift in Sources */,
 				B05F4CC828ED01F000562C38 /* MainViewController.swift in Sources */,
 				B05F4CC028ED01F000562C38 /* ShiftView.swift in Sources */,
-				B05F4CB428ED01F000562C38 /* DeleteViewModel.swift in Sources */,
+				B067302F28EE73BE002B6E66 /* MainViewModel.swift in Sources */,
 				B05F4CB628ED01F000562C38 /* KeyboardViewModel.swift in Sources */,
 				466DA3AF28E7D707005E77DD /* SyllableTests.swift in Sources */,
 				B05AA9EB28ED019800EB2CF3 /* UIStackView+Extension.swift in Sources */,
 				B05F4CC428ED01F000562C38 /* DeleteView.swift in Sources */,
+				B067302028EE739C002B6E66 /* ToolBarView.swift in Sources */,
+				B067302D28EE73B8002B6E66 /* FrequentlyUsedWordsListCellModel.swift in Sources */,
 				467002C528E963E4000B721E /* KeyboardModelTests.swift in Sources */,
-				466DA3B028E7D7F7005E77DD /* Syllable.swift in Sources */,
+				B067302C28EE73B8002B6E66 /* FrequentlyUsedWordsListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

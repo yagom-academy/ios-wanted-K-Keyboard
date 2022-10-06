@@ -15,6 +15,7 @@ class MainViewModel {
     var receiveAssemblingText: ((String) -> ())?
     var receiveWord: ((String) -> ())?
     var receiveRemovePrefix: (() -> ())?
+    var receiveAddSpace: (() -> ())?
     var receiveAddNewLine: (() -> ())?
     var textContentDidChange: ((String) -> ())?
     
@@ -69,6 +70,13 @@ class MainViewModel {
             if !self.prefixText.isEmpty {
                 self.prefixText.removeLast()
             }
+            self.text = self.prefixText
+            self.textSource?(self.text)
+        }
+        
+        receiveAddSpace = { [weak self] in
+            guard let self else { return }
+            self.prefixText = self.text + " "
             self.text = self.prefixText
             self.textSource?(self.text)
         }

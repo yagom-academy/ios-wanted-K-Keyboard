@@ -42,6 +42,13 @@ class KeyboardView: UIView {
     
     lazy var changeTypeView: ChangeTypeView = ChangeTypeView()
     
+    lazy var spaceView: SpaceView = {
+        let viewModel = SpaceViewModel()
+        let view = SpaceView(viewModel: viewModel)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     lazy var returnView: ReturnView = {
         let viewModel = ReturnViewModel()
         let view = ReturnView(viewModel: viewModel)
@@ -117,8 +124,9 @@ class KeyboardView: UIView {
         horizontalStackViews[2].insertArrangedSubview(shiftView, at: 0)
         horizontalStackViews[2].insertArrangedSubview(deleteView, at: horizontalStackViews[2].arrangedSubviews.count)
         
-        horizontalStackViews[3].insertArrangedSubview(changeTypeView, at: 0)
-        horizontalStackViews[3].insertArrangedSubview(returnView, at: horizontalStackViews[3].arrangedSubviews.count)
+        horizontalStackViews[3].addArrangedSubview(changeTypeView)
+        horizontalStackViews[3].addArrangedSubview(spaceView)
+        horizontalStackViews[3].addArrangedSubview(returnView)
     }
     
     
@@ -151,6 +159,10 @@ class KeyboardView: UIView {
         
         constraints += [
             changeTypeView.widthAnchor.constraint(equalToConstant: specialKeyWidth * 2),
+        ]
+        
+        constraints += [
+            spaceView.widthAnchor.constraint(equalToConstant: calculateSpaceBarViewWidth()),
         ]
         
         constraints += [
@@ -195,6 +207,11 @@ class KeyboardView: UIView {
             self.viewModel.removePhoneme?()
         }
         
+        spaceView.viewModel.didTap = { [weak self] in
+            guard let self else { return }
+            self.viewModel.addSpace?()
+        }
+        
         returnView.viewModel.didTap = { [ weak self] in
             guard let self else { return }
             self.viewModel.addNewLine?()
@@ -216,11 +233,7 @@ class KeyboardView: UIView {
     
     // MARK: Utils
     private func calculatePhonemeViewWidth(_ line: Int) -> CGFloat {
-        if line != 3 {
-            return UIScreen.main.bounds.width / 10
-        } else {
-            return calculateSpaceBarViewWidth()
-        }
+        return UIScreen.main.bounds.width / 10
     }
     
     private func calculateSpecialKeyViewWidth() -> CGFloat {

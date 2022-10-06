@@ -11,7 +11,6 @@ struct Syllable: Equatable {
     var firstConsonant: Consonant?
     var middleVowel: Vowel?
     var lastConsonant: Consonant?
-    var spacer: Spacer?
     
     var unicode: UnicodeScalar? {
         if let firstConsonantNumber = firstConsonant?.firstConsonantNumber,
@@ -22,17 +21,13 @@ struct Syllable: Equatable {
             return firstConsonant.rawValue.unicodeScalars.first
         } else if let middleVowel {
             return middleVowel.rawValue.unicodeScalars.first
-        } else if let spacer {
-            return spacer.unicodeScalar
         } else {
             return nil
         }
     }
     
     mutating func receive(_ phoneme: Phoneme) -> Bool {
-        if spacer != nil {
-            return false
-        } else if lastConsonant != nil {
+        if lastConsonant != nil {
             if let phoneme = phoneme as? Consonant,
                let mergedConsonant = Consonant.mergeConsonant(preceding: lastConsonant!, trailing: phoneme) {
                 lastConsonant = mergedConsonant
