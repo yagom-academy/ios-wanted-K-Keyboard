@@ -42,11 +42,11 @@ class KeyboardViewController: UIInputViewController, UITextDocumentProxyDelegate
     
     func insertText(_ button: KeyButton) {
         let proxy = self.textDocumentProxy as UITextDocumentProxy
-        let (state, text, isDeleted) = KoreanAutomata.shared.insertLogic(state: keyBoardState,
+        let (state, text, shouldDeleted) = KoreanAutomata.shared.insertLogic(state: keyBoardState,
                                                      text: button.keyValue,
                                                      keyType: button.keyType)
         keyBoardState = state
-        if isDeleted {
+        if shouldDeleted {
             proxy.deleteBackward()
         }
         proxy.insertText(text)
