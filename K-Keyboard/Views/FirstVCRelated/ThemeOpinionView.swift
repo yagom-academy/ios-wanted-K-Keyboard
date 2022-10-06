@@ -74,7 +74,7 @@ extension ThemeOpinionView: Presentable {
         horizontalStackView.axis = .horizontal
         horizontalStackView.distribution = .fillEqually
         
-        titleLabel.addStyles(style: titleLabelStyle)
+        titleLabel.addStyles(style: themeTitleLabelStyle)
         titleLabel.attributedText = NSAttributedString(string: "이 테마를 어떻게 생각하나요?")
         
         likeEmojiView.emojiLabel.attributedText = NSAttributedString(string: "😊")
@@ -150,6 +150,7 @@ extension OpinionDetailView: Presentable {
     func configureView() {
         verticalStackView.axis = .vertical
         verticalStackView.distribution = .fillProportionally
+        verticalStackView.spacing = 8
         
         emojiLabel.addStyles(style: emojiLabelStyle)
         emojiLabel.addStyles(style: emojiParagraphStyle)
@@ -157,7 +158,7 @@ extension OpinionDetailView: Presentable {
         
         descLabel.addStyles(style: descLabelStyle)
         descLabel.addStyles(style: descLabelParagraphStyle)
-        descLabel.numberOfLines = 2
+        descLabel.numberOfLines = 1
         
         countLabel.addStyles(style: countLabelStyle)
         countLabel.addStyles(style: descLabelParagraphStyle)

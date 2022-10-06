@@ -8,7 +8,7 @@
 import UIKit
 import SwiftUI
 
-class ReviewCellView: UIView {
+class ReviewCellView: UIView, FirstViewStyling {
 
     var profileImageView = UIImageView()
     var creatorLabel = UILabel()
@@ -74,7 +74,8 @@ extension ReviewCellView: Presentable {
         constraint += [
             creatorLabel.centerYAnchor.constraint(equalTo: profileImageView.bottomAnchor),
             creatorLabel.centerXAnchor.constraint(equalTo: profileImageView.centerXAnchor),
-            creatorLabel.heightAnchor.constraint(equalToConstant: 20)
+            creatorLabel.heightAnchor.constraint(equalToConstant: 20),
+            creatorLabel.widthAnchor.constraint(equalToConstant: 58)
         ]
         
         constraint += [
@@ -114,18 +115,23 @@ extension ReviewCellView: Presentable {
     func configureView() {
         self.backgroundColor = .white
         
-        profileImageView.image = UIImage(named: "img_profile dummy 3")
-        creatorLabel.text = "크리에이터"
+        profileImageView.addStyles(style: profileImageViewStyle)
         
-        nickNameLabel.text = "크리에이터명"
-        commentLabel.text = "코멘트코멘트코멘트코멘트asdfasdfdasfasdfasdfasdfsdafasdf"
-        commentLabel.numberOfLines = 0
+        creatorLabel.addStyles(style: creatorLabelStyle)
         
-        timeLabel.text = "1일"
-        reportButton.setTitle("신고", for: .normal)
-        reportButton.setTitleColor(.black, for: .normal)
+        nickNameLabel.addStyles(style: nickNameLabelStyle)
         
-        bubbleView.layer.backgroundColor = UIColor(red: 0.949, green: 0.953, blue: 0.969, alpha: 1).cgColor
+        // TODO: 더미 모델 데이터 받음에 따라 크리에이터레이블 히든 처리, 작성자이름 설정
+        nickNameLabel.attributedText = NSAttributedString(string: "작성자이름")
+        
+        commentLabel.addStyles(style: commentLabelStyle)
+        commentLabel.attributedText = NSAttributedString(string: "코멘트코멘트코멘트코멘트asdfasdfdasfasdfasdfasdfsdafasdsdfsdfsdfsdfsdfsdfsdfsdfsdff")
+        
+        timeLabel.addStyles(style: timeLabelStyle)
+        
+        reportButton.addStyles(style: reportButtonStyle)
+        
+        bubbleView.addStyles(style: bubbleViewStyle)
     }
     
     func bind() {

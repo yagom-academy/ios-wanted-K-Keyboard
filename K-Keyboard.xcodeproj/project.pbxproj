@@ -20,6 +20,10 @@
 		363247C528EE0A2600D68C3F /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363247C428EE0A2600D68C3F /* ReviewCell.swift */; };
 		363247C728EE0A4A00D68C3F /* ReviewCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363247C628EE0A4A00D68C3F /* ReviewCellView.swift */; };
 		363247C928EE17C500D68C3F /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363247C828EE17C500D68C3F /* UIButton+Extensions.swift */; };
+		363247CF28EF3EEF00D68C3F /* NotoSansCJKKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 363247CE28EF3EEF00D68C3F /* NotoSansCJKKR-Medium.otf */; };
+		363247D028EF3F0C00D68C3F /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 363247CB28EF3C7B00D68C3F /* NotoSansKR-Medium.otf */; };
+		363247D128EF3F0E00D68C3F /* NotoSansCJKKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 363247CC28EF3CA000D68C3F /* NotoSansCJKKR-Bold.otf */; };
+		363247D228EF3F1200D68C3F /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 363247CD28EF3CBB00D68C3F /* NotoSansKR-Regular.otf */; };
 		3668F90028E9BFFB0093E04D /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3668F8FF28E9BFFB0093E04D /* KeyboardViewController.swift */; };
 		3668F90428E9BFFB0093E04D /* CustomKeyboard.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3668F8FD28E9BFFB0093E04D /* CustomKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3668F90B28E9C06A0093E04D /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3668F90A28E9C06A0093E04D /* UIView+Extension.swift */; };
@@ -113,6 +117,10 @@
 		363247C428EE0A2600D68C3F /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
 		363247C628EE0A4A00D68C3F /* ReviewCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCellView.swift; sourceTree = "<group>"; };
 		363247C828EE17C500D68C3F /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
+		363247CB28EF3C7B00D68C3F /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
+		363247CC28EF3CA000D68C3F /* NotoSansCJKKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKKR-Bold.otf"; sourceTree = "<group>"; };
+		363247CD28EF3CBB00D68C3F /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
+		363247CE28EF3EEF00D68C3F /* NotoSansCJKKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKKR-Medium.otf"; sourceTree = "<group>"; };
 		3668F8FD28E9BFFB0093E04D /* CustomKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CustomKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		3668F8FF28E9BFFB0093E04D /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		3668F90128E9BFFB0093E04D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -189,6 +197,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		363247CA28EF3C2500D68C3F /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				363247CB28EF3C7B00D68C3F /* NotoSansKR-Medium.otf */,
+				363247CC28EF3CA000D68C3F /* NotoSansCJKKR-Bold.otf */,
+				363247CE28EF3EEF00D68C3F /* NotoSansCJKKR-Medium.otf */,
+				363247CD28EF3CBB00D68C3F /* NotoSansKR-Regular.otf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		3668F8FE28E9BFFB0093E04D /* CustomKeyboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -417,6 +436,7 @@
 				4C242B7C28E804B300DA6CBE /* ViewDraw */,
 				4C242BA428E8075C00DA6CBE /* Utilities */,
 				63487F4028E2EA5E0033CF32 /* Assets.xcassets */,
+				363247CA28EF3C2500D68C3F /* Font */,
 				63487F4228E2EA5E0033CF32 /* LaunchScreen.storyboard */,
 				63487F4528E2EA5E0033CF32 /* Info.plist */,
 			);
@@ -512,8 +532,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				363247D028EF3F0C00D68C3F /* NotoSansKR-Medium.otf in Resources */,
 				63487F4428E2EA5E0033CF32 /* LaunchScreen.storyboard in Resources */,
 				63487F4128E2EA5E0033CF32 /* Assets.xcassets in Resources */,
+				363247D128EF3F0E00D68C3F /* NotoSansCJKKR-Bold.otf in Resources */,
+				363247D228EF3F1200D68C3F /* NotoSansKR-Regular.otf in Resources */,
+				363247CF28EF3EEF00D68C3F /* NotoSansCJKKR-Medium.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

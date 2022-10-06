@@ -7,7 +7,7 @@
 
 import UIKit
 
-class KeywordCell: UICollectionViewCell {
+class KeywordCell: UICollectionViewCell, FirstViewStyling {
     
     var cellView = KeywordCellView()
     
@@ -46,6 +46,8 @@ extension KeywordCell: Presentable {
     }
     
     func configureView() {
+        contentView.addStyles(style: keywordCellViewStyle) //contentView에는 cornerRadius가 먹히지 않음
+        cellView.layer.cornerRadius = 20.0
     }
     
     func bind() {

@@ -27,31 +27,14 @@ class KeywordView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // TODO: 레이아웃 수정하여 디자인에 맞게 나오도록
-    private func createLayout() -> UICollectionViewLayout {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .absolute(129), heightDimension: .absolute(162))
-        
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(163))
-        
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        
-        group.interItemSpacing = .fixed(1)
-        
-        let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = 1
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
-        
-        let config = UICollectionViewCompositionalLayoutConfiguration()
-        config.scrollDirection = .horizontal
-        
-        let layout = UICollectionViewCompositionalLayout(section: section)
-        layout.configuration = config
-        
+    private func createLayout() -> UICollectionViewFlowLayout {
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumInteritemSpacing = 16
+        layout.minimumLineSpacing = 16 //왜 이게 아이템 간 간격으로 적용되지...
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
+        layout.scrollDirection = .horizontal
         return layout
     }
-    
 }
 
 extension KeywordView: Presentable {
@@ -84,7 +67,7 @@ extension KeywordView: Presentable {
     }
     
     func configureView() {
-        
+        titleLabel.text = "이런 키워드에 반응해요"
     }
     
     func bind() {
@@ -97,6 +80,13 @@ extension KeywordView: Presentable {
 extension KeywordView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+    }
+}
+
+extension KeywordView: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let size = CGSize(width: 130, height: 163)
+        return size
     }
 }
 

@@ -74,7 +74,7 @@ extension TagView: Presentable {
         ]
         
         constraint += [
-            collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
+            collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
             collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
             collectionView.heightAnchor.constraint(equalToConstant: 70),
