@@ -57,20 +57,7 @@ final class MainViewController: UIViewController {
         //buttom
         self.bottomView.delegate = self
         keyboardSetting()
-        scrollViewFold()
-    }
-    
-    private func scrollViewFold() {
-        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MyTapMethod(sender:)))
-        singleTapGestureRecognizer.numberOfTapsRequired = 1
-        singleTapGestureRecognizer.isEnabled = true
-        singleTapGestureRecognizer.cancelsTouchesInView = false
-        mainScrollView.addGestureRecognizer(singleTapGestureRecognizer)
-    }
-    @objc func MyTapMethod(sender: UITapGestureRecognizer) {
-        self.bottomViewBottomConstraint.constant = CGFloat(30)
-        self.scrollViewBottomConstraint.constant = CGFloat(0)
-        self.view.endEditing(true)
+        
     }
     
     @IBAction func reviewFoldButtonDidTap(_ sender: UIButton) {
@@ -101,22 +88,22 @@ extension MainViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == tagListCollectionView {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TagCell", for: indexPath) as? TagCell else { fatalError("Could not create new cell") }
+            let cell = collectionView.dequeuReusableCell(type: TagCell.self, for: indexPath)
             cell.configure(title: tagList[indexPath.row])
             return cell
         }
         else if collectionView == keywordColletionView {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "KeywordCell", for: indexPath) as? KeywordCell else { fatalError("Could not create new cell") }
+            let cell = collectionView.dequeuReusableCell(type: KeywordCell.self, for: indexPath)
             cell.configure(keywordList[indexPath.row])
             return cell
         }
         else if collectionView == themeCollectionView {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ThemeCell", for: indexPath) as? ThemeCell else { fatalError("Could not create new cell") }
+            let cell = collectionView.dequeuReusableCell(type: ThemeCell.self, for: indexPath)
             cell.configure(themeList[indexPath.row])
             return cell
         }
         else if collectionView == reviewCollectionView {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReviewCell", for: indexPath) as? ReviewCell else { fatalError("Could not create new cell") }
+            let cell = collectionView.dequeuReusableCell(type: ReviewCell.self, for: indexPath)
             cell.configure(reviewList[indexPath.row])
             cell.delegate = self
             return cell
@@ -143,6 +130,12 @@ extension MainViewController: ReviewCellProtocol {
 }
 
 extension MainViewController: BottomViewDelegate {
+    func editingBeginScrollToButton() {
+        let bottomOffset = CGPoint(x: 0, y: mainScrollView.contentSize.height - mainScrollView.bounds.height + mainScrollView.contentInset.bottom + 330)
+        print(bottomOffset)
+        mainScrollView.setContentOffset(bottomOffset, animated: true)
+    }
+    
     func buyJamButtonDidTap() {
         guard let popUpVC = self.storyboard?.instantiateViewController(withIdentifier: "PopUpViewController") as? PopUpViewController else { return }
         popUpVC.modalPresentationStyle = .overCurrentContext
@@ -205,6 +198,7 @@ extension MainViewController {
 extension MainViewController {
     func keyboardSetting() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        scrollViewFold()
     }
     
     @objc func keyboardWillShow(_ sender: Notification) {
@@ -214,6 +208,21 @@ extension MainViewController {
                 self.view.layoutIfNeeded()
             })
         }
+    }
+    
+    private func scrollViewFold() {
+        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MyTapMethod(sender:)))
+        singleTapGestureRecognizer.numberOfTapsRequired = 1
+        singleTapGestureRecognizer.isEnabled = true
+        singleTapGestureRecognizer.cancelsTouchesInView = false
+        mainScrollView.addGestureRecognizer(singleTapGestureRecognizer)
+    }
+    @objc func MyTapMethod(sender: UITapGestureRecognizer) {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.bottomViewBottomConstraint.constant = CGFloat(30)
+            self.view.layoutIfNeeded()
+            self.view.endEditing(true)
+        })
     }
 
 }

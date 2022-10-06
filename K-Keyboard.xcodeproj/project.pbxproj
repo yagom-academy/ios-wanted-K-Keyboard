@@ -21,6 +21,7 @@
 		6C1D67A228EC72B400301DE0 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1D67A128EC72B400301DE0 /* PopUpViewController.swift */; };
 		6C1D67A428EC7B0300301DE0 /* BottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C1D67A328EC7B0300301DE0 /* BottomView.xib */; };
 		6C1D67A728EC7E6E00301DE0 /* BottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1D67A628EC7E6E00301DE0 /* BottomView.swift */; };
+		6C452C6E28EDE91800785177 /* UICollectionView+Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C452C6D28EDE91800785177 /* UICollectionView+Extenstion.swift */; };
 		6C695DD628E5B79300614896 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C695DD528E5B79300614896 /* KeyboardViewController.swift */; };
 		6C695DDA28E5B79300614896 /* PlayKeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6C695DD328E5B79300614896 /* PlayKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6CCC820B28E9B3D900296222 /* KeywordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCC820A28E9B3D900296222 /* KeywordCell.swift */; };
@@ -67,6 +68,7 @@
 		6C1D67A128EC72B400301DE0 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		6C1D67A328EC7B0300301DE0 /* BottomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomView.xib; sourceTree = "<group>"; };
 		6C1D67A628EC7E6E00301DE0 /* BottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomView.swift; sourceTree = "<group>"; };
+		6C452C6D28EDE91800785177 /* UICollectionView+Extenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extenstion.swift"; sourceTree = "<group>"; };
 		6C695DD328E5B79300614896 /* PlayKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PlayKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C695DD528E5B79300614896 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		6C695DD728E5B79300614896 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			children = (
 				6C17090B28E89DB8008CBFE2 /* UIView+Extenstion.swift */,
 				6C1D679928EBF0D500301DE0 /* UIStackView+Extenstion.swift */,
+				6C452C6D28EDE91800785177 /* UICollectionView+Extenstion.swift */,
 			);
 			path = Extenstion;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				6C1D67A728EC7E6E00301DE0 /* BottomView.swift in Sources */,
 				6C1D679E28EC382200301DE0 /* ReviewCell.swift in Sources */,
 				6C1D67A228EC72B400301DE0 /* PopUpViewController.swift in Sources */,
+				6C452C6E28EDE91800785177 /* UICollectionView+Extenstion.swift in Sources */,
 				6C1D679C28EC019400301DE0 /* ThemeCell.swift in Sources */,
 				6C17090928E891F2008CBFE2 /* TagCell.swift in Sources */,
 				63487F3828E2EA5E0033CF32 /* AppDelegate.swift in Sources */,
