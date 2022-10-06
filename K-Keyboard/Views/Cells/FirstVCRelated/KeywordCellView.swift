@@ -40,9 +40,7 @@ extension KeywordCellView: Presentable {
         constraints += [
             imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10.51),
             imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 12),
-            imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -12),
-            imageView.heightAnchor.constraint(equalToConstant: 105),
-            imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor)
+            imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -12)
         ]
         
         constraints += [

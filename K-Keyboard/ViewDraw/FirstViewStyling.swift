@@ -109,6 +109,21 @@ extension FirstViewStyling {
 }
 
 extension FirstViewStyling {
+    
+    var keywordTitleLabelStyle: (UILabel) -> () {
+        {
+            $0.textColor = UIColor(red: 0.259, green: 0.267, blue: 0.298, alpha: 1)
+            $0.font = .notoSans(weight: .cjkkr_Bold, size: 16)
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineHeightMultiple = 1.01
+
+            // Line height: 24 pt
+            // (identical to box height)
+
+            $0.attributedText = NSMutableAttributedString(string: "이런 키워드에 반응해요", attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        }
+    }
+    
     var keywordCellViewStyle: (UIView) -> () {
         {
             $0.backgroundColor = .white
@@ -271,8 +286,11 @@ extension FirstViewStyling {
     
     var reportButtonStyle: (UIButton) -> () {
         {
-            $0.setTitle("신고", for: .normal)
-            $0.setTitleColor(UIColor(red: 0.569, green: 0.573, blue: 0.6, alpha: 1), for: .normal)
+            let color = UIColor(red: 0.569, green: 0.573, blue: 0.6, alpha: 1)
+            let font: UIFont = .notoSans(weight: .cjkkr_Bold, size: 12)
+            let attrString = NSAttributedString(string: "신고", attributes: [.foregroundColor: color, .font : font])
+            
+            $0.setAttributedTitle(attrString, for: .normal)
         }
     }
     
@@ -387,8 +405,17 @@ extension FirstViewStyling {
             $0.layer.backgroundColor = UIColor(red: 1, green: 0.255, blue: 0.49, alpha: 1).cgColor
             $0.layer.cornerRadius = 20
             
-            $0.setTitle("구매하기", for: .normal)
-            $0.setTitleColor(UIColor(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
+            let paragraphStyle = NSMutableParagraphStyle()
+//            paragraphStyle.lineHeightMultiple = 1.16
+            let color = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+            let font: UIFont = .notoSans(weight: .cjkkr_Bold, size: 14)
+            let attrString = NSAttributedString(string: "구매하기",
+                                                attributes: [.foregroundColor: color,
+                                                                             .font : font,
+                                                                             .paragraphStyle : paragraphStyle])
+            
+            $0.setAttributedTitle(attrString, for: .normal)
+            
         }
     }
 }

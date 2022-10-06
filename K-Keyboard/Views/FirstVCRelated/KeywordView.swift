@@ -7,7 +7,7 @@
 
 import UIKit
 
-class KeywordView: UIView {
+class KeywordView: UIView, FirstViewStyling {
     
     lazy var collectionView: UICollectionView = UICollectionView(frame: self.frame, collectionViewLayout: createLayout())
     private let reuseIdentifier = "KeywordCell"
@@ -67,7 +67,7 @@ extension KeywordView: Presentable {
     }
     
     func configureView() {
-        titleLabel.text = "이런 키워드에 반응해요"
+        titleLabel.addStyles(style: keywordTitleLabelStyle)
     }
     
     func bind() {
