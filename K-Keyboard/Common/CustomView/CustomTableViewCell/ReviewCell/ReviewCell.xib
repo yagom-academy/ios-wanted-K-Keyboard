@@ -46,10 +46,11 @@
                             <constraint firstAttribute="height" constant="24" id="xeq-8I-MxF"/>
                         </constraints>
                     </stackView>
-                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qIJ-Mn-vzk">
+                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qIJ-Mn-vzk">
                         <rect key="frame" x="20" y="24" width="335" height="231"/>
                         <connections>
                             <outlet property="dataSource" destination="KGk-i7-Jjw" id="wJL-qC-1dE"/>
+                            <outlet property="delegate" destination="KGk-i7-Jjw" id="DNH-bP-NyW"/>
                         </connections>
                     </tableView>
                 </subviews>

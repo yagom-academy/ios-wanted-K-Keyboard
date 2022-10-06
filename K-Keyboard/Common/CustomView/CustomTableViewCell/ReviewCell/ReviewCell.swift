@@ -26,6 +26,8 @@ class ReviewCell: UITableViewCell {
     }
     
     private func initialize() {
+        tableView.isScrollEnabled = false
+        
         let reviewItemCellNib = UINib(nibName: ReviewItemCell.identifier, bundle: Bundle(for: self.classForCoder))
         tableView.register(reviewItemCellNib, forCellReuseIdentifier: ReviewItemCell.identifier)
     }
@@ -55,5 +57,11 @@ extension ReviewCell: UITableViewDataSource {
             cell.set(data: data[indexPath.row])
         }
         return cell
+    }
+}
+
+extension ReviewCell: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }

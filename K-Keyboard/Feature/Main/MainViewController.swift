@@ -103,18 +103,6 @@ extension MainViewController: UITableViewDataSource {
             return UIView()
         }
     }
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        guard let dataSource = dto?.dataSource[section] else { return nil }
-        let section = dataSource.section
-        
-        switch section {
-        case .item:
-            return UIView()
-        default:
-            return nil
-        }
-    }
 }
 
 extension MainViewController: UITableViewDelegate {
@@ -126,7 +114,7 @@ extension MainViewController: UITableViewDelegate {
         
         switch section {
         case .item:
-            let height = ((width - 32) / 343 * 264) + 115
+            let height = ((width - 32) / 343 * 264) + 115 + 40
             return height
         case .notice:
             return UITableView.automaticDimension
@@ -144,20 +132,6 @@ extension MainViewController: UITableViewDelegate {
         switch section {
         case .reviews:
             return 40
-        default:
-            return .zero
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        guard let dataSource = dto?.dataSource[section] else { return .zero }
-        let section = dataSource.section
-        
-        switch section {
-        case .item:
-            return 40
-        case .notice:
-            return 48
         default:
             return .zero
         }

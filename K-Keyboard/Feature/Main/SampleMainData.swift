@@ -49,7 +49,7 @@ struct SampleMainData {
         let reviewsData = ReviewsData(
             reviews: [
                 ReviewData(id: 0, image: "img_profile", isCreator: true, name: "코핀", review: "구매해주셔서 감사합니다💖", time: Date()),
-                ReviewData(id: 1, image: "img_profile", name: "o달빔o", review: "아진짜 귀여워요 !!!!", time: Date()),
+                ReviewData(id: 1, image: "img_profile", name: "o달빔o", review: "아진짜 너무너무너무너무너무너무너무너무너무너무 귀여워요 !!!!", time: Date()),
                 ReviewData(id: 2, image: "img_profile", name: "o달빔o", review: "아진짜 귀여워요 !!!!", time: Date()),
                 ReviewData(id: 3, image: "img_profile", name: "o달빔o", review: "아진짜 귀여워요 !!!!", time: Date()),
                 ReviewData(id: 4, image: "img_profile", name: "o달빔o", review: "아진짜 귀여워요 !!!!", time: Date()),
