@@ -34,7 +34,6 @@ class KeyboardViewController: UIInputViewController {
     /// backward시 자음, 모음 분해가능 여부
     var isSeparable: Bool = true
     let hangulCombinater = HangulCombinater.shared
-    let TOOLBAR_BUTTON_COUNT = 6
     let shortcutTableView = UITableView()
     
     var isShifted = false {
@@ -58,15 +57,15 @@ class KeyboardViewController: UIInputViewController {
             $0.addTarget(self, action: #selector(keyboardButtonClicked(_:)), for: .touchUpInside)
         }
         keyboardView.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
-
+        
     }
+    
     
     func setupConstraints() {
         
-        //툴바메뉴에 들어갈 버튼
+        // 툴바메뉴에 들어갈 버튼
         var buttons: [UIButton] = []
         for (i, name) in ["voice_input", "clipboard", "frequently_used_words", "stickers", "text_emoji" , "emoji"].enumerated() {
-            
             let button = ToggleButton()
             button.setImage(UIImage(named: "ic_toolbar_\(name).png")!.withRenderingMode(.alwaysTemplate), for: .normal)
             button.imageView?.contentMode = .scaleAspectFit
@@ -75,27 +74,10 @@ class KeyboardViewController: UIInputViewController {
             button.tag = i
             button.adjustsImageWhenHighlighted = false
             button.addTarget(self, action: #selector(ToggleButtonClicked), for: .touchUpInside)
-//            switch i {
-//            case 0:
-//                button.backgroundColor = .gray
-//                button.tag = i
-//                button.addTarget(self, action: #selector(ToggleButtonClicked), for: .touchUpInside)
-//            case 1:
-//                button.backgroundColor = .gray
-//                button.tag = i
-//                button.addTarget(self, action: #selector(ToggleButtonClicked), for: .touchUpInside)
-//            case 2: button.backgroundColor = .gray
-//            case 3: button.backgroundColor = .gray
-//            case 4: button.backgroundColor = .gray
-//            case 5: button.backgroundColor = .gray
-//            default:
-//                button.backgroundColor = .black
-//            }
             buttons.append(button)
         }
         
         let stack = UIStackView(arrangedSubviews: buttons)
-        
         stack.tag = 99
         stack.backgroundColor = .darkGray
         stack.alignment = .fill
@@ -103,7 +85,6 @@ class KeyboardViewController: UIInputViewController {
         stack.spacing = 0
         stack.axis = .horizontal
         stack.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(stack)
 
         let label = UILabel()
         label.text = "자주 쓰는 말"
@@ -113,21 +94,24 @@ class KeyboardViewController: UIInputViewController {
         
         shortcutTableView.delegate = self
         shortcutTableView.dataSource = self
-        shortcutTableView.translatesAutoresizingMaskIntoConstraints = false
-        shortcutTableView.backgroundColor = .darkGray
+    
+        shortcutTableView.separatorInset = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 12)
         shortcutTableView.separatorColor = UIColor(cgColor: CGColor(gray: 0.45, alpha: 0.5))
+        shortcutTableView.translatesAutoresizingMaskIntoConstraints = false
         shortcutTableView.separatorStyle = .singleLine
-        shortcutTableView.separatorInset = .init(top: 0, left: 12, bottom: 0, right: 12)
+        shortcutTableView.backgroundColor = .darkGray
+        shortcutTableView.alwaysBounceVertical = false
         
-        //test
+        self.view.addSubview(stack)
         self.view.addSubview(favoriteSentenceView)
+        self.view.addSubview(keyboardView)
+        
         favoriteSentenceView.addSubview(label)
         favoriteSentenceView.addSubview(shortcutTableView)
-        
         favoriteSentenceView.isHidden = true
-        self.view.addSubview(keyboardView)
+        
         NSLayoutConstraint.activate([
-            
+
             stack.topAnchor.constraint(equalTo: view.topAnchor),
             stack.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             stack.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -177,17 +161,13 @@ class KeyboardViewController: UIInputViewController {
         setup()
         setupConstraints()
         self.view.backgroundColor = .systemGray4
-        
+        self.advanceToNextInputMode()
+        self.keyboardView.inputViewController?.advanceToNextInputMode()
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//
-//    }
     
     override func viewWillLayoutSubviews() {
         // self.nextKeyboardButton.isHidden = !self.needsInputModeSwitchKey
         super.viewWillLayoutSubviews()
-        
     }
     
     override func textWillChange(_ textInput: UITextInput?) {
@@ -222,14 +202,16 @@ class KeyboardViewController: UIInputViewController {
         ToggleButtonsControl(button.tag)
         keyboardView.isHidden = button.isToggled
         
-        switch button.tag {
-        case 0:
-            favoriteSentenceView.isHidden = !button.isToggled
-        case 1:
-            favoriteSentenceView.isHidden = !button.isToggled
-        default:
-            favoriteSentenceView.isHidden = !button.isToggled
-        }
+        favoriteSentenceView.isHidden = !button.isToggled
+        
+//        switch button.tag {
+//        case 0:
+//            favoriteSentenceView.isHidden = !button.isToggled
+//        case 1:
+//            favoriteSentenceView.isHidden = !button.isToggled
+//        default:
+//            favoriteSentenceView.isHidden = !button.isToggled
+//        }
         //self.view.updateConstraints()
     }
     
@@ -392,6 +374,7 @@ class ToggleButton: UIButton {
     }
 }
 
+// TEST
 extension CALayer {
     func addBorder(_ arr_edge: [UIRectEdge], color: CGColor, width: CGFloat) {
         let border = CALayer()
@@ -432,9 +415,12 @@ extension KeyboardViewController: UITableViewDelegate, UITableViewDataSource {
         return keyboardView.shortCutList.count
     }
     
+    // TODO: 리팩토링 포인트
+    // 셀에 ripple effect (물결 효과) 넣기
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
             cell.backgroundColor = .darkGray
+            cell.selectionStyle = .none
         var content = cell.defaultContentConfiguration()
             content.text = "\(keyboardView.shortCutList[indexPath.row])"
             content.textProperties.color = UIColor(white: 1.0, alpha: 0.8)
