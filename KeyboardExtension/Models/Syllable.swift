@@ -22,6 +22,8 @@ struct Syllable: Equatable {
             return firstConsonant.rawValue.unicodeScalars.first
         } else if let middleVowel {
             return middleVowel.rawValue.unicodeScalars.first
+        } else if let spacer {
+            return spacer.unicodeScalar
         } else {
             return nil
         }

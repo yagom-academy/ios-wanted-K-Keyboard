@@ -1,24 +1,24 @@
 //
-//  PhonemeView.swift
+//  ReturnView.swift
 //  KeyboardExtension
 //
-//  Created by 한경수 on 2022/10/01.
+//  Created by CodeCamper on 2022/10/04.
 //
 
 import Foundation
 import UIKit
 // MARK: - View
-class PhonemeView: UIView {
+class ReturnView: UIView {
     // MARK: View Components
-    lazy var phonemeLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .black
-        label.font = .appleSDGothicNeo(weight: .regular, size: 21)
-        return label
+    lazy var returnImage: UIImageView = {
+        let imageView = UIImageView(image: UIImage(systemName: "return.left"))
+        imageView.tintColor = .black
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
     
     // MARK: Associated Types
-    typealias ViewModel = PhonemeViewModel
+    typealias ViewModel = ReturnViewModel
     
     // MARK: Properties
     var didSetupConstraints = false
@@ -48,44 +48,38 @@ class PhonemeView: UIView {
     
     // MARK: Setup Views
     func setupViews() {
-        self.backgroundColor = .white
+        self.backgroundColor = UIColor(hex: "#A8B0BB")
         self.layer.shadowOffset = CGSize(width: 0, height: 1)
         self.layer.shadowRadius = 1
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOpacity = 0.4
         self.layer.cornerRadius = 5
-        self.phonemeLabel.text = viewModel.phoneme.rawValue
         self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTap)))
     }
     
     
     // MARK: Build View Hierarchy
     func buildViewHierarchy() {
-        self.addSubview(phonemeLabel)
+        self.addSubview(returnImage)
     }
     
     
     // MARK: Layout Views
     func setupConstraints() {
-        phonemeLabel.translatesAutoresizingMaskIntoConstraints = false
-        
         var constraints = [NSLayoutConstraint]()
         
         defer { NSLayoutConstraint.activate(constraints) }
         
         constraints += [
-            phonemeLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            phonemeLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            returnImage.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            returnImage.centerYAnchor.constraint(equalTo: self.centerYAnchor),
         ]
     }
     
     
     // MARK: Binding
     func bind() {
-        viewModel.phonemeSource = { [weak self] phoneme in
-            guard let self else { return }
-            self.phonemeLabel.text = phoneme.rawValue
-        }
+        
     }
     
     // MARK: Action

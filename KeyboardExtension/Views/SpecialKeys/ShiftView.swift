@@ -1,24 +1,24 @@
 //
-//  PhonemeView.swift
+//  ShiftView.swift
 //  KeyboardExtension
 //
-//  Created by 한경수 on 2022/10/01.
+//  Created by CodeCamper on 2022/10/04.
 //
 
 import Foundation
 import UIKit
 // MARK: - View
-class PhonemeView: UIView {
+class ShiftView: UIView {
     // MARK: View Components
-    lazy var phonemeLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .black
-        label.font = .appleSDGothicNeo(weight: .regular, size: 21)
-        return label
+    lazy var shiftImage: UIImageView = {
+        let imageView = UIImageView(image: UIImage(systemName: "shift"))
+        imageView.tintColor = .black
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
     
     // MARK: Associated Types
-    typealias ViewModel = PhonemeViewModel
+    typealias ViewModel = ShiftViewModel
     
     // MARK: Properties
     var didSetupConstraints = false
@@ -48,43 +48,46 @@ class PhonemeView: UIView {
     
     // MARK: Setup Views
     func setupViews() {
-        self.backgroundColor = .white
+        self.backgroundColor = UIColor(hex: "#A8B0BB")
         self.layer.shadowOffset = CGSize(width: 0, height: 1)
         self.layer.shadowRadius = 1
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOpacity = 0.4
         self.layer.cornerRadius = 5
-        self.phonemeLabel.text = viewModel.phoneme.rawValue
         self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTap)))
     }
     
     
     // MARK: Build View Hierarchy
     func buildViewHierarchy() {
-        self.addSubview(phonemeLabel)
+        self.addSubview(shiftImage)
     }
     
     
     // MARK: Layout Views
     func setupConstraints() {
-        phonemeLabel.translatesAutoresizingMaskIntoConstraints = false
-        
         var constraints = [NSLayoutConstraint]()
         
         defer { NSLayoutConstraint.activate(constraints) }
         
         constraints += [
-            phonemeLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            phonemeLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            shiftImage.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            shiftImage.centerYAnchor.constraint(equalTo: self.centerYAnchor),
         ]
     }
     
     
     // MARK: Binding
     func bind() {
-        viewModel.phonemeSource = { [weak self] phoneme in
+        viewModel.activatedSource = { [weak self] activated in
             guard let self else { return }
-            self.phonemeLabel.text = phoneme.rawValue
+            if activated {
+                self.backgroundColor = UIColor.white
+                self.shiftImage.image = UIImage(systemName: "shift.fill")
+            } else {
+                self.backgroundColor = UIColor(hex: "#A8B0BB")
+                self.shiftImage.image = UIImage(systemName: "shift")
+            }
         }
     }
     
