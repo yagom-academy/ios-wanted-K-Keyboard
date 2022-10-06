@@ -7,7 +7,7 @@
 
 import UIKit
 
-class KeywordCellView: UIView {
+class KeywordCellView: UIView, FirstViewStyling {
 
     var imageView = UIImageView()
     var descLabel = UILabel()
@@ -54,6 +54,7 @@ extension KeywordCellView: Presentable {
     
     func configureView() {
         self.backgroundColor = .white
+        descLabel.addStyles(style: keywordDescLabelStyle)
     }
     
     func bind() {

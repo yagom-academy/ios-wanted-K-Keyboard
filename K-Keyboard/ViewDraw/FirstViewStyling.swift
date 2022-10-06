@@ -157,6 +157,31 @@ extension FirstViewStyling {
 }
 
 extension FirstViewStyling {
+    var keywordCellViewStyle: (UIView) -> () {
+        {
+            $0.backgroundColor = .white
+            $0.layer.shadowColor = UIColor(red: 0.271, green: 0.357, blue: 0.388, alpha: 0.2).cgColor
+            $0.layer.shadowOpacity = 1
+            $0.layer.shadowOffset = CGSize(width: 0, height: 1)
+            $0.layer.shadowRadius = 8
+
+            $0.layer.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0).cgColor
+        }
+    }
+    
+    var keywordDescLabelStyle: (UILabel) -> () {
+        {
+            $0.textColor = UIColor(red: 0.259, green: 0.267, blue: 0.298, alpha: 1)
+            $0.font = UIFont(name: "NotoSansKR-Medium", size: 14)
+
+            // Line height: 20 pt
+
+            $0.textAlignment = .center
+        }
+    }
+}
+
+extension FirstViewStyling {
     
     var themeTitleLabelStyle: (UILabel) -> () {
         {
