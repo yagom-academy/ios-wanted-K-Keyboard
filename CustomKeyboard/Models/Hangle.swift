@@ -40,9 +40,10 @@ struct Hangle{
         guard let inputUnicodeValue = char.unicodeScalars.first?.value else { return (" "," "," ") }
         if 12593...12622 ~= inputUnicodeValue {
             return (char," "," ")
-        }
-        else if 12623...12643 ~= inputUnicodeValue {
+        }else if 12623...12643 ~= inputUnicodeValue {
             return (" ",char," ")
+        }else if inputUnicodeValue < 44032 || inputUnicodeValue > 55202{ //한글의 범위
+            return (" "," "," ")
         }
         let choIndex = (inputUnicodeValue - 44032) / 588        //char가 space(" ")일 경우 음수가 되며(inputUnicodeValue = 32)에러 발생. 일단 char에 space가 못들어오게 막아놓은 상태
         let jungIndex = (inputUnicodeValue - 44032) % 588 / 28
@@ -58,7 +59,7 @@ struct Hangle{
         switch jong{
         case "ㄱ":
             switch input{
-            case "ㄱ" : result = "ㄲ"
+            //case "ㄱ" : result = "ㄲ"
             case "ㅅ" : result = "ㄳ"
             default : result = nil
             }
@@ -123,8 +124,6 @@ struct Hangle{
     static func decomposeDoubleFinalConsonant(_ input:Character) -> (Character,Character) {
         var result : (Character,Character) = (" "," ")
         switch input{
-        case "ㄲ":
-            result = ("ㄱ","ㄱ")
         case "ㄳ":
             result = ("ㄱ","ㅅ")
         case "ㄵ":
@@ -158,7 +157,11 @@ struct Hangle{
     }
     
     static func isDoubleFinalConsonant(_ input:Character) -> Bool{
-        return ["ㄲ", "ㄳ", "ㄵ", "ㄶ", "ㄺ", "ㄻ", "ㄼ", "ㄽ", "ㄾ", "ㄿ", "ㅀ", "ㅄ"].contains(input)
+        return [ "ㄳ", "ㄵ", "ㄶ", "ㄺ", "ㄻ", "ㄼ", "ㄽ", "ㄾ", "ㄿ", "ㅀ", "ㅄ"].contains(input)
+    }
+    
+    static func isFinalConsonant(_ input:Character) -> Bool{    //ㅃ,ㅉ,ㄸ 는 받침이 될 수 없다
+        return !["ㅃ","ㅉ","ㄸ"].contains(input)
     }
 
 }

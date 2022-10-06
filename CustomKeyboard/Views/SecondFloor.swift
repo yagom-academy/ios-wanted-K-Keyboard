@@ -92,20 +92,6 @@ class SecondFloor : Floor {
         setConstraint(btn7, to: self.backgroundViewForPadding, centerX: 1.6, width: typicalWidth)
         setConstraint(btnDelete, to: self.backgroundViewForPadding, centerX: 1.88, width: shiftDeleteWidth)
     }
-    
-//    override func changeShiftColor() {
-//        if self.isShiftClicked{
-//            let img = UIImage(systemName: "shift.fill")
-//            btnShift.setImage(img, for: .normal)
-//            btnShift.tintColor = .black
-//            btnShift.defaultBackgroundColor = .white
-//        }else{
-//            let img = UIImage(systemName: "shift")
-//            btnShift.setImage(img, for: .normal)
-//            btnShift.tintColor = .white
-//            btnShift.defaultBackgroundColor = .gray
-//        }
-//    }
 
 }
 

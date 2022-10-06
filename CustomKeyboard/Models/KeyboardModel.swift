@@ -14,12 +14,12 @@ class KeyboardModel {
     var characterBeforeCursorClosure: () -> (Character?) = { return nil }
     
     //output
-    
     var insertText: (String) -> () = { value in }
     var deleteBackward: () -> () = {  }
+    var presentShortCut : () -> () = {  }
+    var dismissShortCut : () -> () = {  }
     
     //properties
-    
     init() {
 
     }
@@ -52,28 +52,53 @@ class KeyboardModel {
         return Hangle.exceptionForJongSung(jong: jong, input: input)
     }
     
+    private func isFinalConsonant(input: Character) -> Bool {
+        return Hangle.isFinalConsonant(input)
+    }
+    
 }
 
 extension KeyboardModel : KeyboardViewDelegate{
     
+    
+    func insertNextLine() {
+        insertText("\n")
+    }
+    
+    func dismissShortCutView(){
+        dismissShortCut()
+    }
+    
+    func presentShortCutView() {
+        presentShortCut()
+    }
+        
     func insertSpace(){
         insertText(" ")
     }
     
     func insertCharacter(_ newCharacter: String) {
         //characterBeforeCursor호출하여 전 글자를 가져온다
-        guard let last = characterBeforeCursor(), last != " " else {
+        guard let last = characterBeforeCursor(), last != " " && newCharacter.count <= 1 && decompose(char: Character(newCharacter)) != (" "," "," ") else {
             //전 글자가 없다면 그냥 입력
             insertText(newCharacter)
             return
         }
-        //전 글자가 있다면 합성할 수 있는지 없는지 검사(같은 프로토콜인지 아닌지 검사)
+              
         let char = Character(newCharacter)
+        
         let (cho,jung,jong) = decompose(char: last)
+        
+        print(cho,jung,jong)
+        
+        if (cho,jung,jong) == (" "," "," "){
+            insertText(newCharacter)
+            return
+        }
+                
         //newCharacter가 모음인지 자음인지 검사
         if isVowel(char){ //newCharacter가 모음
             if jong != " "{//1.종성이 있을 때
-                
                 if isDoubleFinalConsonant(jong){ // 1.1 종성이 겹받침일 때
                     let oldJong = decomposeDoubleFinalConsonant(jong).0
                     let newJong = decomposeDoubleFinalConsonant(jong).1
@@ -111,6 +136,12 @@ extension KeyboardModel : KeyboardViewDelegate{
             }else if jung != " "{//2.종성은 없고 중성이 있을 때
                     deleteBackward()
                     insertText(String(compose(c1: cho, c2: jung, c3: char)))
+                if isFinalConsonant(input: char){//2.1 입력하려는 글자가 ㅃ,ㅉ,ㄸ가 아니라면 받침이 될 수 있다
+                    deleteBackward()
+                    insertText(String(compose(c1: cho, c2: jung, c3: char)))
+                }else{//2.1 입력하려는 글자가 ㅃ,ㅉ,ㄸ 라면 받침이 될 수 없다
+                    insertText(String(compose(c1:char , c2:" " , c3: " ")))
+                }
             }else{//3.초성만 있을 때
                 insertText(String(compose(c1: char, c2:" ",c3:" ")))
             }
@@ -137,8 +168,12 @@ extension KeyboardModel : KeyboardViewDelegate{
                 insertText(String(compose(c1: cho, c2: jung, c3: " ")))
             }
         }else if jung != " "{//2.중성까지 있는 상황
-            deleteBackward()
-            insertText(String(compose(c1: cho, c2: " ", c3: " ")))
+            if cho != " "{//2-1 초성이 있을 때
+                deleteBackward()
+                insertText(String(compose(c1: cho, c2: " ", c3: " ")))
+            }else{//2-2 중성만 있을 때
+                deleteBackward()
+            }
         }else{//3.초성만 있는 상황 && 공백인 상황
             deleteBackward()
         }
@@ -146,7 +181,6 @@ extension KeyboardModel : KeyboardViewDelegate{
     
     func characterBeforeCursor() -> Character? {
         let value = characterBeforeCursorClosure()
-        print("character check : \(value)")
         return value
     }
 }

@@ -12,6 +12,6 @@ struct Constants {
     static let multiplierForHeight = 0.8
     static let multiplierForTypicalButtonWidth = 0.08
     static let multiplierForShiftDeleteButtonWidth = 0.1
-    static let multiplierForNumberEnterButtonWidth = 0.23
-    static let multiplierForSpaceButtonWidth = 0.48
+    static let multiplierForNumberEnterButtonWidth = 0.13
+    static let multiplierForSpaceButtonWidth = 0.475
 }

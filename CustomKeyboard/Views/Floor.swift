@@ -45,9 +45,17 @@ class Floor : UIView{
     @objc func deleteBackwards(_ sender : UIButton){
         self.delegate?.deleteCharacterBeforeCursor()
     }
+
+    @objc func insertSpace(_ sender : UIButton){
+        self.delegate?.insertSpace()
+    }
     
-    @objc func inspect(_ sender : UIButton){
-       print( self.delegate?.characterBeforeCursor() )
+    @objc func insertNextLine(_ sender : UIButton){
+        self.delegate?.insertNextLine()
+    }
+    
+    @objc func shortCut(){
+        self.delegate?.presentShortCutView()
     }
     
 }

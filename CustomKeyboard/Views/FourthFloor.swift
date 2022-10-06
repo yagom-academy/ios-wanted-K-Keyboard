@@ -27,7 +27,6 @@ class ForthFloor : Floor {
         btn.setTitle("ㅂ", for: .normal)
         btn.originalTitle = "ㅂ"
         btn.shiftedTitle = "ㅃ"
-       // btn.addTarget(self, action: #selector(insertForShiftAvaialbe), for: .touchUpInside)
         return btn
     }()
     lazy var btn2 : KeyboardButton = {
@@ -35,7 +34,6 @@ class ForthFloor : Floor {
         btn.originalTitle = "ㅈ"
         btn.shiftedTitle = "ㅉ"
         btn.setTitle("ㅈ", for: .normal)
-        //btn.addTarget(self, action: #selector(insertForShiftAvaialbe), for: .touchUpInside)
         return btn
     }()
     lazy var btn3 : KeyboardButton = {
@@ -43,7 +41,6 @@ class ForthFloor : Floor {
         btn.originalTitle = "ㄷ"
         btn.shiftedTitle = "ㄸ"
         btn.setTitle("ㄷ", for: .normal)
-       // btn.addTarget(self, action: #selector(insertForShiftAvaialbe), for: .touchUpInside)
         return btn
     }()
     lazy var btn4 : KeyboardButton = {
@@ -51,7 +48,6 @@ class ForthFloor : Floor {
         btn.originalTitle = "ㄱ"
         btn.shiftedTitle = "ㄲ"
         btn.setTitle("ㄱ", for: .normal)
-      //  btn.addTarget(self, action: #selector(insertForShiftAvaialbe), for: .touchUpInside)
         return btn
     }()
     lazy var btn5 : KeyboardButton = {
@@ -59,7 +55,6 @@ class ForthFloor : Floor {
         btn.originalTitle = "ㅅ"
         btn.shiftedTitle = "ㅆ"
         btn.setTitle("ㅅ", for: .normal)
-      //  btn.addTarget(self, action: #selector(insertForShiftAvaialbe), for: .touchUpInside)
         return btn
     }()
     lazy var btn6 : KeyboardButton = {
@@ -85,7 +80,6 @@ class ForthFloor : Floor {
         btn.setTitle("ㅐ", for: .normal)
         btn.originalTitle = "ㅐ"
         btn.shiftedTitle = "ㅒ"
-      //  btn.addTarget(self, action: #selector(insertForShiftAvaialbe), for: .touchUpInside)
         return btn
     }()
     lazy var btn10 : KeyboardButton = {
@@ -93,7 +87,6 @@ class ForthFloor : Floor {
         btn.originalTitle = "ㅔ"
         btn.shiftedTitle = "ㅖ"
         btn.setTitle("ㅔ", for: .normal)
-       // btn.addTarget(self, action: #selector(insertForShiftAvaialbe), for: .touchUpInside)
         return btn
     }()
     
@@ -109,16 +102,5 @@ class ForthFloor : Floor {
         setConstraint(btn9, to: self.backgroundViewForPadding, centerX: 1.7, width: typicalWidth)
         setConstraint(btn10, to: self.backgroundViewForPadding, centerX: 1.9, width: typicalWidth)
     }
-    
-//    override func backToOriginal() {
-//        [btn1, btn2, btn3, btn4, btn5, btn9, btn10].forEach{$0.setTitle($0.originalTitle, for: .normal)}
-//    }
-}
 
-
-extension ForthFloor {
-//    @objc func insertForShiftAvaialbe(_ sender: KeyboardButton) {
-//        self.delegate?.insertCharacter(sender.currentTitle ?? "")
-//        self.isShiftClicked = false
-//    }
 }
