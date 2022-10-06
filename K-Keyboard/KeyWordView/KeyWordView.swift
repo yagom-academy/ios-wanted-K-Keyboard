@@ -14,8 +14,6 @@ class KeyWordView: UIView {
         .init(title: "기대💗", image: UIImage(named: "02")),
         .init(title: "놀이💗", image: UIImage(named: "03"))
     ]
-    
-    
     var colors: [UIColor] = [.systemRed, .systemIndigo, .systemBlue, .systemTeal, .systemYellow, .cyan, .brown]
     let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     let titles : UILabel = {
@@ -37,7 +35,6 @@ class KeyWordView: UIView {
         cv.translatesAutoresizingMaskIntoConstraints = false
         return cv
     }()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.commonInit()
@@ -45,7 +42,6 @@ class KeyWordView: UIView {
     required init?(coder NSCoder : NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     private func commonInit(){
         self.backgroundColor = .white
         self.addSubview(titles)
@@ -53,7 +49,6 @@ class KeyWordView: UIView {
         constraintCustomView()
         setupView()
     }
-    
     func constraintCustomView() {
         NSLayoutConstraint.activate([
             titles.topAnchor.constraint(equalTo: topAnchor,constant: 0),
@@ -86,17 +81,17 @@ extension KeyWordView: UICollectionViewDataSource, UICollectionViewDelegateFlowL
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        //            let width = collectionView.frame.width
-        //            let height = collectionView.frame.height
-        //        print(width,height)
-        //            let itemsPerRow: CGFloat = 2
-        //            let widthPadding = sectionInsets.left * (itemsPerRow + 1)
-        //            let itemsPerColumn: CGFloat = 3
-        //            let heightPadding = sectionInsets.top * (itemsPerColumn + 1)
-        //            let cellWidth = (width - widthPadding) / itemsPerRow
-        //            let cellHeight = (height - heightPadding) / itemsPerColumn
-        //print(cellWidth,cellHeight)
-        //            return CGSize(width: cellWidth, height: cellHeight)
+//                    let width = collectionView.frame.width
+//                    let height = collectionView.frame.height
+//                print(width,height)
+//                    let itemsPerRow: CGFloat = 2
+//                    let widthPadding = sectionInsets.left * (itemsPerRow + 1)
+//                    let itemsPerColumn: CGFloat = 3
+//                    let heightPadding = sectionInsets.top * (itemsPerColumn + 1)
+//                    let cellWidth = (width - widthPadding) / itemsPerRow
+//                    let cellHeight = (height - heightPadding) / itemsPerColumn
+//        print(cellWidth,cellHeight)
+//                    return CGSize(width: cellWidth, height: cellHeight)
         
         //343.0 165.66666666666666  콜렉션뷰 가로 높이
         //        156.5 41.888888888888886   셀 가로 높이

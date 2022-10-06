@@ -16,7 +16,6 @@ class KeyboardImageView: UIView {
     }()
     let nameLable : UILabel = {
         let title = UILabel()
-        
         title.translatesAutoresizingMaskIntoConstraints = false
         title.textAlignment = .left
         title.text = "앙무"
@@ -44,10 +43,8 @@ class KeyboardImageView: UIView {
         let attributeString = NSMutableAttributedString(string:  title.text ?? "")
         attributeString.addAttribute(.foregroundColor, value: UIColor(hex: "#919299", alpha: 1), range: ( title.text! as NSString).range(of: "명이참여했어요!"))
         title.attributedText = attributeString
-        
         return title
     }()
-    
     let explanationLabel : UILabel = {
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
@@ -94,14 +91,11 @@ class KeyboardImageView: UIView {
             nameLable.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 24),
             nameLable.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
             nameLable.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
-            
-            
-            
+        
             copinLabel.topAnchor.constraint(equalTo: nameLable.bottomAnchor,constant: 4),
             copinLabel.leadingAnchor.constraint(equalTo: nameLable.leadingAnchor),
             copinLabel.trailingAnchor.constraint(equalTo: nameLable.trailingAnchor),
             copinLabel.heightAnchor.constraint(equalToConstant: 20),
-            
             
             participationLabel.topAnchor.constraint(equalTo: copinLabel.bottomAnchor,constant: 16),
             participationLabel.leadingAnchor.constraint(equalTo:copinLabel.leadingAnchor),
@@ -117,7 +111,6 @@ class KeyboardImageView: UIView {
             informationLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
-    
 }
 #if canImport(SwiftUI) && DEBUG
 struct PreviewViewController<View: UIView> : UIViewRepresentable {

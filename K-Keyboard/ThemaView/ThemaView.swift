@@ -11,7 +11,6 @@ class ThemaView: UIView {
     
     let buy : UILabel = {
         let buy = UILabel()
-        //        buy.frame = CGRect(x: 0, y: 0, width: 63, height: 24)
         buy.translatesAutoresizingMaskIntoConstraints = false
         buy.text = "이 테마를 어떻게 생각하나요?"
         buy.textColor = .black
@@ -19,30 +18,28 @@ class ThemaView: UIView {
     }()
     let immoge: [String] = ["☺️","😍","😉","🤣"]
     var b1 : [String] = ["맘에들어요", "심쿵했어요", "응원해요","갖고싶어요"]
-    var c1 : [String] = ["0","1","0","0"]
-    
+    var c1 : Int = 0
+//    var c1 : [String] = ["0","1","0","0"]
     let collectionView : UICollectionView = {
         let collectionView = UICollectionViewFlowLayout()
         //        collectionView.translatesAutoresizingMaskIntoConstraints = false
         //        let layout = UICollectionViewFlowLayout()
-        collectionView.minimumInteritemSpacing = 3
-        collectionView.minimumLineSpacing = 3
+        collectionView.minimumInteritemSpacing = 38
+//        collectionView.minimumLineSpacing = 38
         collectionView.scrollDirection = .vertical
-        collectionView.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+//        collectionView.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         let cv = UICollectionView(frame: .zero, collectionViewLayout: collectionView)
         cv.translatesAutoresizingMaskIntoConstraints = false
         return cv
     }()
-    
     private func setupView() {
         collectionView.register(ThemaCollectionViewCell.self, forCellWithReuseIdentifier: ThemaCollectionViewCell.identifier)
         collectionView.delegate = self
         
         //컬렉션뷰 크기
-        collectionView.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        collectionView.heightAnchor.constraint(equalToConstant: 66).isActive = true
         collectionView.dataSource = self
     }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.commonInit()
@@ -53,8 +50,6 @@ class ThemaView: UIView {
     private func commonInit(){
         self.addSubview(buy)
         addSubview(collectionView)
-        
-        
         constraintCustomView()
         setupView()
     }
@@ -63,14 +58,11 @@ class ThemaView: UIView {
             buy.topAnchor.constraint(equalTo: self.topAnchor),
             buy.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             buy.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            //            buy.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             
             collectionView.topAnchor.constraint(equalTo: buy.bottomAnchor,constant: 24),
             collectionView.leadingAnchor.constraint(equalTo: buy.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
-            
-            
         ])
     }
 }
@@ -78,30 +70,25 @@ extension ThemaView: UICollectionViewDataSource,UICollectionViewDelegateFlowLayo
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 4
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ThemaCollectionViewCell", for: indexPath) as? ThemaCollectionViewCell else {return ThemaCollectionViewCell()}
         cell.imoge.text = immoge[indexPath.row]
         cell.feel.text = b1[indexPath.row]
-        cell.count.text = c1[indexPath.row]
+        cell.count.text = "\(c1)"
+//        cell.count.text = c1[indexPath.row]
         
-        if b1[indexPath.row] == "심쿵했어요" && c1[indexPath.row] == "1" {
-            cell.feel.textColor = UIColor(hex: "#FF417D",alpha: 1)
-            cell.count.textColor = UIColor(hex: "#FF417D",alpha: 1)
-        }
-            
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 80 , height: 70)
+        return CGSize(width: 56 , height: 66)
     }
-    
-}
-//extension ThemaView: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: 300, height: 300)
-//    }
-//}
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//     
+//           c1 += 1
+//        collectionView.reloadData()
+//        }
+    }
+
 
 
 

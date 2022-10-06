@@ -18,11 +18,8 @@ class TagView: UIView, UICollectionViewDelegate {
         title.textColor = .black
         return title
     }()
-    
-    
     let collectionView : UICollectionView = {
         let collectionView = UICollectionViewFlowLayout()
-        //        collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.minimumInteritemSpacing = 4
         collectionView.minimumLineSpacing = 5
         collectionView.scrollDirection = .vertical
@@ -31,7 +28,6 @@ class TagView: UIView, UICollectionViewDelegate {
         cv.translatesAutoresizingMaskIntoConstraints = false
         return cv
     }()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.commonInit()
@@ -39,25 +35,21 @@ class TagView: UIView, UICollectionViewDelegate {
     required init?(coder NSCoder : NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     private func commonInit(){
         self.addSubview(titles)
         self.addSubview(collectionView)
         constraintCustomView()
         setupView()
     }
-    
     func constraintCustomView() {
         NSLayoutConstraint.activate([
             titles.topAnchor.constraint(equalTo: self.topAnchor,constant: 0),
             titles.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: 0),
             
-            
             collectionView.topAnchor.constraint(equalTo: titles.bottomAnchor, constant: 20),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
-            
         ])
     }
     private func setupView() {

@@ -22,6 +22,7 @@
 		63487F3C28E2EA5E0033CF32 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3B28E2EA5E0033CF32 /* MainViewController.swift */; };
 		63487F4128E2EA5E0033CF32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63487F4028E2EA5E0033CF32 /* Assets.xcassets */; };
 		63487F4428E2EA5E0033CF32 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63487F4228E2EA5E0033CF32 /* LaunchScreen.storyboard */; };
+		D309FF6A28EE8EAC005F4094 /* PurchaseReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D309FF6928EE8EAC005F4094 /* PurchaseReviewTableViewCell.swift */; };
 		D30E931728E5B27B009AB544 /* KeyboardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E931628E5B27B009AB544 /* KeyboardImageView.swift */; };
 		D30E931928E69F19009AB544 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E931828E69F19009AB544 /* TagView.swift */; };
 		D30E931D28E69F73009AB544 /* KeyWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E931C28E69F73009AB544 /* KeyWordView.swift */; };
@@ -35,7 +36,7 @@
 		D3D272B728E70D9C00BC6392 /* ThemaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D272B628E70D9C00BC6392 /* ThemaView.swift */; };
 		D3D272BB28E8010B00BC6392 /* KeyWordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D272BA28E8010A00BC6392 /* KeyWordModel.swift */; };
 		D3D272BD28E8175300BC6392 /* PurchaseReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D272BC28E8175300BC6392 /* PurchaseReviewView.swift */; };
-		D3D272C028E8200D00BC6392 /* PurchaseReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D272BF28E8200D00BC6392 /* PurchaseReviewTableViewCell.swift */; };
+		D3D272C028E8200D00BC6392 /* PurchaseReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D272BF28E8200D00BC6392 /* PurchaseReviewCollectionViewCell.swift */; };
 		D3D5CAF328ECA1F900962CB3 /* PurchaseAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D5CAF228ECA1F900962CB3 /* PurchaseAlertViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +81,7 @@
 		63487F4028E2EA5E0033CF32 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63487F4328E2EA5E0033CF32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63487F4528E2EA5E0033CF32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D309FF6928EE8EAC005F4094 /* PurchaseReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseReviewTableViewCell.swift; sourceTree = "<group>"; };
 		D30E931628E5B27B009AB544 /* KeyboardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardImageView.swift; sourceTree = "<group>"; };
 		D30E931828E69F19009AB544 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		D30E931C28E69F73009AB544 /* KeyWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyWordView.swift; sourceTree = "<group>"; };
@@ -93,7 +95,7 @@
 		D3D272B628E70D9C00BC6392 /* ThemaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemaView.swift; sourceTree = "<group>"; };
 		D3D272BA28E8010A00BC6392 /* KeyWordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyWordModel.swift; sourceTree = "<group>"; };
 		D3D272BC28E8175300BC6392 /* PurchaseReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseReviewView.swift; sourceTree = "<group>"; };
-		D3D272BF28E8200D00BC6392 /* PurchaseReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseReviewTableViewCell.swift; sourceTree = "<group>"; };
+		D3D272BF28E8200D00BC6392 /* PurchaseReviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseReviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		D3D5CAF228ECA1F900962CB3 /* PurchaseAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseAlertViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -197,7 +199,7 @@
 				D30E931B28E69F38009AB544 /* KeyWordView */,
 				D3A2C2CD28E708360093A633 /* ThemaView */,
 				D3A2C2CE28E708470093A633 /* PurchaseReviewView */,
-				D346C61D28EC0C9500DAADE9 /* New Group */,
+				D346C61D28EC0C9500DAADE9 /* PopView */,
 				D346C61E28EC0CC900DAADE9 /* Remainder */,
 				63487F3728E2EA5E0033CF32 /* AppDelegate.swift */,
 				63487F3928E2EA5E0033CF32 /* SceneDelegate.swift */,
@@ -227,14 +229,14 @@
 			path = KeyWordView;
 			sourceTree = "<group>";
 		};
-		D346C61D28EC0C9500DAADE9 /* New Group */ = {
+		D346C61D28EC0C9500DAADE9 /* PopView */ = {
 			isa = PBXGroup;
 			children = (
 				D346C61B28EBEB3D00DAADE9 /* PopView.swift */,
 				D325D90728E95D7600DFD0A1 /* ButtonView.swift */,
 				D3D5CAF228ECA1F900962CB3 /* PurchaseAlertViewController.swift */,
 			);
-			path = "New Group";
+			path = PopView;
 			sourceTree = "<group>";
 		};
 		D346C61E28EC0CC900DAADE9 /* Remainder */ = {
@@ -258,8 +260,9 @@
 			isa = PBXGroup;
 			children = (
 				D3D272BC28E8175300BC6392 /* PurchaseReviewView.swift */,
-				D3D272BF28E8200D00BC6392 /* PurchaseReviewTableViewCell.swift */,
+				D309FF6928EE8EAC005F4094 /* PurchaseReviewTableViewCell.swift */,
 				D37DE32528EA80F7008B1A2A /* PurchasReviewModel.swift */,
+				D3D272BF28E8200D00BC6392 /* PurchaseReviewCollectionViewCell.swift */,
 			);
 			path = PurchaseReviewView;
 			sourceTree = "<group>";
@@ -395,11 +398,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D31AF13728EA96DA00BEE422 /* themView.swift in Sources */,
-				D3D272C028E8200D00BC6392 /* PurchaseReviewTableViewCell.swift in Sources */,
+				D3D272C028E8200D00BC6392 /* PurchaseReviewCollectionViewCell.swift in Sources */,
 				D37DE32628EA80F7008B1A2A /* PurchasReviewModel.swift in Sources */,
 				D325D90628E9290700DFD0A1 /* ThemaCollectionViewCell.swift in Sources */,
 				D325D90828E95D7600DFD0A1 /* ButtonView.swift in Sources */,
 				D3D272B728E70D9C00BC6392 /* ThemaView.swift in Sources */,
+				D309FF6A28EE8EAC005F4094 /* PurchaseReviewTableViewCell.swift in Sources */,
 				D3A2C2CC28E6EE000093A633 /* KeyWordViewCell.swift in Sources */,
 				D3D272BB28E8010B00BC6392 /* KeyWordModel.swift in Sources */,
 				D30E931D28E69F73009AB544 /* KeyWordView.swift in Sources */,

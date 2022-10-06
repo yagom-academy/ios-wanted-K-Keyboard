@@ -58,7 +58,6 @@ class themView: UIView {
     var b1 : [String] = ["마음에들어요", "심쿵했어요", "응원해요","갖고싶어요"]
     var c1 : [String] = ["0","1","0","0"]
     
-    
     private func setupView() {
         addSubview(buy)
         addSubview(stackView)
@@ -67,7 +66,6 @@ class themView: UIView {
                 $0.heightAnchor.constraint(equalTo: $0.widthAnchor, multiplier: 1.0).isActive = true
             }
     }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.commonInit()
@@ -92,11 +90,5 @@ class themView: UIView {
         ])
     }
 }
-//extension ThemaView: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: 300, height: 300)
-//    }
-//}
-
 
 

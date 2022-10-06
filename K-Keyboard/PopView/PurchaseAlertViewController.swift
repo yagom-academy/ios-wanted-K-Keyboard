@@ -18,10 +18,11 @@ class PurchaseAlertViewController: UIViewController {
         view.backgroundColor = .gray.withAlphaComponent(0.4)
         view.addSubview(popView)
         popView.translatesAutoresizingMaskIntoConstraints = false
-        let height = NSLayoutConstraint(item: popView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 400)
+        let height = NSLayoutConstraint(item: popView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 330)
         let width = NSLayoutConstraint(item: popView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 295)
         popView.addConstraint(height)
         popView.addConstraint(width)
+        popView.layer.cornerRadius = 15
         popView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         popView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         

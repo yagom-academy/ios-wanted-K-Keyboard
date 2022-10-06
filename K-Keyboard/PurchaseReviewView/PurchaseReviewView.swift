@@ -7,21 +7,25 @@
 
 import UIKit
 class PurchaseReviewView: UIView {
-   lazy var dataArry: [PurchasReviewModel] = [
+    lazy var dataArry: [PurchasReviewModel] = [
         .init(uesrImage: UIImage(named: "uesr"), idLabel: "크리에이터명", infoLabel: "구매해주셔서 감사합니다💖", timeLabel: "1일",declaration: ""),
         .init(uesrImage: UIImage(named: "uesr"), idLabel: "o달빔o", infoLabel: "아진짜 귀여워요 !!!!!", timeLabel: "1초",declaration: "신고"),
         .init(uesrImage: UIImage(named: "uesr"), idLabel: "o달빔o", infoLabel: "아진짜 귀여워요 !!!!!", timeLabel: "1분", declaration: "신고"),
         .init(uesrImage: UIImage(named: "uesr"), idLabel: "o달빔o", infoLabel: "아진짜 귀여워요 !!!!!", timeLabel: "2분", declaration: "신고")
     ] {
         didSet {
-            
-        buycount.text = "\(dataArry.count)"
-            collectionView.reloadData()
+            buycount.text = "\(dataArry.count)"
+            purchaseTableView.reloadData()
+//            collectionView.reloadData()
+        }
     }
-        
-    }
+    let imageView : UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "7"))
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
     
-    let imageView = UIImageView(image: UIImage(named: "7"))
+    
     let tableView : UITableView = {
         let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
@@ -62,24 +66,38 @@ class PurchaseReviewView: UIView {
         return diamond
     }()
     
-    let collectionView : UICollectionView = {
-        let collectionView = UICollectionViewFlowLayout()
-        collectionView.minimumInteritemSpacing = 5
-        collectionView.minimumLineSpacing = 5
-        collectionView.scrollDirection = .vertical
-        collectionView.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: collectionView)
-        cv.translatesAutoresizingMaskIntoConstraints = false
-//        cv.backgroundColor = .blue
-        return cv
+//    let collectionView : UICollectionView = {
+//        let collectionView = UICollectionViewFlowLayout()
+//        collectionView.minimumInteritemSpacing = 5
+//        collectionView.minimumLineSpacing = 5
+//        collectionView.scrollDirection = .vertical
+//        collectionView.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+//        let cv = UICollectionView(frame: .zero, collectionViewLayout: collectionView)
+//        cv.translatesAutoresizingMaskIntoConstraints = false
+//        //        cv.backgroundColor = .blue
+//        return cv
+//    }()
+    
+    let purchaseTableView : UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.separatorStyle = .none
+        tableView.rowHeight = UITableView.automaticDimension
+        return tableView
     }()
     
     private func setupView() {
-        collectionView.register(PurchaseReviewTableViewCell.self, forCellWithReuseIdentifier: PurchaseReviewTableViewCell.identifier)
+//        collectionView.register(PurchaseReviewCollectionViewCell.self, forCellWithReuseIdentifier: PurchaseReviewCollectionViewCell.identifier)
+        purchaseTableView.register(PurchaseReviewTableViewCell.self, forCellReuseIdentifier: PurchaseReviewTableViewCell.identifier)
+        purchaseTableView.dataSource = self
+        purchaseTableView.delegate = self
+//        purchaseTableView.estimatedRowHeight = 50
+        purchaseTableView.rowHeight = UITableView.automaticDimension
+       
         //컬렉션뷰 크기
-        collectionView.heightAnchor.constraint(equalToConstant: 300).isActive = true
-        collectionView.dataSource = self
-        collectionView.delegate = self
+//        collectionView.heightAnchor.constraint(equalToConstant: 300).isActive = true
+//        collectionView.dataSource = self
+//        collectionView.delegate = self
         buycount.text = "\(dataArry.count)"
     }
     
@@ -91,15 +109,14 @@ class PurchaseReviewView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     private func commonInit(){
-        //        self.backgroundColor = .red
         self.addSubview(imageView)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(buy)
         self.addSubview(buycount)
         self.addSubview(구매리뷰)
-        self.addSubview(collectionView)
+//        self.addSubview(collectionView)
         self.addSubview(mark)
         self.addSubview(under)
+        self.addSubview(purchaseTableView)
         constraintCustomView()
         setupView()
     }
@@ -129,28 +146,45 @@ class PurchaseReviewView: UIView {
             under.topAnchor.constraint(equalTo: mark.topAnchor),
             under.leadingAnchor.constraint(equalTo: 구매리뷰.trailingAnchor,constant: 79),
             
-            collectionView.topAnchor.constraint(equalTo: 구매리뷰.bottomAnchor,constant: 10),
-            collectionView.leadingAnchor.constraint(equalTo: buy.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
-    
+            purchaseTableView.topAnchor.constraint(equalTo: 구매리뷰.bottomAnchor,constant: 10),
+            purchaseTableView.leadingAnchor.constraint(equalTo: buy.leadingAnchor),
+            purchaseTableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            purchaseTableView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            purchaseTableView.heightAnchor.constraint(equalToConstant: 400),
         ])
     }
 }
-extension PurchaseReviewView: UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+extension PurchaseReviewView: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataArry.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PurchaseReviewTableViewCell", for: indexPath) as? PurchaseReviewTableViewCell else {return PurchaseReviewTableViewCell()}
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = purchaseTableView.dequeueReusableCell(withIdentifier: "PurchaseReviewTableViewCell", for: indexPath) as? PurchaseReviewTableViewCell else { return PurchaseReviewTableViewCell()}
         cell.model = dataArry[indexPath.row]
         return cell
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-//        return CGSize(width: dataArry[indexPath.row].size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14)]).width + 25, height: 28)
-        return CGSize(width: 400 , height: 78)
+//
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.rowHeight
     }
-    
 }
+
+
+
+//extension PurchaseReviewView: UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return dataArry.count
+//    }
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PurchaseReviewCollectionViewCell", for: indexPath) as? PurchaseReviewCollectionViewCell else {return PurchaseReviewCollectionViewCell()}
+//        cell.model = dataArry[indexPath.row]
+//        return cell
+//    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//
+//        //        return CGSize(width: dataArry[indexPath.row].size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14)]).width + 25, height: 28)
+//        return CGSize(width: 400 , height: 78)
+//    }
+//
+//}

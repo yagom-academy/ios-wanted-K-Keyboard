@@ -14,30 +14,32 @@ protocol  ButtonViewDelegate {
 
 class ButtonView: UIView {
  var buttonDelegate: ButtonViewDelegate?
-    let fif = PurchaseReviewView()
+    let saveButton = PurchaseReviewView()
     
     let textFiedViewButton : UIButton = {
         let textFiedViewButton = UIButton()
-        textFiedViewButton.setTitle("눌러주세요", for: .normal)
-        textFiedViewButton.setTitleColor(.black, for: .normal)
-      
+        textFiedViewButton.setTitle("리뷰쓰기", for: .normal)
+        textFiedViewButton.setTitleColor(.white, for: .normal)
+        textFiedViewButton.backgroundColor = UIColor(hex: "#FF417D", alpha: 1)
         textFiedViewButton.translatesAutoresizingMaskIntoConstraints = false
+        textFiedViewButton.layer.cornerRadius = 15
         textFiedViewButton.isHidden = true
-        textFiedViewButton.addTarget(self, action: #selector(bu), for: .touchUpInside)
+        textFiedViewButton.addTarget(self, action: #selector(addReview), for: .touchUpInside)
         return textFiedViewButton
     }()
-    @objc func bu(){
-        print("왜안돼?")
+    @objc func addReview(){
         buttonDelegate?.showAlert1()
-        fif.dataArry.append(.init(uesrImage: UIImage(named: "uesr"), idLabel: "ID", infoLabel: textFiedView.text ?? "", timeLabel: "1초", declaration: "신고"))
-        fif.collectionView.reloadData()
+        saveButton.dataArry.append(.init(uesrImage: UIImage(named: "uesr"), idLabel: "ID", infoLabel: textFiedView.text ?? "", timeLabel: "1초", declaration: "신고"))
+        saveButton.tableView.reloadData()
     }
     
     let textFiedView : UITextField = {
         let textFiedView = UITextField()
         textFiedView.translatesAutoresizingMaskIntoConstraints = false
-        textFiedView.placeholder = "리뷰댓글을 달아주세요"
-        textFiedView.backgroundColor = .red
+        textFiedView.attributedPlaceholder = NSAttributedString(string: "댓글을 달아주세요", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
+//        textFiedView.attributedPlaceholder = NSMutableParagraphStyle(.alignment = .center
+        textFiedView.backgroundColor = UIColor(hex: "#FF417D", alpha: 1)
+        textFiedView.layer.cornerRadius = 12
         textFiedView.isHidden = true
         return textFiedView
     }()
@@ -120,11 +122,14 @@ class ButtonView: UIView {
             
             textFiedView.topAnchor.constraint(equalTo: topAnchor,constant: 10),
             textFiedView.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 10),
+            textFiedView.widthAnchor.constraint(equalToConstant: 300),
+            textFiedView.heightAnchor.constraint(equalToConstant: 30),
 //            textFiedView.bottomAnchor.constraint(equalTo: bottomAnchor,constant: 10),
             
             
             textFiedViewButton.topAnchor.constraint(equalTo: textFiedView.topAnchor),
             textFiedViewButton.leadingAnchor.constraint(equalTo: textFiedView.trailingAnchor,constant: 10),
+            textFiedViewButton.trailingAnchor.constraint(equalTo: trailingAnchor),
             textFiedViewButton.widthAnchor.constraint(equalToConstant: 100)
 //            textFiedViewButton.trailingAnchor.constraint(equalTo: trailingAnchor),
 //            textFiedViewButton.bottomAnchor.constraint(equalTo: textFiedView.bottomAnchor),
