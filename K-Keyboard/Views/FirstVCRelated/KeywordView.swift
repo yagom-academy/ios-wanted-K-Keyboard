@@ -84,7 +84,7 @@ extension KeywordView: Presentable {
     }
     
     func configureView() {
-        
+        titleLabel.text = "이런 키워드에 반응해요"
     }
     
     func bind() {

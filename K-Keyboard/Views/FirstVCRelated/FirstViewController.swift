@@ -84,7 +84,7 @@ extension FirstViewController: Presentable {
         ]
         
         constraint += [
-            descriptionView.topAnchor.constraint(equalTo: keyboardView.bottomAnchor),
+            descriptionView.topAnchor.constraint(equalTo: keyboardView.bottomAnchor, constant: 40),
             descriptionView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             descriptionView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             descriptionView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
@@ -92,7 +92,7 @@ extension FirstViewController: Presentable {
         ]
         
         constraint += [
-            tagView.topAnchor.constraint(equalTo: descriptionView.bottomAnchor),
+            tagView.topAnchor.constraint(equalTo: descriptionView.bottomAnchor, constant: 48),
             tagView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             tagView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             tagView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
@@ -101,7 +101,7 @@ extension FirstViewController: Presentable {
         ]
         
         constraint += [
-            keywordView.topAnchor.constraint(equalTo: tagView.bottomAnchor),
+            keywordView.topAnchor.constraint(equalTo: tagView.bottomAnchor, constant: 40),
             keywordView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             keywordView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             keywordView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
@@ -110,7 +110,7 @@ extension FirstViewController: Presentable {
         ]
         
         constraint += [
-            themeOpinionView.topAnchor.constraint(equalTo: keywordView.bottomAnchor),
+            themeOpinionView.topAnchor.constraint(equalTo: keywordView.bottomAnchor, constant: 48),
             themeOpinionView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             themeOpinionView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             themeOpinionView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
@@ -118,7 +118,7 @@ extension FirstViewController: Presentable {
         ]
         
         constraint += [
-            bannerView.topAnchor.constraint(equalTo: themeOpinionView.bottomAnchor),
+            bannerView.topAnchor.constraint(equalTo: themeOpinionView.bottomAnchor, constant: 50),
             bannerView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             bannerView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             bannerView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
@@ -126,7 +126,7 @@ extension FirstViewController: Presentable {
         ]
         
         constraint += [
-            purchaseReviewListView.topAnchor.constraint(equalTo: bannerView.bottomAnchor),
+            purchaseReviewListView.topAnchor.constraint(equalTo: bannerView.bottomAnchor, constant: 48),
             purchaseReviewListView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             purchaseReviewListView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             purchaseReviewListView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),

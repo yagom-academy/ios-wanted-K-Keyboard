@@ -73,7 +73,7 @@ extension PurchaseButtonView: Presentable {
     func configureView() {
         self.backgroundColor = .white
         
-        gemIconImageView.image = UIImage(named: "자산 41@4x")
+        gemIconImageView.image = UIImage(named: "ic_charge_gem_type1")
         gemCountLabel.text = "\(5)"
         userGemStatusLabel.text = "0젬 보유중"
         
