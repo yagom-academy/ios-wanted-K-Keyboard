@@ -15,11 +15,17 @@ class KeyboardButton: UIButton {
     func getOptionText() -> String {
         return self.optionText
     }
-    /*
-     // Only override draw() if you perform custom drawing.
-     // An empty implementation adversely affects performance during animation.
-     override func draw(_ rect: CGRect) {
-     // Drawing code
-     }
-     */
+    
+    var isActivated: Bool = false
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
+    func setState(_ newValue: Bool) {
+        // 현재 상태 변경
+        self.isActivated = newValue
+        // 변경된 상태에따른 이미지 변겅
+    }
+  
 }

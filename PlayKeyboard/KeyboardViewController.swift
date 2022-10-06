@@ -12,26 +12,26 @@ class KeyboardViewController: UIInputViewController {
     var spaceButton: KeyboardButton?
     var deleteButton: KeyboardButton?
     var boolvalue: Bool = true
-    var buttoncount = 0
-  
+//    var buttoncount = 0
+    
     //MorseKeyboardView개체 에 대한 참조를 보유하는 속성 입니다.
     var morseKeyboardView: KeyboardView!
     var lastCharacters: [String] = []
     
-    @IBAction func upButton(_ sender: Any) {
-        buttoncount += 1
-        
-        if buttoncount % 2 != 0 {
-
-        } else {
-
-        }
-        print(buttoncount)
+    
+    
+    @IBAction func shiftButton(_ sender: UIButton) {
+//        sender.tag = sender.tag + 1
+//        sender.setTitle("\(sender.tag) 번째 클릭", for: .normal)
+//        buttoncount += 1
+//        if buttoncount % 2 != 0 {
+//            print("if\(buttoncount)")
+//        } else {
+//            print("else\(buttoncount)")
+//        }
+//        print(buttoncount)
         
     }
-    
-   
-    
     
     //띄어 쓰기
     @IBAction func spaceButton(button: UIButton) {
@@ -103,7 +103,7 @@ class KeyboardViewController: UIInputViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         makeRoundCorners()
-
+      
         //        morseKeyboardView.setNextKeyboardVisible(needsInputModeSwitchKey)
         
         
@@ -181,8 +181,9 @@ class KeyboardViewController: UIInputViewController {
         print("이전배열: \(lastCharacters)")
         
         if let lastCharacter = lastCharacters.last {
+            // 자음 + 모음이 합친다.
             if 자음.contains(lastCharacter) && 모음.contains(newCharacter) {
-                // 자음 + 모음이 합친다.
+                
                 if lastCharacters.count > 1 {
                     if let johab = hangul(c1: lastCharacter, c2: newCharacter, c3: " ") {
                         deleteCharacterBeforeCursor()
@@ -328,11 +329,13 @@ class KeyboardViewController: UIInputViewController {
                                 lastCharacters.append("ㅢ")
                                 textDocumentProxy.insertText(johab)
                                 return
+                                
                             }
                         }
                     }
                 }
             }
+            // "ㄵ"  "ㄶ"
             else if 자음.contains(lastCharacter) && 받침.contains(newCharacter) {
                 if lastCharacter == "ㄴ" {
                     if newCharacter == "ㅈ" {
@@ -343,10 +346,162 @@ class KeyboardViewController: UIInputViewController {
                                 lastCharacters.append("ㄵ")
                                 textDocumentProxy.insertText("ㄵ")
                                 return
-                            } else if let johab = hangul(c1: firstCharacter, c2: "ㄵ", c3: "ㄵ") {
+                            } else if let johab = hangul(c1: firstCharacter, c2: newCharacter , c3: "ㄵ") {
                                 deleteCharacterBeforeCursor()
                                 lastCharacters.removeLast()
                                 lastCharacters.append("ㄵ")
+                                textDocumentProxy.insertText(johab)
+                                return
+                            }
+                        }
+                    }
+                    else if newCharacter == "ㅎ" {
+                        if let firstCharacter = lastCharacters.first {
+                            if firstCharacter == lastCharacter {
+                                deleteCharacterBeforeCursor()
+                                lastCharacters.removeLast()
+                                lastCharacters.append("ㄶ")
+                                textDocumentProxy.insertText("ㄶ")
+                                return
+                            } else if let johab = hangul(c1: firstCharacter, c2: newCharacter, c3: "ㄶ") {
+                                deleteCharacterBeforeCursor()
+                                lastCharacters.removeLast()
+                                lastCharacters.append("ㄶ")
+                                textDocumentProxy.insertText(johab)
+                                return
+                            }
+                        }
+                    }
+                }  //   "ㅄ"
+                else if lastCharacter == "ㅂ" {
+                    if newCharacter == "ㅅ" {
+                        if let firstCharacter = lastCharacters.first {
+                            if firstCharacter == lastCharacter {
+                                deleteCharacterBeforeCursor()
+                                lastCharacters.removeLast()
+                                lastCharacters.append("ㅄ")
+                                textDocumentProxy.insertText("ㅄ")
+                                return
+                            } else if let johab = hangul(c1: firstCharacter, c2: newCharacter, c3: "ㅄ") {
+                                deleteCharacterBeforeCursor()
+                                lastCharacters.removeLast()
+                                lastCharacters.append("ㅄ")
+                                textDocumentProxy.insertText(johab)
+                                return
+                            }
+                        }
+                    }
+                }
+                //   "ㄺ"  "ㄻ"  "ㄼ"  "ㄽ"  "ㄾ"  "ㄿ"  "ㅀ"
+                else if lastCharacter == "ㄹ" {
+                    if newCharacter == "ㄱ" {
+                        if let firstCharacter = lastCharacters.first {
+                            if firstCharacter == lastCharacter {
+                                deleteCharacterBeforeCursor()
+                                lastCharacters.removeLast()
+                                lastCharacters.append("ㄺ")
+                                textDocumentProxy.insertText("ㄺ")
+                                return
+                            } else if let johab = hangul(c1: firstCharacter, c2: newCharacter, c3: "ㄺ") {
+                                deleteCharacterBeforeCursor()
+                                lastCharacters.removeLast()
+                                lastCharacters.append("ㄺ")
+                                textDocumentProxy.insertText(johab)
+                                return
+                            }
+                        }
+                    } else if newCharacter == "ㅁ" {
+                        if let firstCharacter = lastCharacters.first {
+                            if firstCharacter == lastCharacter {
+                                deleteCharacterBeforeCursor()
+                                lastCharacters.removeLast()
+                                lastCharacters.append("ㄻ")
+                                textDocumentProxy.insertText("ㄻ")
+                                return
+                            } else if let johab = hangul(c1: firstCharacter, c2: newCharacter, c3: "ㄻ") {
+                                deleteCharacterBeforeCursor()
+                                lastCharacters.removeLast()
+                                lastCharacters.append("ㄻ")
+                                textDocumentProxy.insertText(johab)
+                                return
+                            }
+                        }
+                    } else if newCharacter == "ㅂ" {
+                        if let firstCharacter = lastCharacters.first {
+                            if firstCharacter == lastCharacter {
+                                deleteCharacterBeforeCursor()
+                                lastCharacters.removeLast()
+                                lastCharacters.append("ㄼ")
+                                textDocumentProxy.insertText("ㄼ")
+                                return
+                            } else if let johab = hangul(c1: firstCharacter, c2: newCharacter, c3: "ㄼ") {
+                                deleteCharacterBeforeCursor()
+                                lastCharacters.removeLast()
+                                lastCharacters.append("ㄼ")
+                                textDocumentProxy.insertText(johab)
+                                return
+                            }
+                        }
+                    } else if newCharacter == "ㅅ" {
+                        if let firstCharacter = lastCharacters.first {
+                            if firstCharacter == lastCharacter {
+                                deleteCharacterBeforeCursor()
+                                lastCharacters.removeLast()
+                                lastCharacters.append("ㄽ")
+                                textDocumentProxy.insertText("ㄽ")
+                                return
+                            } else if let johab = hangul(c1: firstCharacter, c2: newCharacter, c3: "ㄽ") {
+                                deleteCharacterBeforeCursor()
+                                lastCharacters.removeLast()
+                                lastCharacters.append("ㄽ")
+                                textDocumentProxy.insertText(johab)
+                                return
+                            }
+                        }
+                    } else if newCharacter == "ㅌ" {
+                        if let firstCharacter = lastCharacters.first {
+                            if firstCharacter == lastCharacter {
+                                deleteCharacterBeforeCursor()
+                                lastCharacters.removeLast()
+                                lastCharacters.append("ㄾ")
+                                textDocumentProxy.insertText("ㄾ")
+                                return
+                            } else if let johab = hangul(c1: firstCharacter, c2: newCharacter, c3: "ㄾ") {
+                                deleteCharacterBeforeCursor()
+                                lastCharacters.removeLast()
+                                lastCharacters.append("ㄾ")
+                                textDocumentProxy.insertText(johab)
+                                return
+                            }
+                        }
+                    } else if newCharacter == "ㅍ" {
+                        if let firstCharacter = lastCharacters.first {
+                            if firstCharacter == lastCharacter {
+                                deleteCharacterBeforeCursor()
+                                lastCharacters.removeLast()
+                                lastCharacters.append("ㄿ")
+                                textDocumentProxy.insertText("ㄿ")
+                                return
+                            } else if let johab = hangul(c1: firstCharacter, c2: newCharacter, c3: "ㄿ") {
+                                deleteCharacterBeforeCursor()
+                                lastCharacters.removeLast()
+                                lastCharacters.append("ㄿ")
+                                textDocumentProxy.insertText(johab)
+                                return
+                            }
+                        }
+                    } else if newCharacter == "ㅎ" {
+                        if let firstCharacter = lastCharacters.first {
+                            if firstCharacter == lastCharacter {
+                                deleteCharacterBeforeCursor()
+                                lastCharacters.removeLast()
+                                lastCharacters.append("ㅀ")
+                                textDocumentProxy.insertText("ㅀ")
+                                return
+                            } else if let johab = hangul(c1: firstCharacter, c2: newCharacter, c3: "ㅀ") {
+                                deleteCharacterBeforeCursor()
+                                lastCharacters.removeLast()
+                                lastCharacters.append("ㅀ")
                                 textDocumentProxy.insertText(johab)
                                 return
                             }
@@ -368,6 +523,7 @@ class KeyboardViewController: UIInputViewController {
     func characterBeforeCursor() -> String? {
         return nil
     }
+    
     
     
 }
