@@ -154,8 +154,11 @@ extension FirstViewStyling {
             $0.attributedText = NSMutableAttributedString(string: "이벤트", attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
         }
     }
+}
+
+extension FirstViewStyling {
     
-    var titleLabelStyle: (UILabel) -> () {
+    var themeTitleLabelStyle: (UILabel) -> () {
         {
             $0.textColor = UIColor(red: 0.259, green: 0.267, blue: 0.298, alpha: 1)
             $0.font = UIFont(name: "NotoSansCJKKR-Bold", size: 16)
@@ -217,6 +220,7 @@ extension FirstViewStyling {
         }
     }
 }
+
 // TODO: Notosans Font install and set
 extension FirstViewStyling {
     var profileImageViewStyle: (UIImageView) -> () {
