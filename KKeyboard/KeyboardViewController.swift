@@ -10,24 +10,38 @@ import UIKit
 class KeyboardViewController: UIInputViewController, UITextDocumentProxyDelegate {
 
     @IBOutlet var nextKeyboardButton: UIButton!
+    let keyboardView = KeyboardView()
     var keyBoardState: KeyboardState = .start
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
-        
-        // Add custom view sizing constraints here
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let keyboardView = KeyboardView()
-        keyboardView.delegate = self
+        setLayouts()
+    }
+    
+    func setLayouts() {
+        setProperties()
+        setViewHierarchy()
+        setConstraints()
+    }
+    
+    func setProperties() {
         guard let inputView = inputView else { return }
-        inputView.addSubview(keyboardView)
+        keyboardView.delegate = self
         inputView.allowsSelfSizing = true
         keyboardView.translatesAutoresizingMaskIntoConstraints = false
-        
+    }
+    
+    func setViewHierarchy() {
+        guard let inputView = inputView else { return }
+        inputView.addSubview(keyboardView)
+    }
+    
+    func setConstraints() {
+        guard let inputView = inputView else { return }
         let heightConstraint = inputView.heightAnchor.constraint(equalToConstant: 216)
         heightConstraint.priority = UILayoutPriority(rawValue: 999)
         heightConstraint.isActive = true
