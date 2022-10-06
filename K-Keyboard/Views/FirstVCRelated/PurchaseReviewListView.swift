@@ -91,12 +91,14 @@ extension PurchaseReviewView: Presentable {
     
     // TODO: 디자인 입히기
     func configureView() {
-        titleLabel.text = "구매리뷰"
-        countLabel.text = "\(10)"
+
+        titleLabel.addStyles(style: reviewTitleLabelStyle)
+        countLabel.addStyles(style: reviewCountLabelStyle)
         
-        annotationImageView.image = UIImage(named: "annotation")
-        chevronImageView.image = UIImage(named: "chevron")
-        themeInfoLabel.text = "테마를 구매해야 리뷰를 남길 수 있습니다"
+        annotationImageView.addStyles(style: annotationImageViewStyle)
+        chevronImageView.addStyles(style: chevronImageViewStyle)
+        
+        themeInfoLabel.addStyles(style: themeInfoLabelStyle)
     }
     
     func bind() {

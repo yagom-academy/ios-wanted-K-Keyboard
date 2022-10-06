@@ -217,6 +217,144 @@ extension FirstViewStyling {
         }
     }
 }
+// TODO: Notosans Font install and set
+extension FirstViewStyling {
+    var profileImageViewStyle: (UIImageView) -> () {
+        {
+            $0.image = UIImage(named: "img_profile dummy 3")
+        }
+    }
+    
+    var creatorLabelStyle: (UILabel) -> () {
+        {
+            $0.layer.backgroundColor = UIColor(red: 1, green: 0.255, blue: 0.49, alpha: 1).cgColor
+            $0.layer.cornerRadius = 10
+            
+            $0.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+            $0.textAlignment = .center
+            $0.font = UIFont.systemFont(ofSize: 10)
+
+            // Line height: 14 pt
+            // (identical to box height)
+
+            $0.text = "크리에이터"
+        }
+    }
+    
+    var nickNameLabelStyle: (UILabel) -> () {
+        {
+            $0.textColor = UIColor(red: 0.259, green: 0.267, blue: 0.298, alpha: 1)
+            $0.font = UIFont.systemFont(ofSize: 12)
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineHeightMultiple = 1.04
+
+            // Line height: 18 pt
+            // (identical to box height)
+
+            $0.attributedText = NSMutableAttributedString(string: "크리에이터명", attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        }
+    }
+    
+    var commentLabelStyle: (UILabel) -> () {
+        {
+            $0.textColor = UIColor(red: 0.314, green: 0.325, blue: 0.361, alpha: 1)
+            $0.font = UIFont(name: "NotoSansKR-Regular", size: 14)
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineHeightMultiple = 1.18
+
+            // Line height: 24 pt
+            // (identical to box height)
+            $0.numberOfLines = 0
+            $0.attributedText = NSMutableAttributedString(string: "구매해주셔서 감사합니다💖", attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        }
+    }
+    
+    var timeLabelStyle: (UILabel) -> () {
+        {
+            $0.textColor = UIColor(red: 0.569, green: 0.573, blue: 0.6, alpha: 1)
+            $0.font = UIFont(name: "NotoSansKR-Regular", size: 12)
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineHeightMultiple = 1.04
+
+            // Line height: 18 pt
+            // (identical to box height)
+
+            $0.attributedText = NSMutableAttributedString(string: "1일", attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        }
+    }
+    
+    var reportButtonStyle: (UIButton) -> () {
+        {
+            $0.setTitle("신고", for: .normal)
+            $0.setTitleColor(UIColor(red: 0.569, green: 0.573, blue: 0.6, alpha: 1), for: .normal)
+        }
+    }
+    
+    var bubbleViewStyle: (UIView) -> () {
+        {
+            $0.layer.backgroundColor = UIColor(red: 0.949, green: 0.953, blue: 0.969, alpha: 1).cgColor
+            $0.layer.cornerRadius = 20
+        }
+    }
+}
+
+extension FirstViewStyling {
+    
+    // TODO: 왜 그대로 먹였는데 전혀 다르게 나오지
+    var reviewTitleLabelStyle: (UILabel) -> () {
+        {
+            $0.textColor = UIColor(red: 0.259, green: 0.267, blue: 0.298, alpha: 1)
+            $0.font = UIFont.systemFont(ofSize: 16)
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineHeightMultiple = 1.01
+
+            // Line height: 24 pt
+            // (identical to box height)
+
+            $0.attributedText = NSMutableAttributedString(string: "구매 리뷰", attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        }
+    }
+    
+    var reviewCountLabelStyle: (UILabel) -> () {
+        {
+            $0.textColor = UIColor(red: 1, green: 0.255, blue: 0.49, alpha: 1)
+            $0.font = UIFont.systemFont(ofSize: 16)
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineHeightMultiple = 1.01
+
+            // Line height: 24 pt
+            // (identical to box height)
+
+            $0.attributedText = NSMutableAttributedString(string: "10", attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        }
+    }
+    
+    var annotationImageViewStyle: (UIImageView) -> () {
+        {
+            $0.image = UIImage(named: "annotation")
+        }
+    }
+    
+    var chevronImageViewStyle: (UIImageView) -> () {
+        {
+            $0.image = UIImage(named: "chevron")
+        }
+    }
+    
+    var themeInfoLabelStyle: (UILabel) -> () {
+        {
+            $0.textColor = UIColor(red: 0.314, green: 0.325, blue: 0.361, alpha: 1)
+            $0.font = UIFont.systemFont(ofSize: 14)
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineHeightMultiple = 1.18
+
+            // Line height: 24 pt
+            // (identical to box height)
+
+            $0.attributedText = NSMutableAttributedString(string: "테마를 구매해야 리뷰를 남길 수 있어요.", attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        }
+    }
+}
 
 extension FirstViewStyling {
     
