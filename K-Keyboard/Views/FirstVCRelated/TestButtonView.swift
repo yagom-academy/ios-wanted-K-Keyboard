@@ -45,7 +45,7 @@ extension TestButtonView: Presentable {
     }
     
     func configureView() {
-        testButton.addStyles(style: testButtonStyling)
+
     }
     
     func bind() {

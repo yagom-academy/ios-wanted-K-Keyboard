@@ -11,62 +11,11 @@ import UIKit
 protocol FirstViewStyling { }
 
 extension FirstViewStyling {
-    var cellTimeLabelStyling: (UILabel) -> () {
-        {
-            $0.textColor = .graySecondary
-            $0.font = .appleSDGothicNeo(weight: .regular, size: 12)
-            $0.textAlignment = .left
-            $0.text = "2022/09/08 14:50:43"
-        }
-    }
-    
-    var cellMeasureTypelabelStyling: (UILabel) -> () {
-        {
-            $0.textColor = .grayPrimary
-            $0.font = .appleSDGothicNeo(weight: .regular, size: 18)
-            $0.textAlignment = .left
-            $0.text = "GYRO"
-        }
-    }
-    
-    var cellAmountTypeLabelStyling: (UILabel) -> () {
-        {
-            $0.textColor = .grayPrimary
-            $0.font = .appleSDGothicNeo(weight: .regular, size: 28)
-            $0.textAlignment = .center
-            $0.text = "60.0"
-        }
-    }
-    
-    var cellActivityIndicatorViewStyling: (UIActivityIndicatorView) -> () {
-        {
-            $0.style = .large
-            $0.color = .grayPrimary
-            $0.isHidden = false
-        }
-    }
-    
-    //TODO: 테스트 후 필요없을 시 삭제
-    var testButtonStyling: (UIButton) -> () {
-        {
-            //TODO: 버전 관련 분기 더 나은 방법으로 처리 및 리팩토링
-            if #available(iOS 15.0, *) {
-                $0.configuration = .plain()
-                $0.configuration?.contentInsets = .zero
-                $0.configuration?.title = "테스트"
-                $0.configuration?.background.backgroundColor = .grayPrimary
-                $0.configuration?.baseForegroundColor = .white
-            } else {
-                $0.setTitle("테스트", for: .normal)
-                $0.setTitleColor(.orange, for: .normal)
-            }
-        }
-    }
- 
+
     var labelStyling : (UILabel,String) -> () {
         {
             $0.textColor = UIColor(red: 0.569, green: 0.573, blue: 0.6, alpha: 1)
-            $0.font = UIFont(name: "NotoSansKR-Medium", size: 14)
+            $0.font = .notoSans(weight: .kr_Medium, size: 14)
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.lineHeightMultiple = 0.99
             $0.attributedText = NSMutableAttributedString(string: $1, attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
@@ -76,7 +25,7 @@ extension FirstViewStyling {
     var titleLabelStyling : (UILabel,String) -> () {
         {
             $0.textColor = UIColor(red: 0.259, green: 0.267, blue: 0.298, alpha: 1)
-            $0.font = UIFont(name: "NotoSansCJKKR-Bold", size: 20)
+            $0.font = .notoSans(weight: .cjkkr_Bold, size: 20)
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.lineHeightMultiple = 0.95
             $0.attributedText = NSMutableAttributedString(string: $1, attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
@@ -99,7 +48,7 @@ extension FirstViewStyling {
     var headerLabelStyling : (UILabel,String) -> () {
         {
             $0.textColor = UIColor(red: 0.259, green: 0.267, blue: 0.298, alpha: 1)
-            $0.font = UIFont(name: "NotoSansCJKKR-Bold", size: 14)
+            $0.font = .notoSans(weight: .cjkkr_Bold, size: 14)
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.lineHeightMultiple = 1.16
             $0.attributedText = NSMutableAttributedString(string: $1, attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
@@ -109,10 +58,10 @@ extension FirstViewStyling {
     var bodyLabelStyling  : (UILabel,String) -> () {
         {
             $0.textColor = UIColor(red: 0.294, green: 0.306, blue: 0.341, alpha: 1)
-            $0.font = UIFont(name: "NotoSansKR-Regular", size: 14)
+            $0.font = .notoSans(weight: .kr_Regular, size: 14)
             $0.numberOfLines = 0
             $0.lineBreakMode = .byWordWrapping
-            var paragraphStyle = NSMutableParagraphStyle()
+            let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.lineHeightMultiple = 1.18
             $0.attributedText = NSMutableAttributedString(string: $1, attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
         }
@@ -132,7 +81,7 @@ extension FirstViewStyling {
             $0.backgroundColor = .white
 
             $0.textColor = UIColor(red: 0.259, green: 0.267, blue: 0.298, alpha: 1)
-            $0.font = UIFont(name: "NotoSansCJKKR-Bold", size: 16)
+            $0.font = .notoSans(weight: .cjkkr_Bold, size: 16)
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.lineHeightMultiple = 1.01
 
@@ -146,7 +95,8 @@ extension FirstViewStyling {
     var tagNameStyle: (UILabel) -> () {
         {
             $0.textColor = UIColor(red: 0.294, green: 0.306, blue: 0.341, alpha: 1)
-            $0.font = UIFont(name: "NotoSansKR-Medium", size: 14)
+            $0.font = .notoSans(weight: .kr_Medium, size: 14)
+            
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.lineHeightMultiple = 0.99
 
@@ -174,8 +124,8 @@ extension FirstViewStyling {
     var keywordDescLabelStyle: (UILabel) -> () {
         {
             $0.textColor = UIColor(red: 0.259, green: 0.267, blue: 0.298, alpha: 1)
-            $0.font = UIFont(name: "NotoSansKR-Medium", size: 14)
-
+            $0.font = .notoSans(weight: .kr_Medium, size: 14)
+            
             // Line height: 20 pt
 
             $0.textAlignment = .center
@@ -188,7 +138,8 @@ extension FirstViewStyling {
     var themeTitleLabelStyle: (UILabel) -> () {
         {
             $0.textColor = UIColor(red: 0.259, green: 0.267, blue: 0.298, alpha: 1)
-            $0.font = UIFont(name: "NotoSansCJKKR-Bold", size: 16)
+            $0.font = .notoSans(weight: .cjkkr_Bold, size: 16)
+            
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.lineHeightMultiple = 1.01
 
@@ -202,7 +153,8 @@ extension FirstViewStyling {
     var emojiLabelStyle: (UILabel) -> () {
         {
             $0.textColor = UIColor(red: 0.569, green: 0.573, blue: 0.6, alpha: 1)
-            $0.font = UIFont(name: "NotoSansKR-Regular", size: 30)
+            $0.font = .notoSans(weight: .kr_Regular, size: 30)
+            
             $0.textAlignment = .center
         }
     }
@@ -218,7 +170,8 @@ extension FirstViewStyling {
     var descLabelStyle: (UILabel) -> () {
         {
             $0.textColor = UIColor(red: 0.569, green: 0.573, blue: 0.6, alpha: 1)
-            $0.font = UIFont(name: "NotoSansKR-Regular", size: 12)
+            $0.font = .notoSans(weight: .kr_Regular, size: 12)
+            
             $0.textAlignment = .center
         }
     }
@@ -234,7 +187,7 @@ extension FirstViewStyling {
     var countLabelStyle: (UILabel) -> () {
         {
             $0.textColor = UIColor(red: 0.569, green: 0.573, blue: 0.6, alpha: 1)
-            $0.font = UIFont(name: "NotoSansKR-Regular", size: 10)
+            $0.font = .notoSans(weight: .kr_Regular, size: 10)
             $0.textAlignment = .center
         }
     }
@@ -263,7 +216,7 @@ extension FirstViewStyling {
             
             $0.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
             $0.textAlignment = .center
-            $0.font = UIFont.systemFont(ofSize: 10)
+            $0.font = .notoSans(weight: .kr_Medium, size: 10)
 
             // Line height: 14 pt
             // (identical to box height)
@@ -275,7 +228,7 @@ extension FirstViewStyling {
     var nickNameLabelStyle: (UILabel) -> () {
         {
             $0.textColor = UIColor(red: 0.259, green: 0.267, blue: 0.298, alpha: 1)
-            $0.font = UIFont.systemFont(ofSize: 12)
+            $0.font = .notoSans(weight: .kr_Medium, size: 12)
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.lineHeightMultiple = 1.04
 
@@ -289,7 +242,8 @@ extension FirstViewStyling {
     var commentLabelStyle: (UILabel) -> () {
         {
             $0.textColor = UIColor(red: 0.314, green: 0.325, blue: 0.361, alpha: 1)
-            $0.font = UIFont(name: "NotoSansKR-Regular", size: 14)
+            $0.font = .notoSans(weight: .kr_Regular, size: 14)
+            
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.lineHeightMultiple = 1.18
 
@@ -303,7 +257,8 @@ extension FirstViewStyling {
     var timeLabelStyle: (UILabel) -> () {
         {
             $0.textColor = UIColor(red: 0.569, green: 0.573, blue: 0.6, alpha: 1)
-            $0.font = UIFont(name: "NotoSansKR-Regular", size: 12)
+            $0.font = .notoSans(weight: .kr_Regular, size: 12)
+            
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.lineHeightMultiple = 1.04
 
@@ -335,7 +290,7 @@ extension FirstViewStyling {
     var reviewTitleLabelStyle: (UILabel) -> () {
         {
             $0.textColor = UIColor(red: 0.259, green: 0.267, blue: 0.298, alpha: 1)
-            $0.font = UIFont.systemFont(ofSize: 16)
+            $0.font = .notoSans(weight: .cjkkr_Bold, size: 16)
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.lineHeightMultiple = 1.01
 
@@ -349,7 +304,7 @@ extension FirstViewStyling {
     var reviewCountLabelStyle: (UILabel) -> () {
         {
             $0.textColor = UIColor(red: 1, green: 0.255, blue: 0.49, alpha: 1)
-            $0.font = UIFont.systemFont(ofSize: 16)
+            $0.font = .notoSans(weight: .cjkkr_Bold, size: 16)
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.lineHeightMultiple = 1.01
 
@@ -375,7 +330,7 @@ extension FirstViewStyling {
     var themeInfoLabelStyle: (UILabel) -> () {
         {
             $0.textColor = UIColor(red: 0.314, green: 0.325, blue: 0.361, alpha: 1)
-            $0.font = UIFont.systemFont(ofSize: 14)
+            $0.font = .notoSans(weight: .kr_Regular, size: 14)
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.lineHeightMultiple = 1.18
 
@@ -404,7 +359,8 @@ extension FirstViewStyling {
             $0.backgroundColor = .white
 
             $0.textColor = UIColor(red: 0.667, green: 0.671, blue: 0.702, alpha: 1)
-            $0.font = UIFont(name: "NotoSansCJKKR-Medium", size: 12)
+            $0.font = .notoSans(weight: .cjkkr_Medium, size: 12)
+            
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.lineHeightMultiple = 1.01
 
@@ -417,7 +373,8 @@ extension FirstViewStyling {
             $0.backgroundColor = .white
 
             $0.textColor = UIColor(red: 0.49, green: 0.788, blue: 0.988, alpha: 1)
-            $0.font = UIFont(name: "NotoSansCJKKR-Bold", size: 16)
+            $0.font = .notoSans(weight: .cjkkr_Bold, size: 16)
+            
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.lineHeightMultiple = 1.01
 

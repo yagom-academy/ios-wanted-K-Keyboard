@@ -17,6 +17,17 @@ extension UIFont {
         case bold = "AppleSDGothicNeo-Bold"
     }
     
+    enum NotoSans: String {
+        case kr_Medium = "NotoSansKR-Medium"
+        case kr_Regular = "NotoSansKR-Regular"
+        case cjkkr_Bold = "NotoSansCJKKR-Bold"
+        case cjkkr_Medium = "NotoSansCJKKR-Medium"
+    }
+    
+    static func notoSans(weight: NotoSans, size: CGFloat) -> UIFont! {
+        return UIFont(name: weight.rawValue, size: size)
+    }
+    
     static func appleSDGothicNeo(weight: AppleSDGothicNeo, size: CGFloat) -> UIFont! {
         return UIFont(name: weight.rawValue, size: size)
     }
