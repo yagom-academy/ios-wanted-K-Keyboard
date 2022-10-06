@@ -17,6 +17,12 @@ class FrequentlyUsedWordsMainView: UIView {
         return view
     }()
     
+    lazy var bottomView: FrequentlyUsedWordsBottomView = {
+        let view = FrequentlyUsedWordsBottomView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     // MARK: Associated Types
     typealias ViewModel = FrequentlyUsedWordsMainViewModel
     
@@ -55,6 +61,7 @@ class FrequentlyUsedWordsMainView: UIView {
     // MARK: Build View Hierarchy
     func buildViewHierarchy() {
         self.addSubview(listView)
+        self.addSubview(bottomView)
     }
     
     
@@ -68,7 +75,14 @@ class FrequentlyUsedWordsMainView: UIView {
             listView.topAnchor.constraint(equalTo: self.topAnchor),
             listView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             listView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            listView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -42),
+        ]
+        
+        constraints += [
+            bottomView.topAnchor.constraint(equalTo: listView.bottomAnchor),
+            bottomView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            bottomView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            bottomView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            bottomView.heightAnchor.constraint(equalToConstant: 42),
         ]
     }
     

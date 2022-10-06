@@ -16,6 +16,7 @@
 		63487F3C28E2EA5E0033CF32 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3B28E2EA5E0033CF32 /* MainViewController.swift */; };
 		63487F4128E2EA5E0033CF32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63487F4028E2EA5E0033CF32 /* Assets.xcassets */; };
 		63487F4428E2EA5E0033CF32 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63487F4228E2EA5E0033CF32 /* LaunchScreen.storyboard */; };
+		B0412C1B28EEAC5800DE313E /* FrequentlyUsedWordsBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0412C1A28EEAC5800DE313E /* FrequentlyUsedWordsBottomView.swift */; };
 		B05AA9E328ED019800EB2CF3 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05AA9E028ED019800EB2CF3 /* UIColor+Extension.swift */; };
 		B05AA9E428ED019800EB2CF3 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05AA9E028ED019800EB2CF3 /* UIColor+Extension.swift */; };
 		B05AA9E528ED019800EB2CF3 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05AA9E028ED019800EB2CF3 /* UIColor+Extension.swift */; };
@@ -155,6 +156,7 @@
 		63487F4028E2EA5E0033CF32 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63487F4328E2EA5E0033CF32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63487F4528E2EA5E0033CF32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B0412C1A28EEAC5800DE313E /* FrequentlyUsedWordsBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequentlyUsedWordsBottomView.swift; sourceTree = "<group>"; };
 		B05AA9E028ED019800EB2CF3 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		B05AA9E128ED019800EB2CF3 /* UIFont+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
 		B05AA9E228ED019800EB2CF3 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
@@ -436,6 +438,7 @@
 			isa = PBXGroup;
 			children = (
 				B067300328EE4C31002B6E66 /* FrequentlyUsedWordsMainView.swift */,
+				B0412C1A28EEAC5800DE313E /* FrequentlyUsedWordsBottomView.swift */,
 				B067301128EE4E20002B6E66 /* FrequentlyUsedWordsList */,
 			);
 			path = FrequentlyUsedWords;
@@ -682,6 +685,7 @@
 				B0B24E9128ED1742001ABBEA /* KeyboardView.swift in Sources */,
 				B05F4CC528ED01F000562C38 /* ReturnView.swift in Sources */,
 				B067300F28EE4E16002B6E66 /* FrequentlyUsedWordsListCell.swift in Sources */,
+				B0412C1B28EEAC5800DE313E /* FrequentlyUsedWordsBottomView.swift in Sources */,
 				B067300428EE4C31002B6E66 /* FrequentlyUsedWordsMainView.swift in Sources */,
 				B067300A28EE4CBA002B6E66 /* FrequentlyUsedWordsHeaderView.swift in Sources */,
 				B067300228EE4C26002B6E66 /* FrequentlyUsedWordsViewModel.swift in Sources */,
