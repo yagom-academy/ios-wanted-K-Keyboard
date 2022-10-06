@@ -359,6 +359,11 @@ class KoreanAutomata {
             }
         case .finalConsonant:
             var (choUni, jungUni, jongUni) = completeToCombination(word: deletedWord)
+            if jungUni < 0 || jongUni < 0 {
+                latestStatus.append(.finalConsonant)
+                totalWords.append(deletedWord)
+                return deleteLogic(state: .firstConsonantOnly)
+            }
             var lastFinalConsonant = finalConsonants[jongUni]
 
             if doubleFinalConsonantReverses.keys.contains(lastFinalConsonant) {
