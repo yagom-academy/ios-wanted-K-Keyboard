@@ -14,8 +14,6 @@ class KeyboardButton: UIButton {
   var originalTitle : String?
   var shiftedTitle : String?
 
-
-
   override init(frame: CGRect) {
     super.init(frame: frame)
     commonInit()
@@ -30,6 +28,10 @@ class KeyboardButton: UIButton {
     super.layoutSubviews()
     backgroundColor = isHighlighted ? highlightBackgroundColor : defaultBackgroundColor
   }
+    
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        return bounds.insetBy(dx: -10, dy: -10).contains(point)
+    }
 }
 
 // MARK: - Private Methods
