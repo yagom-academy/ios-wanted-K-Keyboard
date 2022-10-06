@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		2D52010628EED118000E2216 /* KeyboardAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D52010528EED118000E2216 /* KeyboardAccessoryView.swift */; };
 		2D52010728EED64F000E2216 /* KeyboardAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D52010528EED118000E2216 /* KeyboardAccessoryView.swift */; };
+		2D52010C28EEE1BF000E2216 /* OftenUsedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D52010B28EEE1BF000E2216 /* OftenUsedView.swift */; };
+		2D52010E28EEE353000E2216 /* OftenUsedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D52010D28EEE353000E2216 /* OftenUsedCell.swift */; };
+		2D52010F28EEE4CF000E2216 /* OftenUsedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D52010B28EEE1BF000E2216 /* OftenUsedView.swift */; };
+		2D52011028EEE5B6000E2216 /* OftenUsedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D52010D28EEE353000E2216 /* OftenUsedCell.swift */; };
 		2D899F2328E56CBE00EAEB25 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D899F2228E56CBE00EAEB25 /* KeyboardViewController.swift */; };
 		2D899F2728E56CBE00EAEB25 /* KKeyboard.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 2D899F2028E56CBE00EAEB25 /* KKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2D899F2E28E578AF00EAEB25 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D899F2D28E578AF00EAEB25 /* KeyboardView.swift */; };
@@ -53,6 +57,8 @@
 
 /* Begin PBXFileReference section */
 		2D52010528EED118000E2216 /* KeyboardAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAccessoryView.swift; sourceTree = "<group>"; };
+		2D52010B28EEE1BF000E2216 /* OftenUsedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OftenUsedView.swift; sourceTree = "<group>"; };
+		2D52010D28EEE353000E2216 /* OftenUsedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OftenUsedCell.swift; sourceTree = "<group>"; };
 		2D899F2028E56CBE00EAEB25 /* KKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = KKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D899F2228E56CBE00EAEB25 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		2D899F2428E56CBE00EAEB25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -170,6 +176,8 @@
 				2DB246B128E6A55E00FF2D07 /* KoreanAutomata.swift */,
 				2DB246B628E9568F00FF2D07 /* KeyboardState.swift */,
 				2D52010528EED118000E2216 /* KeyboardAccessoryView.swift */,
+				2D52010B28EEE1BF000E2216 /* OftenUsedView.swift */,
+				2D52010D28EEE353000E2216 /* OftenUsedCell.swift */,
 			);
 			path = Keyboard;
 			sourceTree = "<group>";
@@ -284,6 +292,8 @@
 			files = (
 				2DB2469F28E58AC600FF2D07 /* KeyButton.swift in Sources */,
 				2D899F2328E56CBE00EAEB25 /* KeyboardViewController.swift in Sources */,
+				2D52010F28EEE4CF000E2216 /* OftenUsedView.swift in Sources */,
+				2D52011028EEE5B6000E2216 /* OftenUsedCell.swift in Sources */,
 				2DB246B828E95A2B00FF2D07 /* KeyboardState.swift in Sources */,
 				2DB2469E28E5898D00FF2D07 /* KeyboardView.swift in Sources */,
 				2D52010728EED64F000E2216 /* KeyboardAccessoryView.swift in Sources */,
@@ -295,6 +305,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D52010C28EEE1BF000E2216 /* OftenUsedView.swift in Sources */,
 				2DB246B728E9568F00FF2D07 /* KeyboardState.swift in Sources */,
 				63487F3C28E2EA5E0033CF32 /* ViewController.swift in Sources */,
 				2DB246B228E6A55E00FF2D07 /* KoreanAutomata.swift in Sources */,
@@ -302,6 +313,7 @@
 				8CDA640728E5481200F123FE /* KeyboardTestViewController.swift in Sources */,
 				2DB2469D28E5797500FF2D07 /* KeyButton.swift in Sources */,
 				2D52010628EED118000E2216 /* KeyboardAccessoryView.swift in Sources */,
+				2D52010E28EEE353000E2216 /* OftenUsedCell.swift in Sources */,
 				2D899F2E28E578AF00EAEB25 /* KeyboardView.swift in Sources */,
 				63487F3A28E2EA5E0033CF32 /* SceneDelegate.swift in Sources */,
 			);

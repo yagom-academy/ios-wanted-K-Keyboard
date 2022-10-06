@@ -51,7 +51,7 @@ class KeyboardAccessoryView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .systemGray4
+        backgroundColor = .secondarySystemBackground
         setViewHierarchy()
         setConstraints()
         registerButtonTarget()
