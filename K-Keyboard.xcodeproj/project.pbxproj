@@ -79,6 +79,7 @@
 		B067302F28EE73BE002B6E66 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B24E9228ED1912001ABBEA /* MainViewModel.swift */; };
 		B067303028EE73D6002B6E66 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B24E9028ED1742001ABBEA /* KeyboardView.swift */; };
 		B067303128EE7401002B6E66 /* SpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B067301C28EE6DE2002B6E66 /* SpaceView.swift */; };
+		B067303328EE74F3002B6E66 /* MainViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B067303228EE74F3002B6E66 /* MainViewModelTests.swift */; };
 		B0B24E9128ED1742001ABBEA /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B24E9028ED1742001ABBEA /* KeyboardView.swift */; };
 		B0B24E9328ED1912001ABBEA /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B24E9228ED1912001ABBEA /* MainViewModel.swift */; };
 		B0B24E9528ED55AC001ABBEA /* ToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B24E9428ED55AC001ABBEA /* ToolBarView.swift */; };
@@ -182,6 +183,7 @@
 		B067301328EE503E002B6E66 /* FrequentlyUsedWordsListCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequentlyUsedWordsListCellModel.swift; sourceTree = "<group>"; };
 		B067301A28EE6DCE002B6E66 /* SpaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceViewModel.swift; sourceTree = "<group>"; };
 		B067301C28EE6DE2002B6E66 /* SpaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceView.swift; sourceTree = "<group>"; };
+		B067303228EE74F3002B6E66 /* MainViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelTests.swift; sourceTree = "<group>"; };
 		B0B24E9028ED1742001ABBEA /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		B0B24E9228ED1912001ABBEA /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		B0B24E9428ED55AC001ABBEA /* ToolBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarView.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				466DA3A728E7D700005E77DD /* UnitTests.swift */,
 				466DA3AE28E7D707005E77DD /* SyllableTests.swift */,
 				467002C428E963E4000B721E /* KeyboardModelTests.swift */,
+				B067303228EE74F3002B6E66 /* MainViewModelTests.swift */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -725,6 +728,7 @@
 				B067302228EE73A1002B6E66 /* FrequentlyUsedWordsHeaderView.swift in Sources */,
 				B067302628EE73AE002B6E66 /* ToolBarButtonViewModel.swift in Sources */,
 				B05F4CBE28ED01F000562C38 /* UITextDocumentProxy+Extension.swift in Sources */,
+				B067303328EE74F3002B6E66 /* MainViewModelTests.swift in Sources */,
 				B05F4CC228ED01F000562C38 /* ChangeTypeView.swift in Sources */,
 				B067302E28EE73BC002B6E66 /* FrequentlyUsedWordsViewModel.swift in Sources */,
 				B067302928EE73B3002B6E66 /* SpaceViewModel.swift in Sources */,
