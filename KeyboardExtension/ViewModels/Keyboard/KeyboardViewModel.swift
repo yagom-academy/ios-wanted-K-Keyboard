@@ -14,20 +14,23 @@ class KeyboardViewModel {
     var addPhoneme: ((Phoneme) -> ())?
     var toggleShift: (() -> ())?
     var removePhoneme: (() -> ())?
+    var addSpace: (() -> ())?
     var addNewLine: (() -> ())?
-    var textContextDidChange: ((String) -> ())?
+    var textContextDidChange: (() -> ())?
     
     // MARK: Output
     var propagateText: ((String) -> ())?
     var phonemesSource: (([[Phoneme]]) -> ())?
     var shiftActivatedSource: ((Bool) -> ())?
+    var propagateRemovePrefix: (() -> ())?
+    var propagateAddSpace: (() -> ())?
+    var propagateAddNewLine: (() -> ())?
     
     // MARK: Properties
     var phonemes: [[Phoneme]] = [
         [Consonant.ㅂ, Consonant.ㅈ, Consonant.ㄷ, Consonant.ㄱ, Consonant.ㅅ, Vowel.ㅛ, Vowel.ㅕ, Vowel.ㅑ, Vowel.ㅐ, Vowel.ㅔ],
         [Consonant.ㅁ, Consonant.ㄴ, Consonant.ㅇ, Consonant.ㄹ, Consonant.ㅎ, Vowel.ㅗ, Vowel.ㅓ, Vowel.ㅏ, Vowel.ㅣ],
-        [Consonant.ㅋ, Consonant.ㅌ, Consonant.ㅊ, Consonant.ㅍ, Vowel.ㅠ, Vowel.ㅜ, Vowel.ㅡ],
-        [Spacer.space]
+        [Consonant.ㅋ, Consonant.ㅌ, Consonant.ㅊ, Consonant.ㅍ, Vowel.ㅠ, Vowel.ㅜ, Vowel.ㅡ]
     ] {
         didSet {
             phonemesSource?(phonemes)
@@ -43,8 +46,6 @@ class KeyboardViewModel {
         }
     }
     
-    var prefixText: String = ""
-    
     // MARK: Life Cycle
     init() {
         bind()
@@ -58,7 +59,7 @@ class KeyboardViewModel {
             self.inputPhonemes.append(phoneme)
             self.shiftActivated = false
             let syllables = self.mergeSyllables(self.mergeVowels(self.inputPhonemes))
-            let text = self.convertToString(self.prefixText, syllables: syllables)
+            let text = self.convertToString(syllables)
             self.propagateText?(text)
         }
         
@@ -71,28 +72,29 @@ class KeyboardViewModel {
             guard let self else { return }
             if !self.inputPhonemes.isEmpty {
                 self.inputPhonemes.removeLast()
-            } else if !self.prefixText.isEmpty {
-                self.prefixText.removeLast()
+                let syllables = self.mergeSyllables(self.mergeVowels(self.inputPhonemes))
+                let text = self.convertToString(syllables)
+                self.propagateText?(text)
+            } else {
+                self.propagateRemovePrefix?()
             }
             self.shiftActivated = false
-            let syllables = self.mergeSyllables(self.mergeVowels(self.inputPhonemes))
-            let text = self.convertToString(self.prefixText, syllables: syllables)
-            self.propagateText?(text)
+        }
+        
+        addSpace = { [weak self] in
+            guard let self else { return }
+            self.propagateAddSpace?()
+            self.shiftActivated = false
         }
         
         addNewLine = { [weak self] in
             guard let self else { return }
-            let syllables = self.mergeSyllables(self.mergeVowels(self.inputPhonemes))
-            let text = self.convertToString(self.prefixText, syllables: syllables)
-            self.prefixText = text + "\n"
+            self.propagateAddNewLine?()
             self.shiftActivated = false
-            self.inputPhonemes = []
-            self.propagateText?(self.prefixText)
         }
         
-        textContextDidChange = { [weak self] prefixText in
+        textContextDidChange = { [weak self] in
             guard let self else { return }
-            self.prefixText = prefixText
             self.shiftActivated = false
             self.inputPhonemes = []
         }
@@ -102,7 +104,7 @@ class KeyboardViewModel {
         var result = [Phoneme]()
         var buffer: Vowel? = nil
         phonemes.forEach{ phoneme in
-            if phoneme is Consonant || phoneme is Spacer {
+            if phoneme is Consonant {
                 if buffer != nil {
                     result.append(buffer!)
                     result.append(phoneme)
@@ -121,14 +123,6 @@ class KeyboardViewModel {
                     }
                 } else {
                     buffer = phoneme
-                }
-            } else if phoneme is Spacer {
-                if buffer != nil {
-                    result.append(buffer!)
-                    result.append(phoneme)
-                    buffer = nil
-                } else {
-                    result.append(phoneme)
                 }
             }
         }
@@ -167,16 +161,13 @@ class KeyboardViewModel {
                         syllables.append(syllable)
                     }
                 }
-            } else if let spacer = phoneme as? Spacer {
-                let syllable = Syllable(spacer: spacer)
-                syllables.append(syllable)
             }
         }
         return syllables
     }
     
-    private func convertToString(_ prefixText: String, syllables: [Syllable]) -> String {
-        var text = prefixText
+    private func convertToString(_ syllables: [Syllable]) -> String {
+        var text = ""
         syllables.compactMap { $0.unicode }.forEach { text += String($0) }
         return text
     }
