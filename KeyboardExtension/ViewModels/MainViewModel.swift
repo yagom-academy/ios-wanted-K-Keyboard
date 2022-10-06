@@ -12,11 +12,16 @@ import UIKit
 class MainViewModel {
     // MARK: Input
     var receiveSelected: ((Int?) -> ())?
-    var receiveText: ((String) -> ())?
+    var receiveAssemblingText: ((String) -> ())?
+    var receiveWord: ((String) -> ())?
+    var receiveRemovePrefix: (() -> ())?
+    var receiveAddNewLine: (() -> ())?
+    var textContentDidChange: ((String) -> ())?
     
     // MARK: Output
     var selectedSource: ((Int?) -> ())?
     var textSource: ((String) -> ())?
+    var prefixTextChanged: (() -> ())?
     
     // MARK: Properties
     var selected: Int? {
@@ -25,11 +30,13 @@ class MainViewModel {
         }
     }
     
-    var text: String = "" {
+    var prefixText: String = "" {
         didSet {
-            textSource?(text)
+            prefixTextChanged?()
         }
     }
+    
+    var text: String = ""
     
     // MARK: Life Cycle
     init() {
@@ -44,9 +51,39 @@ class MainViewModel {
             self.selected = selected
         }
         
-        receiveText = { [weak self] text in
+        receiveAssemblingText = { [weak self] assemblingText in
             guard let self else { return }
-            self.text = text
+            self.text = self.prefixText + assemblingText
+            self.textSource?(self.text)
+        }
+        
+        receiveWord = { [weak self] word in
+            guard let self else { return }
+            self.prefixText = self.text + word
+            self.text = self.prefixText
+            self.textSource?(self.text)
+        }
+        
+        receiveRemovePrefix = { [weak self] in
+            guard let self else { return }
+            if !self.prefixText.isEmpty {
+                self.prefixText.removeLast()
+            }
+            self.text = self.prefixText
+            self.textSource?(self.text)
+        }
+        
+        receiveAddNewLine = { [weak self] in
+            guard let self else { return }
+            self.prefixText = self.text + "\n"
+            self.text = self.prefixText
+            self.textSource?(self.text)
+        }
+        
+        textContentDidChange = { [weak self] prefixText in
+            guard let self else { return }
+            self.prefixText = prefixText
+            self.text = self.prefixText
         }
     }
 }

@@ -136,9 +136,19 @@ class MainViewController: UIInputViewController {
     
     // MARK: Binding
     func bind() {
-        keyboardView.viewModel.propagateText = { [weak self] nextText in
+        keyboardView.viewModel.propagateText = { [weak self] assemblingText in
             guard let self else { return }
-            self.viewModel.receiveText?(nextText)
+            self.viewModel.receiveAssemblingText?(assemblingText)
+        }
+        
+        keyboardView.viewModel.propagateRemovePrefix = { [weak self] in
+            guard let self else { return }
+            self.viewModel.receiveRemovePrefix?()
+        }
+        
+        keyboardView.viewModel.propagateAddNewLine = { [weak self] in
+            guard let self else { return }
+            self.viewModel.receiveAddNewLine?()
         }
         
         toolBarView.viewModel.propagateSelected = { [weak self] selected in
@@ -148,9 +158,7 @@ class MainViewController: UIInputViewController {
         
         frequentlyUsedWordsView.viewModel.propagateSelectedWord = { [weak self] word in
             guard let self else { return }
-            let text = self.viewModel.text + word
-            self.viewModel.receiveText?(text)
-            self.keyboardView.viewModel.textContextDidChange?(text)
+            self.viewModel.receiveWord?(word)
         }
         
         viewModel.selectedSource = { [weak self] selected in
@@ -177,6 +185,11 @@ class MainViewController: UIInputViewController {
                 self.textDocumentProxy.insertText(nextText)
             }
         }
+        
+        viewModel.prefixTextChanged = { [weak self] in
+            guard let self else { return }
+            self.keyboardView.viewModel.textContextDidChange?()
+        }
     }
     
     // MARK: Text Input
@@ -195,6 +208,6 @@ class MainViewController: UIInputViewController {
             textColor = UIColor.black
         }
         self.nextKeyboardButton.setTitleColor(textColor, for: [])
-        keyboardView.viewModel.textContextDidChange?(textDocumentProxy.documentContextBeforeInput ?? "")
+        viewModel.textContentDidChange?(textDocumentProxy.documentContextBeforeInput ?? "")
     }
 }
