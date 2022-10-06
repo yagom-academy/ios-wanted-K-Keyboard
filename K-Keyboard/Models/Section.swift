@@ -1,5 +1,5 @@
 //
-//  MockDataController.swift
+//  Section.swift
 //  K-Keyboard
 //
 //  Created by sole on 2022/10/06.
@@ -42,7 +42,7 @@ enum Section: Int, CaseIterable {
             return NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50))
         }
     }
-    
+
     var groupSize: NSCollectionLayoutSize {
         switch self {
         case .reaction:
