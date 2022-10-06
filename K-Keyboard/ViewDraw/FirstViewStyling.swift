@@ -217,3 +217,52 @@ extension FirstViewStyling {
         }
     }
 }
+
+extension FirstViewStyling {
+    
+    // TODO: 디자인 반영하여 수정
+    //근데 암만 봐도 피그마 디자인은 피그마 자동완성코드로 그냥 만든거 같은데...
+    //UIButton이 확실해 보이는게 UILabel인것도 그렇고...
+    var gemIconStyle: (UIImageView) -> () {
+        {
+            let image0 = UIImage(named: "ic_charge_gem_type1")
+            $0.image = image0
+        }
+    }
+    
+    var gemStatusLabelStyle: (UILabel) -> () {
+        {
+            $0.backgroundColor = .white
+
+            $0.textColor = UIColor(red: 0.667, green: 0.671, blue: 0.702, alpha: 1)
+            $0.font = UIFont(name: "NotoSansCJKKR-Medium", size: 12)
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineHeightMultiple = 1.01
+
+            $0.attributedText = NSMutableAttributedString(string: "0젬 보유 중", attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        }
+    }
+    
+    var gemCountLabelStyle: (UILabel) -> () {
+        {
+            $0.backgroundColor = .white
+
+            $0.textColor = UIColor(red: 0.49, green: 0.788, blue: 0.988, alpha: 1)
+            $0.font = UIFont(name: "NotoSansCJKKR-Bold", size: 16)
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineHeightMultiple = 1.01
+
+            $0.attributedText = NSMutableAttributedString(string: "5", attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        }
+    }
+    
+    var purchaseButtonStyle: (UIButton) -> () {
+        {
+            $0.layer.backgroundColor = UIColor(red: 1, green: 0.255, blue: 0.49, alpha: 1).cgColor
+            $0.layer.cornerRadius = 20
+            
+            $0.setTitle("구매하기", for: .normal)
+            $0.setTitleColor(UIColor(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
+        }
+    }
+}

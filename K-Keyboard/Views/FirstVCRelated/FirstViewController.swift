@@ -140,7 +140,7 @@ extension FirstViewController: Presentable {
             purchaseButtonView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             purchaseButtonView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             // TODO: fix temp value
-            purchaseButtonView.heightAnchor.constraint(equalToConstant: 80),
+            purchaseButtonView.heightAnchor.constraint(greaterThanOrEqualToConstant: 0),
             purchaseButtonView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
         ]
         
@@ -150,7 +150,7 @@ extension FirstViewController: Presentable {
             commentInputView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             commentInputView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             // TODO: fix temp value
-            commentInputView.heightAnchor.constraint(equalToConstant: 80),
+            commentInputView.heightAnchor.constraint(greaterThanOrEqualToConstant: 0),
             commentInputView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
         ]
         

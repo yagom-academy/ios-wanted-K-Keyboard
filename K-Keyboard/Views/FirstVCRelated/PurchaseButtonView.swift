@@ -8,7 +8,7 @@
 import UIKit
 import SwiftUI
 
-class PurchaseButtonView: UIView {
+class PurchaseButtonView: UIView, FirstViewStyling {
 
     var gemIconImageView = UIImageView()
     var gemCountLabel = UILabel()
@@ -65,6 +65,7 @@ extension PurchaseButtonView: Presentable {
             purchaseButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
             purchaseButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 12),
             purchaseButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -12),
+            purchaseButton.heightAnchor.constraint(equalToConstant: 40),
             purchaseButton.widthAnchor.constraint(equalToConstant: 144)
         ]
         
@@ -73,13 +74,10 @@ extension PurchaseButtonView: Presentable {
     func configureView() {
         self.backgroundColor = .white
         
-        gemIconImageView.image = UIImage(named: "ic_charge_gem_type1")
-        gemCountLabel.text = "\(5)"
-        userGemStatusLabel.text = "0젬 보유중"
-        
-        purchaseButton.setTitle("구매하기", for: .normal)
-        purchaseButton.setTitleColor(.white, for: .normal)
-        purchaseButton.setBackgroundColor(.red, for: .normal)
+        gemIconImageView.addStyles(style: gemIconStyle)
+        gemCountLabel.addStyles(style: gemCountLabelStyle)
+        userGemStatusLabel.addStyles(style: gemStatusLabelStyle)
+        purchaseButton.addStyles(style: purchaseButtonStyle)
     }
     
     func bind() {
