@@ -20,6 +20,8 @@ class KeyWordViewCell: UICollectionViewCell {
     
     lazy var title: UILabel = {
         let label = UILabel()
+        label.font = .appleSDGothicNeo(weight: .medium, size: 14)
+        label.textColor = UIColor(hex: "#42444C", alpha: 1)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

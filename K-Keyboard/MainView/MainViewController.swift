@@ -13,27 +13,27 @@ class MainViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    let firstView: KeyboardImageView = {
+    let keyboardImageView: KeyboardImageView = {
         let view = KeyboardImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    let secondView: TagView = {
+    let tagView: TagView = {
         let view = TagView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    let thirdView: KeyWordView = {
+    let keyWordView: KeyWordView = {
         let view = KeyWordView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    let fourView: ThemaView = {
+    let themaView: ThemaView = {
         let view = ThemaView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    let fifveView: PurchaseReviewView = {
+    let purchaseReviewView: PurchaseReviewView = {
         let view = PurchaseReviewView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -61,15 +61,14 @@ class MainViewController: UIViewController {
         addNotification()
         buttonView.buttonDelegate = self
     }
-    func popButton() {
-        print("구매하기버튼눌려짐")
+    func popUpButton() {
         let vc = PurchaseAlertViewController()
         vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .crossDissolve
         present(vc, animated: true)
     }
     func saveButtonAction() {
-        fifveView.dataArry.append(.init(uesrImage: UIImage(named: "1"), idLabel: "ID", infoLabel: buttonView.textFiedView.text ?? "" , timeLabel: "몇초", declaration: " "))
+        purchaseReviewView.dataArry.append(.init(uesrImage: UIImage(named: "user"), idLabel: "ID", infoLabel: buttonView.textFiedView.text ?? "" , timeLabel: "방금", declaration: " "))
         buttonView.diamondcount.isHidden = false
         buttonView.buyButton.isHidden = false
         buttonView.diamond.isHidden = false
@@ -78,11 +77,11 @@ class MainViewController: UIViewController {
         buttonView.textFiedViewButton.isHidden = true
     }
     func addSubView() {
-        totalView.addSubview(firstView)
-        totalView.addSubview(secondView)
-        totalView.addSubview(thirdView)
-        totalView.addSubview(fourView)
-        totalView.addSubview(fifveView)
+        totalView.addSubview(keyboardImageView)
+        totalView.addSubview(tagView)
+        totalView.addSubview(keyWordView)
+        totalView.addSubview(themaView)
+        totalView.addSubview(purchaseReviewView)
         scrollView.addSubview(totalView)
         view.addSubview(scrollView)
         view.addSubview(buttonView)
@@ -122,34 +121,34 @@ class MainViewController: UIViewController {
             totalView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
             totalView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
             
-            firstView.topAnchor.constraint(equalTo: totalView.topAnchor,constant: 0),
-            firstView.leadingAnchor.constraint(equalTo: totalView.leadingAnchor,constant: 16),
-            firstView.trailingAnchor.constraint(equalTo: totalView.trailingAnchor,constant: -16),
+            keyboardImageView.topAnchor.constraint(equalTo: totalView.topAnchor,constant: 0),
+            keyboardImageView.leadingAnchor.constraint(equalTo: totalView.leadingAnchor,constant: 16),
+            keyboardImageView.trailingAnchor.constraint(equalTo: totalView.trailingAnchor,constant: -16),
             
-            secondView.topAnchor.constraint(equalTo: firstView.bottomAnchor,constant: 48),
-            secondView.leadingAnchor.constraint(equalTo: firstView.leadingAnchor,constant: 0),
-            secondView.trailingAnchor.constraint(equalTo: firstView.trailingAnchor,constant: 0),
+            tagView.topAnchor.constraint(equalTo: keyboardImageView.bottomAnchor,constant: 48),
+            tagView.leadingAnchor.constraint(equalTo: keyboardImageView.leadingAnchor,constant: 0),
+            tagView.trailingAnchor.constraint(equalTo: keyboardImageView.trailingAnchor,constant: 0),
             
-            thirdView.topAnchor.constraint(equalTo: secondView.bottomAnchor,constant: 40),
-            thirdView.leadingAnchor.constraint(equalTo: firstView.leadingAnchor,constant: 0),
-            thirdView.trailingAnchor.constraint(equalTo: firstView.trailingAnchor,constant: 0),
+            keyWordView.topAnchor.constraint(equalTo: tagView.bottomAnchor,constant: 40),
+            keyWordView.leadingAnchor.constraint(equalTo: keyboardImageView.leadingAnchor,constant: 0),
+            keyWordView.trailingAnchor.constraint(equalTo: keyboardImageView.trailingAnchor,constant: 0),
             
-            fourView.topAnchor.constraint(equalTo: thirdView.bottomAnchor,constant: 48),
-            fourView.leadingAnchor.constraint(equalTo: firstView.leadingAnchor,constant: 0),
-            fourView.trailingAnchor.constraint(equalTo: firstView.trailingAnchor,constant: 0),
+            themaView.topAnchor.constraint(equalTo: keyWordView.bottomAnchor,constant: 48),
+            themaView.leadingAnchor.constraint(equalTo: keyboardImageView.leadingAnchor,constant: 0),
+            themaView.trailingAnchor.constraint(equalTo: keyboardImageView.trailingAnchor,constant: 0),
             
-            fifveView.topAnchor.constraint(equalTo: fourView.bottomAnchor,constant: 50),
-            fifveView.leadingAnchor.constraint(equalTo: firstView.leadingAnchor,constant: 0),
-            fifveView.trailingAnchor.constraint(equalTo: firstView.trailingAnchor,constant: 0),
-            fifveView.bottomAnchor.constraint(equalTo: totalView.bottomAnchor,constant: 0),
+            purchaseReviewView.topAnchor.constraint(equalTo: themaView.bottomAnchor,constant: 50),
+            purchaseReviewView.leadingAnchor.constraint(equalTo: keyboardImageView.leadingAnchor,constant: 0),
+            purchaseReviewView.trailingAnchor.constraint(equalTo: keyboardImageView.trailingAnchor,constant: 0),
+            purchaseReviewView.bottomAnchor.constraint(equalTo: totalView.bottomAnchor,constant: 0),
         ])
     }
 }
 extension MainViewController: ButtonViewDelegate {
-    func showAlert() {
-        popButton()
+    func popUpView() {
+        popUpButton()
     }
-    func showAlert1() {
+    func addReview() {
         saveButtonAction()
     }
 }

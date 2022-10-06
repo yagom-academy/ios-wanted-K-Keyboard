@@ -19,10 +19,9 @@ class KeyWordView: UIView {
     let titles : UILabel = {
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
-        title.textAlignment = .center
+        title.font = .appleSDGothicNeo(weight: .bold, size: 16)
         title.text = "이런 키워드에 반응해요"
-        title.font = UIFont(name: "Bold", size: 20)
-        title.textColor = .black
+        title.textColor = UIColor(hex: "#42444C",alpha: 1)
         return title
     }()
     let collectionView : UICollectionView = {
@@ -81,17 +80,17 @@ extension KeyWordView: UICollectionViewDataSource, UICollectionViewDelegateFlowL
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-//                    let width = collectionView.frame.width
-//                    let height = collectionView.frame.height
-//                print(width,height)
-//                    let itemsPerRow: CGFloat = 2
-//                    let widthPadding = sectionInsets.left * (itemsPerRow + 1)
-//                    let itemsPerColumn: CGFloat = 3
-//                    let heightPadding = sectionInsets.top * (itemsPerColumn + 1)
-//                    let cellWidth = (width - widthPadding) / itemsPerRow
-//                    let cellHeight = (height - heightPadding) / itemsPerColumn
-//        print(cellWidth,cellHeight)
-//                    return CGSize(width: cellWidth, height: cellHeight)
+        //                    let width = collectionView.frame.width
+        //                    let height = collectionView.frame.height
+        //                print(width,height)
+        //                    let itemsPerRow: CGFloat = 2
+        //                    let widthPadding = sectionInsets.left * (itemsPerRow + 1)
+        //                    let itemsPerColumn: CGFloat = 3
+        //                    let heightPadding = sectionInsets.top * (itemsPerColumn + 1)
+        //                    let cellWidth = (width - widthPadding) / itemsPerRow
+        //                    let cellHeight = (height - heightPadding) / itemsPerColumn
+        //        print(cellWidth,cellHeight)
+        //                    return CGSize(width: cellWidth, height: cellHeight)
         
         //343.0 165.66666666666666  콜렉션뷰 가로 높이
         //        156.5 41.888888888888886   셀 가로 높이

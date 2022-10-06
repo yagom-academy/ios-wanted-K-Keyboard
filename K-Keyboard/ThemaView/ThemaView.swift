@@ -12,22 +12,23 @@ class ThemaView: UIView {
     let buy : UILabel = {
         let buy = UILabel()
         buy.translatesAutoresizingMaskIntoConstraints = false
+        buy.textColor = UIColor(hex: "#42444C",alpha: 1)
+        buy.font = .appleSDGothicNeo(weight: .bold, size: 16)
         buy.text = "이 테마를 어떻게 생각하나요?"
         buy.textColor = .black
         return buy
     }()
     let immoge: [String] = ["☺️","😍","😉","🤣"]
-    var b1 : [String] = ["맘에들어요", "심쿵했어요", "응원해요","갖고싶어요"]
-    var c1 : Int = 0
-//    var c1 : [String] = ["0","1","0","0"]
+    var feeling : [String] = ["맘에들어요", "심쿵했어요", "응원해요","갖고싶어요"]
+    var feelingCount : [Int] = [0,0,0,0]
+    var situation : [Bool] = [false,false,false,false]
+    
     let collectionView : UICollectionView = {
         let collectionView = UICollectionViewFlowLayout()
-        //        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        //        let layout = UICollectionViewFlowLayout()
         collectionView.minimumInteritemSpacing = 38
-//        collectionView.minimumLineSpacing = 38
+        //        collectionView.minimumLineSpacing = 38
         collectionView.scrollDirection = .vertical
-//        collectionView.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        //        collectionView.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         let cv = UICollectionView(frame: .zero, collectionViewLayout: collectionView)
         cv.translatesAutoresizingMaskIntoConstraints = false
         return cv
@@ -36,7 +37,6 @@ class ThemaView: UIView {
         collectionView.register(ThemaCollectionViewCell.self, forCellWithReuseIdentifier: ThemaCollectionViewCell.identifier)
         collectionView.delegate = self
         
-        //컬렉션뷰 크기
         collectionView.heightAnchor.constraint(equalToConstant: 66).isActive = true
         collectionView.dataSource = self
     }
@@ -68,26 +68,32 @@ class ThemaView: UIView {
 }
 extension ThemaView: UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return immoge.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ThemaCollectionViewCell", for: indexPath) as? ThemaCollectionViewCell else {return ThemaCollectionViewCell()}
         cell.imoge.text = immoge[indexPath.row]
-        cell.feel.text = b1[indexPath.row]
-        cell.count.text = "\(c1)"
-//        cell.count.text = c1[indexPath.row]
+        cell.feel.text = feeling[indexPath.row]
+        cell.count.text = "\(feelingCount[indexPath.row])"
+        cell.isActivated = situation[indexPath.row]
         
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 56 , height: 66)
     }
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//     
-//           c1 += 1
-//        collectionView.reloadData()
-//        }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if situation[indexPath.row] == false {
+            situation[indexPath.row] = true
+            feelingCount[indexPath.row] += 1
+            
+        } else  {
+            situation[indexPath.row] = false
+            feelingCount[indexPath.row] -= 1
+        }
+        collectionView.reloadData()
     }
+}
 
 
 

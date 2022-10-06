@@ -8,13 +8,12 @@
 import UIKit
 
 protocol  ButtonViewDelegate {
-    func showAlert()
-    func showAlert1()
-    }
+    func popUpView()
+    func addReview()
+}
 
 class ButtonView: UIView {
- var buttonDelegate: ButtonViewDelegate?
-    let saveButton = PurchaseReviewView()
+    var buttonDelegate: ButtonViewDelegate?
     
     let textFiedViewButton : UIButton = {
         let textFiedViewButton = UIButton()
@@ -28,16 +27,16 @@ class ButtonView: UIView {
         return textFiedViewButton
     }()
     @objc func addReview(){
-        buttonDelegate?.showAlert1()
-        saveButton.dataArry.append(.init(uesrImage: UIImage(named: "uesr"), idLabel: "ID", infoLabel: textFiedView.text ?? "", timeLabel: "1초", declaration: "신고"))
-        saveButton.tableView.reloadData()
+        buttonDelegate?.addReview()
     }
     
     let textFiedView : UITextField = {
         let textFiedView = UITextField()
         textFiedView.translatesAutoresizingMaskIntoConstraints = false
-        textFiedView.attributedPlaceholder = NSAttributedString(string: "댓글을 달아주세요", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
-//        textFiedView.attributedPlaceholder = NSMutableParagraphStyle(.alignment = .center
+        let centeredParagraphStyle = NSMutableParagraphStyle()
+        centeredParagraphStyle.alignment = .center
+        textFiedView.attributedPlaceholder = NSAttributedString(string: "댓글을 달아주세요", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white, .paragraphStyle: centeredParagraphStyle])
+//        textFiedView.attributedPlaceholder.
         textFiedView.backgroundColor = UIColor(hex: "#FF417D", alpha: 1)
         textFiedView.layer.cornerRadius = 12
         textFiedView.isHidden = true
@@ -45,22 +44,20 @@ class ButtonView: UIView {
     }()
     
     let buyButton : UIButton = {
-       lazy var buyButton = UIButton()
+        lazy var buyButton = UIButton()
         buyButton.setTitle("구매하기", for: .normal)
         buyButton.setTitleColor(.white, for: .normal)
         buyButton.backgroundColor = UIColor(hex: "#FF417D", alpha: 1)
         buyButton.translatesAutoresizingMaskIntoConstraints = false
         buyButton.layer.cornerRadius = 15
-        buyButton.addTarget(self, action: #selector(imageAlert), for: .touchUpInside)
-
+        buyButton.addTarget(self, action: #selector(alertView), for: .touchUpInside)
+        
         return buyButton
     }()
-    @objc func imageAlert(){
-
-        buttonDelegate?.showAlert()
-        
+    @objc func alertView(){
+        buttonDelegate?.popUpView()
     }
-        
+    
     let diamond : UIImageView = {
         let diamond = UIImageView(image: UIImage(named: "diamond"))
         diamond.translatesAutoresizingMaskIntoConstraints = false
@@ -109,10 +106,10 @@ class ButtonView: UIView {
             buyButton.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 250),
             buyButton.trailingAnchor.constraint(equalTo: trailingAnchor),
             buyButton.bottomAnchor.constraint(equalTo: bottomAnchor,constant: 4),
-           
+            
             diamond.topAnchor.constraint(equalTo: topAnchor,constant: 11),
             diamond.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 16),
-//            diamond.trailingAnchor.constraint(equalTo: title.trailingAnchor),
+            
             diamondcount.topAnchor.constraint(equalTo: diamond.topAnchor),
             diamondcount.leadingAnchor.constraint(equalTo: diamond.trailingAnchor,constant: 6.3),
             
@@ -124,15 +121,12 @@ class ButtonView: UIView {
             textFiedView.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 10),
             textFiedView.widthAnchor.constraint(equalToConstant: 300),
             textFiedView.heightAnchor.constraint(equalToConstant: 30),
-//            textFiedView.bottomAnchor.constraint(equalTo: bottomAnchor,constant: 10),
-            
             
             textFiedViewButton.topAnchor.constraint(equalTo: textFiedView.topAnchor),
             textFiedViewButton.leadingAnchor.constraint(equalTo: textFiedView.trailingAnchor,constant: 10),
             textFiedViewButton.trailingAnchor.constraint(equalTo: trailingAnchor),
             textFiedViewButton.widthAnchor.constraint(equalToConstant: 100)
-//            textFiedViewButton.trailingAnchor.constraint(equalTo: trailingAnchor),
-//            textFiedViewButton.bottomAnchor.constraint(equalTo: textFiedView.bottomAnchor),
+            
         ])
     }
     
