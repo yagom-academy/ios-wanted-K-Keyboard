@@ -117,11 +117,13 @@ extension FirstViewStyling {
             $0.attributedText = NSMutableAttributedString(string: $1, attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
         }
     }
-    
+}
+
+extension FirstViewStyling {
     var tagCellViewStyle: (UIView) -> () {
         {
             $0.layer.backgroundColor = UIColor(red: 0.922, green: 0.929, blue: 0.961, alpha: 1).cgColor
-            $0.layer.cornerRadius = 18
+            $0.layer.cornerRadius = 14
         }
     }
     
