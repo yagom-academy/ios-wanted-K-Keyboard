@@ -93,7 +93,7 @@ final class ReviewCell: UICollectionViewCell {
         fatalError("not implemnted")
     }
     
-    func updateUI(_ item: Item) {
+    func updateUI(_ item: Review) {
         profileImageView.image = UIImage(named: "profile.png")
         nickNameLabel.text = item.nickName
         reviewLabel.text = item.content

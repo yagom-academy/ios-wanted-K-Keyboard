@@ -37,34 +37,33 @@ final class ThemeViewController: UIViewController {
         let headerViewRegistration = headerViewRegistration()
         let footerViewRegistration = footerViewRegistration()
         
-        dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, identifier) -> UICollectionViewCell? in
-            
-            switch indexPath.section {
-            case Section.event.rawValue:
-                return collectionView.dequeueConfiguredReusableCell(using: eventCellRegistration, for: indexPath, item: identifier)
-            case Section.tag.rawValue:
-                return collectionView.dequeueConfiguredReusableCell(using: tagCellRegistration, for: indexPath, item: identifier)
-            case Section.reaction.rawValue:
-                return collectionView.dequeueConfiguredReusableCell(using: reactionCellRegistration, for: indexPath, item: identifier)
-            case Section.opinion.rawValue:
-                return collectionView.dequeueConfiguredReusableCell(using: opinionCellRegistration, for: indexPath, item: identifier)
-            case Section.banner.rawValue:
-                return collectionView.dequeueConfiguredReusableCell(using: bannerCellRegistration, for: indexPath, item: identifier)
-            case Section.review.rawValue:
-                return collectionView.dequeueConfiguredReusableCell(using: reviewCellRegistration, for: indexPath, item: identifier)
-            default:
-                return UICollectionViewCell()
-            }
-        })
+        dataSource = UICollectionViewDiffableDataSource<Section, Item>(
+            collectionView: collectionView,
+            cellProvider: { collectionView, indexPath, identifier -> UICollectionViewCell? in
+                switch identifier {
+                case .event(let event):
+                    return collectionView.dequeueConfiguredReusableCell(using: eventCellRegistration, for: indexPath, item: event)
+                case .tag(let tag):
+                    return collectionView.dequeueConfiguredReusableCell(using: tagCellRegistration, for: indexPath, item: tag)
+                case .reaction(let reaction):
+                    return collectionView.dequeueConfiguredReusableCell(using: reactionCellRegistration, for: indexPath, item: reaction)
+                case .opinion(let opinion):
+                    return collectionView.dequeueConfiguredReusableCell(using: opinionCellRegistration, for: indexPath, item: opinion)
+                case .banner(let banner):
+                    return collectionView.dequeueConfiguredReusableCell(using: bannerCellRegistration, for: indexPath, item: banner)
+                case .review(let review):
+                    return collectionView.dequeueConfiguredReusableCell(using: reviewCellRegistration, for: indexPath, item: review)
+                }
+            })
         
-        dataSource.supplementaryViewProvider = { (view, kind, index) in
+        dataSource.supplementaryViewProvider = { view, kind, index in
             switch kind {
             case SectionHeaderView.elementKind:
                 return self.collectionView.dequeueConfiguredReusableSupplementary(using: sectionHeaderViewRegistration,
                                                                                   for: index)
             case HeaderView.elementKind:
                 return self.collectionView.dequeueConfiguredReusableSupplementary(using: headerViewRegistration,
-                                                                                   for: index)
+                                                                                  for: index)
             case FooterView.elementKind:
                 return self.collectionView.dequeueConfiguredReusableSupplementary(using: footerViewRegistration, for: index)
             default: break
@@ -74,82 +73,69 @@ final class ThemeViewController: UIViewController {
     }
     
     private func configureSnapshot() {
-        let eventItems = MockDataController.generateItems().filter { $0.itemType == .event }
-        let tagItems = MockDataController.generateItems().filter { $0.itemType == .tag }
-        let reactionItems = MockDataController.generateItems().filter({ $0.itemType == .reaction })
-        let opinionItems = MockDataController.generateItems().filter({ $0.itemType == .opinion })
-        let bannerItems = MockDataController.generateItems().filter({ $0.itemType == .banner })
-        let reviewItems = MockDataController.generateItems().filter({ $0.itemType == .review })
-
         var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
         Section.allCases.forEach { section in
             snapshot.appendSections([section])
+            snapshot.appendItems(MockDataController.shared.items(for: section), toSection: section)
         }
-
-        snapshot.appendItems(eventItems, toSection: .event)
-        snapshot.appendItems(tagItems, toSection: .tag)
-        snapshot.appendItems(reactionItems, toSection: .reaction)
-        snapshot.appendItems(opinionItems, toSection: .opinion)
-        snapshot.appendItems(bannerItems, toSection: .banner)
-        snapshot.appendItems(reviewItems, toSection: .review)
-        
         dataSource.apply(snapshot, animatingDifferences: true)
     }
 }
 
 /// - CellRegistration
 extension ThemeViewController {
-    private func eventCellRegistration() -> UICollectionView.CellRegistration<EventCell, Item> {
+    private func eventCellRegistration() -> UICollectionView.CellRegistration<EventCell, Event> {
         return UICollectionView.CellRegistration { (cell, indexPath, event) in
             cell.contentLabel.text = event.content
         }
     }
     
-    private func tagCellRegistration() -> UICollectionView.CellRegistration<TagCell, Item> {
+    private func tagCellRegistration() -> UICollectionView.CellRegistration<TagCell, Tag> {
         return UICollectionView.CellRegistration { (cell, indexPath, tag) in
             cell.tagButton.setTitle(tag.keyword, for: .normal)
         }
     }
     
-    private func reactionCellRegistration() -> UICollectionView.CellRegistration<ReactionCell, Item> {
+    private func reactionCellRegistration() -> UICollectionView.CellRegistration<ReactionCell, Reaction> {
         return UICollectionView.CellRegistration { (cell, indexPath, reaction) in
-            cell.imageView.image = UIImage(named: reaction.imagePath ?? "Please check -- imagePath")
+            cell.imageView.image = UIImage(named: reaction.imagePath)
             cell.keywordLabel.text = reaction.keyword
         }
     }
     
-    private func opinionCellRegistration() -> UICollectionView.CellRegistration<OpinionCell, Item> {
+    private func opinionCellRegistration() -> UICollectionView.CellRegistration<OpinionCell, Opinion> {
         return UICollectionView.CellRegistration { (cell, indexPath, opinion) in
             cell.imageLabel.text = opinion.emoji
             cell.keywordLabel.text = opinion.keyword
-            cell.countLabel.text = String(opinion.count ?? 0)
+            cell.countLabel.text = String(opinion.count)
         }
     }
     
-    private func bannerCellRegistration() -> UICollectionView.CellRegistration<BannerCell, Item> {
+    private func bannerCellRegistration() -> UICollectionView.CellRegistration<BannerCell, Banner> {
         return UICollectionView.CellRegistration { cell, indexPath, banner in
-            cell.bannerView.image = UIImage(named: banner.imagePath ?? "Please check -- imagePath")
+            cell.bannerView.image = UIImage(named: banner.imagePath)
         }
     }
     
-    private func reviewCellRegistration() -> UICollectionView.CellRegistration<ReviewCell, Item> {
+    private func reviewCellRegistration() -> UICollectionView.CellRegistration<ReviewCell, Review> {
         return UICollectionView.CellRegistration { cell, indexPath, review in
             cell.updateUI(review)
         }
     }
     
     private func sectionHeaderViewRegistration() -> UICollectionView.SupplementaryRegistration<SectionHeaderView> {
-        return UICollectionView.SupplementaryRegistration<SectionHeaderView>(elementKind: SectionHeaderView.elementKind,
-                                                                             handler: { supplementaryView, elementKind, indexPath in
-            if let reviewSection = Section(rawValue: Section.review.rawValue) {
-                if indexPath.section == reviewSection.rawValue {
-                    let snapshot = self.dataSource.snapshot()
-                    let numberOfReviews = snapshot.numberOfItems(inSection: .review)
-                    supplementaryView.updateUI(Section.review.title, numberOfReviews-1)
+        return UICollectionView.SupplementaryRegistration<SectionHeaderView>(
+            elementKind: SectionHeaderView.elementKind,
+            handler: { supplementaryView, elementKind, indexPath in
+                if let reviewSection = Section(rawValue: Section.review.rawValue) {
+                    if indexPath.section == reviewSection.rawValue {
+                        let snapshot = self.dataSource.snapshot()
+                        let numberOfReviews = snapshot.numberOfItems(inSection: .review)
+                        supplementaryView.updateUI(Section.review.title, numberOfReviews-1)
+                    }
                 }
-            }
-            supplementaryView.updateUI(Section(rawValue: indexPath.section)?.title ?? "Please check review-title", nil)
-        })
+                supplementaryView.updateUI(Section(rawValue: indexPath.section)?.title ?? "Please check review-title", nil)
+            })
     }
     
     private func headerViewRegistration() -> UICollectionView.SupplementaryRegistration<HeaderView> {

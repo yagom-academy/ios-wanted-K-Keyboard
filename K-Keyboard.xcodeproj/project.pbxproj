@@ -103,6 +103,13 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
+		5DFFA0F028EE9877009252E6 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		63487F2B28E2EA5E0033CF32 = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +155,7 @@
 		FD9C017528EE08C80068153B /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				5DFFA0F028EE9877009252E6 /* New Group */,
 				FD9C017628EE09150068153B /* EventCell.swift */,
 				FD9C017828EE09BD0068153B /* TagCell.swift */,
 				FD9C017F28EE101D0068153B /* ReactionCell.swift */,

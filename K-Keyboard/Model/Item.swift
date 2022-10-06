@@ -7,25 +7,43 @@
 
 import UIKit
 
-struct Item: Hashable {
-    private let identifier = UUID()
-    let itemType: Section
-    var content: String?
-    var keyword: String?
-    var imagePath: String?
-    var emoji: String?
-    var count: Int?
-    var nickName: String?
-    var time: Date?
-    var isOwner: Bool?
-    
-    func hash(into hasher: inout Hasher) {
-                    hasher.combine(identifier)
-            }
+enum Item: Hashable {
+    case event(Event)
+    case tag(Tag)
+    case reaction(Reaction)
+    case opinion(Opinion)
+    case banner(Banner)
+    case review(Review)
+}
 
-    static func == (lhs: Item, rhs: Item) -> Bool {
-            return lhs.identifier == rhs.identifier
-    }
+struct Event: Hashable {
+    let content: String
+}
+
+struct Tag: Hashable {
+    let keyword: String
+}
+
+struct Reaction: Hashable {
+    let keyword: String
+    let imagePath: String
+}
+
+struct Opinion: Hashable {
+    let keyword: String
+    let emoji: String
+    let count = 0
+}
+
+struct Banner: Hashable {
+    let imagePath: String
+}
+
+struct Review: Hashable {
+    let content: String
+    let nickName: String
+    let time: Date
+    let isOwner: Bool
 }
 
 struct Owner: Hashable {

@@ -1,5 +1,5 @@
 //
-//  MockDataController.swift
+//  Section.swift
 //  K-Keyboard
 //
 //  Created by sole on 2022/10/06.
@@ -14,7 +14,7 @@ enum Section: Int, CaseIterable {
     case opinion
     case banner
     case review
-    
+
     var title: String {
         switch self {
         case .event:
@@ -31,7 +31,7 @@ enum Section: Int, CaseIterable {
             return "구매리뷰"
         }
     }
-    
+
     var itemSize: NSCollectionLayoutSize {
         switch self {
         case .tag:
@@ -42,7 +42,7 @@ enum Section: Int, CaseIterable {
             return NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50))
         }
     }
-    
+
     var groupSize: NSCollectionLayoutSize {
         switch self {
         case .reaction:

@@ -18,9 +18,10 @@ extension ThemeViewController {
             let spacing = CGFloat(16)
             let sectionSpacing = NSDirectionalEdgeInsets(top: spacing, leading: spacing, bottom: spacing, trailing: spacing)
             let wideSectionSpacint = NSDirectionalEdgeInsets(top: spacing, leading: 0, bottom: spacing, trailing: 0)
+
             
             switch sectionIndex {
-            case Section.event.rawValue:
+            case 0:
                 let item = NSCollectionLayoutItem(layoutSize: Section.event.itemSize)
                 let group = NSCollectionLayoutGroup.horizontal(layoutSize: Section.event.groupSize, subitems: [item])
                 let section = NSCollectionLayoutSection(group: group)
@@ -28,7 +29,7 @@ extension ThemeViewController {
                 section.contentInsets = sectionSpacing
                 section.boundarySupplementaryItems = [sectionHeader, header]
                 return section
-            case Section.tag.rawValue:
+            case 1:
                 let item = NSCollectionLayoutItem(layoutSize: Section.tag.itemSize)
                 let group = NSCollectionLayoutGroup.horizontal(layoutSize: Section.tag.groupSize, subitems: [item])
                 group.interItemSpacing = .fixed(spacing)
@@ -37,7 +38,7 @@ extension ThemeViewController {
                 section.contentInsets = sectionSpacing
                 section.boundarySupplementaryItems = [sectionHeader]
                 return section
-            case Section.reaction.rawValue:
+            case 2:
                 let item = NSCollectionLayoutItem(layoutSize: Section.reaction.itemSize)
                 let group = NSCollectionLayoutGroup.horizontal(layoutSize: Section.reaction.groupSize, subitems: [item])
                 let section = NSCollectionLayoutSection(group: group)
@@ -46,14 +47,14 @@ extension ThemeViewController {
                 section.orthogonalScrollingBehavior = .continuous
                 section.boundarySupplementaryItems = [sectionHeader]
                 return section
-            case Section.opinion.rawValue:
+            case 3:
                 let item = NSCollectionLayoutItem(layoutSize: Section.opinion.itemSize)
                 let group = NSCollectionLayoutGroup.horizontal(layoutSize: Section.opinion.groupSize, subitems: [item])
                 let section = NSCollectionLayoutSection(group: group)
                 section.contentInsets = sectionSpacing
                 section.boundarySupplementaryItems = [sectionHeader]
                 return section
-            case Section.banner.rawValue:
+            case 4:
                 let item = NSCollectionLayoutItem(layoutSize: Section.banner.itemSize)
                 let group = NSCollectionLayoutGroup.horizontal(layoutSize: Section.banner.groupSize, subitems: [item])
                 let section = NSCollectionLayoutSection(group: group)
