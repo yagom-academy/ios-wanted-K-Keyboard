@@ -41,6 +41,16 @@ class FirstViewController: UIViewController, FirstViewControllerRoutable {
         super.viewDidLoad()
         model.populateData()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        registerForKeyboardNotification()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        removeForKeyboardNotification()
+    }
 }
 
 extension FirstViewController: Presentable {
@@ -158,6 +168,8 @@ extension FirstViewController: Presentable {
     }
     
     func configureView() {
+        scrollView.contentInset = UIEdgeInsets.zero
+        scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
         scrollView.backgroundColor = .white
     }
     
@@ -178,7 +190,34 @@ extension FirstViewController: Presentable {
             self.route(to: scene)
         }
     }
-    
-    
 }
 
+extension FirstViewController {
+    func registerForKeyboardNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow(_:)), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide(_:)), name: UIResponder.keyboardDidHideNotification, object: nil)
+    }
+    
+    func removeForKeyboardNotification() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidHideNotification, object: nil)
+    }
+    
+    
+    @objc func keyboardShow(_ notification: NSNotification) {
+        guard let info = notification.userInfo else { return }
+        guard let rect: CGRect = info[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+        let kbSize = rect.size
+
+        let insets = UIEdgeInsets(top: 0, left: 0, bottom: kbSize.height, right: 0)
+        scrollView.contentInset = insets
+        scrollView.scrollIndicatorInsets = insets
+
+        scrollView.setContentOffset(CGPoint(x: 0, y: commentInputView.frame.origin.y-kbSize.height), animated: true)
+    }
+    
+    @objc func keyboardHide(_ notification: NSNotification) {
+        scrollView.contentInset = UIEdgeInsets.zero
+        scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
+    }
+}
