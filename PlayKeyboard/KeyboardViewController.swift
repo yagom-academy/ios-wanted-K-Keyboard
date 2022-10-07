@@ -10,17 +10,15 @@ class KeyboardViewController: UIInputViewController {
     var spaceButton: KeyboardButton?
     var deleteButton: KeyboardButton?
     var boolvalue: Bool = true
-    var buttoncount = 0
-    
-    //MorseKeyboardView개체 에 대한 참조를 보유하는 속성 입니다.
-    var KeyboardView: KeyboardView!
     var lastCharacters: [String] = []
+    var buttoncount = 0
+
+    var KeyboardView: KeyboardView!
     
     
     @IBAction func shiftButton(_ sender: Any) {
         buttoncount += 1
         if buttoncount % 2 != 0 {
-            
             print("if\(buttoncount)")
         } else {
             
@@ -92,21 +90,15 @@ class KeyboardViewController: UIInputViewController {
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
-        // Add custom view sizing constraints here
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         makeRoundCorners()
       
-        //        morseKeyboardView.setNextKeyboardVisible(needsInputModeSwitchKey)
-        
-        
-        // 인스턴스가 MorseKeyboardView컨트롤러의 루트에 추가됩니다 inputView.
         let nib = UINib(nibName: "MorseKeyboardView", bundle: nil)
         let objects = nib.instantiate(withOwner: nil, options: nil)
         KeyboardView = objects.first as? KeyboardView
-        //        view = objects[0] as UIView
         guard let inputview = inputView else { return }
         inputview.addSubview(KeyboardView)
         
@@ -117,21 +109,6 @@ class KeyboardViewController: UIInputViewController {
                                      KeyboardView.rightAnchor.constraint(equalTo: inputview.rightAnchor),
                                      KeyboardView.bottomAnchor.constraint(equalTo: inputview.bottomAnchor)
                                     ])
-        
-        //        // Perform custom UI setup here
-        //        self.nextKeyboardButton = UIButton(type: .system)
-        //
-        //        self.nextKeyboardButton.setTitle(NSLocalizedString("Next Keyboard", comment: "Title for 'Next Keyboard' button"), for: [])
-        //        self.nextKeyboardButton.sizeToFit()
-        //        self.nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = false
-        //
-        //        self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
-        //
-        //        self.view.addSubview(self.nextKeyboardButton)
-        //
-        //        self.nextKeyboardButton.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-        //        self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-        
     }
     
     func makeRoundCorners() {
@@ -146,7 +123,6 @@ class KeyboardViewController: UIInputViewController {
     
     
     override func viewWillLayoutSubviews() {
-        //        self.nextKeyboardButton.isHidden = !self.needsInputModeSwitchKey
         super.viewWillLayoutSubviews()
     }
     override func textWillChange(_ textInput: UITextInput?) {
