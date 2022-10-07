@@ -27,7 +27,7 @@ class BuyView: UIView {
         let label = UILabel()
         label.text = "앙무"
         label.textColor = UIColor(named: Color.titleGray.rawValue)
-        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         return label
     }()
     
@@ -54,7 +54,7 @@ class BuyView: UIView {
         let label = UILabel()
         label.text = "🎉플레이키보드 첫 이벤트 테마를 공개합니다.🎉"
         label.textColor = UIColor(named: Color.titleGray.rawValue)
-        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         return label
     }()
     
@@ -72,7 +72,7 @@ class BuyView: UIView {
         let label = UILabel()
         label.text = "태그"
         label.textColor = UIColor(named: Color.titleGray.rawValue)
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         return label
     }()
     
@@ -184,7 +184,7 @@ class BuyView: UIView {
         let label = UILabel()
         label.text = "이런 키워드에 반응해요"
         label.textColor = UIColor(named: Color.titleGray.rawValue)
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         return label
     }()
     
@@ -284,7 +284,7 @@ class BuyView: UIView {
         let label = UILabel()
         label.text = "이 테마를 어떻게 생각하나요?"
         label.textColor = UIColor(named: Color.titleGray.rawValue)
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         return label
     }()
     
@@ -305,7 +305,7 @@ class BuyView: UIView {
         let label = UILabel()
         label.text = "맘에들어요"
         label.textColor = UIColor(named: Color.subDarkGray.rawValue)
-        label.font = UIFont(name: "systemFont", size: 12)
+        label.font = UIFont.systemFont(ofSize: 12)
         return label
     }()
     
@@ -313,7 +313,7 @@ class BuyView: UIView {
         let label = UILabel()
         label.text = "0"
         label.textColor = UIColor(named: Color.subDarkGray.rawValue)
-        label.font = UIFont(name: "systemFont", size: 10)
+        label.font = UIFont.systemFont(ofSize: 10)
         return label
     }()
     
@@ -334,7 +334,7 @@ class BuyView: UIView {
         let label = UILabel()
         label.text = "심쿵했어요"
         label.textColor = UIColor(named: Color.subDarkGray.rawValue)
-        label.font = UIFont(name: "systemFont", size: 12)
+        label.font = UIFont.systemFont(ofSize: 12)
         return label
     }()
     
@@ -342,7 +342,7 @@ class BuyView: UIView {
         let label = UILabel()
         label.text = "1"
         label.textColor = UIColor(named: Color.subDarkGray.rawValue)
-        label.font = UIFont(name: "systemFont", size: 10)
+        label.font = UIFont.systemFont(ofSize: 10)
         return label
     }()
     
@@ -363,7 +363,7 @@ class BuyView: UIView {
         let label = UILabel()
         label.text = "응원해요"
         label.textColor = UIColor(named: Color.subDarkGray.rawValue)
-        label.font = UIFont(name: "systemFont", size: 12)
+        label.font = UIFont.systemFont(ofSize: 12)
         return label
     }()
     
@@ -371,7 +371,7 @@ class BuyView: UIView {
         let label = UILabel()
         label.text = "0"
         label.textColor = UIColor(named: Color.subDarkGray.rawValue)
-        label.font = UIFont(name: "systemFont", size: 10)
+        label.font = UIFont.systemFont(ofSize: 10)
         return label
     }()
     
@@ -392,7 +392,7 @@ class BuyView: UIView {
         let label = UILabel()
         label.text = "갖고싶어요"
         label.textColor = UIColor(named: Color.subDarkGray.rawValue)
-        label.font = UIFont(name: "systemFont", size: 12)
+        label.font = UIFont.systemFont(ofSize: 12)
         return label
     }()
     
@@ -400,7 +400,7 @@ class BuyView: UIView {
         let label = UILabel()
         label.text = "0"
         label.textColor = UIColor(named: Color.subDarkGray.rawValue)
-        label.font = UIFont(name: "systemFont", size: 10)
+        label.font = UIFont.systemFont(ofSize: 10)
         return label
     }()
     
@@ -420,8 +420,8 @@ class BuyView: UIView {
     let reviewLabel: UILabel = {
         let label = UILabel()
         label.text = "구매 리뷰 0"
-        label.font = UIFont.boldSystemFont(ofSize: 16)
-        
+        label.font = UIFont.systemFont(ofSize: 16)
+
         let attributeString = NSMutableAttributedString(string: label.text!)
         attributeString.addAttribute(.foregroundColor, value: UIColor(named: Color.titleGray.rawValue) ?? UIColor.gray, range: (label.text! as NSString).range(of: "구매 리뷰"))
         attributeString.addAttribute(.foregroundColor, value: UIColor(named: Color.mainColor.rawValue) ?? UIColor.systemPink, range: (label.text! as NSString).range(of: "0"))
@@ -546,7 +546,7 @@ class BuyView: UIView {
         let label = UILabel()
         label.text = "5"
         label.textColor = UIColor(named: Color.gemColor.rawValue)
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = UIFont.systemFont(ofSize: 16)
         return label
     }()
     

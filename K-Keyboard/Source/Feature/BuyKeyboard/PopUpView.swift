@@ -42,8 +42,8 @@ class PopUpView: UIView {
         label.numberOfLines = 2
         label.textAlignment = .center
         label.text = "N젬이 부족해요\n빠르게 충전해보세요!"
-        label.font = UIFont.boldSystemFont(ofSize: 16)
-        
+        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+
         let attributeString = NSMutableAttributedString(string: label.text!)
         attributeString.addAttribute(.foregroundColor, value: UIColor(named: Color.gemColor.rawValue) ?? UIColor.systemBlue, range: (label.text! as NSString).range(of: "N젬"))
         attributeString.addAttribute(.foregroundColor, value: UIColor(named: Color.titleGray.rawValue) ?? UIColor.gray, range: (label.text! as NSString).range(of: "N이 부족해요\n빠르게 충전해보세요!"))
@@ -55,7 +55,7 @@ class PopUpView: UIView {
         let label = UILabel()
         label.text = "젬 수량"
         label.textColor = UIColor(named: Color.titleGray.rawValue)
-        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         return label
     }()
     
@@ -92,7 +92,7 @@ class PopUpView: UIView {
         let label = UILabel()
         label.text = "결제 금액"
         label.textColor = UIColor(named: Color.titleGray.rawValue)
-        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         return label
     }()
     

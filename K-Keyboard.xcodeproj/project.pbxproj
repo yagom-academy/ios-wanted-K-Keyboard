@@ -13,6 +13,14 @@
 		2D52010E28EEE353000E2216 /* OftenUsedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D52010D28EEE353000E2216 /* OftenUsedCell.swift */; };
 		2D52010F28EEE4CF000E2216 /* OftenUsedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D52010B28EEE1BF000E2216 /* OftenUsedView.swift */; };
 		2D52011028EEE5B6000E2216 /* OftenUsedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D52010D28EEE353000E2216 /* OftenUsedCell.swift */; };
+		2D52011A28F04716000E2216 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D52011928F04716000E2216 /* UIButton+Extension.swift */; };
+		2D52011B28F04729000E2216 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D52011928F04716000E2216 /* UIButton+Extension.swift */; };
+		2D52011D28F0494E000E2216 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D52011C28F0494E000E2216 /* UIView+Extension.swift */; };
+		2D52011E28F0496F000E2216 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D52011C28F0494E000E2216 /* UIView+Extension.swift */; };
+		2D52012028F04AD3000E2216 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D52011F28F04AD3000E2216 /* UIColor+Extension.swift */; };
+		2D52012128F04AE8000E2216 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D52011F28F04AD3000E2216 /* UIColor+Extension.swift */; };
+		2D52012328F04B1E000E2216 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D52012228F04B1E000E2216 /* UIStackView+Extension.swift */; };
+		2D52012428F04B68000E2216 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D52012228F04B1E000E2216 /* UIStackView+Extension.swift */; };
 		2D899F2328E56CBE00EAEB25 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D899F2228E56CBE00EAEB25 /* KeyboardViewController.swift */; };
 		2D899F2728E56CBE00EAEB25 /* KKeyboard.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 2D899F2028E56CBE00EAEB25 /* KKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2D899F2E28E578AF00EAEB25 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D899F2D28E578AF00EAEB25 /* KeyboardView.swift */; };
@@ -64,6 +72,10 @@
 		2D52010528EED118000E2216 /* KeyboardAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAccessoryView.swift; sourceTree = "<group>"; };
 		2D52010B28EEE1BF000E2216 /* OftenUsedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OftenUsedView.swift; sourceTree = "<group>"; };
 		2D52010D28EEE353000E2216 /* OftenUsedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OftenUsedCell.swift; sourceTree = "<group>"; };
+		2D52011928F04716000E2216 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		2D52011C28F0494E000E2216 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		2D52011F28F04AD3000E2216 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		2D52012228F04B1E000E2216 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
 		2D899F2028E56CBE00EAEB25 /* KKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = KKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D899F2228E56CBE00EAEB25 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		2D899F2428E56CBE00EAEB25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -145,6 +157,10 @@
 			isa = PBXGroup;
 			children = (
 				8CBAA03E28EFFC98003C66D3 /* TextConstant.swift */,
+				2D52011928F04716000E2216 /* UIButton+Extension.swift */,
+				2D52011C28F0494E000E2216 /* UIView+Extension.swift */,
+				2D52011F28F04AD3000E2216 /* UIColor+Extension.swift */,
+				2D52012228F04B1E000E2216 /* UIStackView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -160,6 +176,7 @@
 		8CDA640128E546BB00F123FE /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				8CBAA03D28EFFC69003C66D3 /* Extensions */,
 				8CDA640328E5473500F123FE /* Feature */,
 			);
 			path = Source;
@@ -179,7 +196,6 @@
 		8CDA640328E5473500F123FE /* Feature */ = {
 			isa = PBXGroup;
 			children = (
-				8CBAA03D28EFFC69003C66D3 /* Extensions */,
 				8CDA640528E5478000F123FE /* BuyKeyboard */,
 				8CDA640428E5476500F123FE /* Keyboard */,
 			);
@@ -316,10 +332,14 @@
 				2DB2469F28E58AC600FF2D07 /* KeyButton.swift in Sources */,
 				2D899F2328E56CBE00EAEB25 /* KeyboardViewController.swift in Sources */,
 				2D52010F28EEE4CF000E2216 /* OftenUsedView.swift in Sources */,
+				2D52012128F04AE8000E2216 /* UIColor+Extension.swift in Sources */,
 				2D52011028EEE5B6000E2216 /* OftenUsedCell.swift in Sources */,
+				2D52012428F04B68000E2216 /* UIStackView+Extension.swift in Sources */,
 				2DB246B828E95A2B00FF2D07 /* KeyboardState.swift in Sources */,
+				2D52011B28F04729000E2216 /* UIButton+Extension.swift in Sources */,
 				2DB2469E28E5898D00FF2D07 /* KeyboardView.swift in Sources */,
 				2D52010728EED64F000E2216 /* KeyboardAccessoryView.swift in Sources */,
+				2D52011E28F0496F000E2216 /* UIView+Extension.swift in Sources */,
 				2DB246B328E836AE00FF2D07 /* KoreanAutomata.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,8 +349,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D52010C28EEE1BF000E2216 /* OftenUsedView.swift in Sources */,
+				2D52012028F04AD3000E2216 /* UIColor+Extension.swift in Sources */,
 				2DB246B728E9568F00FF2D07 /* KeyboardState.swift in Sources */,
 				8CBA9FF628E87D82003C66D3 /* PopUpView.swift in Sources */,
+				2D52011A28F04716000E2216 /* UIButton+Extension.swift in Sources */,
 				63487F3C28E2EA5E0033CF32 /* ViewController.swift in Sources */,
 				2DB246B228E6A55E00FF2D07 /* KoreanAutomata.swift in Sources */,
 				8CBA9FF428E875AD003C66D3 /* PopUpViewController.swift in Sources */,
@@ -339,6 +361,8 @@
 				8CDA640728E5481200F123FE /* KeyboardTestViewController.swift in Sources */,
 				2DB2469D28E5797500FF2D07 /* KeyButton.swift in Sources */,
 				2D52010628EED118000E2216 /* KeyboardAccessoryView.swift in Sources */,
+				2D52012328F04B1E000E2216 /* UIStackView+Extension.swift in Sources */,
+				2D52011D28F0494E000E2216 /* UIView+Extension.swift in Sources */,
 				2D52010E28EEE353000E2216 /* OftenUsedCell.swift in Sources */,
 				8CBAA03F28EFFC98003C66D3 /* TextConstant.swift in Sources */,
 				2D899F2E28E578AF00EAEB25 /* KeyboardView.swift in Sources */,
@@ -374,7 +398,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AH24YSXN5M;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KKeyboard/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = KKeyboard;
@@ -400,7 +424,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AH24YSXN5M;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KKeyboard/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = KKeyboard;
@@ -543,7 +567,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AH24YSXN5M;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "K-Keyboard/Application/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -571,7 +595,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AH24YSXN5M;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "K-Keyboard/Application/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
