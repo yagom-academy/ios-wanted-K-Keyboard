@@ -87,8 +87,9 @@ class FirstViewController: UIViewController {
 
     let saveButton: UIButton = {
         let button = UIButton()
-        button.setBackgroundImage(UIImage(named: "pinkButton"), for: .normal)
-        button.contentMode = .scaleAspectFit
+        button.contentMode = .center
+        button.backgroundColor = UIColor(red: 0.92, green: 0.32, blue: 0.49, alpha: 1)
+        button.layer.cornerRadius = 18
         button.setTitle("등록", for: .normal)
         button.titleLabel?.font = UIFont(name: Const.Font.notoBold, size: 14)
         button.titleLabel?.baselineAdjustment = .alignCenters
