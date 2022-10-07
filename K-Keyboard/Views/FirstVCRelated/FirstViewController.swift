@@ -206,7 +206,7 @@ extension FirstViewController {
     
     @objc func keyboardShow(_ notification: NSNotification) {
         guard let info = notification.userInfo else { return }
-        guard let rect: CGRect = info[UIResponder.keyboardFrameBeginUserInfoKey] as? CGRect else { return }
+        guard let rect: CGRect = info[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
         let kbSize = rect.size
 
         let insets = UIEdgeInsets(top: 0, left: 0, bottom: kbSize.height, right: 0)
@@ -214,10 +214,19 @@ extension FirstViewController {
         scrollView.scrollIndicatorInsets = insets
 
         scrollView.setContentOffset(CGPoint(x: 0, y: commentInputView.frame.origin.y-kbSize.height), animated: true)
+       
+//        let bottomInsets = self.view.safeAreaInsets.bottom
+//        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+//            UIView.animate(withDuration: 0.3, animations: {
+//                self.scrollView.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height + bottomInsets)
+//            })
+//        }
     }
     
     @objc func keyboardHide(_ notification: NSNotification) {
         scrollView.contentInset = UIEdgeInsets.zero
         scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
+      //  self.scrollView.transform = .identity
+
     }
 }
