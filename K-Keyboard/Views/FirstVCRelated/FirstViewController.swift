@@ -20,7 +20,7 @@ class FirstViewController: UIViewController, FirstViewControllerRoutable {
     lazy var bannerView = BannerView()
     lazy var purchaseReviewListView = PurchaseReviewView()
     lazy var purchaseButtonView = PurchaseButtonView(viewModel: self.model.purchaseButtonViewModel)
-    lazy var commentInputView = CommentInputView()
+    lazy var commentInputView = CommentInputView(viewModel: self.model.commentInputViewModel)
     
     init(viewModel: FirstModel) {
         self.model = viewModel
@@ -39,6 +39,7 @@ class FirstViewController: UIViewController, FirstViewControllerRoutable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        model.populateData()
     }
 }
 
@@ -154,9 +155,6 @@ extension FirstViewController: Presentable {
             commentInputView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
         ]
         
-        // TODO: fix temp value
-        commentInputView.isHidden = true
-        
     }
     
     func configureView() {
@@ -164,6 +162,17 @@ extension FirstViewController: Presentable {
     }
     
     func bind() {
+        model.propergateGemPurchasedEvent = { [weak self] bool in
+            guard let self = self else { return }
+            if bool == true {
+                self.commentInputView.isHidden = false
+                self.purchaseButtonView.isHidden = true
+            } else if bool == false {
+                self.commentInputView.isHidden = true
+                self.purchaseButtonView.isHidden = false
+            }
+        }
+        
         model.routeSubject = { [weak self] scene in
             guard let self = self else { return }
             self.route(to: scene)
