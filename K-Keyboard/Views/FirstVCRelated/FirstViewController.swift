@@ -172,8 +172,8 @@ extension FirstViewController: Presentable {
         scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
         scrollView.backgroundColor = .white
         
-        scrollView.backgroundColor = .blue
-        commentInputView.backgroundColor = .yellow
+        scrollView.backgroundColor = .white
+        commentInputView.backgroundColor = .white
         
     }
     
