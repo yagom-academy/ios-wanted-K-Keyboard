@@ -59,7 +59,7 @@ class CommentTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        [nicknameLabel, commentLabel].map {
+        [nicknameLabel, commentLabel].forEach {
             self.commentStackView.addArrangedSubview($0)
         }
 
@@ -80,7 +80,6 @@ class CommentTableViewCell: UITableViewCell {
         commentView.translatesAutoresizingMaskIntoConstraints = false
         commentView.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 16).isActive = true
         commentView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-//        commentView.widthAnchor.constraint(equalToConstant: 150).isActive = true
         commentView.heightAnchor.constraint(equalToConstant: 54).isActive = true
         
         commentView.addSubview(commentStackView)

@@ -28,6 +28,7 @@ class ViewController: UIViewController {
         buyView.viewController = self
         
         buyView.buyButton.addTarget(self, action: #selector(buyButtonPressed), for: .touchUpInside)
+        buyView.commentButton.addTarget(self, action: #selector(commentButtonPressed), for: .touchUpInside)
         
         hideKeyboardWhenTappedAround() //키보드내리기
         enableKeyboardHideOnTap()
@@ -45,7 +46,6 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        print("호출완료")
         setUPReturnForeground()
     }
     

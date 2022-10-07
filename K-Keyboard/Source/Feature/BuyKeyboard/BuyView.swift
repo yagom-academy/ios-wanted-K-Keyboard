@@ -44,8 +44,8 @@ class BuyView: UIView {
         label.text = "78명이 참여했어요!"
         label.font = UIFont.systemFont(ofSize: 14)
         let attributeString = NSMutableAttributedString(string: label.text!)
-        attributeString.addAttribute(.foregroundColor, value: UIColor(named: Color.mainColor.rawValue), range: (label.text! as NSString).range(of: "78"))
-        attributeString.addAttribute(.foregroundColor, value: UIColor(named: Color.subDarkGray.rawValue), range: (label.text! as NSString).range(of: "명이 참여했어요!"))
+        attributeString.addAttribute(.foregroundColor, value: UIColor(named: Color.mainColor.rawValue) ?? UIColor.systemPink, range: (label.text! as NSString).range(of: "78"))
+        attributeString.addAttribute(.foregroundColor, value: UIColor(named: Color.subDarkGray.rawValue) ?? UIColor.darkGray, range: (label.text! as NSString).range(of: "명이 참여했어요!"))
         label.attributedText = attributeString
         return label
     }()
@@ -359,8 +359,8 @@ class BuyView: UIView {
         label.font = UIFont.boldSystemFont(ofSize: 16)
         
         let attributeString = NSMutableAttributedString(string: label.text!)
-        attributeString.addAttribute(.foregroundColor, value: UIColor(named: Color.titleGray.rawValue), range: (label.text! as NSString).range(of: "구매 리뷰"))
-        attributeString.addAttribute(.foregroundColor, value: UIColor(named: Color.mainColor.rawValue), range: (label.text! as NSString).range(of: "0"))
+        attributeString.addAttribute(.foregroundColor, value: UIColor(named: Color.titleGray.rawValue) ?? UIColor.gray, range: (label.text! as NSString).range(of: "구매 리뷰"))
+        attributeString.addAttribute(.foregroundColor, value: UIColor(named: Color.mainColor.rawValue) ?? UIColor.systemPink, range: (label.text! as NSString).range(of: "0"))
         label.attributedText = attributeString
         return label
     }()
@@ -444,8 +444,6 @@ class BuyView: UIView {
         return label
     }()
     
-    //------------------------//
-    
     let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.showsVerticalScrollIndicator = false
@@ -494,8 +492,8 @@ class BuyView: UIView {
         label.font = UIFont.systemFont(ofSize: 12)
         
         let attributeString = NSMutableAttributedString(string: label.text!)
-        attributeString.addAttribute(.foregroundColor, value: UIColor(named: Color.mainColor.rawValue), range: (label.text! as NSString).range(of: "0젬"))
-        attributeString.addAttribute(.foregroundColor, value: UIColor(named: Color.subDarkGray.rawValue), range: (label.text! as NSString).range(of: "보유 중"))
+        attributeString.addAttribute(.foregroundColor, value: UIColor(named: Color.mainColor.rawValue) ?? UIColor.systemPink, range: (label.text! as NSString).range(of: "0젬"))
+        attributeString.addAttribute(.foregroundColor, value: UIColor(named: Color.subDarkGray.rawValue) ?? UIColor.darkGray, range: (label.text! as NSString).range(of: "보유 중"))
         label.attributedText = attributeString
         return label
     }()
@@ -518,8 +516,6 @@ class BuyView: UIView {
     let commentTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "댓글을 남겨보세요!"
-//        textField.layer.borderWidth = 1
-//        textField.layer.borderColor = UIColor.systemGray3.cgColor.copy(alpha: 1)
         return textField
     }()
     
@@ -529,25 +525,24 @@ class BuyView: UIView {
         button.tintColor = .white
         button.layer.cornerRadius = 10
         button.setTitle("등록", for: UIControl.State.normal)
-        button.addTarget(self, action: #selector(ViewController.commentButtonPressed), for: .touchUpInside)
         return button
     }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        [eventTagView, characterTagView, birdTagView, animalTagView, cuteTagView].map {
+        [eventTagView, characterTagView, birdTagView, animalTagView, cuteTagView].forEach {
             self.tagStackView.addArrangedSubview($0)
         }
         
-        [funView, hopeView, playView].map {
+        [funView, hopeView, playView].forEach {
             self.reactionStackView.addArrangedSubview($0)
         }
         
-        [emojiButton1, emojiButton2, emojiButton3, emojiButton4].map {
+        [emojiButton1, emojiButton2, emojiButton3, emojiButton4].forEach {
             self.emojiStackView.addArrangedSubview($0)
         }
         
-        [nicknameLabel, commentLabel].map {
+        [nicknameLabel, commentLabel].forEach {
             self.commentStackView.addArrangedSubview($0)
         }
         
@@ -855,15 +850,4 @@ class BuyView: UIView {
             bottomAnchor.constraint(equalTo: viewController.view.bottomAnchor).isActive = true
         }
     }
-}
-
-extension UIView {
-    func tagView() {
-        
-    }
-}
-
-
-extension UILabel {
-
 }
