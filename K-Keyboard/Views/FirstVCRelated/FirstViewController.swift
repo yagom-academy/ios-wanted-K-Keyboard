@@ -18,7 +18,7 @@ class FirstViewController: UIViewController, FirstViewControllerRoutable {
     lazy var keywordView = KeywordView()
     lazy var themeOpinionView = ThemeOpinionView()
     lazy var bannerView = BannerView()
-    lazy var purchaseReviewListView = PurchaseReviewView()
+    lazy var purchaseReviewListView = PurchaseReviewView(viewModel: self.model.purchaseReviewListViewModel)
     lazy var purchaseButtonView = PurchaseButtonView(viewModel: self.model.purchaseButtonViewModel)
     lazy var commentInputView = CommentInputView(viewModel: self.model.commentInputViewModel)
     
@@ -194,19 +194,19 @@ extension FirstViewController: Presentable {
 
 extension FirstViewController {
     func registerForKeyboardNotification() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow(_:)), name: UIResponder.keyboardDidShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide(_:)), name: UIResponder.keyboardDidHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     func removeForKeyboardNotification() {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     
     @objc func keyboardShow(_ notification: NSNotification) {
         guard let info = notification.userInfo else { return }
-        guard let rect: CGRect = info[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+        guard let rect: CGRect = info[UIResponder.keyboardFrameBeginUserInfoKey] as? CGRect else { return }
         let kbSize = rect.size
 
         let insets = UIEdgeInsets(top: 0, left: 0, bottom: kbSize.height, right: 0)

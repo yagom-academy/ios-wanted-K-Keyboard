@@ -17,6 +17,7 @@
 		33A8839428EADED400FE9216 /* Hangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A8839328EADED400FE9216 /* Hangle.swift */; };
 		33A8839528EADFB800FE9216 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63487F4028E2EA5E0033CF32 /* Assets.xcassets */; };
 		3619180128F06983000CEE56 /* CommentInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619180028F06983000CEE56 /* CommentInputViewModel.swift */; };
+		3619180328F07B7C000CEE56 /* PurchaseReviewListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619180228F07B7C000CEE56 /* PurchaseReviewListViewModel.swift */; };
 		363247BF28EDF09500D68C3F /* KeywordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363247BE28EDF09500D68C3F /* KeywordCell.swift */; };
 		363247C128EDF0CC00D68C3F /* KeywordCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363247C028EDF0CC00D68C3F /* KeywordCellView.swift */; };
 		363247C528EE0A2600D68C3F /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363247C428EE0A2600D68C3F /* ReviewCell.swift */; };
@@ -119,6 +120,7 @@
 		33A1099C28F03D7D004068EF /* CellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellModel.swift; sourceTree = "<group>"; };
 		33A8839328EADED400FE9216 /* Hangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hangle.swift; sourceTree = "<group>"; };
 		3619180028F06983000CEE56 /* CommentInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentInputViewModel.swift; sourceTree = "<group>"; };
+		3619180228F07B7C000CEE56 /* PurchaseReviewListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseReviewListViewModel.swift; sourceTree = "<group>"; };
 		363247BE28EDF09500D68C3F /* KeywordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordCell.swift; sourceTree = "<group>"; };
 		363247C028EDF0CC00D68C3F /* KeywordCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordCellView.swift; sourceTree = "<group>"; };
 		363247C428EE0A2600D68C3F /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
@@ -404,6 +406,7 @@
 			children = (
 				4C242BAF28E808CE00DA6CBE /* FirstModel.swift */,
 				33A1099C28F03D7D004068EF /* CellModel.swift */,
+				3619180228F07B7C000CEE56 /* PurchaseReviewListViewModel.swift */,
 				36B80B9628F019D800A6324A /* PurchaseButtonViewModel.swift */,
 				3619180028F06983000CEE56 /* CommentInputViewModel.swift */,
 			);
@@ -618,6 +621,7 @@
 				4C242B8928E8056E00DA6CBE /* Routable.swift in Sources */,
 				4C242BAA28E807DB00DA6CBE /* API.swift in Sources */,
 				36CFF52728ED7AF700E7E9D6 /* KeywordView.swift in Sources */,
+				3619180328F07B7C000CEE56 /* PurchaseReviewListViewModel.swift in Sources */,
 				4C242BB428E808F700DA6CBE /* SecondModel.swift in Sources */,
 				36CFF52928ED7B4C00E7E9D6 /* ThemeOpinionView.swift in Sources */,
 				4C242BA628E8076B00DA6CBE /* Repository.swift in Sources */,

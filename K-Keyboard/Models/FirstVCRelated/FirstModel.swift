@@ -32,16 +32,22 @@ class FirstModel {
         return privateCommentInputViewModel
     }
     
+    var purchaseReviewListViewModel: PurchaseReviewListViewModel {
+        return privatePurchaseReviewListViewModel
+    }
+    
     
     //properties
     private var repository: RepositoryProtocol
     private var privatePurchaseButtonViewModel: PurchaseButtonViewModel
     private var privateCommentInputViewModel: CommentInputViewModel
+    private var privatePurchaseReviewListViewModel: PurchaseReviewListViewModel
     
     init(repository: RepositoryProtocol) {
         self.repository = repository
         self.privatePurchaseButtonViewModel = PurchaseButtonViewModel()
         self.privateCommentInputViewModel = CommentInputViewModel()
+        self.privatePurchaseReviewListViewModel = PurchaseReviewListViewModel()
         bind()
     }
     
