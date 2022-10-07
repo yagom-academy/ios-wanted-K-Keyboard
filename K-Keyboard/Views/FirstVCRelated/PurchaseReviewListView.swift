@@ -120,6 +120,11 @@ extension PurchaseReviewView: Presentable {
             self.tableView.insertRows(at: [indexPath], with: .right)
             self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
         }
+        
+        viewModel.populateReviewCommentCount = { [weak self] commentCount in
+            guard let self = self else { return }
+            self.countLabel.text = commentCount
+        }
     }
 }
 

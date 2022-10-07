@@ -17,11 +17,23 @@ class PurchaseReviewListViewModel {
         return privateCellData
     }
     
+    var populateReviewCommentCount: (String) -> () = { string in }
+    
     var populateCommentData: (CellModel) -> () = { model in }
     
     //properties
     
-    var privateCellData : [CellModel] = []
+    private var privateReviewCommentCount: String = "" {
+        didSet {
+            populateReviewCommentCount(privateReviewCommentCount)
+        }
+    }
+    
+    private var privateCellData : [CellModel] = [] {
+        didSet {
+            privateReviewCommentCount = "\(privateCellData.count)"
+        }
+    }
     
     init() {
         bind()
@@ -55,7 +67,7 @@ class PurchaseReviewListViewModel {
         
         let randomTimeString = ["1일", "1분", "1초"]
         
-        for _ in 1...9{
+        for _ in 1...20{
             var user = CellModel()
             user.id = "₀달빔₀"
             user.comment = "아진짜 귀여워요 !!!!"
