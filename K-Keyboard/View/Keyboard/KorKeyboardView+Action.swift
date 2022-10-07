@@ -32,7 +32,12 @@ extension KorKeyboardView {
                     state = 0
                     delegate?.insertCharacter(char)
                 }
-
+            case 0b11100:
+                delegate?.deleteCharacterBeforeCursor()
+                delegate?.insertCharacter(letter)
+                stack.removeAll()
+                delegate?.insertCharacter(char)
+                state = 0
             default:
                 if (state & 1) != 0 {
                     delegate?.deleteCharacterBeforeCursor()
@@ -116,15 +121,13 @@ extension KorKeyboardView {
         } else {
             stack.removeLast()
 
-            var pos = 0
             for i in 0 ..< 5 {
                 if (state & (1 << i)) != 0 {
-                    pos = i
+                    state ^= (1 << i)
                     break
                 }
             }
 
-            state ^= (1 << pos)
             delegate?.deleteCharacterBeforeCursor()
             delegate?.insertCharacter(letter)
         }
@@ -163,5 +166,13 @@ extension KorKeyboardView {
                 self.horizontal1Shift.isHidden = false
             }
         }
+    }
+
+    @objc func shortcutPressed(_ sender: UIButton) {
+        delegate?.insertCharacter(ShortcutData.now)
+    }
+
+    @objc func shortcutLongTapped() {
+        delegate?.showShortcutView()
     }
 }
