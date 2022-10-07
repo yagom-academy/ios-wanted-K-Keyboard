@@ -16,7 +16,10 @@ class PurchaseButtonView: UIView, FirstViewStyling {
     
     var purchaseButton = UIButton()
     
-    init() {
+    var viewModel: PurchaseButtonViewModel
+    
+    init(viewModel: PurchaseButtonViewModel) {
+        self.viewModel = viewModel
         super.init(frame: .zero)
         initViewHierarchy()
         configureView()
@@ -81,10 +84,13 @@ extension PurchaseButtonView: Presentable {
     }
     
     func bind() {
-        
+
+        let action = UIAction(title: "구매하기") { [weak self] _ in
+            guard let self = self else { return }
+            self.viewModel.didReceiveDidTouchButton()
+        }
+        purchaseButton.addAction(action, for: .touchUpInside)
     }
-    
-    
 }
 
 #if canImport(SwiftUI) && DEBUG
@@ -111,7 +117,7 @@ struct PurchaseButtonViewPreview<View: UIView>: UIViewRepresentable {
 struct PurchaseButtonViewPreviewProvider: PreviewProvider {
     static var previews: some View {
         PurchaseButtonViewPreview {
-            let view = PurchaseButtonView()
+            let view = PurchaseButtonView(viewModel: PurchaseButtonViewModel())
             return view
         }.previewLayout(.fixed(width: 375, height: 64))
     }

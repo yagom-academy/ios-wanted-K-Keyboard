@@ -11,6 +11,21 @@ import UIKit
 protocol FirstViewStyling { }
 
 extension FirstViewStyling {
+    var backButtonStyling: (UIBarButtonItem) -> () {
+        {
+            $0.image = UIImage(systemName: "chevron.left")
+            $0.tintColor = .black
+        }
+    }
+    
+    var saveButtonStyling: (UIBarButtonItem) -> () {
+        {
+            $0.title = "저장"
+        }
+    }
+}
+
+extension FirstViewStyling {
 
     var labelStyling : (UILabel,String) -> () {
         {

@@ -27,10 +27,10 @@ extension SecondViewControllerRoutable where Self: SecondViewController {
     func route(to Scene: SceneCategory) {
         switch Scene {
         case .close:
-            self.navigationController?.popViewController(animated: true)
+            self.dismiss(animated: true, completion: nil)
         case .closeWithAction(let scene):
             sendAction(scene: scene)
-            self.navigationController?.popViewController(animated: true)
+            self.dismiss(animated: true, completion: nil)
         case .alert:
             guard let scene = buildScene(scene: Scene) else { return }
             guard let nextVC = scene as? UIViewController else { return }
@@ -42,7 +42,9 @@ extension SecondViewControllerRoutable where Self: SecondViewController {
     func sendAction(scene: SceneCategory) {
         switch scene {
         case .main(.firstViewControllerWithAction(let context)):
-            guard let firstVC = self.navigationController?.viewControllers.first(where: { $0 is FirstViewController }) as? FirstViewController else { return }
+            guard let navi = self.presentingViewController as? BasicNavigationController else { return }
+            guard let firstVC = navi.viewControllers.first(where: { $0 is FirstViewController }) as? FirstViewController else { return }
+            
             let action = context.dependency
             firstVC.model.didReceiveSceneAction(action)
             break
