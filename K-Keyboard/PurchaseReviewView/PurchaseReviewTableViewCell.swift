@@ -50,15 +50,24 @@ class PurchaseReviewTableViewCell: UITableViewCell {
         uesrImage.translatesAutoresizingMaskIntoConstraints = false
         return uesrImage
     }()
+    lazy var createrView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        let label = UILabel()
+        view.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        label.text = "크리에이터"
+        label.font = .appleSDGothicNeo(weight: .medium, size: 10)
+        label.textColor = .white
+        view.backgroundColor = UIColor(hex: "#FF417D",alpha: 1)
+        view.layer.cornerRadius = 10
+        return view
+    }()
     lazy var createrLabel: UILabel = {
         let createrLabel = UILabel()
-        createrLabel.text = "크리에이터"
-        createrLabel.font = .appleSDGothicNeo(weight: .medium, size: 10)
-        createrLabel.textColor = UIColor(hex: "#FFFFFF", alpha: 1)
         createrLabel.translatesAutoresizingMaskIntoConstraints = false
-        createrLabel.backgroundColor = UIColor(hex: "#FF417D",alpha: 1)
-//        self.createrLabel.layer.cornerRadius = 24
-        createrLabel.layer.cornerRadius = 24
         return createrLabel
     }()
     
@@ -95,6 +104,7 @@ class PurchaseReviewTableViewCell: UITableViewCell {
         return description
     }()
     
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.cellSetting()
@@ -122,8 +132,10 @@ class PurchaseReviewTableViewCell: UITableViewCell {
             uesrImage.heightAnchor.constraint(equalToConstant: 48),
             uesrImage.widthAnchor.constraint(equalToConstant: 48),
             
-            createrLabel.topAnchor.constraint(equalTo: uesrImage.topAnchor,constant: 38),
-            createrLabel.centerXAnchor.constraint(equalTo: uesrImage.centerXAnchor),
+            createrView.topAnchor.constraint(equalTo: uesrImage.topAnchor,constant: 38),
+            createrView.centerXAnchor.constraint(equalTo: uesrImage.centerXAnchor),
+            createrView.widthAnchor.constraint(equalToConstant: 58),
+            createrView.heightAnchor.constraint(equalToConstant: 20),
             
             
             messageView.topAnchor.constraint(equalTo: uesrImage.topAnchor),
@@ -161,7 +173,8 @@ class PurchaseReviewTableViewCell: UITableViewCell {
         addSubview(timeLabel)
         addSubview(descriotionLabel)
         addSubview(messageView)
-        addSubview(createrLabel)
+        addSubview(createrView)
+    
         
     }
     

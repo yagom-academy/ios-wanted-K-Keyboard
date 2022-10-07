@@ -23,7 +23,7 @@ class ButtonView: UIView {
         textFiedViewButton.translatesAutoresizingMaskIntoConstraints = false
         textFiedViewButton.layer.cornerRadius = 15
         textFiedViewButton.isHidden = true
-        textFiedViewButton.addTarget(self, action: #selector(addReview), for: .touchUpInside)
+    
         return textFiedViewButton
     }()
     @objc func addReview(){
@@ -50,7 +50,6 @@ class ButtonView: UIView {
         buyButton.backgroundColor = UIColor(hex: "#FF417D", alpha: 1)
         buyButton.translatesAutoresizingMaskIntoConstraints = false
         buyButton.layer.cornerRadius = 15
-        buyButton.addTarget(self, action: #selector(alertView), for: .touchUpInside)
         
         return buyButton
     }()
@@ -97,6 +96,8 @@ class ButtonView: UIView {
         self.addSubview(jamLabel)
         self.addSubview(textFiedView)
         self.addSubview(textFiedViewButton)
+        textFiedViewButton.addTarget(self, action: #selector(addReview), for: .touchUpInside)
+        buyButton.addTarget(self, action: #selector(alertView), for: .touchUpInside)
         constraintCustomView()
     }
     

@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "테마-미리보기-이미지 (2) 1.png",
+      "filename" : "1 1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "테마-미리보기-이미지 (2) 1@2x.png",
+      "filename" : "1@2x 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "테마-미리보기-이미지 (2) 1@3x.png",
+      "filename" : "1@3x 1.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -9,16 +9,16 @@ import UIKit
 
 class GoodView: UIView {
     var addCount: Int = 0
-    var isActivated : Bool = true {
+    var isActivated : Bool = false {
         didSet {
             if isActivated {
-//                feel.textColor = UIColor(hex: "#FF417D",alpha: 1)
-//                count.textColor = UIColor(hex: "#FF417D",alpha: 1)
+                feel.textColor = UIColor(hex: "#FF417D",alpha: 1)
+                count.textColor = UIColor(hex: "#FF417D",alpha: 1)
                 addCount += 1
                 count.text = "\(addCount)"
             } else {
-//                feel.textColor = UIColor(hex: "#919299",alpha: 1)
-//                count.textColor = UIColor(hex: "#919299", alpha: 1)
+                feel.textColor = UIColor(hex: "#919299",alpha: 1)
+                count.textColor = UIColor(hex: "#919299", alpha: 1)
                 addCount -= 1
                 count.text = "\(addCount)"
             }
@@ -28,26 +28,12 @@ class GoodView: UIView {
     lazy var changeButton: UIButton = {
         let bo = UIButton()
         bo.translatesAutoresizingMaskIntoConstraints = false
-//        bo.backgroundColor = .gray.withAlphaComponent(0.4)
         bo.isSelected = isActivated
         bo.addTarget(self, action: #selector(change), for: .touchUpInside)
         return bo
     }()
     @objc func change(){
-        if changeButton.isSelected == isActivated {
-            feel.textColor = UIColor(hex: "#FF417D",alpha: 1)
-            count.textColor = UIColor(hex: "#FF417D",alpha: 1)
-            addCount += 1
-            count.text = "\(addCount)"
-            print("+1")
-        } else if changeButton.isSelected == isActivated {
-            feel.textColor = UIColor(hex: "#919299",alpha: 1)
-            count.textColor = UIColor(hex: "#919299", alpha: 1)
-            addCount -= 1
-            count.text = "\(addCount)"
-            print("-1")
-        }
-        print("클릭")
+        isActivated.toggle()
     }
     
     lazy var imoge: UILabel = {
