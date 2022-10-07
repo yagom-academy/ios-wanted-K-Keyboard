@@ -18,8 +18,6 @@ class PopupView : UIView, SecondViewStyling {
     
     var delegate : SecondViewProtocol?
     
-    lazy var tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissSecondView))
-    
     var purchaseButton : UIButton = UIButton()
     let imageView : UIImageView = UIImageView()
     let gemImageView : UIImageView = UIImageView()
@@ -30,8 +28,12 @@ class PopupView : UIView, SecondViewStyling {
     let purchaseAmountInfoLabel : UILabel = UILabel()
     let currencyLabel : UILabel = UILabel()
     
+    var viewModel: PopupViewModel
     
-    init() {
+    init(viewModel: PopupViewModel) {
+        
+        self.viewModel = viewModel
+        
         super.init(frame: .zero)
         
         initViewHierarchy()
@@ -41,17 +43,6 @@ class PopupView : UIView, SecondViewStyling {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    @objc func vertifyAndDismissSecondView(){
-        delegate?.confirmAndDismissSecondView()
-    }
-    
-    @objc func dismissSecondView(_ sender : UITapGestureRecognizer){
-        //투명한 화면 뿐 아니라 하얀 화면을 클릭해도 함수가 발동되어 제약 사항 추가
-        if sender.view?.hitTest(sender.location(in: self), with: nil) is Self{
-            delegate?.dismissSecondView()
-        }
     }
 }
 
@@ -153,10 +144,23 @@ extension PopupView: Presentable {
     }
     
     func bind() {
-        self.addGestureRecognizer(tapGesture)
+        
+        
+        
     }
     
+    @objc func vertifyAndDismissSecondView(){
+        delegate?.confirmAndDismissSecondView()
+    }
     
+    @objc func dismissSecondView(_ sender : UITapGestureRecognizer){
+        
+        //???
+        //투명한 화면 뿐 아니라 하얀 화면을 클릭해도 함수가 발동되어 제약 사항 추가
+        if sender.view?.hitTest(sender.location(in: self), with: nil) is Self{
+            delegate?.dismissSecondView()
+        }
+    }
 }
 
 #if canImport(SwiftUI) && DEBUG
@@ -183,7 +187,7 @@ struct SecondViewPreview<View: UIView>: UIViewRepresentable {
 struct SecondViewPreviewProvider: PreviewProvider {
     static var previews: some View {
         SecondViewPreview {
-            let view = PopupView()
+            let view = PopupView(viewModel: PopupViewModel())
             return view
         }.previewLayout(.fixed(width: 295, height: 330))
     }

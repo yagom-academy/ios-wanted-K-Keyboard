@@ -11,7 +11,7 @@ class SecondViewController: UIViewController, SecondViewControllerRoutable, Seco
     
     var model: SecondModel
     
-    let popupView = PopupView()
+    lazy var popupView = PopupView(viewModel: self.model.popupViewModel)
     
     init(viewModel: SecondModel) {
         self.model = viewModel
@@ -75,7 +75,23 @@ extension SecondViewController: Presentable {
     
     func bind() {
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapEvent(_:)))
+        tapGesture.numberOfTapsRequired = 1
+        self.view.addGestureRecognizer(tapGesture)
+        
+        
     }
     
-    
+    @objc func tapEvent(_ sender : UITapGestureRecognizer) {
+        
+        let selfViewPoint = sender.location(in: self.view)
+        
+        var isTapInPopupViewBounds = popupView.frame.contains(selfViewPoint)
+        
+        if isTapInPopupViewBounds == true {
+            
+        } else if isTapInPopupViewBounds == false {
+            
+        }
+    }
 }
