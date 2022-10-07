@@ -9,7 +9,7 @@ import UIKit
 
 class TagCell: UITableViewCell {
     static var identifier: String { String(describing: self) }
-    private var data: [TagData] = []
+    var data: [TagData] = []
     
     @IBOutlet var collectionView: UICollectionView!
     
@@ -35,9 +35,11 @@ class TagCell: UITableViewCell {
     
     func set(data: [TagData]) {
         self.data = data
-        collectionView.reloadData()
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
     }
-
+    
 }
 
 extension TagCell: UICollectionViewDelegate {
@@ -54,6 +56,7 @@ extension TagCell: UICollectionViewDataSource {
         (cell as? TagItemCell)?.set(data: data[indexPath.row])
         return cell
     }
+    
 }
 
 extension TagCell: UICollectionViewDelegateFlowLayout {
@@ -67,7 +70,8 @@ extension TagCell: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 4.12
+        return CGFloat(0)
+        //itemSpacing 간격
     }
 }
 
@@ -86,4 +90,3 @@ extension String {
         return ceil(boundingBox.width)
     }
 }
-

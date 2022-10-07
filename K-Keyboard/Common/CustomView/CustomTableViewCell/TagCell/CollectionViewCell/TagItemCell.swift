@@ -11,19 +11,23 @@ class TagItemCell: UICollectionViewCell {
     static var identifier: String { String(describing: self) }
     
     @IBOutlet var tagButton: UIButton!
-//    @IBOutlet var tagLabel: UILabel!
+
+    //    @IBOutlet var tagLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
     }
     
     func set(data: TagData) {
         tagButton.setTitle(data.tag, for: .normal)
-//        tagLabel.text = data.tag
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        self.tagButton.setTitle("", for: .normal)
     }
 }
 
-
-//tags: [
-//    TagData(tag: "이벤트")

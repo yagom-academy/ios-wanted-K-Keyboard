@@ -34,6 +34,10 @@ class MainViewController: UIViewController {
         
         let TagCellNib = UINib(nibName: TagCell.identifier, bundle: Bundle(for: self.classForCoder))
         tableView.register(TagCellNib, forCellReuseIdentifier: TagCell.identifier)
+        
+        let HeaderNib = UINib(nibName: HeaderView.identifier, bundle: Bundle(for: self.classForCoder))
+        tableView.register(HeaderNib, forCellReuseIdentifier: HeaderView.identifier)
+       
     }
     
     func dataBinding() {
@@ -82,7 +86,7 @@ extension MainViewController: UITableViewDataSource {
                case .tags(let tagsData) = row {
                 cell.set(data: tagsData)
             }
-     return cell
+            return cell
         default:
             return UITableViewCell()
         }
@@ -126,18 +130,6 @@ extension MainViewController: UITableViewDataSource {
             return nil
         }
     }
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        guard let dataSource = dto?.dataSource[section] else { return nil }
-        let section = dataSource.section
-        
-        switch section {
-        case .item:
-            return UIView()
-        default:
-            return nil
-        }
-    }
 }
 
 extension MainViewController: UITableViewDelegate {
@@ -149,14 +141,32 @@ extension MainViewController: UITableViewDelegate {
         
         switch section {
         case .item:
-            let height = ((width - 32) / 343 * 264) + 115
+            let height = ((width - 32) / 343 * 264) + 115 + 40
             return height
         case .notice:
             return UITableView.automaticDimension
         case .tags:
-            return 200
+            return 100
         default:
             return .zero
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let dataSource = dto?.dataSource[section] else { return nil }
+        let section = dataSource.section
+        let row = dataSource.items.first
+        
+        switch section {
+        case .tags:
+            let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: HeaderView.identifier)
+            if let view = view as? HeaderView,
+               case .tags(let tagData) = row {
+                view.set(section: SectionListType.tag.rawValue, rowCount: tagData.count)
+            }
+            return view
+        default:
+            return UIView()
         }
     }
     
@@ -165,22 +175,13 @@ extension MainViewController: UITableViewDelegate {
         let section = dataSource.section
         
         switch section {
+        case .tags:
+            return 50
         default:
             return .zero
         }
     }
     
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        guard let dataSource = dto?.dataSource[section] else { return .zero }
-        let section = dataSource.section
-        
-        switch section {
-        case .item:
-            return 40
-        default:
-            return .zero
-        }
-    }
 }
 
 
