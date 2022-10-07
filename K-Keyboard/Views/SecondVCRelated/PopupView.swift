@@ -9,14 +9,7 @@ import Foundation
 import UIKit
 import SwiftUI
 
-protocol SecondViewProtocol{
-    func confirmAndDismissSecondView()
-    func dismissSecondView()
-}
-
 class PopupView : UIView, SecondViewStyling {
-    
-    var delegate : SecondViewProtocol?
     
     var purchaseButton : UIButton = UIButton()
     let imageView : UIImageView = UIImageView()
@@ -144,22 +137,13 @@ extension PopupView: Presentable {
     }
     
     func bind() {
-        
-        
-        
-    }
-    
-    @objc func vertifyAndDismissSecondView(){
-        delegate?.confirmAndDismissSecondView()
-    }
-    
-    @objc func dismissSecondView(_ sender : UITapGestureRecognizer){
-        
-        //???
-        //투명한 화면 뿐 아니라 하얀 화면을 클릭해도 함수가 발동되어 제약 사항 추가
-        if sender.view?.hitTest(sender.location(in: self), with: nil) is Self{
-            delegate?.dismissSecondView()
+        let action = UIAction(title: "충전버튼 액션") { [weak self] action in
+            guard let self = self else { return }
+            
+            self.viewModel.didReceiveButtonTap()
         }
+        
+        purchaseButton.addAction(action, for: .touchUpInside)
     }
 }
 

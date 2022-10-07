@@ -10,7 +10,6 @@ import Foundation
 class ContentViewModel {
     //input
     var didReceiveTapGesture = { }
-    var didReceiveButtonTap = { }
     
     //output
     var popupViewModel: PopupViewModel {
@@ -33,8 +32,8 @@ class ContentViewModel {
             guard let self = self else { return }
             self.propergateTapGesture()
         }
-        
-        didReceiveButtonTap = { [weak self] in
+
+        privatePopupViewModel.propergateButtonTap = { [weak self] in
             guard let self = self else { return }
             self.propergateButtonTap()
         }

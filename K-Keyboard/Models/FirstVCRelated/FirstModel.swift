@@ -39,6 +39,18 @@ class FirstModel {
             
             self.routeSubject?(.detail(.secondViewController(context: context)))
         }
+        
+        didReceiveSceneAction = { [weak self] action in
+            guard let action = action as? FirstSceneAction else { return }
+            guard let self = self else { return }
+            
+            switch action {
+            case .didUserPurchaseGem:
+                print("didUserPurchase gem")
+            case .refresh:
+                break
+            }
+        }
     }
     
     func populateData() {

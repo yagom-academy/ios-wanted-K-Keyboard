@@ -23,5 +23,6 @@ protocol SceneAction {
 }
 
 enum FirstSceneAction: SceneAction {
+    case didUserPurchaseGem
     case refresh
 }

@@ -36,7 +36,10 @@ class SecondModel {
         }
         
         privateContentViewModel.propergateButtonTap = {
+            print("propergate button tap")
+            let context = SceneContext(dependency: FirstSceneAction.didUserPurchaseGem)
             
+            self.routeSubject?(.closeWithAction(.main(.firstViewControllerWithAction(context: context))))
         }
     }
     
