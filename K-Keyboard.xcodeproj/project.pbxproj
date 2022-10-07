@@ -7,15 +7,65 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D52010628EED118000E2216 /* KeyboardAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D52010528EED118000E2216 /* KeyboardAccessoryView.swift */; };
+		2D52010728EED64F000E2216 /* KeyboardAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D52010528EED118000E2216 /* KeyboardAccessoryView.swift */; };
+		2D52010C28EEE1BF000E2216 /* OftenUsedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D52010B28EEE1BF000E2216 /* OftenUsedView.swift */; };
+		2D52010E28EEE353000E2216 /* OftenUsedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D52010D28EEE353000E2216 /* OftenUsedCell.swift */; };
+		2D52010F28EEE4CF000E2216 /* OftenUsedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D52010B28EEE1BF000E2216 /* OftenUsedView.swift */; };
+		2D52011028EEE5B6000E2216 /* OftenUsedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D52010D28EEE353000E2216 /* OftenUsedCell.swift */; };
+		2D899F2328E56CBE00EAEB25 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D899F2228E56CBE00EAEB25 /* KeyboardViewController.swift */; };
+		2D899F2728E56CBE00EAEB25 /* KKeyboard.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 2D899F2028E56CBE00EAEB25 /* KKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		2D899F2E28E578AF00EAEB25 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D899F2D28E578AF00EAEB25 /* KeyboardView.swift */; };
+		2DB2469D28E5797500FF2D07 /* KeyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB2469C28E5797500FF2D07 /* KeyButton.swift */; };
+		2DB2469E28E5898D00FF2D07 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D899F2D28E578AF00EAEB25 /* KeyboardView.swift */; };
+		2DB2469F28E58AC600FF2D07 /* KeyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB2469C28E5797500FF2D07 /* KeyButton.swift */; };
+		2DB246B228E6A55E00FF2D07 /* KoreanAutomata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB246B128E6A55E00FF2D07 /* KoreanAutomata.swift */; };
+		2DB246B328E836AE00FF2D07 /* KoreanAutomata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB246B128E6A55E00FF2D07 /* KoreanAutomata.swift */; };
+		2DB246B728E9568F00FF2D07 /* KeyboardState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB246B628E9568F00FF2D07 /* KeyboardState.swift */; };
+		2DB246B828E95A2B00FF2D07 /* KeyboardState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB246B628E9568F00FF2D07 /* KeyboardState.swift */; };
 		63487F3828E2EA5E0033CF32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3728E2EA5E0033CF32 /* AppDelegate.swift */; };
 		63487F3A28E2EA5E0033CF32 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3928E2EA5E0033CF32 /* SceneDelegate.swift */; };
 		63487F3C28E2EA5E0033CF32 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3B28E2EA5E0033CF32 /* ViewController.swift */; };
 		63487F4128E2EA5E0033CF32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63487F4028E2EA5E0033CF32 /* Assets.xcassets */; };
 		63487F4428E2EA5E0033CF32 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63487F4228E2EA5E0033CF32 /* LaunchScreen.storyboard */; };
-		8CDA640728E5481200F123FE /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA640628E5481200F123FE /* Keyboard.swift */; };
+		8CDA640728E5481200F123FE /* KeyboardTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA640628E5481200F123FE /* KeyboardTestViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		2D899F2528E56CBE00EAEB25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63487F2C28E2EA5E0033CF32 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2D899F1F28E56CBE00EAEB25;
+			remoteInfo = KKeyboard;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2D899F2B28E56CBE00EAEB25 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				2D899F2728E56CBE00EAEB25 /* KKeyboard.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		2D52010528EED118000E2216 /* KeyboardAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAccessoryView.swift; sourceTree = "<group>"; };
+		2D52010B28EEE1BF000E2216 /* OftenUsedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OftenUsedView.swift; sourceTree = "<group>"; };
+		2D52010D28EEE353000E2216 /* OftenUsedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OftenUsedCell.swift; sourceTree = "<group>"; };
+		2D899F2028E56CBE00EAEB25 /* KKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = KKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D899F2228E56CBE00EAEB25 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		2D899F2428E56CBE00EAEB25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D899F2D28E578AF00EAEB25 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
+		2DB2469C28E5797500FF2D07 /* KeyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyButton.swift; sourceTree = "<group>"; };
+		2DB246B128E6A55E00FF2D07 /* KoreanAutomata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanAutomata.swift; sourceTree = "<group>"; };
+		2DB246B628E9568F00FF2D07 /* KeyboardState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardState.swift; sourceTree = "<group>"; };
 		63487F3428E2EA5E0033CF32 /* K-Keyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "K-Keyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		63487F3728E2EA5E0033CF32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63487F3928E2EA5E0033CF32 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -23,10 +73,17 @@
 		63487F4028E2EA5E0033CF32 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63487F4328E2EA5E0033CF32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63487F4528E2EA5E0033CF32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8CDA640628E5481200F123FE /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
+		8CDA640628E5481200F123FE /* KeyboardTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardTestViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2D899F1D28E56CBE00EAEB25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		63487F3128E2EA5E0033CF32 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -37,10 +94,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D899F2128E56CBE00EAEB25 /* KKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				2D899F2228E56CBE00EAEB25 /* KeyboardViewController.swift */,
+				2D899F2428E56CBE00EAEB25 /* Info.plist */,
+			);
+			path = KKeyboard;
+			sourceTree = "<group>";
+		};
 		63487F2B28E2EA5E0033CF32 = {
 			isa = PBXGroup;
 			children = (
 				63487F3628E2EA5E0033CF32 /* K-Keyboard */,
+				2D899F2128E56CBE00EAEB25 /* KKeyboard */,
 				63487F3528E2EA5E0033CF32 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -49,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				63487F3428E2EA5E0033CF32 /* K-Keyboard.app */,
+				2D899F2028E56CBE00EAEB25 /* KKeyboard.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -102,7 +170,14 @@
 		8CDA640428E5476500F123FE /* Keyboard */ = {
 			isa = PBXGroup;
 			children = (
-				8CDA640628E5481200F123FE /* Keyboard.swift */,
+				8CDA640628E5481200F123FE /* KeyboardTestViewController.swift */,
+				2D899F2D28E578AF00EAEB25 /* KeyboardView.swift */,
+				2DB2469C28E5797500FF2D07 /* KeyButton.swift */,
+				2DB246B128E6A55E00FF2D07 /* KoreanAutomata.swift */,
+				2DB246B628E9568F00FF2D07 /* KeyboardState.swift */,
+				2D52010528EED118000E2216 /* KeyboardAccessoryView.swift */,
+				2D52010B28EEE1BF000E2216 /* OftenUsedView.swift */,
+				2D52010D28EEE353000E2216 /* OftenUsedCell.swift */,
 			);
 			path = Keyboard;
 			sourceTree = "<group>";
@@ -118,6 +193,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2D899F1F28E56CBE00EAEB25 /* KKeyboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2D899F2828E56CBE00EAEB25 /* Build configuration list for PBXNativeTarget "KKeyboard" */;
+			buildPhases = (
+				2D899F1C28E56CBE00EAEB25 /* Sources */,
+				2D899F1D28E56CBE00EAEB25 /* Frameworks */,
+				2D899F1E28E56CBE00EAEB25 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KKeyboard;
+			productName = KKeyboard;
+			productReference = 2D899F2028E56CBE00EAEB25 /* KKeyboard.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		63487F3328E2EA5E0033CF32 /* K-Keyboard */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 63487F4828E2EA5E0033CF32 /* Build configuration list for PBXNativeTarget "K-Keyboard" */;
@@ -125,10 +217,12 @@
 				63487F3028E2EA5E0033CF32 /* Sources */,
 				63487F3128E2EA5E0033CF32 /* Frameworks */,
 				63487F3228E2EA5E0033CF32 /* Resources */,
+				2D899F2B28E56CBE00EAEB25 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				2D899F2628E56CBE00EAEB25 /* PBXTargetDependency */,
 			);
 			name = "K-Keyboard";
 			productName = "K-Keyboard";
@@ -145,6 +239,9 @@
 				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
+					2D899F1F28E56CBE00EAEB25 = {
+						CreatedOnToolsVersion = 14.0;
+					};
 					63487F3328E2EA5E0033CF32 = {
 						CreatedOnToolsVersion = 14.0;
 					};
@@ -164,11 +261,19 @@
 			projectRoot = "";
 			targets = (
 				63487F3328E2EA5E0033CF32 /* K-Keyboard */,
+				2D899F1F28E56CBE00EAEB25 /* KKeyboard */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2D899F1E28E56CBE00EAEB25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		63487F3228E2EA5E0033CF32 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -181,18 +286,48 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2D899F1C28E56CBE00EAEB25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DB2469F28E58AC600FF2D07 /* KeyButton.swift in Sources */,
+				2D899F2328E56CBE00EAEB25 /* KeyboardViewController.swift in Sources */,
+				2D52010F28EEE4CF000E2216 /* OftenUsedView.swift in Sources */,
+				2D52011028EEE5B6000E2216 /* OftenUsedCell.swift in Sources */,
+				2DB246B828E95A2B00FF2D07 /* KeyboardState.swift in Sources */,
+				2DB2469E28E5898D00FF2D07 /* KeyboardView.swift in Sources */,
+				2D52010728EED64F000E2216 /* KeyboardAccessoryView.swift in Sources */,
+				2DB246B328E836AE00FF2D07 /* KoreanAutomata.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		63487F3028E2EA5E0033CF32 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D52010C28EEE1BF000E2216 /* OftenUsedView.swift in Sources */,
+				2DB246B728E9568F00FF2D07 /* KeyboardState.swift in Sources */,
 				63487F3C28E2EA5E0033CF32 /* ViewController.swift in Sources */,
+				2DB246B228E6A55E00FF2D07 /* KoreanAutomata.swift in Sources */,
 				63487F3828E2EA5E0033CF32 /* AppDelegate.swift in Sources */,
-				8CDA640728E5481200F123FE /* Keyboard.swift in Sources */,
+				8CDA640728E5481200F123FE /* KeyboardTestViewController.swift in Sources */,
+				2DB2469D28E5797500FF2D07 /* KeyButton.swift in Sources */,
+				2D52010628EED118000E2216 /* KeyboardAccessoryView.swift in Sources */,
+				2D52010E28EEE353000E2216 /* OftenUsedCell.swift in Sources */,
+				2D899F2E28E578AF00EAEB25 /* KeyboardView.swift in Sources */,
 				63487F3A28E2EA5E0033CF32 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2D899F2628E56CBE00EAEB25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2D899F1F28E56CBE00EAEB25 /* KKeyboard */;
+			targetProxy = 2D899F2528E56CBE00EAEB25 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		63487F4228E2EA5E0033CF32 /* LaunchScreen.storyboard */ = {
@@ -206,6 +341,54 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2D899F2928E56CBE00EAEB25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = KKeyboard/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = KKeyboard;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.yagom.K-Keyboard.KKeyboard";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2D899F2A28E56CBE00EAEB25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = KKeyboard/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = KKeyboard;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.yagom.K-Keyboard.KKeyboard";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		63487F4628E2EA5E0033CF32 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -323,6 +506,7 @@
 		63487F4928E2EA5E0033CF32 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -349,6 +533,7 @@
 		63487F4A28E2EA5E0033CF32 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -375,6 +560,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2D899F2828E56CBE00EAEB25 /* Build configuration list for PBXNativeTarget "KKeyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D899F2928E56CBE00EAEB25 /* Debug */,
+				2D899F2A28E56CBE00EAEB25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		63487F2F28E2EA5E0033CF32 /* Build configuration list for PBXProject "K-Keyboard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
