@@ -71,6 +71,7 @@ extension CommentInputView: Presentable {
             guard let self = self else { return }
             guard let textInput = self.commentTextField.text else { return }
             self.viewModel.didReceiveTextInput(textInput)
+            self.commentTextField.text = ""
             self.commentTextField.resignFirstResponder()
         }
         

@@ -67,7 +67,7 @@ class PurchaseReviewListViewModel {
         
         let randomTimeString = ["1일", "1분", "1초"]
         
-        for _ in 1...20{
+        for _ in 0...8{
             var user = CellModel()
             user.id = "₀달빔₀"
             user.comment = "아진짜 귀여워요 !!!!"
