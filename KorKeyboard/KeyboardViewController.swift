@@ -13,6 +13,7 @@ class KeyboardViewController: UIInputViewController {
     let keyboardView = KorKeyboardView()
     let shortcutView = ShortcutView()
     let toolbarView = KorKeyboardToolbarView()
+    let favoritesView = FavoritesView()
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
@@ -69,18 +70,20 @@ extension KeyboardViewController {
     func addViews() {
         guard let inputView = inputView else { return }
 
-        [toolbarView, keyboardView, shortcutView].forEach { inputView.addSubview($0) }
+        [toolbarView, keyboardView, shortcutView, favoritesView].forEach { inputView.addSubview($0) }
 
         keyboardView.delegate = self
         shortcutView.delegate = self
-        shortcutView.isHidden = true
         toolbarView.delegate = self
+        
+        shortcutView.isHidden = true
+        favoritesView.isHidden = true
     }
 
     func setConstraints() {
         guard let inputView = inputView else { return }
 
-        [toolbarView, keyboardView, shortcutView].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
+        [toolbarView, keyboardView, shortcutView, favoritesView].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
 
         NSLayoutConstraint.activate([
             toolbarView.topAnchor.constraint(equalTo: inputView.topAnchor),
@@ -91,6 +94,10 @@ extension KeyboardViewController {
             keyboardView.leadingAnchor.constraint(equalTo: inputView.leadingAnchor),
             keyboardView.trailingAnchor.constraint(equalTo: inputView.trailingAnchor),
             keyboardView.bottomAnchor.constraint(equalTo: inputView.bottomAnchor),
+            favoritesView.topAnchor.constraint(equalTo: toolbarView.bottomAnchor, constant: 10),
+            favoritesView.leadingAnchor.constraint(equalTo: inputView.leadingAnchor),
+            favoritesView.trailingAnchor.constraint(equalTo: inputView.trailingAnchor),
+            favoritesView.bottomAnchor.constraint(equalTo: inputView.bottomAnchor),
             shortcutView.centerXAnchor.constraint(equalTo: inputView.centerXAnchor),
             shortcutView.centerYAnchor.constraint(equalTo: inputView.centerYAnchor),
             shortcutView.leadingAnchor.constraint(equalTo: inputView.leadingAnchor, constant: 20),
@@ -123,5 +130,6 @@ extension KeyboardViewController: ShortcutViewDelegate {
 extension KeyboardViewController: KorKeyboardToolbarViewDelegate {
     @objc func favoritesButtonPressed() {
         keyboardView.isHidden = true
+        favoritesView.isHidden = false
     }
 }
