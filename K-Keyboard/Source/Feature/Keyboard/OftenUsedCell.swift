@@ -11,7 +11,7 @@ class OftenUsedCell: UITableViewCell {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .systemColor
+        label.textColor = UIColor.systemColor
         label.font = .systemFont(ofSize: 12, weight: .regular)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -36,8 +36,22 @@ class OftenUsedCell: UITableViewCell {
         titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20).isActive = true
     }
-    
-    
-    
 }
 
+extension UIColor {
+    private static func color(light: UIColor, dark: UIColor? = nil) -> UIColor {
+       if let dark = dark  {
+           if #available(iOS 13.0, *) {
+               return UIColor { $0.userInterfaceStyle == .dark ? dark : light }
+           }
+           return light
+       } else {
+           return light
+       }
+    }
+
+    static let systemColor: UIColor = {
+        let color = UIColor.color(light: .black, dark: .white)
+        return color
+    }()
+}

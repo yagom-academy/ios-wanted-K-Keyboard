@@ -32,10 +32,6 @@
 		8CBA9FF628E87D82003C66D3 /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBA9FF528E87D82003C66D3 /* PopUpView.swift */; };
 		8CBA9FF828EBFA0B003C66D3 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBA9FF728EBFA0B003C66D3 /* CommentTableViewCell.swift */; };
 		8CBAA03F28EFFC98003C66D3 /* TextConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBAA03E28EFFC98003C66D3 /* TextConstant.swift */; };
-		8CBAA04128F0015C003C66D3 /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBAA04028F0015C003C66D3 /* UIStackView+Extensions.swift */; };
-		8CBAA04328F00196003C66D3 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBAA04228F00196003C66D3 /* UIView+Extensions.swift */; };
-		8CBAA04528F001DB003C66D3 /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBAA04428F001DB003C66D3 /* UIButton+Extensions.swift */; };
-		8CBAA04728F001FB003C66D3 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBAA04628F001FB003C66D3 /* UIColor+Extensions.swift */; };
 		8CDA640728E5481200F123FE /* KeyboardTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA640628E5481200F123FE /* KeyboardTestViewController.swift */; };
 		8CDA640928E5B62E00F123FE /* BuyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA640828E5B62E00F123FE /* BuyView.swift */; };
 /* End PBXBuildFile section */
@@ -86,10 +82,6 @@
 		8CBA9FF528E87D82003C66D3 /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
 		8CBA9FF728EBFA0B003C66D3 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		8CBAA03E28EFFC98003C66D3 /* TextConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextConstant.swift; sourceTree = "<group>"; };
-		8CBAA04028F0015C003C66D3 /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
-		8CBAA04228F00196003C66D3 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
-		8CBAA04428F001DB003C66D3 /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
-		8CBAA04628F001FB003C66D3 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		8CDA640628E5481200F123FE /* KeyboardTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardTestViewController.swift; sourceTree = "<group>"; };
 		8CDA640828E5B62E00F123FE /* BuyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -153,10 +145,6 @@
 			isa = PBXGroup;
 			children = (
 				8CBAA03E28EFFC98003C66D3 /* TextConstant.swift */,
-				8CBAA04028F0015C003C66D3 /* UIStackView+Extensions.swift */,
-				8CBAA04228F00196003C66D3 /* UIView+Extensions.swift */,
-				8CBAA04428F001DB003C66D3 /* UIButton+Extensions.swift */,
-				8CBAA04628F001FB003C66D3 /* UIColor+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -340,7 +328,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8CBAA04528F001DB003C66D3 /* UIButton+Extensions.swift in Sources */,
 				2D52010C28EEE1BF000E2216 /* OftenUsedView.swift in Sources */,
 				2DB246B728E9568F00FF2D07 /* KeyboardState.swift in Sources */,
 				8CBA9FF628E87D82003C66D3 /* PopUpView.swift in Sources */,
@@ -348,13 +335,10 @@
 				2DB246B228E6A55E00FF2D07 /* KoreanAutomata.swift in Sources */,
 				8CBA9FF428E875AD003C66D3 /* PopUpViewController.swift in Sources */,
 				8CBA9FF828EBFA0B003C66D3 /* CommentTableViewCell.swift in Sources */,
-				8CBAA04128F0015C003C66D3 /* UIStackView+Extensions.swift in Sources */,
 				63487F3828E2EA5E0033CF32 /* AppDelegate.swift in Sources */,
 				8CDA640728E5481200F123FE /* KeyboardTestViewController.swift in Sources */,
-				8CBAA04728F001FB003C66D3 /* UIColor+Extensions.swift in Sources */,
 				2DB2469D28E5797500FF2D07 /* KeyButton.swift in Sources */,
 				2D52010628EED118000E2216 /* KeyboardAccessoryView.swift in Sources */,
-				8CBAA04328F00196003C66D3 /* UIView+Extensions.swift in Sources */,
 				2D52010E28EEE353000E2216 /* OftenUsedCell.swift in Sources */,
 				8CBAA03F28EFFC98003C66D3 /* TextConstant.swift in Sources */,
 				2D899F2E28E578AF00EAEB25 /* KeyboardView.swift in Sources */,
@@ -395,6 +379,7 @@
 				INFOPLIST_FILE = KKeyboard/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = KKeyboard;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -420,6 +405,7 @@
 				INFOPLIST_FILE = KKeyboard/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = KKeyboard;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -485,7 +471,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -539,7 +525,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

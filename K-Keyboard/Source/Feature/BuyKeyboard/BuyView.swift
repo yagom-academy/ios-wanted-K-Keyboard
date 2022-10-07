@@ -288,62 +288,126 @@ class BuyView: UIView {
         return label
     }()
     
-    let emojiButton1: UIButton = {
-        var config = UIButton.Configuration.filled()
-        config.baseBackgroundColor = .clear
-        config.baseForegroundColor = UIColor(named: Color.subDarkGray.rawValue)
-        config.image = UIImage(named: "Emoji1")
-        config.imagePlacement = NSDirectionalRectEdge.top
-        config.attributedTitle = AttributedString("맘에들어요", attributes: AttributeContainer([NSAttributedString.Key.font : UIFont(name: "systemFont", size: 12) as Any]))
-        config.subtitle = "0"
-        
-        let button = UIButton(configuration: config)
-        return button
+    let emojiView1: UIView = {
+        let view = UIView()
+        view.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        view.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        return view
     }()
     
-    let emojiButton2: UIButton = {
-        var config = UIButton.Configuration.filled()
-        config.baseBackgroundColor = .clear
-        config.baseForegroundColor = UIColor(named: Color.subDarkGray.rawValue)
-        config.image = UIImage(named: "Emoji2")
-        config.imagePlacement = NSDirectionalRectEdge.top
-        config.attributedTitle = AttributedString("심쿵했어요", attributes: AttributeContainer([NSAttributedString.Key.font : UIFont(name: "systemFont", size: 12) as Any]))
-        config.subtitle = "0"
-        
-        let button = UIButton(configuration: config)
-        return button
+    let emojiImageView1: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "Emoji1")
+        return imageView
     }()
     
-    let emojiButton3: UIButton = {
-        var config = UIButton.Configuration.filled()
-        config.baseBackgroundColor = .clear
-        config.baseForegroundColor = UIColor(named: Color.subDarkGray.rawValue)
-        config.image = UIImage(named: "Emoji3")
-        config.imagePlacement = NSDirectionalRectEdge.top
-//        config.title = "응원해요"
-        config.attributedTitle = AttributedString("응원해요", attributes: AttributeContainer([NSAttributedString.Key.font : UIFont(name: "systemFont", size: 12) as Any]))
-        config.subtitle = "0"
-        
-        let button = UIButton(configuration: config)
-        return button
+    let emojiLabel1: UILabel = {
+        let label = UILabel()
+        label.text = "맘에들어요"
+        label.textColor = UIColor(named: Color.subDarkGray.rawValue)
+        label.font = UIFont(name: "systemFont", size: 12)
+        return label
     }()
     
-    let emojiButton4: UIButton = {
-        var config = UIButton.Configuration.filled()
-        config.baseBackgroundColor = .clear
-        config.baseForegroundColor = UIColor(named: Color.subDarkGray.rawValue)
-        config.image = UIImage(named: "Emoji4")
-        config.imagePlacement = NSDirectionalRectEdge.top
-        config.attributedTitle = AttributedString("갖고싶어요", attributes: AttributeContainer([NSAttributedString.Key.font : UIFont(name: "systemFont", size: 12) as Any]))
-        config.subtitle = "0"
-        
-        let button = UIButton(configuration: config)
-        return button
+    let emojiNumLabel1: UILabel = {
+        let label = UILabel()
+        label.text = "0"
+        label.textColor = UIColor(named: Color.subDarkGray.rawValue)
+        label.font = UIFont(name: "systemFont", size: 10)
+        return label
+    }()
+    
+    let emojiView2: UIView = {
+        let view = UIView()
+        view.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        view.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        return view
+    }()
+    
+    let emojiImageView2: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "Emoji2")
+        return imageView
+    }()
+    
+    let emojiLabel2: UILabel = {
+        let label = UILabel()
+        label.text = "심쿵했어요"
+        label.textColor = UIColor(named: Color.subDarkGray.rawValue)
+        label.font = UIFont(name: "systemFont", size: 12)
+        return label
+    }()
+    
+    let emojiNumLabel2: UILabel = {
+        let label = UILabel()
+        label.text = "1"
+        label.textColor = UIColor(named: Color.subDarkGray.rawValue)
+        label.font = UIFont(name: "systemFont", size: 10)
+        return label
+    }()
+    
+    let emojiView3: UIView = {
+        let view = UIView()
+        view.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        view.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        return view
+    }()
+    
+    let emojiImageView3: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "Emoji3")
+        return imageView
+    }()
+    
+    let emojiLabel3: UILabel = {
+        let label = UILabel()
+        label.text = "응원해요"
+        label.textColor = UIColor(named: Color.subDarkGray.rawValue)
+        label.font = UIFont(name: "systemFont", size: 12)
+        return label
+    }()
+    
+    let emojiNumLabel3: UILabel = {
+        let label = UILabel()
+        label.text = "0"
+        label.textColor = UIColor(named: Color.subDarkGray.rawValue)
+        label.font = UIFont(name: "systemFont", size: 10)
+        return label
+    }()
+    
+    let emojiView4: UIView = {
+        let view = UIView()
+        view.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        view.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        return view
+    }()
+    
+    let emojiImageView4: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "Emoji4")
+        return imageView
+    }()
+    
+    let emojiLabel4: UILabel = {
+        let label = UILabel()
+        label.text = "갖고싶어요"
+        label.textColor = UIColor(named: Color.subDarkGray.rawValue)
+        label.font = UIFont(name: "systemFont", size: 12)
+        return label
+    }()
+    
+    let emojiNumLabel4: UILabel = {
+        let label = UILabel()
+        label.text = "0"
+        label.textColor = UIColor(named: Color.subDarkGray.rawValue)
+        label.font = UIFont(name: "systemFont", size: 10)
+        return label
     }()
     
     let emojiStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
+        stackView.spacing = 30
         return stackView
     }()
     
@@ -538,7 +602,7 @@ class BuyView: UIView {
             self.reactionStackView.addArrangedSubview($0)
         }
         
-        [emojiButton1, emojiButton2, emojiButton3, emojiButton4].forEach {
+        [emojiView1, emojiView2, emojiView3, emojiView4].forEach {
             self.emojiStackView.addArrangedSubview($0)
         }
         
@@ -716,11 +780,80 @@ class BuyView: UIView {
         thinkLabel.translatesAutoresizingMaskIntoConstraints = false
         thinkLabel.topAnchor.constraint(equalTo: reactionStackView.bottomAnchor, constant: 48).isActive = true
         thinkLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        
+        emojiView1.addSubview(emojiImageView1)
+        emojiImageView1.translatesAutoresizingMaskIntoConstraints = false
+        emojiImageView1.topAnchor.constraint(equalTo: emojiView1.topAnchor).isActive = true
+        emojiImageView1.centerXAnchor.constraint(equalTo: emojiView1.centerXAnchor).isActive = true
+        emojiImageView1.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        emojiImageView1.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        emojiView1.addSubview(emojiLabel1)
+        emojiLabel1.translatesAutoresizingMaskIntoConstraints = false
+        emojiLabel1.topAnchor.constraint(equalTo: emojiImageView1.bottomAnchor, constant: 8).isActive = true
+        emojiLabel1.centerXAnchor.constraint(equalTo: emojiView1.centerXAnchor).isActive = true
+        
+        emojiView1.addSubview(emojiNumLabel1)
+        emojiNumLabel1.translatesAutoresizingMaskIntoConstraints = false
+        emojiNumLabel1.topAnchor.constraint(equalTo: emojiLabel1.bottomAnchor, constant: 8).isActive = true
+        emojiNumLabel1.centerXAnchor.constraint(equalTo: emojiView1.centerXAnchor).isActive = true
+        
+        emojiView2.addSubview(emojiImageView2)
+        emojiImageView2.translatesAutoresizingMaskIntoConstraints = false
+        emojiImageView2.topAnchor.constraint(equalTo: emojiView2.topAnchor).isActive = true
+        emojiImageView2.centerXAnchor.constraint(equalTo: emojiView2.centerXAnchor).isActive = true
+        emojiImageView2.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        emojiImageView2.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        emojiView2.addSubview(emojiLabel2)
+        emojiLabel2.translatesAutoresizingMaskIntoConstraints = false
+        emojiLabel2.topAnchor.constraint(equalTo: emojiImageView2.bottomAnchor, constant: 8).isActive = true
+        emojiLabel2.centerXAnchor.constraint(equalTo: emojiView2.centerXAnchor).isActive = true
+        
+        emojiView2.addSubview(emojiNumLabel2)
+        emojiNumLabel2.translatesAutoresizingMaskIntoConstraints = false
+        emojiNumLabel2.topAnchor.constraint(equalTo: emojiLabel2.bottomAnchor, constant: 8).isActive = true
+        emojiNumLabel2.centerXAnchor.constraint(equalTo: emojiView2.centerXAnchor).isActive = true
+        
+        emojiView3.addSubview(emojiImageView3)
+        emojiImageView3.translatesAutoresizingMaskIntoConstraints = false
+        emojiImageView3.topAnchor.constraint(equalTo: emojiView3.topAnchor).isActive = true
+        emojiImageView3.centerXAnchor.constraint(equalTo: emojiView3.centerXAnchor).isActive = true
+        emojiImageView3.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        emojiImageView3.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        emojiView3.addSubview(emojiLabel3)
+        emojiLabel3.translatesAutoresizingMaskIntoConstraints = false
+        emojiLabel3.topAnchor.constraint(equalTo: emojiImageView3.bottomAnchor, constant: 8).isActive = true
+        emojiLabel3.centerXAnchor.constraint(equalTo: emojiView3.centerXAnchor).isActive = true
+        
+        emojiView3.addSubview(emojiNumLabel3)
+        emojiNumLabel3.translatesAutoresizingMaskIntoConstraints = false
+        emojiNumLabel3.topAnchor.constraint(equalTo: emojiLabel3.bottomAnchor, constant: 8).isActive = true
+        emojiNumLabel3.centerXAnchor.constraint(equalTo: emojiView3.centerXAnchor).isActive = true
+        
+        emojiView4.addSubview(emojiImageView4)
+        emojiImageView4.translatesAutoresizingMaskIntoConstraints = false
+        emojiImageView4.topAnchor.constraint(equalTo: emojiView4.topAnchor).isActive = true
+        emojiImageView4.centerXAnchor.constraint(equalTo: emojiView4.centerXAnchor).isActive = true
+        emojiImageView4.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        emojiImageView4.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        emojiView4.addSubview(emojiLabel4)
+        emojiLabel4.translatesAutoresizingMaskIntoConstraints = false
+        emojiLabel4.topAnchor.constraint(equalTo: emojiImageView4.bottomAnchor, constant: 8).isActive = true
+        emojiLabel4.centerXAnchor.constraint(equalTo: emojiView4.centerXAnchor).isActive = true
+        
+        emojiView4.addSubview(emojiNumLabel4)
+        emojiNumLabel4.translatesAutoresizingMaskIntoConstraints = false
+        emojiNumLabel4.topAnchor.constraint(equalTo: emojiLabel4.bottomAnchor, constant: 8).isActive = true
+        emojiNumLabel4.centerXAnchor.constraint(equalTo: emojiView4.centerXAnchor).isActive = true
 
         contentView.addSubview(emojiStackView)
         emojiStackView.translatesAutoresizingMaskIntoConstraints = false
         emojiStackView.topAnchor.constraint(equalTo: thinkLabel.bottomAnchor, constant: 24).isActive = true
         emojiStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        emojiStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         emojiStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         
         addSubview(bannerImageView)
