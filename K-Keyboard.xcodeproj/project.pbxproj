@@ -22,6 +22,8 @@
 		63487F3C28E2EA5E0033CF32 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3B28E2EA5E0033CF32 /* MainViewController.swift */; };
 		63487F4128E2EA5E0033CF32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63487F4028E2EA5E0033CF32 /* Assets.xcassets */; };
 		63487F4428E2EA5E0033CF32 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63487F4228E2EA5E0033CF32 /* LaunchScreen.storyboard */; };
+		B09A55EF28EFB63D0093D9D3 /* LeftAlignedCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A55EE28EFB63D0093D9D3 /* LeftAlignedCollectionViewLayout.swift */; };
+		B09A55F328EFC3A80093D9D3 /* ContentSizedCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A55F228EFC3A80093D9D3 /* ContentSizedCollectionView.swift */; };
 		D309FF6A28EE8EAC005F4094 /* PurchaseReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D309FF6928EE8EAC005F4094 /* PurchaseReviewTableViewCell.swift */; };
 		D309FF6C28EEED7C005F4094 /* PurchaseReviewTablewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D309FF6B28EEED7C005F4094 /* PurchaseReviewTablewView.swift */; };
 		D30E931728E5B27B009AB544 /* KeyboardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E931628E5B27B009AB544 /* KeyboardImageView.swift */; };
@@ -81,6 +83,8 @@
 		63487F4028E2EA5E0033CF32 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63487F4328E2EA5E0033CF32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63487F4528E2EA5E0033CF32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B09A55EE28EFB63D0093D9D3 /* LeftAlignedCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignedCollectionViewLayout.swift; sourceTree = "<group>"; };
+		B09A55F228EFC3A80093D9D3 /* ContentSizedCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizedCollectionView.swift; sourceTree = "<group>"; };
 		D309FF6928EE8EAC005F4094 /* PurchaseReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseReviewTableViewCell.swift; sourceTree = "<group>"; };
 		D309FF6B28EEED7C005F4094 /* PurchaseReviewTablewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseReviewTablewView.swift; sourceTree = "<group>"; };
 		D30E931628E5B27B009AB544 /* KeyboardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardImageView.swift; sourceTree = "<group>"; };
@@ -215,6 +219,8 @@
 			children = (
 				D30E931828E69F19009AB544 /* TagView.swift */,
 				D3A4761528E56CDA003CA79A /* TagCollectionViewCell.swift */,
+				B09A55EE28EFB63D0093D9D3 /* LeftAlignedCollectionViewLayout.swift */,
+				B09A55F228EFC3A80093D9D3 /* ContentSizedCollectionView.swift */,
 			);
 			path = TagView;
 			sourceTree = "<group>";
@@ -399,6 +405,7 @@
 			files = (
 				D31AF13728EA96DA00BEE422 /* themView.swift in Sources */,
 				D37DE32628EA80F7008B1A2A /* PurchasReviewModel.swift in Sources */,
+				B09A55F328EFC3A80093D9D3 /* ContentSizedCollectionView.swift in Sources */,
 				D325D90628E9290700DFD0A1 /* ThemaCollectionViewCell.swift in Sources */,
 				D309FF6C28EEED7C005F4094 /* PurchaseReviewTablewView.swift in Sources */,
 				D325D90828E95D7600DFD0A1 /* ButtonView.swift in Sources */,
@@ -408,6 +415,7 @@
 				D3D272BB28E8010B00BC6392 /* KeyWordModel.swift in Sources */,
 				D30E931D28E69F73009AB544 /* KeyWordView.swift in Sources */,
 				D30E931928E69F19009AB544 /* TagView.swift in Sources */,
+				B09A55EF28EFB63D0093D9D3 /* LeftAlignedCollectionViewLayout.swift in Sources */,
 				467002C128E85C52000B721E /* UIFont+Extensions.swift in Sources */,
 				63487F3C28E2EA5E0033CF32 /* MainViewController.swift in Sources */,
 				63487F3828E2EA5E0033CF32 /* AppDelegate.swift in Sources */,
