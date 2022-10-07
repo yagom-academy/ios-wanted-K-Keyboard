@@ -20,16 +20,9 @@ class themaView: UIView {
         buy.textColor = .black
         return buy
     }()
-    
-    //문제점1. good view 안에 레이블 3개를 넣어아하는데 themView에서 해야하는지??
-    //문제점2. 4개의 뷰들이있는데 배열로 만들어 indexPath.row 로 하나씩 하나씩 들어가는지??
-    //문제점3. setUpView에서 good.addView로 레이블을 넣어주는지??  goodView안에서 self.addView로 레이블을 넣어주는지
-    //문제점4. constraintCustomView에서 레이아웃을 잡는데 스텍뷰안에 good뷰들이 들어가면  스텍뷰 높이를 주어졌을때 따로 지정을 안해줘도되는데 addview만 하면 되는지?
-    
     let goodView : GoodView = {
         let view = GoodView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        
         return view
     }()
     let loveView : LoveView = {
@@ -59,7 +52,6 @@ class themaView: UIView {
     }()
     
     private func setupView() {
-//        addSubview(buy)
         addSubview(stackView)
     [goodView, loveView, cheerView, wantView].map {
                 self.stackView.addArrangedSubview($0)

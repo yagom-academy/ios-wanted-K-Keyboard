@@ -9,33 +9,46 @@ import UIKit
 
 class GoodView: UIView {
     var addCount: Int = 0
-   
+    var isActivated : Bool = true {
+        didSet {
+            if isActivated {
+//                feel.textColor = UIColor(hex: "#FF417D",alpha: 1)
+//                count.textColor = UIColor(hex: "#FF417D",alpha: 1)
+                addCount += 1
+                count.text = "\(addCount)"
+            } else {
+//                feel.textColor = UIColor(hex: "#919299",alpha: 1)
+//                count.textColor = UIColor(hex: "#919299", alpha: 1)
+                addCount -= 1
+                count.text = "\(addCount)"
+            }
+        }
+    }
+    
     lazy var changeButton: UIButton = {
         let bo = UIButton()
         bo.translatesAutoresizingMaskIntoConstraints = false
 //        bo.backgroundColor = .gray.withAlphaComponent(0.4)
-        bo.isSelected = true
+        bo.isSelected = isActivated
         bo.addTarget(self, action: #selector(change), for: .touchUpInside)
         return bo
     }()
-@objc func change(){
-            if changeButton.isSelected == true {
-                feel.textColor = UIColor(hex: "#FF417D",alpha: 1)
-                count.textColor = UIColor(hex: "#FF417D",alpha: 1)
-                addCount += 1
-                print("+1")
-              
-            } else if changeButton.isSelected == false {
-                feel.textColor = UIColor(hex: "#919299",alpha: 1)
-                count.textColor = UIColor(hex: "#919299", alpha: 1)
-                addCount -= 1
-                print("-1")
-            }
-    print("클릭")
+    @objc func change(){
+        if changeButton.isSelected == isActivated {
+            feel.textColor = UIColor(hex: "#FF417D",alpha: 1)
+            count.textColor = UIColor(hex: "#FF417D",alpha: 1)
+            addCount += 1
+            count.text = "\(addCount)"
+            print("+1")
+        } else if changeButton.isSelected == isActivated {
+            feel.textColor = UIColor(hex: "#919299",alpha: 1)
+            count.textColor = UIColor(hex: "#919299", alpha: 1)
+            addCount -= 1
+            count.text = "\(addCount)"
+            print("-1")
+        }
+        print("클릭")
     }
-  
-
-    
     
     lazy var imoge: UILabel = {
         let imoge = UILabel()
