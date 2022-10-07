@@ -57,7 +57,7 @@ extension SecondViewStyling {
         }
     }
     
-    var label1Style: (UILabel) -> () {
+    var messageLabelStyle: (UILabel) -> () {
         {
             $0.text = "N젬이 부족해요\n빠르게 충전해 보세요!"
             $0.textColor = UIColor(red: 0.259, green: 0.267, blue: 0.298, alpha: 1)
@@ -76,7 +76,7 @@ extension SecondViewStyling {
         }
     }
     
-    var label2Style: (UILabel) -> () {
+    var gemCountInfoLabelStyle: (UILabel) -> () {
         {
             $0.textColor = UIColor(red: 0.259, green: 0.267, blue: 0.298, alpha: 1)
             $0.font = .notoSans(weight: .cjkkr_Bold, size: 14)
@@ -87,7 +87,7 @@ extension SecondViewStyling {
         }
     }
     
-    var label3Style: (UILabel) -> () {
+    var purchaseAmountInfoLabelStyle: (UILabel) -> () {
         {
             $0.textColor = UIColor(red: 0.259, green: 0.267, blue: 0.298, alpha: 1)
             $0.font = .notoSans(weight: .cjkkr_Bold, size: 14)
@@ -98,7 +98,7 @@ extension SecondViewStyling {
         }
     }
     
-    var label4Style: (UILabel) -> () {
+    var currencyLabelStyle: (UILabel) -> () {
         {
             $0.textColor = UIColor(red: 1, green: 0.255, blue: 0.49, alpha: 1)
             $0.font = .notoSans(weight: .kr_Medium, size: 14)

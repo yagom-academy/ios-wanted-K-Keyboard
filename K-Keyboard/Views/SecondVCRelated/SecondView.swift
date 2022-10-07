@@ -20,25 +20,17 @@ class SecondView : UIView, SecondViewStyling {
     
     lazy var tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissSecondView))
     
-    let secondView : UIView = UIView()
+    let popupView : UIView = UIView()
     
-    lazy var purchaseBtn : UIButton = UIButton()
-    
+    var purchaseButton : UIButton = UIButton()
     let imageView : UIImageView = UIImageView()
-    
     let gemImageView : UIImageView = UIImageView()
-    
     let leftButtonImageView : UIImageView = UIImageView()
-    
-    let rightButtonImageImageView : UIImageView = UIImageView()
-    
-    let label1 : UILabel = UILabel()
-    
-    let label2 : UILabel = UILabel()
-    
-    let label3 : UILabel = UILabel()
-    
-    let label4 : UILabel = UILabel()
+    let rightButtonImageView : UIImageView = UIImageView()
+    let messageLabel : UILabel = UILabel()
+    let gemCountInfoLabel : UILabel = UILabel()
+    let purchaseAmountInfoLabel : UILabel = UILabel()
+    let currencyLabel : UILabel = UILabel()
     
     
     init() {
@@ -67,99 +59,111 @@ class SecondView : UIView, SecondViewStyling {
 
 extension SecondView: Presentable {
     func initViewHierarchy() {
-        self.addSubview(secondView)
-        secondView.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(popupView)
+        popupView.translatesAutoresizingMaskIntoConstraints = false
         
-        secondView.addSubview(purchaseBtn)
+        popupView.addSubview(imageView)
+        popupView.addSubview(messageLabel)
+        popupView.addSubview(gemCountInfoLabel)
+        popupView.addSubview(leftButtonImageView)
+        popupView.addSubview(gemImageView)
+        popupView.addSubview(rightButtonImageView)
+        popupView.addSubview(purchaseAmountInfoLabel)
+        popupView.addSubview(currencyLabel)
+        popupView.addSubview(purchaseButton)
         
-        secondView.addSubview(imageView)
-        
-        secondView.addSubview(label1)
-        
-        secondView.addSubview(label2)
-        
-        secondView.addSubview(leftButtonImageView)
-        
-        secondView.addSubview(gemImageView)
-        
-        secondView.addSubview(rightButtonImageImageView)
-        
-        secondView.addSubview(label3)
-        
-        secondView.addSubview(label4)
-        
-        secondView.subviews.forEach {
+        popupView.subviews.forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        // TODO: 오토레이아웃 전면 수정
-        NSLayoutConstraint.activate([
-            secondView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -241),
-            secondView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40),
-            secondView.topAnchor.constraint(equalTo: self.topAnchor, constant: 241),
-            secondView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
-            
-            imageView.bottomAnchor.constraint(equalTo: label1.topAnchor, constant: -8),
-            imageView.trailingAnchor.constraint(equalTo: secondView.trailingAnchor, constant: -99),
-            imageView.topAnchor.constraint(equalTo: secondView.topAnchor, constant: 24),
-            imageView.leadingAnchor.constraint(equalTo: secondView.leadingAnchor, constant: 96),
-            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor),
-            
-            label1.bottomAnchor.constraint(equalTo: label2.topAnchor, constant: -16),
-            label1.trailingAnchor.constraint(equalTo: secondView.trailingAnchor, constant: -74),
-            label1.leadingAnchor.constraint(equalTo: secondView.leadingAnchor, constant: 75),
-            
-            label2.bottomAnchor.constraint(equalTo: label3.topAnchor, constant: -8),
-            label2.trailingAnchor.constraint(equalTo: secondView.trailingAnchor, constant: -213),
-            label2.leadingAnchor.constraint(equalTo: secondView.leadingAnchor, constant: 40),
-            
-            leftButtonImageView.bottomAnchor.constraint(equalTo: label4.topAnchor, constant: -14),
-            leftButtonImageView.trailingAnchor.constraint(equalTo: gemImageView.leadingAnchor, constant: -24),
-            leftButtonImageView.topAnchor.constraint(equalTo: label1.bottomAnchor, constant: 22),
-            leftButtonImageView.leadingAnchor.constraint(equalTo: secondView.leadingAnchor, constant: 164.09),
-            leftButtonImageView.widthAnchor.constraint(equalToConstant: 12),
-            leftButtonImageView.heightAnchor.constraint(equalToConstant: 12),
-            
-            gemImageView.bottomAnchor.constraint(equalTo: label4.topAnchor, constant: -8),
-            gemImageView.topAnchor.constraint(equalTo: label1.bottomAnchor, constant: 16),
-            gemImageView.widthAnchor.constraint(equalToConstant: 28),
-            gemImageView.heightAnchor.constraint(equalToConstant: 24),
-            
-            rightButtonImageImageView.bottomAnchor.constraint(equalTo: label4.topAnchor, constant: -14),
-            rightButtonImageImageView.trailingAnchor.constraint(equalTo: secondView.trailingAnchor, constant: -41.09),
-            rightButtonImageImageView.topAnchor.constraint(equalTo: label1.bottomAnchor, constant: 22),
-            rightButtonImageImageView.leadingAnchor.constraint(equalTo: gemImageView.trailingAnchor, constant: 24),
-            rightButtonImageImageView.widthAnchor.constraint(equalToConstant: 12),
-            rightButtonImageImageView.heightAnchor.constraint(equalToConstant: 12),
-            
-            label3.bottomAnchor.constraint(equalTo: purchaseBtn.topAnchor, constant: -20),
-            label3.trailingAnchor.constraint(equalTo: secondView.trailingAnchor, constant: -200),
-            label3.leadingAnchor.constraint(equalTo: secondView.leadingAnchor, constant: 40),
-            
-            label4.bottomAnchor.constraint(equalTo: purchaseBtn.topAnchor, constant: -24),
-            label4.trailingAnchor.constraint(equalTo: secondView.trailingAnchor, constant: -62),
-            label4.leadingAnchor.constraint(equalTo: secondView.leadingAnchor, constant: 185),
-            
-            purchaseBtn.bottomAnchor.constraint(equalTo: secondView.bottomAnchor, constant: -16),
-            purchaseBtn.trailingAnchor.constraint(equalTo: secondView.trailingAnchor, constant: -49),
-            purchaseBtn.leadingAnchor.constraint(equalTo: secondView.leadingAnchor, constant: 46)
-            
-        ])
+        var constraint: [NSLayoutConstraint] = []
+        defer { NSLayoutConstraint.activate(constraint) }
         
+        constraint += [
+            popupView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            popupView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            popupView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
+            popupView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40),
+            popupView.topAnchor.constraint(greaterThanOrEqualTo: self.topAnchor, constant: 0),
+            popupView.bottomAnchor.constraint(lessThanOrEqualTo: self.bottomAnchor, constant: 0)
+        ]
+        
+        constraint += [
+            imageView.topAnchor.constraint(equalTo: popupView.topAnchor, constant: 24),
+            imageView.leadingAnchor.constraint(equalTo: popupView.leadingAnchor, constant: 96),
+            imageView.trailingAnchor.constraint(equalTo: popupView.trailingAnchor, constant: -96),
+            imageView.centerXAnchor.constraint(equalTo: popupView.centerXAnchor)
+        ]
+        
+        constraint += [
+            messageLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8),
+            messageLabel.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
+            messageLabel.leadingAnchor.constraint(equalTo: popupView.leadingAnchor),
+            messageLabel.trailingAnchor.constraint(equalTo: popupView.trailingAnchor)
+        ]
+        
+        constraint += [
+            gemCountInfoLabel.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 16),
+            gemCountInfoLabel.leadingAnchor.constraint(equalTo: popupView.leadingAnchor, constant: 40)
+        ]
+        
+        constraint += [
+            rightButtonImageView.centerYAnchor.constraint(equalTo: gemCountInfoLabel.centerYAnchor),
+            rightButtonImageView.trailingAnchor.constraint(equalTo: popupView.trailingAnchor, constant: -41),
+            rightButtonImageView.widthAnchor.constraint(equalToConstant: 12),
+            rightButtonImageView.heightAnchor.constraint(equalTo: rightButtonImageView.widthAnchor)
+        ]
+        
+        constraint += [
+            gemImageView.centerYAnchor.constraint(equalTo: gemCountInfoLabel.centerYAnchor),
+            gemImageView.trailingAnchor.constraint(equalTo: rightButtonImageView.leadingAnchor, constant: -24),
+            gemImageView.heightAnchor.constraint(equalToConstant: 20),
+            gemImageView.widthAnchor.constraint(equalToConstant: 24)
+        ]
+        
+        constraint += [
+            leftButtonImageView.centerYAnchor.constraint(equalTo: gemCountInfoLabel.centerYAnchor),
+            leftButtonImageView.trailingAnchor.constraint(equalTo: gemImageView.leadingAnchor, constant: -24),
+            leftButtonImageView.widthAnchor.constraint(equalToConstant: 12),
+            leftButtonImageView.heightAnchor.constraint(equalTo: leftButtonImageView.widthAnchor)
+        ]
+        
+        constraint += [
+            purchaseAmountInfoLabel.topAnchor.constraint(equalTo: gemCountInfoLabel.bottomAnchor, constant: 8),
+            purchaseAmountInfoLabel.leadingAnchor.constraint(equalTo: popupView.leadingAnchor, constant: 40)
+        ]
+        
+        constraint += [
+            currencyLabel.centerYAnchor.constraint(equalTo: purchaseAmountInfoLabel.centerYAnchor),
+            currencyLabel.centerXAnchor.constraint(equalTo: gemImageView.centerXAnchor),
+            currencyLabel.leadingAnchor.constraint(greaterThanOrEqualTo: purchaseAmountInfoLabel.trailingAnchor, constant: 0),
+            currencyLabel.trailingAnchor.constraint(lessThanOrEqualTo: popupView.trailingAnchor, constant: 0),
+        ]
+        
+        constraint += [
+            purchaseButton.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
+            purchaseButton.leadingAnchor.constraint(equalTo: popupView.leadingAnchor, constant: 45),
+            purchaseButton.trailingAnchor.constraint(equalTo: popupView.trailingAnchor, constant: -45),
+            purchaseButton.bottomAnchor.constraint(equalTo: popupView.bottomAnchor, constant: 160)
+        ]
     }
     
     func configureView() {
-        self.layer.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5).cgColor
-        secondView.addStyles(style: secondViewStyle)
-        purchaseBtn.addStyles(style: purchaseBtnStyle)
+//        self.layer.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5).cgColor
+//        popupView.addStyles(style: secondViewStyle)
+        
+        purchaseButton.addStyles(style: purchaseBtnStyle)
         imageView.addStyles(style: imageViewStyle)
         gemImageView.addStyles(style: gemImageViewStyle)
         leftButtonImageView.addStyles(style: leftButtonImageViewStyle)
-        rightButtonImageImageView.addStyles(style: rightButtonImageViewStyle)
-        label1.addStyles(style: label1Style)
-        label2.addStyles(style: label2Style)
-        label3.addStyles(style: label3Style)
-        label4.addStyles(style: label4Style)
+        rightButtonImageView.addStyles(style: rightButtonImageViewStyle)
+        messageLabel.addStyles(style: messageLabelStyle)
+        gemCountInfoLabel.addStyles(style: gemCountInfoLabelStyle)
+        purchaseAmountInfoLabel.addStyles(style: purchaseAmountInfoLabelStyle)
+        currencyLabel.addStyles(style: currencyLabelStyle)
+        
+        self.backgroundColor = .yellow
+        popupView.backgroundColor = .red
     }
     
     func bind() {
