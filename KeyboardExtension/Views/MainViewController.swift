@@ -40,6 +40,13 @@ class MainViewController: UIInputViewController {
         return view
     }()
     
+    lazy var shortcutView: ShortcutPopupView = {
+        let viewModel = ShortcutPopupViewModel()
+        let view = ShortcutPopupView(viewModel: viewModel)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     // MARK: Associated Types
     typealias ViewModel = MainViewModel
     
@@ -95,6 +102,7 @@ class MainViewController: UIInputViewController {
         self.view.addSubview(toolBarView)
         self.view.addSubview(keyboardView)
         self.view.addSubview(frequentlyUsedWordsView)
+        self.view.addSubview(shortcutView)
     }
     
     // MARK: Layout Views
@@ -130,6 +138,11 @@ class MainViewController: UIInputViewController {
             frequentlyUsedWordsView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
             frequentlyUsedWordsView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
             frequentlyUsedWordsView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+        ]
+        
+        constraints += [
+            shortcutView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            shortcutView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
         ]
     }
     
