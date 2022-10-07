@@ -1,19 +1,19 @@
 //
-//  tema.swift
+//  good2View.swift
 //  K-Keyboard
 //
-//  Created by so on 2022/10/06.
+//  Created by so on 2022/10/07.
 //
 
 import UIKit
 
-class tema: UIView {
-    
-    
+class LoveView: UIView {
+
     lazy var imoge: UILabel = {
         let imoge = UILabel()
         imoge.font = .appleSDGothicNeo(weight: .regular, size: 30)
         imoge.translatesAutoresizingMaskIntoConstraints = false
+        imoge.text = "😍"
         return imoge
     }()
     lazy var feel: UILabel = {
@@ -22,6 +22,7 @@ class tema: UIView {
         feel.font = .appleSDGothicNeo(weight: .regular, size: 12)
         feel.numberOfLines = 0
         feel.textColor = UIColor(hex: "#919299",alpha: 1)
+        feel.text = "심쿵했어요"
         return feel
     }()
     lazy var count: UILabel = {
@@ -29,8 +30,10 @@ class tema: UIView {
         count.translatesAutoresizingMaskIntoConstraints = false
         count.font = .appleSDGothicNeo(weight: .regular, size: 10)
         count.textColor = UIColor(hex: "#919299", alpha: 1)
+        count.text = "1"
         return count
     }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.cellSetting()
@@ -60,4 +63,5 @@ class tema: UIView {
         self.addSubview(feel)
         self.addSubview(count)
     }
+
 }

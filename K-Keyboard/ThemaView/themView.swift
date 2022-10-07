@@ -7,7 +7,7 @@
 
 import UIKit
 
-class themView: UIView {
+class themaView: UIView {
     
     let immoge: [String] = ["☺️","😍","😉","🤣"]
     var b1 : [String] = ["마음에들어요", "심쿵했어요", "응원해요","갖고싶어요"]
@@ -26,49 +26,28 @@ class themView: UIView {
     //문제점3. setUpView에서 good.addView로 레이블을 넣어주는지??  goodView안에서 self.addView로 레이블을 넣어주는지
     //문제점4. constraintCustomView에서 레이아웃을 잡는데 스텍뷰안에 good뷰들이 들어가면  스텍뷰 높이를 주어졌을때 따로 지정을 안해줘도되는데 addview만 하면 되는지?
     
-    let good : UIView = {
-        let good = UIView()
-        good.translatesAutoresizingMaskIntoConstraints = false
+    let goodView : GoodView = {
+        let view = GoodView()
+        view.translatesAutoresizingMaskIntoConstraints = false
         
-        return good
+        return view
     }()
-    let good2 : UIView = {
-        let good = UIView()
-        good.translatesAutoresizingMaskIntoConstraints = false
-        return good
+    let loveView : LoveView = {
+        let view = LoveView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
-    let good3 : UIView = {
-        let good = UIView()
-        good.translatesAutoresizingMaskIntoConstraints = false
-        return good
+    let cheerView : CheerView = {
+        let view = CheerView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
-    let good4 : UIView = {
-        let good = UIView()
-        good.translatesAutoresizingMaskIntoConstraints = false
-        return good
+    let wantView : WantView = {
+        let view = WantView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
-    
-    
-    let label1: UILabel = {
-        let label = UILabel()
-        label.text = "☺️"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    let label2: UILabel = {
-        let label = UILabel()
-        label.text = "마음에들어요"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    let label3: UILabel = {
-        let label = UILabel()
-        label.text = "0"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
+
     let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -81,29 +60,13 @@ class themView: UIView {
     
     private func setupView() {
         addSubview(buy)
-        good.addSubview(label1)
-        good.addSubview(label2)
-        good.addSubview(label3)
-
-        good2.addSubview(label1)
-        good2.addSubview(label2)
-        good2.addSubview(label3)
-        
-        good3.addSubview(label1)
-        good3.addSubview(label2)
-        good3.addSubview(label3)
-        
-        good4.addSubview(label1)
-        good4.addSubview(label2)
-        good4.addSubview(label3)
-        
         
         addSubview(stackView)
-        stackView.addSubview(good)
-        stackView.addSubview(good2)
-        stackView.addSubview(good3)
-        stackView.addSubview(good4)
-//        [good, good2, good3, good4].map {
+        stackView.addSubview(goodView)
+        stackView.addSubview(loveView)
+        stackView.addSubview(cheerView)
+        stackView.addSubview(wantView)
+//    [good, good2, good3, good4].map {
 //                self.stackView.addArrangedSubview($0)
 //            }
     }
@@ -130,17 +93,8 @@ class themView: UIView {
             stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             stackView.heightAnchor.constraint(equalToConstant: 66),
             
-            good.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
+//            good.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
             
-            label1.topAnchor.constraint(equalTo: good.topAnchor),
-            label1.centerXAnchor.constraint(equalTo: centerXAnchor),
-            
-            label2.topAnchor.constraint(equalTo: label1.bottomAnchor,constant: 8),
-            label2.centerXAnchor.constraint(equalTo: label1.centerXAnchor),
-            
-            label3.topAnchor.constraint(equalTo: label3.bottomAnchor,constant: 0),
-            label3.centerXAnchor.constraint(equalTo: label3.centerXAnchor),
-            label3.bottomAnchor.constraint(equalTo: bottomAnchor)
             
         ])
     }

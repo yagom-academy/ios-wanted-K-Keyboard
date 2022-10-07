@@ -26,7 +26,10 @@
 		B09A55F328EFC3A80093D9D3 /* ContentSizedCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A55F228EFC3A80093D9D3 /* ContentSizedCollectionView.swift */; };
 		D309FF6A28EE8EAC005F4094 /* PurchaseReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D309FF6928EE8EAC005F4094 /* PurchaseReviewTableViewCell.swift */; };
 		D309FF6C28EEED7C005F4094 /* PurchaseReviewTablewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D309FF6B28EEED7C005F4094 /* PurchaseReviewTablewView.swift */; };
-		D309FF6E28EF1F47005F4094 /* tema.swift in Sources */ = {isa = PBXBuildFile; fileRef = D309FF6D28EF1F47005F4094 /* tema.swift */; };
+		D309FF7128EFE010005F4094 /* GoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D309FF7028EFE010005F4094 /* GoodView.swift */; };
+		D309FF7328EFE01B005F4094 /* LoveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D309FF7228EFE01B005F4094 /* LoveView.swift */; };
+		D309FF7728EFE03A005F4094 /* CheerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D309FF7628EFE03A005F4094 /* CheerView.swift */; };
+		D309FF7928EFE05D005F4094 /* WantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D309FF7828EFE05D005F4094 /* WantView.swift */; };
 		D30E931728E5B27B009AB544 /* KeyboardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E931628E5B27B009AB544 /* KeyboardImageView.swift */; };
 		D30E931928E69F19009AB544 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E931828E69F19009AB544 /* TagView.swift */; };
 		D30E931D28E69F73009AB544 /* KeyWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E931C28E69F73009AB544 /* KeyWordView.swift */; };
@@ -88,7 +91,10 @@
 		B09A55F228EFC3A80093D9D3 /* ContentSizedCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizedCollectionView.swift; sourceTree = "<group>"; };
 		D309FF6928EE8EAC005F4094 /* PurchaseReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseReviewTableViewCell.swift; sourceTree = "<group>"; };
 		D309FF6B28EEED7C005F4094 /* PurchaseReviewTablewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseReviewTablewView.swift; sourceTree = "<group>"; };
-		D309FF6D28EF1F47005F4094 /* tema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tema.swift; sourceTree = "<group>"; };
+		D309FF7028EFE010005F4094 /* GoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodView.swift; sourceTree = "<group>"; };
+		D309FF7228EFE01B005F4094 /* LoveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoveView.swift; sourceTree = "<group>"; };
+		D309FF7628EFE03A005F4094 /* CheerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheerView.swift; sourceTree = "<group>"; };
+		D309FF7828EFE05D005F4094 /* WantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WantView.swift; sourceTree = "<group>"; };
 		D30E931628E5B27B009AB544 /* KeyboardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardImageView.swift; sourceTree = "<group>"; };
 		D30E931828E69F19009AB544 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		D30E931C28E69F73009AB544 /* KeyWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyWordView.swift; sourceTree = "<group>"; };
@@ -216,6 +222,17 @@
 			path = "K-Keyboard";
 			sourceTree = "<group>";
 		};
+		D309FF6F28EFDFF8005F4094 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D309FF7028EFE010005F4094 /* GoodView.swift */,
+				D309FF7228EFE01B005F4094 /* LoveView.swift */,
+				D309FF7628EFE03A005F4094 /* CheerView.swift */,
+				D309FF7828EFE05D005F4094 /* WantView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		D30E931A28E69F30009AB544 /* TagView */ = {
 			isa = PBXGroup;
 			children = (
@@ -257,10 +274,10 @@
 		D3A2C2CD28E708360093A633 /* ThemaView */ = {
 			isa = PBXGroup;
 			children = (
+				D309FF6F28EFDFF8005F4094 /* Views */,
 				D3D272B628E70D9C00BC6392 /* ThemaView.swift */,
 				D325D90528E9290700DFD0A1 /* ThemaCollectionViewCell.swift */,
 				D31AF13628EA96DA00BEE422 /* themView.swift */,
-				D309FF6D28EF1F47005F4094 /* tema.swift */,
 			);
 			path = ThemaView;
 			sourceTree = "<group>";
@@ -410,6 +427,7 @@
 				D37DE32628EA80F7008B1A2A /* PurchasReviewModel.swift in Sources */,
 				B09A55F328EFC3A80093D9D3 /* ContentSizedCollectionView.swift in Sources */,
 				D325D90628E9290700DFD0A1 /* ThemaCollectionViewCell.swift in Sources */,
+				D309FF7328EFE01B005F4094 /* LoveView.swift in Sources */,
 				D309FF6C28EEED7C005F4094 /* PurchaseReviewTablewView.swift in Sources */,
 				D325D90828E95D7600DFD0A1 /* ButtonView.swift in Sources */,
 				D3D272B728E70D9C00BC6392 /* ThemaView.swift in Sources */,
@@ -417,6 +435,7 @@
 				D3A2C2CC28E6EE000093A633 /* KeyWordViewCell.swift in Sources */,
 				D3D272BB28E8010B00BC6392 /* KeyWordModel.swift in Sources */,
 				D30E931D28E69F73009AB544 /* KeyWordView.swift in Sources */,
+				D309FF7128EFE010005F4094 /* GoodView.swift in Sources */,
 				D30E931928E69F19009AB544 /* TagView.swift in Sources */,
 				B09A55EF28EFB63D0093D9D3 /* LeftAlignedCollectionViewLayout.swift in Sources */,
 				467002C128E85C52000B721E /* UIFont+Extensions.swift in Sources */,
@@ -424,7 +443,8 @@
 				63487F3828E2EA5E0033CF32 /* AppDelegate.swift in Sources */,
 				D3A4761628E56CDA003CA79A /* TagCollectionViewCell.swift in Sources */,
 				D30E931728E5B27B009AB544 /* KeyboardImageView.swift in Sources */,
-				D309FF6E28EF1F47005F4094 /* tema.swift in Sources */,
+				D309FF7728EFE03A005F4094 /* CheerView.swift in Sources */,
+				D309FF7928EFE05D005F4094 /* WantView.swift in Sources */,
 				467002BF28E85C52000B721E /* UIColor+Extension.swift in Sources */,
 				63487F3A28E2EA5E0033CF32 /* SceneDelegate.swift in Sources */,
 				D346C61C28EBEB3D00DAADE9 /* PopView.swift in Sources */,

@@ -28,8 +28,8 @@ class MainViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    let themaView1: themView = {
-        let view = themView()
+    let themaView1: ThemaView = {
+        let view = ThemaView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
