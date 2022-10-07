@@ -335,18 +335,19 @@ class KeyboardViewController: UIInputViewController {
                     }
                 }
             }
-            // "ㄵ"  "ㄶ"
-            else if 자음.contains(lastCharacter) && 받침.contains(newCharacter) {
-                if lastCharacter == "ㄴ" {
+            // "ㄵ"  "ㄶ" 마지막 자음 / 받침 ㄴㅈ 배열퍼스트 자음 -> 모음오고 확인
+            else if let firstCharacter = lastCharacters.first, 자음.contains(firstCharacter),
+                    모음.contains(lastCharacter) || 받침.contains(newCharacter) {
+                if lastCharacters[2] == "ㄴ" {
                     if newCharacter == "ㅈ" {
                         if let firstCharacter = lastCharacters.first {
                             if firstCharacter == lastCharacter {
                                 deleteCharacterBeforeCursor()
-                                lastCharacters.removeLast()
+                                lastCharacters[3].removeLast()
                                 lastCharacters.append("ㄵ")
                                 textDocumentProxy.insertText("ㄵ")
-                                return
-                            } else if let johab = hangul(c1: firstCharacter, c2: newCharacter , c3: "ㄵ") {
+                                return                                                         //      ㅈ을 지우고 ㄵ
+                            } else if let johab = hangul(c1: firstCharacter, c2: lastCharacters[1], c3: "ㄵ" ) {
                                 deleteCharacterBeforeCursor()
                                 lastCharacters.removeLast()
                                 lastCharacters.append("ㄵ")
@@ -359,11 +360,11 @@ class KeyboardViewController: UIInputViewController {
                         if let firstCharacter = lastCharacters.first {
                             if firstCharacter == lastCharacter {
                                 deleteCharacterBeforeCursor()
-                                lastCharacters.removeLast()
+                                lastCharacters[3].removeLast()
                                 lastCharacters.append("ㄶ")
                                 textDocumentProxy.insertText("ㄶ")
                                 return
-                            } else if let johab = hangul(c1: firstCharacter, c2: newCharacter, c3: "ㄶ") {
+                            } else if let johab = hangul(c1: firstCharacter, c2: lastCharacters[1], c3: "ㄶ" ) {
                                 deleteCharacterBeforeCursor()
                                 lastCharacters.removeLast()
                                 lastCharacters.append("ㄶ")
@@ -378,11 +379,11 @@ class KeyboardViewController: UIInputViewController {
                         if let firstCharacter = lastCharacters.first {
                             if firstCharacter == lastCharacter {
                                 deleteCharacterBeforeCursor()
-                                lastCharacters.removeLast()
+                                lastCharacters[3].removeLast()
                                 lastCharacters.append("ㅄ")
                                 textDocumentProxy.insertText("ㅄ")
                                 return
-                            } else if let johab = hangul(c1: firstCharacter, c2: newCharacter, c3: "ㅄ") {
+                            } else if let johab = hangul(c1: firstCharacter, c2: lastCharacters[1], c3: "ㅄ" ) {
                                 deleteCharacterBeforeCursor()
                                 lastCharacters.removeLast()
                                 lastCharacters.append("ㅄ")
@@ -398,11 +399,11 @@ class KeyboardViewController: UIInputViewController {
                         if let firstCharacter = lastCharacters.first {
                             if firstCharacter == lastCharacter {
                                 deleteCharacterBeforeCursor()
-                                lastCharacters.removeLast()
+                                lastCharacters[3].removeLast()
                                 lastCharacters.append("ㄺ")
                                 textDocumentProxy.insertText("ㄺ")
                                 return
-                            } else if let johab = hangul(c1: firstCharacter, c2: newCharacter, c3: "ㄺ") {
+                            } else if let johab = hangul(c1: firstCharacter, c2: lastCharacters[1], c3: "ㄺ" ) {
                                 deleteCharacterBeforeCursor()
                                 lastCharacters.removeLast()
                                 lastCharacters.append("ㄺ")
@@ -414,11 +415,11 @@ class KeyboardViewController: UIInputViewController {
                         if let firstCharacter = lastCharacters.first {
                             if firstCharacter == lastCharacter {
                                 deleteCharacterBeforeCursor()
-                                lastCharacters.removeLast()
+                                lastCharacters[3].removeLast()
                                 lastCharacters.append("ㄻ")
                                 textDocumentProxy.insertText("ㄻ")
                                 return
-                            } else if let johab = hangul(c1: firstCharacter, c2: newCharacter, c3: "ㄻ") {
+                            }  else if let johab = hangul(c1: firstCharacter, c2: lastCharacters[1], c3: "ㄻ" ) {
                                 deleteCharacterBeforeCursor()
                                 lastCharacters.removeLast()
                                 lastCharacters.append("ㄻ")
@@ -430,11 +431,11 @@ class KeyboardViewController: UIInputViewController {
                         if let firstCharacter = lastCharacters.first {
                             if firstCharacter == lastCharacter {
                                 deleteCharacterBeforeCursor()
-                                lastCharacters.removeLast()
+                                lastCharacters[3].removeLast()
                                 lastCharacters.append("ㄼ")
                                 textDocumentProxy.insertText("ㄼ")
                                 return
-                            } else if let johab = hangul(c1: firstCharacter, c2: newCharacter, c3: "ㄼ") {
+                            } else if let johab = hangul(c1: firstCharacter, c2: lastCharacters[1], c3: "ㄼ" ) {
                                 deleteCharacterBeforeCursor()
                                 lastCharacters.removeLast()
                                 lastCharacters.append("ㄼ")
@@ -446,11 +447,11 @@ class KeyboardViewController: UIInputViewController {
                         if let firstCharacter = lastCharacters.first {
                             if firstCharacter == lastCharacter {
                                 deleteCharacterBeforeCursor()
-                                lastCharacters.removeLast()
+                                lastCharacters[3].removeLast()
                                 lastCharacters.append("ㄽ")
                                 textDocumentProxy.insertText("ㄽ")
                                 return
-                            } else if let johab = hangul(c1: firstCharacter, c2: newCharacter, c3: "ㄽ") {
+                            } else if let johab = hangul(c1: firstCharacter, c2: lastCharacters[1], c3: "ㄽ" ) {
                                 deleteCharacterBeforeCursor()
                                 lastCharacters.removeLast()
                                 lastCharacters.append("ㄽ")
@@ -462,11 +463,11 @@ class KeyboardViewController: UIInputViewController {
                         if let firstCharacter = lastCharacters.first {
                             if firstCharacter == lastCharacter {
                                 deleteCharacterBeforeCursor()
-                                lastCharacters.removeLast()
+                                lastCharacters[3].removeLast()
                                 lastCharacters.append("ㄾ")
                                 textDocumentProxy.insertText("ㄾ")
                                 return
-                            } else if let johab = hangul(c1: firstCharacter, c2: newCharacter, c3: "ㄾ") {
+                            }  else if let johab = hangul(c1: firstCharacter, c2: lastCharacters[1], c3: "ㄾ" ) {
                                 deleteCharacterBeforeCursor()
                                 lastCharacters.removeLast()
                                 lastCharacters.append("ㄾ")
@@ -478,11 +479,11 @@ class KeyboardViewController: UIInputViewController {
                         if let firstCharacter = lastCharacters.first {
                             if firstCharacter == lastCharacter {
                                 deleteCharacterBeforeCursor()
-                                lastCharacters.removeLast()
+                                lastCharacters[3].removeLast()
                                 lastCharacters.append("ㄿ")
                                 textDocumentProxy.insertText("ㄿ")
                                 return
-                            } else if let johab = hangul(c1: firstCharacter, c2: newCharacter, c3: "ㄿ") {
+                            } else if let johab = hangul(c1: firstCharacter, c2: lastCharacters[1], c3: "ㄿ" ) {
                                 deleteCharacterBeforeCursor()
                                 lastCharacters.removeLast()
                                 lastCharacters.append("ㄿ")
@@ -494,11 +495,11 @@ class KeyboardViewController: UIInputViewController {
                         if let firstCharacter = lastCharacters.first {
                             if firstCharacter == lastCharacter {
                                 deleteCharacterBeforeCursor()
-                                lastCharacters.removeLast()
+                                lastCharacters[3].removeLast()
                                 lastCharacters.append("ㅀ")
                                 textDocumentProxy.insertText("ㅀ")
                                 return
-                            } else if let johab = hangul(c1: firstCharacter, c2: newCharacter, c3: "ㅀ") {
+                            } else if let johab = hangul(c1: firstCharacter, c2: lastCharacters[1], c3: "ㅀ" ) {
                                 deleteCharacterBeforeCursor()
                                 lastCharacters.removeLast()
                                 lastCharacters.append("ㅀ")
