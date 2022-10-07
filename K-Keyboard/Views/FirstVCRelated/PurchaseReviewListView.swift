@@ -18,16 +18,18 @@ class PurchaseReviewView: UIView, FirstViewStyling {
     
     var tableView = UITableView()
     
-    var cellData : [CellModel] = []
-    
     var reuseIdentifier = "ReviewCell"
     
-    init() {
+    var viewModel: PurchaseReviewListViewModel
+    
+    init(viewModel: PurchaseReviewListViewModel) {
+        self.viewModel = viewModel
         super.init(frame: .zero)
-        initializeCellData()
         initViewHierarchy()
         configureView()
         bind()
+        
+        viewModel.populateData()
     }
     
     required init?(coder: NSCoder) {
@@ -105,10 +107,24 @@ extension PurchaseReviewView: Presentable {
     }
     
     func bind() {
+        // TODO: automatic height
         tableView.register(ReviewCell.self, forCellReuseIdentifier: reuseIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 120
+        
+        viewModel.populateCommentData = { [weak self] commentData in
+            guard let self = self else { return }
+            let lastRow = self.viewModel.cellData.count - 1
+            let indexPath = IndexPath(row: lastRow, section: 0)
+            self.tableView.insertRows(at: [indexPath], with: .right)
+            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        }
+        
+        viewModel.populateReviewCommentCount = { [weak self] commentCount in
+            guard let self = self else { return }
+            self.countLabel.text = commentCount
+        }
     }
 }
 
@@ -126,33 +142,18 @@ extension PurchaseReviewView: UITableViewDelegate {
 
 extension PurchaseReviewView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cellData.count
+        return viewModel.cellData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? ReviewCell else { fatalError() }
-        if indexPath.row == 0{
-            cell.cellView.timeLabel.text = "1분"
-            cell.cellView.creatorLabel.isHidden = false
-
-        }else{
-            cell.cellView.creatorLabel.isHidden = true
-            cell.cellView.timeLabel.text = "\(indexPath.row)초"
-        }
-        cell.cellView.nickNameLabel.text = cellData[indexPath.row].id
-        cell.cellView.commentLabel.text = cellData[indexPath.row].comment
+        cell.cellView.timeLabel.text = viewModel.cellData[indexPath.row].timeString
+        cell.cellView.creatorLabel.isHidden = !viewModel.cellData[indexPath.row].isCreator
+        
+        cell.cellView.nickNameLabel.text = viewModel.cellData[indexPath.row].id
+        cell.cellView.commentLabel.text = viewModel.cellData[indexPath.row].comment
         return cell
     }
     
     
-}
-
-
-extension PurchaseReviewView {
-    func initializeCellData(){
-        cellData.append(CellModel(id: "크리에이터", comment: "구매해주셔서 감사합니다💖"))
-        for _ in 1...9{
-            cellData.append(CellModel(id: "₀달빔₀", comment: "아진짜 귀여워요 !!!!"))
-        }
-    }
 }

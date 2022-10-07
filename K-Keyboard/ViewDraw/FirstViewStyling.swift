@@ -319,7 +319,6 @@ extension FirstViewStyling {
 
 extension FirstViewStyling {
     
-    // TODO: 왜 그대로 먹였는데 전혀 다르게 나오지
     var reviewTitleLabelStyle: (UILabel) -> () {
         {
             $0.textColor = UIColor(red: 0.259, green: 0.267, blue: 0.298, alpha: 1)
@@ -371,6 +370,35 @@ extension FirstViewStyling {
             // (identical to box height)
 
             $0.attributedText = NSMutableAttributedString(string: "테마를 구매해야 리뷰를 남길 수 있어요.", attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        }
+    }
+}
+
+extension FirstViewStyling {
+    var sendCommentButtonStyle: (UIButton) -> () {
+        {
+            $0.layer.backgroundColor = UIColor(red: 1, green: 0.255, blue: 0.49, alpha: 1).cgColor
+            $0.layer.cornerRadius = 20
+            
+            let paragraphStyle = NSMutableParagraphStyle()
+//            paragraphStyle.lineHeightMultiple = 1.16
+            let color = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+            let font: UIFont = .notoSans(weight: .cjkkr_Bold, size: 14)
+            let attrString = NSAttributedString(string: "전송",
+                                                attributes: [.foregroundColor: color,
+                                                                             .font : font,
+                                                                             .paragraphStyle : paragraphStyle])
+            
+            $0.setAttributedTitle(attrString, for: .normal)
+            
+        }
+    }
+    
+    var commentTextFieldStyle: (UITextField) -> () {
+        {
+            $0.placeholder = "type a comment"
+            $0.borderStyle = .roundedRect
+            $0.layer.cornerRadius = 10.0
         }
     }
 }

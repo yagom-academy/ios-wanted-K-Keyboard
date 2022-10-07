@@ -15,18 +15,39 @@ class FirstModel {
     //output
     @MainThreadActor var routeSubject: ((SceneCategory) -> ())?
     
+    
+    var didUserPurchasedGem: Bool = false {
+        didSet {
+            propergateGemPurchasedEvent(didUserPurchasedGem)
+        }
+    }
+    
+    var propergateGemPurchasedEvent: (Bool) -> () = { bool in }
+    
     var purchaseButtonViewModel: PurchaseButtonViewModel {
         return privatePurchaseButtonViewModel
+    }
+    
+    var commentInputViewModel: CommentInputViewModel {
+        return privateCommentInputViewModel
+    }
+    
+    var purchaseReviewListViewModel: PurchaseReviewListViewModel {
+        return privatePurchaseReviewListViewModel
     }
     
     
     //properties
     private var repository: RepositoryProtocol
     private var privatePurchaseButtonViewModel: PurchaseButtonViewModel
+    private var privateCommentInputViewModel: CommentInputViewModel
+    private var privatePurchaseReviewListViewModel: PurchaseReviewListViewModel
     
     init(repository: RepositoryProtocol) {
         self.repository = repository
         self.privatePurchaseButtonViewModel = PurchaseButtonViewModel()
+        self.privateCommentInputViewModel = CommentInputViewModel()
+        self.privatePurchaseReviewListViewModel = PurchaseReviewListViewModel()
         bind()
     }
     
@@ -46,14 +67,34 @@ class FirstModel {
             
             switch action {
             case .didUserPurchaseGem:
-                print("didUserPurchase gem")
+                self.didUserPurchasedGem = true
             case .refresh:
                 break
             }
         }
+        
+        privateCommentInputViewModel.propergateEmptyTextInputReceived = { [weak self] in
+            guard let self = self else { return }
+            let okAction = AlertActionDependency(title: "확인")
+            let alertDependancy = AlertDependency(title: nil, message: "내용을 입력해야 합니다.", preferredStyle: .alert, actionSet: [okAction])
+            
+            self.routeSubject?(.alert(alertDependancy))
+        }
+        
+        privateCommentInputViewModel.propergateTextInput = { [weak self] string in
+            guard let self = self else { return }
+            
+            var cellModel = CellModel()
+            cellModel.id = "Random User Name"
+            cellModel.comment = string
+            cellModel.isCreator = false
+            cellModel.timeString = "1초전"
+            
+            self.privatePurchaseReviewListViewModel.didReceiveCommentData(cellModel)
+        }
     }
     
     func populateData() {
-        
+        didUserPurchasedGem = false
     }
 }

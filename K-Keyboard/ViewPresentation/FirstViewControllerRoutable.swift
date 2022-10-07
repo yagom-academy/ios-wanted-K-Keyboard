@@ -18,6 +18,8 @@ extension FirstViewControllerRoutable where Self: FirstViewController {
         switch scene {
         case .detail(.secondViewController(let context)):
             nextScene = buildSecondScene(context: context)
+        case .alert(let context):
+            nextScene = buildAlert(context: context)
         default: break
         }
         return nextScene
@@ -33,6 +35,11 @@ extension FirstViewControllerRoutable where Self: FirstViewController {
             nextVC.modalPresentationStyle = .overFullScreen //currentcontext?
             nextVC.modalTransitionStyle = .crossDissolve //?이걸 굳이...?
             self.present(nextVC, animated: true)
+            
+        case .alert:
+            guard let scene = buildScene(scene: Scene) else { return }
+            guard let nextVC = scene as? UIViewController else { return }
+            present(nextVC, animated: true)
         default: break
         }
     }
@@ -49,6 +56,16 @@ extension FirstViewControllerSceneBuildable {
         let secondVC = SecondViewController(viewModel: secondModel)
         nextScene = secondVC
         
+        return nextScene
+    }
+}
+
+extension FirstViewControllerSceneBuildable {
+    func buildAlert(context: AlertDependency) -> Scenable {
+        let nextScene: Scenable
+        
+        let alert = AlertFactory(dependency: context).createAlert()
+        nextScene = alert
         return nextScene
     }
 }

@@ -18,9 +18,9 @@ class FirstViewController: UIViewController, FirstViewControllerRoutable {
     lazy var keywordView = KeywordView()
     lazy var themeOpinionView = ThemeOpinionView()
     lazy var bannerView = BannerView()
-    lazy var purchaseReviewListView = PurchaseReviewView()
+    lazy var purchaseReviewListView = PurchaseReviewView(viewModel: self.model.purchaseReviewListViewModel)
     lazy var purchaseButtonView = PurchaseButtonView(viewModel: self.model.purchaseButtonViewModel)
-    lazy var commentInputView = CommentInputView()
+    lazy var commentInputView = CommentInputView(viewModel: self.model.commentInputViewModel)
     
     init(viewModel: FirstModel) {
         self.model = viewModel
@@ -39,6 +39,17 @@ class FirstViewController: UIViewController, FirstViewControllerRoutable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        model.populateData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        registerForKeyboardNotification()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        removeForKeyboardNotification()
     }
 }
 
@@ -154,22 +165,59 @@ extension FirstViewController: Presentable {
             commentInputView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
         ]
         
-        // TODO: fix temp value
-        commentInputView.isHidden = true
-        
     }
     
     func configureView() {
+        scrollView.contentInset = UIEdgeInsets.zero
+        scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
         scrollView.backgroundColor = .white
     }
     
     func bind() {
+        model.propergateGemPurchasedEvent = { [weak self] bool in
+            guard let self = self else { return }
+            if bool == true {
+                self.commentInputView.isHidden = false
+                self.purchaseButtonView.isHidden = true
+            } else if bool == false {
+                self.commentInputView.isHidden = true
+                self.purchaseButtonView.isHidden = false
+            }
+        }
+        
         model.routeSubject = { [weak self] scene in
             guard let self = self else { return }
             self.route(to: scene)
         }
     }
-    
-    
 }
 
+extension FirstViewController {
+    func registerForKeyboardNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    func removeForKeyboardNotification() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    
+    @objc func keyboardShow(_ notification: NSNotification) {
+        guard let info = notification.userInfo else { return }
+        guard let rect: CGRect = info[UIResponder.keyboardFrameBeginUserInfoKey] as? CGRect else { return }
+        let kbSize = rect.size
+
+        let insets = UIEdgeInsets(top: 0, left: 0, bottom: kbSize.height, right: 0)
+        scrollView.contentInset = insets
+        scrollView.scrollIndicatorInsets = insets
+
+        scrollView.setContentOffset(CGPoint(x: 0, y: commentInputView.frame.origin.y-kbSize.height), animated: true)
+    }
+    
+    @objc func keyboardHide(_ notification: NSNotification) {
+        scrollView.contentInset = UIEdgeInsets.zero
+        scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
+    }
+}
