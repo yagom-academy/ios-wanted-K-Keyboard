@@ -8,6 +8,7 @@
 import UIKit
 
 protocol KorKeyboardToolbarViewDelegate: class {
+    func keyboardButtonPressed()
     func favoritesButtonPressed()
 }
 
@@ -59,8 +60,13 @@ extension KorKeyboardToolbarView {
         stackView.layoutMargins = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
         
         for idx in 0..<6 {
-            // 자주 쓰는 말 버튼
-            if idx == 2 {
+            if idx == 0 { // 키보드 복귀 버튼
+                let button = makeButton(imageStr: "keyboard")
+                stackView.addArrangedSubview(button)
+                button.addTarget(self, action: #selector(keyboardButtonPressed), for: .touchUpInside)
+                
+                
+            } else if idx == 2 { // 자주 쓰는 말 버튼
                 let button = makeButton(imageStr: "line.3.horizontal")
                 stackView.addArrangedSubview(button)
                 button.addTarget(self, action: #selector(favoritesButtonPressed), for: .touchUpInside)
@@ -86,6 +92,10 @@ extension KorKeyboardToolbarView {
 }
 
 extension KorKeyboardToolbarView {
+    @objc func keyboardButtonPressed() {
+        delegate?.keyboardButtonPressed()
+    }
+    
     @objc func favoritesButtonPressed() {
         delegate?.favoritesButtonPressed()
     }

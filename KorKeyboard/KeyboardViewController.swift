@@ -129,6 +129,11 @@ extension KeyboardViewController: ShortcutViewDelegate {
 }
 
 extension KeyboardViewController: KorKeyboardToolbarViewDelegate {
+    @objc func keyboardButtonPressed() {
+        keyboardView.isHidden = false
+        favoritesView.isHidden = true
+    }
+    
     @objc func favoritesButtonPressed() {
         keyboardView.isHidden = true
         favoritesView.isHidden = false
