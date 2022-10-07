@@ -7,11 +7,11 @@
 
 import UIKit
 
-class SecondViewController: UIViewController, SecondViewControllerRoutable {
+class SecondViewController: UIViewController, SecondViewControllerRoutable, SecondViewStyling {
     
     var model: SecondModel
     
-    let secondView = SecondView()
+    let popupView = PopupView()
     
     init(viewModel: SecondModel) {
         self.model = viewModel
@@ -52,24 +52,25 @@ extension SecondViewController: Presentable {
         self.view = UIView()
         self.view.backgroundColor = .clear
         
-        self.view.addSubview(secondView)
+        self.view.addSubview(popupView)
         
-        secondView.translatesAutoresizingMaskIntoConstraints = false
+        popupView.translatesAutoresizingMaskIntoConstraints = false
         
         var constraint: [NSLayoutConstraint] = []
         defer { NSLayoutConstraint.activate(constraint) }
         
         constraint += [
-            secondView.topAnchor.constraint(equalTo: self.view.topAnchor),
-            secondView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            secondView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            secondView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+            popupView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            popupView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            popupView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 40),
+            popupView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -40)
         ]
         
     }
     
     func configureView() {
-        
+        self.view.layer.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5).cgColor
+        popupView.addStyles(style: popupViewStyle)
     }
     
     func bind() {

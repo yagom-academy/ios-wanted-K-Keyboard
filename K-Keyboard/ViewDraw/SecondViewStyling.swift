@@ -12,7 +12,7 @@ protocol SecondViewStyling { }
 
 extension SecondViewStyling {
     
-    var secondViewStyle: (UIView) -> () {
+    var popupViewStyle: (UIView) -> () {
         {
             $0.backgroundColor = .white
             $0.layer.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
@@ -21,11 +21,19 @@ extension SecondViewStyling {
         }
     }
     
-    var purchaseBtnStyle: (UIButton) -> () {
+    var purchaseButtonStyle: (UIButton) -> () {
         {
-            $0.setTitle("충전하고 바로 사용하기", for: .normal)
             $0.layer.backgroundColor = UIColor(red: 1, green: 0.255, blue: 0.49, alpha: 1).cgColor
             $0.layer.cornerRadius = 24
+            
+            let paragraphStyle = NSMutableParagraphStyle()
+            let color = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+            let font: UIFont = .notoSans(weight: .cjkkr_Bold, size: 14)
+            let attrString = NSAttributedString(string: "충전하고 바로 사용하기",
+                                                attributes: [.foregroundColor: color,
+                                                                             .font : font,
+                                                                             .paragraphStyle : paragraphStyle])
+            $0.setAttributedTitle(attrString, for: .normal)
         }
     }
     
