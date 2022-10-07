@@ -171,6 +171,10 @@ extension FirstViewController: Presentable {
         scrollView.contentInset = UIEdgeInsets.zero
         scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
         scrollView.backgroundColor = .white
+        
+        scrollView.backgroundColor = .white
+        commentInputView.backgroundColor = .white
+        
     }
     
     func bind() {
@@ -209,24 +213,21 @@ extension FirstViewController {
         guard let rect: CGRect = info[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
         let kbSize = rect.size
 
-        let insets = UIEdgeInsets(top: 0, left: 0, bottom: kbSize.height, right: 0)
+        let insets = UIEdgeInsets(top: 0, left: 0, bottom: kbSize.height - scrollView.safeAreaInsets.bottom, right: 0)
         scrollView.contentInset = insets
         scrollView.scrollIndicatorInsets = insets
 
-        scrollView.setContentOffset(CGPoint(x: 0, y: commentInputView.frame.origin.y-kbSize.height), animated: true)
-       
-//        let bottomInsets = self.view.safeAreaInsets.bottom
-//        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-//            UIView.animate(withDuration: 0.3, animations: {
-//                self.scrollView.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height + bottomInsets)
-//            })
-//        }
+        print("kb size : \(kbSize.height)")
+        print("view safe inset bottom : \(view.safeAreaInsets.bottom)")
+        print("scroll view safe inset boottom : \(scrollView.safeAreaInsets.bottom)")
+        print("self's additional SafeArea inset : \(self.additionalSafeAreaInsets.bottom)")
+        
+//        scrollView.setContentOffset(CGPoint(x: 0, y: commentInputView.frame.origin.y - kbSize.height - scrollView.safeAreaInsets.bottom), animated: true)
+        scrollView.scrollRectToVisible(commentInputView.frame, animated: true)
     }
     
     @objc func keyboardHide(_ notification: NSNotification) {
         scrollView.contentInset = UIEdgeInsets.zero
         scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
-      //  self.scrollView.transform = .identity
-
     }
 }
