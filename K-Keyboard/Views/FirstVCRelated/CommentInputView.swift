@@ -7,15 +7,6 @@
 
 import UIKit
 import SwiftUI
-// 12 12 40 == 64
-
-/*
- - 상품 구매 후, 덧글을 작성하는 바에 `텍스트를 작성하는 입력란`과 `텍스트를 저장하는 작성 버튼`을 구현합니다
- - 텍스트 작성 후 작성 버튼을 누르면 구매 리뷰에 해당 내용이 추가됩니다
-     - 사진은 placeholder를 사용합니다
-     - 덧글을 작성할 때마다 구매 리뷰 갯수가 그만큼 증가합니다
-     - 빈 텍스트는 작성되지 않습니다
- */
 
 class CommentInputView: UIView, FirstViewStyling {
 
@@ -80,6 +71,7 @@ extension CommentInputView: Presentable {
             guard let self = self else { return }
             guard let textInput = self.commentTextField.text else { return }
             self.viewModel.didReceiveTextInput(textInput)
+            self.commentTextField.resignFirstResponder()
         }
         
         sendCommentButton.addAction(action, for: .touchUpInside)

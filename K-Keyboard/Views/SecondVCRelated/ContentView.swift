@@ -62,7 +62,7 @@ extension ContentView: Presentable {
         
         let selfViewPoint = sender.location(in: self)
         
-        var isTapInPopupViewBounds = popupView.frame.contains(selfViewPoint)
+        let isTapInPopupViewBounds = popupView.frame.contains(selfViewPoint)
         
         if isTapInPopupViewBounds == true {
             return

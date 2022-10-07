@@ -74,6 +74,10 @@ class FirstModel {
             
             self.routeSubject?(.alert(alertDependancy))
         }
+        
+        privateCommentInputViewModel.propergateTextInput = { [weak self] string in
+            guard let self = self else { return }
+        }
     }
     
     func populateData() {
