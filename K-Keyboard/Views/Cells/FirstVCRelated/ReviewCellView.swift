@@ -122,10 +122,8 @@ extension ReviewCellView: Presentable {
         nickNameLabel.addStyles(style: nickNameLabelStyle)
         
         // TODO: 더미 모델 데이터 받음에 따라 크리에이터레이블 히든 처리, 작성자이름 설정
-        nickNameLabel.attributedText = NSAttributedString(string: "작성자이름")
         
         commentLabel.addStyles(style: commentLabelStyle)
-        commentLabel.attributedText = NSAttributedString(string: "코멘트코멘트코멘트코멘트asdfasdfdasfasdfasdfasdfsdafasdsdfsdfsdfsdfsdfsdfsdfsdfsdff")
         
         timeLabel.addStyles(style: timeLabelStyle)
         
