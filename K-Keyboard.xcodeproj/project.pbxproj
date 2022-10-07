@@ -12,7 +12,11 @@
 		63487F3C28E2EA5E0033CF32 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3B28E2EA5E0033CF32 /* ViewController.swift */; };
 		63487F4128E2EA5E0033CF32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63487F4028E2EA5E0033CF32 /* Assets.xcassets */; };
 		63487F4428E2EA5E0033CF32 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63487F4228E2EA5E0033CF32 /* LaunchScreen.storyboard */; };
+		8CBA9FF428E875AD003C66D3 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBA9FF328E875AD003C66D3 /* PopUpViewController.swift */; };
+		8CBA9FF628E87D82003C66D3 /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBA9FF528E87D82003C66D3 /* PopUpView.swift */; };
+		8CBA9FF828EBFA0B003C66D3 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBA9FF728EBFA0B003C66D3 /* CommentTableViewCell.swift */; };
 		8CDA640728E5481200F123FE /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA640628E5481200F123FE /* Keyboard.swift */; };
+		8CDA640928E5B62E00F123FE /* BuyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA640828E5B62E00F123FE /* BuyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +27,11 @@
 		63487F4028E2EA5E0033CF32 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63487F4328E2EA5E0033CF32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63487F4528E2EA5E0033CF32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8CBA9FF328E875AD003C66D3 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		8CBA9FF528E87D82003C66D3 /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
+		8CBA9FF728EBFA0B003C66D3 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		8CDA640628E5481200F123FE /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
+		8CDA640828E5B62E00F123FE /* BuyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +118,11 @@
 		8CDA640528E5478000F123FE /* BuyKeyboard */ = {
 			isa = PBXGroup;
 			children = (
+				8CDA640828E5B62E00F123FE /* BuyView.swift */,
 				63487F3B28E2EA5E0033CF32 /* ViewController.swift */,
+				8CBA9FF328E875AD003C66D3 /* PopUpViewController.swift */,
+				8CBA9FF528E87D82003C66D3 /* PopUpView.swift */,
+				8CBA9FF728EBFA0B003C66D3 /* CommentTableViewCell.swift */,
 			);
 			path = BuyKeyboard;
 			sourceTree = "<group>";
@@ -185,8 +197,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CBA9FF628E87D82003C66D3 /* PopUpView.swift in Sources */,
 				63487F3C28E2EA5E0033CF32 /* ViewController.swift in Sources */,
+				8CBA9FF428E875AD003C66D3 /* PopUpViewController.swift in Sources */,
+				8CBA9FF828EBFA0B003C66D3 /* CommentTableViewCell.swift in Sources */,
 				63487F3828E2EA5E0033CF32 /* AppDelegate.swift in Sources */,
+				8CDA640928E5B62E00F123FE /* BuyView.swift in Sources */,
 				8CDA640728E5481200F123FE /* Keyboard.swift in Sources */,
 				63487F3A28E2EA5E0033CF32 /* SceneDelegate.swift in Sources */,
 			);
@@ -327,6 +343,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AH24YSXN5M;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "K-Keyboard/Application/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -353,6 +370,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AH24YSXN5M;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "K-Keyboard/Application/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
