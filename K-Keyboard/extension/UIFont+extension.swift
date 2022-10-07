@@ -16,8 +16,7 @@ enum fontWeight: String {
 extension UIFont {
     
     static func NotoSanKR(weight: fontWeight, size: CGFloat) -> UIFont {
-        
-        print("NotoSansKR-\(weight.rawValue)")
+    
         return UIFont(name: "NotoSansKR-\(weight.rawValue)", size: size) ?? UIFont()
     }
 }

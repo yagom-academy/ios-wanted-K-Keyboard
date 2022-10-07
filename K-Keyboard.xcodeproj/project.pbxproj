@@ -19,7 +19,7 @@
 		0B93A09828EF001E00CCE360 /* ThemeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A09728EF001E00CCE360 /* ThemeDetailView.swift */; };
 		0B93A09A28EF010600CCE360 /* ViewRepresent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A09928EF010600CCE360 /* ViewRepresent.swift */; };
 		0B93A09B28EF05BB00CCE360 /* ViewRepresent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A09928EF010600CCE360 /* ViewRepresent.swift */; };
-		0B93A09E28EF062200CCE360 /* DescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A09D28EF062200CCE360 /* DescriptionCell.swift */; };
+		0B93A09E28EF062200CCE360 /* DescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A09D28EF062200CCE360 /* DescriptionTableViewCell.swift */; };
 		0B93A0A828EF393700CCE360 /* UIFont+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A0A728EF393700CCE360 /* UIFont+extension.swift */; };
 		0B93A0AB28EF546200CCE360 /* UIFont+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A0A728EF393700CCE360 /* UIFont+extension.swift */; };
 		0B93A0B428EF583600CCE360 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0B93A0AE28EF583600CCE360 /* NotoSansKR-Regular.otf */; };
@@ -34,6 +34,18 @@
 		0B93A0BD28EF583600CCE360 /* NotoSansKR-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0B93A0B228EF583600CCE360 /* NotoSansKR-Black.otf */; };
 		0B93A0BE28EF583600CCE360 /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0B93A0B328EF583600CCE360 /* NotoSansKR-Light.otf */; };
 		0B93A0BF28EF583600CCE360 /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0B93A0B328EF583600CCE360 /* NotoSansKR-Light.otf */; };
+		0B93A0C428EF61EB00CCE360 /* UILabel+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A0C328EF61EB00CCE360 /* UILabel+extension.swift */; };
+		0B93A0C528EF61EB00CCE360 /* UILabel+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A0C328EF61EB00CCE360 /* UILabel+extension.swift */; };
+		0B93A0C728EF688400CCE360 /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A0C628EF688400CCE360 /* TagCollectionViewCell.swift */; };
+		0B93A0C828EF688400CCE360 /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A0C628EF688400CCE360 /* TagCollectionViewCell.swift */; };
+		0B93A0CA28EF6BA700CCE360 /* TagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A0C928EF6BA700CCE360 /* TagTableViewCell.swift */; };
+		0B93A0CB28EF6BA700CCE360 /* TagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A0C928EF6BA700CCE360 /* TagTableViewCell.swift */; };
+		0B93A0D028EF98C400CCE360 /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A0CF28EF98C400CCE360 /* UIColor+extension.swift */; };
+		0B93A0D128EF98C400CCE360 /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A0CF28EF98C400CCE360 /* UIColor+extension.swift */; };
+		0B93A0D328EF9CBD00CCE360 /* KeywordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A0D228EF9CBD00CCE360 /* KeywordTableViewCell.swift */; };
+		0B93A0D428EF9CBD00CCE360 /* KeywordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A0D228EF9CBD00CCE360 /* KeywordTableViewCell.swift */; };
+		0B93A0D628EF9E2400CCE360 /* KeywordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A0D528EF9E2400CCE360 /* KeywordCollectionViewCell.swift */; };
+		0B93A0D728EF9E2400CCE360 /* KeywordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A0D528EF9E2400CCE360 /* KeywordCollectionViewCell.swift */; };
 		63487F3828E2EA5E0033CF32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3728E2EA5E0033CF32 /* AppDelegate.swift */; };
 		63487F3A28E2EA5E0033CF32 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3928E2EA5E0033CF32 /* SceneDelegate.swift */; };
 		63487F3C28E2EA5E0033CF32 /* ThemeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3B28E2EA5E0033CF32 /* ThemeDetailViewController.swift */; };
@@ -77,7 +89,7 @@
 		0B784F7828E70C60007BA390 /* KeyboardCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardCharacter.swift; sourceTree = "<group>"; };
 		0B93A09728EF001E00CCE360 /* ThemeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeDetailView.swift; sourceTree = "<group>"; };
 		0B93A09928EF010600CCE360 /* ViewRepresent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRepresent.swift; sourceTree = "<group>"; };
-		0B93A09D28EF062200CCE360 /* DescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionCell.swift; sourceTree = "<group>"; };
+		0B93A09D28EF062200CCE360 /* DescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		0B93A0A728EF393700CCE360 /* UIFont+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+extension.swift"; sourceTree = "<group>"; };
 		0B93A0AE28EF583600CCE360 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansKR-Regular.otf"; path = "../../../../../../Downloads/Noto_Sans_KR 2/NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
 		0B93A0AF28EF583600CCE360 /* NotoSansKR-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansKR-Thin.otf"; path = "../../../../../../Downloads/Noto_Sans_KR 2/NotoSansKR-Thin.otf"; sourceTree = "<group>"; };
@@ -85,6 +97,12 @@
 		0B93A0B128EF583600CCE360 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansKR-Bold.otf"; path = "../../../../../../Downloads/Noto_Sans_KR 2/NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
 		0B93A0B228EF583600CCE360 /* NotoSansKR-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansKR-Black.otf"; path = "../../../../../../Downloads/Noto_Sans_KR 2/NotoSansKR-Black.otf"; sourceTree = "<group>"; };
 		0B93A0B328EF583600CCE360 /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansKR-Light.otf"; path = "../../../../../../Downloads/Noto_Sans_KR 2/NotoSansKR-Light.otf"; sourceTree = "<group>"; };
+		0B93A0C328EF61EB00CCE360 /* UILabel+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+extension.swift"; sourceTree = "<group>"; };
+		0B93A0C628EF688400CCE360 /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
+		0B93A0C928EF6BA700CCE360 /* TagTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagTableViewCell.swift; sourceTree = "<group>"; };
+		0B93A0CF28EF98C400CCE360 /* UIColor+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIColor+extension.swift"; path = "../Cell/UIColor+extension.swift"; sourceTree = "<group>"; };
+		0B93A0D228EF9CBD00CCE360 /* KeywordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordTableViewCell.swift; sourceTree = "<group>"; };
+		0B93A0D528EF9E2400CCE360 /* KeywordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordCollectionViewCell.swift; sourceTree = "<group>"; };
 		63487F3428E2EA5E0033CF32 /* K-Keyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "K-Keyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		63487F3728E2EA5E0033CF32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63487F3928E2EA5E0033CF32 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -131,7 +149,11 @@
 		0B93A09C28EF060000CCE360 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				0B93A09D28EF062200CCE360 /* DescriptionCell.swift */,
+				0B93A09D28EF062200CCE360 /* DescriptionTableViewCell.swift */,
+				0B93A0C928EF6BA700CCE360 /* TagTableViewCell.swift */,
+				0B93A0C628EF688400CCE360 /* TagCollectionViewCell.swift */,
+				0B93A0D228EF9CBD00CCE360 /* KeywordTableViewCell.swift */,
+				0B93A0D528EF9E2400CCE360 /* KeywordCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -139,7 +161,9 @@
 		0B93A0A628EF390700CCE360 /* extension */ = {
 			isa = PBXGroup;
 			children = (
+				0B93A0CF28EF98C400CCE360 /* UIColor+extension.swift */,
 				0B93A0A728EF393700CCE360 /* UIFont+extension.swift */,
+				0B93A0C328EF61EB00CCE360 /* UILabel+extension.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -310,11 +334,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B93A0C528EF61EB00CCE360 /* UILabel+extension.swift in Sources */,
 				0B784F6428E6BDB4007BA390 /* KeyboardViewController.swift in Sources */,
 				0B784F7928E70C60007BA390 /* KeyboardCharacter.swift in Sources */,
+				0B93A0C828EF688400CCE360 /* TagCollectionViewCell.swift in Sources */,
 				F8B0EA3928E93B3D00C76C86 /* HangulCombinater.swift in Sources */,
+				0B93A0D728EF9E2400CCE360 /* KeywordCollectionViewCell.swift in Sources */,
+				0B93A0D428EF9CBD00CCE360 /* KeywordTableViewCell.swift in Sources */,
 				0B0A896128EB6FC40098034D /* KeyboardView.swift in Sources */,
+				0B93A0CB28EF6BA700CCE360 /* TagTableViewCell.swift in Sources */,
 				0B93A0AB28EF546200CCE360 /* UIFont+extension.swift in Sources */,
+				0B93A0D128EF98C400CCE360 /* UIColor+extension.swift in Sources */,
 				0B784F7728E70877007BA390 /* CustomKeyboardButton.swift in Sources */,
 				0B93A09B28EF05BB00CCE360 /* ViewRepresent.swift in Sources */,
 			);
@@ -324,17 +354,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B93A0CA28EF6BA700CCE360 /* TagTableViewCell.swift in Sources */,
 				0B93A09A28EF010600CCE360 /* ViewRepresent.swift in Sources */,
 				0B784F7A28E71310007BA390 /* KeyboardCharacter.swift in Sources */,
 				0B93A09828EF001E00CCE360 /* ThemeDetailView.swift in Sources */,
 				0B93A0A828EF393700CCE360 /* UIFont+extension.swift in Sources */,
+				0B93A0D328EF9CBD00CCE360 /* KeywordTableViewCell.swift in Sources */,
 				0B0A896428EB72090098034D /* KeyboardView.swift in Sources */,
+				0B93A0D028EF98C400CCE360 /* UIColor+extension.swift in Sources */,
 				0B784F7E28E7131F007BA390 /* KeyboardViewController.swift in Sources */,
+				0B93A0C428EF61EB00CCE360 /* UILabel+extension.swift in Sources */,
 				F8E0DB9928E94119007FB787 /* HangulCombinater.swift in Sources */,
 				63487F3C28E2EA5E0033CF32 /* ThemeDetailViewController.swift in Sources */,
+				0B93A0D628EF9E2400CCE360 /* KeywordCollectionViewCell.swift in Sources */,
 				0B784F7B28E71312007BA390 /* CustomKeyboardButton.swift in Sources */,
-				0B93A09E28EF062200CCE360 /* DescriptionCell.swift in Sources */,
+				0B93A09E28EF062200CCE360 /* DescriptionTableViewCell.swift in Sources */,
 				63487F3C28E2EA5E0033CF32 /* ThemeDetailViewController.swift in Sources */,
+				0B93A0C728EF688400CCE360 /* TagCollectionViewCell.swift in Sources */,
 				63487F3828E2EA5E0033CF32 /* AppDelegate.swift in Sources */,
 				63487F3A28E2EA5E0033CF32 /* SceneDelegate.swift in Sources */,
 			);
