@@ -59,16 +59,11 @@ class themaView: UIView {
     }()
     
     private func setupView() {
-        addSubview(buy)
-        
+//        addSubview(buy)
         addSubview(stackView)
-        stackView.addSubview(goodView)
-        stackView.addSubview(loveView)
-        stackView.addSubview(cheerView)
-        stackView.addSubview(wantView)
-//    [good, good2, good3, good4].map {
-//                self.stackView.addArrangedSubview($0)
-//            }
+    [goodView, loveView, cheerView, wantView].map {
+                self.stackView.addArrangedSubview($0)
+            }
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -78,6 +73,8 @@ class themaView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     private func commonInit(){
+        addSubview(buy)
+        addSubview(stackView)
         constraintCustomView()
         setupView()
     }
@@ -92,10 +89,6 @@ class themaView: UIView {
             stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             stackView.heightAnchor.constraint(equalToConstant: 66),
-            
-//            good.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
-            
-            
         ])
     }
 }

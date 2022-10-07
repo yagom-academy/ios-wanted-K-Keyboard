@@ -8,6 +8,31 @@
 import UIKit
 
 class CheerView: UIView {
+    var addCount: Int = 0
+   
+    lazy var changeButton: UIButton = {
+        let bo = UIButton()
+        bo.translatesAutoresizingMaskIntoConstraints = false
+//        bo.backgroundColor = .gray.withAlphaComponent(0.4)
+        bo.isSelected = true
+        bo.addTarget(self, action: #selector(change), for: .touchUpInside)
+        return bo
+    }()
+@objc func change(){
+    
+            if changeButton.isSelected == true {
+                feel.textColor = UIColor(hex: "#FF417D",alpha: 1)
+                count.textColor = UIColor(hex: "#FF417D",alpha: 1)
+                addCount += 1
+                print("+1")
+            } else if changeButton.isSelected == false {
+                feel.textColor = UIColor(hex: "#919299",alpha: 1)
+                count.textColor = UIColor(hex: "#919299", alpha: 1)
+                addCount -= 1
+                print("-1")
+            }
+    print("클릭")
+    }
 
     lazy var imoge: UILabel = {
         let imoge = UILabel()
@@ -30,7 +55,7 @@ class CheerView: UIView {
         count.translatesAutoresizingMaskIntoConstraints = false
         count.font = .appleSDGothicNeo(weight: .regular, size: 10)
         count.textColor = UIColor(hex: "#919299", alpha: 1)
-        count.text = "0"
+        count.text = "\(addCount)"
         return count
     }()
     
@@ -55,13 +80,18 @@ class CheerView: UIView {
             
             count.topAnchor.constraint(equalTo: feel.bottomAnchor,constant: 0),
             count.centerXAnchor.constraint(equalTo: feel.centerXAnchor),
-            count.bottomAnchor.constraint(equalTo: bottomAnchor)
+            
+            changeButton.topAnchor.constraint(equalTo: topAnchor),
+            changeButton.leadingAnchor.constraint(equalTo: leadingAnchor),
+            changeButton.trailingAnchor.constraint(equalTo: trailingAnchor),
+            changeButton.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }
     private func addContentView() {
         self.addSubview(imoge)
         self.addSubview(feel)
         self.addSubview(count)
+        self.addSubview(changeButton)
     }
 
 }
