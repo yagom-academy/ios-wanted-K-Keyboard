@@ -14,6 +14,8 @@ class KeyboardViewModel {
     var addPhoneme: ((Phoneme) -> ())?
     var toggleShift: (() -> ())?
     var removePhoneme: (() -> ())?
+    var addWord: ((String) -> ())?
+    var showShortcutPopup: (() -> ())?
     var addSpace: (() -> ())?
     var addNewLine: (() -> ())?
     var textContextDidChange: (() -> ())?
@@ -22,7 +24,9 @@ class KeyboardViewModel {
     var propagateText: ((String) -> ())?
     var phonemesSource: (([[Phoneme]]) -> ())?
     var shiftActivatedSource: ((Bool) -> ())?
+    var isShortcutPopupHiddenSource: ((Bool) -> ())?
     var propagateRemovePrefix: (() -> ())?
+    var propagateAddWord: ((String) -> ())?
     var propagateAddSpace: (() -> ())?
     var propagateAddNewLine: (() -> ())?
     
@@ -46,6 +50,12 @@ class KeyboardViewModel {
         }
     }
     
+    var isShortcutPopupHidden: Bool = true {
+        didSet {
+            isShortcutPopupHiddenSource?(isShortcutPopupHidden)
+        }
+    }
+    
     // MARK: Life Cycle
     init() {
         bind()
@@ -58,6 +68,7 @@ class KeyboardViewModel {
             guard let self else { return }
             self.inputPhonemes.append(phoneme)
             self.shiftActivated = false
+            self.isShortcutPopupHidden = true
             let syllables = self.mergeSyllables(self.mergeVowels(self.inputPhonemes))
             let text = self.convertToString(syllables)
             self.propagateText?(text)
@@ -79,23 +90,40 @@ class KeyboardViewModel {
                 self.propagateRemovePrefix?()
             }
             self.shiftActivated = false
+            self.isShortcutPopupHidden = true
+        }
+        
+        addWord = { [weak self] word in
+            guard let self else { return }
+            self.propagateAddWord?(word)
+            self.shiftActivated = false
+            self.isShortcutPopupHidden = true
+        }
+        
+        showShortcutPopup = { [weak self] in
+            guard let self else { return }
+            self.isShortcutPopupHidden = false
+            self.shiftActivated = false
         }
         
         addSpace = { [weak self] in
             guard let self else { return }
             self.propagateAddSpace?()
             self.shiftActivated = false
+            self.isShortcutPopupHidden = true
         }
         
         addNewLine = { [weak self] in
             guard let self else { return }
             self.propagateAddNewLine?()
             self.shiftActivated = false
+            self.isShortcutPopupHidden = true
         }
         
         textContextDidChange = { [weak self] in
             guard let self else { return }
             self.shiftActivated = false
+            self.isShortcutPopupHidden = true
             self.inputPhonemes = []
         }
     }
