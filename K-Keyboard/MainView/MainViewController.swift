@@ -28,8 +28,8 @@ class MainViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    let themaView: ThemaView = {
-        let view = ThemaView()
+    let themaView1: themView = {
+        let view = themView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -68,7 +68,7 @@ class MainViewController: UIViewController {
         present(vc, animated: true)
     }
     func saveButtonAction() {
-        purchaseReviewView.dataArry.append(.init(uesrImage: UIImage(named: "user"), idLabel: "ID", infoLabel: buttonView.textFiedView.text ?? "" , timeLabel: "방금", declaration: " "))
+        purchaseReviewView.dataArry.append(.init(uesrImage: UIImage(named: "user"),isCreater: false, idLabel: "ID", infoLabel: buttonView.textFiedView.text ?? "" , timeLabel: "방금", declaration: " "))
         buttonView.diamondcount.isHidden = false
         buttonView.buyButton.isHidden = false
         buttonView.diamond.isHidden = false
@@ -80,7 +80,7 @@ class MainViewController: UIViewController {
         totalView.addSubview(keyboardImageView)
         totalView.addSubview(tagView)
         totalView.addSubview(keyWordView)
-        totalView.addSubview(themaView)
+        totalView.addSubview(themaView1)
         totalView.addSubview(purchaseReviewView)
         scrollView.addSubview(totalView)
         view.addSubview(scrollView)
@@ -133,11 +133,11 @@ class MainViewController: UIViewController {
             keyWordView.leadingAnchor.constraint(equalTo: keyboardImageView.leadingAnchor,constant: 0),
             keyWordView.trailingAnchor.constraint(equalTo: keyboardImageView.trailingAnchor,constant: 0),
             
-            themaView.topAnchor.constraint(equalTo: keyWordView.bottomAnchor,constant: 48),
-            themaView.leadingAnchor.constraint(equalTo: keyboardImageView.leadingAnchor,constant: 0),
-            themaView.trailingAnchor.constraint(equalTo: keyboardImageView.trailingAnchor,constant: 0),
+            themaView1.topAnchor.constraint(equalTo: keyWordView.bottomAnchor,constant: 48),
+            themaView1.leadingAnchor.constraint(equalTo: keyboardImageView.leadingAnchor,constant: 0),
+            themaView1.trailingAnchor.constraint(equalTo: keyboardImageView.trailingAnchor,constant: 0),
             
-            purchaseReviewView.topAnchor.constraint(equalTo: themaView.bottomAnchor,constant: 50),
+            purchaseReviewView.topAnchor.constraint(equalTo: themaView1.bottomAnchor,constant: 50),
             purchaseReviewView.leadingAnchor.constraint(equalTo: keyboardImageView.leadingAnchor,constant: 0),
             purchaseReviewView.trailingAnchor.constraint(equalTo: keyboardImageView.trailingAnchor,constant: 0),
             purchaseReviewView.bottomAnchor.constraint(equalTo: totalView.bottomAnchor,constant: 0),

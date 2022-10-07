@@ -26,6 +26,7 @@
 		B09A55F328EFC3A80093D9D3 /* ContentSizedCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A55F228EFC3A80093D9D3 /* ContentSizedCollectionView.swift */; };
 		D309FF6A28EE8EAC005F4094 /* PurchaseReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D309FF6928EE8EAC005F4094 /* PurchaseReviewTableViewCell.swift */; };
 		D309FF6C28EEED7C005F4094 /* PurchaseReviewTablewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D309FF6B28EEED7C005F4094 /* PurchaseReviewTablewView.swift */; };
+		D309FF6E28EF1F47005F4094 /* tema.swift in Sources */ = {isa = PBXBuildFile; fileRef = D309FF6D28EF1F47005F4094 /* tema.swift */; };
 		D30E931728E5B27B009AB544 /* KeyboardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E931628E5B27B009AB544 /* KeyboardImageView.swift */; };
 		D30E931928E69F19009AB544 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E931828E69F19009AB544 /* TagView.swift */; };
 		D30E931D28E69F73009AB544 /* KeyWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E931C28E69F73009AB544 /* KeyWordView.swift */; };
@@ -87,6 +88,7 @@
 		B09A55F228EFC3A80093D9D3 /* ContentSizedCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizedCollectionView.swift; sourceTree = "<group>"; };
 		D309FF6928EE8EAC005F4094 /* PurchaseReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseReviewTableViewCell.swift; sourceTree = "<group>"; };
 		D309FF6B28EEED7C005F4094 /* PurchaseReviewTablewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseReviewTablewView.swift; sourceTree = "<group>"; };
+		D309FF6D28EF1F47005F4094 /* tema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tema.swift; sourceTree = "<group>"; };
 		D30E931628E5B27B009AB544 /* KeyboardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardImageView.swift; sourceTree = "<group>"; };
 		D30E931828E69F19009AB544 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		D30E931C28E69F73009AB544 /* KeyWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyWordView.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 				D3D272B628E70D9C00BC6392 /* ThemaView.swift */,
 				D325D90528E9290700DFD0A1 /* ThemaCollectionViewCell.swift */,
 				D31AF13628EA96DA00BEE422 /* themView.swift */,
+				D309FF6D28EF1F47005F4094 /* tema.swift */,
 			);
 			path = ThemaView;
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 				63487F3828E2EA5E0033CF32 /* AppDelegate.swift in Sources */,
 				D3A4761628E56CDA003CA79A /* TagCollectionViewCell.swift in Sources */,
 				D30E931728E5B27B009AB544 /* KeyboardImageView.swift in Sources */,
+				D309FF6E28EF1F47005F4094 /* tema.swift in Sources */,
 				467002BF28E85C52000B721E /* UIColor+Extension.swift in Sources */,
 				63487F3A28E2EA5E0033CF32 /* SceneDelegate.swift in Sources */,
 				D346C61C28EBEB3D00DAADE9 /* PopView.swift in Sources */,

@@ -25,10 +25,10 @@ class ThemaView: UIView {
     
     let collectionView : UICollectionView = {
         let collectionView = UICollectionViewFlowLayout()
-        collectionView.minimumInteritemSpacing = 38
+        collectionView.minimumInteritemSpacing = ((UIScreen.main.bounds.width - (24 * 2) - (56 * 4)) / 3)
         //        collectionView.minimumLineSpacing = 38
         collectionView.scrollDirection = .vertical
-        //        collectionView.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+//        collectionView.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         let cv = UICollectionView(frame: .zero, collectionViewLayout: collectionView)
         cv.translatesAutoresizingMaskIntoConstraints = false
         return cv
@@ -36,9 +36,8 @@ class ThemaView: UIView {
     private func setupView() {
         collectionView.register(ThemaCollectionViewCell.self, forCellWithReuseIdentifier: ThemaCollectionViewCell.identifier)
         collectionView.delegate = self
-        
-        collectionView.heightAnchor.constraint(equalToConstant: 66).isActive = true
         collectionView.dataSource = self
+        collectionView.heightAnchor.constraint(equalToConstant: 66).isActive = true
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -60,8 +59,8 @@ class ThemaView: UIView {
             buy.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             
             collectionView.topAnchor.constraint(equalTo: buy.bottomAnchor,constant: 24),
-            collectionView.leadingAnchor.constraint(equalTo: buy.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: buy.leadingAnchor,constant: 8),
+            collectionView.trailingAnchor.constraint(equalTo: buy.trailingAnchor,constant: -8),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
@@ -80,7 +79,7 @@ extension ThemaView: UICollectionViewDataSource,UICollectionViewDelegateFlowLayo
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 56 , height: 66)
+        return CGSize(width: 56 , height: 63)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if situation[indexPath.row] == false {
