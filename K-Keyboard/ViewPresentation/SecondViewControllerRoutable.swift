@@ -27,7 +27,7 @@ extension SecondViewControllerRoutable where Self: SecondViewController {
     func route(to Scene: SceneCategory) {
         switch Scene {
         case .close:
-            self.navigationController?.popViewController(animated: true)
+            self.dismiss(animated: true, completion: nil)
         case .closeWithAction(let scene):
             sendAction(scene: scene)
             self.navigationController?.popViewController(animated: true)

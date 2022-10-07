@@ -14,26 +14,28 @@ class SecondModel {
     //output
     @MainThreadActor var routeSubject: ((SceneCategory) -> ())?
     
-    var popupViewModel: PopupViewModel {
-        return privatePopupViewModel
+    var contentViewModel: ContentViewModel {
+        return privateContentViewModel
     }
     
     //properties
-    private var privatePopupViewModel: PopupViewModel
+    private var privateContentViewModel: ContentViewModel
     
     init() {
-        self.privatePopupViewModel = PopupViewModel()
+        self.privateContentViewModel = ContentViewModel()
         
         bind()
     }
     
     private func bind() {
         
-        privatePopupViewModel.propergateTapGesture = {
+        privateContentViewModel.propergateTapGesture = { [weak self] in
+            guard let self = self else { return }
             
+            self.routeSubject?(.close)
         }
         
-        privatePopupViewModel.propergateButtonTap = {
+        privateContentViewModel.propergateButtonTap = {
             
         }
     }

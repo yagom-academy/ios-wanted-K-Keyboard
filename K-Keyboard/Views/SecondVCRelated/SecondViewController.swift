@@ -11,7 +11,7 @@ class SecondViewController: UIViewController, SecondViewControllerRoutable, Seco
     
     var model: SecondModel
     
-    lazy var popupView = PopupView(viewModel: self.model.popupViewModel)
+    lazy var contentView = ContentView(viewModel: self.model.contentViewModel)
     
     init(viewModel: SecondModel) {
         self.model = viewModel
@@ -52,46 +52,32 @@ extension SecondViewController: Presentable {
         self.view = UIView()
         self.view.backgroundColor = .clear
         
-        self.view.addSubview(popupView)
+        self.view.addSubview(contentView)
+        contentView.translatesAutoresizingMaskIntoConstraints = false
         
-        popupView.translatesAutoresizingMaskIntoConstraints = false
         
         var constraint: [NSLayoutConstraint] = []
         defer { NSLayoutConstraint.activate(constraint) }
         
         constraint += [
-            popupView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            popupView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-            popupView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 40),
-            popupView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -40)
+            contentView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ]
-        
     }
     
     func configureView() {
-        self.view.layer.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5).cgColor
-        popupView.addStyles(style: popupViewStyle)
+        
+        
     }
     
     func bind() {
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapEvent(_:)))
-        tapGesture.numberOfTapsRequired = 1
-        self.view.addGestureRecognizer(tapGesture)
-        
-        
-    }
-    
-    @objc func tapEvent(_ sender : UITapGestureRecognizer) {
-        
-        let selfViewPoint = sender.location(in: self.view)
-        
-        var isTapInPopupViewBounds = popupView.frame.contains(selfViewPoint)
-        
-        if isTapInPopupViewBounds == true {
-            
-        } else if isTapInPopupViewBounds == false {
-            
+        model.routeSubject = { [weak self] scene in
+            guard let self = self else { return }
+            self.route(to: scene)
         }
     }
+    
+    
 }

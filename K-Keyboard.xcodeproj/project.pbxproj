@@ -40,6 +40,8 @@
 		36B80B9528F00FD800A6324A /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B80B9428F00FD800A6324A /* PopupView.swift */; };
 		36B80B9728F019D800A6324A /* PurchaseButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B80B9628F019D800A6324A /* PurchaseButtonViewModel.swift */; };
 		36B80B9928F040F900A6324A /* PopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B80B9828F040F900A6324A /* PopupViewModel.swift */; };
+		36B80B9B28F049F500A6324A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B80B9A28F049F500A6324A /* ContentView.swift */; };
+		36B80B9D28F04EEB00A6324A /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B80B9C28F04EEA00A6324A /* ContentViewModel.swift */; };
 		36CFF51328EC811600E7E9D6 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CFF51228EC811600E7E9D6 /* UILabel+Extension.swift */; };
 		36CFF51F28ED643300E7E9D6 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CFF51E28ED643300E7E9D6 /* TagView.swift */; };
 		36CFF52128ED679900E7E9D6 /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CFF52028ED679900E7E9D6 /* TagCell.swift */; };
@@ -140,6 +142,8 @@
 		36B80B9428F00FD800A6324A /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		36B80B9628F019D800A6324A /* PurchaseButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseButtonViewModel.swift; sourceTree = "<group>"; };
 		36B80B9828F040F900A6324A /* PopupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewModel.swift; sourceTree = "<group>"; };
+		36B80B9A28F049F500A6324A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		36B80B9C28F04EEA00A6324A /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		36CFF51228EC811600E7E9D6 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		36CFF51E28ED643300E7E9D6 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		36CFF52028ED679900E7E9D6 /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
@@ -378,6 +382,7 @@
 			isa = PBXGroup;
 			children = (
 				4C242BA228E8070600DA6CBE /* SecondViewController.swift */,
+				36B80B9A28F049F500A6324A /* ContentView.swift */,
 				36B80B9428F00FD800A6324A /* PopupView.swift */,
 			);
 			path = SecondVCRelated;
@@ -406,6 +411,7 @@
 			isa = PBXGroup;
 			children = (
 				4C242BB328E808F700DA6CBE /* SecondModel.swift */,
+				36B80B9C28F04EEA00A6324A /* ContentViewModel.swift */,
 				36B80B9828F040F900A6324A /* PopupViewModel.swift */,
 			);
 			path = SecondVCRelated;
@@ -581,6 +587,7 @@
 			files = (
 				4C242B8028E804E700DA6CBE /* Styleable.swift in Sources */,
 				36B80B9728F019D800A6324A /* PurchaseButtonViewModel.swift in Sources */,
+				36B80B9B28F049F500A6324A /* ContentView.swift in Sources */,
 				4C242B8428E8051800DA6CBE /* SecondViewStyling.swift in Sources */,
 				36CFF52B28ED7B7500E7E9D6 /* BannerView.swift in Sources */,
 				4C242B8728E8055200DA6CBE /* SceneCategory.swift in Sources */,
@@ -616,6 +623,7 @@
 				363247C128EDF0CC00D68C3F /* KeywordCellView.swift in Sources */,
 				4C242B9828E8063300DA6CBE /* AlertFactory.swift in Sources */,
 				36CFF51328EC811600E7E9D6 /* UILabel+Extension.swift in Sources */,
+				36B80B9D28F04EEB00A6324A /* ContentViewModel.swift in Sources */,
 				36CFF52D28ED7BCA00E7E9D6 /* PurchaseReviewListView.swift in Sources */,
 				4C242B9328E805D300DA6CBE /* SceneAction.swift in Sources */,
 				36CFF52328ED681800E7E9D6 /* TagCellView.swift in Sources */,
