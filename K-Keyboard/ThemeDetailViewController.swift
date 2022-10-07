@@ -8,8 +8,8 @@
 import UIKit
 
 class ThemeDetailViewController: UIViewController {
-
-    var tableView: UITableView!
+    
+    let mainView = ThemeDetailView()
     
     struct ReviewDataModel {
         var isCreator: Bool = false
@@ -18,43 +18,28 @@ class ThemeDetailViewController: UIViewController {
         var content: String
         var writeBefore: String
     }
-    
-    var reviewSample = [ReviewDataModel]()
+
+    override func loadView() {
+        self.view = mainView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupView()
+        setup()
     }
     
-    override func viewWillLayoutSubviews() {
-        
-        let safeArea = view.safeAreaLayoutGuide
-        
-        view.addSubview(tableView)
-        var const = [NSLayoutConstraint]()
-        defer { NSLayoutConstraint.activate(const) }
-        const += [
-            tableView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 0),
-            tableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 0),
-            tableView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: 0),
-            tableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: 0)
-        ]
-    }
-    
-    func setupView() {
-        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height), style: .grouped)
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 50
-        tableView.delegate = self
-        tableView.dataSource = self
+    func setup() {
+        mainView.tableView.delegate = self
+        mainView.tableView.dataSource = self
         tableView.separatorStyle = .none
-        tableView.backgroundColor = .gray
-        tableView.register(ReviewTableViewCell.classForCoder(), forCellReuseIdentifier: "ReviewTableViewCell")
-        tableView.register(BannerTableViewCell.classForCoder(), forCellReuseIdentifier: "BannerTableViewCell")
-        tableView.register(EvaluationTableViewCell.classForCoder(), forCellReuseIdentifier: "EvaluationTableViewCell")
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        
+        mainView.tableView.rowHeight = UITableView.automaticDimension
+        mainView.tableView.register(DescriptionTableViewCell.self, forCellReuseIdentifier: DescriptionTableViewCell.identifier)
+        mainView.tableView.register(TagTableViewCell.self, forCellReuseIdentifier: TagTableViewCell.identifier)
+        mainView.tableView.register(KeywordTableViewCell.self, forCellReuseIdentifier: KeywordTableViewCell.identifier)
+        mainView.tableView.register(ReviewTableViewCell.self, forCellReuseIdentifier: ReviewTableViewCell.identifier)
+        mainView.tableView.register(BannerTableViewCell.self, forCellReuseIdentifier: BannerTableViewCell.identifier)
+        mainView.tableView.register(EvaluationTableViewCell.self, forCellReuseIdentifier: EvaluationTableViewCell.identifier)
+
         reviewSample.append(ReviewDataModel(isCreator: true, name: "몰랑_크리에이터", content: "구매해주셔서 감사합니다♥", writeBefore: "12초"))
         reviewSample.append(ReviewDataModel(name: "유저1", content: "정말 귀여워요..", writeBefore: "1시간"))
         reviewSample.append(ReviewDataModel(name: "유저1", content: "귀여워귀여워귀여워귀여워귀여워귀여워귀여워귀여워귀여워귀여워귀여워귀여워귀여워귀여워", writeBefore: "1분"))
@@ -65,8 +50,6 @@ class ThemeDetailViewController: UIViewController {
         reviewSample.append(ReviewDataModel(name: "유저1", content: "정말 귀여워요..", writeBefore: "1분"))
         reviewSample.append(ReviewDataModel(name: "유저1", content: "정말 귀여워요..", writeBefore: "1분"))
         reviewSample.append(ReviewDataModel(name: "유저1", content: "정말 귀여워요..", writeBefore: "1분"))
-        
-
     }
 }
 
@@ -176,29 +159,31 @@ extension ThemeDetailViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0: // 평가
-            return 1
-        case 1: // 배너
-            return 1
-        case 2: // 리뷰
-            return reviewSample.count
-        default:
-            return 0
-        }
+        return 5 // + 리뷰셀 개수만큼
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.section {
+        let row = indexPath.row
+        print(row)
+        switch row {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "EvaluationTableViewCell") as! EvaluationTableViewCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: DescriptionTableViewCell.identifier) as? DescriptionTableViewCell else { return .init() }
             return cell
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "BannerTableViewCell") as! BannerTableViewCell
-            cell.bannerImageView.image = UIImage(named: "banner")!
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: TagTableViewCell.identifier) as? TagTableViewCell else { return .init() }
             return cell
         case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewTableViewCell") as! ReviewTableViewCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: KeywordTableViewCell.identifier) as? KeywordTableViewCell else { return .init() }
+            return cell
+        case 3:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "EvaluationTableViewCell") as! EvaluationTableViewCell else { return .init() }
+            return cell
+        case 4:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "BannerTableViewCell") as! BannerTableViewCell else { return .init() }
+            cell.bannerImageView.image = UIImage(named: "banner")!
+            return cell
+        case 5: 
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewTableViewCell") as! ReviewTableViewCell else { return .init() }
             let review = reviewSample[indexPath.row]
             cell.profileTagLabel.isHidden = !review.isCreator
             cell.userNameLabel.text = review.name
@@ -208,7 +193,12 @@ extension ThemeDetailViewController: UITableViewDataSource, UITableViewDelegate 
             return cell
         default:
             let cell = UITableViewCell()
+            cell.backgroundColor = .blue
             return cell
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }

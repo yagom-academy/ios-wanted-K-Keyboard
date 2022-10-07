@@ -3,36 +3,131 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B0A896128EB6FC40098034D /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0A896028EB6FC40098034D /* KeyboardView.swift */; };
+		0B0A896428EB72090098034D /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0A896028EB6FC40098034D /* KeyboardView.swift */; };
+		0B784F6428E6BDB4007BA390 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B784F6328E6BDB4007BA390 /* KeyboardViewController.swift */; };
+		0B784F6828E6BDB4007BA390 /* custom-keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0B784F6128E6BDB4007BA390 /* custom-keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0B784F7728E70877007BA390 /* CustomKeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B784F7628E70877007BA390 /* CustomKeyboardButton.swift */; };
+		0B784F7928E70C60007BA390 /* KeyboardCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B784F7828E70C60007BA390 /* KeyboardCharacter.swift */; };
+		0B784F7A28E71310007BA390 /* KeyboardCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B784F7828E70C60007BA390 /* KeyboardCharacter.swift */; };
+		0B784F7B28E71312007BA390 /* CustomKeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B784F7628E70877007BA390 /* CustomKeyboardButton.swift */; };
+		0B784F7E28E7131F007BA390 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B784F6328E6BDB4007BA390 /* KeyboardViewController.swift */; };
+		0B93A09828EF001E00CCE360 /* ThemeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A09728EF001E00CCE360 /* ThemeDetailView.swift */; };
+		0B93A09A28EF010600CCE360 /* ViewRepresent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A09928EF010600CCE360 /* ViewRepresent.swift */; };
+		0B93A09B28EF05BB00CCE360 /* ViewRepresent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A09928EF010600CCE360 /* ViewRepresent.swift */; };
+		0B93A09E28EF062200CCE360 /* DescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A09D28EF062200CCE360 /* DescriptionTableViewCell.swift */; };
+		0B93A0A828EF393700CCE360 /* UIFont+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A0A728EF393700CCE360 /* UIFont+extension.swift */; };
+		0B93A0AB28EF546200CCE360 /* UIFont+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A0A728EF393700CCE360 /* UIFont+extension.swift */; };
+		0B93A0B428EF583600CCE360 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0B93A0AE28EF583600CCE360 /* NotoSansKR-Regular.otf */; };
+		0B93A0B528EF583600CCE360 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0B93A0AE28EF583600CCE360 /* NotoSansKR-Regular.otf */; };
+		0B93A0B628EF583600CCE360 /* NotoSansKR-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0B93A0AF28EF583600CCE360 /* NotoSansKR-Thin.otf */; };
+		0B93A0B728EF583600CCE360 /* NotoSansKR-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0B93A0AF28EF583600CCE360 /* NotoSansKR-Thin.otf */; };
+		0B93A0B828EF583600CCE360 /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0B93A0B028EF583600CCE360 /* NotoSansKR-Medium.otf */; };
+		0B93A0B928EF583600CCE360 /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0B93A0B028EF583600CCE360 /* NotoSansKR-Medium.otf */; };
+		0B93A0BA28EF583600CCE360 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0B93A0B128EF583600CCE360 /* NotoSansKR-Bold.otf */; };
+		0B93A0BB28EF583600CCE360 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0B93A0B128EF583600CCE360 /* NotoSansKR-Bold.otf */; };
+		0B93A0BC28EF583600CCE360 /* NotoSansKR-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0B93A0B228EF583600CCE360 /* NotoSansKR-Black.otf */; };
+		0B93A0BD28EF583600CCE360 /* NotoSansKR-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0B93A0B228EF583600CCE360 /* NotoSansKR-Black.otf */; };
+		0B93A0BE28EF583600CCE360 /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0B93A0B328EF583600CCE360 /* NotoSansKR-Light.otf */; };
+		0B93A0BF28EF583600CCE360 /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0B93A0B328EF583600CCE360 /* NotoSansKR-Light.otf */; };
+		0B93A0C428EF61EB00CCE360 /* UILabel+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A0C328EF61EB00CCE360 /* UILabel+extension.swift */; };
+		0B93A0C528EF61EB00CCE360 /* UILabel+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A0C328EF61EB00CCE360 /* UILabel+extension.swift */; };
+		0B93A0C728EF688400CCE360 /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A0C628EF688400CCE360 /* TagCollectionViewCell.swift */; };
+		0B93A0C828EF688400CCE360 /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A0C628EF688400CCE360 /* TagCollectionViewCell.swift */; };
+		0B93A0CA28EF6BA700CCE360 /* TagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A0C928EF6BA700CCE360 /* TagTableViewCell.swift */; };
+		0B93A0CB28EF6BA700CCE360 /* TagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A0C928EF6BA700CCE360 /* TagTableViewCell.swift */; };
+		0B93A0D028EF98C400CCE360 /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A0CF28EF98C400CCE360 /* UIColor+extension.swift */; };
+		0B93A0D128EF98C400CCE360 /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A0CF28EF98C400CCE360 /* UIColor+extension.swift */; };
+		0B93A0D328EF9CBD00CCE360 /* KeywordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A0D228EF9CBD00CCE360 /* KeywordTableViewCell.swift */; };
+		0B93A0D428EF9CBD00CCE360 /* KeywordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A0D228EF9CBD00CCE360 /* KeywordTableViewCell.swift */; };
+		0B93A0D628EF9E2400CCE360 /* KeywordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A0D528EF9E2400CCE360 /* KeywordCollectionViewCell.swift */; };
+		0B93A0D728EF9E2400CCE360 /* KeywordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A0D528EF9E2400CCE360 /* KeywordCollectionViewCell.swift */; };
 		63487F3828E2EA5E0033CF32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3728E2EA5E0033CF32 /* AppDelegate.swift */; };
 		63487F3A28E2EA5E0033CF32 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3928E2EA5E0033CF32 /* SceneDelegate.swift */; };
 		63487F3C28E2EA5E0033CF32 /* ThemeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3B28E2EA5E0033CF32 /* ThemeDetailViewController.swift */; };
-		63487F3F28E2EA5E0033CF32 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63487F3D28E2EA5E0033CF32 /* Main.storyboard */; };
 		63487F4128E2EA5E0033CF32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63487F4028E2EA5E0033CF32 /* Assets.xcassets */; };
 		63487F4428E2EA5E0033CF32 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63487F4228E2EA5E0033CF32 /* LaunchScreen.storyboard */; };
 		F8AAA8FC28EF0F35001D1DFC /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AAA8FB28EF0F35001D1DFC /* ReviewTableViewCell.swift */; };
 		F8AAA93E28EFFF9F001D1DFC /* BannerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AAA93D28EFFF9F001D1DFC /* BannerTableViewCell.swift */; };
 		F8AAA94028F01620001D1DFC /* EvaluationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AAA93F28F01620001D1DFC /* EvaluationTableViewCell.swift */; };
+		F8AF2FC628EC673200DA81C4 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8AF2FC528EC673200DA81C4 /* Icons.xcassets */; };
+		F8B0EA3928E93B3D00C76C86 /* HangulCombinater.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B0EA3828E93B3D00C76C86 /* HangulCombinater.swift */; };
+		F8E0DB9928E94119007FB787 /* HangulCombinater.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B0EA3828E93B3D00C76C86 /* HangulCombinater.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		0B784F6628E6BDB4007BA390 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63487F2C28E2EA5E0033CF32 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0B784F6028E6BDB4007BA390;
+			remoteInfo = "custom-keyboard";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0B784F6928E6BDB4007BA390 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				0B784F6828E6BDB4007BA390 /* custom-keyboard.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		0B0A896028EB6FC40098034D /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
+		0B784F6128E6BDB4007BA390 /* custom-keyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "custom-keyboard.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B784F6328E6BDB4007BA390 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		0B784F6528E6BDB4007BA390 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0B784F7628E70877007BA390 /* CustomKeyboardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomKeyboardButton.swift; sourceTree = "<group>"; };
+		0B784F7828E70C60007BA390 /* KeyboardCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardCharacter.swift; sourceTree = "<group>"; };
+		0B93A09728EF001E00CCE360 /* ThemeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeDetailView.swift; sourceTree = "<group>"; };
+		0B93A09928EF010600CCE360 /* ViewRepresent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRepresent.swift; sourceTree = "<group>"; };
+		0B93A09D28EF062200CCE360 /* DescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTableViewCell.swift; sourceTree = "<group>"; };
+		0B93A0A728EF393700CCE360 /* UIFont+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+extension.swift"; sourceTree = "<group>"; };
+		0B93A0AE28EF583600CCE360 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansKR-Regular.otf"; path = "../../../../../../Downloads/Noto_Sans_KR 2/NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
+		0B93A0AF28EF583600CCE360 /* NotoSansKR-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansKR-Thin.otf"; path = "../../../../../../Downloads/Noto_Sans_KR 2/NotoSansKR-Thin.otf"; sourceTree = "<group>"; };
+		0B93A0B028EF583600CCE360 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansKR-Medium.otf"; path = "../../../../../../Downloads/Noto_Sans_KR 2/NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
+		0B93A0B128EF583600CCE360 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansKR-Bold.otf"; path = "../../../../../../Downloads/Noto_Sans_KR 2/NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
+		0B93A0B228EF583600CCE360 /* NotoSansKR-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansKR-Black.otf"; path = "../../../../../../Downloads/Noto_Sans_KR 2/NotoSansKR-Black.otf"; sourceTree = "<group>"; };
+		0B93A0B328EF583600CCE360 /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansKR-Light.otf"; path = "../../../../../../Downloads/Noto_Sans_KR 2/NotoSansKR-Light.otf"; sourceTree = "<group>"; };
+		0B93A0C328EF61EB00CCE360 /* UILabel+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+extension.swift"; sourceTree = "<group>"; };
+		0B93A0C628EF688400CCE360 /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
+		0B93A0C928EF6BA700CCE360 /* TagTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagTableViewCell.swift; sourceTree = "<group>"; };
+		0B93A0CF28EF98C400CCE360 /* UIColor+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIColor+extension.swift"; path = "../Cell/UIColor+extension.swift"; sourceTree = "<group>"; };
+		0B93A0D228EF9CBD00CCE360 /* KeywordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordTableViewCell.swift; sourceTree = "<group>"; };
+		0B93A0D528EF9E2400CCE360 /* KeywordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordCollectionViewCell.swift; sourceTree = "<group>"; };
 		63487F3428E2EA5E0033CF32 /* K-Keyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "K-Keyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		63487F3728E2EA5E0033CF32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63487F3928E2EA5E0033CF32 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		63487F3B28E2EA5E0033CF32 /* ThemeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeDetailViewController.swift; sourceTree = "<group>"; };
-		63487F3E28E2EA5E0033CF32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		63487F4028E2EA5E0033CF32 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63487F4328E2EA5E0033CF32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63487F4528E2EA5E0033CF32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F8AAA8FB28EF0F35001D1DFC /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		F8AAA93D28EFFF9F001D1DFC /* BannerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerTableViewCell.swift; sourceTree = "<group>"; };
 		F8AAA93F28F01620001D1DFC /* EvaluationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationTableViewCell.swift; sourceTree = "<group>"; };
+		F8AF2FC528EC673200DA81C4 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
+		F8B0EA3828E93B3D00C76C86 /* HangulCombinater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangulCombinater.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0B784F5E28E6BDB4007BA390 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		63487F3128E2EA5E0033CF32 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -43,10 +138,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B784F6228E6BDB4007BA390 /* custom-keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				0B784F6328E6BDB4007BA390 /* KeyboardViewController.swift */,
+				0B0A896028EB6FC40098034D /* KeyboardView.swift */,
+				0B784F7828E70C60007BA390 /* KeyboardCharacter.swift */,
+				0B784F6528E6BDB4007BA390 /* Info.plist */,
+				0B784F7628E70877007BA390 /* CustomKeyboardButton.swift */,
+				F8B0EA3828E93B3D00C76C86 /* HangulCombinater.swift */,
+				F8AF2FC528EC673200DA81C4 /* Icons.xcassets */,
+			);
+			path = "custom-keyboard";
+			sourceTree = "<group>";
+		};
+		0B93A09C28EF060000CCE360 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				0B93A09D28EF062200CCE360 /* DescriptionTableViewCell.swift */,
+				0B93A0C928EF6BA700CCE360 /* TagTableViewCell.swift */,
+				0B93A0C628EF688400CCE360 /* TagCollectionViewCell.swift */,
+				0B93A0D228EF9CBD00CCE360 /* KeywordTableViewCell.swift */,
+				0B93A0D528EF9E2400CCE360 /* KeywordCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		0B93A0A628EF390700CCE360 /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				0B93A0CF28EF98C400CCE360 /* UIColor+extension.swift */,
+				0B93A0A728EF393700CCE360 /* UIFont+extension.swift */,
+				0B93A0C328EF61EB00CCE360 /* UILabel+extension.swift */,
+			);
+			path = extension;
+			sourceTree = "<group>";
+		};
 		63487F2B28E2EA5E0033CF32 = {
 			isa = PBXGroup;
 			children = (
 				63487F3628E2EA5E0033CF32 /* K-Keyboard */,
+				0B784F6228E6BDB4007BA390 /* custom-keyboard */,
 				63487F3528E2EA5E0033CF32 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				63487F3428E2EA5E0033CF32 /* K-Keyboard.app */,
+				0B784F6128E6BDB4007BA390 /* custom-keyboard.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -65,8 +198,12 @@
 				63487F3728E2EA5E0033CF32 /* AppDelegate.swift */,
 				63487F3928E2EA5E0033CF32 /* SceneDelegate.swift */,
 				63487F3B28E2EA5E0033CF32 /* ThemeDetailViewController.swift */,
-				63487F3D28E2EA5E0033CF32 /* Main.storyboard */,
+				0B93A09728EF001E00CCE360 /* ThemeDetailView.swift */,
+				0B93A09928EF010600CCE360 /* ViewRepresent.swift */,
+				0B93A09C28EF060000CCE360 /* Cell */,
+				0B93A0A628EF390700CCE360 /* extension */,
 				63487F4028E2EA5E0033CF32 /* Assets.xcassets */,
+				F807C3C728ED71520001327B /* Fonts */,
 				63487F4228E2EA5E0033CF32 /* LaunchScreen.storyboard */,
 				63487F4528E2EA5E0033CF32 /* Info.plist */,
 				F8AAA8FB28EF0F35001D1DFC /* ReviewTableViewCell.swift */,
@@ -76,9 +213,39 @@
 			path = "K-Keyboard";
 			sourceTree = "<group>";
 		};
+		F807C3C728ED71520001327B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				0B93A0B228EF583600CCE360 /* NotoSansKR-Black.otf */,
+				0B93A0B128EF583600CCE360 /* NotoSansKR-Bold.otf */,
+				0B93A0B328EF583600CCE360 /* NotoSansKR-Light.otf */,
+				0B93A0B028EF583600CCE360 /* NotoSansKR-Medium.otf */,
+				0B93A0AE28EF583600CCE360 /* NotoSansKR-Regular.otf */,
+				0B93A0AF28EF583600CCE360 /* NotoSansKR-Thin.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		0B784F6028E6BDB4007BA390 /* custom-keyboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0B784F6C28E6BDB4007BA390 /* Build configuration list for PBXNativeTarget "custom-keyboard" */;
+			buildPhases = (
+				0B784F5D28E6BDB4007BA390 /* Sources */,
+				0B784F5E28E6BDB4007BA390 /* Frameworks */,
+				0B784F5F28E6BDB4007BA390 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "custom-keyboard";
+			productName = "custom-keyboard";
+			productReference = 0B784F6128E6BDB4007BA390 /* custom-keyboard.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		63487F3328E2EA5E0033CF32 /* K-Keyboard */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 63487F4828E2EA5E0033CF32 /* Build configuration list for PBXNativeTarget "K-Keyboard" */;
@@ -86,12 +253,16 @@
 				63487F3028E2EA5E0033CF32 /* Sources */,
 				63487F3128E2EA5E0033CF32 /* Frameworks */,
 				63487F3228E2EA5E0033CF32 /* Resources */,
+				0B784F6928E6BDB4007BA390 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0B784F6728E6BDB4007BA390 /* PBXTargetDependency */,
 			);
 			name = "K-Keyboard";
+			packageProductDependencies = (
+			);
 			productName = "K-Keyboard";
 			productReference = 63487F3428E2EA5E0033CF32 /* K-Keyboard.app */;
 			productType = "com.apple.product-type.application";
@@ -103,16 +274,19 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1400;
+				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
+					0B784F6028E6BDB4007BA390 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
 					63487F3328E2EA5E0033CF32 = {
-						CreatedOnToolsVersion = 14.0;
+						CreatedOnToolsVersion = 13.0;
 					};
 				};
 			};
 			buildConfigurationList = 63487F2F28E2EA5E0033CF32 /* Build configuration list for PBXProject "K-Keyboard" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -120,37 +294,95 @@
 				Base,
 			);
 			mainGroup = 63487F2B28E2EA5E0033CF32;
+			packageReferences = (
+			);
 			productRefGroup = 63487F3528E2EA5E0033CF32 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				63487F3328E2EA5E0033CF32 /* K-Keyboard */,
+				0B784F6028E6BDB4007BA390 /* custom-keyboard */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0B784F5F28E6BDB4007BA390 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B93A0BB28EF583600CCE360 /* NotoSansKR-Bold.otf in Resources */,
+				0B93A0B728EF583600CCE360 /* NotoSansKR-Thin.otf in Resources */,
+				0B93A0BD28EF583600CCE360 /* NotoSansKR-Black.otf in Resources */,
+				0B93A0B928EF583600CCE360 /* NotoSansKR-Medium.otf in Resources */,
+				F8AF2FC628EC673200DA81C4 /* Icons.xcassets in Resources */,
+				0B93A0BF28EF583600CCE360 /* NotoSansKR-Light.otf in Resources */,
+				0B93A0B528EF583600CCE360 /* NotoSansKR-Regular.otf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		63487F3228E2EA5E0033CF32 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B93A0B628EF583600CCE360 /* NotoSansKR-Thin.otf in Resources */,
 				63487F4428E2EA5E0033CF32 /* LaunchScreen.storyboard in Resources */,
+				0B93A0BE28EF583600CCE360 /* NotoSansKR-Light.otf in Resources */,
+				0B93A0B828EF583600CCE360 /* NotoSansKR-Medium.otf in Resources */,
+				0B93A0B428EF583600CCE360 /* NotoSansKR-Regular.otf in Resources */,
+				0B93A0BA28EF583600CCE360 /* NotoSansKR-Bold.otf in Resources */,
+				0B93A0BC28EF583600CCE360 /* NotoSansKR-Black.otf in Resources */,
 				63487F4128E2EA5E0033CF32 /* Assets.xcassets in Resources */,
-				63487F3F28E2EA5E0033CF32 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0B784F5D28E6BDB4007BA390 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B93A0C528EF61EB00CCE360 /* UILabel+extension.swift in Sources */,
+				0B784F6428E6BDB4007BA390 /* KeyboardViewController.swift in Sources */,
+				0B784F7928E70C60007BA390 /* KeyboardCharacter.swift in Sources */,
+				0B93A0C828EF688400CCE360 /* TagCollectionViewCell.swift in Sources */,
+				F8B0EA3928E93B3D00C76C86 /* HangulCombinater.swift in Sources */,
+				0B93A0D728EF9E2400CCE360 /* KeywordCollectionViewCell.swift in Sources */,
+				0B93A0D428EF9CBD00CCE360 /* KeywordTableViewCell.swift in Sources */,
+				0B0A896128EB6FC40098034D /* KeyboardView.swift in Sources */,
+				0B93A0CB28EF6BA700CCE360 /* TagTableViewCell.swift in Sources */,
+				0B93A0AB28EF546200CCE360 /* UIFont+extension.swift in Sources */,
+				0B93A0D128EF98C400CCE360 /* UIColor+extension.swift in Sources */,
+				0B784F7728E70877007BA390 /* CustomKeyboardButton.swift in Sources */,
+				0B93A09B28EF05BB00CCE360 /* ViewRepresent.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		63487F3028E2EA5E0033CF32 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				F8AAA93E28EFFF9F001D1DFC /* BannerTableViewCell.swift in Sources */,
-				63487F3C28E2EA5E0033CF32 /* ThemeDetailViewController.swift in Sources */,
 				F8AAA8FC28EF0F35001D1DFC /* ReviewTableViewCell.swift in Sources */,
 				F8AAA94028F01620001D1DFC /* EvaluationTableViewCell.swift in Sources */,
+				0B93A0CA28EF6BA700CCE360 /* TagTableViewCell.swift in Sources */,
+				0B93A09A28EF010600CCE360 /* ViewRepresent.swift in Sources */,
+				0B784F7A28E71310007BA390 /* KeyboardCharacter.swift in Sources */,
+				0B93A09828EF001E00CCE360 /* ThemeDetailView.swift in Sources */,
+				0B93A0A828EF393700CCE360 /* UIFont+extension.swift in Sources */,
+				0B93A0D328EF9CBD00CCE360 /* KeywordTableViewCell.swift in Sources */,
+				0B0A896428EB72090098034D /* KeyboardView.swift in Sources */,
+				0B93A0D028EF98C400CCE360 /* UIColor+extension.swift in Sources */,
+				0B784F7E28E7131F007BA390 /* KeyboardViewController.swift in Sources */,
+				0B93A0C428EF61EB00CCE360 /* UILabel+extension.swift in Sources */,
+				F8E0DB9928E94119007FB787 /* HangulCombinater.swift in Sources */,
+				63487F3C28E2EA5E0033CF32 /* ThemeDetailViewController.swift in Sources */,
+				0B93A0D628EF9E2400CCE360 /* KeywordCollectionViewCell.swift in Sources */,
+				0B784F7B28E71312007BA390 /* CustomKeyboardButton.swift in Sources */,
+				0B93A09E28EF062200CCE360 /* DescriptionTableViewCell.swift in Sources */,
+				63487F3C28E2EA5E0033CF32 /* ThemeDetailViewController.swift in Sources */,
+				0B93A0C728EF688400CCE360 /* TagCollectionViewCell.swift in Sources */,
 				63487F3828E2EA5E0033CF32 /* AppDelegate.swift in Sources */,
 				63487F3A28E2EA5E0033CF32 /* SceneDelegate.swift in Sources */,
 			);
@@ -158,15 +390,15 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		63487F3D28E2EA5E0033CF32 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				63487F3E28E2EA5E0033CF32 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
+/* Begin PBXTargetDependency section */
+		0B784F6728E6BDB4007BA390 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0B784F6028E6BDB4007BA390 /* custom-keyboard */;
+			targetProxy = 0B784F6628E6BDB4007BA390 /* PBXContainerItemProxy */;
 		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
 		63487F4228E2EA5E0033CF32 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -178,6 +410,60 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		0B784F6A28E6BDB4007BA390 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "custom-keyboard/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "custom-keyboard";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.yagom.K-Keyboard.custom-keyboard";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		0B784F6B28E6BDB4007BA390 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "custom-keyboard/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "custom-keyboard";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.yagom.K-Keyboard.custom-keyboard";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 		63487F4628E2EA5E0033CF32 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -295,6 +581,7 @@
 		63487F4928E2EA5E0033CF32 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -303,7 +590,6 @@
 				INFOPLIST_FILE = "K-Keyboard/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -326,6 +612,7 @@
 		63487F4A28E2EA5E0033CF32 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -334,7 +621,6 @@
 				INFOPLIST_FILE = "K-Keyboard/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -357,6 +643,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0B784F6C28E6BDB4007BA390 /* Build configuration list for PBXNativeTarget "custom-keyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0B784F6A28E6BDB4007BA390 /* Debug */,
+				0B784F6B28E6BDB4007BA390 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		63487F2F28E2EA5E0033CF32 /* Build configuration list for PBXProject "K-Keyboard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
