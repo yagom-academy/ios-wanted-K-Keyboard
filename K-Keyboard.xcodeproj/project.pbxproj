@@ -45,6 +45,12 @@
 		64D6427F28EAD4F600E475A5 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D6427E28EAD4F600E475A5 /* CardView.swift */; };
 		64FC2A8228EFF526009B4856 /* KorKeyboardView+Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC2A8128EFF526009B4856 /* KorKeyboardView+Action.swift */; };
 		64FC2A8328EFF55C009B4856 /* KorKeyboardView+Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC2A8128EFF526009B4856 /* KorKeyboardView+Action.swift */; };
+		64FC2A8628F02373009B4856 /* KorKeyboardToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC2A8528F02373009B4856 /* KorKeyboardToolbarView.swift */; };
+		64FC2A8728F02673009B4856 /* KorKeyboardToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC2A8528F02373009B4856 /* KorKeyboardToolbarView.swift */; };
+		64FC2A8A28F0790A009B4856 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC2A8928F0790A009B4856 /* FavoritesView.swift */; };
+		64FC2A8B28F07ACA009B4856 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC2A8928F0790A009B4856 /* FavoritesView.swift */; };
+		64FC2A8D28F07CA7009B4856 /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC2A8C28F07CA6009B4856 /* FavoritesTableViewCell.swift */; };
+		64FC2A8E28F07E5E009B4856 /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC2A8C28F07CA6009B4856 /* FavoritesTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +114,9 @@
 		64D6427C28EAD43A00E475A5 /* ThirdSectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdSectionCell.swift; sourceTree = "<group>"; };
 		64D6427E28EAD4F600E475A5 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		64FC2A8128EFF526009B4856 /* KorKeyboardView+Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KorKeyboardView+Action.swift"; sourceTree = "<group>"; };
+		64FC2A8528F02373009B4856 /* KorKeyboardToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KorKeyboardToolbarView.swift; sourceTree = "<group>"; };
+		64FC2A8928F0790A009B4856 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		64FC2A8C28F07CA6009B4856 /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +226,9 @@
 				40FB998528EDCAC6002AE450 /* KorKeyboardView.swift */,
 				64FC2A8128EFF526009B4856 /* KorKeyboardView+Action.swift */,
 				40DBB6A128F011AD000AA04A /* ShortcutView.swift */,
+				64FC2A8528F02373009B4856 /* KorKeyboardToolbarView.swift */,
+				64FC2A8928F0790A009B4856 /* FavoritesView.swift */,
+				64FC2A8C28F07CA6009B4856 /* FavoritesTableViewCell.swift */,
 			);
 			path = Keyboard;
 			sourceTree = "<group>";
@@ -378,8 +390,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				40DBB6A328F011AD000AA04A /* ShortcutView.swift in Sources */,
+				64FC2A8E28F07E5E009B4856 /* FavoritesTableViewCell.swift in Sources */,
 				40DBB6A428F011B0000AA04A /* ShortcutData.swift in Sources */,
 				40FB998728EDCACC002AE450 /* KorKeyboardView.swift in Sources */,
+				64FC2A8728F02673009B4856 /* KorKeyboardToolbarView.swift in Sources */,
+				64FC2A8B28F07ACA009B4856 /* FavoritesView.swift in Sources */,
 				40FB998A28EE3C42002AE450 /* KoreanData.swift in Sources */,
 				64FC2A8328EFF55C009B4856 /* KorKeyboardView+Action.swift in Sources */,
 				40FB997C28EDCA8D002AE450 /* KeyboardViewController.swift in Sources */,
@@ -394,6 +409,7 @@
 				63487F3C28E2EA5E0033CF32 /* FirstViewController.swift in Sources */,
 				6463E98A28EC87B000FA66F1 /* CardCollectionView.swift in Sources */,
 				64D6427828E97A1B00E475A5 /* TagCollectionViewCell.swift in Sources */,
+				64FC2A8A28F0790A009B4856 /* FavoritesView.swift in Sources */,
 				64D6427528E938C000E475A5 /* SecondSectionCell.swift in Sources */,
 				40FB998628EDCAC6002AE450 /* KorKeyboardView.swift in Sources */,
 				64D6427D28EAD43A00E475A5 /* ThirdSectionCell.swift in Sources */,
@@ -408,6 +424,8 @@
 				63487F3A28E2EA5E0033CF32 /* SceneDelegate.swift in Sources */,
 				406F63FD28EC459B00245E66 /* CommentModel.swift in Sources */,
 				4019E21C28E5EB34007DD322 /* FourthSectionCell.swift in Sources */,
+				64FC2A8D28F07CA7009B4856 /* FavoritesTableViewCell.swift in Sources */,
+				64FC2A8628F02373009B4856 /* KorKeyboardToolbarView.swift in Sources */,
 				40D68ED328EB375900A2AED1 /* FifthSectionHeaderView.swift in Sources */,
 				40D68ECF28EAA78400A2AED1 /* FifthSectionCell.swift in Sources */,
 				64D6427F28EAD4F600E475A5 /* CardView.swift in Sources */,

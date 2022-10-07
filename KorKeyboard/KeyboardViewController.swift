@@ -12,6 +12,8 @@ class KeyboardViewController: UIInputViewController {
 //    @IBOutlet var nextKeyboardButton: UIButton!
     let keyboardView = KorKeyboardView()
     let shortcutView = ShortcutView()
+    let toolbarView = KorKeyboardToolbarView()
+    let favoritesView = FavoritesView()
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
@@ -68,23 +70,35 @@ extension KeyboardViewController {
     func addViews() {
         guard let inputView = inputView else { return }
 
-        [keyboardView, shortcutView].forEach { inputView.addSubview($0) }
+        [toolbarView, keyboardView, shortcutView, favoritesView].forEach { inputView.addSubview($0) }
 
         keyboardView.delegate = self
         shortcutView.delegate = self
+        toolbarView.delegate = self
+        favoritesView.delegate = self
+        
         shortcutView.isHidden = true
+        favoritesView.isHidden = true
     }
 
     func setConstraints() {
         guard let inputView = inputView else { return }
 
-        [keyboardView, shortcutView].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
+        [toolbarView, keyboardView, shortcutView, favoritesView].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
 
         NSLayoutConstraint.activate([
-            keyboardView.topAnchor.constraint(equalTo: inputView.topAnchor),
+            toolbarView.topAnchor.constraint(equalTo: inputView.topAnchor, constant: 10),
+            toolbarView.leadingAnchor.constraint(equalTo: inputView.leadingAnchor),
+            toolbarView.trailingAnchor.constraint(equalTo: inputView.trailingAnchor),
+            toolbarView.heightAnchor.constraint(equalToConstant: 30),
+            keyboardView.topAnchor.constraint(equalTo: toolbarView.bottomAnchor, constant: 10),
             keyboardView.leadingAnchor.constraint(equalTo: inputView.leadingAnchor),
             keyboardView.trailingAnchor.constraint(equalTo: inputView.trailingAnchor),
             keyboardView.bottomAnchor.constraint(equalTo: inputView.bottomAnchor),
+            favoritesView.topAnchor.constraint(equalTo: toolbarView.bottomAnchor, constant: 10),
+            favoritesView.leadingAnchor.constraint(equalTo: inputView.leadingAnchor),
+            favoritesView.trailingAnchor.constraint(equalTo: inputView.trailingAnchor),
+            favoritesView.bottomAnchor.constraint(equalTo: inputView.bottomAnchor),
             shortcutView.centerXAnchor.constraint(equalTo: inputView.centerXAnchor),
             shortcutView.centerYAnchor.constraint(equalTo: inputView.centerYAnchor),
             shortcutView.leadingAnchor.constraint(equalTo: inputView.leadingAnchor, constant: 20),
@@ -111,5 +125,23 @@ extension KeyboardViewController: KorKeyboardViewDelegate {
 extension KeyboardViewController: ShortcutViewDelegate {
     func updateShortcut() {
         keyboardView.shortcutButton.setTitle(ShortcutData.now, for: .normal)
+    }
+}
+
+extension KeyboardViewController: KorKeyboardToolbarViewDelegate {
+    @objc func keyboardButtonPressed() {
+        keyboardView.isHidden = false
+        favoritesView.isHidden = true
+    }
+    
+    @objc func favoritesButtonPressed() {
+        keyboardView.isHidden = true
+        favoritesView.isHidden = false
+    }
+}
+
+extension KeyboardViewController: FavoritesViewDelegate {
+    func insertPhrase(_ input: String) {
+        textDocumentProxy.insertText(input)
     }
 }
