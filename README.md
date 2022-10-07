@@ -21,6 +21,8 @@
 
 ### 첫 번째 페이지
 
+<img width=100% src="https://user-images.githubusercontent.com/31722496/194621629-dc6b4b90-9953-4080-8e6c-9374b3908c11.png">
+
 #### Section 1
 
 <img width=50% src="https://user-images.githubusercontent.com/31722496/194596960-b53ca3a8-1039-4c75-ae37-7a4abfecafea.png">
