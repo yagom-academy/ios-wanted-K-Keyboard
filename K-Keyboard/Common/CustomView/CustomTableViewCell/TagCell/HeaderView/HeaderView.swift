@@ -12,15 +12,32 @@ class HeaderView: UITableViewHeaderFooterView {
     
     @IBOutlet var headerLabel: UILabel!
     
-    func set(data: SectionListType) {
-        self.headerLabel.text = data.rawValue
+    override func awakeFromNib() {
+            super.awakeFromNib()
+            
+            prepareForReuse()
+        }
+    
+    func set(sectionName: String, rowCount: Int?) {
+        self.headerLabel.text = sectionName
+        
+        if let rowCount = rowCount {
+            self.headerLabel.text = "\(rowCount)"
+        } else {
+            self.headerLabel.isHidden = true
+        }
     }
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    
+    override func prepareForReuse() {
+        self.headerLabel.text = ""
     }
-    */
-
 }
+ 
+    /*
+     // Only override draw() if you perform custom drawing.
+     // An empty implementation adversely affects performance during animation.
+     override func draw(_ rect: CGRect) {
+     // Drawing code
+     }
+     */
+    

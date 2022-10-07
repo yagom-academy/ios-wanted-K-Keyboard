@@ -162,7 +162,7 @@ extension MainViewController: UITableViewDelegate {
             let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: HeaderView.identifier)
             if let view = view as? HeaderView,
                case .tags(let tagData) = row {
-                view.set(section: SectionListType.tag.rawValue, rowCount: tagData.count)
+                view.set(sectionName: SectionListType.tag.rawValue, rowCount: tagData.count)
             }
             return view
         default:
