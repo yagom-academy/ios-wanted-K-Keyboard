@@ -17,21 +17,21 @@ class CommentTableViewCell: UITableViewCell {
     
     let commentView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(named: "Gray_all_white_gray")
+        view.backgroundColor = UIColor(named: Color.whiteGray.rawValue)
         view.layer.cornerRadius = 20
         return view
     }()
     
     let nicknameLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor(named: "Gray_all_title_gray")
+        label.textColor = UIColor(named: Color.titleGray.rawValue)
         label.font = .systemFont(ofSize: 12)
         return label
     }()
     
     let commentLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor(named: "Gray_all_dark_gray")
+        label.textColor = UIColor(named: Color.darkGray.rawValue)
         label.font = .systemFont(ofSize: 14)
         return label
     }()
@@ -44,14 +44,14 @@ class CommentTableViewCell: UITableViewCell {
     
     let timeLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor(named: "Gray_all_sub_dark_gray")
+        label.textColor = UIColor(named: Color.subDarkGray.rawValue)
         label.font = .systemFont(ofSize: 12)
         return label
     }()
     
     let reportButton: UIButton = {
         let button = UIButton(type: UIButton.ButtonType.system)
-        button.tintColor = UIColor(named: "Gray_all_sub_dark_gray")
+        button.tintColor = UIColor(named: Color.subDarkGray.rawValue)
         button.setTitle("신고", for: UIControl.State.normal)
         return button
     }()

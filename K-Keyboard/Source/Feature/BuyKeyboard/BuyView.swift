@@ -26,7 +26,7 @@ class BuyView: UIView {
     let keyboardNameLabel: UILabel = {
         let label = UILabel()
         label.text = "앙무"
-        label.textColor = UIColor(named: "Gray_all_title_gray")
+        label.textColor = UIColor(named: Color.titleGray.rawValue)
         label.font = UIFont.boldSystemFont(ofSize: 20)
         return label
     }()
@@ -34,7 +34,7 @@ class BuyView: UIView {
     let keyboardCreatorNameLabel: UILabel = {
         let label = UILabel()
         label.text = "코핀"
-        label.textColor = UIColor(named: "Gray_all_sub_dark_gray")
+        label.textColor = UIColor(named: Color.subDarkGray.rawValue)
         label.font = UIFont.systemFont(ofSize: 14)
         return label
     }()
@@ -44,8 +44,8 @@ class BuyView: UIView {
         label.text = "78명이 참여했어요!"
         label.font = UIFont.systemFont(ofSize: 14)
         let attributeString = NSMutableAttributedString(string: label.text!)
-        attributeString.addAttribute(.foregroundColor, value: UIColor(named: "Color_all_main_color"), range: (label.text! as NSString).range(of: "78"))
-        attributeString.addAttribute(.foregroundColor, value: UIColor(named: "Gray_all_sub_dark_gray"), range: (label.text! as NSString).range(of: "명이 참여했어요!"))
+        attributeString.addAttribute(.foregroundColor, value: UIColor(named: Color.mainColor.rawValue), range: (label.text! as NSString).range(of: "78"))
+        attributeString.addAttribute(.foregroundColor, value: UIColor(named: Color.subDarkGray.rawValue), range: (label.text! as NSString).range(of: "명이 참여했어요!"))
         label.attributedText = attributeString
         return label
     }()
@@ -53,7 +53,7 @@ class BuyView: UIView {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "🎉플레이키보드 첫 이벤트 테마를 공개합니다.🎉"
-        label.textColor = UIColor(named: "Gray_all_title_gray")
+        label.textColor = UIColor(named: Color.titleGray.rawValue)
         label.font = UIFont.boldSystemFont(ofSize: 14)
         return label
     }()
@@ -62,7 +62,7 @@ class BuyView: UIView {
         let label = UILabel()
         label.numberOfLines = 4
         label.text = "밀당해피니스 유튜브 채널을 방문하면 “테마명” 이벤트 테마 \n를 무료로 받을 수 있다구요? \n지금 바로 ‘참여하기' 버튼을 눌러 새로워진 밀당해피니스 유 \n튜브 채널을 확인해보세요!"
-        label.textColor = UIColor(named: "Gray_all_body_gray")
+        label.textColor = UIColor(named: Color.bodyGray.rawValue)
         label.font = UIFont.systemFont(ofSize: 14)
         return label
     }()
@@ -71,14 +71,14 @@ class BuyView: UIView {
     let tagLabel: UILabel = {
         let label = UILabel()
         label.text = "태그"
-        label.textColor = UIColor(named: "Gray_all_title_gray")
+        label.textColor = UIColor(named: Color.titleGray.rawValue)
         label.font = UIFont.boldSystemFont(ofSize: 16)
         return label
     }()
     
     let eventTagView: UIView = {
        let view = UIView()
-        view.backgroundColor = UIColor(named: "Gray_all_btn_gray")
+        view.backgroundColor = UIColor(named: Color.btnGray.rawValue)
         view.layer.cornerRadius = 15
         view.widthAnchor.constraint(equalToConstant: 60.8).isActive = true
         view.heightAnchor.constraint(equalToConstant: 28).isActive = true
@@ -94,7 +94,7 @@ class BuyView: UIView {
     
     let characterTagView: UIView = {
        let view = UIView()
-        view.backgroundColor = UIColor(named: "Gray_all_btn_gray")
+        view.backgroundColor = UIColor(named: Color.btnGray.rawValue)
         view.layer.cornerRadius = 15
         view.widthAnchor.constraint(equalToConstant: 60.8).isActive = true
         view.heightAnchor.constraint(equalToConstant: 28).isActive = true
@@ -110,7 +110,7 @@ class BuyView: UIView {
     
     let birdTagView: UIView = {
        let view = UIView()
-        view.backgroundColor = UIColor(named: "Gray_all_btn_gray")
+        view.backgroundColor = UIColor(named: Color.btnGray.rawValue)
         view.layer.cornerRadius = 15
         view.widthAnchor.constraint(equalToConstant: 34.01).isActive = true
         view.heightAnchor.constraint(equalToConstant: 28).isActive = true
@@ -126,7 +126,7 @@ class BuyView: UIView {
     
     let animalTagView: UIView = {
        let view = UIView()
-        view.backgroundColor = UIColor(named: "Gray_all_btn_gray")
+        view.backgroundColor = UIColor(named: Color.btnGray.rawValue)
         view.layer.cornerRadius = 15
         view.widthAnchor.constraint(equalToConstant: 47.4).isActive = true
         view.heightAnchor.constraint(equalToConstant: 28).isActive = true
@@ -142,7 +142,7 @@ class BuyView: UIView {
     
     let cuteTagView: UIView = {
        let view = UIView()
-        view.backgroundColor = UIColor(named: "Gray_all_btn_gray")
+        view.backgroundColor = UIColor(named: Color.btnGray.rawValue)
         view.layer.cornerRadius = 15
         view.widthAnchor.constraint(equalToConstant: 74.2).isActive = true
         view.heightAnchor.constraint(equalToConstant: 28).isActive = true
@@ -165,7 +165,7 @@ class BuyView: UIView {
     
     let roundTagView: UIView = {
        let view = UIView()
-        view.backgroundColor = UIColor(named: "Gray_all_btn_gray")
+        view.backgroundColor = UIColor(named: Color.btnGray.rawValue)
         view.layer.cornerRadius = 15
         view.widthAnchor.constraint(equalToConstant: 74.2).isActive = true
         view.heightAnchor.constraint(equalToConstant: 28).isActive = true
@@ -183,7 +183,7 @@ class BuyView: UIView {
     let reactionLabel: UILabel = {
         let label = UILabel()
         label.text = "이런 키워드에 반응해요"
-        label.textColor = UIColor(named: "Gray_all_title_gray")
+        label.textColor = UIColor(named: Color.titleGray.rawValue)
         label.font = UIFont.boldSystemFont(ofSize: 16)
         return label
     }()
@@ -211,7 +211,7 @@ class BuyView: UIView {
     let funLabel: UILabel = {
         let label = UILabel()
         label.text = "신나💃"
-        label.textColor = UIColor(named: "Gray_all_title_gray")
+        label.textColor = UIColor(named: Color.titleGray.rawValue)
         label.font = UIFont.systemFont(ofSize: 14)
         return label
     }()
@@ -239,7 +239,7 @@ class BuyView: UIView {
     let hopeLabel: UILabel = {
         let label = UILabel()
         label.text = "기대💗"
-        label.textColor = UIColor(named: "Gray_all_title_gray")
+        label.textColor = UIColor(named: Color.titleGray.rawValue)
         label.font = UIFont.systemFont(ofSize: 14)
         return label
     }()
@@ -267,7 +267,7 @@ class BuyView: UIView {
     let playLabel: UILabel = {
         let label = UILabel()
         label.text = "놀이"
-        label.textColor = UIColor(named: "Gray_all_title_gray")
+        label.textColor = UIColor(named: Color.titleGray.rawValue)
         label.font = UIFont.systemFont(ofSize: 14)
         return label
     }()
@@ -283,7 +283,7 @@ class BuyView: UIView {
     let thinkLabel: UILabel = {
         let label = UILabel()
         label.text = "이 테마를 어떻게 생각하나요?"
-        label.textColor = UIColor(named: "Gray_all_title_gray")
+        label.textColor = UIColor(named: Color.titleGray.rawValue)
         label.font = UIFont.boldSystemFont(ofSize: 16)
         return label
     }()
@@ -291,7 +291,7 @@ class BuyView: UIView {
     let emojiButton1: UIButton = {
         var config = UIButton.Configuration.filled()
         config.baseBackgroundColor = .clear
-        config.baseForegroundColor = UIColor(named: "Gray_all_sub_dark_gray")
+        config.baseForegroundColor = UIColor(named: Color.subDarkGray.rawValue)
         config.image = UIImage(named: "Emoji1")
         config.imagePlacement = NSDirectionalRectEdge.top
         config.attributedTitle = AttributedString("맘에들어요", attributes: AttributeContainer([NSAttributedString.Key.font : UIFont(name: "systemFont", size: 12) as Any]))
@@ -304,7 +304,7 @@ class BuyView: UIView {
     let emojiButton2: UIButton = {
         var config = UIButton.Configuration.filled()
         config.baseBackgroundColor = .clear
-        config.baseForegroundColor = UIColor(named: "Gray_all_sub_dark_gray")
+        config.baseForegroundColor = UIColor(named: Color.subDarkGray.rawValue)
         config.image = UIImage(named: "Emoji2")
         config.imagePlacement = NSDirectionalRectEdge.top
         config.attributedTitle = AttributedString("심쿵했어요", attributes: AttributeContainer([NSAttributedString.Key.font : UIFont(name: "systemFont", size: 12) as Any]))
@@ -317,7 +317,7 @@ class BuyView: UIView {
     let emojiButton3: UIButton = {
         var config = UIButton.Configuration.filled()
         config.baseBackgroundColor = .clear
-        config.baseForegroundColor = UIColor(named: "Gray_all_sub_dark_gray")
+        config.baseForegroundColor = UIColor(named: Color.subDarkGray.rawValue)
         config.image = UIImage(named: "Emoji3")
         config.imagePlacement = NSDirectionalRectEdge.top
 //        config.title = "응원해요"
@@ -331,7 +331,7 @@ class BuyView: UIView {
     let emojiButton4: UIButton = {
         var config = UIButton.Configuration.filled()
         config.baseBackgroundColor = .clear
-        config.baseForegroundColor = UIColor(named: "Gray_all_sub_dark_gray")
+        config.baseForegroundColor = UIColor(named: Color.subDarkGray.rawValue)
         config.image = UIImage(named: "Emoji4")
         config.imagePlacement = NSDirectionalRectEdge.top
         config.attributedTitle = AttributedString("갖고싶어요", attributes: AttributeContainer([NSAttributedString.Key.font : UIFont(name: "systemFont", size: 12) as Any]))
@@ -359,8 +359,8 @@ class BuyView: UIView {
         label.font = UIFont.boldSystemFont(ofSize: 16)
         
         let attributeString = NSMutableAttributedString(string: label.text!)
-        attributeString.addAttribute(.foregroundColor, value: UIColor(named: "Gray_all_title_gray"), range: (label.text! as NSString).range(of: "구매 리뷰"))
-        attributeString.addAttribute(.foregroundColor, value: UIColor(named: "Color_all_main_color"), range: (label.text! as NSString).range(of: "0"))
+        attributeString.addAttribute(.foregroundColor, value: UIColor(named: Color.titleGray.rawValue), range: (label.text! as NSString).range(of: "구매 리뷰"))
+        attributeString.addAttribute(.foregroundColor, value: UIColor(named: Color.mainColor.rawValue), range: (label.text! as NSString).range(of: "0"))
         label.attributedText = attributeString
         return label
     }()
@@ -374,7 +374,7 @@ class BuyView: UIView {
     let warningLabel: UILabel = {
         let label = UILabel()
         label.text = "테마를 구매해야 리뷰를 남길 수 있어요."
-        label.textColor = UIColor(named: "Gray_all_dark_gray")
+        label.textColor = UIColor(named: Color.darkGray.rawValue)
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .darkGray
         return label
@@ -394,7 +394,7 @@ class BuyView: UIView {
     
     let createrView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(named: "Color_all_main_color")
+        view.backgroundColor = UIColor(named: Color.mainColor.rawValue)
         view.layer.cornerRadius = 10
         return view
     }()
@@ -409,7 +409,7 @@ class BuyView: UIView {
     
     let commentView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(named: "Gray_all_white_gray")
+        view.backgroundColor = UIColor(named: Color.whiteGray.rawValue)
         view.layer.cornerRadius = 20
         return view
     }()
@@ -417,7 +417,7 @@ class BuyView: UIView {
     let nicknameLabel: UILabel = {
         let label = UILabel()
         label.text = "크리에이터명"
-        label.textColor = UIColor(named: "Gray_all_title_gray")
+        label.textColor = UIColor(named: Color.titleGray.rawValue)
         label.font = UIFont.systemFont(ofSize: 12)
         return label
     }()
@@ -425,7 +425,7 @@ class BuyView: UIView {
     let commentLabel: UILabel = {
         let label = UILabel()
         label.text = "구매해주셔서 감사합니다💖"
-        label.textColor = UIColor(named: "Gray_all_dark_gray")
+        label.textColor = UIColor(named: Color.darkGray.rawValue)
         label.font = UIFont.systemFont(ofSize: 14)
         return label
     }()
@@ -439,7 +439,7 @@ class BuyView: UIView {
     let timeLabel: UILabel = {
         let label = UILabel()
         label.text = "1일"
-        label.textColor = UIColor(named: "Gray_all_sub_dark_gray")
+        label.textColor = UIColor(named: Color.subDarkGray.rawValue)
         label.font = UIFont.systemFont(ofSize: 12)
         return label
     }()
@@ -483,7 +483,7 @@ class BuyView: UIView {
     let diamondLabel: UILabel = {
         let label = UILabel()
         label.text = "5"
-        label.textColor = UIColor(named: "Color_theme_info_gem_txt_color")
+        label.textColor = UIColor(named: Color.gemColor.rawValue)
         label.font = UIFont.boldSystemFont(ofSize: 16)
         return label
     }()
@@ -494,15 +494,15 @@ class BuyView: UIView {
         label.font = UIFont.systemFont(ofSize: 12)
         
         let attributeString = NSMutableAttributedString(string: label.text!)
-        attributeString.addAttribute(.foregroundColor, value: UIColor(named: "Color_all_main_color"), range: (label.text! as NSString).range(of: "0젬"))
-        attributeString.addAttribute(.foregroundColor, value: UIColor(named: "Gray_all_sub_dark_gray"), range: (label.text! as NSString).range(of: "보유 중"))
+        attributeString.addAttribute(.foregroundColor, value: UIColor(named: Color.mainColor.rawValue), range: (label.text! as NSString).range(of: "0젬"))
+        attributeString.addAttribute(.foregroundColor, value: UIColor(named: Color.subDarkGray.rawValue), range: (label.text! as NSString).range(of: "보유 중"))
         label.attributedText = attributeString
         return label
     }()
     
     let buyButton: UIButton = {
         let button = UIButton(type: UIButton.ButtonType.system)
-        button.backgroundColor = UIColor(named: "Color_all_main_color")
+        button.backgroundColor = UIColor(named: Color.mainColor.rawValue)
         button.tintColor = .white
         button.layer.cornerRadius = 20
         button.setTitle("구매하기", for: UIControl.State.normal)
@@ -525,7 +525,7 @@ class BuyView: UIView {
     
     let commentButton: UIButton = {
         let button = UIButton(type: UIButton.ButtonType.system)
-        button.backgroundColor = UIColor(named: "Color_all_main_color")
+        button.backgroundColor = UIColor(named: Color.mainColor.rawValue)
         button.tintColor = .white
         button.layer.cornerRadius = 10
         button.setTitle("등록", for: UIControl.State.normal)
@@ -859,7 +859,7 @@ class BuyView: UIView {
 
 extension UIView {
     func tagView() {
-        backgroundColor = .systemGray6
+        
     }
 }
 

@@ -45,8 +45,8 @@ class PopUpView: UIView {
         label.font = UIFont.boldSystemFont(ofSize: 16)
         
         let attributeString = NSMutableAttributedString(string: label.text!)
-        attributeString.addAttribute(.foregroundColor, value: UIColor(named: "Color_theme_info_gem_txt_color"), range: (label.text! as NSString).range(of: "N젬"))
-        attributeString.addAttribute(.foregroundColor, value: UIColor(named: "Gray_all_title_gray"), range: (label.text! as NSString).range(of: "N이 부족해요\n빠르게 충전해보세요!"))
+        attributeString.addAttribute(.foregroundColor, value: UIColor(named: Color.gemColor.rawValue) ?? UIColor.systemBlue, range: (label.text! as NSString).range(of: "N젬"))
+        attributeString.addAttribute(.foregroundColor, value: UIColor(named: Color.titleGray.rawValue) ?? UIColor.gray, range: (label.text! as NSString).range(of: "N이 부족해요\n빠르게 충전해보세요!"))
         label.attributedText = attributeString
         return label
     }()
@@ -54,7 +54,7 @@ class PopUpView: UIView {
     let jamNumberLabel: UILabel = {
         let label = UILabel()
         label.text = "젬 수량"
-        label.textColor = UIColor(named: "Gray_all_title_gray")
+        label.textColor = UIColor(named: Color.titleGray.rawValue)
         label.font = UIFont.boldSystemFont(ofSize: 14)
         return label
     }()
@@ -76,7 +76,7 @@ class PopUpView: UIView {
     let diamondLabel: UILabel = {
         let label = UILabel()
         label.text = "5"
-        label.textColor = UIColor(named: "Color_theme_info_gem_txt_color")
+        label.textColor = UIColor(named: Color.gemColor.rawValue)
         return label
     }()
     
@@ -91,7 +91,7 @@ class PopUpView: UIView {
     let paymentLabel: UILabel = {
         let label = UILabel()
         label.text = "결제 금액"
-        label.textColor = UIColor(named: "Gray_all_title_gray")
+        label.textColor = UIColor(named: Color.titleGray.rawValue)
         label.font = UIFont.boldSystemFont(ofSize: 14)
         return label
     }()
@@ -99,7 +99,7 @@ class PopUpView: UIView {
     let moneyLabel: UILabel = {
         let label = UILabel()
         label.text = "₩1,100"
-        label.textColor = UIColor(named: "Color_all_main_color")
+        label.textColor = UIColor(named: Color.mainColor.rawValue)
         label.font = UIFont.systemFont(ofSize: 14)
         return label
     }()
@@ -113,7 +113,7 @@ class PopUpView: UIView {
     
     let buyButton: UIButton = {
         let button = UIButton(type: UIButton.ButtonType.system)
-        button.backgroundColor = UIColor(named: "Color_all_main_color")
+        button.backgroundColor = UIColor(named: Color.mainColor.rawValue)
         button.tintColor = .white
         button.layer.cornerRadius = 20
         button.setTitle("충전하고 바로 사용하기", for: UIControl.State.normal)
