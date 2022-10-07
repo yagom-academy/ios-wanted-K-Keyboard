@@ -15,25 +15,22 @@ class PurchaseReviewTableViewCell: UITableViewCell {
         didSet {
             guard let model else {return}
             idLabel.text = model.idLabel
-            uesrImage.image = model.uesrImage
+            userImage.image = model.uesrImage
             createrView.isHidden = !model.isCreater
-            infoLabel.text = model.infoLabel
+            contentLabel.text = model.infoLabel
             timeLabel.text = model.timeLabel
-            descriotionLabel.text = model.declaration
+            descriptionLabel.text = model.declaration
         }
     }
     lazy var messageView : UIView = {
         let message = UIView()
         message.backgroundColor = UIColor(hex: "#F2F3F7", alpha: 1)
         message.layer.cornerRadius = 15
-        message.layer.shadowColor = UIColor.black.cgColor
-        message.layer.shadowRadius = 1
-        message.layer.shadowOffset = .zero
-        message.layer.shadowOpacity = 0.6
         message.translatesAutoresizingMaskIntoConstraints = false
         return message
     }()
-    lazy var uesrImage : UIImageView = {
+    
+    lazy var userImage : UIImageView = {
         let uesrImage = UIImageView()
         uesrImage.translatesAutoresizingMaskIntoConstraints = false
         return uesrImage
@@ -62,13 +59,13 @@ class PurchaseReviewTableViewCell: UITableViewCell {
         idLabel.numberOfLines = 0
         return idLabel
     }()
-    lazy var infoLabel: UILabel = {
-        let infoLabel = UILabel()
-        infoLabel.translatesAutoresizingMaskIntoConstraints = false
-        infoLabel.font = .appleSDGothicNeo(weight: .regular, size: 14)
-        infoLabel.textColor = UIColor(hex: "#50535C",alpha: 1)
-        infoLabel.numberOfLines = 0
-        return infoLabel
+    lazy var contentLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .appleSDGothicNeo(weight: .regular, size: 14)
+        label.textColor = UIColor(hex: "#50535C",alpha: 1)
+        label.numberOfLines = 0
+        return label
     }()
     lazy var timeLabel: UILabel = {
         let timeLabel = UILabel()
@@ -77,7 +74,7 @@ class PurchaseReviewTableViewCell: UITableViewCell {
         timeLabel.textColor = UIColor(hex: "#919299",alpha: 1)
         return timeLabel
     }()
-    lazy var descriotionLabel: UILabel = {
+    lazy var descriptionLabel: UILabel = {
         let description = UILabel()
         description.translatesAutoresizingMaskIntoConstraints = false
         description.font = .appleSDGothicNeo(weight: .bold, size: 12)
@@ -97,46 +94,45 @@ class PurchaseReviewTableViewCell: UITableViewCell {
     }
     func constraintCustomView() {
         messageView.addSubview(idLabel)
-        messageView.addSubview(infoLabel)
+        messageView.addSubview(contentLabel)
         NSLayoutConstraint.activate([
-            uesrImage.topAnchor.constraint(equalTo: topAnchor,constant: 13),
-            uesrImage.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 6),
-            uesrImage.heightAnchor.constraint(equalToConstant: 48),
-            uesrImage.widthAnchor.constraint(equalToConstant: 48),
+            userImage.topAnchor.constraint(equalTo: topAnchor,constant: 13),
+            userImage.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 6),
+            userImage.heightAnchor.constraint(equalToConstant: 48),
+            userImage.widthAnchor.constraint(equalToConstant: 48),
             
-            createrView.topAnchor.constraint(equalTo: uesrImage.topAnchor,constant: 38),
-            createrView.centerXAnchor.constraint(equalTo: uesrImage.centerXAnchor),
+            createrView.topAnchor.constraint(equalTo: userImage.topAnchor,constant: 38),
+            createrView.centerXAnchor.constraint(equalTo: userImage.centerXAnchor),
             createrView.widthAnchor.constraint(equalToConstant: 58),
             createrView.heightAnchor.constraint(equalToConstant: 20),
             
-            messageView.topAnchor.constraint(equalTo: uesrImage.topAnchor),
-            messageView.leadingAnchor.constraint(equalTo: uesrImage.trailingAnchor,constant: 16),
-            messageView.trailingAnchor.constraint(equalTo: infoLabel.trailingAnchor,constant: 12),
+            messageView.topAnchor.constraint(equalTo: userImage.topAnchor),
+            messageView.leadingAnchor.constraint(equalTo: userImage.trailingAnchor,constant: 16),
             messageView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -16),
-            messageView.heightAnchor.constraint(equalToConstant: 54),
             
             idLabel.topAnchor.constraint(equalTo: messageView.topAnchor,constant: 6),
             idLabel.leadingAnchor.constraint(equalTo: messageView.leadingAnchor,constant: 12),
-            idLabel.trailingAnchor.constraint(greaterThanOrEqualTo: messageView.trailingAnchor, constant: 12),
+            idLabel.trailingAnchor.constraint(lessThanOrEqualTo: messageView.trailingAnchor, constant: -12),
             
-            infoLabel.topAnchor.constraint(equalTo: idLabel.bottomAnchor,constant: 3),
-            infoLabel.leadingAnchor.constraint(equalTo: idLabel.leadingAnchor),
-            infoLabel.trailingAnchor.constraint(equalTo: idLabel.trailingAnchor),
+            contentLabel.topAnchor.constraint(equalTo: idLabel.bottomAnchor,constant: 3),
+            contentLabel.leadingAnchor.constraint(equalTo: idLabel.leadingAnchor),
+            contentLabel.trailingAnchor.constraint(lessThanOrEqualTo: messageView.trailingAnchor, constant: -12),
+            contentLabel.bottomAnchor.constraint(equalTo: messageView.bottomAnchor, constant: -6),
             
             timeLabel.topAnchor.constraint(equalTo: messageView.bottomAnchor,constant: 6),
-            timeLabel.leadingAnchor.constraint(equalTo: uesrImage.trailingAnchor,constant: 28),
-            timeLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
+            timeLabel.leadingAnchor.constraint(equalTo: messageView.leadingAnchor,constant: 12),
+            timeLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -3),
             
-            descriotionLabel.topAnchor.constraint(equalTo: timeLabel.topAnchor),
-            descriotionLabel.leadingAnchor.constraint(equalTo: timeLabel.trailingAnchor,constant: 12),            descriotionLabel.bottomAnchor.constraint(equalTo: timeLabel.bottomAnchor),
+            descriptionLabel.leadingAnchor.constraint(equalTo: timeLabel.trailingAnchor,constant: 12),
+            descriptionLabel.centerYAnchor.constraint(equalTo: timeLabel.centerYAnchor),
         ])
     }
     private func addContentView() {
-        addSubview(uesrImage)
+        addSubview(userImage)
         addSubview(idLabel)
-        addSubview(infoLabel)
+        addSubview(contentLabel)
         addSubview(timeLabel)
-        addSubview(descriotionLabel)
+        addSubview(descriptionLabel)
         addSubview(messageView)
         addSubview(createrView)
     }

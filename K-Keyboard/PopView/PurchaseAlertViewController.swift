@@ -15,21 +15,27 @@ class PurchaseAlertViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .gray.withAlphaComponent(0.4)
+        view.backgroundColor = .black.withAlphaComponent(0.5)
         view.addSubview(popView)
         popView.translatesAutoresizingMaskIntoConstraints = false
-        let height = NSLayoutConstraint(item: popView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 330)
-        let width = NSLayoutConstraint(item: popView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 295)
-        popView.addConstraint(height)
-        popView.addConstraint(width)
         popView.layer.cornerRadius = 15
-        popView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        popView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            popView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            popView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            popView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            popView.heightAnchor.constraint(equalToConstant: 330),
+        ])
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backgroundTapped)))
+        popView.addGestureRecognizer(UITapGestureRecognizer())
         
         popView.$purchaseAndUseButtonSelected.sink { [unowned self] isSelected in
             if isSelected {
                 self.dismiss(animated: true)
             }
         }.store(in: &cancallables)
+    }
+    
+    @objc func backgroundTapped() {
+        self.dismiss(animated: true)
     }
 }

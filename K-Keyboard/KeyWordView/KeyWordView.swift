@@ -29,7 +29,7 @@ class KeyWordView: UIView {
         collectionView.minimumInteritemSpacing = 1
         collectionView.minimumLineSpacing = 16
         collectionView.scrollDirection = .horizontal
-        collectionView.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        collectionView.sectionInset = .zero
         let cv = UICollectionView(frame: .zero, collectionViewLayout: collectionView)
         cv.translatesAutoresizingMaskIntoConstraints = false
         return cv
@@ -57,13 +57,15 @@ class KeyWordView: UIView {
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
+            collectionView.heightAnchor.constraint(equalToConstant: 162),
         ])
     }
     private func setupView() {
         collectionView.register(KeyWordViewCell.self, forCellWithReuseIdentifier: KeyWordViewCell.identifier)
-        collectionView.heightAnchor.constraint(equalToConstant: 170).isActive = true
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.clipsToBounds = false
+        collectionView.showsHorizontalScrollIndicator = false
     }
 }
 extension KeyWordView: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {

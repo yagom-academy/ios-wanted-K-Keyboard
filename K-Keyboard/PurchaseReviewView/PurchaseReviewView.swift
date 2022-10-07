@@ -60,6 +60,7 @@ class PurchaseReviewView: UIView {
     }()
     let purchaseTableView : PurchaseReviewTablewView = {
         let tableView = PurchaseReviewTablewView()
+        tableView.allowsSelection = false
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
         tableView.rowHeight = UITableView.automaticDimension
@@ -113,7 +114,7 @@ class PurchaseReviewView: UIView {
             under.topAnchor.constraint(equalTo: mark.topAnchor),
             under.leadingAnchor.constraint(equalTo: postPurchaseLabel.trailingAnchor,constant: 79),
             
-            purchaseTableView.topAnchor.constraint(equalTo: postPurchaseLabel.bottomAnchor,constant: 10),
+            purchaseTableView.topAnchor.constraint(equalTo: postPurchaseLabel.bottomAnchor),
             purchaseTableView.leadingAnchor.constraint(equalTo: buy.leadingAnchor),
             purchaseTableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             purchaseTableView.bottomAnchor.constraint(equalTo: bottomAnchor),

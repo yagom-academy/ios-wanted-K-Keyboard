@@ -40,9 +40,9 @@ class KeyWordViewCell: UICollectionViewCell {
         self.contentView.backgroundColor = .white
         self.contentView.layer.cornerRadius = 16
         self.contentView.layer.shadowColor = UIColor.black.cgColor
-        self.contentView.layer.shadowRadius = 1
+        self.contentView.layer.shadowRadius = 8
         self.contentView.layer.shadowOffset = .zero
-        self.contentView.layer.shadowOpacity = 0.6
+        self.contentView.layer.shadowOpacity = 0.2
         addContentView()
         constraintCustomView()
     }

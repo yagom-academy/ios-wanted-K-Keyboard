@@ -53,6 +53,8 @@ class MainViewController: UIViewController {
         totalView.translatesAutoresizingMaskIntoConstraints = false
         return totalView
     }()
+    var bottomViewMarginConstraint: NSLayoutConstraint?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addNaviView()
@@ -60,6 +62,7 @@ class MainViewController: UIViewController {
         setUpUIConstraints()
         addNotification()
         buttonView.buttonDelegate = self
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(endEditing)))
     }
     func popUpButton() {
         let vc = PurchaseAlertViewController()
@@ -68,13 +71,8 @@ class MainViewController: UIViewController {
         present(vc, animated: true)
     }
     func saveButtonAction() {
-        purchaseReviewView.dataArry.append(.init(uesrImage: UIImage(named: "user"),isCreater: false, idLabel: "ID", infoLabel: buttonView.textFiedView.text ?? "" , timeLabel: "방금", declaration: " "))
-        buttonView.diamondcount.isHidden = false
-        buttonView.buyButton.isHidden = false
-        buttonView.diamond.isHidden = false
-        buttonView.jamLabel.isHidden = false
-        buttonView.textFiedView.isHidden = true
-        buttonView.textFiedViewButton.isHidden = true
+        purchaseReviewView.dataArry.append(.init(uesrImage: UIImage(named: "user"),isCreater: false, idLabel: "ID", infoLabel: buttonView.textFieldView.text ?? "" , timeLabel: "방금", declaration: " "))
+        buttonView.textFieldView.text = nil
     }
     func addSubView() {
         totalView.addSubview(keyboardImageView)
@@ -94,16 +92,19 @@ class MainViewController: UIViewController {
     }
     func addNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(ViewChange), name: .purchaseButtonClick, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     @objc func ViewChange() {
-        buttonView.diamondcount.isHidden = true
+        buttonView.diamondCount.isHidden = true
         buttonView.buyButton.isHidden = true
         buttonView.diamond.isHidden = true
         buttonView.jamLabel.isHidden = true
-        buttonView.textFiedView.isHidden = false
-        buttonView.textFiedViewButton.isHidden = false
+        buttonView.textFieldView.isHidden = false
+        buttonView.textFieldViewButton.isHidden = false
     }
     private func setUpUIConstraints() {
+        bottomViewMarginConstraint = buttonView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         NSLayoutConstraint.activate([
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             scrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
@@ -113,8 +114,8 @@ class MainViewController: UIViewController {
             buttonView.topAnchor.constraint(equalTo: scrollView.bottomAnchor),
             buttonView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             buttonView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            buttonView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            buttonView.heightAnchor.constraint(equalToConstant: 40),
+            bottomViewMarginConstraint!,
+            buttonView.heightAnchor.constraint(equalToConstant: 64),
             
             totalView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
             totalView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
@@ -142,6 +143,26 @@ class MainViewController: UIViewController {
             purchaseReviewView.trailingAnchor.constraint(equalTo: keyboardImageView.trailingAnchor,constant: 0),
             purchaseReviewView.bottomAnchor.constraint(equalTo: totalView.bottomAnchor,constant: 0),
         ])
+    }
+    
+    @objc func keyboardWillShow(_ notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            bottomViewMarginConstraint?.constant = -keyboardSize.height
+            UIView.animate(withDuration: 1) {
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: NSNotification) {
+        bottomViewMarginConstraint?.constant = 0
+        UIView.animate(withDuration: 1) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc func endEditing() {
+        self.view.endEditing(true)
     }
 }
 extension MainViewController: ButtonViewDelegate {
