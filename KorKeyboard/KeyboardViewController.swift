@@ -10,7 +10,8 @@ import UIKit
 class KeyboardViewController: UIInputViewController {
 
 //    @IBOutlet var nextKeyboardButton: UIButton!
-    var keyboardView = KorKeyboardView()
+    let keyboardView = KorKeyboardView()
+    let shortcutView = ShortcutView()
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
@@ -23,7 +24,6 @@ class KeyboardViewController: UIInputViewController {
 
         addViews()
         setConstraints()
-        keyboardView.delegate = self
 
         // Perform custom UI setup here
 //        self.nextKeyboardButton = UIButton(type: .system)
@@ -68,19 +68,28 @@ extension KeyboardViewController {
     func addViews() {
         guard let inputView = inputView else { return }
 
-        inputView.addSubview(keyboardView)
+        [keyboardView, shortcutView].forEach { inputView.addSubview($0) }
+
+        keyboardView.delegate = self
+        shortcutView.delegate = self
+        shortcutView.isHidden = true
     }
 
     func setConstraints() {
         guard let inputView = inputView else { return }
 
-        keyboardView.translatesAutoresizingMaskIntoConstraints = false
+        [keyboardView, shortcutView].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
 
         NSLayoutConstraint.activate([
             keyboardView.topAnchor.constraint(equalTo: inputView.topAnchor),
             keyboardView.leadingAnchor.constraint(equalTo: inputView.leadingAnchor),
             keyboardView.trailingAnchor.constraint(equalTo: inputView.trailingAnchor),
-            keyboardView.bottomAnchor.constraint(equalTo: inputView.bottomAnchor)
+            keyboardView.bottomAnchor.constraint(equalTo: inputView.bottomAnchor),
+            shortcutView.centerXAnchor.constraint(equalTo: inputView.centerXAnchor),
+            shortcutView.centerYAnchor.constraint(equalTo: inputView.centerYAnchor),
+            shortcutView.leadingAnchor.constraint(equalTo: inputView.leadingAnchor, constant: 20),
+            shortcutView.trailingAnchor.constraint(equalTo: inputView.trailingAnchor, constant: -20),
+            shortcutView.heightAnchor.constraint(equalTo: inputView.heightAnchor, multiplier: 0.5)
         ])
     }
 }
@@ -92,5 +101,15 @@ extension KeyboardViewController: KorKeyboardViewDelegate {
 
     func deleteCharacterBeforeCursor() {
         textDocumentProxy.deleteBackward()
+    }
+
+    func showShortcutView() {
+        shortcutView.isHidden = false
+    }
+}
+
+extension KeyboardViewController: ShortcutViewDelegate {
+    func updateShortcut() {
+        keyboardView.shortcutButton.setTitle(ShortcutData.now, for: .normal)
     }
 }
