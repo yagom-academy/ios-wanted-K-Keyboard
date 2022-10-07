@@ -110,7 +110,7 @@
 	- 해결한 부분
 		- 팝업뷰에서 첫 번째 화면으로 돌아가서 `FirstFooterView`를 텍스트 입력란으로 어떻게 바꿀까?
 		- Delegate 패턴을 사용하여 `PopupView`에서는 버튼이 눌리면 해야할 일을 `PopupViewController`에게 시키고, `PopupViewController`는 `FirstViewController`에게 시키도록 하여 해결했다.
-<img width=100% src="https://user-images.githubusercontent.com/31722496/194602559-d76afe12-94f6-4115-b94a-505091914709.svg">
+<img width=100% src="https://user-images.githubusercontent.com/31722496/194618394-09cfa613-ecb7-4bbb-b1e0-e2f0180e6296.png">
 
 ```swift
 	extension PopupViewController: PopupViewDelegate {
@@ -149,10 +149,10 @@
 		- 처음엔 한글의 모든 자음과 모음의 조합으로 생각해서 너무 복잡했다.
 		- 그래서 초성, 중성, 종성과의 조합으로 생각해봤고, 아래와 같은 로직을 떠올렸다.
 
-<img width=100% src="https://user-images.githubusercontent.com/31722496/194602542-164fb272-0cc8-4cd3-9259-ac710aaf9838.svg">
-<img width=100% src="https://user-images.githubusercontent.com/31722496/194602547-ba09b800-2f47-4ba9-b97b-efc708646908.svg">
-<img width=100% src="https://user-images.githubusercontent.com/31722496/194602551-9ded94c3-18d9-40d0-bd24-3d48ce99b250.svg">
-<img width=100% src="https://user-images.githubusercontent.com/31722496/194602556-eae84d5d-fc8a-4146-8e03-0a08682828a0.svg">
+<img width=100% src="https://user-images.githubusercontent.com/31722496/194618368-c26ceea1-d20d-42b3-96c0-bf144ae6e7f7.png">
+<img width=100% src="https://user-images.githubusercontent.com/31722496/194618380-c46ea22b-2436-4a36-acb6-36332f549fe7.png">
+<img width=100% src="https://user-images.githubusercontent.com/31722496/194618387-2b13fc92-0f44-4a9f-9af9-8983097fdfa9.png">
+<img width=100% src="https://user-images.githubusercontent.com/31722496/194618392-22307081-1d45-4ca4-84d8-9601dc639edd.png">
 
 - `KoreanData`에서 유니코드 조합을 위해 각 초성, 중성, 종성에 대한 유니코드 값을 딕셔너리에 저장한다.
 - stack에 들어있는 문자와 state 정보를 받아 `letter` 함수에서 한글 유니코드를 조합한 결과를 반환한다.
@@ -265,7 +265,7 @@
 	- 해결된 부분
 		- 키보드의 `shortcutButton`을 선택한 단축키로 업데이트 하는 부분에서 문제가 많았다.
 		- `KeyboardViewController`가 아닌 `KorKeyboardView`에서 업데이트를 하려고 해서 계속 문제가 발생했고, MVC구조를 다시 생각해서 `KeyboardViewController`에서 업데이트 할 수 있도록 Delegate 패턴을 사용해서 해결했다.
-<img width=100% src="https://user-images.githubusercontent.com/31722496/194602561-b6998938-f0fc-4213-bf39-afb6efa589ff.svg">
+<img width=100% src="https://user-images.githubusercontent.com/31722496/194618397-ab449200-87cd-47ba-acf8-7605305d8058.png">
 
 - 해결해야하는 부분
 	- 현재 `shortcutButton`을 길게 누르면 단축키 선택 화면이 나타나고, 단축키 중 하나를 선택해야지만 화면이 사라진다.
