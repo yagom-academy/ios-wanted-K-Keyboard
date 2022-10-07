@@ -12,6 +12,7 @@ class KeyboardViewController: UIInputViewController {
 //    @IBOutlet var nextKeyboardButton: UIButton!
     let keyboardView = KorKeyboardView()
     let shortcutView = ShortcutView()
+    let toolbarView = KorKeyboardToolbarView()
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
@@ -68,20 +69,25 @@ extension KeyboardViewController {
     func addViews() {
         guard let inputView = inputView else { return }
 
-        [keyboardView, shortcutView].forEach { inputView.addSubview($0) }
+        [toolbarView, keyboardView, shortcutView].forEach { inputView.addSubview($0) }
 
         keyboardView.delegate = self
         shortcutView.delegate = self
         shortcutView.isHidden = true
+        toolbarView.delegate = self
     }
 
     func setConstraints() {
         guard let inputView = inputView else { return }
 
-        [keyboardView, shortcutView].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
+        [toolbarView, keyboardView, shortcutView].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
 
         NSLayoutConstraint.activate([
-            keyboardView.topAnchor.constraint(equalTo: inputView.topAnchor),
+            toolbarView.topAnchor.constraint(equalTo: inputView.topAnchor),
+            toolbarView.leadingAnchor.constraint(equalTo: inputView.leadingAnchor),
+            toolbarView.trailingAnchor.constraint(equalTo: inputView.trailingAnchor),
+            toolbarView.heightAnchor.constraint(equalToConstant: 30),
+            keyboardView.topAnchor.constraint(equalTo: toolbarView.bottomAnchor, constant: 10),
             keyboardView.leadingAnchor.constraint(equalTo: inputView.leadingAnchor),
             keyboardView.trailingAnchor.constraint(equalTo: inputView.trailingAnchor),
             keyboardView.bottomAnchor.constraint(equalTo: inputView.bottomAnchor),
@@ -111,5 +117,11 @@ extension KeyboardViewController: KorKeyboardViewDelegate {
 extension KeyboardViewController: ShortcutViewDelegate {
     func updateShortcut() {
         keyboardView.shortcutButton.setTitle(ShortcutData.now, for: .normal)
+    }
+}
+
+extension KeyboardViewController: KorKeyboardToolbarViewDelegate {
+    @objc func favoritesButtonPressed() {
+        keyboardView.isHidden = true
     }
 }
