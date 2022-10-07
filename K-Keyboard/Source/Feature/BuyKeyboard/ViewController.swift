@@ -94,20 +94,16 @@ class ViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(toolbarMoveDown), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    @objc func toolbarMoveUp(_ notification: NSNotification){
-        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-          let keybaordRectangle = keyboardFrame.cgRectValue
-          let keyboardHeight = keybaordRectangle.height
-          buyView.commentToolbar.frame.origin.y -= keyboardHeight
-        }
-    }
-        
-    @objc func toolbarMoveDown(_ notification: NSNotification){
+    @objc func toolbarMoveUp( notification: NSNotification){
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keybaordRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keybaordRectangle.height
-            buyView.commentToolbar.frame.origin.y += keyboardHeight
+            buyView.commentToolbar.transform = CGAffineTransform(translationX: 0, y: -keyboardHeight)
         }
+    }
+    
+    @objc func toolbarMoveDown( notification: NSNotification){
+        buyView.commentToolbar.transform = CGAffineTransform(translationX: 0, y: 0)
     }
     
     func setUPReturnForeground() {

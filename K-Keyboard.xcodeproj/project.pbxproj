@@ -31,8 +31,8 @@
 		8CBA9FF428E875AD003C66D3 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBA9FF328E875AD003C66D3 /* PopUpViewController.swift */; };
 		8CBA9FF628E87D82003C66D3 /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBA9FF528E87D82003C66D3 /* PopUpView.swift */; };
 		8CBA9FF828EBFA0B003C66D3 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBA9FF728EBFA0B003C66D3 /* CommentTableViewCell.swift */; };
-		8CDA640928E5B62E00F123FE /* BuyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA640828E5B62E00F123FE /* BuyView.swift */; };
 		8CDA640728E5481200F123FE /* KeyboardTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA640628E5481200F123FE /* KeyboardTestViewController.swift */; };
+		8CDA640928E5B62E00F123FE /* BuyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA640828E5B62E00F123FE /* BuyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,8 +80,8 @@
 		8CBA9FF328E875AD003C66D3 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		8CBA9FF528E87D82003C66D3 /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
 		8CBA9FF728EBFA0B003C66D3 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
-		8CDA640828E5B62E00F123FE /* BuyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyView.swift; sourceTree = "<group>"; };
 		8CDA640628E5481200F123FE /* KeyboardTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardTestViewController.swift; sourceTree = "<group>"; };
+		8CDA640828E5B62E00F123FE /* BuyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -362,6 +362,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AH24YSXN5M;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KKeyboard/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = KKeyboard;
@@ -386,6 +387,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AH24YSXN5M;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KKeyboard/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = KKeyboard;
