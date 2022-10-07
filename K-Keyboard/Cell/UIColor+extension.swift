@@ -30,4 +30,9 @@ extension UIColor {
         
     }
     
+    static func customBlue() -> UIColor {
+        
+        return UIColor(red: 0.49, green: 0.788, blue: 0.988, alpha: 1)
+    }
+    
 }

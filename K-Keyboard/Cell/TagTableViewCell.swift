@@ -73,7 +73,7 @@ class TagTableViewCell: UITableViewCell, ViewRepresent {
             tagLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             tagLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             
-            collectionView.topAnchor.constraint(equalTo: tagLabel.bottomAnchor, constant: 20),
+            collectionView.topAnchor.constraint(equalTo: tagLabel.bottomAnchor, constant: 16),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             collectionView.heightAnchor.constraint(equalToConstant: tagHeight * 2 + 40),
