@@ -13,8 +13,10 @@ class KorKeyboardView: UIView {
     var stack = [String]()
     var state = 0
     var letter: String { return KoreanData.letter(stack, state) }
+    var isShiftPressed: Bool = false
 
     static let row1 = "ㅂㅈㄷㄱㅅㅛㅕㅑㅐㅔ".map { String($0) }
+    static let row1Shift = "ㅃㅉㄸㄲㅆㅛㅕㅑㅒㅖ".map { String($0) }
     static let row2 = "ㅁㄴㅇㄹㅎㅗㅓㅏㅣ".map { String($0) }
     static let row3 = "ㅋㅌㅊㅍㅠㅜㅡ".map { String($0) }
 
@@ -36,6 +38,29 @@ class KorKeyboardView: UIView {
         stackView.distribution = .fillEqually
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.layoutMargins = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
+
+        return stackView
+    }()
+    
+    let horizontal1Shift: UIStackView = {
+        let stackView = UIStackView()
+
+        for char in row1Shift {
+            let button = UIButton()
+            button.layer.cornerRadius = 5
+            button.setTitle(char, for: .normal)
+            button.backgroundColor = .white
+            button.setTitleColor(.black, for: .normal)
+            button.addTarget(self, action: #selector(korButtonPressed), for: .touchUpInside)
+            stackView.addArrangedSubview(button)
+        }
+
+        stackView.axis = .horizontal
+        stackView.spacing = 6
+        stackView.distribution = .fillEqually
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.layoutMargins = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
+        stackView.isHidden = true
 
         return stackView
     }()
@@ -72,6 +97,8 @@ class KorKeyboardView: UIView {
             button.backgroundColor = .white
             button.tintColor = .black
             button.contentMode = .scaleAspectFit
+            button.addTarget(self, action: #selector(shiftPressed), for: .touchUpInside)
+            
             return button
         }()
 
@@ -147,16 +174,20 @@ class KorKeyboardView: UIView {
 
 extension KorKeyboardView {
     func addViews() {
-        [horizontal1, horizontal2, horizontal3, spaceBar, returnButton].forEach { self.addSubview($0) }
+        [horizontal1, horizontal1Shift, horizontal2, horizontal3, spaceBar, returnButton].forEach { self.addSubview($0) }
     }
-
+    
     func setConstraints() {
-        [horizontal1, horizontal2, horizontal3, spaceBar, returnButton].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
-
+        [horizontal1, horizontal1Shift, horizontal2, horizontal3, spaceBar, returnButton].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
+        
         NSLayoutConstraint.activate([
             horizontal1.topAnchor.constraint(equalTo: self.topAnchor),
             horizontal1.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             horizontal1.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            horizontal1Shift.topAnchor.constraint(equalTo: horizontal1.topAnchor),
+            horizontal1Shift.leadingAnchor.constraint(equalTo: horizontal1.leadingAnchor),
+            horizontal1Shift.trailingAnchor.constraint(equalTo: horizontal1.trailingAnchor),
+            horizontal1Shift.bottomAnchor.constraint(equalTo: horizontal1.bottomAnchor),
             horizontal2.topAnchor.constraint(equalTo: horizontal1.bottomAnchor, constant: 12),
             horizontal2.leadingAnchor.constraint(equalTo: horizontal1.leadingAnchor),
             horizontal2.trailingAnchor.constraint(equalTo: horizontal1.trailingAnchor),
@@ -172,14 +203,14 @@ extension KorKeyboardView {
             returnButton.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.3)
         ])
     }
+}
 
+extension KorKeyboardView {
     @objc func korButtonPressed(_ sender: UIButton) {
         print(sender.currentTitle!)
-
         let char = sender.currentTitle!
 
         if KoreanData.vowel.contains(char) {
-
             switch state {
             case 0:
                 delegate?.insertCharacter(char)
@@ -271,6 +302,10 @@ extension KorKeyboardView {
                 }
             }
         }
+        
+        if self.isShiftPressed == true {
+            shiftPressed()
+        }
     }
 
     @objc func deletePressed() {
@@ -291,6 +326,10 @@ extension KorKeyboardView {
             delegate?.deleteCharacterBeforeCursor()
             delegate?.insertCharacter(letter)
         }
+        
+        if self.isShiftPressed == true {
+            shiftPressed()
+        }
     }
 
     @objc func spacePressed() {
@@ -299,6 +338,28 @@ extension KorKeyboardView {
         } else {
             stack.removeAll()
             state = 0
+        }
+        
+        if self.isShiftPressed == true {
+            shiftPressed()
+        }
+    }
+    
+    @objc func shiftPressed() {
+        if self.isShiftPressed {
+            print("change to X")
+            self.isShiftPressed = false
+            DispatchQueue.main.async {
+                self.horizontal1.isHidden = false
+                self.horizontal1Shift.isHidden = true
+            }
+        } else {
+            print("Shift pressed")
+            self.isShiftPressed = true
+            DispatchQueue.main.async {
+                self.horizontal1.isHidden = true
+                self.horizontal1Shift.isHidden = false
+            }
         }
     }
 }

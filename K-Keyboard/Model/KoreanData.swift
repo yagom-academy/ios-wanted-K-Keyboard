@@ -8,7 +8,7 @@
 import Foundation
 
 struct KoreanData {
-    static let vowel = Set("ㅛㅕㅑㅐㅔㅗㅓㅏㅣㅠㅜㅡ".map { String($0) })
+    static let vowel = Set("ㅛㅕㅑㅐㅒㅔㅖㅗㅓㅏㅣㅠㅜㅡ".map { String($0) })
 
     static let initialConsonant: [String: Int] = [
         "ㄱ": 0,
@@ -89,7 +89,6 @@ struct KoreanData {
     private static let unicodeBase = 44032
     private static let initialNum = 588
     private static let medialNum = 28
-    private static let mask = 0b11111
 
     static func letter(_ stack: [String], _ state: Int) -> String {
         var unicodeValue = unicodeBase
@@ -98,13 +97,13 @@ struct KoreanData {
         case 2:
             unicodeValue += initialConsonant[stack[0]]! * initialNum + medialVowel[stack[1]]! * medialNum
         case 3:
-            if (state & mask) == 0b11010 {
+            if state == 0b11010 {
                 unicodeValue += initialConsonant[stack[0]]! * initialNum + medialVowel[stack[1]]! * medialNum + finalConsonant[stack[2]]!
             } else {
                 unicodeValue += initialConsonant[stack[0]]! * initialNum + medialVowel[stack[1] + stack[2]]! * medialNum
             }
         case 4:
-            if (state & mask) == 0b11011 {
+            if state == 0b11011 {
                 unicodeValue += initialConsonant[stack[0]]! * initialNum + medialVowel[stack[1]]! * medialNum + finalConsonant[stack[2] + stack[3]]!
             } else {
                 unicodeValue += initialConsonant[stack[0]]! * initialNum + medialVowel[stack[1] + stack[2]]! * medialNum + finalConsonant[stack[3]]!
