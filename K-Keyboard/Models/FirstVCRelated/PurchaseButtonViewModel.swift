@@ -1,16 +1,15 @@
 //
-//  TestButtonViewModel.swift
+//  PurchaseButtonViewModel.swift
 //  K-Keyboard
 //
-//  Created by sokol on 2022/10/01.
+//  Created by pablo.jee on 2022/10/07.
 //
 
 import Foundation
 
-class TestButtonViewModel {
-    
+class PurchaseButtonViewModel {
     //input
-    
+        
     var didReceiveDidTouchButton = { }
     
     //output
@@ -19,7 +18,7 @@ class TestButtonViewModel {
     //properties
     
     init() {
-        
+        bind()
     }
     
     private func bind() {

@@ -14,22 +14,24 @@ class FirstModel {
     
     //output
     @MainThreadActor var routeSubject: ((SceneCategory) -> ())?
-    var testButtonViewModel: TestButtonViewModel {
-        return privateTestButtonViewModel
+    
+    var purchaseButtonViewModel: PurchaseButtonViewModel {
+        return privatePurchaseButtonViewModel
     }
+    
     
     //properties
     private var repository: RepositoryProtocol
-    private var privateTestButtonViewModel : TestButtonViewModel
+    private var privatePurchaseButtonViewModel: PurchaseButtonViewModel
     
     init(repository: RepositoryProtocol) {
         self.repository = repository
-        self.privateTestButtonViewModel = TestButtonViewModel()
+        self.privatePurchaseButtonViewModel = PurchaseButtonViewModel()
         bind()
     }
     
     private func bind() {
-        privateTestButtonViewModel.propergateDidTouchButton = { [weak self] in
+        privatePurchaseButtonViewModel.propergateDidTouchButton = { [weak self] in
             guard let self = self else { return }
             
             let dependency = SecondModel()

@@ -19,7 +19,7 @@ class FirstViewController: UIViewController, FirstViewControllerRoutable {
     lazy var themeOpinionView = ThemeOpinionView()
     lazy var bannerView = BannerView()
     lazy var purchaseReviewListView = PurchaseReviewView()
-    lazy var purchaseButtonView = PurchaseButtonView()
+    lazy var purchaseButtonView = PurchaseButtonView(viewModel: self.model.purchaseButtonViewModel)
     lazy var commentInputView = CommentInputView()
     
     init(viewModel: FirstModel) {
