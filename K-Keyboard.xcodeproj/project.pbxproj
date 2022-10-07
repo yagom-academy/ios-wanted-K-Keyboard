@@ -13,6 +13,9 @@
 		63487F3F28E2EA5E0033CF32 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63487F3D28E2EA5E0033CF32 /* Main.storyboard */; };
 		63487F4128E2EA5E0033CF32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63487F4028E2EA5E0033CF32 /* Assets.xcassets */; };
 		63487F4428E2EA5E0033CF32 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63487F4228E2EA5E0033CF32 /* LaunchScreen.storyboard */; };
+		F8AAA8FC28EF0F35001D1DFC /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AAA8FB28EF0F35001D1DFC /* ReviewTableViewCell.swift */; };
+		F8AAA93E28EFFF9F001D1DFC /* BannerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AAA93D28EFFF9F001D1DFC /* BannerTableViewCell.swift */; };
+		F8AAA94028F01620001D1DFC /* EvaluationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AAA93F28F01620001D1DFC /* EvaluationTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		63487F4028E2EA5E0033CF32 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63487F4328E2EA5E0033CF32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63487F4528E2EA5E0033CF32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F8AAA8FB28EF0F35001D1DFC /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
+		F8AAA93D28EFFF9F001D1DFC /* BannerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerTableViewCell.swift; sourceTree = "<group>"; };
+		F8AAA93F28F01620001D1DFC /* EvaluationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +69,9 @@
 				63487F4028E2EA5E0033CF32 /* Assets.xcassets */,
 				63487F4228E2EA5E0033CF32 /* LaunchScreen.storyboard */,
 				63487F4528E2EA5E0033CF32 /* Info.plist */,
+				F8AAA8FB28EF0F35001D1DFC /* ReviewTableViewCell.swift */,
+				F8AAA93D28EFFF9F001D1DFC /* BannerTableViewCell.swift */,
+				F8AAA93F28F01620001D1DFC /* EvaluationTableViewCell.swift */,
 			);
 			path = "K-Keyboard";
 			sourceTree = "<group>";
@@ -138,7 +147,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8AAA93E28EFFF9F001D1DFC /* BannerTableViewCell.swift in Sources */,
 				63487F3C28E2EA5E0033CF32 /* ThemeDetailViewController.swift in Sources */,
+				F8AAA8FC28EF0F35001D1DFC /* ReviewTableViewCell.swift in Sources */,
+				F8AAA94028F01620001D1DFC /* EvaluationTableViewCell.swift in Sources */,
 				63487F3828E2EA5E0033CF32 /* AppDelegate.swift in Sources */,
 				63487F3A28E2EA5E0033CF32 /* SceneDelegate.swift in Sources */,
 			);
