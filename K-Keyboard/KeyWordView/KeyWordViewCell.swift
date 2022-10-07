@@ -17,7 +17,6 @@ class KeyWordViewCell: UICollectionViewCell {
         }
     }
     static let identifier = "KeyWordViewCell"
-    
     lazy var title: UILabel = {
         let label = UILabel()
         label.font = .appleSDGothicNeo(weight: .medium, size: 14)
@@ -27,7 +26,6 @@ class KeyWordViewCell: UICollectionViewCell {
     }()
     lazy var imageView: UIImageView = {
         let label = UIImageView()
-        
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -45,7 +43,6 @@ class KeyWordViewCell: UICollectionViewCell {
         self.contentView.layer.shadowRadius = 1
         self.contentView.layer.shadowOffset = .zero
         self.contentView.layer.shadowOpacity = 0.6
-        //        self.backgroundColor = .green
         addContentView()
         constraintCustomView()
     }

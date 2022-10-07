@@ -23,7 +23,7 @@ class ButtonView: UIView {
         textFiedViewButton.translatesAutoresizingMaskIntoConstraints = false
         textFiedViewButton.layer.cornerRadius = 15
         textFiedViewButton.isHidden = true
-    
+        
         return textFiedViewButton
     }()
     @objc func addReview(){
@@ -36,7 +36,6 @@ class ButtonView: UIView {
         let centeredParagraphStyle = NSMutableParagraphStyle()
         centeredParagraphStyle.alignment = .center
         textFiedView.attributedPlaceholder = NSAttributedString(string: "댓글을 달아주세요", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white, .paragraphStyle: centeredParagraphStyle])
-//        textFiedView.attributedPlaceholder.
         textFiedView.backgroundColor = UIColor(hex: "#FF417D", alpha: 1)
         textFiedView.layer.cornerRadius = 12
         textFiedView.isHidden = true

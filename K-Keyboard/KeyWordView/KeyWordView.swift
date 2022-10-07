@@ -67,34 +67,15 @@ class KeyWordView: UIView {
     }
 }
 extension KeyWordView: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dataArry.count
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "KeyWordViewCell", for: indexPath) as? KeyWordViewCell else {return KeyWordViewCell()}
-        
         cell.model = dataArry[indexPath.row]
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        //                    let width = collectionView.frame.width
-        //                    let height = collectionView.frame.height
-        //                print(width,height)
-        //                    let itemsPerRow: CGFloat = 2
-        //                    let widthPadding = sectionInsets.left * (itemsPerRow + 1)
-        //                    let itemsPerColumn: CGFloat = 3
-        //                    let heightPadding = sectionInsets.top * (itemsPerColumn + 1)
-        //                    let cellWidth = (width - widthPadding) / itemsPerRow
-        //                    let cellHeight = (height - heightPadding) / itemsPerColumn
-        //        print(cellWidth,cellHeight)
-        //                    return CGSize(width: cellWidth, height: cellHeight)
-        
-        //343.0 165.66666666666666  콜렉션뷰 가로 높이
-        //        156.5 41.888888888888886   셀 가로 높이
-        //          return CGSize(width: 10 * Int.random(in: 5...10) , height: 10 * Int.random(in: 5...10))
         return CGSize(width: 129 , height: 162)
     }
 }
@@ -107,15 +88,11 @@ struct PeereviewViewController<View: UIView> : UIViewRepresentable {
     init(_ builder: @escaping () -> View) {
         view = builder()
     }
-    
     func makeUIView(context: Context) -> some UIView {
         view
     }
-    
     func updateUIView(_ uiView: UIViewType, context: Context) {
-        
     }
-    
 }
 
 #endif

@@ -9,31 +9,31 @@ import UIKit
 
 class CheerView: UIView {
     var addCount: Int = 0
-   
-    lazy var changeButton: UIButton = {
-        let bo = UIButton()
-        bo.translatesAutoresizingMaskIntoConstraints = false
-//        bo.backgroundColor = .gray.withAlphaComponent(0.4)
-        bo.isSelected = true
-        bo.addTarget(self, action: #selector(change), for: .touchUpInside)
-        return bo
-    }()
-@objc func change(){
-    
-            if changeButton.isSelected == true {
+    var isActivated : Bool = false {
+        didSet {
+            if isActivated {
                 feel.textColor = UIColor(hex: "#FF417D",alpha: 1)
                 count.textColor = UIColor(hex: "#FF417D",alpha: 1)
                 addCount += 1
-                print("+1")
-            } else if changeButton.isSelected == false {
+                count.text = "\(addCount)"
+            } else {
                 feel.textColor = UIColor(hex: "#919299",alpha: 1)
                 count.textColor = UIColor(hex: "#919299", alpha: 1)
                 addCount -= 1
-                print("-1")
+                count.text = "\(addCount)"
             }
-    print("클릭")
+        }
     }
-
+    lazy var changeButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.isSelected = isActivated
+        button.addTarget(self, action: #selector(change), for: .touchUpInside)
+        return button
+    }()
+    @objc func change(){
+        isActivated.toggle()
+    }
     lazy var imoge: UILabel = {
         let imoge = UILabel()
         imoge.font = .appleSDGothicNeo(weight: .regular, size: 30)
@@ -58,7 +58,6 @@ class CheerView: UIView {
         count.text = "\(addCount)"
         return count
     }()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.cellSetting()
@@ -93,5 +92,4 @@ class CheerView: UIView {
         self.addSubview(count)
         self.addSubview(changeButton)
     }
-
 }

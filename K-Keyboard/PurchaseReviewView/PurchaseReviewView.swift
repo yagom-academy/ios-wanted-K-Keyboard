@@ -16,7 +16,6 @@ class PurchaseReviewView: UIView {
         didSet {
             buycount.text = "\(dataArry.count)"
             purchaseTableView.reloadData()
-//            purchaseTableView.reloadSections(IndexSet(0...100), with: UITableView.RowAnimation.automatic)
         }
     }
     let imageView : UIImageView = {
@@ -66,7 +65,6 @@ class PurchaseReviewView: UIView {
         tableView.rowHeight = UITableView.automaticDimension
         return tableView
     }()
-    
     private func setupView() {
         purchaseTableView.register(PurchaseReviewTableViewCell.self, forCellReuseIdentifier: PurchaseReviewTableViewCell.identifier)
         purchaseTableView.dataSource = self
@@ -75,7 +73,6 @@ class PurchaseReviewView: UIView {
         
         buycount.text = "\(dataArry.count)"
     }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.commonInit()
@@ -102,7 +99,7 @@ class PurchaseReviewView: UIView {
             
             buy.topAnchor.constraint(equalTo: imageView.bottomAnchor,constant: 48),
             buy.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-
+            
             buycount.topAnchor.constraint(equalTo: buy.topAnchor),
             buycount.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 75),
             buycount.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -120,7 +117,6 @@ class PurchaseReviewView: UIView {
             purchaseTableView.leadingAnchor.constraint(equalTo: buy.leadingAnchor),
             purchaseTableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             purchaseTableView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            
         ])
     }
 }
@@ -128,13 +124,11 @@ extension PurchaseReviewView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataArry.count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = purchaseTableView.dequeueReusableCell(withIdentifier: "PurchaseReviewTableViewCell", for: indexPath) as? PurchaseReviewTableViewCell else { return PurchaseReviewTableViewCell()}
         cell.model = dataArry[indexPath.row]
         return cell
     }
-    //
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.rowHeight
     }

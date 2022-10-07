@@ -12,7 +12,6 @@ class PurchaseReviewTablewView: UITableView {
     override var contentSize: CGSize {
         didSet {
             invalidateIntrinsicContentSize()
-            
         }
     }
     override var intrinsicContentSize: CGSize {

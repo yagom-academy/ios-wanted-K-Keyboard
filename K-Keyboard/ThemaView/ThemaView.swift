@@ -1,43 +1,55 @@
 //
-//  FourView.swift
+//  themView.swift
 //  K-Keyboard
 //
-//  Created by so on 2022/09/30.
+//  Created by so on 2022/10/03.
 //
 
 import UIKit
 
 class ThemaView: UIView {
-    
+
     let buy : UILabel = {
         let buy = UILabel()
         buy.translatesAutoresizingMaskIntoConstraints = false
-        buy.textColor = UIColor(hex: "#42444C",alpha: 1)
-        buy.font = .appleSDGothicNeo(weight: .bold, size: 16)
         buy.text = "이 테마를 어떻게 생각하나요?"
         buy.textColor = .black
         return buy
     }()
-    let immoge: [String] = ["☺️","😍","😉","🤣"]
-    var feeling : [String] = ["맘에들어요", "심쿵했어요", "응원해요","갖고싶어요"]
-    var feelingCount : [Int] = [0,0,0,0]
-    var situation : [Bool] = [false,false,false,false]
-    
-    let collectionView : UICollectionView = {
-        let collectionView = UICollectionViewFlowLayout()
-        collectionView.minimumInteritemSpacing = ((UIScreen.main.bounds.width - (24 * 2) - (56 * 4)) / 3)
-        //        collectionView.minimumLineSpacing = 38
-        collectionView.scrollDirection = .vertical
-//        collectionView.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: collectionView)
-        cv.translatesAutoresizingMaskIntoConstraints = false
-        return cv
+    let goodView : GoodView = {
+        let view = GoodView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    let loveView : LoveView = {
+        let view = LoveView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    let cheerView : CheerView = {
+        let view = CheerView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    let wantView : WantView = {
+        let view = WantView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    let stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.alignment = .fill
+        stackView.distribution = .fillEqually
+        stackView.spacing = 4
+        return stackView
     }()
     private func setupView() {
-        collectionView.register(ThemaCollectionViewCell.self, forCellWithReuseIdentifier: ThemaCollectionViewCell.identifier)
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.heightAnchor.constraint(equalToConstant: 66).isActive = true
+        addSubview(stackView)
+        [goodView, loveView, cheerView, wantView].map {
+            self.stackView.addArrangedSubview($0)
+        }
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -47,8 +59,8 @@ class ThemaView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     private func commonInit(){
-        self.addSubview(buy)
-        addSubview(collectionView)
+        addSubview(buy)
+        addSubview(stackView)
         constraintCustomView()
         setupView()
     }
@@ -58,42 +70,13 @@ class ThemaView: UIView {
             buy.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             buy.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             
-            collectionView.topAnchor.constraint(equalTo: buy.bottomAnchor,constant: 24),
-            collectionView.leadingAnchor.constraint(equalTo: buy.leadingAnchor,constant: 8),
-            collectionView.trailingAnchor.constraint(equalTo: buy.trailingAnchor,constant: -8),
-            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            stackView.topAnchor.constraint(equalTo: buy.bottomAnchor,constant: 10),
+            stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            stackView.heightAnchor.constraint(equalToConstant: 66),
         ])
     }
 }
-extension ThemaView: UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return immoge.count
-    }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ThemaCollectionViewCell", for: indexPath) as? ThemaCollectionViewCell else {return ThemaCollectionViewCell()}
-        cell.imoge.text = immoge[indexPath.row]
-        cell.feel.text = feeling[indexPath.row]
-        cell.count.text = "\(feelingCount[indexPath.row])"
-        cell.isActivated = situation[indexPath.row]
-        
-        return cell
-    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 56 , height: 63)
-    }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if situation[indexPath.row] == false {
-            situation[indexPath.row] = true
-            feelingCount[indexPath.row] += 1
-            
-        } else  {
-            situation[indexPath.row] = false
-            feelingCount[indexPath.row] -= 1
-        }
-        collectionView.reloadData()
-    }
-}
-
-
 
 

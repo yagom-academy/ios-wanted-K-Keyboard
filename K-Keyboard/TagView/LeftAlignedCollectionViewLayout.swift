@@ -18,13 +18,10 @@ class LeftAlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {
             if layoutAttribute.frame.origin.y >= maxY {
                 nextX = .zero
             }
-
             layoutAttribute.frame.origin.x = nextX
-
             nextX += layoutAttribute.frame.width + minimumInteritemSpacing
             maxY = max(layoutAttribute.frame.maxY , maxY)
         }
-
         return attributes
     }
 }

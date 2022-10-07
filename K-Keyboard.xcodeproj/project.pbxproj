@@ -33,14 +33,12 @@
 		D30E931728E5B27B009AB544 /* KeyboardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E931628E5B27B009AB544 /* KeyboardImageView.swift */; };
 		D30E931928E69F19009AB544 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E931828E69F19009AB544 /* TagView.swift */; };
 		D30E931D28E69F73009AB544 /* KeyWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E931C28E69F73009AB544 /* KeyWordView.swift */; };
-		D31AF13728EA96DA00BEE422 /* themView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31AF13628EA96DA00BEE422 /* themView.swift */; };
-		D325D90628E9290700DFD0A1 /* ThemaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D325D90528E9290700DFD0A1 /* ThemaCollectionViewCell.swift */; };
+		D31AF13728EA96DA00BEE422 /* ThemaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31AF13628EA96DA00BEE422 /* ThemaView.swift */; };
 		D325D90828E95D7600DFD0A1 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D325D90728E95D7600DFD0A1 /* ButtonView.swift */; };
 		D346C61C28EBEB3D00DAADE9 /* PopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D346C61B28EBEB3D00DAADE9 /* PopView.swift */; };
 		D37DE32628EA80F7008B1A2A /* PurchasReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37DE32528EA80F7008B1A2A /* PurchasReviewModel.swift */; };
 		D3A2C2CC28E6EE000093A633 /* KeyWordViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A2C2CB28E6EE000093A633 /* KeyWordViewCell.swift */; };
 		D3A4761628E56CDA003CA79A /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A4761528E56CDA003CA79A /* TagCollectionViewCell.swift */; };
-		D3D272B728E70D9C00BC6392 /* ThemaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D272B628E70D9C00BC6392 /* ThemaView.swift */; };
 		D3D272BB28E8010B00BC6392 /* KeyWordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D272BA28E8010A00BC6392 /* KeyWordModel.swift */; };
 		D3D272BD28E8175300BC6392 /* PurchaseReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D272BC28E8175300BC6392 /* PurchaseReviewView.swift */; };
 		D3D5CAF328ECA1F900962CB3 /* PurchaseAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D5CAF228ECA1F900962CB3 /* PurchaseAlertViewController.swift */; };
@@ -98,14 +96,12 @@
 		D30E931628E5B27B009AB544 /* KeyboardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardImageView.swift; sourceTree = "<group>"; };
 		D30E931828E69F19009AB544 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		D30E931C28E69F73009AB544 /* KeyWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyWordView.swift; sourceTree = "<group>"; };
-		D31AF13628EA96DA00BEE422 /* themView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = themView.swift; sourceTree = "<group>"; };
-		D325D90528E9290700DFD0A1 /* ThemaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemaCollectionViewCell.swift; sourceTree = "<group>"; };
+		D31AF13628EA96DA00BEE422 /* ThemaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemaView.swift; sourceTree = "<group>"; };
 		D325D90728E95D7600DFD0A1 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		D346C61B28EBEB3D00DAADE9 /* PopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopView.swift; sourceTree = "<group>"; };
 		D37DE32528EA80F7008B1A2A /* PurchasReviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasReviewModel.swift; sourceTree = "<group>"; };
 		D3A2C2CB28E6EE000093A633 /* KeyWordViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyWordViewCell.swift; sourceTree = "<group>"; };
 		D3A4761528E56CDA003CA79A /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
-		D3D272B628E70D9C00BC6392 /* ThemaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemaView.swift; sourceTree = "<group>"; };
 		D3D272BA28E8010A00BC6392 /* KeyWordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyWordModel.swift; sourceTree = "<group>"; };
 		D3D272BC28E8175300BC6392 /* PurchaseReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseReviewView.swift; sourceTree = "<group>"; };
 		D3D5CAF228ECA1F900962CB3 /* PurchaseAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseAlertViewController.swift; sourceTree = "<group>"; };
@@ -275,9 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				D309FF6F28EFDFF8005F4094 /* Views */,
-				D3D272B628E70D9C00BC6392 /* ThemaView.swift */,
-				D325D90528E9290700DFD0A1 /* ThemaCollectionViewCell.swift */,
-				D31AF13628EA96DA00BEE422 /* themView.swift */,
+				D31AF13628EA96DA00BEE422 /* ThemaView.swift */,
 			);
 			path = ThemaView;
 			sourceTree = "<group>";
@@ -423,14 +417,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D31AF13728EA96DA00BEE422 /* themView.swift in Sources */,
+				D31AF13728EA96DA00BEE422 /* ThemaView.swift in Sources */,
 				D37DE32628EA80F7008B1A2A /* PurchasReviewModel.swift in Sources */,
 				B09A55F328EFC3A80093D9D3 /* ContentSizedCollectionView.swift in Sources */,
-				D325D90628E9290700DFD0A1 /* ThemaCollectionViewCell.swift in Sources */,
 				D309FF7328EFE01B005F4094 /* LoveView.swift in Sources */,
 				D309FF6C28EEED7C005F4094 /* PurchaseReviewTablewView.swift in Sources */,
 				D325D90828E95D7600DFD0A1 /* ButtonView.swift in Sources */,
-				D3D272B728E70D9C00BC6392 /* ThemaView.swift in Sources */,
 				D309FF6A28EE8EAC005F4094 /* PurchaseReviewTableViewCell.swift in Sources */,
 				D3A2C2CC28E6EE000093A633 /* KeyWordViewCell.swift in Sources */,
 				D3D272BB28E8010B00BC6392 /* KeyWordModel.swift in Sources */,

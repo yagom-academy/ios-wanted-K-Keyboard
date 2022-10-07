@@ -24,18 +24,16 @@ class GoodView: UIView {
             }
         }
     }
-    
     lazy var changeButton: UIButton = {
-        let bo = UIButton()
-        bo.translatesAutoresizingMaskIntoConstraints = false
-        bo.isSelected = isActivated
-        bo.addTarget(self, action: #selector(change), for: .touchUpInside)
-        return bo
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.isSelected = isActivated
+        button.addTarget(self, action: #selector(change), for: .touchUpInside)
+        return button
     }()
     @objc func change(){
         isActivated.toggle()
     }
-    
     lazy var imoge: UILabel = {
         let imoge = UILabel()
         imoge.font = .appleSDGothicNeo(weight: .regular, size: 30)
@@ -87,7 +85,6 @@ class GoodView: UIView {
             changeButton.leadingAnchor.constraint(equalTo: leadingAnchor),
             changeButton.trailingAnchor.constraint(equalTo: trailingAnchor),
             changeButton.bottomAnchor.constraint(equalTo: bottomAnchor),
-//            count.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
     private func addContentView() {
@@ -96,5 +93,4 @@ class GoodView: UIView {
         self.addSubview(count)
         self.addSubview(changeButton)
     }
-
 }

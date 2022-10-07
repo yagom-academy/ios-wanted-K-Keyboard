@@ -62,7 +62,7 @@ class TagCollectionViewCell: UICollectionViewCell {
         var constraints = [NSLayoutConstraint]()
         
         defer { NSLayoutConstraint.activate(constraints) }
-        
+
         constraints += [
             title.topAnchor.constraint(equalTo: self.topAnchor, constant: 4),
             title.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
@@ -70,7 +70,6 @@ class TagCollectionViewCell: UICollectionViewCell {
             title.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -4),
         ]
     }
-    
     // MARK: ConfigureCell
     func configureCell(_ title: String) {
         self.title.text = title
