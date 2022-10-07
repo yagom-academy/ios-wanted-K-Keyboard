@@ -47,7 +47,7 @@ extension FavoritesTableViewCell {
         
         NSLayoutConstraint.activate([
             favoriteLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            favoriteLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            favoriteLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 20),
             favoriteLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
             favoriteLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])

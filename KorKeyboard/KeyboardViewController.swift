@@ -75,6 +75,7 @@ extension KeyboardViewController {
         keyboardView.delegate = self
         shortcutView.delegate = self
         toolbarView.delegate = self
+        favoritesView.delegate = self
         
         shortcutView.isHidden = true
         favoritesView.isHidden = true
@@ -86,7 +87,7 @@ extension KeyboardViewController {
         [toolbarView, keyboardView, shortcutView, favoritesView].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
 
         NSLayoutConstraint.activate([
-            toolbarView.topAnchor.constraint(equalTo: inputView.topAnchor),
+            toolbarView.topAnchor.constraint(equalTo: inputView.topAnchor, constant: 10),
             toolbarView.leadingAnchor.constraint(equalTo: inputView.leadingAnchor),
             toolbarView.trailingAnchor.constraint(equalTo: inputView.trailingAnchor),
             toolbarView.heightAnchor.constraint(equalToConstant: 30),
@@ -131,5 +132,11 @@ extension KeyboardViewController: KorKeyboardToolbarViewDelegate {
     @objc func favoritesButtonPressed() {
         keyboardView.isHidden = true
         favoritesView.isHidden = false
+    }
+}
+
+extension KeyboardViewController: FavoritesViewDelegate {
+    func insertPhrase(_ input: String) {
+        textDocumentProxy.insertText(input)
     }
 }

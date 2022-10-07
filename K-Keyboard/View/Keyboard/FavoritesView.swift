@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol FavoritesViewDelegate: class {
+    func insertPhrase(_ input: String)
+}
+
 class FavoritesView: UIView {
+    
+    weak var delegate: FavoritesViewDelegate?
     
     var items: [String] = ["안녕하세요~", "감사합니다!", "지금 가는 중이야!"]
     
@@ -28,7 +34,9 @@ class FavoritesView: UIView {
         favoritesTableView.delegate = self
         favoritesTableView.dataSource = self
         self.favoritesTableView.backgroundColor = .darkGray
+        self.favoritesTableView.separatorColor = .lightGray
         self.backgroundColor = .darkGray
+
 
         addViews()
         setConstraints()
@@ -73,6 +81,8 @@ extension FavoritesView: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
+        cell.selectionStyle = .none
+        cell.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         cell.favoriteLabel.text = self.items[indexPath.row]
         
         return cell
@@ -80,5 +90,9 @@ extension FavoritesView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 40
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.insertPhrase(self.items[indexPath.row])
     }
 }
