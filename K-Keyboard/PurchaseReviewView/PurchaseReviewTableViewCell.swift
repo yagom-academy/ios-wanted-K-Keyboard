@@ -27,11 +27,10 @@ class PurchaseReviewTableViewCell: UITableViewCell {
             guard let model else {return}
             idLabel.text = model.idLabel
             uesrImage.image = model.uesrImage
+            createrLabel.isHidden = !model.isCreater
             infoLabel.text = model.infoLabel
             timeLabel.text = model.timeLabel
             descriotionLabel.text = model.declaration
-            
-            
         }
     }
     lazy var messageView : UIView = {
@@ -50,6 +49,17 @@ class PurchaseReviewTableViewCell: UITableViewCell {
         let uesrImage = UIImageView()
         uesrImage.translatesAutoresizingMaskIntoConstraints = false
         return uesrImage
+    }()
+    lazy var createrLabel: UILabel = {
+        let createrLabel = UILabel()
+        createrLabel.text = "크리에이터"
+        createrLabel.font = .appleSDGothicNeo(weight: .medium, size: 10)
+        createrLabel.textColor = UIColor(hex: "#FFFFFF", alpha: 1)
+        createrLabel.translatesAutoresizingMaskIntoConstraints = false
+        createrLabel.backgroundColor = UIColor(hex: "#FF417D",alpha: 1)
+//        self.createrLabel.layer.cornerRadius = 24
+        createrLabel.layer.cornerRadius = 24
+        return createrLabel
     }()
     
     lazy var idLabel: UILabel = {
@@ -112,6 +122,10 @@ class PurchaseReviewTableViewCell: UITableViewCell {
             uesrImage.heightAnchor.constraint(equalToConstant: 48),
             uesrImage.widthAnchor.constraint(equalToConstant: 48),
             
+            createrLabel.topAnchor.constraint(equalTo: uesrImage.topAnchor,constant: 38),
+            createrLabel.centerXAnchor.constraint(equalTo: uesrImage.centerXAnchor),
+            
+            
             messageView.topAnchor.constraint(equalTo: uesrImage.topAnchor),
             messageView.leadingAnchor.constraint(equalTo: uesrImage.trailingAnchor,constant: 16),
             messageView.trailingAnchor.constraint(equalTo: infoLabel.trailingAnchor,constant: 12),
@@ -147,6 +161,7 @@ class PurchaseReviewTableViewCell: UITableViewCell {
         addSubview(timeLabel)
         addSubview(descriotionLabel)
         addSubview(messageView)
+        addSubview(createrLabel)
         
     }
     

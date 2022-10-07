@@ -8,10 +8,10 @@
 import UIKit
 class PurchaseReviewView: UIView {
     lazy var dataArry: [PurchasReviewModel] = [
-        .init(uesrImage: UIImage(named: "user"), idLabel: "크리에이터명", infoLabel: "구매해주셔서 감사합니다💖", timeLabel: "1일",declaration: ""),
-        .init(uesrImage: UIImage(named: "user"), idLabel: "o달빔o", infoLabel: "아진짜 귀여워요 !!!!!", timeLabel: "1초",declaration: "신고"),
-        .init(uesrImage: UIImage(named: "user"), idLabel: "o달빔o", infoLabel: "아진짜 귀여워요 !!!!!", timeLabel: "1분", declaration: "신고"),
-        .init(uesrImage: UIImage(named: "user"), idLabel: "o달빔o", infoLabel: "아진짜 귀여워요 !!!!!", timeLabel: "2분", declaration: "신고")
+        .init(uesrImage: UIImage(named: "user"), isCreater: true, idLabel: "크리에이터명", infoLabel: "구매해주셔서 감사합니다💖", timeLabel: "1일",declaration: ""),
+        .init(uesrImage: UIImage(named: "user"), isCreater: false, idLabel: "o달빔o", infoLabel: "아진짜 귀여워요 !!!!!", timeLabel: "1초",declaration: "신고"),
+        .init(uesrImage: UIImage(named: "user"), isCreater: false, idLabel: "o달빔o", infoLabel: "아진짜 귀여워요 !!!!!", timeLabel: "1분", declaration: "신고"),
+        .init(uesrImage: UIImage(named: "user"), isCreater: false, idLabel: "o달빔o", infoLabel: "아진짜 귀여워요 !!!!!", timeLabel: "2분", declaration: "신고")
     ] {
         didSet {
             buycount.text = "\(dataArry.count)"
