@@ -37,7 +37,7 @@ class ToolBar : UIView {
     }
     //나중에 다크모드 대응 시 변경
     func configuration(){
-        zip([btn1,btn2,btn3,btn4,btn5,btn6],[UIImage(systemName: "pencil"), UIImage(systemName: "eraser"), UIImage(systemName: "scribble"), UIImage(systemName: "folder"), UIImage(systemName: "paperplane"), UIImage(systemName: "list.dash")]).forEach{
+        zip([btn1,btn2,btn3,btn4,btn5,btn6],[UIImage(systemName: "pencil"), UIImage(systemName: "eraser"), UIImage(systemName: "list.dash"), UIImage(systemName: "scribble"), UIImage(systemName: "folder"), UIImage(systemName: "paperplane")]).forEach{
             $0.0.setImage($0.1, for: .normal)
             $0.0.backgroundColor = .darkGray
             $0.0.tintColor = .gray
