@@ -35,9 +35,6 @@ class MainViewController: UIViewController {
         
         let tagCellNib = UINib(nibName: TagCell.identifier, bundle: Bundle(for: self.classForCoder))
         tableView.register(tagCellNib, forCellReuseIdentifier: TagCell.identifier)
-            
-        let HeaderNib = UINib(nibName: HeaderView.identifier, bundle: Bundle(for: self.classForCoder))
-        tableView.register(HeaderNib, forCellReuseIdentifier: HeaderView.identifier)
     }
     
     func dataBinding() {
@@ -106,10 +103,9 @@ extension MainViewController: UITableViewDataSource {
         
         switch section {
         case .tags:
-            let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: HeaderView.identifier)
-            if let view = view as? HeaderView,
-               case .tags(let tagData) = row {
-                view.set(sectionName: SectionListType.tag.rawValue, rowCount: tagData.count)
+            let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: TableSectionHeaderView.identifier)
+            if let view = view as? TableSectionHeaderView {
+                view.set(sectionName: SectionListType.tag.rawValue, rowCount: nil)
             }
             return view
         case .reviews:
@@ -139,9 +135,9 @@ extension MainViewController: UITableViewDelegate {
         case .notice:
             return UITableView.automaticDimension
         case .tags:
-            return 100
+            return 100  //TODO: need to fix
         case .reviews:
-            return 1000
+            return 1000 //TODO: need to fix
         default:
             return .zero
         }
