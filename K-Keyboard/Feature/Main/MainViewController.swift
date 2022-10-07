@@ -32,6 +32,12 @@ class MainViewController: UIViewController {
         
         let reviewCellNib = UINib(nibName: ReviewCell.identifier, bundle: Bundle(for: self.classForCoder))
         tableView.register(reviewCellNib, forCellReuseIdentifier: ReviewCell.identifier)
+        
+        let tagCellNib = UINib(nibName: TagCell.identifier, bundle: Bundle(for: self.classForCoder))
+        tableView.register(tagCellNib, forCellReuseIdentifier: TagCell.identifier)
+            
+        let HeaderNib = UINib(nibName: HeaderView.identifier, bundle: Bundle(for: self.classForCoder))
+        tableView.register(HeaderNib, forCellReuseIdentifier: HeaderView.identifier)
     }
     
     func dataBinding() {
@@ -74,6 +80,13 @@ extension MainViewController: UITableViewDataSource {
                 cell.set(data: noticeData)
             }
             return cell
+        case .tags:
+            let cell = tableView.dequeueReusableCell(withIdentifier: TagCell.identifier, for: indexPath)
+            if let cell = cell as? TagCell,
+               case .tags(let tagsData) = row {
+                cell.set(data: tagsData)
+            }
+            return cell
         case .reviews:
             let cell = tableView.dequeueReusableCell(withIdentifier: ReviewCell.identifier, for: indexPath)
             if let cell = cell as? ReviewCell,
@@ -92,6 +105,13 @@ extension MainViewController: UITableViewDataSource {
         let row = dataSource.items.first
         
         switch section {
+        case .tags:
+            let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: HeaderView.identifier)
+            if let view = view as? HeaderView,
+               case .tags(let tagData) = row {
+                view.set(sectionName: SectionListType.tag.rawValue, rowCount: tagData.count)
+            }
+            return view
         case .reviews:
             let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: TableSectionHeaderView.identifier)
             if let view = view as? TableSectionHeaderView,
@@ -100,7 +120,7 @@ extension MainViewController: UITableViewDataSource {
             }
             return view
         default:
-            return UIView()
+            return nil
         }
     }
 }
@@ -118,6 +138,8 @@ extension MainViewController: UITableViewDelegate {
             return height
         case .notice:
             return UITableView.automaticDimension
+        case .tags:
+            return 100
         case .reviews:
             return 1000
         default:
@@ -130,6 +152,8 @@ extension MainViewController: UITableViewDelegate {
         let section = dataSource.section
         
         switch section {
+        case .tags:
+            return 40
         case .reviews:
             return 40
         default:

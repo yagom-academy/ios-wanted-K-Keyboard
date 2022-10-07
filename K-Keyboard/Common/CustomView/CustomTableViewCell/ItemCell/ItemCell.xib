@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -19,10 +20,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="335" id="KGk-i7-Jjw" userLabel="ItemCell" customClass="ItemCell" customModule="K_Keyboard" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="300" height="335"/>
+            <rect key="frame" x="0.0" y="0.0" width="300" height="400"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="300" height="335"/>
+                <rect key="frame" x="0.0" y="0.0" width="300" height="400"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_item" translatesAutoresizingMaskIntoConstraints="NO" id="MNr-X3-eWE">
@@ -49,14 +50,24 @@
                         <color key="textColor" name="all_main_color"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uSs-fa-lNa">
+                        <rect key="frame" x="0.0" y="320" width="300" height="40"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="Yg2-XR-Eva"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="uSs-fa-lNa" secondAttribute="trailing" id="1oo-3O-Ma8"/>
                     <constraint firstItem="KHM-4r-WJd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="8Dj-D1-cGO"/>
                     <constraint firstItem="n2y-qR-MBO" firstAttribute="top" secondItem="KHM-4r-WJd" secondAttribute="bottom" constant="16" id="AgE-DP-jDw"/>
                     <constraint firstItem="MNr-X3-eWE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="NYf-IW-n6X"/>
                     <constraint firstAttribute="trailing" secondItem="MNr-X3-eWE" secondAttribute="trailing" constant="16" id="VUY-7n-gdU"/>
                     <constraint firstItem="lrg-Y6-qFA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="X2y-Kc-QaM"/>
+                    <constraint firstItem="uSs-fa-lNa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="YNu-cN-fJj"/>
                     <constraint firstItem="KHM-4r-WJd" firstAttribute="top" secondItem="lrg-Y6-qFA" secondAttribute="bottom" constant="4" id="dcC-tq-oiI"/>
+                    <constraint firstItem="uSs-fa-lNa" firstAttribute="top" secondItem="n2y-qR-MBO" secondAttribute="bottom" id="isc-pw-lVI"/>
                     <constraint firstItem="n2y-qR-MBO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="m4F-XA-7u4"/>
                     <constraint firstItem="MNr-X3-eWE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="nwp-px-CXP"/>
                     <constraint firstItem="lrg-Y6-qFA" firstAttribute="top" secondItem="MNr-X3-eWE" secondAttribute="bottom" constant="24" id="pXA-HA-kmb"/>
@@ -83,5 +94,8 @@
         <namedColor name="all_title_gray">
             <color red="0.25882352941176473" green="0.26666666666666666" blue="0.29803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
