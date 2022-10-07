@@ -107,10 +107,19 @@ extension PurchaseReviewView: Presentable {
     }
     
     func bind() {
+        // TODO: automatic height
         tableView.register(ReviewCell.self, forCellReuseIdentifier: reuseIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 120
+        
+        viewModel.populateCommentData = { [weak self] commentData in
+            guard let self = self else { return }
+            let lastRow = self.viewModel.cellData.count - 1
+            let indexPath = IndexPath(row: lastRow, section: 0)
+            self.tableView.insertRows(at: [indexPath], with: .right)
+            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        }
     }
 }
 

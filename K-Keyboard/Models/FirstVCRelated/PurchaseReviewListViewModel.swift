@@ -10,22 +10,37 @@ import Foundation
 class PurchaseReviewListViewModel {
     
     //input
+    var didReceiveCommentData: (CellModel) -> () = { model in }
     
     //output
     var cellData: [CellModel] {
         return privateCellData
     }
     
+    var populateCommentData: (CellModel) -> () = { model in }
+    
     //properties
     
     var privateCellData : [CellModel] = []
     
     init() {
-        
+        bind()
     }
     
     func populateData() {
         initializeCellData()
+    }
+    
+    private func bind() {
+        didReceiveCommentData = { [weak self] model in
+            guard let self = self else { return }
+            self.updateDataSource(model: model)
+        }
+    }
+    
+    private func updateDataSource(model: CellModel) {
+        privateCellData.append(model)
+        populateCommentData(model)
     }
     
     private func initializeCellData(){
@@ -38,7 +53,7 @@ class PurchaseReviewListViewModel {
         
         privateCellData.append(creator)
         
-        var randomTimeString = ["1일", "1분", "1초"]
+        let randomTimeString = ["1일", "1분", "1초"]
         
         for _ in 1...9{
             var user = CellModel()

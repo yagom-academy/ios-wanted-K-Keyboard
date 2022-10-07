@@ -83,6 +83,14 @@ class FirstModel {
         
         privateCommentInputViewModel.propergateTextInput = { [weak self] string in
             guard let self = self else { return }
+            
+            var cellModel = CellModel()
+            cellModel.id = "Random User Name"
+            cellModel.comment = string
+            cellModel.isCreator = false
+            cellModel.timeString = "1초전"
+            
+            self.privatePurchaseReviewListViewModel.didReceiveCommentData(cellModel)
         }
     }
     
