@@ -3,8 +3,6 @@
 //  PlayKeyboard
 //
 //  Created by 김지인 on 2022/09/29.
-/*KeyboardViewController.swift : UIInputViewController커스텀 키보드 확장을 위한 기본 뷰 컨트롤러 역할을 하는 서브클래스. MorseKeyboardView여기 에서 에서 수행된 방식과 유사한 키보드에 대한 사용자 지정 논리를 연결 하고 구현합니다 PracticeViewController.
- Info.plist : plist확장에 대한 메타데이터를 정의하는 A. NSExtension항목에는 키보드 관련 설정 이 포함되어 있습니다. 튜토리얼 뒷부분에서 이 항목의 중요성을 다룰 것입니다. */
 
 import UIKit
 
@@ -12,32 +10,29 @@ class KeyboardViewController: UIInputViewController {
     var spaceButton: KeyboardButton?
     var deleteButton: KeyboardButton?
     var boolvalue: Bool = true
-//    var buttoncount = 0
+    var buttoncount = 0
     
     //MorseKeyboardView개체 에 대한 참조를 보유하는 속성 입니다.
-    var morseKeyboardView: KeyboardView!
+    var KeyboardView: KeyboardView!
     var lastCharacters: [String] = []
     
     
-    
-    @IBAction func shiftButton(_ sender: UIButton) {
-//        sender.tag = sender.tag + 1
-//        sender.setTitle("\(sender.tag) 번째 클릭", for: .normal)
-//        buttoncount += 1
-//        if buttoncount % 2 != 0 {
-//            print("if\(buttoncount)")
-//        } else {
-//            print("else\(buttoncount)")
-//        }
-//        print(buttoncount)
-        
+    @IBAction func shiftButton(_ sender: Any) {
+        buttoncount += 1
+        if buttoncount % 2 != 0 {
+            
+            print("if\(buttoncount)")
+        } else {
+            
+            print("else\(buttoncount)")
+        }
     }
     
     //띄어 쓰기
     @IBAction func spaceButton(button: UIButton) {
         insertCharacter(" ")
     }
-    //if 문으로 하나씪 지운다? stack?pop?
+    // back
     @IBAction func backButton (button: UIButton) {
         deleteCharacterBeforeCursor()
         if !lastCharacters.isEmpty {
@@ -110,17 +105,17 @@ class KeyboardViewController: UIInputViewController {
         // 인스턴스가 MorseKeyboardView컨트롤러의 루트에 추가됩니다 inputView.
         let nib = UINib(nibName: "MorseKeyboardView", bundle: nil)
         let objects = nib.instantiate(withOwner: nil, options: nil)
-        morseKeyboardView = objects.first as? KeyboardView
+        KeyboardView = objects.first as? KeyboardView
         //        view = objects[0] as UIView
         guard let inputview = inputView else { return }
-        inputview.addSubview(morseKeyboardView)
+        inputview.addSubview(KeyboardView)
         
         //morseKeyboardView상위 뷰에 고정하는 제약 조건 이 추가되고 활성화됩니다.
-        morseKeyboardView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([morseKeyboardView.leftAnchor.constraint(equalTo: inputview.leftAnchor),
-                                     morseKeyboardView.topAnchor.constraint(equalTo: inputview.topAnchor),
-                                     morseKeyboardView.rightAnchor.constraint(equalTo: inputview.rightAnchor),
-                                     morseKeyboardView.bottomAnchor.constraint(equalTo: inputview.bottomAnchor)
+        KeyboardView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([KeyboardView.leftAnchor.constraint(equalTo: inputview.leftAnchor),
+                                     KeyboardView.topAnchor.constraint(equalTo: inputview.topAnchor),
+                                     KeyboardView.rightAnchor.constraint(equalTo: inputview.rightAnchor),
+                                     KeyboardView.bottomAnchor.constraint(equalTo: inputview.bottomAnchor)
                                     ])
         
         //        // Perform custom UI setup here
@@ -155,10 +150,8 @@ class KeyboardViewController: UIInputViewController {
         super.viewWillLayoutSubviews()
     }
     override func textWillChange(_ textInput: UITextInput?) {
-        // The app is about to change the document's contents. Perform any preparation here.
     }
     override func textDidChange(_ textInput: UITextInput?) {
-        // The app has just changed the document's contents, the document context has been updated.
         
         var textColor: UIColor
         let proxy = self.textDocumentProxy
@@ -167,7 +160,6 @@ class KeyboardViewController: UIInputViewController {
         } else {
             textColor = UIColor.black
         }
-        //        self.nextKeyboardButton.setTitleColor(textColor, for: [])
     }
     
     
@@ -198,17 +190,17 @@ class KeyboardViewController: UIInputViewController {
                     }
                 } else {
                     if let johab = hangul(c1: lastCharacter, c2: newCharacter, c3: " ") {
-                        deleteCharacterBeforeCursor() // 지우는거
-                        lastCharacters.append(newCharacter) //빈배열에 합친다
+                        deleteCharacterBeforeCursor()
+                        lastCharacters.append(newCharacter)
                         textDocumentProxy.insertText(johab)
-                        return            // 가나다라 마다바사 이렇게 자+모음
+                        return
                     }
                 }
             }
             else if let firstCharacter = lastCharacters.first, 자음.contains(firstCharacter),
-                    모음.contains(lastCharacter) && 받침.contains(newCharacter)   {   //처음에 모음이 있다면 자음+모음이 여야한다
+                    모음.contains(lastCharacter) && 받침.contains(newCharacter)   {
                 if let johab = hangul(c1: firstCharacter, c2: lastCharacter, c3: newCharacter) {
-                    deleteCharacterBeforeCursor()   // 여기가  받침을 받아주는거
+                    deleteCharacterBeforeCursor()
                     lastCharacters.append(newCharacter)
                     textDocumentProxy.insertText(johab)
                     return
@@ -335,9 +327,9 @@ class KeyboardViewController: UIInputViewController {
                     }
                 }
             }
-            // "ㄵ"  "ㄶ" 마지막 자음 / 받침 ㄴㅈ 배열퍼스트 자음 -> 모음오고 확인
+            // "ㄵ"  "ㄶ"
             else if let firstCharacter = lastCharacters.first, 자음.contains(firstCharacter),
-                    모음.contains(lastCharacter) || 받침.contains(newCharacter) {
+                    모음.contains(lastCharacters[1]) && 받침.contains(newCharacter) {
                 if lastCharacters[2] == "ㄴ" {
                     if newCharacter == "ㅈ" {
                         if let firstCharacter = lastCharacters.first {
@@ -346,7 +338,7 @@ class KeyboardViewController: UIInputViewController {
                                 lastCharacters[3].removeLast()
                                 lastCharacters.append("ㄵ")
                                 textDocumentProxy.insertText("ㄵ")
-                                return                                                         //      ㅈ을 지우고 ㄵ
+                                return
                             } else if let johab = hangul(c1: firstCharacter, c2: lastCharacters[1], c3: "ㄵ" ) {
                                 deleteCharacterBeforeCursor()
                                 lastCharacters.removeLast()
