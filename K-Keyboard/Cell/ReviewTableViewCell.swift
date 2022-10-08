@@ -30,9 +30,9 @@ class ReviewTableViewCell: UITableViewCell {
     let profileTagLabel: UIButton = {
         let button = UIButton()
         button.setTitle("크리에이터", for: .normal)
-        button.backgroundColor = .systemPink
+        button.backgroundColor = .allMainColor()
         button.tintColor = .white
-        button.titleLabel!.font = UIFont.systemFont(ofSize: 10)
+        button.titleLabel!.font = .NotoSanKR(weight: .Regular, size: 10)
         button.layer.cornerRadius = 10
         button.layer.masksToBounds = true
         return button
@@ -49,7 +49,8 @@ class ReviewTableViewCell: UITableViewCell {
     let userNameLabel: UILabel = {
         let label = UILabel()
         label.text = "유저 이름"
-        label.font =  UIFont.systemFont(ofSize: 12)
+        label.font = .NotoSanKR(weight: .Bold, size: 12)
+        label.textColor = .allTitleGray()
         return label
     }()
     
@@ -58,23 +59,24 @@ class ReviewTableViewCell: UITableViewCell {
         label.lineBreakMode = .byTruncatingTail
         label.text = "안녕하세요"
         label.numberOfLines = 0
-        label.font =  UIFont.systemFont(ofSize: 14)
+        label.textColor = .allDarkGray()
+        label.font = .NotoSanKR(weight: .Regular, size: 14)
         return label
     }()
     
     let writeBeforeLabel: UILabel = {
         let label = UILabel()
         label.text = "1일"
-        label.font =  UIFont.systemFont(ofSize: 12)
-        label.textColor = UIColor(red: 145/255, green: 146/255, blue: 153/255, alpha: 1.0)
+        label.font = .NotoSanKR(weight: .Regular, size: 12)
+        label.textColor = .allSubDarkGray()
         return label
     }()
     
     let reportButton: UIButton = {
         let label = UIButton()
         label.setTitle("신고", for: .normal)
-        label.tintColor = UIColor(red: 145/255, green: 146/255, blue: 153/255, alpha: 1.0)
-        label.titleLabel!.font = UIFont.systemFont(ofSize: 12)
+        label.tintColor = .allSubDarkGray()
+        label.titleLabel!.font = .NotoSanKR(weight: .Bold, size: 12)
         return label
     }()
     

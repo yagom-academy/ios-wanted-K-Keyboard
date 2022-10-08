@@ -19,7 +19,7 @@ class ReviewHeaderTableViewCell: UITableViewCell {
     
     let contentbackgroundView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(red: 242/255, green: 243/255, blue: 247/255, alpha: 1.0)
+        view.backgroundColor = .allWhiteGray()
         view.layer.cornerRadius = 21
         view.layer.masksToBounds = true
         return view
@@ -30,13 +30,12 @@ class ReviewHeaderTableViewCell: UITableViewCell {
         field.backgroundColor = .clear
         field.placeholder = "이 테마가 마음에 드시나요?"
         field.font = .NotoSanKR(weight: .Regular, size: 12)
-//        field.textColor = UIColor(red: 170/255, green: 171/255, blue: 179/255, alpha: 1.0)
         return field
     }()
     
     let writeButton: UIButton = {
         let view = UIButton()
-//        view.setTitle("", for: <#T##UIControl.State#>)
+        view.setImage(UIImage(named: "send"), for: .normal)
         return view
     }()
     
@@ -53,15 +52,19 @@ class ReviewHeaderTableViewCell: UITableViewCell {
     func setup() {
         profileImageView.translatesAutoresizingMaskIntoConstraints = false
         contentbackgroundView.translatesAutoresizingMaskIntoConstraints = false
+        writeButton.translatesAutoresizingMaskIntoConstraints = false
         textInputField.translatesAutoresizingMaskIntoConstraints = false
-        let doneButton = UIBarButtonItem(title: "완료", style: .done, target: self, action: #selector(hideKeyboard))
-        let writeButton = UIBarButtonItem(title: "작성", style: .done, target: self, action: #selector(addReview))
+        
+        let cancleButton = UIBarButtonItem(title: "완료", style: .done, target: self, action: #selector(hideKeyboard))
+        let doneButton = UIBarButtonItem(title: "작성", style: .done, target: self, action: #selector(addReview))
         let toolbar = UIToolbar()
-        toolbar.setItems([writeButton, doneButton], animated: true)
+        toolbar.setItems([doneButton, cancleButton], animated: true)
         toolbar.sizeToFit()
         textInputField.inputAccessoryView = toolbar
         
-        [profileImageView, contentbackgroundView].forEach {
+        writeButton.addTarget(self, action: #selector(addReview), for: .touchUpInside)
+        
+        [profileImageView, contentbackgroundView, writeButton].forEach {
             addSubview($0)
         }
         contentbackgroundView.addSubview(textInputField)
@@ -83,12 +86,26 @@ class ReviewHeaderTableViewCell: UITableViewCell {
             profileImageView.widthAnchor.constraint(equalToConstant: 48),
             profileImageView.heightAnchor.constraint(equalToConstant: 48),
             
+            // origin
+//            contentbackgroundView.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 16),
+//            contentbackgroundView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+//            contentbackgroundView.topAnchor.constraint(equalTo: profileImageView.topAnchor, constant: 0),
+//            contentbackgroundView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -32),
+//            contentbackgroundView.widthAnchor.constraint(greaterThanOrEqualToConstant: 50),
+//            contentbackgroundView.heightAnchor.constraint(greaterThanOrEqualToConstant: 40),
+            
+            // new
             contentbackgroundView.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 16),
-            contentbackgroundView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
             contentbackgroundView.topAnchor.constraint(equalTo: profileImageView.topAnchor, constant: 0),
             contentbackgroundView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -32),
             contentbackgroundView.widthAnchor.constraint(greaterThanOrEqualToConstant: 50),
             contentbackgroundView.heightAnchor.constraint(greaterThanOrEqualToConstant: 40),
+            
+            writeButton.widthAnchor.constraint(equalToConstant: 35),
+            writeButton.heightAnchor.constraint(equalToConstant: 35),
+            writeButton.centerYAnchor.constraint(equalTo: contentbackgroundView.centerYAnchor),
+            writeButton.leadingAnchor.constraint(equalTo: contentbackgroundView.trailingAnchor, constant: 5),
+            writeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             
             textInputField.leadingAnchor.constraint(equalTo: contentbackgroundView.leadingAnchor, constant: 12),
             textInputField.centerYAnchor.constraint(equalTo: contentbackgroundView.centerYAnchor),
