@@ -71,15 +71,6 @@ class ThemeDetailView: UIView, ViewRepresent {
         view.layer.shadowRadius = 2
         return view
     }()
-    let reviewBarView2: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        view.layer.borderColor = UIColor.customLightGray().cgColor
-        view.layer.shadowOpacity = 0.2
-        view.layer.shadowOffset = CGSize(width: 0, height: 0)
-        view.layer.shadowRadius = 2
-        return view
-    }()
     let contentbackgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = .allWhiteGray()

@@ -126,7 +126,6 @@ class ThemeDetailViewController: UIViewController {
         mainView.tableView.register(EvaluationTableViewCell.self, forCellReuseIdentifier: EvaluationTableViewCell.identifier)
         mainView.tableView.register(BannerTableViewCell.self, forCellReuseIdentifier: BannerTableViewCell.identifier)
         mainView.tableView.register(ReviewTableViewCell.self, forCellReuseIdentifier: ReviewTableViewCell.identifier)
-//        mainView.tableView.register(ReviewHeaderTableViewCell.self, forCellReuseIdentifier: ReviewHeaderTableViewCell.identifier)
         
 
         reviewSample.append(ReviewDataModel(isCreator: true, name: "몰랑_크리에이터", content: "구매해주셔서 감사합니다♥", writeBefore: "1일"))
@@ -170,10 +169,6 @@ extension ThemeDetailViewController: UITableViewDataSource, UITableViewDelegate 
             cell.keywordLabel.text = UserDefaults.standard.bool(forKey: "isPurchased") ? "리뷰 작성 \(reviewSample.count)" : "구매 리뷰 \(reviewSample.count)"
 //            cell.keywordLabel.asFontColor(targetString: "\(reviewSample.count)", font: nil, color: UIColor.customPink())
             return cell
-//        case 5:
-//            guard let cell = tableView.dequeueReusableCell(withIdentifier: ReviewHeaderTableViewCell.identifier) as? ReviewHeaderTableViewCell else { return .init() }
-//            cell.isHidden = !UserDefaults.standard.bool(forKey: "isPurchased")
-//            return cell
         default:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ReviewTableViewCell.identifier) as? ReviewTableViewCell else { return .init() }
             let review =  reviewSample[indexPath.row - 5]
