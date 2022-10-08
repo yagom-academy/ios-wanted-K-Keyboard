@@ -220,5 +220,6 @@ enum KeyboardState {
 
 ## 📼 실행 영상
 
-https://user-images.githubusercontent.com/61138164/194685913-fb9d7bee-e580-41df-9310-a82a077ce6dc.mov
+https://user-images.githubusercontent.com/61138164/194686347-d017fea3-b81a-43a7-a214-9d204891c7ed.mov
+
 
