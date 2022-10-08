@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="NotoSansKR-Bold.otf">
+            <string>NotoSansKR-Bold</string>
+        </array>
+        <array key="NotoSansKR-Regular.otf">
+            <string>NotoSansKR-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="335" id="KGk-i7-Jjw" userLabel="ItemCell" customClass="ItemCell" customModule="K_Keyboard" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="400"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="300" height="400"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_item" translatesAutoresizingMaskIntoConstraints="NO" id="MNr-X3-eWE">
+                        <rect key="frame" x="16" y="0.0" width="268" height="206.33333333333334"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="MNr-X3-eWE" secondAttribute="height" multiplier="343:264" id="kXP-UV-fKR"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아이템명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lrg-Y6-qFA">
+                        <rect key="frame" x="16" y="230.33333333333334" width="73.666666666666671" height="29.000000000000028"/>
+                        <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="20"/>
+                        <color key="textColor" name="all_title_gray"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="창작자명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KHM-4r-WJd">
+                        <rect key="frame" x="15.999999999999996" y="263.33333333333331" width="51.666666666666657" height="20.333333333333314"/>
+                        <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="14"/>
+                        <color key="textColor" name="all_sub_dark_gray"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="구매자수" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2y-qR-MBO">
+                        <rect key="frame" x="15.999999999999996" y="299.66666666666669" width="51.666666666666657" height="20.333333333333314"/>
+                        <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="14"/>
+                        <color key="textColor" name="all_main_color"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uSs-fa-lNa">
+                        <rect key="frame" x="0.0" y="320" width="300" height="40"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="Yg2-XR-Eva"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="uSs-fa-lNa" secondAttribute="trailing" id="1oo-3O-Ma8"/>
+                    <constraint firstItem="KHM-4r-WJd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="8Dj-D1-cGO"/>
+                    <constraint firstItem="n2y-qR-MBO" firstAttribute="top" secondItem="KHM-4r-WJd" secondAttribute="bottom" constant="16" id="AgE-DP-jDw"/>
+                    <constraint firstItem="MNr-X3-eWE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="NYf-IW-n6X"/>
+                    <constraint firstAttribute="trailing" secondItem="MNr-X3-eWE" secondAttribute="trailing" constant="16" id="VUY-7n-gdU"/>
+                    <constraint firstItem="lrg-Y6-qFA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="X2y-Kc-QaM"/>
+                    <constraint firstItem="uSs-fa-lNa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="YNu-cN-fJj"/>
+                    <constraint firstItem="KHM-4r-WJd" firstAttribute="top" secondItem="lrg-Y6-qFA" secondAttribute="bottom" constant="4" id="dcC-tq-oiI"/>
+                    <constraint firstItem="uSs-fa-lNa" firstAttribute="top" secondItem="n2y-qR-MBO" secondAttribute="bottom" id="isc-pw-lVI"/>
+                    <constraint firstItem="n2y-qR-MBO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="m4F-XA-7u4"/>
+                    <constraint firstItem="MNr-X3-eWE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="nwp-px-CXP"/>
+                    <constraint firstItem="lrg-Y6-qFA" firstAttribute="top" secondItem="MNr-X3-eWE" secondAttribute="bottom" constant="24" id="pXA-HA-kmb"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="buyerLabel" destination="n2y-qR-MBO" id="hmu-9j-8pW"/>
+                <outlet property="creatorLabel" destination="KHM-4r-WJd" id="JuP-x5-2uo"/>
+                <outlet property="itemImageView" destination="MNr-X3-eWE" id="OVj-5R-pIk"/>
+                <outlet property="titleLabel" destination="lrg-Y6-qFA" id="ChH-Kp-HOC"/>
+            </connections>
+            <point key="canvasLocation" x="121.53846153846153" y="-108.41232227488152"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="img_item" width="343" height="264"/>
+        <namedColor name="all_main_color">
+            <color red="1" green="0.25490196078431371" blue="0.49019607843137253" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="all_sub_dark_gray">
+            <color red="0.56862745098039214" green="0.5725490196078431" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="all_title_gray">
+            <color red="0.25882352941176473" green="0.26666666666666666" blue="0.29803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
