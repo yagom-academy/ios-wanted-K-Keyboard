@@ -13,7 +13,7 @@ struct ThemeModel {
     var count: Int 
 }
 
-class ThemeCell: UICollectionViewCell {
+final class ThemeCell: UICollectionViewCell {
     
     @IBOutlet private weak var emojiLabel: UILabel!
     @IBOutlet private weak var titleLabel: UILabel!

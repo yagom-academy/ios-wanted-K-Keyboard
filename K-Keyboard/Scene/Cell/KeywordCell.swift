@@ -14,7 +14,6 @@ struct KeywordModel {
 
 final class KeywordCell: UICollectionViewCell {
     
-    
     @IBOutlet weak var backView: UIView!
     @IBOutlet private weak var keywordImageView: UIImageView!
     @IBOutlet private weak var keywordTitle: UILabel!

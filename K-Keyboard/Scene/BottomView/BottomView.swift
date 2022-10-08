@@ -10,10 +10,9 @@ import UIKit
 protocol BottomViewDelegate: AnyObject {
     func buyJamButtonDidTap()
     func senderReviewText(_ review: String)
-    func editingBeginScrollToButton()
 }
 
-class BottomView: UIView {
+final class BottomView: UIView {
     
     @IBOutlet weak var jamStateStackView: UIStackView!
     @IBOutlet weak var buyJamButton: UIButton!
@@ -25,13 +24,11 @@ class BottomView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadView()
-        reviewTextField.delegate = self
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         loadView()
-        reviewTextField.delegate = self
     }
     
     private func loadView() {
@@ -56,11 +53,5 @@ class BottomView: UIView {
         guard let text = self.reviewTextField.text else { return }
         self.reviewTextField.text = ""
         delegate?.senderReviewText(text)
-    }
-}
-
-extension BottomView: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        delegate?.editingBeginScrollToButton()
     }
 }

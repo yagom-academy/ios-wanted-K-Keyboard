@@ -20,26 +20,7 @@ final class MainViewController: UIViewController {
     @IBOutlet private weak var bottomViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet private weak var scrollViewBottomConstraint: NSLayoutConstraint!
     
-    private var reviewCollectionViewIsHidden: Bool = false
-    private var tagList = ["이벤트", "캐릭터", "새", "동물", "앙ㅇㄴㅇㄴㄴㅇ증맞은" ,"동글동글", "마루", "귀여웡", "배고파","동글동글", "마루", "귀여웡", "배고파"]
-    private var keywordList = [
-        KeywordModel(title: "신나 🎉", imageName: "keyword_fun"),
-        KeywordModel(title: "기대 ✨", imageName: "keyword_expect"),
-        KeywordModel(title: "기대 ✨", imageName: "keyword_expect"),
-        KeywordModel(title: "기대 ✨", imageName: "keyword_expect")
-    ]
-    private var themeList = [
-        ThemeModel(emoji: "😄", title: "맘에들어요", count: 0),
-        ThemeModel(emoji: "😍", title: "심쿵했어요", count: 0),
-        ThemeModel(emoji: "😉", title: "응원해요", count: 0),
-        ThemeModel(emoji: "😂", title: "갖고싶어요", count: 0)
-    ]
-    private var reviewList = [
-        ReviewModel(userType: .creater, nickname: "julia", content: "dfsdsffsd"),
-        ReviewModel(userType: .user, nickname: "유저", content: "111"),
-        ReviewModel(userType: .user, nickname: "유저", content: "dfsds22ffsd"),
-        ReviewModel(userType: .user, nickname: "유저", content: "3333"),
-    ]
+    private var viewModel: MainViewModel = .init()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,14 +37,15 @@ final class MainViewController: UIViewController {
         self.reviewCollectionView.dataSource = self
         //buttom
         self.bottomView.delegate = self
-        keyboardSetting()
+        //keyboard
+        self.keyboardSetting()
         
     }
     
     @IBAction func reviewFoldButtonDidTap(_ sender: UIButton) {
-        reviewCollectionViewIsHidden.toggle()
-        self.reviewCollectionView.isHidden = self.reviewCollectionViewIsHidden
-        let imageName = self.reviewCollectionViewIsHidden ? UIImage(systemName: "chevron.up") : UIImage(systemName: "chevron.down")
+        viewModel.reviewCollectionViewIsHidden.toggle()
+        self.reviewCollectionView.isHidden = viewModel.reviewCollectionViewIsHidden
+        let imageName = viewModel.reviewCollectionViewIsHidden ? UIImage(systemName: "chevron.up") : UIImage(systemName: "chevron.down")
         self.reviewFoldButton.setImage(imageName, for: .normal)
     }
     
@@ -72,16 +54,16 @@ final class MainViewController: UIViewController {
 extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == tagListCollectionView {
-            return tagList.count
+            return viewModel.tagList.count
         }
         else if collectionView == keywordColletionView  {
-            return keywordList.count
+            return viewModel.keywordList.count
         }
         else if collectionView == themeCollectionView {
-            return themeList.count
+            return viewModel.themeList.count
         }
         else if collectionView == reviewCollectionView {
-            return reviewList.count
+            return viewModel.reviewList.count
         }
         return 0
     }
@@ -89,34 +71,35 @@ extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == tagListCollectionView {
             let cell = collectionView.dequeuReusableCell(type: TagCell.self, for: indexPath)
-            cell.configure(title: tagList[indexPath.row])
+            cell.configure(title: viewModel.tagList[indexPath.row])
             return cell
         }
         else if collectionView == keywordColletionView {
             let cell = collectionView.dequeuReusableCell(type: KeywordCell.self, for: indexPath)
-            cell.configure(keywordList[indexPath.row])
+            cell.configure(viewModel.keywordList[indexPath.row])
             return cell
         }
         else if collectionView == themeCollectionView {
             let cell = collectionView.dequeuReusableCell(type: ThemeCell.self, for: indexPath)
-            cell.configure(themeList[indexPath.row])
+            cell.configure(viewModel.themeList[indexPath.row])
             return cell
         }
         else if collectionView == reviewCollectionView {
             let cell = collectionView.dequeuReusableCell(type: ReviewCell.self, for: indexPath)
-            cell.configure(reviewList[indexPath.row])
+            cell.configure(viewModel.reviewList[indexPath.row])
             cell.delegate = self
             return cell
         }
         return UICollectionViewCell()
     }
 }
+
 // MARK: - Delegate
 extension MainViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? ThemeCell else { return }
         cell.count += 1
-        self.themeList[indexPath.row].count += 1
+        viewModel.themeList[indexPath.row].count += 1
     }
 }
 
@@ -130,12 +113,6 @@ extension MainViewController: ReviewCellProtocol {
 }
 
 extension MainViewController: BottomViewDelegate {
-    func editingBeginScrollToButton() {
-        let bottomOffset = CGPoint(x: 0, y: mainScrollView.contentSize.height - mainScrollView.bounds.height + mainScrollView.contentInset.bottom + 330)
-        print(bottomOffset)
-        mainScrollView.setContentOffset(bottomOffset, animated: true)
-    }
-    
     func buyJamButtonDidTap() {
         guard let popUpVC = self.storyboard?.instantiateViewController(withIdentifier: "PopUpViewController") as? PopUpViewController else { return }
         popUpVC.modalPresentationStyle = .overCurrentContext
@@ -147,10 +124,10 @@ extension MainViewController: BottomViewDelegate {
         if !review.isEmpty {
             let model = ReviewModel(userType: .user, nickname: "유저", content: review)
             reviewCollectionView.performBatchUpdates {
-                reviewList.append(model)
+                viewModel.reviewList.append(model)
             }
             reviewCollectionView.reloadData()
-            let indexPathItem = IndexPath(item: self.reviewList.count - 1, section: 0)
+            let indexPathItem = IndexPath(item: viewModel.reviewList.count - 1, section: 0)
             self.reviewCollectionView.scrollToItem(at: indexPathItem, at: .bottom, animated: true)
         }
     }
@@ -158,56 +135,17 @@ extension MainViewController: BottomViewDelegate {
 
 extension MainViewController: PopUpViewControllerDelegate {
     func rechargeAndUseButtonDidTap() {
-        //바텀뷰의 입력창으로 바껴야함
         bottomView.jamStateStackView.isHidden = true
         bottomView.buyJamButton.isHidden = true
         bottomView.reviewTextField.isHidden = false
         bottomView.reviewInputButton.isHidden = false
     }
 }
-
-// MARK: - ColletionLayout
-extension MainViewController {
-    func generateTagListLayout() -> UICollectionViewLayout {
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .estimated(60),
-            heightDimension: .absolute(28)
-        )
-        let tagItem = NSCollectionLayoutItem(layoutSize: itemSize)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.35))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [tagItem])
-        group.interItemSpacing = .fixed(8)
-        let section = NSCollectionLayoutSection(group: group)
-        let layout = UICollectionViewCompositionalLayout(section: section)
-        return layout
-    }
-    
-    func generateThemeListLayout() -> UICollectionViewLayout {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .absolute(75), heightDimension: .absolute(110))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        group.interItemSpacing = .fixed(12)
-        let section = NSCollectionLayoutSection(group: group)
-        let layout = UICollectionViewCompositionalLayout(section: section)
-        return layout
-    }
-
-}
-
+// MARK: - Keyboard up/down
 extension MainViewController {
     func keyboardSetting() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         scrollViewFold()
-    }
-    
-    @objc func keyboardWillShow(_ sender: Notification) {
-        if let keyboardSize = (sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            UIView.animate(withDuration: 0.3, animations: {
-                self.bottomViewBottomConstraint.constant = keyboardSize.height
-                self.view.layoutIfNeeded()
-            })
-        }
     }
     
     private func scrollViewFold() {
@@ -217,8 +155,21 @@ extension MainViewController {
         singleTapGestureRecognizer.cancelsTouchesInView = false
         mainScrollView.addGestureRecognizer(singleTapGestureRecognizer)
     }
+    
+    @objc func keyboardWillShow(_ sender: Notification) {
+        if let keyboardSize = (sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            UIView.animate(withDuration: 0.3, animations: {
+                let bottomOffset = CGPoint(x: 0, y: self.mainScrollView.contentSize.height - self.mainScrollView.bounds.height + self.mainScrollView.contentInset.bottom + 310)
+                self.mainScrollView.setContentOffset(bottomOffset, animated: true)
+                self.bottomViewBottomConstraint.constant = keyboardSize.height
+                self.view.layoutIfNeeded()
+            })
+        }
+    }
+    
     @objc func MyTapMethod(sender: UITapGestureRecognizer) {
         UIView.animate(withDuration: 0.3, animations: {
+            self.mainScrollView.setContentOffset(CGPoint(x: 0, y: self.mainScrollView.contentSize.height - self.mainScrollView.bounds.height + self.mainScrollView.contentInset.bottom + 10), animated: true)
             self.bottomViewBottomConstraint.constant = CGFloat(30)
             self.view.layoutIfNeeded()
             self.view.endEditing(true)

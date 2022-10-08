@@ -24,6 +24,8 @@
 		6C452C6E28EDE91800785177 /* UICollectionView+Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C452C6D28EDE91800785177 /* UICollectionView+Extenstion.swift */; };
 		6C695DD628E5B79300614896 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C695DD528E5B79300614896 /* KeyboardViewController.swift */; };
 		6C695DDA28E5B79300614896 /* PlayKeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6C695DD328E5B79300614896 /* PlayKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6CC64DBB28F150B000B6D7F5 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC64DBA28F150B000B6D7F5 /* MainViewModel.swift */; };
+		6CC64DBD28F151F600B6D7F5 /* MainCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC64DBC28F151F600B6D7F5 /* MainCollectionViewLayout.swift */; };
 		6CCC820B28E9B3D900296222 /* KeywordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCC820A28E9B3D900296222 /* KeywordCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +74,8 @@
 		6C695DD328E5B79300614896 /* PlayKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PlayKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C695DD528E5B79300614896 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		6C695DD728E5B79300614896 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6CC64DBA28F150B000B6D7F5 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		6CC64DBC28F151F600B6D7F5 /* MainCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewLayout.swift; sourceTree = "<group>"; };
 		6CCC820A28E9B3D900296222 /* KeywordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,10 +120,9 @@
 			children = (
 				6C7F2A0228E88428005B7554 /* AppStart */,
 				6C17090D28E89EF8008CBFE2 /* Scene */,
-				63487F3D28E2EA5E0033CF32 /* Main.storyboard */,
-				63487F4028E2EA5E0033CF32 /* Assets.xcassets */,
-				63487F4228E2EA5E0033CF32 /* LaunchScreen.storyboard */,
+				6CC64DC128F1541600B6D7F5 /* Resource */,
 				6C17090A28E89DA8008CBFE2 /* Extenstion */,
+				63487F4228E2EA5E0033CF32 /* LaunchScreen.storyboard */,
 				63487F4528E2EA5E0033CF32 /* Info.plist */,
 			);
 			path = "K-Keyboard";
@@ -138,10 +141,13 @@
 		6C17090D28E89EF8008CBFE2 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				6CC64DBF28F1538800B6D7F5 /* ViewModel */,
 				6C1D67A528EC7E5900301DE0 /* BottomView */,
+				6C17090F28E89F1E008CBFE2 /* Cell */,
+				6CC64DC028F1538E00B6D7F5 /* ColletionViewLayout */,
 				63487F3B28E2EA5E0033CF32 /* MainViewController.swift */,
 				6C1D67A128EC72B400301DE0 /* PopUpViewController.swift */,
-				6C17090F28E89F1E008CBFE2 /* Cell */,
+				63487F3D28E2EA5E0033CF32 /* Main.storyboard */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -182,6 +188,30 @@
 				63487F3928E2EA5E0033CF32 /* SceneDelegate.swift */,
 			);
 			path = AppStart;
+			sourceTree = "<group>";
+		};
+		6CC64DBF28F1538800B6D7F5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				6CC64DBA28F150B000B6D7F5 /* MainViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		6CC64DC028F1538E00B6D7F5 /* ColletionViewLayout */ = {
+			isa = PBXGroup;
+			children = (
+				6CC64DBC28F151F600B6D7F5 /* MainCollectionViewLayout.swift */,
+			);
+			path = ColletionViewLayout;
+			sourceTree = "<group>";
+		};
+		6CC64DC128F1541600B6D7F5 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				63487F4028E2EA5E0033CF32 /* Assets.xcassets */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,8 +318,10 @@
 				6C17090C28E89DB8008CBFE2 /* UIView+Extenstion.swift in Sources */,
 				6C1D679A28EBF0D500301DE0 /* UIStackView+Extenstion.swift in Sources */,
 				6CCC820B28E9B3D900296222 /* KeywordCell.swift in Sources */,
+				6CC64DBD28F151F600B6D7F5 /* MainCollectionViewLayout.swift in Sources */,
 				63487F3C28E2EA5E0033CF32 /* MainViewController.swift in Sources */,
 				6C1D67A728EC7E6E00301DE0 /* BottomView.swift in Sources */,
+				6CC64DBB28F150B000B6D7F5 /* MainViewModel.swift in Sources */,
 				6C1D679E28EC382200301DE0 /* ReviewCell.swift in Sources */,
 				6C1D67A228EC72B400301DE0 /* PopUpViewController.swift in Sources */,
 				6C452C6E28EDE91800785177 /* UICollectionView+Extenstion.swift in Sources */,
