@@ -8,8 +8,6 @@
 import UIKit
 
 class KeyboardView: UIView {
-    
-    
     lazy var button: KeyboardButton = {
         let btn = KeyboardButton(type: .custom)
         btn.translatesAutoresizingMaskIntoConstraints = false
