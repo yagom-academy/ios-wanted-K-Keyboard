@@ -8,105 +8,101 @@
 import UIKit
 import SwiftUI
 
-class TagView: UIView, UICollectionViewDelegate {
-    var heights: [String] = ["이벤트", "캐릭터","새","동물","앙증맞은","동글동글"]
-    let titles : UILabel = {
+class TagView: UIView {
+    // MARK: View Components
+    lazy var title: UILabel = {
         let title = UILabel()
-        title.translatesAutoresizingMaskIntoConstraints = false
         title.text = "태그"
-        title.font = UIFont(name: "Bold", size: 20)
-        title.textColor = .black
+        title.font = .appleSDGothicNeo(weight: .bold, size: 16)
+        title.textColor = UIColor(hex: "#42444C")
+        title.translatesAutoresizingMaskIntoConstraints = false
         return title
     }()
     
-    
-    let collectionView : UICollectionView = {
-        let collectionView = UICollectionViewFlowLayout()
-        //        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.minimumInteritemSpacing = 4
-        collectionView.minimumLineSpacing = 5
-        collectionView.scrollDirection = .vertical
-        collectionView.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: collectionView)
-        cv.translatesAutoresizingMaskIntoConstraints = false
-        return cv
+    lazy var collectionView: UICollectionView = {
+        let layout = LeftAlignedCollectionViewFlowLayout()
+        layout.minimumInteritemSpacing = 4
+        layout.minimumLineSpacing = 8
+        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        let collectionView = ContentSizedCollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        return collectionView
     }()
     
+    // MARK: Properties
+    var didSetupConstraints = false
+    var tags: [String] = ["이벤트", "캐릭터", "새", "동물", "앙증맞은", "동글동글"]
+    
+    // MARK: Life Cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.commonInit()
+        setupViews()
+        buildViewHierarchy()
+        self.setNeedsUpdateConstraints()
     }
-    required init?(coder NSCoder : NSCoder) {
+    
+    required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func commonInit(){
-        self.addSubview(titles)
-        self.addSubview(collectionView)
-        constraintCustomView()
-        setupView()
+    override func updateConstraints() {
+        if !didSetupConstraints {
+            self.setupConstraints()
+            didSetupConstraints = true
+        }
+        super.updateConstraints()
     }
     
-    func constraintCustomView() {
-        NSLayoutConstraint.activate([
-            titles.topAnchor.constraint(equalTo: self.topAnchor,constant: 0),
-            titles.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: 0),
-            
-            
-            collectionView.topAnchor.constraint(equalTo: titles.bottomAnchor, constant: 20),
-            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
-            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
-            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
-            
-        ])
-    }
-    private func setupView() {
+    // MARK: Setup Views
+    func setupViews() {
         collectionView.register(TagCollectionViewCell.self, forCellWithReuseIdentifier: TagCollectionViewCell.identifier)
         collectionView.heightAnchor.constraint(equalToConstant: 70).isActive = true
         collectionView.delegate = self
         collectionView.dataSource = self
     }
+    
+    
+    // MARK: Build View Hierarchy
+    func buildViewHierarchy() {
+        self.addSubview(title)
+        self.addSubview(collectionView)
+    }
+    
+    
+    // MARK: Layout Views
+    func setupConstraints() {
+        var constraints = [NSLayoutConstraint]()
+        
+        defer { NSLayoutConstraint.activate(constraints) }
+        
+        constraints += [
+            title.topAnchor.constraint(equalTo: self.topAnchor,constant: 0),
+            title.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: 0),
+            
+            collectionView.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 16),
+            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
+            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
+            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
+        ]
+    }
 }
-extension TagView: UICollectionViewDataSource {
+
+extension TagView: UICollectionViewDataSource, UICollectionViewDelegate {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return heights.count
+        return tags.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TagCollectionViewCell", for: indexPath) as? TagCollectionViewCell else {return TagCollectionViewCell()}
-        cell.title.text = "\(heights[indexPath.row])"
-        //        cell.backgroundColor = colors[indexPath.row]
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TagCollectionViewCell", for: indexPath) as? TagCollectionViewCell else { return TagCollectionViewCell() }
+        cell.configureCell("\(tags[indexPath.row])")
         
         return cell
     }
 }
-//
-extension TagView: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        //            let width = collectionView.frame.width
-        //            let height = collectionView.frame.height
-        //        print(width,height)
-        //            let itemsPerRow: CGFloat = 2
-        //            let widthPadding = sectionInsets.left * (itemsPerRow + 1)
-        //            let itemsPerColumn: CGFloat = 3
-        //            let heightPadding = sectionInsets.top * (itemsPerColumn + 1)
-        //            let cellWidth = (width - widthPadding) / itemsPerRow
-        //            let cellHeight = (height - heightPadding) / itemsPerColumn
-        //print(cellWidth,cellHeight)
-        //            return CGSize(width: cellWidth, height: cellHeight)
-        
-        //343.0 165.66666666666666  콜렉션뷰 가로 높이
-        //        156.5 41.888888888888886   셀 가로 높이
-        return CGSize(width: heights[indexPath.row].size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14)]).width + 25, height: 28)
-        //        return CGSize(width: 62, height: 50)
-        //        return CGSize(width: Int.random(in: 50...100) , height: 100)
-    }
-}
-
 
 #if canImport(SwiftUI) && DEBUG
 struct PereviewViewController<View: UIView> : UIViewRepresentable {

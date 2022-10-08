@@ -16,23 +16,19 @@ class KeyWordViewCell: UICollectionViewCell {
             imageView.image = model.image
         }
     }
-    
     static let identifier = "KeyWordViewCell"
-    
     lazy var title: UILabel = {
         let label = UILabel()
+        label.font = .appleSDGothicNeo(weight: .medium, size: 14)
+        label.textColor = UIColor(hex: "#42444C", alpha: 1)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
     lazy var imageView: UIImageView = {
         let label = UIImageView()
-        
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.cellSetting()
@@ -40,15 +36,13 @@ class KeyWordViewCell: UICollectionViewCell {
     required init?(coder NSCoder : NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     func cellSetting(){
         self.contentView.backgroundColor = .white
         self.contentView.layer.cornerRadius = 16
         self.contentView.layer.shadowColor = UIColor.black.cgColor
-        self.contentView.layer.shadowRadius = 1
+        self.contentView.layer.shadowRadius = 8
         self.contentView.layer.shadowOffset = .zero
-        self.contentView.layer.shadowOpacity = 0.6
-        //        self.backgroundColor = .green
+        self.contentView.layer.shadowOpacity = 0.2
         addContentView()
         constraintCustomView()
     }
@@ -57,23 +51,12 @@ class KeyWordViewCell: UICollectionViewCell {
             imageView.topAnchor.constraint(equalTo: self.topAnchor,constant: 10.51),
             imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: 12),
             imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor,constant: -12),
-            //            imageView.heightAnchor.constraint(equalToConstant: 105),
-            //            imageView.widthAnchor.constraint(equalToConstant: 105),
-            //            imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor,constant: -20),
             
             title.topAnchor.constraint(equalTo: imageView.bottomAnchor,constant: 15.87),
-            title.leadingAnchor.constraint(equalTo: imageView.leadingAnchor,constant: 30),
-            title.trailingAnchor.constraint(equalTo: imageView.trailingAnchor,constant: 44),
+            title.centerXAnchor.constraint(equalTo: centerXAnchor),
             title.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -9.56),
-            
-            
-            //            title.topAnchor.constraint(equalTo: imageView.bottomAnchor,constant: 15.87),
-            //            title.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: 45),
-            //            title.trailingAnchor.constraint(equalTo: self.trailingAnchor,constant: 44),
-            //            title.bottomAnchor.constraint(equalTo: self.bottomAnchor,constant: -9),
         ])
     }
-    
     private func addContentView() {
         contentView.addSubview(title)
         contentView.addSubview(imageView)

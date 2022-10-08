@@ -11,13 +11,15 @@ import UIKit
 struct PurchasReviewModel {
     
     let uesrImage: UIImage?
+    let isCreater : Bool
     let idLabel: String
     let infoLabel: String
     let timeLabel: String
     let declaration : String
     
-    init(uesrImage: UIImage?, idLabel: String, infoLabel: String, timeLabel: String, declaration: String) {
+    init(uesrImage: UIImage?,isCreater : Bool, idLabel: String, infoLabel: String, timeLabel: String, declaration: String) {
         self.uesrImage = uesrImage
+        self.isCreater = isCreater
         self.idLabel = idLabel
         self.infoLabel = infoLabel
         self.timeLabel = timeLabel

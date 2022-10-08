@@ -1,15 +1,20 @@
 {
   "images" : [
     {
-      "filename" : "ic_charge_gem_type1.png",
+      "idiom" : "universal"
+    },
+    {
+      "filename" : "diamond.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "diamond@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "diamond@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -8,46 +8,70 @@
 import UIKit
 
 class TagCollectionViewCell: UICollectionViewCell {
-    
-    
-    static let identifier = "TagCollectionViewCell"
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.cellSetting()
-    }
-    required init?(coder: NSCoder) {
-        fatalError()
-    }
-    func cellSetting(){
-        //        self.backgroundColor = .systemGray
-        self.addSubview(title)
-        //        self.contentView.layer.cornerRadius = 15
-        
-        title.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        title.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        title.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        title.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-    }
-    
-    
+    // MARK: View Components
     lazy var title: UILabel = {
         let label = UILabel()
-        //        label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        self.contentView.backgroundColor = UIColor(hex: "#EBEDF5", alpha: 1)
-        self.contentView.layer.cornerRadius = 14
-        self.contentView.layer.shadowColor = UIColor.black.cgColor
-        self.contentView.layer.shadowRadius = 1
-        self.contentView.layer.shadowOffset = .zero
-        self.contentView.layer.shadowOpacity = 0.6
-        
-        label.font = .systemFont(ofSize: 17)
+        label.font = .appleSDGothicNeo(weight: .medium, size: 14)
+        label.setContentCompressionResistancePriority(.required, for: .horizontal)
         return label
     }()
     
-    private func addContentView() {
-        contentView.addSubview(title)
+    // MARK: Associated Types
+    
+    // MARK: Properties
+    static let identifier = "TagCollectionViewCell"
+    var didSetupConstraints = false
+    
+    // MARK: Life Cycle
+    override init(frame: CGRect) {
+        super.init(frame: .zero)
+        setupViews()
+        buildViewHierarchy()
+        self.setNeedsUpdateConstraints()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func updateConstraints() {
+        if !didSetupConstraints {
+            self.setupConstraints()
+            didSetupConstraints = true
+        }
+        super.updateConstraints()
+    }
+    
+    // MARK: Setup Views
+    func setupViews() {
+        self.contentView.backgroundColor = UIColor(hex: "#EBEDF5", alpha: 1)
+        self.contentView.layer.cornerRadius = 14
+    }
+    
+    
+    // MARK: Build View Hierarchy
+    func buildViewHierarchy() {
+        self.addSubview(title)
+    }
+    
+    
+    // MARK: Layout Views
+    func setupConstraints() {
+        var constraints = [NSLayoutConstraint]()
+        
+        defer { NSLayoutConstraint.activate(constraints) }
+
+        constraints += [
+            title.topAnchor.constraint(equalTo: self.topAnchor, constant: 4),
+            title.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+            title.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
+            title.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -4),
+        ]
+    }
+    // MARK: ConfigureCell
+    func configureCell(_ title: String) {
+        self.title.text = title
     }
 }

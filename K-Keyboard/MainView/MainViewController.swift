@@ -8,136 +8,169 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    
-    let buttonViewView: ButtonViewView = {
-        let view = ButtonViewView()
+    let buttonViewView: PopView = {
+        let view = PopView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
-    
-    let sdView = UIView()
-    
-    let firstView: KeyboardImageView = {
+    let keyboardImageView: KeyboardImageView = {
         let view = KeyboardImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    let secondView: TagView = {
+    let tagView: TagView = {
         let view = TagView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    let thirdView: KeyWordView = {
+    let keyWordView: KeyWordView = {
         let view = KeyWordView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
-    let fourView: ThemaView = {
+    let themaView1: ThemaView = {
         let view = ThemaView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    let fifveView: PurchaseReviewView = {
+    let purchaseReviewView: PurchaseReviewView = {
         let view = PurchaseReviewView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    //마지막 버튼클릭뷰 확인용
-    let buttonView: ButtonView = {
-        let view = ButtonView()
-        //        view.backgroundColor = .red
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
     let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
-    func qiw() {
-        print("구매하기버튼눌려짐")
-        let showAlert = UIAlertController(title: "", message: "", preferredStyle: .alert)
-        let imageView = UIImageView(frame: CGRect(x: 80, y: 50, width: 100, height: 100))
-        imageView.image = UIImage(named: "01")
-        showAlert.view.addSubview(buttonViewView)
-        //        showAlert.view.addSubview(imageView)
-        let height = NSLayoutConstraint(item: showAlert.view!, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 320)
-        let width = NSLayoutConstraint(item: showAlert.view!, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 250)
-        showAlert.view.addConstraint(height)
-        showAlert.view.addConstraint(width)
-        //        showAlert.addAction(UIAlertAction(title: "충전하고 바로 사용하기", style: .default, handler: { action in
-        //            print("충전하고 바로 사용하기")
-        //        }))
-        self.present(showAlert, animated: true, completion: nil)
-    }
+    let buttonView: ButtonView = {
+        let view = ButtonView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    let totalView: UIView = {
+        let totalView = UIView()
+        totalView.translatesAutoresizingMaskIntoConstraints = false
+        return totalView
+    }()
+    var bottomViewMarginConstraint: NSLayoutConstraint?
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        addNaviView()
+        addSubView()
+        setUpUIConstraints()
+        addNotification()
+        buttonView.buttonDelegate = self
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(endEditing)))
+    }
+    func popUpButton() {
+        let vc = PurchaseAlertViewController()
+        vc.modalPresentationStyle = .overFullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        present(vc, animated: true)
+    }
+    func saveButtonAction() {
+        purchaseReviewView.dataArry.append(.init(uesrImage: UIImage(named: "user"),isCreater: false, idLabel: "ID", infoLabel: buttonView.textFieldView.text ?? "" , timeLabel: "방금", declaration: " "))
+        buttonView.textFieldView.text = nil
+    }
     func addSubView() {
-        self.view.addSubview(scrollView)
-        self.view.addSubview(buttonView)
-        sdView.addSubview(firstView)
-        sdView.addSubview(secondView)
-        sdView.addSubview(thirdView)
-        sdView.addSubview(fourView)
-        sdView.addSubview(fifveView)
-        sdView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.addSubview(sdView)
+        totalView.addSubview(keyboardImageView)
+        totalView.addSubview(tagView)
+        totalView.addSubview(keyWordView)
+        totalView.addSubview(themaView1)
+        totalView.addSubview(purchaseReviewView)
+        scrollView.addSubview(totalView)
+        view.addSubview(scrollView)
+        view.addSubview(buttonView)
     }
-    
+    func addNaviView() {
+        let naviView = UIImage(named: "NaniBackButton")
+        navigationItem.leftBarButtonItem = UIBarButtonItem.init(image: naviView, style: .done, target: self, action: nil)
+        navigationItem.leftBarButtonItem?.tintColor = .black
+        self.view.backgroundColor = .white
+    }
+    func addNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewChange), name: .purchaseButtonClick, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    @objc func ViewChange() {
+        buttonView.diamondCount.isHidden = true
+        buttonView.buyButton.isHidden = true
+        buttonView.diamond.isHidden = true
+        buttonView.jamLabel.isHidden = true
+        buttonView.textFieldView.isHidden = false
+        buttonView.textFieldViewButton.isHidden = false
+    }
     private func setUpUIConstraints() {
+        bottomViewMarginConstraint = buttonView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         NSLayoutConstraint.activate([
-            
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             scrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            scrollView.frameLayoutGuide.widthAnchor.constraint(equalTo: totalView.widthAnchor),
             
             buttonView.topAnchor.constraint(equalTo: scrollView.bottomAnchor),
             buttonView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             buttonView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            buttonView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            buttonView.heightAnchor.constraint(equalToConstant: 40),
+            bottomViewMarginConstraint!,
+            buttonView.heightAnchor.constraint(equalToConstant: 64),
             
-            firstView.topAnchor.constraint(equalTo: sdView.topAnchor,constant: 0),
-            firstView.leadingAnchor.constraint(equalTo: sdView.leadingAnchor,constant: 16),
-            firstView.trailingAnchor.constraint(equalTo: sdView.trailingAnchor,constant: -16),
+            totalView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
+            totalView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
+            totalView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
+            totalView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
             
-            secondView.topAnchor.constraint(equalTo: firstView.bottomAnchor,constant: 48),
-            secondView.leadingAnchor.constraint(equalTo: firstView.leadingAnchor,constant: 0),
-            secondView.trailingAnchor.constraint(equalTo: firstView.trailingAnchor,constant: 0),
+            keyboardImageView.topAnchor.constraint(equalTo: totalView.topAnchor,constant: 0),
+            keyboardImageView.leadingAnchor.constraint(equalTo: totalView.leadingAnchor,constant: 16),
+            keyboardImageView.trailingAnchor.constraint(equalTo: totalView.trailingAnchor,constant: -16),
             
-            thirdView.topAnchor.constraint(equalTo: secondView.bottomAnchor,constant: 40),
-            thirdView.leadingAnchor.constraint(equalTo: firstView.leadingAnchor,constant: 0),
-            thirdView.trailingAnchor.constraint(equalTo: firstView.trailingAnchor,constant: 0),
+            tagView.topAnchor.constraint(equalTo: keyboardImageView.bottomAnchor,constant: 48),
+            tagView.leadingAnchor.constraint(equalTo: keyboardImageView.leadingAnchor,constant: 0),
+            tagView.trailingAnchor.constraint(equalTo: keyboardImageView.trailingAnchor,constant: 0),
             
-            fourView.topAnchor.constraint(equalTo: thirdView.bottomAnchor,constant: 48),
-            fourView.leadingAnchor.constraint(equalTo: firstView.leadingAnchor,constant: 0),
-            fourView.trailingAnchor.constraint(equalTo: firstView.trailingAnchor,constant: 0),
+            keyWordView.topAnchor.constraint(equalTo: tagView.bottomAnchor,constant: 40),
+            keyWordView.leadingAnchor.constraint(equalTo: keyboardImageView.leadingAnchor,constant: 0),
+            keyWordView.trailingAnchor.constraint(equalTo: keyboardImageView.trailingAnchor,constant: 0),
             
-            fifveView.topAnchor.constraint(equalTo: fourView.bottomAnchor,constant: 50),
-            fifveView.leadingAnchor.constraint(equalTo: firstView.leadingAnchor,constant: 0),
-            fifveView.trailingAnchor.constraint(equalTo: firstView.trailingAnchor,constant: 0),
-            fifveView.bottomAnchor.constraint(equalTo: sdView.bottomAnchor,constant: 0),
+            themaView1.topAnchor.constraint(equalTo: keyWordView.bottomAnchor,constant: 48),
+            themaView1.leadingAnchor.constraint(equalTo: keyboardImageView.leadingAnchor,constant: 0),
+            themaView1.trailingAnchor.constraint(equalTo: keyboardImageView.trailingAnchor,constant: 0),
             
-            sdView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
-            sdView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
-            sdView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
-            sdView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
-            
-            scrollView.frameLayoutGuide.widthAnchor.constraint(equalTo: sdView.widthAnchor),
+            purchaseReviewView.topAnchor.constraint(equalTo: themaView1.bottomAnchor,constant: 50),
+            purchaseReviewView.leadingAnchor.constraint(equalTo: keyboardImageView.leadingAnchor,constant: 0),
+            purchaseReviewView.trailingAnchor.constraint(equalTo: keyboardImageView.trailingAnchor,constant: 0),
+            purchaseReviewView.bottomAnchor.constraint(equalTo: totalView.bottomAnchor,constant: 0),
         ])
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        let imageView = UIImage(named: "NaniBackButton")
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem.init(image: imageView, style: .done, target: self, action: nil)
-        navigationItem.leftBarButtonItem?.tintColor = .black
-        self.view.backgroundColor = .white
-        addSubView()
-        setUpUIConstraints()
-        //                qiw()
-        
+    
+    @objc func keyboardWillShow(_ notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            bottomViewMarginConstraint?.constant = -keyboardSize.height
+            UIView.animate(withDuration: 1) {
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: NSNotification) {
+        bottomViewMarginConstraint?.constant = 0
+        UIView.animate(withDuration: 1) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc func endEditing() {
+        self.view.endEditing(true)
     }
 }
+extension MainViewController: ButtonViewDelegate {
+    func popUpView() {
+        popUpButton()
+    }
+    func addReview() {
+        saveButtonAction()
+    }
+}
+

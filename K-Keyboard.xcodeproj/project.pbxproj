@@ -11,11 +11,38 @@
 		466DA3A828E7D700005E77DD /* UnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466DA3A728E7D700005E77DD /* UnitTests.swift */; };
 		466DA3AF28E7D707005E77DD /* SyllableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466DA3AE28E7D707005E77DD /* SyllableTests.swift */; };
 		467002C528E963E4000B721E /* KeyboardModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467002C428E963E4000B721E /* KeyboardModelTests.swift */; };
-		63487F3828E2EA5E0033CF32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3728E2EA5E0033CF32 /* AppDelegate.swift */; };
-		63487F3A28E2EA5E0033CF32 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3928E2EA5E0033CF32 /* SceneDelegate.swift */; };
-		63487F3C28E2EA5E0033CF32 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3B28E2EA5E0033CF32 /* MainViewController.swift */; };
-		63487F4128E2EA5E0033CF32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63487F4028E2EA5E0033CF32 /* Assets.xcassets */; };
-		63487F4428E2EA5E0033CF32 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63487F4228E2EA5E0033CF32 /* LaunchScreen.storyboard */; };
+		46AD492A28F111180049D48F /* PopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AD490828F111180049D48F /* PopView.swift */; };
+		46AD492B28F111180049D48F /* PurchaseAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AD490928F111180049D48F /* PurchaseAlertViewController.swift */; };
+		46AD492C28F111180049D48F /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AD490A28F111180049D48F /* ButtonView.swift */; };
+		46AD492D28F111180049D48F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46AD490B28F111180049D48F /* Assets.xcassets */; };
+		46AD492E28F111180049D48F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46AD490C28F111180049D48F /* LaunchScreen.storyboard */; };
+		46AD492F28F111180049D48F /* ThemaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AD490F28F111180049D48F /* ThemaView.swift */; };
+		46AD493028F111180049D48F /* CheerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AD491128F111180049D48F /* CheerView.swift */; };
+		46AD493128F111180049D48F /* LoveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AD491228F111180049D48F /* LoveView.swift */; };
+		46AD493228F111190049D48F /* WantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AD491328F111180049D48F /* WantView.swift */; };
+		46AD493328F111190049D48F /* GoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AD491428F111180049D48F /* GoodView.swift */; };
+		46AD493428F111190049D48F /* KeyboardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AD491628F111180049D48F /* KeyboardImageView.swift */; };
+		46AD493528F111190049D48F /* PurchaseReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AD491828F111180049D48F /* PurchaseReviewView.swift */; };
+		46AD493628F111190049D48F /* PurchasReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AD491928F111180049D48F /* PurchasReviewModel.swift */; };
+		46AD493728F111190049D48F /* PurchaseReviewTablewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AD491A28F111180049D48F /* PurchaseReviewTablewView.swift */; };
+		46AD493828F111190049D48F /* PurchaseReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AD491B28F111180049D48F /* PurchaseReviewTableViewCell.swift */; };
+		46AD493928F111190049D48F /* ContentSizedCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AD491D28F111180049D48F /* ContentSizedCollectionView.swift */; };
+		46AD493A28F111190049D48F /* LeftAlignedCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AD491E28F111180049D48F /* LeftAlignedCollectionViewLayout.swift */; };
+		46AD493B28F111190049D48F /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AD491F28F111180049D48F /* TagCollectionViewCell.swift */; };
+		46AD493C28F111190049D48F /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AD492028F111180049D48F /* TagView.swift */; };
+		46AD493D28F111190049D48F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AD492128F111180049D48F /* AppDelegate.swift */; };
+		46AD493E28F111190049D48F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AD492328F111180049D48F /* MainViewController.swift */; };
+		46AD493F28F111190049D48F /* KeyWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AD492528F111180049D48F /* KeyWordView.swift */; };
+		46AD494028F111190049D48F /* KeyWordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AD492628F111180049D48F /* KeyWordModel.swift */; };
+		46AD494128F111190049D48F /* KeyWordViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AD492728F111180049D48F /* KeyWordViewCell.swift */; };
+		46AD494328F111190049D48F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AD492928F111180049D48F /* SceneDelegate.swift */; };
+		46AD494428F111B60049D48F /* FrequentlyUsedWordsBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0412C1A28EEAC5800DE313E /* FrequentlyUsedWordsBottomView.swift */; };
+		46AD494528F111C40049D48F /* ShortcutPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A55FA28EFC6EF0093D9D3 /* ShortcutPopupView.swift */; };
+		46AD494628F111D30049D48F /* ShortcutPopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A55F828EFC6E20093D9D3 /* ShortcutPopupViewModel.swift */; };
+		46AD494728F111D60049D48F /* ShortcutButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A55FC28EFC7090093D9D3 /* ShortcutButtonViewModel.swift */; };
+		46AD494828F111DE0049D48F /* ShortcutButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A55FE28EFC7120093D9D3 /* ShortcutButtonView.swift */; };
+		46AD494928F111ED0049D48F /* ShortcutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A560228EFD3C90093D9D3 /* ShortcutView.swift */; };
+		46AD494A28F112040049D48F /* ShortcutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A560028EFD3BB0093D9D3 /* ShortcutViewModel.swift */; };
 		B0412C1B28EEAC5800DE313E /* FrequentlyUsedWordsBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0412C1A28EEAC5800DE313E /* FrequentlyUsedWordsBottomView.swift */; };
 		B05AA9E328ED019800EB2CF3 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05AA9E028ED019800EB2CF3 /* UIColor+Extension.swift */; };
 		B05AA9E428ED019800EB2CF3 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05AA9E028ED019800EB2CF3 /* UIColor+Extension.swift */; };
@@ -94,20 +121,6 @@
 		B0B24E9928ED56B1001ABBEA /* ToolBarButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B24E9828ED56B1001ABBEA /* ToolBarButtonView.swift */; };
 		B0B24E9D28ED58FD001ABBEA /* ToolBarButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B24E9C28ED58FD001ABBEA /* ToolBarButtonViewModel.swift */; };
 		B0B24E9F28ED5B0F001ABBEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0B24E9E28ED5B0F001ABBEA /* Assets.xcassets */; };
-		D30E931728E5B27B009AB544 /* KeyboardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E931628E5B27B009AB544 /* KeyboardImageView.swift */; };
-		D30E931928E69F19009AB544 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E931828E69F19009AB544 /* TagView.swift */; };
-		D30E931D28E69F73009AB544 /* KeyWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E931C28E69F73009AB544 /* KeyWordView.swift */; };
-		D31AF13728EA96DA00BEE422 /* themView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31AF13628EA96DA00BEE422 /* themView.swift */; };
-		D325D90628E9290700DFD0A1 /* ThemaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D325D90528E9290700DFD0A1 /* ThemaCollectionViewCell.swift */; };
-		D325D90828E95D7600DFD0A1 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D325D90728E95D7600DFD0A1 /* ButtonView.swift */; };
-		D346C61C28EBEB3D00DAADE9 /* ButtonViewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D346C61B28EBEB3D00DAADE9 /* ButtonViewView.swift */; };
-		D37DE32628EA80F7008B1A2A /* PurchasReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37DE32528EA80F7008B1A2A /* PurchasReviewModel.swift */; };
-		D3A2C2CC28E6EE000093A633 /* KeyWordViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A2C2CB28E6EE000093A633 /* KeyWordViewCell.swift */; };
-		D3A4761628E56CDA003CA79A /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A4761528E56CDA003CA79A /* TagCollectionViewCell.swift */; };
-		D3D272B728E70D9C00BC6392 /* ThemaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D272B628E70D9C00BC6392 /* ThemaView.swift */; };
-		D3D272BB28E8010B00BC6392 /* KeyWordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D272BA28E8010A00BC6392 /* KeyWordModel.swift */; };
-		D3D272BD28E8175300BC6392 /* PurchaseReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D272BC28E8175300BC6392 /* PurchaseReviewView.swift */; };
-		D3D272C028E8200D00BC6392 /* PurchaseReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D272BF28E8200D00BC6392 /* PurchaseReviewTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -155,13 +168,33 @@
 		466DA3A728E7D700005E77DD /* UnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTests.swift; sourceTree = "<group>"; };
 		466DA3AE28E7D707005E77DD /* SyllableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyllableTests.swift; sourceTree = "<group>"; };
 		467002C428E963E4000B721E /* KeyboardModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardModelTests.swift; sourceTree = "<group>"; };
+		46AD490828F111180049D48F /* PopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopView.swift; sourceTree = "<group>"; };
+		46AD490928F111180049D48F /* PurchaseAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseAlertViewController.swift; sourceTree = "<group>"; };
+		46AD490A28F111180049D48F /* ButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
+		46AD490B28F111180049D48F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		46AD490D28F111180049D48F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		46AD490F28F111180049D48F /* ThemaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemaView.swift; sourceTree = "<group>"; };
+		46AD491128F111180049D48F /* CheerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheerView.swift; sourceTree = "<group>"; };
+		46AD491228F111180049D48F /* LoveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoveView.swift; sourceTree = "<group>"; };
+		46AD491328F111180049D48F /* WantView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WantView.swift; sourceTree = "<group>"; };
+		46AD491428F111180049D48F /* GoodView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoodView.swift; sourceTree = "<group>"; };
+		46AD491628F111180049D48F /* KeyboardImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardImageView.swift; sourceTree = "<group>"; };
+		46AD491828F111180049D48F /* PurchaseReviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseReviewView.swift; sourceTree = "<group>"; };
+		46AD491928F111180049D48F /* PurchasReviewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasReviewModel.swift; sourceTree = "<group>"; };
+		46AD491A28F111180049D48F /* PurchaseReviewTablewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseReviewTablewView.swift; sourceTree = "<group>"; };
+		46AD491B28F111180049D48F /* PurchaseReviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseReviewTableViewCell.swift; sourceTree = "<group>"; };
+		46AD491D28F111180049D48F /* ContentSizedCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentSizedCollectionView.swift; sourceTree = "<group>"; };
+		46AD491E28F111180049D48F /* LeftAlignedCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftAlignedCollectionViewLayout.swift; sourceTree = "<group>"; };
+		46AD491F28F111180049D48F /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
+		46AD492028F111180049D48F /* TagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
+		46AD492128F111180049D48F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		46AD492328F111180049D48F /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		46AD492528F111180049D48F /* KeyWordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyWordView.swift; sourceTree = "<group>"; };
+		46AD492628F111180049D48F /* KeyWordModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyWordModel.swift; sourceTree = "<group>"; };
+		46AD492728F111180049D48F /* KeyWordViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyWordViewCell.swift; sourceTree = "<group>"; };
+		46AD492828F111180049D48F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46AD492928F111180049D48F /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		63487F3428E2EA5E0033CF32 /* K-Keyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "K-Keyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		63487F3728E2EA5E0033CF32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		63487F3928E2EA5E0033CF32 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		63487F3B28E2EA5E0033CF32 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		63487F4028E2EA5E0033CF32 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		63487F4328E2EA5E0033CF32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		63487F4528E2EA5E0033CF32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0412C1A28EEAC5800DE313E /* FrequentlyUsedWordsBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequentlyUsedWordsBottomView.swift; sourceTree = "<group>"; };
 		B05AA9E028ED019800EB2CF3 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		B05AA9E128ED019800EB2CF3 /* UIFont+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
@@ -205,20 +238,6 @@
 		B0B24E9828ED56B1001ABBEA /* ToolBarButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarButtonView.swift; sourceTree = "<group>"; };
 		B0B24E9C28ED58FD001ABBEA /* ToolBarButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarButtonViewModel.swift; sourceTree = "<group>"; };
 		B0B24E9E28ED5B0F001ABBEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D30E931628E5B27B009AB544 /* KeyboardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardImageView.swift; sourceTree = "<group>"; };
-		D30E931828E69F19009AB544 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
-		D30E931C28E69F73009AB544 /* KeyWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyWordView.swift; sourceTree = "<group>"; };
-		D31AF13628EA96DA00BEE422 /* themView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = themView.swift; sourceTree = "<group>"; };
-		D325D90528E9290700DFD0A1 /* ThemaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemaCollectionViewCell.swift; sourceTree = "<group>"; };
-		D325D90728E95D7600DFD0A1 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
-		D346C61B28EBEB3D00DAADE9 /* ButtonViewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViewView.swift; sourceTree = "<group>"; };
-		D37DE32528EA80F7008B1A2A /* PurchasReviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasReviewModel.swift; sourceTree = "<group>"; };
-		D3A2C2CB28E6EE000093A633 /* KeyWordViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyWordViewCell.swift; sourceTree = "<group>"; };
-		D3A4761528E56CDA003CA79A /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
-		D3D272B628E70D9C00BC6392 /* ThemaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemaView.swift; sourceTree = "<group>"; };
-		D3D272BA28E8010A00BC6392 /* KeyWordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyWordModel.swift; sourceTree = "<group>"; };
-		D3D272BC28E8175300BC6392 /* PurchaseReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseReviewView.swift; sourceTree = "<group>"; };
-		D3D272BF28E8200D00BC6392 /* PurchaseReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseReviewTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -257,10 +276,107 @@
 			path = UnitTests;
 			sourceTree = "<group>";
 		};
+		46AD490628F111180049D48F /* K-Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				46AD490728F111180049D48F /* PopView */,
+				46AD490B28F111180049D48F /* Assets.xcassets */,
+				46AD490C28F111180049D48F /* LaunchScreen.storyboard */,
+				46AD490E28F111180049D48F /* ThemaView */,
+				46AD491528F111180049D48F /* KeyboardImageView */,
+				46AD491728F111180049D48F /* PurchaseReviewView */,
+				46AD491C28F111180049D48F /* TagView */,
+				46AD492128F111180049D48F /* AppDelegate.swift */,
+				46AD492228F111180049D48F /* MainView */,
+				46AD492428F111180049D48F /* KeyWordView */,
+				46AD492828F111180049D48F /* Info.plist */,
+				46AD492928F111180049D48F /* SceneDelegate.swift */,
+			);
+			path = "K-Keyboard";
+			sourceTree = "<group>";
+		};
+		46AD490728F111180049D48F /* PopView */ = {
+			isa = PBXGroup;
+			children = (
+				46AD490828F111180049D48F /* PopView.swift */,
+				46AD490928F111180049D48F /* PurchaseAlertViewController.swift */,
+				46AD490A28F111180049D48F /* ButtonView.swift */,
+			);
+			path = PopView;
+			sourceTree = "<group>";
+		};
+		46AD490E28F111180049D48F /* ThemaView */ = {
+			isa = PBXGroup;
+			children = (
+				46AD490F28F111180049D48F /* ThemaView.swift */,
+				46AD491028F111180049D48F /* Views */,
+			);
+			path = ThemaView;
+			sourceTree = "<group>";
+		};
+		46AD491028F111180049D48F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				46AD491128F111180049D48F /* CheerView.swift */,
+				46AD491228F111180049D48F /* LoveView.swift */,
+				46AD491328F111180049D48F /* WantView.swift */,
+				46AD491428F111180049D48F /* GoodView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		46AD491528F111180049D48F /* KeyboardImageView */ = {
+			isa = PBXGroup;
+			children = (
+				46AD491628F111180049D48F /* KeyboardImageView.swift */,
+			);
+			path = KeyboardImageView;
+			sourceTree = "<group>";
+		};
+		46AD491728F111180049D48F /* PurchaseReviewView */ = {
+			isa = PBXGroup;
+			children = (
+				46AD491828F111180049D48F /* PurchaseReviewView.swift */,
+				46AD491928F111180049D48F /* PurchasReviewModel.swift */,
+				46AD491A28F111180049D48F /* PurchaseReviewTablewView.swift */,
+				46AD491B28F111180049D48F /* PurchaseReviewTableViewCell.swift */,
+			);
+			path = PurchaseReviewView;
+			sourceTree = "<group>";
+		};
+		46AD491C28F111180049D48F /* TagView */ = {
+			isa = PBXGroup;
+			children = (
+				46AD491D28F111180049D48F /* ContentSizedCollectionView.swift */,
+				46AD491E28F111180049D48F /* LeftAlignedCollectionViewLayout.swift */,
+				46AD491F28F111180049D48F /* TagCollectionViewCell.swift */,
+				46AD492028F111180049D48F /* TagView.swift */,
+			);
+			path = TagView;
+			sourceTree = "<group>";
+		};
+		46AD492228F111180049D48F /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				46AD492328F111180049D48F /* MainViewController.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		46AD492428F111180049D48F /* KeyWordView */ = {
+			isa = PBXGroup;
+			children = (
+				46AD492528F111180049D48F /* KeyWordView.swift */,
+				46AD492628F111180049D48F /* KeyWordModel.swift */,
+				46AD492728F111180049D48F /* KeyWordViewCell.swift */,
+			);
+			path = KeyWordView;
+			sourceTree = "<group>";
+		};
 		63487F2B28E2EA5E0033CF32 = {
 			isa = PBXGroup;
 			children = (
-				63487F3628E2EA5E0033CF32 /* K-Keyboard */,
+				46AD490628F111180049D48F /* K-Keyboard */,
 				B05F4C9928ED01F000562C38 /* KeyboardExtension */,
 				B05AA9DE28ED019800EB2CF3 /* Common */,
 				466DA3A628E7D700005E77DD /* UnitTests */,
@@ -277,26 +393,6 @@
 				466DA3A528E7D700005E77DD /* UnitTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		63487F3628E2EA5E0033CF32 /* K-Keyboard */ = {
-			isa = PBXGroup;
-			children = (
-				D3D272BE28E8191A00BC6392 /* MainView */,
-				D3A4761928E5A5E1003CA79A /* KeyboardImageView */,
-				D30E931A28E69F30009AB544 /* TagView */,
-				D30E931B28E69F38009AB544 /* KeyWordView */,
-				D3A2C2CD28E708360093A633 /* ThemaView */,
-				D3A2C2CE28E708470093A633 /* PurchaseReviewView */,
-				D346C61D28EC0C9500DAADE9 /* New Group */,
-				D346C61E28EC0CC900DAADE9 /* Remainder */,
-				63487F3728E2EA5E0033CF32 /* AppDelegate.swift */,
-				63487F3928E2EA5E0033CF32 /* SceneDelegate.swift */,
-				63487F4028E2EA5E0033CF32 /* Assets.xcassets */,
-				63487F4228E2EA5E0033CF32 /* LaunchScreen.storyboard */,
-				63487F4528E2EA5E0033CF32 /* Info.plist */,
-			);
-			path = "K-Keyboard";
 			sourceTree = "<group>";
 		};
 		B035822928ECFDE3002113F0 /* Recovered References */ = {
@@ -506,77 +602,6 @@
 			path = Shortcut;
 			sourceTree = "<group>";
 		};
-		D30E931A28E69F30009AB544 /* TagView */ = {
-			isa = PBXGroup;
-			children = (
-				D30E931828E69F19009AB544 /* TagView.swift */,
-				D3A4761528E56CDA003CA79A /* TagCollectionViewCell.swift */,
-			);
-			path = TagView;
-			sourceTree = "<group>";
-		};
-		D30E931B28E69F38009AB544 /* KeyWordView */ = {
-			isa = PBXGroup;
-			children = (
-				D30E931C28E69F73009AB544 /* KeyWordView.swift */,
-				D3A2C2CB28E6EE000093A633 /* KeyWordViewCell.swift */,
-				D3D272BA28E8010A00BC6392 /* KeyWordModel.swift */,
-			);
-			path = KeyWordView;
-			sourceTree = "<group>";
-		};
-		D346C61D28EC0C9500DAADE9 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-				D346C61B28EBEB3D00DAADE9 /* ButtonViewView.swift */,
-				D325D90728E95D7600DFD0A1 /* ButtonView.swift */,
-			);
-			path = "New Group";
-			sourceTree = "<group>";
-		};
-		D346C61E28EC0CC900DAADE9 /* Remainder */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Remainder;
-			sourceTree = "<group>";
-		};
-		D3A2C2CD28E708360093A633 /* ThemaView */ = {
-			isa = PBXGroup;
-			children = (
-				D3D272B628E70D9C00BC6392 /* ThemaView.swift */,
-				D325D90528E9290700DFD0A1 /* ThemaCollectionViewCell.swift */,
-				D31AF13628EA96DA00BEE422 /* themView.swift */,
-			);
-			path = ThemaView;
-			sourceTree = "<group>";
-		};
-		D3A2C2CE28E708470093A633 /* PurchaseReviewView */ = {
-			isa = PBXGroup;
-			children = (
-				D3D272BC28E8175300BC6392 /* PurchaseReviewView.swift */,
-				D3D272BF28E8200D00BC6392 /* PurchaseReviewTableViewCell.swift */,
-				D37DE32528EA80F7008B1A2A /* PurchasReviewModel.swift */,
-			);
-			path = PurchaseReviewView;
-			sourceTree = "<group>";
-		};
-		D3A4761928E5A5E1003CA79A /* KeyboardImageView */ = {
-			isa = PBXGroup;
-			children = (
-				D30E931628E5B27B009AB544 /* KeyboardImageView.swift */,
-			);
-			path = KeyboardImageView;
-			sourceTree = "<group>";
-		};
-		D3D272BE28E8191A00BC6392 /* MainView */ = {
-			isa = PBXGroup;
-			children = (
-				63487F3B28E2EA5E0033CF32 /* MainViewController.swift */,
-			);
-			path = MainView;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -696,8 +721,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63487F4428E2EA5E0033CF32 /* LaunchScreen.storyboard in Resources */,
-				63487F4128E2EA5E0033CF32 /* Assets.xcassets in Resources */,
+				46AD492D28F111180049D48F /* Assets.xcassets in Resources */,
+				46AD492E28F111180049D48F /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -758,6 +783,7 @@
 				B067302B28EE73B3002B6E66 /* ReturnViewModel.swift in Sources */,
 				B05F4CBA28ED01F000562C38 /* Phoneme.swift in Sources */,
 				B05F4CBC28ED01F000562C38 /* Syllable.swift in Sources */,
+				46AD494628F111D30049D48F /* ShortcutPopupViewModel.swift in Sources */,
 				B067302428EE73A6002B6E66 /* FrequentlyUsedWordsMainView.swift in Sources */,
 				B067301F28EE739A002B6E66 /* ToolBarButtonView.swift in Sources */,
 				B067303128EE7401002B6E66 /* SpaceView.swift in Sources */,
@@ -765,11 +791,14 @@
 				B05F4CC628ED01F000562C38 /* ReturnView.swift in Sources */,
 				B067302328EE73A4002B6E66 /* FrequentlyUsedWordsListCell.swift in Sources */,
 				B067302A28EE73B3002B6E66 /* ShiftViewModel.swift in Sources */,
+				46AD494728F111D60049D48F /* ShortcutButtonViewModel.swift in Sources */,
 				B05F4CCA28ED01F000562C38 /* PhonemeView.swift in Sources */,
 				B067302528EE73AC002B6E66 /* ToolBarViewModel.swift in Sources */,
+				46AD494828F111DE0049D48F /* ShortcutButtonView.swift in Sources */,
 				B067302128EE739F002B6E66 /* FrequentlyUsedWordsListView.swift in Sources */,
 				B05AA9E528ED019800EB2CF3 /* UIColor+Extension.swift in Sources */,
 				B067302228EE73A1002B6E66 /* FrequentlyUsedWordsHeaderView.swift in Sources */,
+				46AD494528F111C40049D48F /* ShortcutPopupView.swift in Sources */,
 				B067302628EE73AE002B6E66 /* ToolBarButtonViewModel.swift in Sources */,
 				B05F4CBE28ED01F000562C38 /* UITextDocumentProxy+Extension.swift in Sources */,
 				B067303328EE74F3002B6E66 /* MainViewModelTests.swift in Sources */,
@@ -777,12 +806,15 @@
 				B067302E28EE73BC002B6E66 /* FrequentlyUsedWordsViewModel.swift in Sources */,
 				B067302928EE73B3002B6E66 /* SpaceViewModel.swift in Sources */,
 				466DA3A828E7D700005E77DD /* UnitTests.swift in Sources */,
+				46AD494928F111ED0049D48F /* ShortcutView.swift in Sources */,
 				B067301928EE57A2002B6E66 /* NSObject+Extension.swift in Sources */,
 				B05F4CB828ED01F000562C38 /* PhonemeViewModel.swift in Sources */,
 				B05AA9E828ED019800EB2CF3 /* UIFont+Extensions.swift in Sources */,
 				B067303028EE73D6002B6E66 /* KeyboardView.swift in Sources */,
 				B05F4CC828ED01F000562C38 /* MainViewController.swift in Sources */,
+				46AD494428F111B60049D48F /* FrequentlyUsedWordsBottomView.swift in Sources */,
 				B05F4CC028ED01F000562C38 /* ShiftView.swift in Sources */,
+				46AD494A28F112040049D48F /* ShortcutViewModel.swift in Sources */,
 				B067302F28EE73BE002B6E66 /* MainViewModel.swift in Sources */,
 				B05F4CB628ED01F000562C38 /* KeyboardViewModel.swift in Sources */,
 				466DA3AF28E7D707005E77DD /* SyllableTests.swift in Sources */,
@@ -799,26 +831,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D31AF13728EA96DA00BEE422 /* themView.swift in Sources */,
-				D3D272C028E8200D00BC6392 /* PurchaseReviewTableViewCell.swift in Sources */,
-				D37DE32628EA80F7008B1A2A /* PurchasReviewModel.swift in Sources */,
 				B05AA9E328ED019800EB2CF3 /* UIColor+Extension.swift in Sources */,
-				D325D90628E9290700DFD0A1 /* ThemaCollectionViewCell.swift in Sources */,
-				D325D90828E95D7600DFD0A1 /* ButtonView.swift in Sources */,
-				D3D272B728E70D9C00BC6392 /* ThemaView.swift in Sources */,
-				D3A2C2CC28E6EE000093A633 /* KeyWordViewCell.swift in Sources */,
-				D3D272BB28E8010B00BC6392 /* KeyWordModel.swift in Sources */,
+				46AD493E28F111190049D48F /* MainViewController.swift in Sources */,
+				46AD493428F111190049D48F /* KeyboardImageView.swift in Sources */,
+				46AD493528F111190049D48F /* PurchaseReviewView.swift in Sources */,
+				46AD493F28F111190049D48F /* KeyWordView.swift in Sources */,
 				B05AA9E628ED019800EB2CF3 /* UIFont+Extensions.swift in Sources */,
-				D30E931D28E69F73009AB544 /* KeyWordView.swift in Sources */,
-				D30E931928E69F19009AB544 /* TagView.swift in Sources */,
-				63487F3C28E2EA5E0033CF32 /* MainViewController.swift in Sources */,
+				46AD493828F111190049D48F /* PurchaseReviewTableViewCell.swift in Sources */,
+				46AD492C28F111180049D48F /* ButtonView.swift in Sources */,
+				46AD493928F111190049D48F /* ContentSizedCollectionView.swift in Sources */,
+				46AD492A28F111180049D48F /* PopView.swift in Sources */,
+				46AD493728F111190049D48F /* PurchaseReviewTablewView.swift in Sources */,
+				46AD494028F111190049D48F /* KeyWordModel.swift in Sources */,
+				46AD493228F111190049D48F /* WantView.swift in Sources */,
+				46AD493128F111180049D48F /* LoveView.swift in Sources */,
+				46AD494128F111190049D48F /* KeyWordViewCell.swift in Sources */,
+				46AD493C28F111190049D48F /* TagView.swift in Sources */,
+				46AD493328F111190049D48F /* GoodView.swift in Sources */,
+				46AD493B28F111190049D48F /* TagCollectionViewCell.swift in Sources */,
+				46AD493028F111180049D48F /* CheerView.swift in Sources */,
+				46AD492B28F111180049D48F /* PurchaseAlertViewController.swift in Sources */,
+				46AD493A28F111190049D48F /* LeftAlignedCollectionViewLayout.swift in Sources */,
+				46AD494328F111190049D48F /* SceneDelegate.swift in Sources */,
+				46AD492F28F111180049D48F /* ThemaView.swift in Sources */,
+				46AD493D28F111190049D48F /* AppDelegate.swift in Sources */,
+				46AD493628F111190049D48F /* PurchasReviewModel.swift in Sources */,
 				B05AA9E928ED019800EB2CF3 /* UIStackView+Extension.swift in Sources */,
-				63487F3828E2EA5E0033CF32 /* AppDelegate.swift in Sources */,
-				D3A4761628E56CDA003CA79A /* TagCollectionViewCell.swift in Sources */,
-				D30E931728E5B27B009AB544 /* KeyboardImageView.swift in Sources */,
-				63487F3A28E2EA5E0033CF32 /* SceneDelegate.swift in Sources */,
-				D346C61C28EBEB3D00DAADE9 /* ButtonViewView.swift in Sources */,
-				D3D272BD28E8175300BC6392 /* PurchaseReviewView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -838,10 +876,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		63487F4228E2EA5E0033CF32 /* LaunchScreen.storyboard */ = {
+		46AD490C28F111180049D48F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				63487F4328E2EA5E0033CF32 /* Base */,
+				46AD490D28F111180049D48F /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -906,7 +944,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = me.codecamper.UnitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -924,7 +962,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = me.codecamper.UnitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1064,6 +1102,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1092,6 +1131,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
