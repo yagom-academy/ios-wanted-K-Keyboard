@@ -41,6 +41,11 @@ final class ThemeViewController: UIViewController {
 
         removeKeyboardNotificationObserver()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let popUpViewController = segue.destination as? PopUpViewController else { return }
+        popUpViewController.delegate = self
+    }
 
     // MARK: Functions
 
@@ -55,7 +60,7 @@ final class ThemeViewController: UIViewController {
             collectionView.topAnchor.constraint(equalTo: view.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: toolbar.topAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: toolbar.topAnchor)
         ])
     }
     
@@ -119,10 +124,6 @@ final class ThemeViewController: UIViewController {
     @IBAction
     private func didTapPruchaseAndSaveButton() {
         if !isPurchased {
-            isPurchased = true
-            reviewTextField.isHidden = false
-            purchaseOrSaveButton.setTitle("작성", for: .normal)
-            purchaseInformationView.removeFromSuperview()
             performSegue(withIdentifier: "showPopUpView", sender: nil)
         } else {
             didTapSaveButton()
@@ -235,5 +236,14 @@ extension ThemeViewController {
             )
             supplementaryView.updateUI(with: owner)
         }
+    }
+}
+
+extension ThemeViewController: PopUpViewControllerDelegate {
+    func didTapChargeButton() {
+        isPurchased = true
+        reviewTextField.isHidden = false
+        purchaseInformationView.removeFromSuperview()
+        purchaseOrSaveButton.setTitle("작성", for: .normal)
     }
 }

@@ -145,10 +145,8 @@ final class ReviewCell: UICollectionViewCell {
         nickNameLabel.text = item.nickName
         reviewLabel.text = item.content
         ownerLabel.isHidden = !item.isOwner
-        // TODO: - 시간계산하기 (현재시간 - 작성시간)
-        let formatter = DateFormatter()
-        formatter.dateFormat = "mm분"
-        timeLabel.text = formatter.string(from: Date())
+        let timeInterval: Double = item.time.distance(to: Date())
+        timeLabel.text = String(Int(round(timeInterval))) + "초"
     }
 
 }

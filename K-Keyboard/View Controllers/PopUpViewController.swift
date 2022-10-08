@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol PopUpViewControllerDelegate: AnyObject {
+    func didTapChargeButton()
+}
+
 class PopUpViewController: UIViewController {
+    weak var delegate: PopUpViewControllerDelegate?
+    
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     @IBOutlet weak var chargeButton: UIButton!
@@ -24,6 +30,7 @@ class PopUpViewController: UIViewController {
     }
     
     @IBAction func didTapChargeButton(_ sender: UIButton) {
+        delegate?.didTapChargeButton()
         dismiss(animated: false)
     }
 }

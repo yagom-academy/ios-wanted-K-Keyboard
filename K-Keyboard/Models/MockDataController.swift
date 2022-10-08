@@ -37,9 +37,10 @@ class MockDataController {
         // banner
         .banner(.init(imagePath: "banner.png")),
         // review
-        .review(.init(content: "구매해주셔서 감사합니다💖", nickName: "크리에이터명", time: Date(), isOwner: true)),
-        .review(.init(content: "아 진짜 귀여워요!", nickName: "o달빔o", time: Date(), isOwner: false)),
-        .review(.init(content: "아 진짜 귀여워요! 야호 야호 야호 야호 야호 야호 야호 야호 야호", nickName: "o달빔o", time: Date(), isOwner: false))
+        .review(.init(content: "구매해주셔서 감사합니다💖", nickName: "크리에이터명", time: Date(timeInterval: -50.0, since: Date()), isOwner: true)),
+        .review(.init(content: "아 진짜 귀여워요!", nickName: "o달빔o", time: Date(timeInterval: -30.0, since: Date()), isOwner: false)),
+        .review(.init(content: "아 진짜 귀여워요!", nickName: "o달빔o", time: Date(timeInterval: -10.0, since: Date()), isOwner: false)),
+        .review(.init(content: "아 진짜 귀여워요!", nickName: "o달빔o", time: Date(timeInterval: -5.0, since: Date()), isOwner: false))
     ]
 
     func items(for section: Section) -> [Item] {
