@@ -48,6 +48,8 @@
 		D86269CE28EC08AF00987119 /* NoticeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86269CD28EC08AF00987119 /* NoticeCell.swift */; };
 		C124A7EC28E6D5E500372C51 /* BottomReplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C124A7EB28E6D5E500372C51 /* BottomReplyView.swift */; };
 		C124A7EE28E6D5F300372C51 /* BottomReplyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C124A7ED28E6D5F300372C51 /* BottomReplyView.xib */; };
+		C124A7D628E5718100372C51 /* Popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C124A7D528E5718100372C51 /* Popup.swift */; };
+		C124A7D828E5719000372C51 /* Popup.xib in Resources */ = {isa = PBXBuildFile; fileRef = C124A7D728E5719000372C51 /* Popup.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +96,8 @@
 		D86269CD28EC08AF00987119 /* NoticeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeCell.swift; sourceTree = "<group>"; };
 		C124A7EB28E6D5E500372C51 /* BottomReplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomReplyView.swift; sourceTree = "<group>"; };
 		C124A7ED28E6D5F300372C51 /* BottomReplyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomReplyView.xib; sourceTree = "<group>"; };
+		C124A7D528E5718100372C51 /* Popup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Popup.swift; sourceTree = "<group>"; };
+		C124A7D728E5719000372C51 /* Popup.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Popup.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,6 +269,8 @@
 				C124A7E928E6D16800372C51 /* BottomPerchaseView.xib */,
 				C124A7EB28E6D5E500372C51 /* BottomReplyView.swift */,
 				C124A7ED28E6D5F300372C51 /* BottomReplyView.xib */,
+                C124A7D528E5718100372C51 /* Popup.swift */,
+                C124A7D728E5719000372C51 /* Popup.xib */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -322,8 +328,8 @@
 				D86269D228EC1D3900987119 /* TagCell */,
 			);
 			path = CustomTableViewCell;
-			sourceTree = "<group>";
-		};
+            sourceTree = "<group>";
+        };
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -390,6 +396,7 @@
 				D861628628EC1F7800E29E3B /* TagItemCell.xib in Resources */,
 				D861628228EC1F4A00E29E3B /* TagCell.xib in Resources */,
 				D8104FE128E5C76F007E18D5 /* NoticeCell.xib in Resources */,
+				C124A7D828E5719000372C51 /* Popup.xib in Resources */,
 				63487F3F28E2EA5E0033CF32 /* Main.storyboard in Resources */,
 				C124A7E528E59D9D00372C51 /* NotoSansKR-Bold.otf in Resources */,
 				D8104FDB28E5A4B7007E18D5 /* ItemCell.xib in Resources */,
@@ -429,6 +436,7 @@
 				C10E992F28EC32DD00B9B5FF /* TableSectionHeaderView.swift in Sources */,
 				D861628928EC21A300E29E3B /* UIView+Extention.swift in Sources */,
 				C119B52028E7D46700237D02 /* AdsData.swift in Sources */,
+				C124A7D628E5718100372C51 /* Popup.swift in Sources */,
 				63487F3A28E2EA5E0033CF32 /* SceneDelegate.swift in Sources */,
 				C119B51E28E7D40500237D02 /* AboutThemesData.swift in Sources */,
 				C124A7EC28E6D5E500372C51 /* BottomReplyView.swift in Sources */,
