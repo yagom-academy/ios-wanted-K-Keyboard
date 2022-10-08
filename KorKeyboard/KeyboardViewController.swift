@@ -28,23 +28,16 @@ class KeyboardViewController: UIInputViewController {
         setConstraints()
 
         // Perform custom UI setup here
-//        self.nextKeyboardButton = UIButton(type: .system)
-//
-//        self.nextKeyboardButton.setTitle(NSLocalizedString("Next Keyboard", comment: "Title for 'Next Keyboard' button"), for: [])
-//        self.nextKeyboardButton.sizeToFit()
-//        self.nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = false
-//
-//        self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
-//
-//        self.view.addSubview(self.nextKeyboardButton)
-//
-//        self.nextKeyboardButton.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-//        self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        self.keyboardView.nextButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
+        
+        if !self.needsInputModeSwitchKey {
+            self.keyboardView.shortcutButton.leadingAnchor.constraint(equalTo: self.keyboardView.leadingAnchor, constant: 4).isActive = true
+        }
     }
     
     override func viewWillLayoutSubviews() {
-//        self.nextKeyboardButton.isHidden = !self.needsInputModeSwitchKey
-//        super.viewWillLayoutSubviews()
+        self.keyboardView.nextButton.isHidden = !self.needsInputModeSwitchKey
+        super.viewWillLayoutSubviews()
     }
     
     override func textWillChange(_ textInput: UITextInput?) {
