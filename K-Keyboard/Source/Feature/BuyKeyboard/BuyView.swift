@@ -407,6 +407,7 @@ class BuyView: UIView {
     let emojiStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
         stackView.spacing = 30
         return stackView
     }()

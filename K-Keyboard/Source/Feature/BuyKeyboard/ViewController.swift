@@ -133,12 +133,12 @@ class ViewController: UIViewController {
             comment.append(value)
             height += 120
             configure()
-            print(height)
         }
+        view.endEditing(true)
         buyView.reviewLabel.text = "구매 리뷰 \(comment.count)"
         buyView.commentTextField.text = ""
         buyView.commentTextField.placeholder = "댓글을 남겨보세요!"
-        commentTableView.reloadData() //이거 이렇게 해도 되는건가?
+        commentTableView.reloadData()
     }
 }
 
@@ -162,11 +162,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 // 키보드 숨기기
-extension UIViewController {
+extension ViewController {
     func hideKeyboardWhenTappedAround() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = true
+        self.buyView.addGestureRecognizer(tap)
     }
     
     @objc func dismissKeyboard() {
