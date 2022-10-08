@@ -179,7 +179,7 @@ class BuyModalViewController: UIViewController, ViewRepresent {
     @objc func purchase() {
         UserDefaults.standard.set(true, forKey: "isPurchased")
         NotificationCenter.default.post(name: NSNotification.Name("purchased"), object: nil, userInfo: nil)
-        self.dismiss(animated: false)
+        self.dismiss(animated: true)
     }
     
     @objc func backgroundTabbed(sender: UITapGestureRecognizer) {

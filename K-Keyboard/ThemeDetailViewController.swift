@@ -64,6 +64,8 @@ class ThemeDetailViewController: UIViewController {
     }
     
     @objc func purchased() {
+        mainView.reviewBarView.isHidden = false
+        mainView.purchaseBarView.isHidden = true
         mainView.tableView.reloadData()
     }
     
@@ -165,6 +167,8 @@ extension ThemeDetailViewController: UITableViewDataSource, UITableViewDelegate 
         case 4:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: BannerTableViewCell.identifier) as? BannerTableViewCell else { return .init() }
             cell.bannerImageView.image = UIImage(named: "banner")!
+            cell.keywordLabel.text = UserDefaults.standard.bool(forKey: "isPurchased") ? "리뷰 작성 \(reviewSample.count)" : "구매 리뷰 \(reviewSample.count)"
+//            cell.keywordLabel.asFontColor(targetString: "\(reviewSample.count)", font: nil, color: UIColor.customPink())
             return cell
 //        case 5:
 //            guard let cell = tableView.dequeueReusableCell(withIdentifier: ReviewHeaderTableViewCell.identifier) as? ReviewHeaderTableViewCell else { return .init() }
