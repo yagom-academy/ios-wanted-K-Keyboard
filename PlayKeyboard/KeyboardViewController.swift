@@ -12,7 +12,7 @@ class KeyboardViewController: UIInputViewController {
     var boolvalue: Bool = true
     var lastCharacters: [String] = []
     var buttoncount = 0
-
+    
     var KeyboardView: KeyboardView!
     
     
@@ -95,7 +95,7 @@ class KeyboardViewController: UIInputViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         makeRoundCorners()
-      
+        
         let nib = UINib(nibName: "MorseKeyboardView", bundle: nil)
         let objects = nib.instantiate(withOwner: nil, options: nil)
         KeyboardView = objects.first as? KeyboardView
@@ -237,7 +237,7 @@ class KeyboardViewController: UIInputViewController {
                         if let firstCharacter = lastCharacters.first {
                             if firstCharacter == lastCharacter {
                                 deleteCharacterBeforeCursor()
-                                lastCharacters.removeLast() //ㅗ ㅏ  ㅏ를 합쳐주지못했었다
+                                lastCharacters.removeLast() 
                                 lastCharacters.append("ㅝ")
                                 textDocumentProxy.insertText("ㅝ")
                                 return
@@ -483,17 +483,12 @@ class KeyboardViewController: UIInputViewController {
         lastCharacters.append(newCharacter)
         textDocumentProxy.insertText(newCharacter)
     }
-    
     @objc func deleteCharacterBeforeCursor() {
         self.textDocumentProxy.deleteBackward()
         UIDevice.current.playInputClick()
     }
-    
     func characterBeforeCursor() -> String? {
         return nil
     }
-    
-    
-    
 }
 
