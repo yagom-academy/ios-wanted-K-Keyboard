@@ -11,6 +11,8 @@ class ThemeDetailViewController: UIViewController {
     
     let mainView = ThemeDetailView()
     
+    var reviewSample = [ReviewDataModel]()
+    
     struct ReviewDataModel {
         var isCreator: Bool = false
         var profileImage: UIImage = UIImage(named: "profile")!
@@ -28,138 +30,105 @@ class ThemeDetailViewController: UIViewController {
         setup()
     }
     
+    @objc private func keyboardWillShow(_ notification: Notification) {
+        guard let userInfo = notification.userInfo,
+            let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else {
+                return
+        }
+        let contentInset = UIEdgeInsets(
+                top: 0.0,
+                left: 0.0,
+                bottom: keyboardFrame.size.height - 30,
+                right: 0.0)
+
+        mainView.tableView.contentInset = contentInset
+        mainView.tableView.scrollIndicatorInsets = contentInset
+    }
+
+    @objc private func keyboardWillHide() {
+        let contentInset = UIEdgeInsets.zero
+
+        mainView.tableView.contentInset = contentInset
+        mainView.tableView.scrollIndicatorInsets = contentInset
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    @objc func purchased() {
+        mainView.tableView.reloadData()
+    }
+    
+    @objc func addReview(_ notification: Notification) {
+        let review = notification.object as! String
+        reviewSample.insert(ReviewDataModel(name: "유저", content: review, writeBefore: "1초전"), at: 1)
+        mainView.tableView.reloadData()
+        view.endEditing(true)
+    }
+    
     func setup() {
+        
+        UserDefaults.standard.set(0, forKey: "gem")
+        UserDefaults.standard.set(false, forKey: "isPurchased")
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil)
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil)
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(purchased),
+            name: Notification.Name("purchased"),
+            object: nil)
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(addReview(_:)),
+            name: Notification.Name("addReview"),
+            object: nil)
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        
         mainView.tableView.delegate = self
         mainView.tableView.dataSource = self
-        tableView.separatorStyle = .none
         mainView.tableView.rowHeight = UITableView.automaticDimension
+        mainView.tableView.backgroundColor = .systemBackground
         mainView.tableView.register(DescriptionTableViewCell.self, forCellReuseIdentifier: DescriptionTableViewCell.identifier)
         mainView.tableView.register(TagTableViewCell.self, forCellReuseIdentifier: TagTableViewCell.identifier)
         mainView.tableView.register(KeywordTableViewCell.self, forCellReuseIdentifier: KeywordTableViewCell.identifier)
-        mainView.tableView.register(ReviewTableViewCell.self, forCellReuseIdentifier: ReviewTableViewCell.identifier)
-        mainView.tableView.register(BannerTableViewCell.self, forCellReuseIdentifier: BannerTableViewCell.identifier)
         mainView.tableView.register(EvaluationTableViewCell.self, forCellReuseIdentifier: EvaluationTableViewCell.identifier)
+        mainView.tableView.register(BannerTableViewCell.self, forCellReuseIdentifier: BannerTableViewCell.identifier)
+        mainView.tableView.register(ReviewTableViewCell.self, forCellReuseIdentifier: ReviewTableViewCell.identifier)
+        mainView.tableView.register(ReviewHeaderTableViewCell.self, forCellReuseIdentifier: ReviewHeaderTableViewCell.identifier)
+        
 
-        reviewSample.append(ReviewDataModel(isCreator: true, name: "몰랑_크리에이터", content: "구매해주셔서 감사합니다♥", writeBefore: "12초"))
-        reviewSample.append(ReviewDataModel(name: "유저1", content: "정말 귀여워요..", writeBefore: "1시간"))
+        reviewSample.append(ReviewDataModel(isCreator: true, name: "몰랑_크리에이터", content: "구매해주셔서 감사합니다♥", writeBefore: "1일전"))
+        reviewSample.append(ReviewDataModel(name: "유저1", content: "정말 귀여워요..", writeBefore: "30초"))
         reviewSample.append(ReviewDataModel(name: "유저1", content: "귀여워귀여워귀여워귀여워귀여워귀여워귀여워귀여워귀여워귀여워귀여워귀여워귀여워귀여워", writeBefore: "1분"))
-        reviewSample.append(ReviewDataModel(name: "유저1", content: "맘에드네요!", writeBefore: "1시간"))
-        reviewSample.append(ReviewDataModel(name: "유저1", content: "정말 귀여워요..", writeBefore: "1분"))
-        reviewSample.append(ReviewDataModel(name: "유저1", content: "정말 귀여워요..", writeBefore: "1분"))
-        reviewSample.append(ReviewDataModel(name: "유저1", content: "정말 귀여워요..", writeBefore: "1분"))
-        reviewSample.append(ReviewDataModel(name: "유저1", content: "정말 귀여워요..", writeBefore: "1분"))
-        reviewSample.append(ReviewDataModel(name: "유저1", content: "정말 귀여워요..", writeBefore: "1분"))
-        reviewSample.append(ReviewDataModel(name: "유저1", content: "정말 귀여워요..", writeBefore: "1분"))
+        reviewSample.append(ReviewDataModel(name: "유저1", content: "맘에드네요!", writeBefore: "1분"))
+        reviewSample.append(ReviewDataModel(name: "유저1", content: "정말 귀여워요..", writeBefore: "10분"))
+        reviewSample.append(ReviewDataModel(name: "유저1", content: "정말 귀여워요..", writeBefore: "23분"))
+        reviewSample.append(ReviewDataModel(name: "유저1", content: "정말 귀여워요..", writeBefore: "25분"))
+        reviewSample.append(ReviewDataModel(name: "유저1", content: "정말 귀여워요..", writeBefore: "25분"))
+        reviewSample.append(ReviewDataModel(name: "유저1", content: "정말 귀여워요..", writeBefore: "25분"))
+        reviewSample.append(ReviewDataModel(name: "유저1", content: "정말 귀여워요..", writeBefore: "25분"))
     }
 }
 
 extension ThemeDetailViewController: UITableViewDataSource, UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        switch section {
-        case 0:
-
-            let titleLabel = UILabel()
-            titleLabel.text = "이 테마를 어떻게 생각하나요?"
-            titleLabel.font =  UIFont.systemFont(ofSize: 16)
-            titleLabel.textColor = UIColor(red: 66/255, green: 68/255, blue: 76/255, alpha: 1.0)
-
-//            let sectionView = UIView()
-//            sectionView.backgroundColor = .blue
-//            sectionView.addSubview(titleLabel)
-//
-//            var const = [NSLayoutConstraint]()
-//            defer {
-//                DispatchQueue.main.async {
-//                    NSLayoutConstraint.activate(const)
-//                }
-//            }
-//
-//            const += [
-//                sectionView.widthAnchor.constraint(equalToConstant: tableView.frame.width),
-//                titleLabel.topAnchor.constraint(equalTo: sectionView.topAnchor, constant: 0),
-//                titleLabel.leadingAnchor.constraint(equalTo: sectionView.leadingAnchor, constant: 16),
-//                titleLabel.trailingAnchor.constraint(equalTo: sectionView.trailingAnchor, constant: -16),
-//            ]
-//
-//            sectionView.translatesAutoresizingMaskIntoConstraints = false
-//            titleLabel.translatesAutoresizingMaskIntoConstraints = false
-
-            return titleLabel
-        case 1:
-            return nil
-//        case 2:
-//            let titleLabel = UILabel()
-//            titleLabel.text = "리뷰 작성 \(reviewSample.count)"
-//            titleLabel.font =  UIFont.systemFont(ofSize: 16)
-//            titleLabel.textColor = UIColor(red: 66/255, green: 68/255, blue: 76/255, alpha: 1.0)
-//
-//            let noticeLabel = UILabel()
-//            noticeLabel.text = "테마를 구매해야 리뷰를 남길 수 있어요."
-//            noticeLabel.font =  UIFont.systemFont(ofSize: 14)
-//            noticeLabel.textColor = UIColor(red: 80/255, green: 83/255, blue: 92/255, alpha: 1.0)
-//
-//            let imageView = UIImageView()
-//            imageView.image = UIImage(named: "warn")!
-//            imageView.contentMode = .scaleAspectFit
-//
-//            let dropdownButton = UIButton()
-//            dropdownButton.setImage(UIImage(named: "dropdown")!, for: .normal)
-//
-//            let reviewSectionView = UIView()
-//            reviewSectionView.addSubview(titleLabel)
-//            reviewSectionView.addSubview(noticeLabel)
-//            reviewSectionView.addSubview(imageView)
-//            reviewSectionView.addSubview(dropdownButton)
-//
-//            reviewSectionView.translatesAutoresizingMaskIntoConstraints = false
-//            titleLabel.translatesAutoresizingMaskIntoConstraints = false
-//            noticeLabel.translatesAutoresizingMaskIntoConstraints = false
-//            imageView.translatesAutoresizingMaskIntoConstraints = false
-//            dropdownButton.translatesAutoresizingMaskIntoConstraints = false
-//
-//            var const = [NSLayoutConstraint]()
-//            defer {
-//                DispatchQueue.main.async {
-//                    NSLayoutConstraint.activate(const)
-//                }
-//            }
-//            const += [
-//                reviewSectionView.widthAnchor.constraint(equalToConstant: tableView.frame.width),
-//                titleLabel.topAnchor.constraint(equalTo: reviewSectionView.topAnchor, constant: 0),
-//                titleLabel.leadingAnchor.constraint(equalTo: reviewSectionView.leadingAnchor, constant: 16),
-//                titleLabel.trailingAnchor.constraint(equalTo: reviewSectionView.trailingAnchor, constant: -16),
-//                imageView.widthAnchor.constraint(equalToConstant: 13.33),
-//                imageView.heightAnchor.constraint(equalToConstant: 13.33),
-//                imageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 18.33),
-//                imageView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor, constant: 0),
-//                imageView.bottomAnchor.constraint(equalTo: reviewSectionView.bottomAnchor, constant: 0),
-//                noticeLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 11.3),
-//                noticeLabel.centerYAnchor.constraint(equalTo: imageView.centerYAnchor, constant: 0),
-//                dropdownButton.trailingAnchor.constraint(equalTo: reviewSectionView.trailingAnchor, constant: -16),
-//                dropdownButton.centerYAnchor.constraint(equalTo: imageView.centerYAnchor, constant: 0),
-//            ]
-//            return reviewSectionView
-        default:
-            let label = UILabel()
-            label.text = "Section"
-            label.backgroundColor = .red
-            return label
-        }
-        
-//        let label = UILabel()
-//        label.text = "Section"
-//        label.backgroundColor = .red
-//        return label
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5 // + 리뷰셀 개수만큼
+        return 6 + reviewSample.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -176,29 +145,32 @@ extension ThemeDetailViewController: UITableViewDataSource, UITableViewDelegate 
             guard let cell = tableView.dequeueReusableCell(withIdentifier: KeywordTableViewCell.identifier) as? KeywordTableViewCell else { return .init() }
             return cell
         case 3:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "EvaluationTableViewCell") as! EvaluationTableViewCell else { return .init() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: EvaluationTableViewCell.identifier) as? EvaluationTableViewCell else { return .init() }
             return cell
         case 4:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "BannerTableViewCell") as! BannerTableViewCell else { return .init() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: BannerTableViewCell.identifier) as? BannerTableViewCell else { return .init() }
             cell.bannerImageView.image = UIImage(named: "banner")!
             return cell
-        case 5: 
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewTableViewCell") as! ReviewTableViewCell else { return .init() }
-            let review = reviewSample[indexPath.row]
+        case 5:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: ReviewHeaderTableViewCell.identifier) as? ReviewHeaderTableViewCell else { return .init() }
+            cell.isHidden = !UserDefaults.standard.bool(forKey: "isPurchased")
+            return cell
+        default:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: ReviewTableViewCell.identifier) as? ReviewTableViewCell else { return .init() }
+            let review =  reviewSample[indexPath.row - 6]
             cell.profileTagLabel.isHidden = !review.isCreator
             cell.userNameLabel.text = review.name
             cell.profileImageView.image = review.profileImage
             cell.reviewContentLabel.text = review.content
             cell.writeBeforeLabel.text = review.writeBefore
             return cell
-        default:
-            let cell = UITableViewCell()
-            cell.backgroundColor = .blue
-            return cell
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 5 && !UserDefaults.standard.bool(forKey: "isPurchased") {
+            return 0
+        }
         return UITableView.automaticDimension
     }
 }

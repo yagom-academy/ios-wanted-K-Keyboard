@@ -50,7 +50,6 @@ class KeywordTableViewCell: UITableViewCell, ViewRepresent {
         self.selectionStyle = .none
         setupView()
         setupConstraints()
-        
     }
     
     required init?(coder: NSCoder) {

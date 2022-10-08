@@ -9,36 +9,36 @@ import UIKit
 
 class EvaluationTableViewCell: UITableViewCell {
 
-    var rootStackView: UIStackView!
+    static let identifier = "EvaluationTableViewCell"
+    
+    let keywordLabel: UILabel = {
+        let view = UILabel()
+        view.text = "이 테마를 어떻게 생각하나요?"
+        view.textColor = .customBlack()
+        view.font = .NotoSanKR(weight: .Bold, size: 16)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    let rootStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        setupView()
-        
-        self.addSubview(rootStackView)
-        
-        var const = [NSLayoutConstraint]()
-        defer { NSLayoutConstraint.activate(const) }
-        const += [
-            rootStackView.topAnchor.constraint(equalTo: self.topAnchor),
-            rootStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            rootStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            rootStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            
-        ]
+        setup()
+        setupConstraints()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setupView()
     }
     
-    func setupView() {
-        rootStackView = UIStackView()
-        rootStackView.axis = .horizontal
-        rootStackView.distribution = .fillEqually
-        rootStackView.translatesAutoresizingMaskIntoConstraints = false
+    func setup() {
         
         let emojiLabels = ["맘에들어요", "심쿵했어요", "응원해요", "갖고싶어요"]
         let emojies = ["😊", "😍", "😉", "🤣"]
@@ -62,6 +62,25 @@ class EvaluationTableViewCell: UITableViewCell {
             stackView.addArrangedSubview(countLabel)
             rootStackView.addArrangedSubview(stackView)
         }
+        
+        [keywordLabel, rootStackView].forEach {
+            addSubview($0)
+        }
+    }
+    
+    func setupConstraints() {
+        
+        NSLayoutConstraint.activate([
+            
+            keywordLabel.topAnchor.constraint(equalTo: topAnchor),
+            keywordLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            keywordLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            
+            rootStackView.topAnchor.constraint(equalTo: keywordLabel.bottomAnchor, constant: 16),
+            rootStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            rootStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            rootStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -50),
+        ])
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
