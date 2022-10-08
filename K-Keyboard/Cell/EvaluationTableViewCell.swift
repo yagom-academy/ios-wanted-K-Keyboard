@@ -48,14 +48,16 @@ class EvaluationTableViewCell: UITableViewCell {
             let emojiLabel = UILabel()
                 emojiLabel.text = emojies[i]
                 emojiLabel.textAlignment = .center
-                emojiLabel.font = UIFont.systemFont(ofSize: 30)
+                emojiLabel.font = .NotoSanKR(weight: .Regular, size: 30)
             let label = UILabel()
                 label.text = emojiLabels[i]
-                label.font = UIFont.systemFont(ofSize: 12)
+                label.textColor = i == 1 ? .allMainColor() : .allSubDarkGray()
+                label.font = .NotoSanKR(weight: .Regular, size: 12)
                 label.textAlignment = .center
             let countLabel = UILabel()
-                countLabel.text = "0"
-                countLabel.font = UIFont.systemFont(ofSize: 10)
+                countLabel.text = i == 1 ? "1": "0"
+                countLabel.textColor = i == 1 ? .allMainColor() : .allSubDarkGray()
+                countLabel.font = .NotoSanKR(weight: .Regular, size: 10)
                 countLabel.textAlignment = .center
             stackView.addArrangedSubview(emojiLabel)
             stackView.addArrangedSubview(label)
