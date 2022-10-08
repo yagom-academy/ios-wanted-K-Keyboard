@@ -200,8 +200,11 @@
 ## 두 번째 페이지  
 <img width="350" alt="12" src="https://user-images.githubusercontent.com/63276842/194694348-b67c8fba-66fb-40d1-9af6-9866b1fd821b.png"> <img width="350" alt="22" src="https://user-images.githubusercontent.com/63276842/194694342-c7f1be33-983c-4f4f-b6f6-ffa8bab278a8.png">  
 
-### Keyboard
+## 구조 및 상세 설명  
+* Keyboard  
+* Shift, Next Button 구현  
 
+### Keyboard
 - 한글 조합 로직과 다이어그램
 	- 고민한 부분
 		- 조합을 어떤 방식으로 할 것인지가 가장 큰 고민이었다.
@@ -307,7 +310,41 @@
 	```
 	- 스페이스 바는 stack을 비우거나 텍스트 입력 객체에 공백을 삽입한다.
 ***
-### 세 번째 페이지  
+
+### Shift 버튼 기능 구현  
+* `Shift` 입력 시 `ㅂㅈㄷㄱㅅ ㅔㅔ` 를 `ㅃㅉㄸㄲㅆ ㅒㅖ` 로 변경  
+* `ㅂㅈㄷㄱㅅㅛㅕㅑㅐㅔ` 를 담고 있는 `horizontal1` stackView 생성  
+* `ㅃㅉㄸㄲㅆㅛㅕㅑㅒㅖ` 를 담고 있는 `horizontal1Shift` stackVie 생성  
+* `Shift` 버튼 입력에 따라 어떤 `stackView` 를 표시할 지 결정하는 `shiftPressed()` 구현  
+```swift
+@objc func shiftPressed() {
+        if self.isShiftPressed {
+            print("change to X")
+            self.isShiftPressed = false
+            self.horizontal1.isHidden = false
+            self.horizontal1Shift.isHidden = true
+            self.shiftButton.setBackgroundImage(UIImage(systemName: "shift"), for: .normal)
+        } else {
+            print("Shift pressed")
+            self.isShiftPressed = true
+            self.horizontal1.isHidden = true
+            self.horizontal1Shift.isHidden = false
+            self.shiftButton.setBackgroundImage(UIImage(systemName: "shift.fill"), for: .normal)
+        }
+    }
+```
+* `horizontal3` 내부에서 생성된 `shift` 버튼의 색상을 바꿔주기 위해, 리팩토리 진행 (https://github.com/skyqnaqna/ios-wanted-K-Keyboard/pull/10)  
+
+### Next 버튼 (키보드 스위칭) 기능 구현  
+* 키보드 스위칭을 위한 `action` 을 `KorKeyboardView` 의 `nextButton` 에 연결  
+```swift
+self.keyboardView.nextButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
+```
+* 키보드 스위칭 버튼이 필요한 기기들은 `self.needsInputModeSwitchKey` 프로퍼티를 사용하여 분기 처리  
+* 스위칭 버튼이 내장된 기기의 경우, `viewDidLoad` 에서 `KorKeyboardView` 의 `shortcutButton` 가 `keyboardView.leadingAnchor` 에 붙을 수 있도록 구현  
+
+***
+## 세 번째 페이지  
 <img width="350" alt="13" src="https://user-images.githubusercontent.com/63276842/194694423-ed71f1bf-0955-4ba1-b8fd-95642eabc149.png"> <img width="350" alt="14" src="https://user-images.githubusercontent.com/63276842/194694418-b18ee856-ebee-48fd-9613-68de02b8f6c8.png">
 
 #### 키보드 자주 쓰는 말
