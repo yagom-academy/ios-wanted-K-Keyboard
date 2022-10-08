@@ -39,6 +39,7 @@ final class MainViewController: UIViewController {
         self.bottomView.delegate = self
         //keyboard
         self.keyboardSetting()
+        self.mainScrollView.delegate = self
         
     }
     
@@ -141,40 +142,30 @@ extension MainViewController: PopUpViewControllerDelegate {
         bottomView.reviewInputButton.isHidden = false
     }
 }
+
+extension MainViewController: UIScrollViewDelegate {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.bottomViewBottomConstraint.constant = 10
+        self.view.endEditing(true)
+    }
+}
 // MARK: - Keyboard up/down
 extension MainViewController {
     func keyboardSetting() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        scrollViewFold()
-    }
-    
-    private func scrollViewFold() {
-        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MyTapMethod(sender:)))
-        singleTapGestureRecognizer.numberOfTapsRequired = 1
-        singleTapGestureRecognizer.isEnabled = true
-        singleTapGestureRecognizer.cancelsTouchesInView = false
-        mainScrollView.addGestureRecognizer(singleTapGestureRecognizer)
     }
     
     @objc func keyboardWillShow(_ sender: Notification) {
         if let keyboardSize = (sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             UIView.animate(withDuration: 0.3, animations: {
-                let bottomOffset = CGPoint(x: 0, y: self.mainScrollView.contentSize.height - self.mainScrollView.bounds.height + self.mainScrollView.contentInset.bottom + 310)
+                let bottomOffset = CGPoint(x: 0, y: 1300)
                 self.mainScrollView.setContentOffset(bottomOffset, animated: true)
                 self.bottomViewBottomConstraint.constant = keyboardSize.height
                 self.view.layoutIfNeeded()
             })
         }
     }
-    
-    @objc func MyTapMethod(sender: UITapGestureRecognizer) {
-        UIView.animate(withDuration: 0.3, animations: {
-            self.mainScrollView.setContentOffset(CGPoint(x: 0, y: self.mainScrollView.contentSize.height - self.mainScrollView.bounds.height + self.mainScrollView.contentInset.bottom + 10), animated: true)
-            self.bottomViewBottomConstraint.constant = CGFloat(30)
-            self.view.layoutIfNeeded()
-            self.view.endEditing(true)
-        })
-    }
+
 
 }
 
