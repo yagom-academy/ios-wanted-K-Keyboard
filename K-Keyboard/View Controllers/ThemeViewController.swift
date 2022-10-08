@@ -140,6 +140,7 @@ final class ThemeViewController: UIViewController {
             var snapshot = dataSource.snapshot()
             snapshot.appendItems([review], toSection: .review)
             dataSource.apply(snapshot)
+            collectionView.reloadData()
         }
         reviewTextField.clear()
         view.endEditing(true)
