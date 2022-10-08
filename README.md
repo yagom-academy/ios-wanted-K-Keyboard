@@ -1,6 +1,18 @@
-![team1](https://user-images.githubusercontent.com/33388081/194698936-8386e827-4021-4909-84a5-953e5382ba27.jpeg)
-![KakaoTalk_Photo_2022-04-07-14-34-31 004](https://user-images.githubusercontent.com/33388081/194698957-4236e987-1ca2-4248-9659-e72eacecae5c.jpeg)
 
+<table>
+    <tr align="center">
+        <td><B>휘양<B></td>
+        <td><B>keurong<B></td>
+    </tr>
+    <tr align="center">
+        <td width= 170px>
+            <img src="https://user-images.githubusercontent.com/33388081/194698936-8386e827-4021-4909-84a5-953e5382ba27.jpeg" width="60%">
+        </td>
+        <td width= 170px>
+            <img src="https://user-images.githubusercontent.com/33388081/194698957-4236e987-1ca2-4248-9659-e72eacecae5c.jpeg" width="60%">
+        </td>
+    </tr>
+</table>
 
 # ios-wanted-K-Keyboard
 ## 역할 분담 및 앱에서 기여한 부분
