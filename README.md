@@ -13,9 +13,7 @@
 </br>
 
 ## 📁 폴더 구조
-![KakaoTalk_Photo_2022-10-08-12-20-15]()
-
-<img width="330" alt="스크린샷 2022-10-08 오후 12 10 08" src="https://user-images.githubusercontent.com/61138164/194685232-9c3e02ba-0df1-4e89-95bd-0f224dfaa35e.png">
+<img width="335" alt="스크린샷 2022-10-08 오후 4 01 55" src="https://user-images.githubusercontent.com/61138164/194694566-d28a726c-6f77-4be1-a9fa-177653b15d1e.png">
 
 ### Application
 
@@ -53,13 +51,16 @@
 </br>
 
 ### 두 번째 화면
-<img width="250" alt="스크린샷 2022-10-08 오후 12 10 08" src="https://user-images.githubusercontent.com/61138164/194685391-f98ce189-82a4-414a-a7cb-5870e15b3d13.png">
+<img width="250" alt="스크린샷 2022-10-08 오후 12 10 08" src="https://user-images.githubusercontent.com/61138164/194694475-5a4474aa-99ae-435f-a3df-15e7e0e7dbf2.png">
 
 
 </br>
 
 ### 세 번째 화면
-<img width="250" alt="스크린샷 2022-10-08 오후 12 10 08" src="https://user-images.githubusercontent.com/61138164/194685402-3a18bb15-13cc-4ff0-a224-83b5b2938d26.png">
+<div>
+<img width="250" alt="스크린샷 2022-10-08 오후 12 10 08" src="https://user-images.githubusercontent.com/61138164/194694440-c761ca86-d228-4b76-a0c0-bbd9ce53d3df.png">
+<img width="250" alt="스크린샷 2022-10-08 오후 12 10 08" src="https://user-images.githubusercontent.com/61138164/194694458-4f435f67-504f-4d9c-a436-301a8abebb09.png">
+</div>
 
 </br>
 
@@ -106,19 +107,17 @@
 </br>
 
 ## 🧾 한글 오토마타 구현
+- KoreanAutomata : 입력로직, 삭제로직 구현
+- KeyboardView : 키보드 레이아웃
+- KeyButton : 키보드의 각 버튼
+- KeyboardState: 키보드의 상태 정의
 
 ### 입력 로직
+- 5개의 상태로 나누어 구현하였습니다.
+<img width="437" alt="스크린샷 2022-10-08 오후 3 47 43" src="https://user-images.githubusercontent.com/61138164/194694040-5ebd2ed0-7cf6-424c-9c75-d230862dedad.png">
+
 
 ```
-5개의 상태로 나누어 구현하였습니다.
-
-enum KeyboardState {
-    case start              // Space 키 입력한 상태 or 처음 시작 상태
-    case firstConsonantOnly // 자음만 있는 상태 ex) ㄱ, ㄲ
-    case vowelOnly          // 모음만 있는 상태 ex) ㅓ, ㅘ
-    case consonantPlusVowel // 자음 + 모음 ex) 가, 과
-    case finalConsonant     // 자음 + 모음 + 자음 ex) 강, 갏, 괋
-}
 
 1) Start : Space 키 입력한 상태 or 처음
 입력된 글자가 자음
@@ -126,6 +125,8 @@ enum KeyboardState {
 
 입력된 글자가 모음
 - vowelOnly 상태, 입력한 글자 추가
+
+---------------------------------------
 
 2) FirstConsonantOnly : 초성만 있는 상태
 입력된 글자가 자음 (자음 + 자음 == 된소리자음)
@@ -140,6 +141,8 @@ enum KeyboardState {
 - 전 값은 초성이기 때문에 함께 합쳐 글자가 만들어진다.
 - consonantPlusVowel 상태, 전 글자 삭제 후 생성된 글자 추가
 
+---------------------------------------
+
 3) VowelOnly : 모음만 있는 상태
 입력된 글자가 자음 (모음 + 자음)
 - 영어처럼 분리
@@ -153,6 +156,8 @@ enum KeyboardState {
 - 영어처럼 분리
 - vowelOnly 상태, 입력한 글자 추가
 
+---------------------------------------
+
 4) ConsonantPlusVowel : 자음 + 모음인 상태
 입력된 글자가 자음 (자음 + 모음 + 자음)
 - 입력된 글자는 종성이기 때문에 함께 합쳐 글자를 생성한다.
@@ -165,6 +170,8 @@ enum KeyboardState {
 입력된 글자가 모음 (자음 + 모음 + 모음 && 모음 + 모음 != 이중 모음)
 - 영어처럼 분리
 - vowelOnly 상태, 입력된 글자 추가
+
+---------------------------------------
 
 5) FinalConsonant : 자음 + 모음 + 자음인 상태
 입력된 글자가 자음 (자음 + 모음 + 자음 + 자음 && 자음 + 자음 == 이중 종성)
@@ -186,12 +193,16 @@ enum KeyboardState {
 1) Start
 - 지우고 나서 상태를 모름
 
+---------------------------------------
+
 2) FirstConsonantOnly
 지운 단어가 된소리 자음
 - firstConsonantOnly 상태, 된소리 전 자음 추가
 
 지운 단어가 그냥 자음
 - 지우고 나서 상태를 모름
+
+---------------------------------------
 
 3) VowelOnly
 지운 단어가 이중 모음
@@ -200,12 +211,16 @@ enum KeyboardState {
 지운 단어가 그냥 모음
 - 지우고 나서 상태를 모름
 
+---------------------------------------
+
 4) ConsonantPlusVowel
 지운 단어가 이중 모음
 - ConsonantPlusVowel 상태, 이중 모음 중 마지막 모음 삭제
 
 지운 단어가 그냥 모음
 - firstConsonantOnly 상태, 모음만 삭제
+
+---------------------------------------
 
 5) FinalConsonant
 지운 단어가 그냥 종성
@@ -214,15 +229,28 @@ enum KeyboardState {
 지운 단어가 이중 종성
 - FinalConsonant 상태, 이중 종성 중 마지막 종성 삭제
 
+---------------------------------------
+
 6) 지우고 나서 상태를 모르는 경우 : deleteInUnpredictableState()
 -> 직접 마지막 문자를 분석하여 상태를 알아낸다
 ```
 
-## 자주 쓰는 말 입력 구현
-- TableView로 UI 구현
+## 🗣 자주 쓰는 말 입력 구현
+- KeyboardAccessoryView : 키보드 위 툴바 View
+- OftenUsedView : 자주 쓰는 말 View, TableView로 UI 구현
+- OftenUsedCell : TableView의 Cell
+
+- 키보드 위 툴바를 통해서 모드를 변경할 수 있음
+
+## 🩳 단축 키 구현
+- ShortenView : 단축키 View
+
+- Delegate 패턴을 통해서 tapGesture, longPressGesture를 등록 후, 상황에 따라 다르게 구현
+- 버튼을 클릭하면 가장 앞의 단축키로 보이게 구현
 
 ## 📼 실행 영상
 
-https://user-images.githubusercontent.com/61138164/194686347-d017fea3-b81a-43a7-a214-9d204891c7ed.mov
+https://user-images.githubusercontent.com/61138164/194694384-00697942-94de-4384-9f7c-3ea94b2b72c7.mov
+
 
 
