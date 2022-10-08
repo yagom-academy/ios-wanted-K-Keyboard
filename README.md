@@ -10,7 +10,7 @@
 
 ## 구조 및 기능  
 ## 첫 번째 페이지  
-<img width="225" alt="11" src="https://user-images.githubusercontent.com/63276842/194692911-e6a22676-189d-4e84-b758-81b153b55d1f.png"> <img width="225" alt="21" src="https://user-images.githubusercontent.com/63276842/194692906-1237707e-40e6-4f11-810f-ca04f57c379b.png"> <img width="225" alt="31" src="https://user-images.githubusercontent.com/63276842/194692895-c9261baf-8551-4888-b4ce-1ae9a4cc8de9.png"> <img width="225" alt="41" src="https://user-images.githubusercontent.com/63276842/194692889-9aa400a9-8dde-44b2-87b2-039bc2651c91.png">  
+<img width="200" alt="11" src="https://user-images.githubusercontent.com/63276842/194692911-e6a22676-189d-4e84-b758-81b153b55d1f.png"> <img width="200" alt="21" src="https://user-images.githubusercontent.com/63276842/194692906-1237707e-40e6-4f11-810f-ca04f57c379b.png"> <img width="200" alt="31" src="https://user-images.githubusercontent.com/63276842/194692895-c9261baf-8551-4888-b4ce-1ae9a4cc8de9.png"> <img width="200" alt="41" src="https://user-images.githubusercontent.com/63276842/194692889-9aa400a9-8dde-44b2-87b2-039bc2651c91.png">  
 
 ### 구조 및 상세 설명  
 <img width="700" alt="fs" src="https://user-images.githubusercontent.com/63276842/194693418-8987cb1f-c498-457a-9129-036550d72ff4.png">  
@@ -78,7 +78,7 @@
 
 ### PopupViewController  
 
-<img width="225" alt="41" src="https://user-images.githubusercontent.com/63276842/194692889-9aa400a9-8dde-44b2-87b2-039bc2651c91.png">  
+<img width="350" alt="41" src="https://user-images.githubusercontent.com/63276842/194692889-9aa400a9-8dde-44b2-87b2-039bc2651c91.png">  
 
 - 메인 기능
 	- 팝업창 표시
@@ -112,10 +112,9 @@
 ***
 
 ## 두 번째 페이지  
+<img width="350" alt="12" src="https://user-images.githubusercontent.com/63276842/194694348-b67c8fba-66fb-40d1-9af6-9866b1fd821b.png"> <img width="350" alt="22" src="https://user-images.githubusercontent.com/63276842/194694342-c7f1be33-983c-4f4f-b6f6-ffa8bab278a8.png">  
 
-
-
-#### Keyboard
+### Keyboard
 
 - 한글 조합 로직과 다이어그램
 	- 고민한 부분
@@ -222,7 +221,8 @@
 	```
 	- 스페이스 바는 stack을 비우거나 텍스트 입력 객체에 공백을 삽입한다.
 ***
-### 세 번째 페이지
+### 세 번째 페이지  
+<img width="350" alt="13" src="https://user-images.githubusercontent.com/63276842/194694423-ed71f1bf-0955-4ba1-b8fd-95642eabc149.png"> <img width="350" alt="14" src="https://user-images.githubusercontent.com/63276842/194694418-b18ee856-ebee-48fd-9613-68de02b8f6c8.png">
 
 #### 키보드 자주 쓰는 말
 
@@ -248,7 +248,7 @@
 	- 1, 2, 3 Section
 - 두 번째 페이지  
   - 키보드 전환 버튼 구현   
-	- Shift 기능
+  - Shift 기능
 - 세 번째 화면
 	- 자주 쓰는 말 기능
 
