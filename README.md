@@ -1,5 +1,5 @@
-![team1](https://user-images.githubusercontent.com/33388081/194698936-8386e827-4021-4909-84a5-953e5382ba27.jpeg)
-![KakaoTalk_Photo_2022-04-07-14-34-31 004](https://user-images.githubusercontent.com/33388081/194698957-4236e987-1ca2-4248-9659-e72eacecae5c.jpeg)
+![team1](https://user-images.githubusercontent.com/33388081/194698936-8386e827-4021-4909-84a5-953e5382ba27.jpeg) {: width="100" height="100"}
+![KakaoTalk_Photo_2022-04-07-14-34-31 004](https://user-images.githubusercontent.com/33388081/194698957-4236e987-1ca2-4248-9659-e72eacecae5c.jpeg) {: width="100" height="100"}
 
 
 # ios-wanted-K-Keyboard
