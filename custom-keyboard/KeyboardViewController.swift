@@ -415,8 +415,6 @@ extension KeyboardViewController: UITableViewDelegate, UITableViewDataSource {
         return keyboardView.shortCutList.count
     }
     
-    // TODO: 리팩토링 포인트
-    // 셀에 ripple effect (물결 효과) 넣기
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
             cell.backgroundColor = .darkGray
@@ -424,7 +422,6 @@ extension KeyboardViewController: UITableViewDelegate, UITableViewDataSource {
         var content = cell.defaultContentConfiguration()
             content.text = "\(keyboardView.shortCutList[indexPath.row])"
             content.textProperties.color = UIColor(white: 1.0, alpha: 0.8)
-//            content.textProperties.font = UIFont(name: "NotoSansKR-Medium", size: 13)!
         cell.contentConfiguration = content
         return cell
     }
