@@ -1,24 +1,23 @@
 //
-//  PhonemeView.swift
+//  ToolBarButtonView.swift
 //  KeyboardExtension
 //
-//  Created by 한경수 on 2022/10/01.
+//  Created by CodeCamper on 2022/10/05.
 //
 
 import Foundation
 import UIKit
 // MARK: - View
-class PhonemeView: UIView {
+class ToolBarButtonView: UIView {
     // MARK: View Components
-    lazy var phonemeLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .black
-        label.font = .appleSDGothicNeo(weight: .regular, size: 21)
-        return label
+    lazy var imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
     
     // MARK: Associated Types
-    typealias ViewModel = PhonemeViewModel
+    typealias ViewModel = ToolBarButtonViewModel
     
     // MARK: Properties
     var didSetupConstraints = false
@@ -31,6 +30,7 @@ class PhonemeView: UIView {
         setupViews()
         buildViewHierarchy()
         self.setNeedsUpdateConstraints()
+        bind()
     }
     
     required init?(coder: NSCoder) {
@@ -47,42 +47,42 @@ class PhonemeView: UIView {
     
     // MARK: Setup Views
     func setupViews() {
-        self.backgroundColor = .white
-        self.layer.shadowOffset = CGSize(width: 0, height: 1)
-        self.layer.shadowRadius = 1
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 0.4
-        self.layer.cornerRadius = 5
-        self.phonemeLabel.text = viewModel.phoneme.rawValue
+        imageView.image = viewModel.image
+        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTap)))
     }
     
     
     // MARK: Build View Hierarchy
     func buildViewHierarchy() {
-        self.addSubview(phonemeLabel)
+        self.addSubview(imageView)
     }
     
     
     // MARK: Layout Views
     func setupConstraints() {
-        phonemeLabel.translatesAutoresizingMaskIntoConstraints = false
-        
         var constraints = [NSLayoutConstraint]()
         
         defer { NSLayoutConstraint.activate(constraints) }
         
         constraints += [
-            phonemeLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            phonemeLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            imageView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 1.5),
+            imageView.widthAnchor.constraint(equalToConstant: 18),
+            imageView.heightAnchor.constraint(equalToConstant: 18),
         ]
     }
     
     
     // MARK: Binding
     func bind() {
-        viewModel.phonemeSource = { [weak self] phoneme in
+        viewModel.selectedSource = { [weak self] selected in
             guard let self else { return }
-            self.phonemeLabel.text = phoneme.rawValue
+            self.backgroundColor = selected ? .gray : UIColor(hex: "#D0D3DA")
         }
+    }
+    
+    // MARK: Action
+    @objc func didTap() {
+        viewModel.didTap?()
     }
 }
