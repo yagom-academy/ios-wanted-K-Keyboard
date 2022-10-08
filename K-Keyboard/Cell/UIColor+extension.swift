@@ -35,4 +35,38 @@ extension UIColor {
         return UIColor(red: 0.49, green: 0.788, blue: 0.988, alpha: 1)
     }
     
+    /// all_sub_dark_gray - #919299 - darkgray
+    static func allSubDarkGray() -> UIColor {
+        
+        return UIColor(red: 145/255, green: 146/255, blue: 153/255, alpha: 1.0)
+        
+    }
+    
+    /// all_main_color - #FF417D - pink
+    static func allMainColor() -> UIColor {
+        
+        return UIColor(red: 255/255, green: 65/255, blue: 125/255, alpha: 1.0)
+        
+    }
+    
+    /// all_dark_gray - #50535c - darkgray
+    static func allDarkGray() -> UIColor {
+        
+        return UIColor(red: 80/255, green: 83/255, blue: 92/255, alpha: 1.0)
+        
+    }
+    
+    /// all_title_gray - #42444c - darkgray
+    static func allTitleGray() -> UIColor {
+        
+        return UIColor(red: 66/255, green: 68/255, blue: 76/255, alpha: 1.0)
+        
+    }
+    
+    /// all_white_gray - #f2f3f7 - lightGray
+    static func allWhiteGray() -> UIColor {
+        
+        return UIColor(red: 242/255, green: 243/255, blue: 247/255, alpha: 1.0)
+        
+    }
 }
