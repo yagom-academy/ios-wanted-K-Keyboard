@@ -88,7 +88,7 @@ class KeyboardViewController: UIInputViewController {
 
         let label = UILabel()
         label.text = "자주 쓰는 말"
-        label.font = UIFont(name: "NotoSansKR-Bold", size: 13)
+//        label.font = UIFont(name: "NotoSansKR-Bold", size: 13)
         label.textColor = UIColor(red: 0/255, green: 178/255, blue: 167/255, alpha: 1.0)
         label.translatesAutoresizingMaskIntoConstraints = false
         
@@ -424,7 +424,7 @@ extension KeyboardViewController: UITableViewDelegate, UITableViewDataSource {
         var content = cell.defaultContentConfiguration()
             content.text = "\(keyboardView.shortCutList[indexPath.row])"
             content.textProperties.color = UIColor(white: 1.0, alpha: 0.8)
-            content.textProperties.font = UIFont(name: "NotoSansKR-Medium", size: 13)!
+//            content.textProperties.font = UIFont(name: "NotoSansKR-Medium", size: 13)!
         cell.contentConfiguration = content
         return cell
     }
