@@ -1,83 +1,59 @@
 # ios-wanted-K-Keyboard
-
-</br>
-
-## 팀원  소개
-
+## 팀원  소개  
 |Channy(김승찬)|Beeem(김수빈)|
 |:---:|:---:|
 |<img src="https://user-images.githubusercontent.com/31722496/194575712-36002fac-9426-40cb-8adf-c5898be1114d.png" width="200" height="200"/>|<img src="https://user-images.githubusercontent.com/31722496/192567901-5f1ede08-e89e-4adf-b987-2af47ec2d1a3.png" width="200" height="200"/>|
-|[Github](https://github.com/seungchann)|[Github](https://github.com/skyqnaqna)|
+|[Github](https://github.com/seungchann)|[Github](https://github.com/skyqnaqna)|  
 
-</br>
-
-## 개발 기간
-
+## 개발 기간  
 2022.09.29 ~ 10.18
 
-</br>
+## 구조 및 기능  
+## 첫 번째 페이지  
+<img width="225" alt="11" src="https://user-images.githubusercontent.com/63276842/194692911-e6a22676-189d-4e84-b758-81b153b55d1f.png"> <img width="225" alt="21" src="https://user-images.githubusercontent.com/63276842/194692906-1237707e-40e6-4f11-810f-ca04f57c379b.png"> <img width="225" alt="31" src="https://user-images.githubusercontent.com/63276842/194692895-c9261baf-8551-4888-b4ce-1ae9a4cc8de9.png"> <img width="225" alt="41" src="https://user-images.githubusercontent.com/63276842/194692889-9aa400a9-8dde-44b2-87b2-039bc2651c91.png">  
 
-## 구조 및 기능
+### 구조 및 상세 설명  
+<img width="700" alt="fs" src="https://user-images.githubusercontent.com/63276842/194693418-8987cb1f-c498-457a-9129-036550d72ff4.png">  
 
-### 첫 번째 페이지
+### Section 1  
+### Section 2  
+### Section 3  
+***
+<img width="700" alt="ss" src="https://user-images.githubusercontent.com/63276842/194693416-3065ecc4-7ad6-47b3-9b66-a28996a8f9f6.png">  
 
-<img width=100% src="https://user-images.githubusercontent.com/31722496/194621629-dc6b4b90-9953-4080-8e6c-9374b3908c11.png">
-
-#### Section 1
-
-<img width=50% src="https://user-images.githubusercontent.com/31722496/194596960-b53ca3a8-1039-4c75-ae37-7a4abfecafea.png">
-
-
-#### Section 2
-
-
-<img width=50% src="https://user-images.githubusercontent.com/31722496/194597945-06704c7d-95dd-401c-aab0-d97da247af53.jpeg">
-
-
-#### Section 3
-
-<img width=50% src="https://user-images.githubusercontent.com/31722496/194597952-df4dec3a-5871-4509-b754-1fa6c39b1051.jpeg">
-
-- 메인 기능
+### Section 4  
+* 메인 기능  
 	- 4번째 Section Cell 생성
 	- UIStackView를 사용하여 이모티콘과 관련 UILabel을 표현
-
-- 고민한 부분
+* 고민한 부분
 	- 이모티콘 Label과 하단 Label을 하나의 수직 스택 뷰에 담을 때, 어떻게 spacing을 다르게 할 수 있을까?
-		```swift
-			stackView.spacing = 0
-  	    	stackView.setCustomSpacing(8, after: emoji)
-		```
-	- `setCustomSpacing(_:, after: )` 메서드로 원하는 지점에 spacing을 다르게 설정할 수 있다.
-
-#### Section 4
-
-<img width=50% src="https://user-images.githubusercontent.com/31722496/194597955-9fc7f86e-b3ab-4827-a19d-0346d8e23735.jpeg">
-
-- 메인 기능
+	- `setCustomSpacing(_:, after: )` 메서드로 원하는 지점에 spacing을 다르게 설정할 수 있다.  
+	```swift
+	stackView.spacing = 0
+	stackView.setCustomSpacing(8, after: emoji)
+	```
+### Section 5  
+* 메인 기능
 	- 5번째 Section Cell 생성
 	- 구매 리뷰 개수와 안내 문구는 `UITableHeaderFooterView`로 구현
 	- 프로필과 리뷰는 하나의 `UITableCell`
 	- 리뷰의 작성자명과 내용은 `CommentView`라는 `UIView` 객체로 구성
-- 고민한 부분
+* 고민한 부분
 	- 해결한 부분
 		- `CommentView`가 셀 밖으로 벗어나거나 배경 크기가 0이 되는 현상
-			```swift
-			commentView.widthAnchor.constraint(lessThanOrEqualToConstant: contentView.frame.width - 108)
-			```
 		- widthAnchor를 설정하여 셀 밖으로 벗어나지 않도록 해결
-	- 해결해야하는 부분
+	```swift
+	commentView.widthAnchor.constraint(lessThanOrEqualToConstant: contentView.frame.width - 108)
+	```	
+	* 해결해야하는 부분
 		- Label과 Button에 설정한 TitleLabel의 위치를 동일하게 맞추기
 			- Button 내에서 Label의 위치를 조정할 방법 찾기
 
-#### Section5 & FirstFooterView
-
-<img width=50% src="https://user-images.githubusercontent.com/31722496/194597961-2ffff7ac-e9eb-46c6-9f99-62d3b0763b3b.jpeg">
-
-- 메인 기능
+### Section5 & FirstFooterView  
+* 메인 기능
 	- 구매하기 버튼 클릭 시 `PopupViewController`로 이동하여 팝업창 표시
 	- 텍스트 작성 후 등록 버튼 누르면 구매 리뷰에 내용 추가 및 리뷰 수 증가
-- 고민한 부분
+* 고민한 부분
 	- 해결한 부분
 
     |해결 전|해결 후|
@@ -100,10 +76,9 @@
 	- 해결해야하는 부분
 		- 리뷰 작성하면 뷰를 더 올려서 방금 작성한 리뷰가 보이게 하기
 
+### PopupViewController  
 
-#### PopupViewController
-
-<img width=50% src="https://user-images.githubusercontent.com/31722496/194598419-ddc54ead-ba97-4dbe-b1c4-f2010c2d99b1.png">
+<img width="225" alt="41" src="https://user-images.githubusercontent.com/63276842/194692889-9aa400a9-8dde-44b2-87b2-039bc2651c91.png">  
 
 - 메인 기능
 	- 팝업창 표시
@@ -134,12 +109,9 @@
 	- Delegate 패턴 외에 다른 방법은 없는가?
 	- 텍스트 입력란을 hidden 방식말고 기존 컴포넌트를 지우면서 생성하는 방식 고려해보기
 
+***
 
-</br>
-</br>
-</br>
-
-### 두 번째 페이지
+## 두 번째 페이지  
 
 
 
@@ -249,11 +221,7 @@
 		}
 	```
 	- 스페이스 바는 stack을 비우거나 텍스트 입력 객체에 공백을 삽입한다.
-
-
-
-</br>
-
+***
 ### 세 번째 페이지
 
 #### 키보드 자주 쓰는 말
@@ -273,22 +241,16 @@
 	- 현재 `shortcutButton`을 길게 누르면 단축키 선택 화면이 나타나고, 단축키 중 하나를 선택해야지만 화면이 사라진다.
 	- 이 방식을 개선하여 길게 누르는 동안에만 화면에 나타나게 하거나, 다른 영역을 눌렀을 때 사라지도록 개선해야 한다.
 
-
-
-</br>
-
-
 ## 앱에서 기여한 부분
 
 ### Channy
 - 첫 번째 페이지
 	- 1, 2, 3 Section
-- 두 번째 페이지
+- 두 번째 페이지  
+  - 키보드 전환 버튼 구현   
 	- Shift 기능
-	- next keyboard 버튼
 - 세 번째 화면
 	- 자주 쓰는 말 기능
-
 
 ### Beeem
 - 첫 번째 페이지 
@@ -297,7 +259,3 @@
 	- 한글 조합
 - 세 번째 화면
 	- 단축키 기능
-
-</br>
-</br>
-
