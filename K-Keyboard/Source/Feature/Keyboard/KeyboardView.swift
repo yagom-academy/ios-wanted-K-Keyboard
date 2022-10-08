@@ -12,9 +12,15 @@ protocol UITextDocumentProxyDelegate: AnyObject {
     func deleteBackward()
 }
 
+protocol ShortenGestureDelegate: AnyObject {
+    func clickShortenButton()
+    func showShortenKeyList()
+}
+
 
 public class KeyboardView: UIView {
-    var delegate: UITextDocumentProxyDelegate?
+    var proxyDelegate: UITextDocumentProxyDelegate?
+    var gestureDelegate: ShortenGestureDelegate?
     let shiftKeyBoardValues: [String] = ["ㅃ", "ㅉ", "ㄸ", "ㄲ", "ㅆ", "ㅛ", "ㅕ", "ㅑ", "ㅒ", "ㅖ"]
     let firstKeyBoardValues: [String] = ["ㅂ", "ㅈ", "ㄷ", "ㄱ", "ㅅ", "ㅛ", "ㅕ", "ㅑ", "ㅐ", "ㅔ"]
     let secondKeyBoardValues: [String] = ["ㅁ", "ㄴ", "ㅇ", "ㄹ", "ㅎ", "ㅗ", "ㅓ", "ㅏ", "ㅣ"]
@@ -77,6 +83,7 @@ public class KeyboardView: UIView {
     let numberButton = KeyButton(keyType: .number, keyValue: "123")
     let spaceButton = KeyButton(keyType: .space, keyValue: "스페이스")
     let enterButton = KeyButton(keyType: .enter, keyValue: "↩︎")
+    let shortenButton = KeyButton(keyType: .shorten, keyValue: "ㅋㅋㅋㅋ")
     
     let mainStackView: UIStackView = {
         let stackView = UIStackView()
@@ -176,6 +183,7 @@ public class KeyboardView: UIView {
         )
         fourthStackView.addArrangedSubviews(
             numberButton,
+            shortenButton,
             spaceButton,
             enterButton
         )
@@ -200,21 +208,38 @@ public class KeyboardView: UIView {
         
         backButton.addTarget(self, action: #selector(backKeyButtonTapAction), for: .touchUpInside)
         shiftButton.addTarget(self, action: #selector(shiftKeyButtonTapAction), for: .touchUpInside)
+        
+        let shortTap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        let longTap = UILongPressGestureRecognizer(target: self, action: #selector(handleLongTap))
+        shortTap.numberOfTapsRequired = 1
+        
+        shortenButton.addGestureRecognizer(shortTap)
+        shortenButton.addGestureRecognizer(longTap)
     }
     
     @objc func koreanKeyButtonTapAction(_ sender: KeyButton) {
-        delegate?.insertText(sender)
+        proxyDelegate?.insertText(sender)
         if shiftKeyBoardValues.contains(sender.keyValue) && !["ㅛ", "ㅕ", "ㅑ"].contains(sender.keyValue) {
             shiftKeyButtonTapAction(shiftButton)
         }
     }
     
     @objc func backKeyButtonTapAction() {
-        delegate?.deleteBackward()
+        proxyDelegate?.deleteBackward()
     }
     
     @objc func shiftKeyButtonTapAction(_ sender: KeyButton) {
         isShiftKeyClicked = !isShiftKeyClicked
         sender.isSelected = !sender.isSelected
+    }
+    
+    @objc func handleTap(_ sender: UITapGestureRecognizer) {
+        gestureDelegate?.clickShortenButton()
+    }
+    
+    @objc func handleLongTap(_ sender: UILongPressGestureRecognizer) {
+        if sender.state == .began {
+            gestureDelegate?.showShortenKeyList()
+        }
     }
 }

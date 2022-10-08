@@ -15,6 +15,7 @@ enum KeyType {
     case number
     case space
     case enter
+    case shorten
 }
 
 class KeyButton: UIButton {
@@ -36,10 +37,15 @@ class KeyButton: UIButton {
             setBackgroundColor(.lightGray, for: .normal)
             setBackgroundColor(.white, for: .selected)
             widthAnchor.constraint(equalToConstant: 35).isActive = true
-        case .back:
+        case .back, .number:
             backgroundColor = .lightGray
+            titleLabel?.font = .systemFont(ofSize: 11)
             widthAnchor.constraint(equalToConstant: 35).isActive = true
-        case .number, .enter:
+        case .shorten:
+            backgroundColor = .lightGray
+            titleLabel?.font = .systemFont(ofSize: 10)
+            widthAnchor.constraint(equalToConstant: 45).isActive = true
+        case .enter:
             backgroundColor = .lightGray
             widthAnchor.constraint(equalToConstant: 80).isActive = true
         case .space:

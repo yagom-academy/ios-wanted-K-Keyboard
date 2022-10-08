@@ -7,14 +7,16 @@
 
 import UIKit
 
-class KeyboardViewController: UIInputViewController, UITextDocumentProxyDelegate, ChangeKeyboardDelegate {
+class KeyboardViewController: UIInputViewController, UITextDocumentProxyDelegate, ChangeKeyboardDelegate, ShortenGestureDelegate, ShortenDelegate {
 
     @IBOutlet var nextKeyboardButton: UIButton!
     let keyboardView = KeyboardView()
     let keyboardAccessoryView = KeyboardAccessoryView()
     let oftenUsedView = OftenUsedView()
+    let shortenView = ShortenView()
     var keyBoardState: KeyboardState = .start
     var oftenUsedWordList: [String] = ["안녕하세요~", "감사합니다!", "지금 가는 중이야!"]
+    var shortCutWordList: [String] = ["ㅋㅋㅋㅋ", "❤️", "ㅠㅠㅠㅠ", "😂"]
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
@@ -33,7 +35,9 @@ class KeyboardViewController: UIInputViewController, UITextDocumentProxyDelegate
     
     func setProperties() {
         guard let inputView = inputView else { return }
-        keyboardView.delegate = self
+        keyboardView.proxyDelegate = self
+        keyboardView.gestureDelegate = self
+        shortenView.delegate = self
         keyboardAccessoryView.delegate = self
         oftenUsedView.tableView.delegate = self
         oftenUsedView.tableView.dataSource = self
@@ -76,6 +80,9 @@ class KeyboardViewController: UIInputViewController, UITextDocumentProxyDelegate
             proxy.deleteBackward()
         }
         proxy.insertText(text)
+        if keyboardView.subviews.contains(shortenView) {
+            shortenView.removeFromSuperview()
+        }
     }
     
     func deleteBackward() {
@@ -84,6 +91,9 @@ class KeyboardViewController: UIInputViewController, UITextDocumentProxyDelegate
         keyBoardState = state
         proxy.deleteBackward()
         proxy.insertText(text)
+        if keyboardView.subviews.contains(shortenView) {
+            shortenView.removeFromSuperview()
+        }
     }
     
     func changeToMainKeyboard() {
@@ -129,6 +139,49 @@ class KeyboardViewController: UIInputViewController, UITextDocumentProxyDelegate
         
         oftenUsedView.tableView.reloadData()
     }
+    
+    func clickShortenButton() {
+        let proxy = self.textDocumentProxy as UITextDocumentProxy
+        proxy.insertText(keyboardView.shortenButton.keyValue)
+        if keyboardView.subviews.contains(shortenView) {
+            shortenView.removeFromSuperview()
+        }
+    }
+    
+    func showShortenKeyList() {
+        let shortenViewButtons: [UIButton] = [shortenView.shortenButton1, shortenView.shortenButton2, shortenView.shortenButton3, shortenView.shortenButton4]
+
+        keyboardView.addSubview(shortenView)
+        shortenView.translatesAutoresizingMaskIntoConstraints = false
+        shortenView.layer.zPosition = 2
+        
+        for i in 0..<shortCutWordList.count {
+            shortenViewButtons[i].setTitle(shortCutWordList[i], for: .normal)
+        }
+
+        NSLayoutConstraint.activate([
+            shortenView.leadingAnchor.constraint(equalTo: keyboardView.leadingAnchor, constant: 75),
+            shortenView.bottomAnchor.constraint(equalTo: keyboardView.bottomAnchor, constant: -50),
+            shortenView.widthAnchor.constraint(equalToConstant: 190),
+            shortenView.heightAnchor.constraint(equalToConstant: 60)
+        ])
+    }
+    
+    func insertShortenText(text: String) {
+        let proxy = self.textDocumentProxy as UITextDocumentProxy
+        proxy.insertText(text)
+        keyboardView.shortenButton.keyValue = text
+        keyboardView.shortenButton.setTitle(text, for: .normal)
+        for i in 0..<shortCutWordList.count {
+            if text == shortCutWordList[i] {
+                shortCutWordList.remove(at: i)
+                shortCutWordList.insert(text, at: 0)
+                break
+            }
+        }
+        shortenView.removeFromSuperview()
+    }
+    
 
 }
 

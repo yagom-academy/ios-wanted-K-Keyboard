@@ -21,6 +21,8 @@
 		2D52012128F04AE8000E2216 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D52011F28F04AD3000E2216 /* UIColor+Extension.swift */; };
 		2D52012328F04B1E000E2216 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D52012228F04B1E000E2216 /* UIStackView+Extension.swift */; };
 		2D52012428F04B68000E2216 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D52012228F04B1E000E2216 /* UIStackView+Extension.swift */; };
+		2D52012628F136AF000E2216 /* ShortenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D52012528F136AF000E2216 /* ShortenView.swift */; };
+		2D52012728F13E18000E2216 /* ShortenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D52012528F136AF000E2216 /* ShortenView.swift */; };
 		2D899F2328E56CBE00EAEB25 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D899F2228E56CBE00EAEB25 /* KeyboardViewController.swift */; };
 		2D899F2728E56CBE00EAEB25 /* KKeyboard.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 2D899F2028E56CBE00EAEB25 /* KKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2D899F2E28E578AF00EAEB25 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D899F2D28E578AF00EAEB25 /* KeyboardView.swift */; };
@@ -76,6 +78,7 @@
 		2D52011C28F0494E000E2216 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		2D52011F28F04AD3000E2216 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		2D52012228F04B1E000E2216 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
+		2D52012528F136AF000E2216 /* ShortenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortenView.swift; sourceTree = "<group>"; };
 		2D899F2028E56CBE00EAEB25 /* KKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = KKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D899F2228E56CBE00EAEB25 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		2D899F2428E56CBE00EAEB25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -211,6 +214,7 @@
 				2DB246B128E6A55E00FF2D07 /* KoreanAutomata.swift */,
 				2DB246B628E9568F00FF2D07 /* KeyboardState.swift */,
 				2D52010528EED118000E2216 /* KeyboardAccessoryView.swift */,
+				2D52012528F136AF000E2216 /* ShortenView.swift */,
 				2D52010B28EEE1BF000E2216 /* OftenUsedView.swift */,
 				2D52010D28EEE353000E2216 /* OftenUsedCell.swift */,
 			);
@@ -340,6 +344,7 @@
 				2DB2469E28E5898D00FF2D07 /* KeyboardView.swift in Sources */,
 				2D52010728EED64F000E2216 /* KeyboardAccessoryView.swift in Sources */,
 				2D52011E28F0496F000E2216 /* UIView+Extension.swift in Sources */,
+				2D52012728F13E18000E2216 /* ShortenView.swift in Sources */,
 				2DB246B328E836AE00FF2D07 /* KoreanAutomata.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -348,6 +353,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D52012628F136AF000E2216 /* ShortenView.swift in Sources */,
 				2D52010C28EEE1BF000E2216 /* OftenUsedView.swift in Sources */,
 				2D52012028F04AD3000E2216 /* UIColor+Extension.swift in Sources */,
 				2DB246B728E9568F00FF2D07 /* KeyboardState.swift in Sources */,
