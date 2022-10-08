@@ -16,8 +16,94 @@
 <img width="700" alt="fs" src="https://user-images.githubusercontent.com/63276842/194693418-8987cb1f-c498-457a-9129-036550d72ff4.png">  
 
 ### Section 1  
-### Section 2  
-### Section 3  
+* 메인 기능  
+  * 1번째 Section Cell 생성  
+	* UIKit을 사용하여 주어진 화면 표현  
+* 고민한 부분  
+	* 코드로 UI를 만들 때, SwiftUI를 이용해서 cell을 확인해가면서 그릴 수 있지 않을까?  
+	* [애플 공식 문서](https://developer.apple.com/documentation/swiftui/previews-in-xcode), [참고 문서](https://www.hohyeonmoon.com/blog/swiftui-tutorial-preview/)를 참고하여 preview 를 사용  
+	```swift
+	#if canImport(SwiftUI) && DEBUG
+	struct FirstSectionCellPreview: PreviewProvider {
+			static var previews: some View {
+					UIViewPreview {
+							let cell = FirstSectionCell(frame: .zero)
+							return cell
+					}.previewLayout(.fixed(width: 343, height: 544))
+			}
+	}
+	#endif
+	```
+	* 문자열에서 일부만 뽑아서 색상을 변경할 수 있을까?  
+	* `NSString` 의 `range` 를 활용하여 해결할 수 있다.  
+	```swift
+	let participantsLabel: UILabel = {
+				let label = UILabel()
+				...
+				var userNum: Int = 78
+				let highlightedColor: UIColor = UIColor(red: 0.792, green: 0.278, blue: 0.426, alpha: 1)
+				let attributedString = NSMutableAttributedString(string: "\(userNum)명이참여했어요!", attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+				attributedString.addAttribute(.foregroundColor, value: highlightedColor, range: (attributedString.string as NSString).range(of: "\(userNum)"))
+				label.attributedText = attributedString
+				return label
+		}()
+	```
+### Section 2 - 태그 시스템  
+* 메인 기능  
+  * 2번째 Section cell 생성  
+	* Cell 내부에 태그들을 표시하는 `TagCollectionView` 를 사용하여 구현  
+	* 태그의 길이에 맞춰 label 의 width 가 동적으로 늘어남  
+	* 가장 우측의 태그 길이가 frame 을 넘어갈 경우, 다음 줄에 표시됨  
+* 고민한 부분  
+  * 해결한 부분  
+	  * label 내부의 text 길이에 따라 동적으로 width 를 변화시킬 수 있는 방법이 있을까?  
+		* `sizeForItemAt -> CGSize` 에서 dummy label 의 사이즈를 활용하여 크기를 정해준다.  
+		* 이 때 dummy label 에 사용된 폰트나 사이즈가 실제 label 과 똑같아야 한다.  
+		```swift
+		func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+					let label: UILabel = {
+							let label = UILabel()
+							label.font = UIFont(name: "NotoSansKR-Medium", size: 14)
+							label.text = self.items[indexPath.row]
+							label.sizeToFit()
+							return label
+					}()
+
+					let size = label.frame.size
+					let widthMargin: CGFloat = 10.3
+					let heightMargin: CGFloat = 4.0
+
+					return CGSize(width: size.width + (2 * widthMargin), height: size.height + (2 * heightMargin))
+			}
+		```
+	* 해결해야 할 부분  
+		* 현재는 상위 `TableView` 의 cell 의 높이를 고정해주는 방식으로 `tagCollectionView` 의 `height` 값을 고정하여 모든 태그를 표시했다.
+		* 태그 갯수와 상관없이 동적으로 모든 tag 를 표시할 수 있을까?  
+		* 현재는 `SecondSectionCell` 의 `items` 를 사용해서 tag 를 만드는데, 확장가능한 구조로 변경할 수 있지 않을까?  
+	
+### Section 3 - CardView  
+* 메인 기능  
+	* 3번째 Section cell 생성  
+	* Cell 내부에 카드들을 표시하는 `CardCollectionView` 를 사용하여 구현  
+* 고민한 부분  
+	* 해결한 부분  
+		* CardView 에서 카드 테두리의 그림자를 어떻게 표현할까?  
+		```swift
+		func setShadows() {
+					self.layer.backgroundColor = UIColor.white.cgColor
+					self.layer.shadowColor = UIColor.gray.cgColor
+					self.layer.masksToBounds = false
+					self.layer.cornerRadius = 20
+					self.layer.shadowOffset = CGSize(width: 0, height: 0)
+					self.layer.shadowRadius = 3.5
+					self.layer.shadowOpacity = 0.3
+			}
+		```
+		* 그림자는 현재 view의 테두리에 겹쳐있는 상태이기 때문에, `shadowOffset`을 통해 이동시켜 그림자의 방향을 정할 수 있다.  
+	* 해결해야 할 부분  
+		* `MVC` 패턴에서 `View` 는 모두 분리하여 명시해줘야 할까?  
+		* 예를 들어, ThirdSectionCell 에서 CardCollectionView 를 생성한다면, `CardCollectionView.swift` 파일을 만들어 관리해야 할까?
+
 ***
 <img width="700" alt="ss" src="https://user-images.githubusercontent.com/63276842/194693416-3065ecc4-7ad6-47b3-9b66-a28996a8f9f6.png">  
 
@@ -32,7 +118,7 @@
 	stackView.spacing = 0
 	stackView.setCustomSpacing(8, after: emoji)
 	```
-### Section 5  
+### Section 5 - Comment View  
 * 메인 기능
 	- 5번째 Section Cell 생성
 	- 구매 리뷰 개수와 안내 문구는 `UITableHeaderFooterView`로 구현
