@@ -11,8 +11,8 @@ class ThemeDetailViewController: UIViewController {
     
     let mainView = ThemeDetailView()
     
+    // MARK: Sample Data
     var reviewSample = [ReviewDataModel]()
-    
     struct ReviewDataModel {
         var isCreator: Bool = false
         var profileImage: UIImage = UIImage(named: "profile")!
@@ -127,12 +127,12 @@ class ThemeDetailViewController: UIViewController {
         mainView.tableView.register(BannerTableViewCell.self, forCellReuseIdentifier: BannerTableViewCell.identifier)
         mainView.tableView.register(ReviewTableViewCell.self, forCellReuseIdentifier: ReviewTableViewCell.identifier)
         
-
-        reviewSample.append(ReviewDataModel(isCreator: true, name: "몰랑_크리에이터", content: "구매해주셔서 감사합니다♥", writeBefore: "1일"))
+        // MARK: Sample data
+        reviewSample.append(ReviewDataModel(isCreator: true, profileImage: UIImage(named: "emoji2")!, name: "몰랑_크리에이터", content: "구매해주셔서 감사합니다♥", writeBefore: "1일"))
         reviewSample.append(ReviewDataModel(name: "유저1", content: "정말 귀여워요..", writeBefore: "30초"))
         reviewSample.append(ReviewDataModel(name: "유저1", content: "귀여워귀여워귀여워귀여워귀여워귀여워귀여워귀여워귀여워귀여워귀여워귀여워귀여워귀여워", writeBefore: "1분"))
         reviewSample.append(ReviewDataModel(name: "유저1", content: "맘에드네요!", writeBefore: "1분"))
-        reviewSample.append(ReviewDataModel(name: "유저1", content: "정말 귀여워요..", writeBefore: "10분"))
+        reviewSample.append(ReviewDataModel(profileImage: UIImage(named: "emoji1")!, name: "유저1", content: "정말 귀여워요..", writeBefore: "10분"))
         reviewSample.append(ReviewDataModel(name: "유저1", content: "정말 귀여워요..", writeBefore: "23분"))
         reviewSample.append(ReviewDataModel(name: "유저1", content: "정말 귀여워요..", writeBefore: "25분"))
         reviewSample.append(ReviewDataModel(name: "유저1", content: "정말 귀여워요..", writeBefore: "25분"))
@@ -182,9 +182,6 @@ extension ThemeDetailViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        if indexPath.row == 5 && !UserDefaults.standard.bool(forKey: "isPurchased") {
-//            return 0
-//        }
         return UITableView.automaticDimension
     }
 }
