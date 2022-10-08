@@ -60,6 +60,12 @@ class ThemeDetailViewController: UIViewController {
         mainView.tableView.reloadData()
     }
     
+    @objc func purchase() {
+        let vc = BuyModalViewController()
+        vc.modalPresentationStyle = .overFullScreen
+        present(vc, animated: false)
+    }
+    
     @objc func addReview(_ notification: Notification) {
         let review = notification.object as! String
         reviewSample.insert(ReviewDataModel(name: "유저", content: review, writeBefore: "1초전"), at: 1)
@@ -95,6 +101,8 @@ class ThemeDetailViewController: UIViewController {
             selector: #selector(addReview(_:)),
             name: Notification.Name("addReview"),
             object: nil)
+        
+        mainView.buyButton.addTarget(self, action: #selector(purchase), for: .touchUpInside)
 
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)

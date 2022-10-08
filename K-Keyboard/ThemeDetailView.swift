@@ -47,14 +47,8 @@ class ThemeDetailView: UIView, ViewRepresent {
         view.titleLabel?.font = .NotoSanKR(weight: .Bold, size: 14)
         view.layer.cornerRadius = 20
         view.backgroundColor = .customPink()
-        view.addTarget(nil, action: #selector(purchase), for: .touchUpInside)
         return view
     }()
-    
-    @objc func purchase() {
-        UserDefaults.standard.set(true, forKey: "isPurchased")
-        NotificationCenter.default.post(name: NSNotification.Name("purchased"), object: nil, userInfo: nil)
-    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)

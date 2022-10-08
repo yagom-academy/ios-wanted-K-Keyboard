@@ -34,6 +34,7 @@
 		0B93A0D428EF9CBD00CCE360 /* KeywordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A0D228EF9CBD00CCE360 /* KeywordTableViewCell.swift */; };
 		0B93A0D628EF9E2400CCE360 /* KeywordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A0D528EF9E2400CCE360 /* KeywordCollectionViewCell.swift */; };
 		0B93A0D728EF9E2400CCE360 /* KeywordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A0D528EF9E2400CCE360 /* KeywordCollectionViewCell.swift */; };
+		0B93A0D928F1260C00CCE360 /* BuyModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B93A0D828F1260C00CCE360 /* BuyModalViewController.swift */; };
 		63487F3828E2EA5E0033CF32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3728E2EA5E0033CF32 /* AppDelegate.swift */; };
 		63487F3A28E2EA5E0033CF32 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3928E2EA5E0033CF32 /* SceneDelegate.swift */; };
 		63487F3C28E2EA5E0033CF32 /* ThemeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3B28E2EA5E0033CF32 /* ThemeDetailViewController.swift */; };
@@ -95,6 +96,7 @@
 		0B93A0CF28EF98C400CCE360 /* UIColor+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIColor+extension.swift"; path = "../Cell/UIColor+extension.swift"; sourceTree = "<group>"; };
 		0B93A0D228EF9CBD00CCE360 /* KeywordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordTableViewCell.swift; sourceTree = "<group>"; };
 		0B93A0D528EF9E2400CCE360 /* KeywordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordCollectionViewCell.swift; sourceTree = "<group>"; };
+		0B93A0D828F1260C00CCE360 /* BuyModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyModalViewController.swift; sourceTree = "<group>"; };
 		63487F3428E2EA5E0033CF32 /* K-Keyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "K-Keyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		63487F3728E2EA5E0033CF32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63487F3928E2EA5E0033CF32 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				63487F3928E2EA5E0033CF32 /* SceneDelegate.swift */,
 				63487F3B28E2EA5E0033CF32 /* ThemeDetailViewController.swift */,
 				0B93A09728EF001E00CCE360 /* ThemeDetailView.swift */,
+				0B93A0D828F1260C00CCE360 /* BuyModalViewController.swift */,
 				0B93A09928EF010600CCE360 /* ViewRepresent.swift */,
 				0B93A09C28EF060000CCE360 /* Cell */,
 				0B93A0A628EF390700CCE360 /* extension */,
@@ -367,6 +370,7 @@
 				0B784F7E28E7131F007BA390 /* KeyboardViewController.swift in Sources */,
 				0B93A0C428EF61EB00CCE360 /* UILabel+extension.swift in Sources */,
 				F8E0DB9928E94119007FB787 /* HangulCombinater.swift in Sources */,
+				0B93A0D928F1260C00CCE360 /* BuyModalViewController.swift in Sources */,
 				63487F3C28E2EA5E0033CF32 /* ThemeDetailViewController.swift in Sources */,
 				0B93A0D628EF9E2400CCE360 /* KeywordCollectionViewCell.swift in Sources */,
 				0B784F7B28E71312007BA390 /* CustomKeyboardButton.swift in Sources */,
