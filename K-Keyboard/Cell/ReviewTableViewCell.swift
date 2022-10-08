@@ -72,12 +72,12 @@ class ReviewTableViewCell: UITableViewCell {
         return label
     }()
     
-    let reportButton: UIButton = {
-        let label = UIButton()
-        label.setTitle("신고", for: .normal)
-        label.tintColor = .allSubDarkGray()
-        label.titleLabel!.font = .NotoSanKR(weight: .Bold, size: 12)
-        return label
+    let reportButton: UILabel = {
+        let view = UILabel()
+        view.text = "신고"
+        view.font = .NotoSanKR(weight: .Bold, size: 12)
+        view.textColor = .allSubDarkGray()
+        return view
     }()
     
     func setup() {
@@ -123,7 +123,7 @@ class ReviewTableViewCell: UITableViewCell {
             reviewContentLabel.leadingAnchor.constraint(equalTo: userNameLabel.leadingAnchor, constant: 0),
             reviewContentLabel.trailingAnchor.constraint(equalTo: contentbackgroundView.trailingAnchor, constant: -12),
             reviewContentLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 27),
-            reviewContentLabel.heightAnchor.constraint(lessThanOrEqualToConstant: 27),
+//            reviewContentLabel.heightAnchor.constraint(lessThanOrEqualToConstant: 27),
             reviewContentLabel.bottomAnchor.constraint(equalTo: contentbackgroundView.bottomAnchor, constant: -6),
             
             writeBeforeLabel.topAnchor.constraint(equalTo: contentbackgroundView.bottomAnchor, constant: 8),
