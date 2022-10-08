@@ -202,7 +202,8 @@
 
 ## 구조 및 상세 설명  
 * Keyboard  
-* Shift, Next Button 구현  
+* Shift Button 기능 구현  
+* Next Button 기능 구현  
 
 ### Keyboard
 - 한글 조합 로직과 다이어그램
@@ -347,11 +348,49 @@ self.keyboardView.nextButton.addTarget(self, action: #selector(handleInputModeLi
 ## 세 번째 페이지  
 <img width="350" alt="13" src="https://user-images.githubusercontent.com/63276842/194694423-ed71f1bf-0955-4ba1-b8fd-95642eabc149.png"> <img width="350" alt="14" src="https://user-images.githubusercontent.com/63276842/194694418-b18ee856-ebee-48fd-9613-68de02b8f6c8.png">
 
-#### 키보드 자주 쓰는 말
+## 구조 및 상세 설명  
+* `키보드 자주 쓰는 말` 기능 구현  
+* `키보드 단축키` 기능 구현  
+
+#### 키보드 자주 쓰는 말  
+* 메인 기능  
+  * 상단 `ToolbarView` 버튼 중, 세번째 버튼을 클릭하면 `자주 쓰는 말` 을 위한 선택창이 나타난다.  
+  * 첫번째 버튼을 클릭하면 다시 키보드로 돌아간다.  
+* 고민한 부분  
+	* `KeyboardView` 와 `FavoritesView` (자주 쓰는 말) 을 버튼 입력에 따라 표시해줘야 했다.  
+	* 버튼 `action` 은 `ToolbarView`에 결정되지만, 두 개의 `View` 를 관리하는 `KeyboardViewController` 에서 실제 변화가 일어난다.  
+	* `Delegate` 패턴을 사용해서, `KeyboardViewController` 에서 업데이트 할 수 있도록 구조를 설계했다.  
+	```swift
+	// KorKeyboardToolbarView.swift
+	protocol KorKeyboardToolbarViewDelegate: class {
+    	func keyboardButtonPressed()
+    	func favoritesButtonPressed()
+	}
+	
+	class KorKeyboardToolbarView: UIView {
+		weak var delegate: KorKeyboardToolbarViewDelegate?
+		
+		...
+		delegate?.keyboardButtonPressed()
+		delegate?.favoriteButtonPressed()
+		
+	}
+	
+	// KeyboardViewController
+	extension KeyboardViewController: KorKeyboardToolbarViewDelegate {
+		@objc func keyboardButtonPressed() {
+				keyboardView.isHidden = false
+				favoritesView.isHidden = true
+		}
+
+		@objc func favoritesButtonPressed() {
+				keyboardView.isHidden = true
+				favoritesView.isHidden = false
+		}
+	}
+	```
 
 #### 키보드 단축키
-
-- 사진 첨부
 - 메인 기능
 	- `ShortcutData`에 6개의 단축키를 저장했으며, 짧게 누르면 현재 단축키를 입력하고 길게 누르면 단축키 선택창이 나타난다.
 - 고민한 부분
