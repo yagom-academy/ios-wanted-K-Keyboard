@@ -53,14 +53,17 @@ final class ThemeViewController: UIViewController {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .systemBackground
-
+        let toolbarHeight = toolbar.frame.height
+        let contentInset = UIEdgeInsets(top: 0, left: 0, bottom: toolbarHeight, right: 0)
+        collectionView.contentInset = contentInset
+        collectionView.scrollIndicatorInsets = contentInset
         view.insertSubview(collectionView, at: 0)
 
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: toolbar.topAnchor)
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
     
@@ -160,13 +163,25 @@ final class ThemeViewController: UIViewController {
         if let userInfo = notification.userInfo,
            let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardHeight = keyboardFrame.cgRectValue.height
+            let toolbarHeight = toolbar.frame.height
+            var contentInset = collectionView.contentInset
+            contentInset.bottom = toolbarHeight + keyboardHeight
+
             toolbarBottomContraint.constant = keyboardHeight
+            collectionView.contentInset = contentInset
+            collectionView.scrollIndicatorInsets = contentInset
         }
     }
 
     @objc
     private func willHideKeyboard(_ notification: Notification) {
+        let toolbarHeight = toolbar.frame.height
+        var contentInset = collectionView.contentInset
+        contentInset.bottom = toolbarHeight
+        
         toolbarBottomContraint.constant = 0
+        collectionView.contentInset = contentInset
+        collectionView.scrollIndicatorInsets = contentInset
     }
 }
 
