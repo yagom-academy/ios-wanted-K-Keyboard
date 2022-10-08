@@ -20,6 +20,16 @@
 		40D68ECF28EAA78400A2AED1 /* FifthSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D68ECE28EAA78400A2AED1 /* FifthSectionCell.swift */; };
 		40D68ED128EAAEBF00A2AED1 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D68ED028EAAEBF00A2AED1 /* CommentView.swift */; };
 		40D68ED328EB375900A2AED1 /* FifthSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D68ED228EB375900A2AED1 /* FifthSectionHeaderView.swift */; };
+		40DBB6A028F0110C000AA04A /* ShortcutData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DBB69F28F0110B000AA04A /* ShortcutData.swift */; };
+		40DBB6A228F011AD000AA04A /* ShortcutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DBB6A128F011AD000AA04A /* ShortcutView.swift */; };
+		40DBB6A328F011AD000AA04A /* ShortcutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DBB6A128F011AD000AA04A /* ShortcutView.swift */; };
+		40DBB6A428F011B0000AA04A /* ShortcutData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DBB69F28F0110B000AA04A /* ShortcutData.swift */; };
+		40FB997C28EDCA8D002AE450 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FB997B28EDCA8D002AE450 /* KeyboardViewController.swift */; };
+		40FB998028EDCA8D002AE450 /* KorKeyboard.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 40FB997928EDCA8D002AE450 /* KorKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		40FB998628EDCAC6002AE450 /* KorKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FB998528EDCAC6002AE450 /* KorKeyboardView.swift */; };
+		40FB998728EDCACC002AE450 /* KorKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FB998528EDCAC6002AE450 /* KorKeyboardView.swift */; };
+		40FB998928EE3C42002AE450 /* KoreanData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FB998828EE3C42002AE450 /* KoreanData.swift */; };
+		40FB998A28EE3C42002AE450 /* KoreanData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FB998828EE3C42002AE450 /* KoreanData.swift */; };
 		63487F3828E2EA5E0033CF32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3728E2EA5E0033CF32 /* AppDelegate.swift */; };
 		63487F3A28E2EA5E0033CF32 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3928E2EA5E0033CF32 /* SceneDelegate.swift */; };
 		63487F3C28E2EA5E0033CF32 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63487F3B28E2EA5E0033CF32 /* FirstViewController.swift */; };
@@ -33,7 +43,39 @@
 		64D6427A28E981BE00E475A5 /* TagCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D6427928E981BE00E475A5 /* TagCollectionView.swift */; };
 		64D6427D28EAD43A00E475A5 /* ThirdSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D6427C28EAD43A00E475A5 /* ThirdSectionCell.swift */; };
 		64D6427F28EAD4F600E475A5 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D6427E28EAD4F600E475A5 /* CardView.swift */; };
+		64FC2A8228EFF526009B4856 /* KorKeyboardView+Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC2A8128EFF526009B4856 /* KorKeyboardView+Action.swift */; };
+		64FC2A8328EFF55C009B4856 /* KorKeyboardView+Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC2A8128EFF526009B4856 /* KorKeyboardView+Action.swift */; };
+		64FC2A8628F02373009B4856 /* KorKeyboardToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC2A8528F02373009B4856 /* KorKeyboardToolbarView.swift */; };
+		64FC2A8728F02673009B4856 /* KorKeyboardToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC2A8528F02373009B4856 /* KorKeyboardToolbarView.swift */; };
+		64FC2A8A28F0790A009B4856 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC2A8928F0790A009B4856 /* FavoritesView.swift */; };
+		64FC2A8B28F07ACA009B4856 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC2A8928F0790A009B4856 /* FavoritesView.swift */; };
+		64FC2A8D28F07CA7009B4856 /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC2A8C28F07CA6009B4856 /* FavoritesTableViewCell.swift */; };
+		64FC2A8E28F07E5E009B4856 /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FC2A8C28F07CA6009B4856 /* FavoritesTableViewCell.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		40FB997E28EDCA8D002AE450 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63487F2C28E2EA5E0033CF32 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 40FB997828EDCA8D002AE450;
+			remoteInfo = KorKeyboard;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		40FB998128EDCA8D002AE450 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				40FB998028EDCA8D002AE450 /* KorKeyboard.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		4019E21B28E5EB34007DD322 /* FourthSectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthSectionCell.swift; sourceTree = "<group>"; };
@@ -49,6 +91,13 @@
 		40D68ECE28EAA78400A2AED1 /* FifthSectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FifthSectionCell.swift; sourceTree = "<group>"; };
 		40D68ED028EAAEBF00A2AED1 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		40D68ED228EB375900A2AED1 /* FifthSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FifthSectionHeaderView.swift; sourceTree = "<group>"; };
+		40DBB69F28F0110B000AA04A /* ShortcutData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutData.swift; sourceTree = "<group>"; };
+		40DBB6A128F011AD000AA04A /* ShortcutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutView.swift; sourceTree = "<group>"; };
+		40FB997928EDCA8D002AE450 /* KorKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = KorKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		40FB997B28EDCA8D002AE450 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		40FB997D28EDCA8D002AE450 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40FB998528EDCAC6002AE450 /* KorKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KorKeyboardView.swift; sourceTree = "<group>"; };
+		40FB998828EE3C42002AE450 /* KoreanData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanData.swift; sourceTree = "<group>"; };
 		63487F3428E2EA5E0033CF32 /* K-Keyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "K-Keyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		63487F3728E2EA5E0033CF32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63487F3928E2EA5E0033CF32 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,9 +113,20 @@
 		64D6427928E981BE00E475A5 /* TagCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionView.swift; sourceTree = "<group>"; };
 		64D6427C28EAD43A00E475A5 /* ThirdSectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdSectionCell.swift; sourceTree = "<group>"; };
 		64D6427E28EAD4F600E475A5 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		64FC2A8128EFF526009B4856 /* KorKeyboardView+Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KorKeyboardView+Action.swift"; sourceTree = "<group>"; };
+		64FC2A8528F02373009B4856 /* KorKeyboardToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KorKeyboardToolbarView.swift; sourceTree = "<group>"; };
+		64FC2A8928F0790A009B4856 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		64FC2A8C28F07CA6009B4856 /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		40FB997628EDCA8D002AE450 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		63487F3128E2EA5E0033CF32 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -96,6 +156,7 @@
 				4019E21B28E5EB34007DD322 /* FourthSectionCell.swift */,
 				40D68ED428EB376100A2AED1 /* FifthSection */,
 				40294A1228EBECA300B01F0A /* PopupView */,
+				40FB998B28EE3C74002AE450 /* Keyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -134,6 +195,8 @@
 			isa = PBXGroup;
 			children = (
 				406F63FC28EC459B00245E66 /* CommentModel.swift */,
+				40FB998828EE3C42002AE450 /* KoreanData.swift */,
+				40DBB69F28F0110B000AA04A /* ShortcutData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -148,10 +211,33 @@
 			path = FifthSection;
 			sourceTree = "<group>";
 		};
+		40FB997A28EDCA8D002AE450 /* KorKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				40FB997B28EDCA8D002AE450 /* KeyboardViewController.swift */,
+				40FB997D28EDCA8D002AE450 /* Info.plist */,
+			);
+			path = KorKeyboard;
+			sourceTree = "<group>";
+		};
+		40FB998B28EE3C74002AE450 /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				40FB998528EDCAC6002AE450 /* KorKeyboardView.swift */,
+				64FC2A8128EFF526009B4856 /* KorKeyboardView+Action.swift */,
+				40DBB6A128F011AD000AA04A /* ShortcutView.swift */,
+				64FC2A8528F02373009B4856 /* KorKeyboardToolbarView.swift */,
+				64FC2A8928F0790A009B4856 /* FavoritesView.swift */,
+				64FC2A8C28F07CA6009B4856 /* FavoritesTableViewCell.swift */,
+			);
+			path = Keyboard;
+			sourceTree = "<group>";
+		};
 		63487F2B28E2EA5E0033CF32 = {
 			isa = PBXGroup;
 			children = (
 				63487F3628E2EA5E0033CF32 /* K-Keyboard */,
+				40FB997A28EDCA8D002AE450 /* KorKeyboard */,
 				63487F3528E2EA5E0033CF32 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -160,6 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				63487F3428E2EA5E0033CF32 /* K-Keyboard.app */,
+				40FB997928EDCA8D002AE450 /* KorKeyboard.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -202,6 +289,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		40FB997828EDCA8D002AE450 /* KorKeyboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 40FB998428EDCA8D002AE450 /* Build configuration list for PBXNativeTarget "KorKeyboard" */;
+			buildPhases = (
+				40FB997528EDCA8D002AE450 /* Sources */,
+				40FB997628EDCA8D002AE450 /* Frameworks */,
+				40FB997728EDCA8D002AE450 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KorKeyboard;
+			productName = KorKeyboard;
+			productReference = 40FB997928EDCA8D002AE450 /* KorKeyboard.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		63487F3328E2EA5E0033CF32 /* K-Keyboard */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 63487F4828E2EA5E0033CF32 /* Build configuration list for PBXNativeTarget "K-Keyboard" */;
@@ -209,10 +313,12 @@
 				63487F3028E2EA5E0033CF32 /* Sources */,
 				63487F3128E2EA5E0033CF32 /* Frameworks */,
 				63487F3228E2EA5E0033CF32 /* Resources */,
+				40FB998128EDCA8D002AE450 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				40FB997F28EDCA8D002AE450 /* PBXTargetDependency */,
 			);
 			name = "K-Keyboard";
 			productName = "K-Keyboard";
@@ -229,6 +335,9 @@
 				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
+					40FB997828EDCA8D002AE450 = {
+						CreatedOnToolsVersion = 14.0;
+					};
 					63487F3328E2EA5E0033CF32 = {
 						CreatedOnToolsVersion = 14.0;
 					};
@@ -248,11 +357,19 @@
 			projectRoot = "";
 			targets = (
 				63487F3328E2EA5E0033CF32 /* K-Keyboard */,
+				40FB997828EDCA8D002AE450 /* KorKeyboard */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		40FB997728EDCA8D002AE450 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		63487F3228E2EA5E0033CF32 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -268,15 +385,35 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		40FB997528EDCA8D002AE450 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40DBB6A328F011AD000AA04A /* ShortcutView.swift in Sources */,
+				64FC2A8E28F07E5E009B4856 /* FavoritesTableViewCell.swift in Sources */,
+				40DBB6A428F011B0000AA04A /* ShortcutData.swift in Sources */,
+				40FB998728EDCACC002AE450 /* KorKeyboardView.swift in Sources */,
+				64FC2A8728F02673009B4856 /* KorKeyboardToolbarView.swift in Sources */,
+				64FC2A8B28F07ACA009B4856 /* FavoritesView.swift in Sources */,
+				40FB998A28EE3C42002AE450 /* KoreanData.swift in Sources */,
+				64FC2A8328EFF55C009B4856 /* KorKeyboardView+Action.swift in Sources */,
+				40FB997C28EDCA8D002AE450 /* KeyboardViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		63487F3028E2EA5E0033CF32 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40DBB6A228F011AD000AA04A /* ShortcutView.swift in Sources */,
 				63487F3C28E2EA5E0033CF32 /* FirstViewController.swift in Sources */,
 				6463E98A28EC87B000FA66F1 /* CardCollectionView.swift in Sources */,
 				64D6427828E97A1B00E475A5 /* TagCollectionViewCell.swift in Sources */,
+				64FC2A8A28F0790A009B4856 /* FavoritesView.swift in Sources */,
 				64D6427528E938C000E475A5 /* SecondSectionCell.swift in Sources */,
+				40FB998628EDCAC6002AE450 /* KorKeyboardView.swift in Sources */,
 				64D6427D28EAD43A00E475A5 /* ThirdSectionCell.swift in Sources */,
+				40FB998928EE3C42002AE450 /* KoreanData.swift in Sources */,
 				63487F3828E2EA5E0033CF32 /* AppDelegate.swift in Sources */,
 				40D68ED128EAAEBF00A2AED1 /* CommentView.swift in Sources */,
 				6426E6AA28E730EC00159D4A /* FirstSectionCell.swift in Sources */,
@@ -287,16 +424,28 @@
 				63487F3A28E2EA5E0033CF32 /* SceneDelegate.swift in Sources */,
 				406F63FD28EC459B00245E66 /* CommentModel.swift in Sources */,
 				4019E21C28E5EB34007DD322 /* FourthSectionCell.swift in Sources */,
+				64FC2A8D28F07CA7009B4856 /* FavoritesTableViewCell.swift in Sources */,
+				64FC2A8628F02373009B4856 /* KorKeyboardToolbarView.swift in Sources */,
 				40D68ED328EB375900A2AED1 /* FifthSectionHeaderView.swift in Sources */,
 				40D68ECF28EAA78400A2AED1 /* FifthSectionCell.swift in Sources */,
 				64D6427F28EAD4F600E475A5 /* CardView.swift in Sources */,
 				40478C3F28E6E67F00C96673 /* Const.swift in Sources */,
+				40DBB6A028F0110C000AA04A /* ShortcutData.swift in Sources */,
 				40294A1A28EC007000B01F0A /* PopupViewControllerDelegate.swift in Sources */,
+				64FC2A8228EFF526009B4856 /* KorKeyboardView+Action.swift in Sources */,
 				40294A1128EBE1BD00B01F0A /* PopupViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		40FB997F28EDCA8D002AE450 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 40FB997828EDCA8D002AE450 /* KorKeyboard */;
+			targetProxy = 40FB997E28EDCA8D002AE450 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		63487F4228E2EA5E0033CF32 /* LaunchScreen.storyboard */ = {
@@ -310,6 +459,54 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		40FB998228EDCA8D002AE450 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = KorKeyboard/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = KorKeyboard;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.yagom.K-Keyboard.KorKeyboard";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		40FB998328EDCA8D002AE450 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = KorKeyboard/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = KorKeyboard;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.yagom.K-Keyboard.KorKeyboard";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		63487F4628E2EA5E0033CF32 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -427,6 +624,7 @@
 		63487F4928E2EA5E0033CF32 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -454,6 +652,7 @@
 		63487F4A28E2EA5E0033CF32 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -481,6 +680,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		40FB998428EDCA8D002AE450 /* Build configuration list for PBXNativeTarget "KorKeyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40FB998228EDCA8D002AE450 /* Debug */,
+				40FB998328EDCA8D002AE450 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		63487F2F28E2EA5E0033CF32 /* Build configuration list for PBXProject "K-Keyboard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

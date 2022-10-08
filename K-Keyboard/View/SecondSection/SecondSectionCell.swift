@@ -57,7 +57,7 @@ extension SecondSectionCell {
             tagCollectionView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16),
             tagCollectionView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16),
             tagCollectionView.topAnchor.constraint(equalTo: tagLabel.bottomAnchor, constant: 16),
-            tagCollectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            tagCollectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -40)
         ])
     }
 }
