@@ -43,6 +43,13 @@ final class SectionHeaderView: UICollectionReusableView {
 
     // MARK: Functions
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        titleLabel.text = nil
+        countLabel.text = nil
+    }
+
     private func configure() {
         addSubview(titleLabel)
         addSubview(countLabel)
@@ -61,4 +68,5 @@ final class SectionHeaderView: UICollectionReusableView {
             countLabel.text = String(count)
         }
     }
+
 }
