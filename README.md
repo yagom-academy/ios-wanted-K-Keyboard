@@ -342,7 +342,7 @@
 self.keyboardView.nextButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
 ```
 * 키보드 스위칭 버튼이 필요한 기기들은 `self.needsInputModeSwitchKey` 프로퍼티를 사용하여 분기 처리  
-* 스위칭 버튼이 내장된 기기의 경우, `viewDidLoad` 에서 `KorKeyboardView` 의 `shortcutButton` 가 `keyboardView.leadingAnchor` 에 붙을 수 있도록 구현  
+* 스위칭 버튼이 내장된 기기의 경우, `viewDidLoad` 에서 `KorKeyboardView` 의 `shortcutButton` 이 `keyboardView.leadingAnchor` 에 붙을 수 있도록 구현  
 
 ***
 ## 세 번째 페이지  
@@ -411,6 +411,7 @@ self.keyboardView.nextButton.addTarget(self, action: #selector(handleInputModeLi
 - 두 번째 페이지  
   - 키보드 전환 버튼 구현   
   - Shift 기능
+  - Next 버튼 (키보드 스위칭)  
 - 세 번째 화면
 	- 자주 쓰는 말 기능
 
