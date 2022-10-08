@@ -104,6 +104,9 @@ class FirstViewController: UIViewController {
         firstTableView.delegate = self
         firstTableView.dataSource = self
         firstTableView.separatorStyle = .none
+        if #available(iOS 15, *) {
+            firstTableView.sectionHeaderTopPadding = 0
+        }
         inputBar.delegate = self
 
         addViews()
@@ -241,15 +244,13 @@ extension FirstViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 1:
-            // MARK: Tag 수에 따라서 높이 계산해서 따로 설정해줘야 함
-            return CGFloat(110)
+            return CGFloat(160)
         default:
             return UITableView.automaticDimension
         }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        tableView.register(TestTableViewCellOne.self, forCellReuseIdentifier: TestTableViewCellOne.identifier)
         tableView.register(FirstSectionCell.self, forCellReuseIdentifier: FirstSectionCell.identifier)
         tableView.register(SecondSectionCell.self, forCellReuseIdentifier: SecondSectionCell.identifier)
         tableView.register(ThirdSectionCell.self, forCellReuseIdentifier: ThirdSectionCell.identifier)
@@ -314,6 +315,15 @@ extension FirstViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         default:
             return UIView()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch section {
+        case 4:
+            return 70
+        default:
+            return 0
         }
     }
 }
