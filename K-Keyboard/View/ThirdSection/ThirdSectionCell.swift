@@ -60,7 +60,7 @@ extension ThirdSectionCell {
             cardCollectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
             cardCollectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             cardCollectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            cardCollectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            cardCollectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -48),
             cardCollectionView.heightAnchor.constraint(equalToConstant: 166)
         ])
     }

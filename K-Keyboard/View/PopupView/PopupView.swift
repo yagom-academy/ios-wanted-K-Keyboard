@@ -23,11 +23,16 @@ class PopupView: UIView {
 
     let infoLabel: UILabel = {
         let label = UILabel()
-        label.text = "N젬이 부족해요\n빠르게 충전해 보세요!"
         label.font = UIFont(name: Const.Font.notoBold, size: 16)
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         label.textAlignment = .center
+        let paragraphStyle = NSMutableParagraphStyle()
+        let highlightedColor = UIColor(red: 0.49, green: 0.788, blue: 0.988, alpha: 1)
+        let attributedString = NSMutableAttributedString(string: "N젬이 부족해요\n빠르게 충전해 보세요!", attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        attributedString.addAttribute(.foregroundColor, value: highlightedColor, range: (attributedString.string as NSString).range(of: "N젬"))
+        
+        label.attributedText = attributedString
 
         return label
     }()

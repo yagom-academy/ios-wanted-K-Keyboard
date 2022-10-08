@@ -154,17 +154,15 @@ extension KorKeyboardView {
         if self.isShiftPressed {
             print("change to X")
             self.isShiftPressed = false
-            DispatchQueue.main.async {
-                self.horizontal1.isHidden = false
-                self.horizontal1Shift.isHidden = true
-            }
+            self.horizontal1.isHidden = false
+            self.horizontal1Shift.isHidden = true
+            self.shiftButton.setBackgroundImage(UIImage(systemName: "shift"), for: .normal)
         } else {
             print("Shift pressed")
             self.isShiftPressed = true
-            DispatchQueue.main.async {
-                self.horizontal1.isHidden = true
-                self.horizontal1Shift.isHidden = false
-            }
+            self.horizontal1.isHidden = true
+            self.horizontal1Shift.isHidden = false
+            self.shiftButton.setBackgroundImage(UIImage(systemName: "shift.fill"), for: .normal)
         }
     }
 
