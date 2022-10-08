@@ -147,7 +147,7 @@ class MainViewController: UIViewController {
     
     @objc func keyboardWillShow(_ notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            bottomViewMarginConstraint?.constant = -keyboardSize.height
+            bottomViewMarginConstraint?.constant = -(keyboardSize.height - self.view.safeAreaInsets.bottom) 
             UIView.animate(withDuration: 1) {
                 self.view.layoutIfNeeded()
             }
