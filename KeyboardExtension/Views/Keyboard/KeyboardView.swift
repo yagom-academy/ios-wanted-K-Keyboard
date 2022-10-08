@@ -42,6 +42,13 @@ class KeyboardView: UIView {
     
     lazy var changeTypeView: ChangeTypeView = ChangeTypeView()
     
+    lazy var shortcutView: ShortcutView = {
+        let viewModel = ShortcutViewModel()
+        let view = ShortcutView(viewModel: viewModel)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     lazy var spaceView: SpaceView = {
         let viewModel = SpaceViewModel()
         let view = SpaceView(viewModel: viewModel)
@@ -75,6 +82,14 @@ class KeyboardView: UIView {
             stackViews.append(stackView)
         }
         return stackViews
+    }()
+    
+    lazy var shortcutPopupView: ShortcutPopupView = {
+        let viewModel = ShortcutPopupViewModel()
+        let view = ShortcutPopupView(viewModel: viewModel)
+        view.isHidden = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     // MARK: Associated Types
@@ -115,6 +130,7 @@ class KeyboardView: UIView {
     // MARK: Build View Hierarchy
     func buildViewHierarchy() {
         self.addSubview(parentStackView)
+        self.addSubview(shortcutPopupView)
         horizontalStackViews.forEach { parentStackView.addArrangedSubview($0) }
         for (line, views) in phonemeViews.enumerated() {
             for view in views {
@@ -125,6 +141,7 @@ class KeyboardView: UIView {
         horizontalStackViews[2].insertArrangedSubview(deleteView, at: horizontalStackViews[2].arrangedSubviews.count)
         
         horizontalStackViews[3].addArrangedSubview(changeTypeView)
+        horizontalStackViews[3].addArrangedSubview(shortcutView)
         horizontalStackViews[3].addArrangedSubview(spaceView)
         horizontalStackViews[3].addArrangedSubview(returnView)
     }
@@ -158,7 +175,11 @@ class KeyboardView: UIView {
         ]
         
         constraints += [
-            changeTypeView.widthAnchor.constraint(equalToConstant: specialKeyWidth * 2),
+            changeTypeView.widthAnchor.constraint(equalToConstant: specialKeyWidth),
+        ]
+        
+        constraints += [
+            shortcutView.widthAnchor.constraint(equalToConstant: specialKeyWidth),
         ]
         
         constraints += [
@@ -177,6 +198,11 @@ class KeyboardView: UIView {
                 ]
             }
         }
+        
+        constraints += [
+            shortcutPopupView.leadingAnchor.constraint(equalTo: shortcutView.leadingAnchor),
+            shortcutPopupView.bottomAnchor.constraint(equalTo: shortcutView.topAnchor, constant: -3),
+        ]
     }
     
     
@@ -197,6 +223,11 @@ class KeyboardView: UIView {
             self.shiftView.viewModel.receiveActivated?(activated)
         }
         
+        viewModel.isShortcutPopupHiddenSource = { [weak self] isHidden in
+            guard let self else { return }
+            self.shortcutPopupView.isHidden = isHidden
+        }
+        
         shiftView.viewModel.didTap = { [weak self] in
             guard let self else { return }
             self.viewModel.toggleShift?()
@@ -205,6 +236,16 @@ class KeyboardView: UIView {
         deleteView.viewModel.didTap = { [weak self] in
             guard let self else { return }
             self.viewModel.removePhoneme?()
+        }
+        
+        shortcutView.viewModel.propagateDidTap = { [weak self] word in
+            guard let self else { return }
+            self.viewModel.addWord?(word)
+        }
+        
+        shortcutView.viewModel.propagateLongPress = { [weak self] in
+            guard let self else { return }
+            self.viewModel.showShortcutPopup?()
         }
         
         spaceView.viewModel.didTap = { [weak self] in
@@ -221,6 +262,12 @@ class KeyboardView: UIView {
             views.forEach {
                 bind(phonemeViewModel: $0.viewModel)
             }
+        }
+        
+        shortcutPopupView.viewModel.propagateSelectedWord = { [weak self] word in
+            guard let self else { return }
+            self.viewModel.addWord?(word)
+            self.shortcutView.viewModel.receiveWord?(word)
         }
     }
     

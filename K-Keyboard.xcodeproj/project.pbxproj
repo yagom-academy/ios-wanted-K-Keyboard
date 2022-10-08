@@ -81,6 +81,12 @@
 		B067303028EE73D6002B6E66 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B24E9028ED1742001ABBEA /* KeyboardView.swift */; };
 		B067303128EE7401002B6E66 /* SpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B067301C28EE6DE2002B6E66 /* SpaceView.swift */; };
 		B067303328EE74F3002B6E66 /* MainViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B067303228EE74F3002B6E66 /* MainViewModelTests.swift */; };
+		B09A55F928EFC6E20093D9D3 /* ShortcutPopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A55F828EFC6E20093D9D3 /* ShortcutPopupViewModel.swift */; };
+		B09A55FB28EFC6EF0093D9D3 /* ShortcutPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A55FA28EFC6EF0093D9D3 /* ShortcutPopupView.swift */; };
+		B09A55FD28EFC7090093D9D3 /* ShortcutButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A55FC28EFC7090093D9D3 /* ShortcutButtonViewModel.swift */; };
+		B09A55FF28EFC7120093D9D3 /* ShortcutButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A55FE28EFC7120093D9D3 /* ShortcutButtonView.swift */; };
+		B09A560128EFD3BB0093D9D3 /* ShortcutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A560028EFD3BB0093D9D3 /* ShortcutViewModel.swift */; };
+		B09A560328EFD3C90093D9D3 /* ShortcutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A560228EFD3C90093D9D3 /* ShortcutView.swift */; };
 		B0B24E9128ED1742001ABBEA /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B24E9028ED1742001ABBEA /* KeyboardView.swift */; };
 		B0B24E9328ED1912001ABBEA /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B24E9228ED1912001ABBEA /* MainViewModel.swift */; };
 		B0B24E9528ED55AC001ABBEA /* ToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B24E9428ED55AC001ABBEA /* ToolBarView.swift */; };
@@ -186,6 +192,12 @@
 		B067301A28EE6DCE002B6E66 /* SpaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceViewModel.swift; sourceTree = "<group>"; };
 		B067301C28EE6DE2002B6E66 /* SpaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceView.swift; sourceTree = "<group>"; };
 		B067303228EE74F3002B6E66 /* MainViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelTests.swift; sourceTree = "<group>"; };
+		B09A55F828EFC6E20093D9D3 /* ShortcutPopupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutPopupViewModel.swift; sourceTree = "<group>"; };
+		B09A55FA28EFC6EF0093D9D3 /* ShortcutPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutPopupView.swift; sourceTree = "<group>"; };
+		B09A55FC28EFC7090093D9D3 /* ShortcutButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutButtonViewModel.swift; sourceTree = "<group>"; };
+		B09A55FE28EFC7120093D9D3 /* ShortcutButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutButtonView.swift; sourceTree = "<group>"; };
+		B09A560028EFD3BB0093D9D3 /* ShortcutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutViewModel.swift; sourceTree = "<group>"; };
+		B09A560228EFD3C90093D9D3 /* ShortcutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutView.swift; sourceTree = "<group>"; };
 		B0B24E9028ED1742001ABBEA /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		B0B24E9228ED1912001ABBEA /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		B0B24E9428ED55AC001ABBEA /* ToolBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarView.swift; sourceTree = "<group>"; };
@@ -340,6 +352,7 @@
 				B0B24E9228ED1912001ABBEA /* MainViewModel.swift */,
 				B067300028EE4C15002B6E66 /* FrequentlyUsedWords */,
 				B0672FFD28EE4B72002B6E66 /* Keyboard */,
+				B09A55F728EFC6D40093D9D3 /* Shortcut */,
 				B0672FFE28EE4B7D002B6E66 /* ToolBar */,
 			);
 			path = ViewModels;
@@ -351,6 +364,7 @@
 				B05F4C9E28ED01F000562C38 /* DeleteViewModel.swift */,
 				B05F4C9C28ED01F000562C38 /* ReturnViewModel.swift */,
 				B05F4C9D28ED01F000562C38 /* ShiftViewModel.swift */,
+				B09A560028EFD3BB0093D9D3 /* ShortcutViewModel.swift */,
 				B067301A28EE6DCE002B6E66 /* SpaceViewModel.swift */,
 			);
 			path = SpecialKeys;
@@ -379,6 +393,7 @@
 				B05F4CAC28ED01F000562C38 /* MainViewController.swift */,
 				B0672FFF28EE4BFE002B6E66 /* FrequentlyUsedWords */,
 				B0672FFC28EE4B54002B6E66 /* Keyboard */,
+				B09A55F628EFC6B80093D9D3 /* Shortcut */,
 				B0672FFB28EE4B4A002B6E66 /* ToolBar */,
 			);
 			path = Views;
@@ -391,6 +406,7 @@
 				B05F4CAA28ED01F000562C38 /* DeleteView.swift */,
 				B05F4CAB28ED01F000562C38 /* ReturnView.swift */,
 				B05F4CA828ED01F000562C38 /* ShiftView.swift */,
+				B09A560228EFD3C90093D9D3 /* ShortcutView.swift */,
 				B067301C28EE6DE2002B6E66 /* SpaceView.swift */,
 			);
 			path = SpecialKeys;
@@ -470,6 +486,24 @@
 				B067301328EE503E002B6E66 /* FrequentlyUsedWordsListCellModel.swift */,
 			);
 			path = FrequentlyUsedWordsList;
+			sourceTree = "<group>";
+		};
+		B09A55F628EFC6B80093D9D3 /* Shortcut */ = {
+			isa = PBXGroup;
+			children = (
+				B09A55FA28EFC6EF0093D9D3 /* ShortcutPopupView.swift */,
+				B09A55FE28EFC7120093D9D3 /* ShortcutButtonView.swift */,
+			);
+			path = Shortcut;
+			sourceTree = "<group>";
+		};
+		B09A55F728EFC6D40093D9D3 /* Shortcut */ = {
+			isa = PBXGroup;
+			children = (
+				B09A55F828EFC6E20093D9D3 /* ShortcutPopupViewModel.swift */,
+				B09A55FC28EFC7090093D9D3 /* ShortcutButtonViewModel.swift */,
+			);
+			path = Shortcut;
 			sourceTree = "<group>";
 		};
 		D30E931A28E69F30009AB544 /* TagView */ = {
@@ -678,6 +712,7 @@
 				B05F4CB128ED01F000562C38 /* ShiftViewModel.swift in Sources */,
 				B067301D28EE6DE2002B6E66 /* SpaceView.swift in Sources */,
 				B0B24E9728ED55C5001ABBEA /* ToolBarViewModel.swift in Sources */,
+				B09A560128EFD3BB0093D9D3 /* ShortcutViewModel.swift in Sources */,
 				B0B24E9928ED56B1001ABBEA /* ToolBarButtonView.swift in Sources */,
 				B05F4CC128ED01F000562C38 /* ChangeTypeView.swift in Sources */,
 				B0B24E9528ED55AC001ABBEA /* ToolBarView.swift in Sources */,
@@ -686,10 +721,14 @@
 				B05F4CC528ED01F000562C38 /* ReturnView.swift in Sources */,
 				B067300F28EE4E16002B6E66 /* FrequentlyUsedWordsListCell.swift in Sources */,
 				B0412C1B28EEAC5800DE313E /* FrequentlyUsedWordsBottomView.swift in Sources */,
+				B09A55FB28EFC6EF0093D9D3 /* ShortcutPopupView.swift in Sources */,
 				B067300428EE4C31002B6E66 /* FrequentlyUsedWordsMainView.swift in Sources */,
+				B09A55FF28EFC7120093D9D3 /* ShortcutButtonView.swift in Sources */,
+				B09A55FD28EFC7090093D9D3 /* ShortcutButtonViewModel.swift in Sources */,
 				B067300A28EE4CBA002B6E66 /* FrequentlyUsedWordsHeaderView.swift in Sources */,
 				B067300228EE4C26002B6E66 /* FrequentlyUsedWordsViewModel.swift in Sources */,
 				B067300628EE4C90002B6E66 /* FrequentlyUsedWordsListViewModel.swift in Sources */,
+				B09A560328EFD3C90093D9D3 /* ShortcutView.swift in Sources */,
 				B05F4CB728ED01F000562C38 /* PhonemeViewModel.swift in Sources */,
 				B067300828EE4C98002B6E66 /* FrequentlyUsedWordsListView.swift in Sources */,
 				B0B24E9D28ED58FD001ABBEA /* ToolBarButtonViewModel.swift in Sources */,
@@ -697,6 +736,7 @@
 				B05F4CB928ED01F000562C38 /* Phoneme.swift in Sources */,
 				B05F4CAF28ED01F000562C38 /* ReturnViewModel.swift in Sources */,
 				B05F4CC728ED01F000562C38 /* MainViewController.swift in Sources */,
+				B09A55F928EFC6E20093D9D3 /* ShortcutPopupViewModel.swift in Sources */,
 				B05F4CBD28ED01F000562C38 /* UITextDocumentProxy+Extension.swift in Sources */,
 				B05F4CC328ED01F000562C38 /* DeleteView.swift in Sources */,
 				B05AA9EA28ED019800EB2CF3 /* UIStackView+Extension.swift in Sources */,

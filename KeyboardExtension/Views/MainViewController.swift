@@ -146,6 +146,11 @@ class MainViewController: UIInputViewController {
             self.viewModel.receiveRemovePrefix?()
         }
         
+        keyboardView.viewModel.propagateAddWord = { [weak self] word in
+            guard let self else { return }
+            self.viewModel.receiveWord?(word)
+        }
+        
         keyboardView.viewModel.propagateAddSpace = { [weak self] in
             guard let self else { return }
             self.viewModel.receiveAddSpace?()
